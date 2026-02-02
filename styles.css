@@ -58,6 +58,33 @@
   --transition-normal: 0.3s ease;
 }
 
+/* ============================================
+   MODE SOMBRE
+   ============================================ */
+
+[data-theme="dark"] {
+  --bg-page: #1c1917;
+  --bg-dark: #0c0a09;
+  --bg-card: #292524;
+  --bg-card-hover: #44403c;
+  --bg-concept: #422006;
+
+  --text-primary: #fafaf9;
+  --text-secondary: #d6d3d1;
+  --text-muted: #a8a29e;
+  --text-light: #78716c;
+  --text-inverse: #292524;
+
+  --border: #44403c;
+  --border-light: #292524;
+  --border-dark: #78716c;
+}
+
+/* Transition douce lors du changement de thème */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -318,6 +345,12 @@ a:hover {
 .card__desc {
   font-size: 0.95rem;
   color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.card__date {
+  font-size: 0.8rem;
+  color: var(--text-light);
   margin-bottom: var(--space-lg);
 }
 
@@ -548,4 +581,52 @@ a:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-muted);
+  transition: stroke var(--transition-fast);
+}
+
+.theme-toggle:hover svg {
+  stroke: var(--accent);
+}
+
+/* Icône lune visible en mode clair */
+.theme-toggle .icon-moon {
+  display: block;
+}
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+/* Icône soleil visible en mode sombre */
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
 }

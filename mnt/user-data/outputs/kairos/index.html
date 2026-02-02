@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIROS — Analyse de résonance conversationnelle</title>
+  <meta name="description" content="KAIROS - Knowledge-Augmented Interactive Resonance Operating System. Outil d'analyse de la résonance conversationnelle pour les interactions humain-IA.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/styles.css">
+  
+  <style>
+    /* Page-specific styles */
+    .formula-box {
+      background: var(--bg-dark);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .formula {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--accent-light);
+      letter-spacing: 0.05em;
+    }
+    
+    .formula-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .formula-legend span {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    .formula-legend strong {
+      color: var(--accent-light);
+      font-weight: 500;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .feature {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    
+    .feature__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-concept);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    
+    .feature__title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature__desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    
+    .status-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    
+    .roadmap {
+      margin-top: 2rem;
+    }
+    
+    .roadmap-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .roadmap-item:last-child {
+      border-bottom: none;
+    }
+    
+    .roadmap-status {
+      flex-shrink: 0;
+      width: 100px;
+    }
+    
+    .roadmap-status span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .roadmap-status.done span { color: var(--green); }
+    .roadmap-status.progress span { color: var(--accent); }
+    .roadmap-status.planned span { color: var(--text-muted); }
+    
+    .roadmap-content h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .roadmap-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">
+        florent<span>.</span>klimacek
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      
+      <nav class="site-nav" id="siteNav">
+        <a href="../index.html#recherche">Recherche</a>
+        <a href="../index.html#articles">Articles</a>
+        <a href="index.html" class="active">KAIROS</a>
+        <a href="../index.html#about">À propos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero -->
+    <section class="hero hero--short" style="padding-top: 8rem;">
+      <div class="container container--narrow text-center">
+        <span class="status-badge">En développement actif</span>
+        <h1 class="hero__title" style="margin-top: 2rem;">
+          <span>KAIROS</span>
+        </h1>
+        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+          Knowledge-Augmented Interactive Resonance Operating System
+        </p>
+        <p class="hero__subtitle" style="margin: 2rem auto 0; text-align: center;">
+          Un outil d'analyse pour mesurer et comprendre la qualité 
+          de vos interactions avec les IA conversationnelles.
+        </p>
+      </div>
+    </section>
+
+    <!-- Formula -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container container--narrow">
+        <div class="formula-box">
+          <p class="formula">R = (I × F) / L</p>
+          <div class="formula-legend">
+            <span><strong>R</strong> Résonance</span>
+            <span><strong>I</strong> Information</span>
+            <span><strong>F</strong> Friction</span>
+            <span><strong>L</strong> Loops (boucles)</span>
+          </div>
+        </div>
+        
+        <p style="text-align: center; color: var(--text-secondary);">
+          La résonance conversationnelle mesure l'efficacité d'un échange : 
+          le rapport entre l'information utile générée et les frictions ou répétitions 
+          qui ralentissent la progression du dialogue.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="background: #fafaf9;">
+      <div class="container">
+        <header class="section__header text-center">
+          <p class="section__label">Fonctionnalités</p>
+          <h2 class="section__title">Ce que KAIROS permet</h2>
+        </header>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Analyse en temps réel</h3>
+            <p class="feature__desc">Mesure continue des variables de résonance pendant vos conversations.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Métriques détaillées</h3>
+            <p class="feature__desc">Score de résonance, détection d'intention, alignement, linéarisation.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Alertes de glissement</h3>
+            <p class="feature__desc">Détection automatique des dérives structurelles et des zones de friction.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Base de référence JSON</h3>
+            <p class="feature__desc">Variables issues de la littérature académique en linguistique et psychologie.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Extension navigateur</h3>
+            <p class="feature__desc">Capture automatique des conversations depuis l'interface web des IA.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="feature__title">Historique & Export</h3>
+            <p class="feature__desc">Conservation des analyses et export des données pour étude ultérieure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section">
+      <div class="container container--narrow">
+        <header class="section__header">
+          <p class="section__label">Développement</p>
+          <h2 class="section__title">Roadmap</h2>
+        </header>
+
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <div class="roadmap-status done">
+              <span>✓ Terminé</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Recherche & Conceptualisation</h4>
+              <p>Définition du modèle de résonance, identification des variables clés, création des bases JSON de référence.</p>
+            </div>
+          </div>
+          
+          <div class="roadmap-item">
+            <div class="roadmap-status done">
+              <span>✓ Terminé</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Site de présentation</h4>
+              <p>Documentation publique et présentation du projet sur GitHub Pages.</p>
+            </div>
+          </div>
+          
+          <div class="roadmap-item">
+            <div class="roadmap-status progress">
+              <span>● En cours</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Scripts d'analyse Python</h4>
+              <p>Développement des algorithmes de calcul de résonance et d'analyse conversationnelle.</p>
+            </div>
+          </div>
+          
+          <div class="roadmap-item">
+            <div class="roadmap-status progress">
+              <span>● En cours</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Extension navigateur</h4>
+              <p>Capture temps réel des conversations depuis les interfaces web des IA.</p>
+            </div>
+          </div>
+          
+          <div class="roadmap-item">
+            <div class="roadmap-status planned">
+              <span>○ Planifié</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Interface web complète</h4>
+              <p>Dashboard d'analyse, visualisations interactives, gestion de l'historique.</p>
+            </div>
+          </div>
+          
+          <div class="roadmap-item">
+            <div class="roadmap-status planned">
+              <span>○ Planifié</span>
+            </div>
+            <div class="roadmap-content">
+              <h4>Tests multi-modèles</h4>
+              <p>Validation croisée sur Claude, ChatGPT, Gemini, Grok et autres modèles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--dark">
+      <div class="container container--narrow text-center">
+        <h2 class="section__title" style="color: var(--text-inverse);">Accès à l'application</h2>
+        <p style="color: var(--text-light); margin: 1.5rem 0 2rem; font-size: 1.1rem;">
+          L'application KAIROS est actuellement en développement.<br>
+          Une version beta sera disponible prochainement.
+        </p>
+        <a href="#" class="btn btn--primary" style="opacity: 0.6; cursor: not-allowed;">
+          Bientôt disponible
+        </a>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">
+          En attendant, vous pouvez explorer le code source sur 
+          <a href="https://github.com/fkmusic" target="_blank" rel="noopener" style="color: var(--accent-light);">GitHub</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Florent Klimacek — Tous droits réservés</p>
+      <div class="site-footer__links">
+        <a href="../index.html">Accueil</a>
+        <a href="https://github.com/fkmusic" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    navToggle.addEventListener('click', () => {
+      siteNav.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

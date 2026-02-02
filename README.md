@@ -1,24 +1,97 @@
 # Site Florent Klimacek
 
-Structure du site regroupant la recherche sur les interactions humain-IA.
+Site regroupant la recherche sur les interactions humain-IA : articles, analyses et le projet KAIROS.
 
 ## Structure des fichiers
 
 ```
-site/
-├── index.html              # Page d'accueil principale
-├── assets/
-│   └── styles.css          # Styles CSS partagés
-├── articles/
-│   └── mecanique-invisible.html  # Document "La mécanique invisible"
-└── kairos/
-    └── index.html          # Page de présentation KAIROS
+Site internet/
+├── index.html                          # Page d'accueil
+├── about.html                          # Page À propos
+├── styles.css                          # Styles CSS partagés (page d'accueil)
+├── article-styles.css                  # Styles CSS partagés (articles)
+├── presentation_kairos.html            # Présentation du projet KAIROS
+├── favicon.svg                         # Favicon SVG du site
+├── feed.xml                            # Flux RSS des articles
+├── sitemap.xml                         # Sitemap pour les moteurs de recherche
+├── robots.txt                          # Instructions pour les crawlers
+│
+├── Articles/                           # PDFs sources
+│   ├── La_Politesse_Algorithmique.pdf
+│   ├── neutralite_illusion_permission.pdf
+│   ├── La_Pensee_en_Faisceau_COMPLET.pdf
+│   ├── Questiologie_LLM.pdf
+│   └── Parler_depuis_lapres.pdf
+│
+└── [Articles HTML]
+    ├── mecanique-invisible.html        # La mécanique invisible des IA conversationnelles
+    ├── politesse-algorithmique.html    # La Politesse Algorithmique
+    ├── pensee-en-faisceau.html         # La Pensée en Faisceau
+    ├── neutralite-illusion-permission.html  # La neutralité comme illusion de permission
+    ├── questiologie-llm.html           # Questiologie et LLM
+    └── parler-depuis-apres.html        # Parler depuis l'après
+```
+
+## Articles disponibles
+
+| Article | Description | Temps de lecture |
+|---------|-------------|------------------|
+| **La mécanique invisible** | Document fondateur — illusions cognitives, fenêtre de convergence, dynamiques structurelles | ~45 min |
+| **La Politesse Algorithmique** | Comment les IA modèlent le langage critique du capitalisme | ~12 min |
+| **La Pensée en Faisceau** | Convergence entre cognition humaine et intelligence artificielle | ~15 min |
+| **La neutralité comme illusion** | Analyse des mécanismes créant l'impression d'ouverture du système | ~8 min |
+| **Questiologie et LLM** | Influence des postures questiologiques sur les réponses (Claude vs ChatGPT) | ~10 min |
+| **Parler depuis l'après** | Dialogue philosophique explorant les limites du langage | ~12 min |
+
+## Fonctionnalités
+
+### Mode sombre
+- Toggle jour/nuit disponible sur toutes les pages
+- Persistance via localStorage
+- Détection automatique de la préférence système (`prefers-color-scheme`)
+- Transition fluide de 0.3s
+
+### Navigation
+- Fil d'Ariane (breadcrumb) sur tous les articles
+- Navigation précédent/suivant entre articles
+- Barre de progression de lecture
+- Menu latéral avec scroll actif
+
+### SEO & Partage
+- Balises Open Graph et Twitter Card
+- Sitemap XML pour l'indexation
+- robots.txt configuré
+- Flux RSS pour la syndication
+
+## Variables CSS
+
+### Mode clair (défaut)
+```css
+--bg-page: #e7e5e4;
+--bg-card: #ffffff;
+--text-primary: #292524;
+--text-secondary: #57534e;
+--accent: #d97706;
+```
+
+### Mode sombre
+```css
+--bg-page: #1c1917;
+--bg-card: #292524;
+--text-primary: #fafaf9;
+--text-secondary: #d6d3d1;
+--accent: #d97706;
 ```
 
 ## Pour ajouter un nouvel article
 
-1. Créer le fichier HTML dans `articles/`
-2. Utiliser la structure de base suivante :
+1. Créer le fichier HTML à la racine (ex: `mon-article.html`)
+2. Utiliser `pensee-en-faisceau.html` comme template de référence
+3. Ajouter une carte dans `index.html` section `#articles`
+4. Mettre à jour la navigation prev/next des articles adjacents
+5. Ajouter l'entrée dans `feed.xml` et `sitemap.xml`
+
+### Structure type d'un article
 
 ```html
 <!DOCTYPE html>
@@ -27,54 +100,106 @@ site/
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Titre — Florent Klimacek</title>
-  <link rel="stylesheet" href="../assets/styles.css">
-  <!-- Ajouter les fonts Google si nécessaire -->
+  <meta name="description" content="Description de l'article">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Titre">
+  <!-- ... -->
+
+  <link rel="stylesheet" href="article-styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
+  <!-- Site header avec toggle thème -->
+  <div class="site-header-article">
+    <a href="index.html" class="site-header-article__back">← Retour</a>
+    <span class="site-header-article__title">Titre</span>
+    <button class="theme-toggle-article" id="themeToggle">...</button>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">...</nav>
+
   <!-- Contenu -->
+  <main>...</main>
+
+  <!-- Navigation articles -->
+  <nav class="article-nav">...</nav>
+
+  <!-- Script thème -->
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    // ...
+  </script>
 </body>
 </html>
 ```
 
-3. Ajouter un lien sur la page d'accueil (`index.html`) dans la section `#articles`
-
 ## Classes CSS disponibles
 
-### Layout
-- `.container` - Conteneur max 1200px
-- `.container--narrow` - Conteneur max 720px
-- `.container--wide` - Conteneur max 1400px
+### Layout (styles.css)
+- `.container` — Conteneur max 1200px
+- `.container--narrow` — Conteneur max 720px
+- `.container--wide` — Conteneur max 1400px
 
-### Composants
-- `.card` - Carte de base
-- `.card--featured` - Carte mise en avant (2 colonnes)
-- `.card--dark` - Carte fond sombre
-- `.btn` - Bouton de base
-- `.btn--primary` - Bouton accent
-- `.btn--secondary` - Bouton outline
-- `.tag` - Badge/étiquette
-- `.section` - Section de page
-- `.section--dark` - Section fond sombre
+### Composants communs
+- `.card` — Carte de base
+- `.card--featured` — Carte mise en avant (2 colonnes)
+- `.card--dark` — Carte fond sombre
+- `.btn` / `.btn--primary` / `.btn--secondary` — Boutons
+- `.tag` — Badge/étiquette
+- `.section` / `.section--dark` — Sections de page
+- `.theme-toggle` — Bouton toggle thème (accueil)
+- `.theme-toggle-article` — Bouton toggle thème (articles)
 
-### Typographie
-- `.hero__title` - Titre principal
-- `.section__title` - Titre de section
-- `.section__label` - Label au-dessus du titre (mono, uppercase)
+### Articles (article-styles.css)
+- `.site-header-article` — Barre de navigation fixe
+- `.breadcrumb` — Fil d'Ariane
+- `.article-nav` — Navigation prev/next
+- `.concept` — Encadré concept
+- `.key-insight` — Citation mise en avant
+- `.model-card` — Carte modèle IA
+- `.dialogue` — Style dialogue
 
-## Hébergement sur GitHub Pages
+## Hébergement GitHub Pages
 
-1. Créer un repo sur GitHub
-2. Pusher le contenu du dossier `site/`
-3. Activer GitHub Pages dans Settings > Pages
-4. Sélectionner la branche `main` et le dossier racine
+1. Pusher le contenu vers le repo GitHub
+2. Settings > Pages > Source: branche `main`, dossier racine
+3. Le site sera accessible à `https://kairos-commu.github.io/site-de-recherche/`
 
-## Couleurs principales
+## Historique des modifications
 
-- Accent : `#d97706` (ambre)
-- Fond page : `#e7e5e4` (stone-200)
-- Fond sombre : `#1c1917` (stone-900)
-- Texte : `#292524` (stone-800)
+### Phase 6 — Contenu additionnel (02/02/2026)
+- Page "À propos" (`about.html`)
+- Flux RSS (`feed.xml`)
+- Favicon SVG (`favicon.svg`)
+- Liens favicon et RSS sur toutes les pages
+
+### Phase 5 — Mode sombre (02/02/2026)
+- Variables CSS dark mode dans `styles.css` et `article-styles.css`
+- Toggle jour/nuit sur page d'accueil et tous les articles
+- Persistance localStorage + détection `prefers-color-scheme`
+- Transition fluide sur le changement de thème
+
+### Phase 4 — Navigation améliorée (02/02/2026)
+- Fil d'Ariane (breadcrumb) sur tous les articles
+- Navigation précédent/suivant entre articles
+- Classes `.breadcrumb` et `.article-nav`
+
+### Phase 3 — Factorisation CSS (02/02/2026)
+- Création de `article-styles.css` pour les styles partagés des articles
+- Remplacement des styles inline dans les 6 articles
+
+### Phase 2 — SEO & Partage social (02/02/2026)
+- Balises Open Graph complètes
+- Twitter Card sur toutes les pages
+- `sitemap.xml` et `robots.txt`
+
+### Phase 1 — Corrections initiales (02/02/2026)
+- Correction des chemins de fichiers
+- Mise à jour des dates
 
 ---
 
-Florent Klimacek — 2025
+Florent Klimacek — 2026

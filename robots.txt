@@ -1,0 +1,7 @@
+# Robots.txt pour le site de recherche Florent Klimacek
+# https://kairos-commu.github.io/site-de-recherche/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kairos-commu.github.io/site-de-recherche/sitemap.xml

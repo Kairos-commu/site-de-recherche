@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d97706;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#1c1917"/>
+  <!-- Stylized "FK" monogram with beam/faisceau motif -->
+  <g fill="url(#grad)">
+    <!-- F letter simplified -->
+    <rect x="8" y="8" width="2.5" height="16" rx="0.5"/>
+    <rect x="8" y="8" width="8" height="2.5" rx="0.5"/>
+    <rect x="8" y="14" width="6" height="2" rx="0.5"/>
+    <!-- K letter simplified with dynamic angle -->
+    <rect x="18" y="8" width="2.5" height="16" rx="0.5"/>
+    <path d="M20.5 16 L26 8.5 L24 8 L20.5 14 Z" />
+    <path d="M20.5 16 L26 23.5 L24 24 L20.5 18 Z" />
+  </g>
+  <!-- Accent dot -->
+  <circle cx="26" cy="24" r="1.5" fill="#f59e0b"/>
+</svg>
