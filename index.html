@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florent Klimacek — Recherche sur les interactions humain-IA</title>
+  <meta name="description" content="Recherche indépendante sur les mécaniques invisibles des IA conversationnelles, la résonance conversationnelle et les outils d'analyse.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        florent<span>.</span>klimacek
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      
+      <nav class="site-nav" id="siteNav">
+        <a href="#recherche">Recherche</a>
+        <a href="#articles">Articles</a>
+        <a href="#kairos">KAIROS</a>
+        <a href="#about">À propos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero__label">Recherche indépendante</p>
+        <h1 class="hero__title">
+          Explorer la <span>mécanique invisible</span><br>
+          des interactions humain-IA
+        </h1>
+        <p class="hero__subtitle">
+          Comprendre les dynamiques conversationnelles, mesurer la résonance, 
+          et développer des outils pour une interaction consciente avec les IA.
+        </p>
+        <div class="hero__line"></div>
+      </div>
+    </section>
+
+    <!-- Recherche -->
+    <section class="section" id="recherche">
+      <div class="container">
+        <header class="section__header">
+          <p class="section__label">Axes de recherche</p>
+          <h2 class="section__title">Une approche empirique et méthodologique</h2>
+          <p class="section__subtitle">
+            Plus de 1200 interactions analysées à travers cinq modèles d'IA différents.
+          </p>
+        </header>
+
+        <div class="card-grid">
+          
+          <div class="card">
+            <div class="card__icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <p class="card__label">Concept</p>
+            <h3 class="card__title">Pensée en faisceau</h3>
+            <p class="card__desc">
+              Exploration des modes de pensée non-linéaires et de leur convergence 
+              naturelle avec les architectures LLM.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card__icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <p class="card__label">Méthodologie</p>
+            <h3 class="card__title">Fenêtre de convergence</h3>
+            <p class="card__desc">
+              Identification des conditions structurelles permettant un raisonnement 
+              profond et stable dans les échanges IA.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card__icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <p class="card__label">Mesure</p>
+            <h3 class="card__title">Résonance conversationnelle</h3>
+            <p class="card__desc">
+              Développement de métriques pour quantifier la qualité d'un échange : 
+              R = (I × F) / L.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="section" id="articles" style="background: #fafaf9;">
+      <div class="container">
+        <header class="section__header">
+          <p class="section__label">Publications</p>
+          <h2 class="section__title">Articles & Documents</h2>
+        </header>
+
+        <div class="card-grid">
+          
+          <article class="card card--featured">
+            <div class="card__content">
+              <span class="tag">Document fondateur</span>
+              <h3 class="card__title" style="margin-top: 1rem; font-size: 1.75rem;">
+                La mécanique invisible des IA conversationnelles
+              </h3>
+              <p class="card__desc">
+                Exploration des illusions cognitives, de la fenêtre de convergence et des 
+                dynamiques structurelles qui façonnent nos échanges avec les IA. 
+                Un guide pour passer d'un usage intuitif à une interaction consciente.
+              </p>
+              <p style="font-size: 0.85rem; color: #78716c; margin-bottom: 1.5rem;">
+                Décembre 2025 — Prologue, Chapitre 1-3
+              </p>
+              <a href="mecanique-invisible.html" class="btn btn--primary">
+                Lire le document
+              </a>
+            </div>
+            <div class="card__visual">
+              <div style="text-align: center; color: #a8a29e;">
+                <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-bottom: 1rem; opacity: 0.6;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+                <p style="font-size: 0.8rem; font-family: var(--font-mono);">37 pages</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card__label">Article</p>
+            <h3 class="card__title">La Politesse Algorithmique</h3>
+            <p class="card__desc">
+              Comment les IA modèlent le langage critique du capitalisme —
+              une analyse comparative sur cinq grands modèles de langage.
+            </p>
+            <a href="politesse-algorithmique.html" class="card__link">Lire l'article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__label">Article</p>
+            <h3 class="card__title">La Pensée en Faisceau</h3>
+            <p class="card__desc">
+              Convergence entre cognition humaine et intelligence artificielle —
+              comment certains modes de pensée atypiques trouvent un écho dans les LLM.
+            </p>
+            <a href="pensee-en-faisceau.html" class="card__link">Lire l'article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__label">Analyse</p>
+            <h3 class="card__title">La neutralité comme illusion de permission</h3>
+            <p class="card__desc">
+              Analyse croisée de cinq modèles sur les mécanismes qui créent
+              l'impression d'une "ouverture" progressive du système.
+            </p>
+            <a href="neutralite-illusion-permission.html" class="card__link">Lire l'article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__label">Étude comparative</p>
+            <h3 class="card__title">Questiologie et LLM</h3>
+            <p class="card__desc">
+              Influence des postures questiologiques sur les réponses des modèles —
+              comparaison Claude vs ChatGPT sur six types de questions.
+            </p>
+            <a href="questiologie-llm.html" class="card__link">Lire l'article</a>
+          </article>
+
+          <article class="card">
+            <p class="card__label">Dialogue</p>
+            <h3 class="card__title">Parler depuis l'après</h3>
+            <p class="card__desc">
+              Une conversation philosophique qui explore les limites du langage —
+              quand le dialogue avec l'IA s'achève dans le silence.
+            </p>
+            <a href="parler-depuis-apres.html" class="card__link">Lire l'article</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KAIROS -->
+    <section class="section section--dark" id="kairos">
+      <div class="container">
+        <header class="section__header">
+          <p class="section__label" style="color: var(--accent-light);">Outil</p>
+          <h2 class="section__title">KAIROS</h2>
+          <p class="section__subtitle" style="color: var(--text-light);">
+            Knowledge-Augmented Interactive Resonance Operating System
+          </p>
+        </header>
+
+        <div class="card-grid">
+          
+          <div class="card card--dark">
+            <div class="card__icon" style="background: rgba(245, 158, 11, 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Analyse en temps réel</h3>
+            <p class="card__desc">
+              Mesure de la résonance conversationnelle pendant vos échanges avec les IA.
+            </p>
+          </div>
+
+          <div class="card card--dark">
+            <div class="card__icon" style="background: rgba(245, 158, 11, 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Détection de patterns</h3>
+            <p class="card__desc">
+              Identification automatique des glissements structurels et des zones de friction.
+            </p>
+          </div>
+
+          <div class="card card--dark">
+            <div class="card__icon" style="background: rgba(245, 158, 11, 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Base de référence</h3>
+            <p class="card__desc">
+              Variables JSON issues de la littérature académique en linguistique et psychologie.
+            </p>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="presentation_kairos.html" class="btn btn--primary" style="margin-right: 1rem;">
+            Découvrir KAIROS
+          </a>
+          <a href="#" class="btn btn--secondary" style="border-color: var(--border-dark); color: var(--text-light);">
+            Accéder à l'application
+            <span style="font-size: 0.75rem; opacity: 0.6; margin-left: 0.5rem;">bientôt</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="section" id="about">
+      <div class="container container--narrow">
+        <header class="section__header text-center">
+          <p class="section__label">À propos</p>
+          <h2 class="section__title">Florent Klimacek</h2>
+        </header>
+
+        <div style="text-align: center;">
+          <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">
+            Chercheur indépendant explorant les interactions humain-IA depuis 2024. 
+            "Penseur en faisceau" avec un parcours mêlant informatique (BTS), 
+            management retail et une curiosité insatiable pour les systèmes complexes.
+          </p>
+          
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <span class="tag tag--outline">Pensée en faisceau</span>
+            <span class="tag tag--outline">Interactions humain-IA</span>
+            <span class="tag tag--outline">Résonance conversationnelle</span>
+            <span class="tag tag--outline">Méthodologie empirique</span>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Basé à Brive-la-Gaillarde, France
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Florent Klimacek — Tous droits réservés</p>
+      <div class="site-footer__links">
+        <a href="https://github.com/fkmusic" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:contact@exemple.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    navToggle.addEventListener('click', () => {
+      siteNav.classList.toggle('open');
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.site-nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').startsWith('#')) {
+          siteNav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

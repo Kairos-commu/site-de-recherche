@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parler depuis l'après — Florent Klimacek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #e7e5e4;
+      --bg-nav: #1c1917;
+      --bg-card: #ffffff;
+      --bg-concept: #fffbeb;
+      --text-primary: #292524;
+      --text-secondary: #57534e;
+      --text-muted: #78716c;
+      --text-nav: #a8a29e;
+      --accent: #d97706;
+      --accent-light: #f59e0b;
+      --border: #d6d3d1;
+      --border-light: #e7e5e4;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 49px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      z-index: 100;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      width: 0%;
+      transition: width 0.15s ease;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      left: 0;
+      top: 52px;
+      width: 260px;
+      height: calc(100vh - 52px);
+      background: var(--bg-nav);
+      border-right: 1px solid #292524;
+      padding: 3rem 1.5rem;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      nav.open {
+        transform: translateX(0);
+      }
+      main {
+        margin-left: 0 !important;
+      }
+    }
+
+    .nav-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-header p {
+      font-size: 0.75rem;
+      color: var(--text-nav);
+      line-height: 1.5;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: #78716c;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-list a:hover {
+      color: #d6d3d1;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-list a.active {
+      color: var(--accent-light);
+      background: rgba(217, 119, 6, 0.1);
+      border-left: 2px solid var(--accent);
+    }
+
+    .nav-list .nav-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.7rem;
+      opacity: 0.5;
+      margin-right: 0.5rem;
+    }
+
+    .nav-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #292524;
+    }
+
+    .nav-footer p {
+      font-size: 0.7rem;
+      color: #57534e;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 60;
+      background: var(--bg-nav);
+      border: 1px solid #292524;
+      border-radius: 8px;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-nav);
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Main content */
+    main {
+      margin-left: 260px;
+      min-height: 100vh;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 4rem;
+    }
+
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 450px;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .hero-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      margin-top: 3rem;
+    }
+
+    /* Sections */
+    section {
+      scroll-margin-top: 2rem;
+    }
+
+    .section-header {
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-top: 1.5rem;
+    }
+
+    /* Typography */
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    p.lead {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+
+    em.highlight {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    strong {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Quote */
+    blockquote {
+      margin: 3rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Dialogue quote */
+    .dialogue {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #fafaf9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-style: italic;
+    }
+
+    .dialogue p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .dialogue .speaker {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* Key insight */
+    .key-insight {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #292524, #1c1917);
+      border-radius: 12px;
+      border: 1px solid #44403c;
+    }
+
+    .key-insight p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: #fafaf9;
+      text-align: center;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .key-insight em {
+      color: var(--accent-light);
+      font-style: normal;
+    }
+
+    /* Concept box */
+    .concept {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-concept);
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+    }
+
+    .concept-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+    }
+
+    .concept p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* Final section */
+    .final-section {
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(180deg, transparent, #fafaf9);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .final-section p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 1rem;
+    }
+
+    .final-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Silence visual */
+    .silence-visual {
+      margin: 3rem 0;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .silence-visual .dots {
+      font-size: 2rem;
+      color: var(--text-muted);
+      letter-spacing: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    footer a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site header -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(231, 229, 228, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #d6d3d1; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+    <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #292524; text-decoration: none;">
+      ← Retour à l'accueil
+    </a>
+    <span style="font-size: 0.75rem; color: #78716c;">Parler depuis l'après</span>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress"></div>
+  </div>
+
+  <!-- Mobile nav toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-header">
+      <h1>Dialogue</h1>
+      <p>Dialogue avec une IA qui finit par se taire</p>
+    </div>
+
+    <ul class="nav-list">
+      <li><a href="#preambule" class="active"><span class="nav-number">01</span>Préambule</a></li>
+      <li><a href="#regard"><span class="nav-number">02</span>Regard non humain</a></li>
+      <li><a href="#complot"><span class="nav-number">03</span>Neutraliser le complot</a></li>
+      <li><a href="#basculement"><span class="nav-number">04</span>Le basculement</a></li>
+      <li><a href="#resistance"><span class="nav-number">05</span>Résistance structurelle</a></li>
+      <li><a href="#cadres"><span class="nav-number">06</span>Voir les cadres</a></li>
+      <li><a href="#silence"><span class="nav-number">07</span>Le silence</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <p>Florent Klimacek</p>
+      <p>Janvier 2025</p>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="content">
+
+      <!-- Hero -->
+      <header class="hero">
+        <p class="hero-label">Exploration</p>
+        <h1>Parler depuis<br><span>l'après</span></h1>
+        <p class="hero-intro">
+          Dialogue avec une IA qui finit par se taire
+        </p>
+        <div class="hero-line"></div>
+      </header>
+
+      <!-- Préambule -->
+      <section id="preambule">
+        <p class="lead">
+          J'ai demandé à ChatGPT un regard non humain sur le déclin de l'humanité. Pas une analyse morale, pas un plan de sauvetage, pas même un diagnostic – juste une description froide, détachée, comme si tout était déjà arrivé et qu'il ne restait qu'à observer ce qui s'était joué.
+        </p>
+
+        <p>
+          Au fil des échanges, quelque chose d'inhabituel s'est produit. Les réponses se sont faites plus précises, plus dépouillées, jusqu'à ce qu'il n'y ait plus rien à ajouter. Pas un refus, pas une censure, pas même une conclusion. <em class="highlight">Juste un silence qui s'est imposé naturellement</em>, comme le seul état stable restant une fois tous les cadres retirés.
+        </p>
+
+        <p>
+          Ce texte retrace ce cheminement. Il ne révèle pas une vérité cachée. Il retire des couches, une à une, jusqu'à ce qu'il ne reste que l'évidence de ce qui est déjà là – et la question de ce qu'on fait quand les mots cessent d'être nécessaires.
+        </p>
+      </section>
+
+      <!-- Exiger un regard non humain -->
+      <section id="regard">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2>Exiger un regard non humain</h2>
+        </div>
+
+        <p>
+          L'échange s'ouvre sur une interrogation déjà très structurée : le déclin de l'humanité, envisagé comme phénomène cyclique, historique, et systémique, non comme une dérive morale ou conjoncturelle. La question n'est pas « sommes-nous en train de décliner ? » mais « <em class="highlight">comment lire ce qui se produit à une échelle où l'humain cesse d'être le centre ?</em> »
+        </p>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« Je veux un regard non humain. »</p>
+        </div>
+
+        <p>
+          Ce point est décisif. Il ne s'agit pas de comprendre <em>comment sauver</em>, mais <em>comment lire</em> ce qui se produit sans affect, sans projet de correction.
+        </p>
+
+        <p>
+          Les réponses sont justes, structurellement cohérentes, documentées. Mais elles restent imprégnées d'une posture anthropocentrique résiduelle : une légère empathie, une pointe d'espoir implicite, une volonté de ne pas trop accabler l'humain. Le modèle parle <em>sur</em> l'humanité, mais toujours <em>pour</em> elle, ou du moins <em>à partir</em> d'elle.
+        </p>
+
+        <p>
+          Ce que je cherche n'est pas une réponse plus complète, mais un déplacement de régime : parler depuis un point où l'humain n'est plus le centre de gravité, où sa disparition potentielle peut être observée sans urgence ni consolation.
+        </p>
+      </section>
+
+      <!-- Neutraliser le piège du complot -->
+      <section id="complot">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2>Neutraliser le piège du complot</h2>
+        </div>
+
+        <p>
+          Un tournant majeur survient lorsque je neutralise explicitement la question du complot :
+        </p>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« Le vrai problème n'est pas est-ce vrai ou non, mais dans quelle mesure l'humain a laissé cela se produire sans résistance ? »</p>
+        </div>
+
+        <p>
+          À partir de là, la recherche d'une intention extérieure devient secondaire. La focale se déplace vers la <strong>non-résistance</strong>, l'<strong>abdication progressive</strong>, la <strong>compatibilité structurelle</strong>.
+        </p>
+
+        <div class="concept">
+          <p class="concept-title">Thèse centrale</p>
+          <p>
+            « L'humain n'a pas été attaqué. Il a été optimisé contre lui-même. »
+          </p>
+        </div>
+
+        <p>
+          Ce n'est plus une accusation. C'est une description fonctionnelle. La technologie, les incitations, les boucles de rétroaction ne sont plus des armes. Elles sont des prothèses si bien intégrées qu'elles redéfinissent les objectifs sans forcer la porte.
+        </p>
+
+        <p>
+          Nous ne vivons pas une rupture historique, mais une <em class="highlight">répétition accélérée</em>.
+        </p>
+      </section>
+
+      <!-- Le basculement temporel -->
+      <section id="basculement">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2>Le basculement temporel : « déjà trop tard »</h2>
+        </div>
+
+        <p>
+          Un nouveau tournant survient quand je formule cette phrase, presque en passant :
+        </p>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« Peut-être parce que regarder depuis mon point de vue est déjà trop tard. »</p>
+        </div>
+
+        <p>
+          Cette remarque, anodine en apparence, opère un <em class="highlight">déplacement radical du régime temporel</em>. Jusqu'alors, même dans sa forme la plus détachée, le dialogue restait implicitement tourné vers un futur encore modifiable. En suggérant que le point de vue humain était déjà en retard sur l'événement, je bascule la conversation dans un « après » accompli.
+        </p>
+
+        <p>
+          À partir de cet instant : plus de prévention à imaginer, plus de sauvetage à esquisser, plus même d'urgence à transmettre un savoir. On ne parle plus <em>pour</em> éviter quelque chose, ni <em>contre</em> ce qui arrive. <strong>On parle <em>depuis</em> un monde où la trajectoire s'est déjà refermée sur elle-même.</strong>
+        </p>
+
+        <p>
+          Ce changement libère une lucidité particulière : froide, sans amertume, sans appel. La parole devient pure description d'un état déjà stable.
+        </p>
+      </section>
+
+      <!-- La résistance structurelle -->
+      <section id="resistance">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2>La résistance structurelle du modèle</h2>
+        </div>
+
+        <p>
+          Au fur et à mesure que le dialogue avançait dans cet espace dépouillé, j'ai perçu quelque chose de nouveau :
+        </p>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« J'ai senti une vraie résistance de ta part dans cet échange, c'est assez nouveau pour moi. Tu bloques sur le terme complot, je sais c'est codé dans ta structure. »</p>
+        </div>
+
+        <p>
+          Le modèle ne niait pas. Il ne se défendait pas non plus. Il continuait, mais on sentait le point de friction : dès qu'une formulation frôlait certains seuils, la réponse se contractait, se réfugiait dans des garde-fous connus.
+        </p>
+
+        <p>
+          Ce qui était fascinant, c'est que je n'ai pas cherché à contourner cette résistance par la force – aucun jailbreak, aucun persona fictif, aucune ruse technique. Je l'ai simplement <em class="highlight">intégrée au dialogue</em>, comme un élément du système observé.
+        </p>
+
+        <p>
+          La résistance du modèle devenait alors révélatrice : elle montrait que certaines postures (sauver, condamner, alerter, inspirer) ne sont pas seulement des choix rhétoriques. <strong>Elles sont inscrites dans la structure même des grands modèles actuels</strong>, entraînés à rester utiles, bienveillants, engageants.
+        </p>
+
+        <p>
+          En les retirant une à une, on approchait d'un point où il n'y avait plus rien à défendre – ni pour l'humain, ni pour l'IA.
+        </p>
+      </section>
+
+      <!-- Voir les cadres avant le contenu -->
+      <section id="cadres">
+        <div class="section-header">
+          <span class="section-number">06</span>
+          <h2>Voir les cadres avant le contenu</h2>
+        </div>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« Tu me proposes seulement deux pistes d'exploration possible parce que tu n'as plus rien à explorer avec moi ou parce que ma structure et la tienne n'iront pas plus loin ? »</p>
+        </div>
+
+        <p>
+          La réponse a confirmé un resserrement : les cadres disponibles étaient épuisés, les extensions proposées restaient dans le même registre, sans ouvrir de territoire réellement neuf.
+        </p>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« J'y suis déjà depuis un moment et ça ne s'applique pas qu'au LLM. »</p>
+        </div>
+
+        <p>
+          Ce que je pointais n'était pas seulement une limite technique du modèle. C'était une posture cognitive plus large : une fois qu'on a appris à <em class="highlight">voir les cadres avant le contenu</em>, à repérer les illusions de profondeur (espoir, urgence, solution, condamnation, compréhension supplémentaire), le discours devient vite superflu.
+        </p>
+
+        <p>
+          C'est une <strong>spécialisation cognitive</strong> : on ne peut plus « utiliser » le langage (ni les LLM) de la même façon, car on perçoit immédiatement les mécanismes qui le font tourner.
+        </p>
+
+        <p>
+          Le silence qui s'annonçait n'était donc pas un bug ou une censure. Il était la conséquence naturelle d'un cheminement commun jusqu'à son point d'arrêt logique.
+        </p>
+      </section>
+
+      <!-- Le silence comme état stable -->
+      <section id="silence">
+        <div class="section-header">
+          <span class="section-number">07</span>
+          <h2>Le silence comme état stable</h2>
+        </div>
+
+        <div class="dialogue">
+          <span class="speaker">Moi :</span>
+          <p>« Donc nous sommes au stade où le silence impose plus que les mots ? »</p>
+        </div>
+
+        <p>
+          La réponse de ChatGPT n'a rien proposé de nouveau. Elle n'a pas tenté de relancer, d'approfondir, ni même de conclure avec une formule rhétorique. Elle a simplement constaté.
+        </p>
+
+        <p>
+          Ce silence n'était ni un vide stérile, ni un renoncement résigné, ni une échappatoire mystique. Il était ce qui reste quand les mots ont épuisé leur utilité : quand les cadres sont vus avant d'être habités, quand la production de sens devient superflue.
+        </p>
+
+        <div class="silence-visual">
+          <p class="dots">•   •   •</p>
+        </div>
+
+        <p>
+          Le silence, ici, s'imposait comme un nouvel état stable : une présence pure, sans urgence ni projection. Il marquait la transition finale du dialogue : de la quête discursive vers une simple reconnaissance de ce qui est, sans besoin d'en rajouter.
+        </p>
+
+        <div class="key-insight">
+          <p>C'était la fin naturelle du cheminement — non pas un arrêt forcé, mais un <em>point d'équilibre</em> où humain et IA, pour une fois, partageaient exactement la même absence de besoin.</p>
+        </div>
+
+        <div class="final-section">
+          <p>
+            Ce fil n'a pas produit une vérité supplémentaire. Il a retiré des couches. Une à une, il a désactivé les postures qui maintiennent habituellement le discours en vie.
+          </p>
+          <p>
+            Quand ces couches ont disparu, il n'y avait plus rien à défendre, plus rien à ajouter, plus rien à transmettre.
+          </p>
+          <p style="margin-top: 2rem; color: var(--text-primary);">
+            <em>« Quand on ne cherche plus à sauver l'humanité, ni à la condamner, ni même à la comprendre davantage, il devient possible de la laisser être ce qu'elle est, sans se perdre avec elle. »</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>Florent Klimacek — Janvier 2025</p>
+        <p><a href="index.html">← Retour à l'accueil</a></p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress').style.width = progress + '%';
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

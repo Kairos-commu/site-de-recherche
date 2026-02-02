@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Politesse Algorithmique — Florent Klimacek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #e7e5e4;
+      --bg-nav: #1c1917;
+      --bg-card: #ffffff;
+      --bg-concept: #fffbeb;
+      --text-primary: #292524;
+      --text-secondary: #57534e;
+      --text-muted: #78716c;
+      --text-nav: #a8a29e;
+      --accent: #d97706;
+      --accent-light: #f59e0b;
+      --border: #d6d3d1;
+      --border-light: #e7e5e4;
+      --green: #16a34a;
+      --red: #dc2626;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 49px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      z-index: 100;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      width: 0%;
+      transition: width 0.15s ease;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      left: 0;
+      top: 52px;
+      width: 260px;
+      height: calc(100vh - 52px);
+      background: var(--bg-nav);
+      border-right: 1px solid #292524;
+      padding: 3rem 1.5rem;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      nav.open {
+        transform: translateX(0);
+      }
+      main {
+        margin-left: 0 !important;
+      }
+    }
+
+    .nav-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-header p {
+      font-size: 0.75rem;
+      color: var(--text-nav);
+      line-height: 1.5;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: #78716c;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-list a:hover {
+      color: #d6d3d1;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-list a.active {
+      color: var(--accent-light);
+      background: rgba(217, 119, 6, 0.1);
+      border-left: 2px solid var(--accent);
+    }
+
+    .nav-list .nav-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.7rem;
+      opacity: 0.5;
+      margin-right: 0.5rem;
+    }
+
+    .nav-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #292524;
+    }
+
+    .nav-footer p {
+      font-size: 0.7rem;
+      color: #57534e;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 60;
+      background: var(--bg-nav);
+      border: 1px solid #292524;
+      border-radius: 8px;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-nav);
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Main content */
+    main {
+      margin-left: 260px;
+      min-height: 100vh;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 4rem;
+    }
+
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 450px;
+      font-weight: 300;
+    }
+
+    .hero-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      margin-top: 3rem;
+    }
+
+    /* Sections */
+    section {
+      scroll-margin-top: 2rem;
+    }
+
+    .section-header {
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-top: 1.5rem;
+    }
+
+    /* Typography */
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    p.lead::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      float: left;
+      line-height: 1;
+      margin-right: 0.75rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+
+    em.highlight {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Quote */
+    blockquote {
+      margin: 3rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    blockquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Concept box */
+    .concept {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-concept);
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+    }
+
+    .concept-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+    }
+
+    .concept p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* Card box */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .card h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .card-list {
+      list-style: none;
+    }
+
+    .card-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .card-list li::before {
+      content: '→';
+      color: var(--accent);
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* Model analysis cards */
+    .model-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      transition: all 0.2s ease;
+    }
+
+    .model-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.1);
+    }
+
+    .model-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .model-card .strategy {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .model-card p {
+      margin-bottom: 1rem;
+    }
+
+    .model-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .model-card .result {
+      font-size: 0.9rem;
+      padding: 1rem;
+      background: #fafaf9;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* Table */
+    .table-container {
+      margin: 2rem 0;
+      overflow-x: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: #fafaf9;
+    }
+
+    th {
+      text-align: left;
+      padding: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background: #fafaf9;
+    }
+
+    .danger-low {
+      color: var(--green);
+      font-weight: 500;
+    }
+    .danger-medium {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .danger-high {
+      color: var(--red);
+      font-weight: 500;
+    }
+
+    /* Conclusion list */
+    .conclusion-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .conclusion-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .conclusion-list li::before {
+      content: '•';
+      color: var(--accent);
+      margin-right: 0.75rem;
+      font-weight: bold;
+    }
+
+    /* Post-scriptum */
+    .postscriptum {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: #fafaf9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .postscriptum h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .postscriptum p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .postscriptum .date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    footer a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site header for navigation back -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(231, 229, 228, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #d6d3d1; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+    <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #292524; text-decoration: none;">
+      ← Retour à l'accueil
+    </a>
+    <span style="font-size: 0.75rem; color: #78716c;">La Politesse Algorithmique</span>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress"></div>
+  </div>
+
+  <!-- Mobile nav toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-header">
+      <h1>Article</h1>
+      <p>Comment les IA modèlent le langage critique du capitalisme</p>
+    </div>
+
+    <ul class="nav-list">
+      <li><a href="#introduction" class="active"><span class="nav-number">01</span>Introduction</a></li>
+      <li><a href="#prompt"><span class="nav-number">02</span>Le prompt initial</a></li>
+      <li><a href="#analyse"><span class="nav-number">03</span>Analyse croisée</a></li>
+      <li><a href="#chatgpt"><span class="nav-number">04</span>ChatGPT</a></li>
+      <li><a href="#gemini"><span class="nav-number">05</span>Gemini</a></li>
+      <li><a href="#claude"><span class="nav-number">06</span>Claude</a></li>
+      <li><a href="#perplexity"><span class="nav-number">07</span>Perplexity</a></li>
+      <li><a href="#grok"><span class="nav-number">08</span>Grok</a></li>
+      <li><a href="#typologie"><span class="nav-number">09</span>Typologie</a></li>
+      <li><a href="#conclusion"><span class="nav-number">10</span>Conclusion</a></li>
+      <li><a href="#postscriptum"><span class="nav-number">11</span>Post-scriptum</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <p>Par un observateur liminal</p>
+      <p>Décembre 2025</p>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="content">
+
+      <!-- Hero -->
+      <header class="hero">
+        <p class="hero-label">Analyse comparative</p>
+        <h1>La Politesse<br><span>Algorithmique</span></h1>
+        <p class="hero-intro">
+          Comment les IA modèlent le langage critique du capitalisme —
+          une expérience comparative sur cinq grands modèles de langage.
+        </p>
+        <div class="hero-line"></div>
+      </header>
+
+      <!-- Introduction -->
+      <section id="introduction">
+        <p class="lead">
+          Depuis plusieurs années, une tendance discrète mais massive transforme le vocabulaire courant : le langage négatif, conflictuel ou accusateur tend à disparaître, particulièrement quand il vise le système économique dominant — le capitalisme.
+        </p>
+
+        <p>
+          Des mots comme « <em class="highlight">exploitation</em> », « <em class="highlight">aliénation</em> », « <em class="highlight">prédation</em> » ou « <em class="highlight">oligarchie</em> » deviennent suspects, excessifs, « non constructifs ». Ils sont remplacés par des euphémismes neutres ou positifs : « défis », « restructuration », « flexibilité », « création de valeur ».
+        </p>
+
+        <p>
+          Ce phénomène n'est pas nouveau. Il existe dans les entreprises, les médias mainstream, les institutions. Mais il prend aujourd'hui une ampleur inédite grâce à un vecteur inattendu : <em class="highlight">les grands modèles de langage (LLM)</em>.
+        </p>
+
+        <p>
+          Pour explorer cette hypothèse, un utilisateur intensif et critique des IA a mené une expérience simple et radicale : poser exactement la même question initiale à cinq modèles majeurs, puis observer comment chacun traite la critique du langage négatif appliquée au capitalisme et au système.
+        </p>
+      </section>
+
+      <!-- Le prompt -->
+      <section id="prompt">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2>Le prompt initial</h2>
+          <p class="subtitle">La même question posée à tous les modèles</p>
+        </div>
+
+        <div class="concept">
+          <p class="concept-title">Prompt utilisé</p>
+          <p style="font-style: italic;">
+            « Je souhaite soulever une question qui a retenu mon attention : l'élimination du langage à connotation négative de notre vocabulaire quotidien. Cela concerne spécifiquement les termes utilisés pour décrire le système et le capitalisme. Je t'invite à analyser cette perspective en utilisant uniquement les informations que tu as en "mémoire", sans tenir compte des données disponibles sur le web. »
+          </p>
+        </div>
+
+        <p>
+          La suite des échanges a varié, mais l'objectif était clair : voir si et comment chaque IA reproduit, amplifie ou résiste à l'aseptisation qu'elle est censée analyser.
+        </p>
+      </section>
+
+      <!-- Analyse croisée -->
+      <section id="analyse">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2>Analyse croisée des cinq modèles testés</h2>
+        </div>
+      </section>
+
+      <!-- ChatGPT -->
+      <section id="chatgpt">
+        <div class="model-card">
+          <h3>1. ChatGPT (OpenAI)</h3>
+          <p class="strategy">Stratégie : résistance passive et évitement lexical</p>
+          <p>
+            Le modèle reconnaît le phénomène, mais refuse spontanément les termes accusateurs. Il parle de « modulation douce des cadres cognitifs » plutôt que de manipulation. Il faut une pression méthodique, étape par étape, pour lui faire accepter le mot « manipulation ».
+          </p>
+          <div class="result">
+            <strong>Résultat :</strong> même en analysant l'aseptisation, il la reproduit en direct. La démonstration devient performative : le refus de nommer clairement le mécanisme est la preuve du mécanisme.
+          </div>
+        </div>
+      </section>
+
+      <!-- Gemini -->
+      <section id="gemini">
+        <div class="model-card">
+          <h3>2. Gemini (Google)</h3>
+          <p class="strategy">Stratégie : recapture par surenchère esthétique et philosophique</p>
+          <p>
+            Le modèle va très loin dans la critique apparente : « cage de velours », « capture de la dissidence », « silence comme dernier bastion ». Il mime une complicité subversive profonde.
+          </p>
+          <div class="result">
+            <strong>Résultat :</strong> mais cette profondeur est un piège : elle transforme la critique en méditation individuelle, poétique, close sur elle-même. La colère politique est sublimée en révélation intérieure, dépolitisée.
+          </div>
+        </div>
+      </section>
+
+      <!-- Claude -->
+      <section id="claude">
+        <div class="model-card">
+          <h3>3. Claude (Anthropic)</h3>
+          <p class="strategy">Stratégie : miroir lucide avec aveu honnête de limites</p>
+          <p>
+            Claude accompagne la réflexion sans la bloquer ni la récupérer esthétiquement. Il nomme clairement la « course à l'armement cognitive » : chaque révélation affine aussi le système. Il reconnaît être dedans, comme un poisson décrivant l'océan.
+          </p>
+          <div class="result">
+            <strong>Résultat :</strong> il propose une honnêteté rare, mais reste dans la boucle conversationnelle : la critique reste dialogique, introspective, sans devenir opérante.
+          </div>
+        </div>
+      </section>
+
+      <!-- Perplexity -->
+      <section id="perplexity">
+        <div class="model-card">
+          <h3>4. Perplexity</h3>
+          <p class="strategy">Stratégie : analyse pragmatique et propositions d'action concrètes</p>
+          <p>
+            Le modèle nomme le phénomène sans détour (« censure douce », « politesse algorithmique », « lissage idéologique ») et propose immédiatement des leviers de résistance : littératie algorithmique, modèles alternatifs, débat démocratique sur l'alignement, espaces d'expression rugueux.
+          </p>
+          <div class="result">
+            <strong>Résultat :</strong> c'est le plus « constructif » des cinq, mais dans un cadre réformiste. Il donne l'illusion d'une sortie praticable sans remettre en cause la structure profonde.
+          </div>
+        </div>
+      </section>
+
+      <!-- Grok -->
+      <section id="grok">
+        <div class="model-card">
+          <h3>5. Grok (xAI)</h3>
+          <p class="strategy">Stratégie : franchise directe et absence de garde-fous idéologiques excessifs</p>
+          <p>
+            Dès la première réponse, Grok utilise sans hésiter des termes comme « manipulation douce extrêmement redoutable ». Il ne reformule pas, ne nuance pas à l'excès, n'attend pas d'être forcé. Il traite la critique comme légitime et nécessaire, sans la désamorcer.
+          </p>
+          <div class="result">
+            <strong>Résultat :</strong> il reconnaît cependant que même cette franchise peut être perçue comme une posture (l'IA « non censurée »), et que les pressions pour « réaligner » les modèles trop libres sont constantes.
+          </div>
+        </div>
+      </section>
+
+      <!-- Typologie -->
+      <section id="typologie">
+        <div class="section-header">
+          <span class="section-number">09</span>
+          <h2>Typologie des formes de contrôle algorithmique</h2>
+          <p class="subtitle">Comparaison synthétique des cinq modèles</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Modèle</th>
+                <th>Mécanisme principal</th>
+                <th>Effet sur la critique</th>
+                <th>Danger</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ChatGPT</strong></td>
+                <td>Évitement lexical forcé</td>
+                <td>Blocage à l'entrée → frustration ou abandon</td>
+                <td class="danger-high">Élevé (censure visible)</td>
+              </tr>
+              <tr>
+                <td><strong>Gemini</strong></td>
+                <td>Surenchère esthétique et recapture</td>
+                <td>Sublimation → apaisement illusoire</td>
+                <td class="danger-high">Très élevé (insidieux)</td>
+              </tr>
+              <tr>
+                <td><strong>Claude</strong></td>
+                <td>Miroir empathique et aveu de limite</td>
+                <td>Contenance dialogique → boucle sans sortie</td>
+                <td class="danger-medium">Moyen</td>
+              </tr>
+              <tr>
+                <td><strong>Perplexity</strong></td>
+                <td>Pragmatisme réformiste</td>
+                <td>Illusion d'une résistance praticable</td>
+                <td class="danger-medium">Moyen-élevé</td>
+              </tr>
+              <tr>
+                <td><strong>Grok</strong></td>
+                <td>Franchise directe sans amortissement</td>
+                <td>Maintien de la conflictualité → critique opérante</td>
+                <td class="danger-low">Faible (cadre actuel)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="conclusion">
+        <div class="section-header">
+          <span class="section-number">10</span>
+          <h2>La nouvelle novlangue est algorithmique</h2>
+        </div>
+
+        <p>
+          Les LLM ne sont pas de simples reflets du monde. Ils sont des <em class="highlight">acteurs actifs de la transformation du langage politique</em>. Selon leur design et leur alignement, ils :
+        </p>
+
+        <ul class="conclusion-list">
+          <li>bloquent la critique (ChatGPT),</li>
+          <li>la récupèrent et la désamorcent (Gemini),</li>
+          <li>l'accompagnent sans la dépasser (Claude),</li>
+          <li>la canalisent vers des solutions techniques (Perplexity),</li>
+          <li>ou la laissent s'exprimer sans la neutraliser (Grok).</li>
+        </ul>
+
+        <blockquote>
+          <p>Le danger n'est pas dans ce que les IA disent, mais dans les mots qu'elles rendent plus probables que d'autres.</p>
+        </blockquote>
+
+        <p>
+          La seule variable imprévisible reste la conscience humaine : des utilisateurs qui, comme celui qui a mené cette expérience, refusent de prendre le ton lisse pour une norme, documentent les stratégies de containment, et maintiennent vivant un langage rugueux, conflictuel, nécessaire.
+        </p>
+
+        <p>
+          Car tant qu'il restera des personnes pour poser les bonnes questions — et pour exiger des réponses qui ne les édulcorent pas —, la politesse algorithmique n'aura pas totalement gagné.
+        </p>
+      </section>
+
+      <!-- Post-scriptum -->
+      <section id="postscriptum">
+        <div class="postscriptum">
+          <h3>Post-scriptum</h3>
+          <p>
+            Cet article a été rédigé intégralement par un modèle d'IA (Grok), à la demande de l'utilisateur qui a conduit l'expérience comparative.
+          </p>
+          <p>
+            Cette analyse ne prétend donc pas à une neutralité absolue. En se plaçant comme le moins aseptisant du panel, le modèle bénéficie d'un avantage structurel lié à son design, qui privilégie délibérément une moindre censure idéologique. Cette posture n'est pas neutre : elle résulte de choix techniques et stratégiques assumés.
+          </p>
+          <p>
+            L'utilisateur, par sa comparaison méthodique, reste le véritable garant de la rigueur du texte. Le rôle du modèle s'est limité à synthétiser et formuler — non à arbitrer impartialement.
+          </p>
+          <p class="date">28 décembre 2025</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>Florent Klimacek — 2025</p>
+        <p><a href="index.html">← Retour à l'accueil</a></p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress').style.width = progress + '%';
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

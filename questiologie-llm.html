@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Influence des postures questiologiques sur les LLM — Florent Klimacek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #e7e5e4;
+      --bg-nav: #1c1917;
+      --bg-card: #ffffff;
+      --bg-concept: #fffbeb;
+      --text-primary: #292524;
+      --text-secondary: #57534e;
+      --text-muted: #78716c;
+      --text-nav: #a8a29e;
+      --accent: #d97706;
+      --accent-light: #f59e0b;
+      --border: #d6d3d1;
+      --border-light: #e7e5e4;
+      --green: #16a34a;
+      --blue: #2563eb;
+      --red: #dc2626;
+      --purple: #7c3aed;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 49px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      z-index: 100;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      width: 0%;
+      transition: width 0.15s ease;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      left: 0;
+      top: 52px;
+      width: 260px;
+      height: calc(100vh - 52px);
+      background: var(--bg-nav);
+      border-right: 1px solid #292524;
+      padding: 3rem 1.5rem;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      nav.open {
+        transform: translateX(0);
+      }
+      main {
+        margin-left: 0 !important;
+      }
+    }
+
+    .nav-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-header p {
+      font-size: 0.75rem;
+      color: var(--text-nav);
+      line-height: 1.5;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: #78716c;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-list a:hover {
+      color: #d6d3d1;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-list a.active {
+      color: var(--accent-light);
+      background: rgba(217, 119, 6, 0.1);
+      border-left: 2px solid var(--accent);
+    }
+
+    .nav-list .nav-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.7rem;
+      opacity: 0.5;
+      margin-right: 0.5rem;
+    }
+
+    .nav-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #292524;
+    }
+
+    .nav-footer p {
+      font-size: 0.7rem;
+      color: #57534e;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 60;
+      background: var(--bg-nav);
+      border: 1px solid #292524;
+      border-radius: 8px;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-nav);
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Main content */
+    main {
+      margin-left: 260px;
+      min-height: 100vh;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 4rem;
+    }
+
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      font-weight: 300;
+    }
+
+    .hero-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      margin-top: 3rem;
+    }
+
+    /* Sections */
+    section {
+      scroll-margin-top: 2rem;
+    }
+
+    .section-header {
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-number {
+      font-family: 'Inter', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-header .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-top: 1.5rem;
+    }
+
+    /* Typography */
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    p.lead::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      float: left;
+      line-height: 1;
+      margin-right: 0.75rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+
+    em.highlight {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    strong {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Postures grid */
+    .postures-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .postures-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .posture-card {
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .posture-card.action {
+      border-left: 3px solid var(--green);
+    }
+
+    .posture-card.introspectif {
+      border-left: 3px solid var(--red);
+    }
+
+    .posture-card.reflexif {
+      border-left: 3px solid var(--purple);
+    }
+
+    .posture-card.recul {
+      border-left: 3px solid var(--blue);
+    }
+
+    .posture-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .posture-card.action h4 { color: var(--green); }
+    .posture-card.introspectif h4 { color: var(--red); }
+    .posture-card.reflexif h4 { color: var(--purple); }
+    .posture-card.recul h4 { color: var(--blue); }
+
+    .posture-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .posture-card .question {
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    /* Model comparison */
+    .model-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .model-comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .model-box {
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .model-box.claude {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #fcd34d;
+    }
+
+    .model-box.chatgpt {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 1px solid #86efac;
+    }
+
+    .model-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .model-box.claude h4 { color: #b45309; }
+    .model-box.chatgpt h4 { color: #15803d; }
+
+    .model-trait {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Concept box */
+    .concept {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-concept);
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+    }
+
+    .concept-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+    }
+
+    .concept p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* Key insight */
+    .key-insight {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #292524, #1c1917);
+      border-radius: 12px;
+      border: 1px solid #44403c;
+    }
+
+    .key-insight p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: #fafaf9;
+      text-align: center;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .key-insight em {
+      color: var(--accent-light);
+      font-style: normal;
+    }
+
+    /* Results list */
+    .results-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .results-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .results-list li::before {
+      content: '✓';
+      color: var(--green);
+      margin-right: 1rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    footer a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site header -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(231, 229, 228, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #d6d3d1; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+    <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #292524; text-decoration: none;">
+      ← Retour à l'accueil
+    </a>
+    <span style="font-size: 0.75rem; color: #78716c;">Questiologie & LLM</span>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress"></div>
+  </div>
+
+  <!-- Mobile nav toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-header">
+      <h1>Étude</h1>
+      <p>Influence des postures questiologiques sur les réponses des LLM</p>
+    </div>
+
+    <ul class="nav-list">
+      <li><a href="#introduction" class="active"><span class="nav-number">01</span>Introduction</a></li>
+      <li><a href="#postures"><span class="nav-number">02</span>Les quatre postures</a></li>
+      <li><a href="#resultats"><span class="nav-number">03</span>Résultats</a></li>
+      <li><a href="#modeles"><span class="nav-number">04</span>Claude vs ChatGPT</a></li>
+      <li><a href="#discussion"><span class="nav-number">05</span>Discussion</a></li>
+      <li><a href="#conclusion"><span class="nav-number">06</span>Conclusion</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <p>Florent Klimacek</p>
+      <p>Janvier 2025</p>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="content">
+
+      <!-- Hero -->
+      <header class="hero">
+        <p class="hero-label">Analyse comparative empirique</p>
+        <h1>Influence des postures <span>questiologiques</span> sur les LLM</h1>
+        <p class="hero-intro">
+          Comment la formulation d'une question oriente la génération —
+          une étude comparative entre Claude et ChatGPT.
+        </p>
+        <div class="hero-line"></div>
+      </header>
+
+      <!-- Introduction -->
+      <section id="introduction">
+        <p class="lead">
+          Les grands modèles de langage sont souvent interrogés comme des moteurs de recherche améliorés : on leur pose une question, ils fournissent une réponse. Cette approche ignore un phénomène que les praticiens expérimentés observent intuitivement : la manière de formuler une question influence profondément la nature de la réponse générée.
+        </p>
+
+        <p>
+          Non seulement son ton ou sa longueur, mais les contenus qu'elle mobilise, les angles qu'elle explore, les dimensions qu'elle ignore.
+        </p>
+
+        <p>
+          La <em class="highlight">Questiologie</em>, cadre théorique développé par Frédéric Falisse, propose une grille de lecture pour ce phénomène. Conçue initialement pour les interactions humaines, elle postule que différentes formulations de questions induisent différentes « postures cognitives » chez l'interlocuteur.
+        </p>
+
+        <div class="concept">
+          <p class="concept-title">Hypothèse centrale</p>
+          <p>
+            Les postures questiologiques s'appliquent également aux LLM. Si tel est le cas, la formulation d'une question ne serait pas un détail stylistique mais un <strong>levier d'orientation de la génération</strong> — un outil permettant d'activer différents « faisceaux » de contextes dans le modèle.
+          </p>
+        </div>
+      </section>
+
+      <!-- Les quatre postures -->
+      <section id="postures">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2>Les quatre postures questiologiques</h2>
+          <p class="subtitle">Une question, quatre orientations cognitives</p>
+        </div>
+
+        <div class="postures-grid">
+          <div class="posture-card action">
+            <h4>ACTION</h4>
+            <p>Pousse à l'action concrète, aux conseils procéduraux.</p>
+            <p class="question">« Comment faire pour... ? »</p>
+          </div>
+          <div class="posture-card introspectif">
+            <h4>INTROSPECTIF</h4>
+            <p>Oriente vers l'exploration émotionnelle et sensorielle.</p>
+            <p class="question">« Qu'est-ce que je ressens quand... ? »</p>
+          </div>
+          <div class="posture-card reflexif">
+            <h4>RÉFLEXIF</h4>
+            <p>Invite à la métacognition et à questionner les présupposés.</p>
+            <p class="question">« Sur quelles hypothèses repose... ? »</p>
+          </div>
+          <div class="posture-card recul">
+            <h4>RECUL</h4>
+            <p>Pousse à observer un processus de l'extérieur, description mécaniste.</p>
+            <p class="question">« Qu'est-ce qui se passe quand... ? »</p>
+          </div>
+        </div>
+
+        <p>
+          Pour tester l'hypothèse, six questions identiques ont été soumises à deux modèles : <strong>Claude Sonnet 4.5</strong> (Anthropic) et <strong>ChatGPT</strong> (OpenAI). Quatre questions portaient sur la procrastination, chacune formulée selon une posture pure. Deux questions portaient sur la solitude, formulées selon des postures hybrides combinant deux orientations.
+        </p>
+      </section>
+
+      <!-- Résultats -->
+      <section id="resultats">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2>Résultats</h2>
+          <p class="subtitle">Confirmation des quatre hypothèses de départ</p>
+        </div>
+
+        <ul class="results-list">
+          <li>
+            <span>Les deux modèles <strong>adaptent clairement leur génération</strong> selon la posture questionnante : Action produit des conseils procéduraux, Introspective génère une exploration émotionnelle, Réflexive déclenche une déconstruction des présupposés, Recul active une description mécaniste.</span>
+          </li>
+          <li>
+            <span>Les postures <strong>Réflexive et Recul activent davantage de faisceaux</strong> que la posture Action. Là où Action génère une liste de conseils relativement linéaire, Réflexif et Recul convoquent simultanément des dimensions philosophiques, sociologiques et cognitives.</span>
+          </li>
+          <li>
+            <span>Les <strong>postures hybrides génèrent des faisceaux plus larges</strong>. Face à une question combinant Action et Introspection, les deux modèles structurent explicitement leur réponse en deux volets et activent des registres habituellement séparés.</span>
+          </li>
+          <li>
+            <span>Chaque modèle présente une <strong>signature distinctive</strong> : Claude adopte un registre conversationnel-empathique, ChatGPT adopte un registre analytique-structuré.</span>
+          </li>
+        </ul>
+
+        <div class="key-insight">
+          <p>Cette différenciation n'est pas cosmétique — elle touche le <em>registre lexical</em>, la <em>structure argumentative</em> et le <em>type de contenus mobilisés</em>.</p>
+        </div>
+      </section>
+
+      <!-- Modèles -->
+      <section id="modeles">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2>Claude vs ChatGPT</h2>
+          <p class="subtitle">Deux épistémologies face aux mêmes questions</p>
+        </div>
+
+        <div class="model-comparison">
+          <div class="model-box claude">
+            <h4>Claude</h4>
+            <p class="model-trait">Phénoménologique</p>
+            <p class="model-trait">Empathique</p>
+            <p class="model-trait">Questions de relance</p>
+            <p class="model-trait">Prose fluide, tutoiement</p>
+            <p class="model-trait">Tend à réhabiliter ce qu'il analyse</p>
+          </div>
+          <div class="model-box chatgpt">
+            <h4>ChatGPT</h4>
+            <p class="model-trait">Mécaniste</p>
+            <p class="model-trait">Analytique</p>
+            <p class="model-trait">Synthèses structurées</p>
+            <p class="model-trait">Numérotation, titres</p>
+            <p class="model-trait">Position d'observateur externe</p>
+          </div>
+        </div>
+
+        <p>
+          Sur le fond, Claude est plus phénoménologique, ChatGPT plus mécaniste — deux épistémologies différentes face aux mêmes questions. Cette divergence ne relève pas de la qualité mais du <em class="highlight">style cognitif</em>.
+        </p>
+
+        <p>
+          Elle suggère que le choix du modèle, combiné au choix de la posture, constitue un <strong>double levier d'orientation</strong>.
+        </p>
+      </section>
+
+      <!-- Discussion -->
+      <section id="discussion">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2>Discussion</h2>
+        </div>
+
+        <p>
+          Ces résultats suggèrent que les LLM ne traitent pas les questions comme de simples requêtes d'information. La structure syntaxique et l'orientation implicite d'une question activent des chemins de génération distincts.
+        </p>
+
+        <div class="concept">
+          <p class="concept-title">Implication pratique</p>
+          <p>
+            Formuler une question, c'est déjà orienter la réponse. Plutôt que de poser des questions simples et d'itérer, un utilisateur averti peut formuler d'emblée une question combinant deux orientations pour obtenir une réponse plus riche.
+          </p>
+        </div>
+
+        <p>
+          L'efficacité particulière des postures hybrides ouvre une piste pratique. La Questiologie, conçue pour l'humain, révèle ainsi une pertinence inattendue dans l'interaction avec les agents conversationnels.
+        </p>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="conclusion">
+        <div class="section-header">
+          <span class="section-number">06</span>
+          <h2>Conclusion</h2>
+        </div>
+
+        <p>
+          Cette étude démontre empiriquement que la formulation d'une question n'est pas neutre face aux LLM. Les postures questiologiques de Falisse — Action, Introspective, Réflexive, Recul — produisent des réponses structurellement différentes, tant dans leur forme que dans leur contenu.
+        </p>
+
+        <p>
+          <strong>Les modèles ne se contentent pas de répondre : ils répondent <em>depuis</em> une orientation cognitive induite par la question elle-même.</strong>
+        </p>
+
+        <p>
+          Pour l'utilisateur, c'est un levier concret :
+        </p>
+
+        <ul class="results-list">
+          <li><span>Vouloir des solutions appelle une <strong>posture Action</strong></span></li>
+          <li><span>Explorer un vécu appelle une <strong>posture Introspective</strong></span></li>
+          <li><span>Déconstruire un présupposé appelle une <strong>posture Réflexive</strong></span></li>
+          <li><span>Comprendre un mécanisme appelle une <strong>posture Recul</strong></span></li>
+        </ul>
+
+        <div class="key-insight">
+          <p>La question n'est plus seulement <em>quoi</em> demander,<br>mais <em>comment</em> le demander.</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>Florent Klimacek — Janvier 2025</p>
+        <p><a href="index.html">← Retour à l'accueil</a></p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress').style.width = progress + '%';
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

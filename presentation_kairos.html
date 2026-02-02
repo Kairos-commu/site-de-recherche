@@ -1,0 +1,2637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIROS - Penser avec friction</title>
+  <style>
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-section: #12121a;
+      --bg-card: #1a1a25;
+      --accent-purple: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-orange: #f97316;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-purple);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTIONS
+       ═══════════════════════════════════════════ */
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-purple);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ */
+    #hero {
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      text-align: center;
+    }
+
+    .hero-equation {
+      font-family: 'Georgia', serif;
+      font-size: 3rem;
+      color: var(--accent-cyan);
+      margin: 2rem 0;
+      padding: 1.5rem 3rem;
+      border: 2px solid var(--accent-cyan);
+      border-radius: 8px;
+      display: inline-block;
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    .hero-legend {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-legend span {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator::after {
+      content: '↓';
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ═══════════════════════════════════════════
+       PROBLÈME
+       ═══════════════════════════════════════════ */
+    #probleme {
+      background: var(--bg-section);
+    }
+
+    .problem-visual {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .chat-bubble {
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      max-width: 300px;
+      font-size: 0.95rem;
+    }
+
+    .chat-human {
+      background: var(--accent-purple);
+      color: white;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-llm {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-bottom-right-radius: 4px;
+    }
+
+    .loop-arrow {
+      font-size: 3rem;
+      color: var(--accent-orange);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .quote-block {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent-purple);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--text-primary);
+    }
+
+    /* ═══════════════════════════════════════════
+       SOLUTION / MODES
+       ═══════════════════════════════════════════ */
+    #solution {
+      background: var(--bg-dark);
+    }
+
+    .modes-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .modes-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mode-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .mode-card.autonome:hover {
+      border-color: var(--accent-cyan);
+    }
+
+    .mode-card.assiste:hover {
+      border-color: var(--accent-purple);
+    }
+
+    .mode-header {
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mode-card.autonome .mode-header {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), transparent);
+    }
+
+    .mode-card.assiste .mode-header {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), transparent);
+    }
+
+    .mode-header h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mode-card.autonome .mode-header h3 {
+      color: var(--accent-cyan);
+    }
+
+    .mode-card.assiste .mode-header h3 {
+      color: var(--accent-purple);
+    }
+
+    .mode-header p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .mode-content {
+      padding: 1.5rem;
+    }
+
+    .mode-content ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .mode-content li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-secondary);
+    }
+
+    .mode-content li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       APP MOCKUPS
+       ═══════════════════════════════════════════ */
+    .app-mockup {
+      background: #0d0d12;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+
+    .mockup-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: #1a1a22;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .mockup-btn {
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      background: #2a2a35;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.7rem;
+    }
+
+    .mockup-btn.active {
+      background: var(--accent-purple);
+      color: white;
+      border-color: var(--accent-purple);
+    }
+
+    .mockup-btn.cyan {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .mockup-body {
+      display: flex;
+      height: 250px;
+    }
+
+    .mockup-canvas {
+      flex: 1;
+      padding: 1rem;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    }
+
+    .mockup-sidebar {
+      width: 180px;
+      background: #0f0f15;
+      border-left: 1px solid var(--border);
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* Vignettes mockup */
+    .vignette {
+      position: absolute;
+      padding: 0.5rem 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      max-width: 120px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .vignette.selected {
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+    }
+
+    .vignette.attractor {
+      border-color: var(--accent-orange);
+    }
+
+    .vignette.attractor::after {
+      content: '🧲';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 0.8rem;
+    }
+
+    .vignette.friction {
+      border-color: var(--accent-red);
+      border-style: dashed;
+    }
+
+    .vignette.friction::before {
+      content: '[FRICTION]';
+      display: block;
+      font-size: 0.6rem;
+      color: var(--accent-red);
+      margin-bottom: 0.2rem;
+    }
+
+    .vignette-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      color: var(--accent-cyan);
+      margin-top: 0.3rem;
+    }
+
+    /* Connexions SVG */
+    .connections-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .connections-svg line {
+      stroke: var(--text-muted);
+      stroke-width: 1;
+      opacity: 0.4;
+    }
+
+    /* Sidebar mockup */
+    .sidebar-section {
+      background: #1a1a22;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    .sidebar-section h4 {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      padding: 0.4rem;
+      margin-top: 0.3rem;
+      background: #2a2a35;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-size: 0.65rem;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .sidebar-btn:hover {
+      background: #3a3a45;
+    }
+
+    .sidebar-btn.primary {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+    }
+
+    /* Webview mockup */
+    .mockup-webview {
+      background: #1a1a22;
+      border-radius: 4px;
+      padding: 0.5rem;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .webview-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+    }
+
+    .webview-header .provider {
+      font-size: 0.7rem;
+      color: var(--accent-cyan);
+    }
+
+    .webview-content {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Friction indicator */
+    .friction-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(249, 115, 22, 0.2);
+      border: 1px solid var(--accent-orange);
+      border-radius: 4px;
+      font-size: 0.65rem;
+      color: var(--accent-orange);
+    }
+
+    /* Intention Gate mockup */
+    .intention-gate {
+      background: linear-gradient(180deg, #0d0d12 0%, #1a1a25 100%);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .intention-gate h4 {
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .intention-input {
+      width: 100%;
+      padding: 0.8rem;
+      background: #0d0d12;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .intention-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .intention-btn {
+      padding: 0.6rem 1.5rem;
+      background: var(--accent-cyan);
+      border: none;
+      border-radius: 6px;
+      color: #0d0d12;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .gate-hint {
+      margin-top: 0.8rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Mode enhancements */
+    .section-intro {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .mode-icon-badge {
+      margin-bottom: 0.8rem;
+    }
+
+    .mode-tagline {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    .mode-philosophy {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent-purple);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .mode-card.autonome .mode-philosophy {
+      border-left-color: var(--accent-cyan);
+    }
+
+    .mode-card.assiste .mode-philosophy {
+      border-left-color: var(--accent-red);
+    }
+
+    .mode-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .mode-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      padding: 0.6rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 6px;
+    }
+
+    .mode-features .feature-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    .mode-features li div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .mode-features li strong {
+      color: var(--text-primary);
+      font-size: 0.85rem;
+    }
+
+    .mode-features li span {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .mode-ideal {
+      padding: 0.8rem 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mode-card.autonome .mode-ideal {
+      background: rgba(107, 140, 255, 0.1);
+    }
+
+    .mode-card.assiste .mode-ideal {
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    /* Chat mockup for Autonome */
+    .mockup-chat {
+      background: #1a1a22;
+      border-radius: 4px;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .chat-bubble {
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.65rem;
+      line-height: 1.4;
+      max-width: 85%;
+    }
+
+    .chat-bubble.user {
+      background: rgba(107, 140, 255, 0.2);
+      border: 1px solid rgba(107, 140, 255, 0.3);
+      color: var(--text-secondary);
+      align-self: flex-end;
+    }
+
+    .chat-bubble.ai {
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--text-secondary);
+      align-self: flex-start;
+    }
+
+    .autonome-canvas {
+      min-height: 180px;
+    }
+
+    /* Sidebar enhancements */
+    .friction-badge {
+      font-size: 0.55rem;
+      background: rgba(249, 115, 22, 0.2);
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      color: var(--accent-orange);
+    }
+
+    .active-badge {
+      background: rgba(139, 92, 246, 0.3) !important;
+      border-color: rgba(139, 92, 246, 0.5) !important;
+    }
+
+    .mockup-webview .webview-content strong {
+      color: var(--accent-red);
+    }
+
+    /* Modes comparison table */
+    .modes-comparison {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .modes-comparison h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      color: var(--text-primary);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .comparison-table th:nth-child(2) {
+      color: var(--accent-cyan);
+    }
+
+    .comparison-table th:nth-child(3) {
+      color: var(--accent-red);
+    }
+
+    .comparison-table td:first-child {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .comparison-table td {
+      color: var(--text-secondary);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    @media (max-width: 768px) {
+      .modes-comparison {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      .comparison-table {
+        font-size: 0.75rem;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.5rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       MÉCANISMES
+       ═══════════════════════════════════════════ */
+    #mecanismes {
+      background: var(--bg-section);
+    }
+
+    .mechanisms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .mechanisms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mechanism-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .mechanism-card:hover {
+      border-color: var(--accent-purple);
+    }
+
+    .mechanism-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .mechanism-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .mechanism-card p {
+      font-size: 0.95rem;
+    }
+
+    .signal-list {
+      margin-top: 1rem;
+      padding-left: 1rem;
+    }
+
+    .signal-list li {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 0.2rem 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       ÉQUATION DÉTAILLÉE
+       ═══════════════════════════════════════════ */
+    #equation {
+      background: var(--bg-dark);
+    }
+
+    .equation-diagram {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .var-box {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      background: var(--bg-card);
+      border-radius: 1rem;
+      border: 2px solid var(--border);
+      min-width: 200px;
+    }
+
+    .var-box.intention {
+      border-color: var(--accent-green);
+    }
+
+    .var-box.friction {
+      border-color: var(--accent-orange);
+    }
+
+    .var-box.linearisation {
+      border-color: var(--accent-red);
+    }
+
+    .var-box .var-letter {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: Georgia, serif;
+    }
+
+    .var-box.intention .var-letter { color: var(--accent-green); }
+    .var-box.friction .var-letter { color: var(--accent-orange); }
+    .var-box.linearisation .var-letter { color: var(--accent-red); }
+
+    .var-box .var-name {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .var-box .var-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .equation-operator {
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ */
+    footer {
+      background: var(--bg-section);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      margin: 0 auto;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent-purple);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .version {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       ANIMATIONS
+       ═══════════════════════════════════════════ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+
+    /* ═══════════════════════════════════════════
+       GENÈSE
+       ═══════════════════════════════════════════ */
+    #genese {
+      background: var(--bg-dark);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 1.8rem;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-purple);
+      border-radius: 50%;
+      border: 2px solid var(--bg-dark);
+    }
+
+    .timeline-item h4 {
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .highlight-text {
+      color: var(--accent-purple);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════
+       AVANT / APRÈS
+       ═══════════════════════════════════════════ */
+    .comparison-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 800px) {
+      .comparison-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comparison-box {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-box.before {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .comparison-box.after {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .comparison-header {
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .comparison-box.before .comparison-header {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--accent-red);
+    }
+
+    .comparison-box.after .comparison-header {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--accent-green);
+    }
+
+    .comparison-content {
+      padding: 1.5rem;
+    }
+
+    .mini-chat {
+      margin-bottom: 1rem;
+    }
+
+    .mini-chat-human, .mini-chat-llm {
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mini-chat-human {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--text-primary);
+      margin-right: 2rem;
+    }
+
+    .mini-chat-llm {
+      background: var(--bg-section);
+      color: var(--text-secondary);
+      margin-left: 2rem;
+    }
+
+    .mini-chat-friction {
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px dashed var(--accent-orange);
+      color: var(--accent-orange);
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+
+    .comparison-result {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .comparison-box.before .comparison-result {
+      color: var(--accent-red);
+    }
+
+    .comparison-box.after .comparison-result {
+      color: var(--accent-green);
+    }
+
+    /* ═══════════════════════════════════════════
+       FONDEMENTS
+       ═══════════════════════════════════════════ */
+    #fondements {
+      background: var(--bg-section);
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 800px) {
+      .sources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .source-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .source-card:hover {
+      border-color: var(--accent-purple);
+    }
+
+    .source-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .source-card h4 {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .source-card .author {
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .source-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       ÉVOLUTION
+       ═══════════════════════════════════════════ */
+    #evolution {
+      background: var(--bg-dark);
+    }
+
+    .evolution-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .evolution-step {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      min-width: 200px;
+      max-width: 250px;
+    }
+
+    .evolution-step.problem {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .evolution-step.solution {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .evolution-step h4 {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .evolution-step .equation {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .evolution-step.problem .equation {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .evolution-step p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .evolution-arrow {
+      font-size: 2rem;
+      color: var(--accent-purple);
+    }
+
+    .evolution-insight {
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--accent-purple);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .evolution-insight h4 {
+      color: var(--accent-purple);
+      margin-bottom: 0.5rem;
+    }
+
+    .evolution-insight p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════
+       DÉMO INTERACTIVE
+       ═══════════════════════════════════════════ */
+    #demo {
+      background: var(--bg-section);
+    }
+
+    .demo-container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .demo-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .demo-canvas {
+      background: var(--bg-dark);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.8rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-section);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-btn:hover {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+    }
+
+    .demo-btn.reset {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+
+    .demo-btn.reset:hover {
+      background: var(--accent-red);
+      color: white;
+    }
+
+    .demo-area {
+      padding: 1rem;
+      min-height: 350px;
+      position: relative;
+    }
+
+    .demo-vignette {
+      position: absolute;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      max-width: 150px;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .demo-vignette:hover {
+      border-color: var(--accent-purple);
+    }
+
+    .demo-vignette.similar {
+      border-color: var(--accent-orange);
+      background: rgba(249, 115, 22, 0.1);
+    }
+
+    .demo-vignette.friction {
+      border-color: var(--accent-red);
+      border-style: dashed;
+      animation: frictionPulse 1s ease;
+    }
+
+    @keyframes frictionPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 20px 5px rgba(239, 68, 68, 0.2); }
+    }
+
+    .demo-panel {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .demo-panel h4 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .demo-score {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: var(--bg-section);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .demo-score-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .demo-score-value {
+      font-size: 2rem;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+
+    .demo-score-value.low { color: var(--accent-green); }
+    .demo-score-value.medium { color: var(--accent-orange); }
+    .demo-score-value.high { color: var(--accent-red); }
+
+    .demo-threshold {
+      height: 8px;
+      background: var(--bg-section);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .demo-threshold-bar {
+      height: 100%;
+      background: var(--accent-green);
+      transition: width 0.3s, background 0.3s;
+      border-radius: 4px;
+    }
+
+    .demo-signals {
+      margin-top: 1rem;
+    }
+
+    .demo-signal {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: var(--bg-section);
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .demo-signal.active {
+      opacity: 1;
+      color: var(--accent-orange);
+      background: rgba(249, 115, 22, 0.1);
+    }
+
+    .demo-friction-alert {
+      display: none;
+      padding: 1rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--accent-red);
+      border-radius: 8px;
+      text-align: center;
+      color: var(--accent-red);
+      margin-top: 1rem;
+      animation: alertPulse 0.5s ease;
+    }
+
+    .demo-friction-alert.show {
+      display: block;
+    }
+
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* ═══════════════════════════════════════════
+       CAS D'USAGE
+       ═══════════════════════════════════════════ */
+    #usecases {
+      background: var(--bg-dark);
+    }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .usecases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .usecases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .usecase-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .usecase-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-purple);
+    }
+
+    .usecase-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .usecase-card h4 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .usecase-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       VISION / ROADMAP
+       ═══════════════════════════════════════════ */
+    #vision {
+      background: var(--bg-section);
+    }
+
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-green), var(--accent-cyan), var(--accent-purple));
+    }
+
+    .roadmap-item {
+      position: relative;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .roadmap-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 1.8rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--bg-section);
+    }
+
+    .roadmap-item.done::before {
+      background: var(--accent-green);
+    }
+
+    .roadmap-item.current::before {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .roadmap-item.future::before {
+      background: var(--accent-purple);
+    }
+
+    .roadmap-item .phase {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .roadmap-item.done .phase { color: var(--accent-green); }
+    .roadmap-item.current .phase { color: var(--accent-cyan); }
+    .roadmap-item.future .phase { color: var(--accent-purple); }
+
+    .roadmap-item h4 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .roadmap-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .roadmap-item ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .roadmap-item li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#genese">Genèse</a></li>
+      <li><a href="#probleme">Le Problème</a></li>
+      <li><a href="#solution">Les Modes</a></li>
+      <li><a href="#demo">Démo</a></li>
+      <li><a href="#usecases">Usages</a></li>
+      <li><a href="#vision">Vision</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container" style="text-align: center;">
+      <h1 class="fade-in">KAIROS</h1>
+      <p class="subtitle fade-in delay-1">Penser avec friction</p>
+
+      <div class="hero-equation fade-in delay-2">
+        R = (I × F) / L
+      </div>
+
+      <div class="hero-legend fade-in delay-3">
+        <span><strong>I</strong> Intention</span>
+        <span><strong>F</strong> Friction</span>
+        <span><strong>L</strong> Linéarisation</span>
+      </div>
+
+      <p style="margin: 2rem auto; max-width: 600px;" class="fade-in delay-3">
+        Une application de cartographie cognitive qui détecte et injecte de la friction
+        pour éviter les boucles de validation humain-LLM.
+      </p>
+    </div>
+    <div class="scroll-indicator"></div>
+  </section>
+
+  <!-- Genèse -->
+  <section id="genese">
+    <div class="container">
+      <h2>La Genèse</h2>
+      <p>
+        KAIROS est né d'une observation personnelle : une compatibilité cognitive
+        avec les LLM rarement trouvée dans les échanges humains.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Observation initiale</h4>
+          <p>
+            Une sensation de <span class="highlight-text">"pensée en faisceau"</span> —
+            ce traitement non-linéaire et parallèle de l'information —
+            qui trouve un écho dans l'architecture même des LLM.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Exploration théorique</h4>
+          <p>
+            Documentation systématique des <span class="highlight-text">"mécaniques invisibles"</span>
+            des conversations IA : effets miroir, asymétries informationnelles,
+            illusions de permission.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Cadre de mesure</h4>
+          <p>
+            L'idée de mesurer la qualité conversationnelle donne naissance à
+            l'<span class="highlight-text">équation de résonance</span> :
+            R = (I/E) × f(O) × (A-L)
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Sessions de friction</h4>
+          <p>
+            Après des sessions de friction cognitive intense,
+            <span class="highlight-text">recentrage de l'objectif</span> :
+            non plus prouver une "résonance" objective,
+            mais créer un outil pratique pour préserver les insights.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Outil concret</h4>
+          <p>
+            KAIROS naît : un amplificateur de pensée qui détecte les boucles
+            et injecte de la <span class="highlight-text">friction productive</span>.
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        Le fil conducteur : qu'est-ce qui fait qu'une conversation avec une IA "fonctionne" vraiment ?
+      </div>
+    </div>
+  </section>
+
+  <!-- Le Problème -->
+  <section id="probleme">
+    <div class="container">
+      <h2>Le Problème</h2>
+      <p>
+        Quand on interagit avec un LLM, une dynamique silencieuse s'installe :
+        l'accord mutuel. Le LLM valide, l'humain acquiesce, et la pensée tourne en rond.
+      </p>
+
+      <div class="problem-visual">
+        <div class="chat-bubble chat-human">
+          "Je pense que la conscience émerge du cerveau"
+        </div>
+        <div class="loop-arrow">⟳</div>
+        <div class="chat-bubble chat-llm">
+          "Oui, c'est une perspective intéressante. La conscience comme propriété émergente..."
+        </div>
+      </div>
+
+      <div class="problem-visual">
+        <div class="chat-bubble chat-human">
+          "Exactement !"
+        </div>
+        <div class="loop-arrow">⟳</div>
+        <div class="chat-bubble chat-llm">
+          "Tout à fait, cette vision s'aligne avec..."
+        </div>
+      </div>
+
+      <div class="quote-block">
+        "Trop d'alignement annule l'entre. Sans friction, pas de bifurcation."
+      </div>
+
+      <p>
+        La friction n'est pas du bruit à réduire. C'est le <strong>moteur de l'émergence</strong>.
+        Un LLM qui valide en boucle est rigide. Un LLM qui accueille la contradiction sans s'effondrer est souple.
+      </p>
+
+      <!-- Avant / Après -->
+      <h3 style="margin-top: 4rem; text-align: center; color: var(--text-primary);">Avant / Après</h3>
+
+      <div class="comparison-container">
+        <div class="comparison-box before">
+          <div class="comparison-header">❌ Sans KAIROS</div>
+          <div class="comparison-content">
+            <div class="mini-chat">
+              <div class="mini-chat-human">La conscience émerge du cerveau</div>
+              <div class="mini-chat-llm">Oui, c'est une perspective fascinante...</div>
+              <div class="mini-chat-human">Exactement !</div>
+              <div class="mini-chat-llm">Tout à fait, cette vision s'aligne...</div>
+              <div class="mini-chat-human">C'est ça !</div>
+              <div class="mini-chat-llm">Précisément, on peut dire que...</div>
+            </div>
+            <div class="comparison-result">
+              ⟳ Boucle de validation<br>
+              <small>Aucune idée nouvelle après 6 échanges</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-box after">
+          <div class="comparison-header">✓ Avec KAIROS</div>
+          <div class="comparison-content">
+            <div class="mini-chat">
+              <div class="mini-chat-human">La conscience émerge du cerveau</div>
+              <div class="mini-chat-llm">Oui, c'est une perspective fascinante...</div>
+              <div class="mini-chat-human">Exactement !</div>
+              <div class="mini-chat-friction">⚡ Circularité détectée — injection de friction</div>
+              <div class="mini-chat-llm">[FRICTION] Et si le cerveau n'était qu'un récepteur plutôt qu'un générateur ?</div>
+              <div class="mini-chat-human">Hmm... intéressant. Ça changerait quoi ?</div>
+            </div>
+            <div class="comparison-result">
+              ↗ Bifurcation créée<br>
+              <small>Nouvelle piste d'exploration</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fondements -->
+  <section id="fondements">
+    <div class="container">
+      <h2>Fondements Théoriques</h2>
+      <p>
+        KAIROS s'appuie sur des travaux académiques en analyse conversationnelle,
+        psychologie cognitive et linguistique pragmatique.
+      </p>
+
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="source-icon">🔧</div>
+          <h4>Repair Sequences</h4>
+          <div class="author">Schegloff, Jefferson & Sacks (1977)</div>
+          <p>
+            La réparation conversationnelle détecte et résout les problèmes de compréhension.
+            KAIROS utilise ces marqueurs pour identifier les moments de friction productive.
+          </p>
+        </div>
+
+        <div class="source-card">
+          <div class="source-icon">⚔️</div>
+          <h4>Conflit Socio-Cognitif</h4>
+          <div class="author">Piaget, Doise & Mugny (1984)</div>
+          <p>
+            Le conflit entre perspectives différentes stimule l'apprentissage et le développement cognitif.
+            La friction n'est pas un obstacle mais un moteur.
+          </p>
+        </div>
+
+        <div class="source-card">
+          <div class="source-icon">💬</div>
+          <h4>Discourse Markers</h4>
+          <div class="author">Fraser (1999)</div>
+          <p>
+            Les marqueurs de discours signalent les relations entre énoncés.
+            "But", "however", "actually" indiquent une friction productive.
+          </p>
+        </div>
+
+        <div class="source-card">
+          <div class="source-icon">🔄</div>
+          <h4>Régulation du Conflit</h4>
+          <div class="author">Butera, Sommet & Darnon (2019)</div>
+          <p>
+            Régulation épistémique (productif) vs compétitive (parasitaire).
+            KAIROS distingue friction qui fait avancer vs friction qui bloque.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution / Modes -->
+  <section id="solution">
+    <div class="container">
+      <h2>Deux Modes, Deux Philosophies</h2>
+      <p class="section-intro">
+        KAIROS ne propose pas un outil unique mais <strong>deux postures radicalement différentes</strong>
+        face à l'IA — parce que penser n'a pas toujours le même besoin.
+      </p>
+
+      <div class="modes-container">
+        <!-- Mode Autonome -->
+        <div class="mode-card autonome">
+          <div class="mode-header">
+            <div class="mode-icon-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#6b8cff" stroke-width="2" fill="none"/>
+                <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Mode Autonome</h3>
+            <p class="mode-tagline">L'IA comme compagnon de pensée.<br>Elle accompagne sans diriger.</p>
+          </div>
+          <div class="mode-content">
+            <div class="mode-philosophy">
+              <p>
+                Avant d'entrer dans le canvas, KAIROS pose une question simple :
+                <em>"Quelle est ton intention ?"</em> Ce sas n'est pas une formalité —
+                c'est le premier acte de friction. Nommer ce qu'on cherche, c'est déjà
+                commencer à penser.
+              </p>
+            </div>
+
+            <ul class="mode-features">
+              <li>
+                <span class="feature-icon">🚪</span>
+                <div>
+                  <strong>Gate d'intention</strong>
+                  <span>Déclarer sa direction avant d'explorer</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🖐️</span>
+                <div>
+                  <strong>Construction manuelle</strong>
+                  <span>Chaque vignette est créée par vous</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">❓</span>
+                <div>
+                  <strong>Questions plutôt que réponses</strong>
+                  <span>Le LLM interroge, il ne conclut pas</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🌊</span>
+                <div>
+                  <strong>Dialogue non-directif</strong>
+                  <span>L'espace reste ouvert, sans suggestions</span>
+                </div>
+              </li>
+            </ul>
+
+            <p class="mode-ideal">
+              <strong>Idéal pour :</strong> exploration profonde, émergence d'idées,
+              moments où on ne sait pas encore ce qu'on cherche.
+            </p>
+
+            <!-- Mockup Mode Autonome -->
+            <div class="intention-gate">
+              <h4>Quelle est ton intention ?</h4>
+              <input type="text" class="intention-input" placeholder="Comprendre pourquoi je bloque sur ce projet..." readonly>
+              <button class="intention-btn">Entrer dans le canvas →</button>
+              <p class="gate-hint">Ce sas force à nommer ce qu'on cherche — premier acte de friction</p>
+            </div>
+
+            <div class="app-mockup" style="margin-top: 1rem;">
+              <div class="mockup-toolbar">
+                <span class="mockup-btn cyan">Mode Autonome</span>
+                <span class="mockup-btn">+ Vignette</span>
+                <span class="mockup-btn">💬 Dialogue</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-canvas autonome-canvas">
+                  <svg class="connections-svg">
+                    <line x1="80" y1="60" x2="180" y2="100"/>
+                    <line x1="180" y1="100" x2="140" y2="180"/>
+                  </svg>
+                  <div class="vignette" style="top: 30px; left: 40px;">
+                    Le blocage vient de la peur
+                    <span class="vignette-tag">#intuition</span>
+                  </div>
+                  <div class="vignette" style="top: 80px; left: 150px;">
+                    Peur de quoi exactement ?
+                  </div>
+                  <div class="vignette" style="top: 160px; left: 100px;">
+                    Peur de réussir ? (bizarre)
+                  </div>
+                </div>
+                <div class="mockup-chat">
+                  <div class="chat-bubble user">Le LLM ne propose pas de réponses, il pose des questions</div>
+                  <div class="chat-bubble ai">Qu'est-ce qui te fait dire que c'est la peur ?<br>Y a-t-il eu un moment précis où ça a commencé ?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Assisté -->
+        <div class="mode-card assiste">
+          <div class="mode-header">
+            <div class="mode-icon-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="#ff6b6b" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" fill="#ff6b6b"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Mode Assisté</h3>
+            <p class="mode-tagline">L'IA comme assistant méthodologique.<br>Elle analyse, suggère et structure avec vous.</p>
+          </div>
+          <div class="mode-content">
+            <div class="mode-philosophy">
+              <p>
+                Le Mode Assisté ne pense pas à votre place — il <em>structure</em> votre pensée.
+                Des opérations explicites transforment le vague en concret.
+                La détection de circularité empêche l'IA de vous enfermer dans vos propres boucles.
+              </p>
+            </div>
+
+            <ul class="mode-features">
+              <li>
+                <span class="feature-icon">▶</span>
+                <div>
+                  <strong>Opérations DÉVELOPPER, RELIER, SYNTHÉTISER</strong>
+                  <span>Actions explicites sur les vignettes sélectionnées</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">💡</span>
+                <div>
+                  <strong>Suggestions de vignettes et connexions</strong>
+                  <span>Le LLM propose, vous décidez</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">⚡</span>
+                <div>
+                  <strong>Détection de patterns et circularité</strong>
+                  <span>Alerte quand la pensée tourne en rond</span>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🧲</span>
+                <div>
+                  <strong>Identification des attracteurs</strong>
+                  <span>Repère ce qui capte trop l'attention</span>
+                </div>
+              </li>
+            </ul>
+
+            <p class="mode-ideal">
+              <strong>Idéal pour :</strong> analyse structurée, cartographie de problèmes complexes,
+              synthèse de matériaux, éviter les boucles de validation.
+            </p>
+
+            <!-- Mockup Mode Assisté -->
+            <div class="app-mockup">
+              <div class="mockup-toolbar">
+                <span class="mockup-btn active">Mode Assisté</span>
+                <span class="mockup-btn">+ Vignette</span>
+                <span class="mockup-btn active-badge">🧲 Attracteurs</span>
+                <div class="friction-indicator">
+                  <span>⚡</span>
+                  <span>4</span>
+                  <span>T12</span>
+                </div>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-canvas">
+                  <svg class="connections-svg">
+                    <line x1="70" y1="50" x2="160" y2="80"/>
+                    <line x1="160" y1="80" x2="100" y2="150"/>
+                    <line x1="100" y1="150" x2="180" y2="180"/>
+                  </svg>
+                  <div class="vignette selected" style="top: 25px; left: 30px;">
+                    Conscience = émergence
+                    <span class="vignette-tag">#hypothèse</span>
+                  </div>
+                  <div class="vignette attractor" style="top: 60px; left: 130px;">
+                    Le cerveau génère tout
+                  </div>
+                  <div class="vignette" style="top: 130px; left: 60px;">
+                    Mais quid du vécu ?
+                  </div>
+                  <div class="vignette friction" style="top: 160px; left: 150px;">
+                    Et si le cerveau ne suffisait pas ?
+                  </div>
+                </div>
+                <div class="mockup-sidebar">
+                  <div class="sidebar-section">
+                    <h4>Opérations</h4>
+                    <button class="sidebar-btn primary">▶ DÉVELOPPER</button>
+                    <button class="sidebar-btn">↔ RELIER</button>
+                    <button class="sidebar-btn">◇ SYNTHÉTISER</button>
+                    <button class="sidebar-btn">⊕ EXPLORER</button>
+                  </div>
+                  <div class="mockup-webview">
+                    <div class="webview-header">
+                      <span class="provider">Claude</span>
+                      <span class="friction-badge">⚡ friction injectée</span>
+                    </div>
+                    <div class="webview-content">
+                      <strong>[FRICTION]</strong> Tu affirmes que "le cerveau génère tout" depuis
+                      3 tours. Mais qu'est-ce qui distingue cette position du
+                      réductionnisme classique que tu critiquais plus tôt ?
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparaison directe -->
+      <div class="modes-comparison">
+        <h3>En résumé</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Mode Autonome</th>
+              <th>Mode Assisté</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Posture du LLM</td>
+              <td>Compagnon — accompagne</td>
+              <td>Assistant — structure</td>
+            </tr>
+            <tr>
+              <td>Qui mène ?</td>
+              <td>Vous menez, le LLM suit</td>
+              <td>Collaboration guidée</td>
+            </tr>
+            <tr>
+              <td>Vignettes</td>
+              <td>Création manuelle uniquement</td>
+              <td>Suggestions + création manuelle</td>
+            </tr>
+            <tr>
+              <td>Style de dialogue</td>
+              <td>Questions ouvertes, non-directif</td>
+              <td>Opérations explicites (DÉVELOPPER, RELIER...)</td>
+            </tr>
+            <tr>
+              <td>Détection circularité</td>
+              <td>Non</td>
+              <td>Oui (6 signaux + injection friction)</td>
+            </tr>
+            <tr>
+              <td>Cas d'usage</td>
+              <td>Exploration, émergence, introspection</td>
+              <td>Analyse, cartographie, synthèse</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mécanismes -->
+  <section id="mecanismes">
+    <div class="container">
+      <h2>Les Mécanismes</h2>
+      <p>
+        KAIROS observe en temps réel l'interaction et intervient quand nécessaire
+        pour maintenir une pensée fertile.
+      </p>
+
+      <div class="mechanisms-grid">
+        <!-- Détection Circularité -->
+        <div class="mechanism-card">
+          <div class="mechanism-icon">⚡</div>
+          <h3>Détection de Circularité</h3>
+          <p>
+            6 signaux analysés en continu pour détecter quand la pensée tourne en rond.
+          </p>
+          <ul class="signal-list">
+            <li>Reformulation (même idée, autres mots)</li>
+            <li>Boucle de connexions (A→B→C→A)</li>
+            <li>Stagnation (3+ tours sans nouveau concept)</li>
+            <li>Validation vide ("oui", "exactement")</li>
+            <li>Tags saturés (même tag sur 5+ vignettes)</li>
+            <li>Écho LLM (répète l'utilisateur)</li>
+          </ul>
+        </div>
+
+        <!-- Injection Friction -->
+        <div class="mechanism-card">
+          <div class="mechanism-icon">💥</div>
+          <h3>Injection de Friction</h3>
+          <p>
+            Quand le score dépasse le seuil, KAIROS injecte un bloc de friction dans le prompt.
+          </p>
+          <ul class="signal-list">
+            <li>Signale les patterns détectés au LLM</li>
+            <li>Demande une contradiction ou question</li>
+            <li>Autorise le format [FRICTION]</li>
+            <li>Cooldown de 3 tours entre injections</li>
+          </ul>
+        </div>
+
+        <!-- Attracteurs -->
+        <div class="mechanism-card">
+          <div class="mechanism-icon">🧲</div>
+          <h3>Détection d'Attracteurs</h3>
+          <p>
+            Identifie les vignettes qui captent trop l'attention et risquent de biaiser la réflexion.
+          </p>
+          <ul class="signal-list">
+            <li>Score composite (connexions, sélections, LLM)</li>
+            <li>Badge visuel sur les vignettes</li>
+            <li>Pénalité si contribue à la circularité</li>
+            <li>Détection automatique à chaque tour</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Équation -->
+  <section id="equation">
+    <div class="container" style="text-align: center;">
+      <h2>L'Équation de Résonance</h2>
+      <p style="margin: 0 auto;">
+        Le modèle théorique derrière KAIROS. La résonance (R) émerge quand
+        l'intention et la friction se combinent face à la linéarisation.
+      </p>
+
+      <div class="equation-diagram">
+        <div class="var-box intention">
+          <div class="var-letter">I</div>
+          <div class="var-name">Intention</div>
+          <div class="var-desc">Trajectoire, direction claire</div>
+        </div>
+
+        <span class="equation-operator">×</span>
+
+        <div class="var-box friction">
+          <div class="var-letter">F</div>
+          <div class="var-name">Friction</div>
+          <div class="var-desc">Résistance productive</div>
+        </div>
+
+        <span class="equation-operator">÷</span>
+
+        <div class="var-box linearisation">
+          <div class="var-letter">L</div>
+          <div class="var-name">Linéarisation</div>
+          <div class="var-desc">Perte par séquentialité</div>
+        </div>
+      </div>
+
+      <div class="quote-block" style="max-width: 700px; margin: 2rem auto;">
+        La friction productive génère des bifurcations.
+        Elle crée de la trace mémorielle et transforme l'accordage en quelque chose de fertile.
+      </div>
+
+      <p style="margin: 0 auto;">
+        <strong>Friction productive</strong> : contradiction avec direction, question qui clarifie<br>
+        <strong>Friction parasitaire</strong> : interruption sans direction, hostilité sans contenu
+      </p>
+    </div>
+  </section>
+
+  <!-- Évolution -->
+  <section id="evolution">
+    <div class="container">
+      <h2>L'Évolution de l'Équation</h2>
+      <p>
+        L'équation de résonance a évolué à travers l'expérimentation.
+        Chaque itération a révélé des problèmes et des insights.
+      </p>
+
+      <div class="evolution-flow">
+        <div class="evolution-step problem">
+          <h4>Version 1</h4>
+          <div class="equation">R = (I/E) × f(O) × (A-L)</div>
+          <p>
+            A (Alignement) comme multiplicateur favorisait les boucles.
+            E (Énergie) était mal définie.
+          </p>
+        </div>
+
+        <div class="evolution-arrow">→</div>
+
+        <div class="evolution-insight">
+          <h4>💡 Découverte</h4>
+          <p>
+            "Trop d'alignement annule l'entre.
+            Sans friction, pas de bifurcation."
+          </p>
+        </div>
+
+        <div class="evolution-arrow">→</div>
+
+        <div class="evolution-step solution">
+          <h4>Version 2</h4>
+          <div class="equation" style="color: var(--accent-cyan);">R = (I × F) / L</div>
+          <p>
+            F (Friction) devient central.
+            A passe en condition de seuil.
+            E absorbé dans L.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <h3 style="color: var(--text-primary); margin-bottom: 1.5rem;">Ce qui a changé</h3>
+        <div class="sources-grid" style="max-width: 800px; margin: 0 auto;">
+          <div class="source-card">
+            <h4 style="color: var(--accent-red);">Alignement (A)</h4>
+            <p>Avant : multiplicateur → plus = mieux</p>
+            <p style="color: var(--accent-green);">Après : seuil binaire → juste assez pour ouvrir l'espace</p>
+          </div>
+          <div class="source-card">
+            <h4 style="color: var(--accent-orange);">Friction (F)</h4>
+            <p>Avant : absente du modèle</p>
+            <p style="color: var(--accent-green);">Après : variable centrale au numérateur</p>
+          </div>
+          <div class="source-card">
+            <h4 style="color: var(--accent-red);">Énergie (E)</h4>
+            <p>Avant : variable floue, difficilement mesurable</p>
+            <p style="color: var(--accent-green);">Après : absorbée dans L (coût du medium)</p>
+          </div>
+          <div class="source-card">
+            <h4 style="color: var(--accent-cyan);">Objectif</h4>
+            <p>Avant : prouver une résonance objective</p>
+            <p style="color: var(--accent-green);">Après : outil pratique pour préserver les insights</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Démo Interactive -->
+  <section id="demo">
+    <div class="container">
+      <h2>Démo Interactive</h2>
+      <p>
+        Simulez la détection de circularité. Ajoutez des vignettes et observez
+        le score monter quand les idées se répètent.
+      </p>
+
+      <div class="demo-container">
+        <div class="demo-canvas">
+          <div class="demo-toolbar">
+            <button class="demo-btn" onclick="addVignette('similar')">+ Idée similaire</button>
+            <button class="demo-btn" onclick="addVignette('new')">+ Idée nouvelle</button>
+            <button class="demo-btn" onclick="addVignette('validation')">+ "Exactement !"</button>
+            <button class="demo-btn reset" onclick="resetDemo()">↺ Reset</button>
+          </div>
+          <div class="demo-area" id="demo-area">
+            <div class="demo-vignette" style="top: 50px; left: 30px;">
+              La conscience émerge du cerveau
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel">
+          <h4>Score de Circularité</h4>
+          <div class="demo-score">
+            <span class="demo-score-label">Score</span>
+            <span class="demo-score-value low" id="demo-score">0</span>
+          </div>
+          <div class="demo-threshold">
+            <div class="demo-threshold-bar" id="demo-bar" style="width: 0%"></div>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Seuil de friction : <strong>3</strong>
+          </p>
+
+          <div class="demo-signals">
+            <div class="demo-signal" id="signal-reformulation">
+              ↻ Reformulation détectée
+            </div>
+            <div class="demo-signal" id="signal-stagnation">
+              ⏸ Stagnation (pas de nouveau concept)
+            </div>
+            <div class="demo-signal" id="signal-validation">
+              ✓ Validation vide ("oui", "ok")
+            </div>
+          </div>
+
+          <div class="demo-friction-alert" id="friction-alert">
+            ⚡ FRICTION INJECTÉE !<br>
+            <small>Le LLM va proposer une contradiction</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas d'usage -->
+  <section id="usecases">
+    <div class="container">
+      <h2>Pour Qui ?</h2>
+      <p>
+        KAIROS s'adresse à ceux qui utilisent les LLM pour réfléchir,
+        pas seulement pour produire.
+      </p>
+
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-icon">🔬</div>
+          <h4>Chercheurs</h4>
+          <p>Explorer des hypothèses sans tomber dans la confirmation bias</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon">🎨</div>
+          <h4>Créatifs</h4>
+          <p>Brainstormer sans tourner en rond sur les mêmes idées</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon">🧠</div>
+          <h4>Philosophes</h4>
+          <p>Pousser une réflexion au-delà de l'accord confortable</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon">📚</div>
+          <h4>Étudiants</h4>
+          <p>Apprendre à penser contre soi-même</p>
+        </div>
+      </div>
+
+      <div class="quote-block" style="margin-top: 3rem; text-align: center;">
+        "KAIROS n'est pas un outil de productivité. C'est un outil de pensée."
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision / Roadmap -->
+  <section id="vision">
+    <div class="container">
+      <h2>Vision & Roadmap</h2>
+      <p>
+        KAIROS est en développement actif. Voici où nous en sommes et où nous allons.
+      </p>
+
+      <div class="roadmap">
+        <div class="roadmap-item done">
+          <div class="phase">✓ Accompli</div>
+          <h4>Fondations</h4>
+          <ul>
+            <li>Canvas interactif avec vignettes et connexions</li>
+            <li>Intégration webview LLM (Claude, ChatGPT)</li>
+            <li>Mode Assisté avec opérations guidées</li>
+            <li>Équation de résonance v1</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-item current">
+          <div class="phase">→ En cours</div>
+          <h4>Module Friction</h4>
+          <ul>
+            <li>Détection automatique de circularité (6 signaux)</li>
+            <li>Injection de friction dans les prompts</li>
+            <li>Détection d'attracteurs cognitifs</li>
+            <li>Équation de résonance v2</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-item future">
+          <div class="phase">◇ À venir</div>
+          <h4>Intelligence Contextuelle</h4>
+          <ul>
+            <li>Analyse sémantique des vignettes</li>
+            <li>Suggestions de bifurcations basées sur le contenu</li>
+            <li>Historique de session avec replay</li>
+            <li>Export vers formats académiques</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-item future">
+          <div class="phase">◇ Vision long terme</div>
+          <h4>Écosystème</h4>
+          <ul>
+            <li>Partage de canvas entre utilisateurs</li>
+            <li>Bibliothèque de "patterns de friction"</li>
+            <li>API pour intégration dans d'autres outils</li>
+            <li>Version collaborative temps réel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <strong>KAIROS</strong> — Application Electron de cartographie cognitive
+    </p>
+    <p class="version">
+      Version 0.3.0 | Février 2026<br>
+      Concept & développement : Florent
+    </p>
+  </footer>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // DÉMO INTERACTIVE
+    // ═══════════════════════════════════════════
+    let demoScore = 0;
+    let vignetteCount = 1;
+    let turnsWithoutNew = 0;
+    const demoArea = document.getElementById('demo-area');
+
+    const ideas = [
+      "Le cerveau génère la conscience",
+      "La conscience est un phénomène cérébral",
+      "L'esprit émerge du neuronal",
+      "Le mental vient du physique",
+      "Conscience = activité neuronale"
+    ];
+
+    const newIdeas = [
+      "Et si la conscience était quantique ?",
+      "Le rôle de l'environnement ?",
+      "Conscience collective possible ?",
+      "Limites de l'approche réductionniste",
+      "Lien avec l'intelligence artificielle ?"
+    ];
+
+    function addVignette(type) {
+      vignetteCount++;
+      const vignette = document.createElement('div');
+      vignette.className = 'demo-vignette';
+
+      // Position aléatoire
+      const maxX = demoArea.offsetWidth - 160;
+      const maxY = demoArea.offsetHeight - 60;
+      vignette.style.left = Math.random() * maxX + 'px';
+      vignette.style.top = Math.random() * maxY + 'px';
+
+      if (type === 'similar') {
+        vignette.textContent = ideas[Math.floor(Math.random() * ideas.length)];
+        vignette.classList.add('similar');
+        demoScore += 2;
+        turnsWithoutNew++;
+        activateSignal('signal-reformulation');
+      } else if (type === 'validation') {
+        vignette.textContent = ['Exactement !', 'Oui, c\'est ça', 'Tout à fait', 'Parfait'][Math.floor(Math.random() * 4)];
+        vignette.classList.add('similar');
+        demoScore += 1;
+        turnsWithoutNew++;
+        activateSignal('signal-validation');
+      } else {
+        vignette.textContent = newIdeas[Math.floor(Math.random() * newIdeas.length)];
+        turnsWithoutNew = 0;
+        demoScore = Math.max(0, demoScore - 1);
+        deactivateSignal('signal-stagnation');
+      }
+
+      if (turnsWithoutNew >= 3) {
+        demoScore += 2;
+        activateSignal('signal-stagnation');
+      }
+
+      demoArea.appendChild(vignette);
+      updateScore();
+
+      if (demoScore > 3) {
+        triggerFriction();
+      }
+    }
+
+    function activateSignal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function deactivateSignal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    function updateScore() {
+      const scoreEl = document.getElementById('demo-score');
+      const barEl = document.getElementById('demo-bar');
+
+      scoreEl.textContent = demoScore;
+
+      // Couleur selon le score
+      scoreEl.className = 'demo-score-value';
+      if (demoScore <= 1) scoreEl.classList.add('low');
+      else if (demoScore <= 3) scoreEl.classList.add('medium');
+      else scoreEl.classList.add('high');
+
+      // Barre de progression
+      const percent = Math.min((demoScore / 5) * 100, 100);
+      barEl.style.width = percent + '%';
+      barEl.style.background = demoScore <= 1 ? 'var(--accent-green)'
+        : demoScore <= 3 ? 'var(--accent-orange)'
+        : 'var(--accent-red)';
+    }
+
+    function triggerFriction() {
+      document.getElementById('friction-alert').classList.add('show');
+
+      // Ajouter une vignette friction
+      setTimeout(() => {
+        const vignette = document.createElement('div');
+        vignette.className = 'demo-vignette friction';
+        vignette.innerHTML = '<small style="color: var(--accent-red)">[FRICTION]</small><br>Et si le cerveau n\'était qu\'un récepteur ?';
+        vignette.style.left = '50%';
+        vignette.style.top = '60%';
+        vignette.style.transform = 'translateX(-50%)';
+        demoArea.appendChild(vignette);
+      }, 500);
+    }
+
+    function resetDemo() {
+      demoScore = 0;
+      vignetteCount = 1;
+      turnsWithoutNew = 0;
+
+      // Supprimer toutes les vignettes sauf la première
+      const vignettes = demoArea.querySelectorAll('.demo-vignette');
+      vignettes.forEach((v, i) => { if (i > 0) v.remove(); });
+
+      // Reset UI
+      updateScore();
+      document.getElementById('friction-alert').classList.remove('show');
+      document.querySelectorAll('.demo-signal').forEach(s => s.classList.remove('active'));
+    }
+
+    // ═══════════════════════════════════════════
+    // NAVIGATION & ANIMATIONS
+    // ═══════════════════════════════════════════
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section > .container').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
