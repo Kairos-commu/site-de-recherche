@@ -50,7 +50,16 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
     <!-- RSS Feed -->
+<<<<<<< Updated upstream
     <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml" />
+=======
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Florent Klimacek — Articles"
+      href="feed.xml"
+    />
+>>>>>>> Stashed changes
   </head>
   <body>
     <!-- Header -->
@@ -75,15 +84,40 @@
           <a href="#recherche">Recherche</a>
           <a href="#articles">Articles</a>
           <a href="#kairos">KAIROS</a>
-          <a href="#about">À propos</a>
+          <a href="about.html">À propos</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
-        <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
-          <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Changer de thème"
+        >
+          <svg
+            class="icon-moon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
           </svg>
-          <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          <svg
+            class="icon-sun"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
           </svg>
         </button>
       </div>
@@ -116,7 +150,7 @@
               Une approche empirique et méthodologique
             </h2>
             <p class="section__subtitle">
-              Plus de 1200 interactions analysées à travers cinq modèles d'IA
+              Des centaines d'interactions analysées à travers cinq modèles d'IA
               différents.
             </p>
           </header>
@@ -237,26 +271,43 @@
                   Lire le document
                 </a>
               </div>
-              <div class="card__visual">
-                <div style="text-align: center; color: #a8a29e">
-                  <svg
-                    width="64"
-                    height="64"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    style="margin-bottom: 1rem; opacity: 0.6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1"
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                  <p style="font-size: 0.8rem; font-family: var(--font-mono)">
-                    37 pages
-                  </p>
+              <div class="card__visual" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 1.5rem;">
+                <!-- Citation accroche -->
+                <p style="
+                  font-family: var(--font-serif);
+                  font-size: 1.35rem;
+                  font-style: italic;
+                  color: #d6d3d1;
+                  line-height: 1.5;
+                  padding-left: 1.25rem;
+                  border-left: 2px solid var(--accent);
+                  margin: 0;
+                ">
+                  « L'IA ne pense pas avec vous.<br>Elle pense après vous. »
+                </p>
+
+                <!-- Stats -->
+                <div style="
+                  display: flex;
+                  gap: 2rem;
+                  padding-top: 1rem;
+                  border-top: 1px solid #292524;
+                  font-family: var(--font-mono);
+                  font-size: 0.7rem;
+                  color: #78716c;
+                ">
+                  <div>
+                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">45</span>
+                    min de lecture
+                  </div>
+                  <div>
+                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">12</span>
+                    concepts clés
+                  </div>
+                  <div>
+                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">37</span>
+                    pages
+                  </div>
                 </div>
               </div>
             </article>
@@ -524,7 +575,7 @@
             rel="noopener"
             >GitHub</a
           >
-          <a href="mailto:klimacekflorent@gmail.com">Contact</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
     </footer>
@@ -574,7 +625,9 @@
 
       // Charger le thème depuis localStorage ou préférence système
       const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
 
       if (savedTheme) {
         html.setAttribute("data-theme", savedTheme);

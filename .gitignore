@@ -1,0 +1,10 @@
+# Fichiers sources (non déployés sur GitHub Pages)
+*.pdf
+Articles/
+
+# Dossiers résiduels
+mnt/
+
+# Fichiers système
+.DS_Store
+Thumbs.db

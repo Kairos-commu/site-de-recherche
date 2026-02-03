@@ -82,7 +82,7 @@ body {
    NAVIGATION SIDEBAR
    ============================================ */
 
-nav {
+#nav {
   position: fixed;
   left: 0;
   top: 52px;
@@ -96,11 +96,11 @@ nav {
 }
 
 @media (max-width: 900px) {
-  nav {
+  #nav {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
   }
-  nav.open {
+  #nav.open {
     transform: translateX(0);
   }
   main {
