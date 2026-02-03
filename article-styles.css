@@ -399,6 +399,10 @@ blockquote p {
   border-radius: 8px;
 }
 
+[data-theme="dark"] .concept {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
 .concept-title {
   font-size: 0.75rem;
   font-weight: 500;
@@ -499,6 +503,11 @@ blockquote p {
   background: #fafaf9;
   border-radius: 6px;
   border-left: 3px solid var(--accent);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .model-card .result {
+  background: #1c1917;
 }
 
 /* ============================================
@@ -546,6 +555,10 @@ thead {
   background: #fafaf9;
 }
 
+[data-theme="dark"] thead {
+  background: #1c1917;
+}
+
 th {
   text-align: left;
   padding: 1rem;
@@ -566,6 +579,10 @@ tr:last-child td {
 
 tr:hover {
   background: #fafaf9;
+}
+
+[data-theme="dark"] tr:hover {
+  background: #292524;
 }
 
 .danger-low {
@@ -615,6 +632,10 @@ tr:hover {
   background: #fafaf9;
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+[data-theme="dark"] .postscriptum {
+  background: #292524;
 }
 
 .postscriptum h3 {

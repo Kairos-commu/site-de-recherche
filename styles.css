@@ -171,6 +171,10 @@ a:hover {
   border-bottom: 1px solid var(--border);
 }
 
+[data-theme="dark"] .site-header {
+  background: rgba(28, 25, 23, 0.9);
+}
+
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -431,6 +435,14 @@ a:hover {
 .section--dark {
   background: var(--bg-dark);
   color: var(--text-inverse);
+}
+
+.section--alt {
+  background: #fafaf9;
+}
+
+[data-theme="dark"] .section--alt {
+  background: #292524;
 }
 
 .section__header {
@@ -848,6 +860,6 @@ a:hover {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #78716c;
+  color: var(--text-muted);
   margin-top: 4px;
 }
