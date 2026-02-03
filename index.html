@@ -50,17 +50,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
     <!-- RSS Feed -->
-<<<<<<< Updated upstream
-    <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml" />
-=======
     <link
       rel="alternate"
       type="application/rss+xml"
       title="Florent Klimacek — Articles"
       href="feed.xml"
     />
->>>>>>> Stashed changes
   </head>
+
   <body>
     <!-- Header -->
     <header class="site-header">
@@ -227,8 +224,32 @@
               <h3 class="card__title">Résonance conversationnelle</h3>
               <p class="card__desc">
                 Développement de métriques pour quantifier la qualité d'un
-                échange : R = (I × F) / L.
+                échange :
               </p>
+              <div class="formula-display">
+                <span class="formula-result" title="Résonance">R</span>
+                <span class="formula-operator">=</span>
+                <div class="formula-fraction">
+                  <div class="formula-top">
+                    <span
+                      class="formula-var"
+                      data-tooltip="Intensité & Intention"
+                      >I</span
+                    >
+                    <span class="formula-operator">×</span>
+                    <span
+                      class="formula-var"
+                      data-tooltip="Fréquence & Fluidité"
+                      >F</span
+                    >
+                  </div>
+                  <div class="formula-bottom">
+                    <span class="formula-var" data-tooltip="Latence & Linéarité"
+                      >L</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -271,42 +292,24 @@
                   Lire le document
                 </a>
               </div>
-              <div class="card__visual" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 1.5rem;">
-                <!-- Citation accroche -->
-                <p style="
-                  font-family: var(--font-serif);
-                  font-size: 1.35rem;
-                  font-style: italic;
-                  color: #d6d3d1;
-                  line-height: 1.5;
-                  padding-left: 1.25rem;
-                  border-left: 2px solid var(--accent);
-                  margin: 0;
-                ">
-                  « L'IA ne pense pas avec vous.<br>Elle pense après vous. »
-                </p>
+              <div class="card__visual featured-visual">
+                <blockquote class="featured-quote">
+                  « L'IA ne pense pas avec vous.<br />
+                  <span>Elle pense après vous. »</span>
+                </blockquote>
 
-                <!-- Stats -->
-                <div style="
-                  display: flex;
-                  gap: 2rem;
-                  padding-top: 1rem;
-                  border-top: 1px solid #292524;
-                  font-family: var(--font-mono);
-                  font-size: 0.7rem;
-                  color: #78716c;
-                ">
-                  <div>
-                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">45</span>
-                    min de lecture
+                <div class="featured-stats">
+                  <div class="stat-item">
+                    <span class="stat-value">45</span>
+                    <span class="stat-label">min de lecture</span>
                   </div>
-                  <div>
-                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">12</span>
-                    concepts clés
+                  <div class="stat-item">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">concepts clés</span>
                   </div>
-                  <div>
-                    <span style="display: block; font-size: 1.1rem; color: #d6d3d1; font-weight: 500;">37</span>
-                    pages
+                  <div class="stat-item">
+                    <span class="stat-value">37</span>
+                    <span class="stat-label">pages</span>
                   </div>
                 </div>
               </div>
