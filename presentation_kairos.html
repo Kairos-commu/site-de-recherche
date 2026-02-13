@@ -1631,6 +1631,192 @@
       color: var(--text-secondary);
       margin-bottom: 0.3rem;
     }
+    /* ═══════════════════════════════════════════
+       DOCUMENTATION
+       ═══════════════════════════════════════════ */
+    #documentation {
+      background: var(--bg-dark);
+      min-height: auto;
+      padding: 4rem 2rem;
+    }
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .docs-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .docs-sidebar-btn {
+      display: block;
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .docs-sidebar-btn:hover {
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .docs-sidebar-btn.active {
+      color: var(--accent-purple);
+      background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .docs-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      min-height: 400px;
+      overflow-x: auto;
+    }
+
+    .docs-content h1 {
+      font-size: 2rem;
+      background: none;
+      -webkit-text-fill-color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-content h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .docs-content h3 {
+      font-size: 1.2rem;
+      color: var(--accent-cyan);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .docs-content h4 {
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .docs-content p {
+      font-size: 0.95rem;
+      max-width: none;
+      margin-bottom: 1rem;
+    }
+
+    .docs-content ul, .docs-content ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .docs-content li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .docs-content code {
+      background: rgba(139, 92, 246, 0.15);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-family: 'Consolas', 'JetBrains Mono', monospace;
+      color: var(--accent-cyan);
+    }
+
+    .docs-content pre {
+      background: #0a0a0f;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .docs-content pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .docs-content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    .docs-content th {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      background: rgba(255,255,255,0.03);
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .docs-content td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-secondary);
+    }
+
+    .docs-content blockquote {
+      border-left: 3px solid var(--accent-purple);
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      background: rgba(139, 92, 246, 0.05);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .docs-content blockquote p {
+      color: var(--text-secondary);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .docs-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .docs-loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+
+    .docs-error {
+      text-align: center;
+      padding: 2rem;
+      color: var(--accent-red);
+    }
   </style>
 </head>
 <body>
@@ -1645,6 +1831,7 @@
       <li><a href="#demo">Démo</a></li>
       <li><a href="#usecases">Usages</a></li>
       <li><a href="#vision">Vision</a></li>
+      <li><a href="#documentation">Docs</a></li>
     </ul>
   </nav>
 
@@ -1654,19 +1841,28 @@
       <h1 class="fade-in">KAIROS</h1>
       <p class="subtitle fade-in delay-1">Penser avec friction</p>
 
-      <div class="hero-equation fade-in delay-2">
-        R = (I × F) / L
+      <div class="hero-equation fade-in delay-2" style="display: inline-flex; align-items: center; gap: 1.5rem;">
+        <span style="font-size: 2.5rem;">O<sub style="font-size: 1.5rem;">2</sub></span>
+        <span style="font-size: 1.5rem; color: var(--text-muted);">=</span>
+        <span style="display: flex; gap: 1rem; align-items: center;">
+          <span style="color: var(--accent-green);">100</span>
+          <span style="color: var(--text-muted); font-size: 1.2rem;">→</span>
+          <span style="color: var(--accent-orange);">50</span>
+          <span style="color: var(--text-muted); font-size: 1.2rem;">→</span>
+          <span style="color: var(--accent-red);">0</span>
+        </span>
       </div>
 
       <div class="hero-legend fade-in delay-3">
-        <span><strong>I</strong> Intention</span>
-        <span><strong>F</strong> Friction</span>
-        <span><strong>L</strong> Linéarisation</span>
+        <span style="color: var(--accent-green);"><strong>>50</strong> Respire</span>
+        <span style="color: var(--accent-orange);"><strong>30-50</strong> Stagne</span>
+        <span style="color: var(--accent-red);"><strong><30</strong> Asphyxie</span>
       </div>
 
-      <p style="margin: 2rem auto; max-width: 600px;" class="fade-in delay-3">
-        Une application de cartographie cognitive qui détecte et injecte de la friction
-        pour éviter les boucles de validation humain-LLM.
+      <p style="margin: 2rem auto; max-width: 650px;" class="fade-in delay-3">
+        Une application de cartographie cognitive qui mesure la <strong>vitalité</strong> de votre pensée
+        en temps réel. Quand le canvas s'asphyxie, KAIROS injecte de la friction
+        pour relancer l'exploration.
       </p>
     </div>
     <div class="scroll-indicator"></div>
@@ -2002,8 +2198,8 @@
               <li>
                 <span class="feature-icon">▶</span>
                 <div>
-                  <strong>Opérations DÉVELOPPER, RELIER, SYNTHÉTISER</strong>
-                  <span>Actions explicites sur les vignettes sélectionnées</span>
+                  <strong>DÉVELOPPER, RELIER, SYNTHÉTISER</strong>
+                  <span>DÉVELOPPER crée vignettes ET connexions. RELIER connecte les vignettes isolées.</span>
                 </div>
               </li>
               <li>
@@ -2014,10 +2210,10 @@
                 </div>
               </li>
               <li>
-                <span class="feature-icon">⚡</span>
+                <span class="feature-icon">🫁</span>
                 <div>
-                  <strong>Détection de patterns et circularité</strong>
-                  <span>Alerte quand la pensée tourne en rond</span>
+                  <strong>Jauge Oxygène — vitalité cognitive</strong>
+                  <span>Score 0-100 en temps réel, 5 signaux, 3 zones</span>
                 </div>
               </li>
               <li>
@@ -2073,7 +2269,6 @@
                     <button class="sidebar-btn primary">▶ DÉVELOPPER</button>
                     <button class="sidebar-btn">↔ RELIER</button>
                     <button class="sidebar-btn">◇ SYNTHÉTISER</button>
-                    <button class="sidebar-btn">⊕ EXPLORER</button>
                   </div>
                   <div class="mockup-webview">
                     <div class="webview-header">
@@ -2126,9 +2321,9 @@
               <td>Opérations explicites (DÉVELOPPER, RELIER...)</td>
             </tr>
             <tr>
-              <td>Détection circularité</td>
+              <td>Vitalité cognitive</td>
               <td>Non</td>
-              <td>Oui (6 signaux + injection friction)</td>
+              <td>Jauge Oxygène (5 signaux, score 0-100)</td>
             </tr>
             <tr>
               <td>Cas d'usage</td>
@@ -2151,20 +2346,19 @@
       </p>
 
       <div class="mechanisms-grid">
-        <!-- Détection Circularité -->
+        <!-- Jauge Oxygène -->
         <div class="mechanism-card">
-          <div class="mechanism-icon">⚡</div>
-          <h3>Détection de Circularité</h3>
+          <div class="mechanism-icon">🫁</div>
+          <h3>Jauge Oxygène</h3>
           <p>
-            6 signaux analysés en continu pour détecter quand la pensée tourne en rond.
+            Score de vitalité cognitive (0-100) calculé en temps réel à partir de 5 signaux.
           </p>
           <ul class="signal-list">
-            <li>Reformulation (même idée, autres mots)</li>
-            <li>Boucle de connexions (A→B→C→A)</li>
-            <li>Stagnation (3+ tours sans nouveau concept)</li>
-            <li>Validation vide ("oui", "exactement")</li>
-            <li>Tags saturés (même tag sur 5+ vignettes)</li>
-            <li>Écho LLM (répète l'utilisateur)</li>
+            <li>Nouveaux tags (+10/tag, plafonné +20/tour)</li>
+            <li>Redondance canvas (Jaccard all-pairs, malus -20)</li>
+            <li>Stagnation (malus -15/tour sans nouveauté)</li>
+            <li>Friction acceptée (bonus +20/tour)</li>
+            <li>Structure du graphe (sous/sur-connexion, composants isolés)</li>
           </ul>
         </div>
 
@@ -2173,13 +2367,13 @@
           <div class="mechanism-icon">💥</div>
           <h3>Injection de Friction</h3>
           <p>
-            Quand le score dépasse le seuil, KAIROS injecte un bloc de friction dans le prompt.
+            Quand le score tombe en zone d'asphyxie (<30), KAIROS injecte un bloc de friction dans le prompt.
           </p>
           <ul class="signal-list">
+            <li>3 zones : respire (>50), stagne (30-50), asphyxie (<30)</li>
             <li>Signale les patterns détectés au LLM</li>
             <li>Demande une contradiction ou question</li>
-            <li>Autorise le format [FRICTION]</li>
-            <li>Cooldown de 3 tours entre injections</li>
+            <li>Force le mode diverger quand score < 50</li>
           </ul>
         </div>
 
@@ -2286,6 +2480,28 @@
             E absorbé dans L.
           </p>
         </div>
+
+        <div class="evolution-arrow">→</div>
+
+        <div class="evolution-insight">
+          <h4>💡 Passage au concret</h4>
+          <p>
+            L'équation était un cadre théorique.
+            Il faut une mesure en temps réel.
+          </p>
+        </div>
+
+        <div class="evolution-arrow">→</div>
+
+        <div class="evolution-step solution" style="border-color: rgba(34, 197, 94, 0.5);">
+          <h4>Version 3</h4>
+          <div class="equation" style="color: var(--accent-green);">O₂ = 0-100</div>
+          <p>
+            Jauge Oxygène : 5 signaux,
+            score glissant, 3 zones.
+            Mesure la vitalité cognitive du canvas.
+          </p>
+        </div>
       </div>
 
       <div style="margin-top: 3rem; text-align: center;">
@@ -2319,10 +2535,10 @@
   <!-- Démo Interactive -->
   <section id="demo">
     <div class="container">
-      <h2>Démo Interactive</h2>
+      <h2>Démo Interactive — Jauge Oxygène</h2>
       <p>
-        Simulez la détection de circularité. Ajoutez des vignettes et observez
-        le score monter quand les idées se répètent.
+        Simulez la jauge Oxygène. Ajoutez des vignettes et observez
+        le score baisser quand les idées se répètent, ou remonter quand elles divergent.
       </p>
 
       <div class="demo-container">
@@ -2341,32 +2557,34 @@
         </div>
 
         <div class="demo-panel">
-          <h4>Score de Circularité</h4>
+          <h4>🫁 Jauge Oxygène</h4>
           <div class="demo-score">
-            <span class="demo-score-label">Score</span>
-            <span class="demo-score-value low" id="demo-score">0</span>
+            <span class="demo-score-label">O₂</span>
+            <span class="demo-score-value low" id="demo-score">75</span>
           </div>
           <div class="demo-threshold">
-            <div class="demo-threshold-bar" id="demo-bar" style="width: 0%"></div>
+            <div class="demo-threshold-bar" id="demo-bar" style="width: 75%; background: var(--accent-green);"></div>
           </div>
           <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
-            Seuil de friction : <strong>3</strong>
+            <span style="color: var(--accent-green);">Respire >50</span> &bull;
+            <span style="color: var(--accent-orange);">Stagne 30-50</span> &bull;
+            <span style="color: var(--accent-red);">Asphyxie <30</span>
           </p>
 
           <div class="demo-signals">
-            <div class="demo-signal" id="signal-reformulation">
-              ↻ Reformulation détectée
+            <div class="demo-signal" id="signal-redundancy">
+              ↻ Redondance détectée (Jaccard)
             </div>
             <div class="demo-signal" id="signal-stagnation">
-              ⏸ Stagnation (pas de nouveau concept)
+              ⏸ Stagnation (pas de nouveauté)
             </div>
-            <div class="demo-signal" id="signal-validation">
-              ✓ Validation vide ("oui", "ok")
+            <div class="demo-signal" id="signal-tags">
+              🏷 Nouveaux tags (bonus O₂)
             </div>
           </div>
 
           <div class="demo-friction-alert" id="friction-alert">
-            ⚡ FRICTION INJECTÉE !<br>
+            ⚡ ZONE ASPHYXIE — FRICTION INJECTÉE !<br>
             <small>Le LLM va proposer une contradiction</small>
           </div>
         </div>
@@ -2425,24 +2643,38 @@
 
       <div class="roadmap">
         <div class="roadmap-item done">
-          <div class="phase">✓ Accompli</div>
-          <h4>Fondations</h4>
+          <div class="phase">✓ Fondations</div>
+          <h4>Canvas & Modes</h4>
           <ul>
             <li>Canvas interactif avec vignettes et connexions</li>
-            <li>Intégration webview LLM (Claude, ChatGPT)</li>
-            <li>Mode Assisté avec opérations guidées</li>
-            <li>Équation de résonance v1</li>
+            <li>Intégration webview LLM (Claude, ChatGPT, Gemini)</li>
+            <li>Mode Assisté (DÉVELOPPER, RELIER, SYNTHÉTISER)</li>
+            <li>Mode Autonome avec gate d'intention</li>
+            <li>Détection de circularité et injection de friction</li>
+            <li>Détection d'attracteurs cognitifs</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-item done">
+          <div class="phase">✓ Session 5-6 (fév. 2026)</div>
+          <h4>Oxygène, Multi-canvas & Thèmes</h4>
+          <ul>
+            <li>Jauge Oxygène (5 signaux, score 0-100, 3 zones)</li>
+            <li>Multi-canvas : gestion de plusieurs graphes</li>
+            <li>4 thèmes visuels (Obsidian, Porcelain, Aurora, Kraft)</li>
+            <li>Migration API directe (Claude, GPT, Gemini sans webview)</li>
+            <li>Synthèses structurées (format 3 blocs)</li>
+            <li>DÉVELOPPER crée vignettes ET connexions</li>
           </ul>
         </div>
 
         <div class="roadmap-item current">
           <div class="phase">→ En cours</div>
-          <h4>Module Friction</h4>
+          <h4>Session 7 — Raffinement</h4>
           <ul>
-            <li>Détection automatique de circularité (6 signaux)</li>
-            <li>Injection de friction dans les prompts</li>
-            <li>Détection d'attracteurs cognitifs</li>
-            <li>Équation de résonance v2</li>
+            <li>Onglets canvas avec provider par onglet</li>
+            <li>Calibration fine de la jauge Oxygène</li>
+            <li>Système de postures adaptatif</li>
           </ul>
         </div>
 
@@ -2450,9 +2682,8 @@
           <div class="phase">◇ À venir</div>
           <h4>Intelligence Contextuelle</h4>
           <ul>
-            <li>Analyse sémantique des vignettes</li>
-            <li>Suggestions de bifurcations basées sur le contenu</li>
-            <li>Historique de session avec replay</li>
+            <li>Slider de friction personnalisable</li>
+            <li>Analyse sémantique avancée des vignettes</li>
             <li>Export vers formats académiques</li>
           </ul>
         </div>
@@ -2471,13 +2702,39 @@
     </div>
   </section>
 
+  <!-- Documentation -->
+  <section id="documentation">
+    <div class="container">
+      <h2>Documentation Technique</h2>
+      <p>
+        Documentation du projet KAIROS, synchronisée automatiquement depuis le repository.
+      </p>
+
+      <div class="docs-layout">
+        <div class="docs-sidebar" id="docs-sidebar">
+          <button class="docs-sidebar-btn active" data-doc="CONTEXTE-PROJET">Contexte du projet</button>
+          <button class="docs-sidebar-btn" data-doc="ASSISTED_MODE_REFERENCE">Mode Assisté</button>
+          <button class="docs-sidebar-btn" data-doc="METRIQUES-ET-PROMPTS">Métriques & Prompts</button>
+          <button class="docs-sidebar-btn" data-doc="PROMPTS-LLM">Prompts LLM</button>
+          <button class="docs-sidebar-btn" data-doc="COMMANDES">Commandes</button>
+          <button class="docs-sidebar-btn" data-doc="BACKLOG">Backlog</button>
+          <button class="docs-sidebar-btn" data-doc="BUGS">Bugs connus</button>
+          <button class="docs-sidebar-btn" data-doc="SIMULATION">Simulation</button>
+        </div>
+        <div class="docs-content" id="docs-content">
+          <div class="docs-loading">Chargement de la documentation...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <p>
       <strong>KAIROS</strong> — Application Electron de cartographie cognitive
     </p>
     <p class="version">
-      Version 0.3.0 | Février 2026<br>
+      Version 1.0.0 | Février 2026<br>
       Concept & développement : Florent
     </p>
     <p style="margin-top: 1.5rem;">
@@ -2487,11 +2744,12 @@
 
   <script>
     // ═══════════════════════════════════════════
-    // DÉMO INTERACTIVE
+    // DÉMO INTERACTIVE — JAUGE OXYGÈNE
     // ═══════════════════════════════════════════
-    let demoScore = 0;
+    let oxygenScore = 75;
     let vignetteCount = 1;
     let turnsWithoutNew = 0;
+    let frictionTriggered = false;
     const demoArea = document.getElementById('demo-area');
 
     const ideas = [
@@ -2524,31 +2782,32 @@
       if (type === 'similar') {
         vignette.textContent = ideas[Math.floor(Math.random() * ideas.length)];
         vignette.classList.add('similar');
-        demoScore += 2;
+        oxygenScore = Math.max(0, oxygenScore - 15);
         turnsWithoutNew++;
-        activateSignal('signal-reformulation');
+        activateSignal('signal-redundancy');
       } else if (type === 'validation') {
         vignette.textContent = ['Exactement !', 'Oui, c\'est ça', 'Tout à fait', 'Parfait'][Math.floor(Math.random() * 4)];
         vignette.classList.add('similar');
-        demoScore += 1;
+        oxygenScore = Math.max(0, oxygenScore - 10);
         turnsWithoutNew++;
-        activateSignal('signal-validation');
+        activateSignal('signal-redundancy');
       } else {
         vignette.textContent = newIdeas[Math.floor(Math.random() * newIdeas.length)];
         turnsWithoutNew = 0;
-        demoScore = Math.max(0, demoScore - 1);
+        oxygenScore = Math.min(100, oxygenScore + 15);
+        activateSignal('signal-tags');
         deactivateSignal('signal-stagnation');
       }
 
       if (turnsWithoutNew >= 3) {
-        demoScore += 2;
+        oxygenScore = Math.max(0, oxygenScore - 10);
         activateSignal('signal-stagnation');
       }
 
       demoArea.appendChild(vignette);
       updateScore();
 
-      if (demoScore > 3) {
+      if (oxygenScore < 30 && !frictionTriggered) {
         triggerFriction();
       }
     }
@@ -2565,23 +2824,23 @@
       const scoreEl = document.getElementById('demo-score');
       const barEl = document.getElementById('demo-bar');
 
-      scoreEl.textContent = demoScore;
+      scoreEl.textContent = oxygenScore;
 
-      // Couleur selon le score
+      // Couleur selon le score (inversée : haut = bien)
       scoreEl.className = 'demo-score-value';
-      if (demoScore <= 1) scoreEl.classList.add('low');
-      else if (demoScore <= 3) scoreEl.classList.add('medium');
-      else scoreEl.classList.add('high');
+      if (oxygenScore > 50) scoreEl.classList.add('low');       // vert = respire
+      else if (oxygenScore >= 30) scoreEl.classList.add('medium'); // orange = stagne
+      else scoreEl.classList.add('high');                        // rouge = asphyxie
 
       // Barre de progression
-      const percent = Math.min((demoScore / 5) * 100, 100);
-      barEl.style.width = percent + '%';
-      barEl.style.background = demoScore <= 1 ? 'var(--accent-green)'
-        : demoScore <= 3 ? 'var(--accent-orange)'
+      barEl.style.width = oxygenScore + '%';
+      barEl.style.background = oxygenScore > 50 ? 'var(--accent-green)'
+        : oxygenScore >= 30 ? 'var(--accent-orange)'
         : 'var(--accent-red)';
     }
 
     function triggerFriction() {
+      frictionTriggered = true;
       document.getElementById('friction-alert').classList.add('show');
 
       // Ajouter une vignette friction
@@ -2593,13 +2852,17 @@
         vignette.style.top = '60%';
         vignette.style.transform = 'translateX(-50%)';
         demoArea.appendChild(vignette);
+        // Friction acceptée = bonus
+        oxygenScore = Math.min(100, oxygenScore + 20);
+        updateScore();
       }, 500);
     }
 
     function resetDemo() {
-      demoScore = 0;
+      oxygenScore = 75;
       vignetteCount = 1;
       turnsWithoutNew = 0;
+      frictionTriggered = false;
 
       // Supprimer toutes les vignettes sauf la première
       const vignettes = demoArea.querySelectorAll('.demo-vignette');
@@ -2636,6 +2899,55 @@
     document.querySelectorAll('section > .container').forEach(el => {
       observer.observe(el);
     });
+  </script>
+
+  <!-- marked.js for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // ═══════════════════════════════════════════
+    // DOCUMENTATION VIEWER
+    // ═══════════════════════════════════════════
+    const docsContent = document.getElementById('docs-content');
+    const docsSidebar = document.getElementById('docs-sidebar');
+    let currentDoc = 'CONTEXTE-PROJET';
+
+    async function loadDoc(name) {
+      docsContent.innerHTML = '<div class="docs-loading">Chargement...</div>';
+      currentDoc = name;
+
+      // Update active button
+      docsSidebar.querySelectorAll('.docs-sidebar-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.doc === name);
+      });
+
+      try {
+        const response = await fetch('docs/' + name + '.md');
+        if (!response.ok) throw new Error('Document introuvable');
+        const markdown = await response.text();
+        docsContent.innerHTML = marked.parse(markdown);
+      } catch (e) {
+        docsContent.innerHTML = '<div class="docs-error">Impossible de charger le document.<br><small>' + e.message + '</small></div>';
+      }
+    }
+
+    // Click handlers on sidebar buttons
+    docsSidebar.addEventListener('click', (e) => {
+      const btn = e.target.closest('.docs-sidebar-btn');
+      if (btn && btn.dataset.doc) {
+        loadDoc(btn.dataset.doc);
+      }
+    });
+
+    // Load default doc when section becomes visible (lazy load)
+    const docsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadDoc(currentDoc);
+          docsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    docsObserver.observe(document.getElementById('documentation'));
   </script>
 </body>
 </html>
