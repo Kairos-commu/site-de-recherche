@@ -15,32 +15,21 @@
 
 ### Bugs de cohérence événementielle
 
-> Identifiés lors de l'audit de cohérence (février 2026). Affectent le scoring des attracteurs et le tracking comportemental.
+> Identifiés lors de l'audit de cohérence (février 2026).
 
 | ID | Sévérité | Problème | Impact |
 |---|---|---|---|
-| C001 | **HAUTE** | `history.ts` écoute `llmSend`, `sender.ts` émet `llmSendTracked`. Double incohérence : nom ET structure (`nodeId` vs `nodeIds`). | `behaviorLogs.llmSends` toujours vide → composante LLM interactions (20% du score attracteur) = 0 |
-| C002 | **HAUTE** | `history.ts` attend `e.detail.nodeId`, `capture.ts` émet `e.detail.nodeIds` (array). | `trackCapture()` reçoit `undefined` → captures indexées par `undefined` |
+| C001 | ~~HAUTE~~ | ~~Event name mismatch llmSend/llmSendTracked~~ | **Résolu** — code attracteur supprimé |
+| C002 | ~~HAUTE~~ | ~~nodeId vs nodeIds structure mismatch~~ | **Résolu** — code attracteur supprimé |
 | C003 | Moyenne | `context-chat.ts` écoute `canvas:nodeAdded`, `canvas:nodeDeleted`, `canvas:connectionCreated` mais les événements réels n'ont pas le préfixe `canvas:`. | Listeners context-chat jamais déclenchés |
 | C004 | Basse | `degreeHistory` déclaré dans `createInitialBehaviorLogs()`, sérialisé/désérialisé, mais **jamais alimenté**. | Code mort à supprimer |
 | C005 | Basse | Champs `vignetteValidees`, `vignetteEnCours`, `vignetteRejetees`, `ratioValidation` jamais assignés dans MetricsManager. | Affichent "0✓ 0◌ 0✗" en permanence |
-
-**Impact cumulé C001+C002** : 80% du score attracteur fonctionne (degree + recentAttachments + selectionFrequency), 20% (llmInteractions) est toujours à 0.
 
 ### Workaround Electron actif
 
 | ID | Description |
 |---|---|
 | E002 | Sélection de texte saute au conteneur parent dans la webview. Mitigé via `webContents.insertCSS()` (non affecté par CSP). En cours de validation — dépend du DOM dynamique des providers LLM. |
-
-### Résumé scoring attracteurs — état réel
-
-| Composante (poids) | Source | Fonctionnel ? |
-|----|--------|---|
-| `degree` (30%) | Graphe direct | **OUI** |
-| `recentAttachments` (25%) | `connectionEvents` via `connectionCreated` | **OUI** |
-| `selectionFrequency` (25%) | `selections` via `nodeSelected` | **OUI** |
-| `llmInteractions` (20%) | `llmSends` + `captures` | **NON** (C001 + C002) |
 
 ---
 
@@ -57,7 +46,9 @@
 | F005 | Multi-canvas | Save/load/switch via modal "Mes graphes". IDs `canvas_{uuid}`, default `'default'`. |
 | F006 | Migration API | Opérations DÉVELOPPER/RELIER/SYNTHÉTISER via API directe + fallback webview. Multi-provider. |
 | F007 | ESLint + Prettier + Husky | Flat config `.mjs`, 0 erreurs, lint-staged pre-commit. |
-| F008 | Tests unitaires Vitest | 141 tests, 7 fichiers. Script : `npm run test:unit`. |
+| F008 | Tests unitaires Vitest | 218 tests, 8 fichiers. Script : `npm run test:unit`. |
+| F015 | Suppression attracteurs + Diagnostic structurel | Attracteurs (scoring, badges, qualification LLM) supprimés (~1000 lignes). Remplacés par `graph-diagnostic.ts` : diagnostic structurel (dominance, ponts, redondances, trous) affiché dans le popup de synthèse. |
+| F014 | Tests pipeline LLM → connexions | 69 tests (unit) + 6 tests (e2e). Couvre parsing, matching 5 niveaux, orchestration, validation, intégration bout-en-bout. |
 | F009 | Logging structuré | `createLogger(tag)` avec niveaux DEBUG/INFO/WARN/ERROR/SILENT. |
 | F010 | Documentation architecture | Consolidation docs en `doc projet/`. |
 | F012 | Thèmes visuels | 4 thèmes (Obsidian/Porcelain/Aurora/Kraft), CSS tokens `--theme-*`, anti-FOUC. |
