@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/base.css">
 
   <style>
     .about-hero {
@@ -144,10 +144,7 @@
         <a href="index.html#articles">Articles</a>
         <a href="index.html#kairos">KAIROS</a>
         <a href="about.html" class="active">À propos</a>
-<<<<<<< Updated upstream
-=======
         <a href="contact.html">Contact</a>
->>>>>>> Stashed changes
       </nav>
 
       <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
@@ -251,32 +248,7 @@
     </div>
   </footer>
 
-  <script>
-    // Theme persistence
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (prefersDark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const siteNav = document.getElementById('siteNav');
-
-    navToggle.addEventListener('click', () => {
-      siteNav.classList.toggle('open');
-    });
-  </script>
+  <script src="js/site.js"></script>
 
 </body>
 </html>

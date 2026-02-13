@@ -1,12 +1,276 @@
-# KAIROS - Prompts LLM v2
+# KAIROS — Métriques & Prompts LLM
 
-Refonte complète des prompts pour les trois opérations : DÉVELOPPER, RELIER, SYNTHÉTISER.
+Document unique : **comment le système décide quoi faire** et **ce qu'il envoie au LLM**.
 
-Architecture en trois couches :
+---
 
-- **Couche 1** — Grammaire de lecture (prompt système, commun)
-- **Couche 2** — Espace de génération (instruction par opération, deux régimes)
-- **Couche 3** — Format de sortie (fermé, parsable)
+## Le flux complet (de l'action utilisateur au prompt LLM)
+
+```
+ Action utilisateur (crée, connecte, supprime, sélectionne)
+         |
+         v
+ +-----------------------+
+ | MetricsManager        |  Recalcule les compteurs (debounce 100ms)
+ | calculateMetrics()    |  11 métriques : vignettes, connexions, isolées, densité...
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | CanvasAnalyzer        |  Analyse le canvas en profondeur
+ | diversityTrend()      |  --> converging / exploring / stable / insufficient_data
+ | detectCircularity()   |  --> score 0-N (6 signaux pondérés)
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | OxygenManager         |  Jauge de vitalité cognitive (5 signaux)
+ | evaluate() / record() |  --> score 0-100, frictionLevel, shouldInjectFriction
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | decideOperation()     |  Croise métriques + oxygen + diversité + circularité
+ |                       |  --> { operation, subMode, raison, priorité }
+ |                       |  Oxygen < 50 → force diverger (priorité 2)
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | Bandeau UI            |  Affiche la suggestion à l'utilisateur
+ | "DÉVELOPPER suggéré"  |  L'utilisateur peut accepter ou choisir manuellement
+ +-----------------------+
+         |
+         v  (utilisateur lance l'opération)
+ +-----------------------+
+ | buildAdaptivePrompt() |  Assemble le prompt en 5 couches
+ |                       |  --> texte envoyé au LLM
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | LLM (API ou webview)  |  Génère la réponse
+ +-----------------------+
+         |
+         v
+ +-----------------------+
+ | Parsers               |  Extrait [NOUVELLE VIGNETTE], [CONNEXION], [FRICTION]
+ | capture-parsers.ts    |  --> nœuds et connexions ajoutés au canvas
+ +-----------------------+
+```
+
+---
+
+## 1. Les Métriques (ce que le système mesure)
+
+### 11 compteurs de base
+
+```
+ totalVignettes
+ vignettesActives           (= totalVignettes, toutes actives)
+ vignettePrioritaires       status === 'priority'
+ vignetteNeutres            status === 'neutral'
+ vignetteConnectees         au moins 1 connexion (CLÉ DE DÉCISION)
+ vignetteIsolees            0 connexion
+ connexionsTotal
+ connexionsImplique         type → (implies)
+ connexionsResonance        type ↔ (resonance)
+ densiteConnexions          connexionsTotal / vignettesActives
+ ratioPriorite              prioritaires / total
+```
+
+### 3 indicateurs avancés
+
+```
+ diversityTrend ──── converging | exploring | stable | insufficient_data
+                     (indice de Shannon sur les tags, historique 5+ points)
+
+ circularityScore ── 0 à N (somme pondérée de 6 signaux)
+                     > 3 = friction modérée, > 4.5 = friction forte
+
+ oxygenScore ─────── 0 à 100 (jauge de vitalité cognitive)
+                     > 50 = respire, 30-50 = stagne, < 30 = asphyxie
+                     Score < 50 → force subMode 'diverger' dans MetricsManager
+```
+
+---
+
+## 2. L'Arbre de Décision (comment l'opération est choisie)
+
+### Mode global (aucune sélection)
+
+```
+                  Canvas < 3 vignettes ?
+                 /                       \
+               OUI                       NON
+                |                         |
+          DÉVELOPPER               Oxygen score < 50 ?
+          (haute)                  (et >= 5 vignettes)
+                                  /                   \
+                                OUI                   NON
+                                 |                     |
+                           DÉVELOPPER            Données diversité ?
+                           diverger             /                   \
+                           (O2 < 30 =       < 3 points           3+ points
+                            urgente,            |                     |
+                            sinon haute)  Fallback legacy         Quel trend ?
+                                         (voir ci-dessous)      /     |      \
+                                                        converging  exploring  stable
+                                                            |          |         |
+                                                       circ score?  >30% iso?  circ <= 1 ?
+                                                      /    |    \   /     \    /       \
+                                                   >seuil >1  <=1 OUI  NON  OUI      NON
+                                                     |     |    |   |    |    |         |
+                                                   DEVEL DEVEL DEVEL RELIER  null    DÉVELOPPER
+                                                   diverg diverg diverg moy "explore approfondir
+                                                   urgent haute  moy        naturel"
+```
+
+### Fallback legacy (quand diversité < 3 points)
+
+```
+ >= 25 connectées  -->  SYNTHÉTISER urgente
+ >= 15 connectées  -->  SYNTHÉTISER haute
+ > 30% isolées     -->  RELIER moyenne
+ densité < 0.5     -->  DÉVELOPPER moyenne
+ >= 8 connectées   -->  SYNTHÉTISER basse
+ cooldown actif    -->  DÉVELOPPER normale
+ défaut            -->  DÉVELOPPER normale
+```
+
+### Mode sélection (vignettes sélectionnées)
+
+```
+ 1-5 sélectionnées  -->  DÉVELOPPER (toujours)
+ 6-9 sélectionnées  -->  connectivité interne < 30% ?
+                         OUI --> RELIER
+                         NON --> DÉVELOPPER
+ 10+ sélectionnées  -->  SYNTHÉTISER (toujours)
+```
+
+---
+
+## 3. Les 5 Signaux Oxygen
+
+```
+ Signal              Delta     Déclencheur
+ ─────────────────── ───────── ─────────────────────────────────────────
+ newTags              +10/tag   Tags non vus dans les 3 derniers tours (cap +20/tour)
+ canvasRedundancy     -20       Jaccard all-pairs > 0.35 entre 2 vignettes
+ stagnation           -15/tour  Tours consécutifs sans nouveau tag
+ frictionBonus        +20       Utilisateur a accepté une [FRICTION] (cap +20/tour)
+ graphStructure       -25/-10   ratio conn/nodes < 1.0 ou > 3.0 (>= 8 nodes)
+                      +5        ratio 1.0-2.0 (sain), -10 par composante déconnectée
+
+ Score = 50 (défaut) + somme des deltas, clampé [0, 100]
+ - Score > 50 : respire (vert) → pas de friction
+ - Score 30-50 : stagne (orange) → friction modérée + diverger forcé
+ - Score < 30 : asphyxie (rouge) → friction radicale + diverger urgente
+```
+
+---
+
+## 4. Mécanismes de Stabilité
+
+### Cooldown synthèse
+
+```
+ Synthèse exécutée --> cooldown 60s --> SYNTHÉTISER plus suggéré
+                                       bandeau affiche "Synthèse disponible dans Xs"
+```
+
+### Choix manuel
+
+```
+ Utilisateur choisit une opération manuellement
+   → dernierChoixManuel mémorisé + compteur recalculs
+   → Expire après 2 recalculs OU si variation métriques > 10%
+```
+
+---
+
+## 5. Ce que l'Utilisateur Voit
+
+### Bandeau de suggestion
+
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │ 🌱 DÉVELOPPER (diverger) suggéré : Le canvas se referme —       │
+ │    explorer un territoire adjacent.                             │
+ └──────────────────────────────────────────────────────────────────┘
+
+ Emojis :  🌱 DÉVELOPPER   🔗 RELIER   📦 SYNTHÉTISER   ✦ (pas de suggestion)
+```
+
+### Jauge Oxygen (panneau flottant gauche)
+
+```
+ ┌─────┐
+ │  72 │  Score (0-100)
+ │ ░░░ │
+ │ ░░░ │  Barre verticale (vert/orange/rouge)
+ │ ███ │
+ │ ███ │
+ ├─────┤
+ │ Div │  Indice de diversité
+ │ Att │  Nb attracteurs
+ │ Op  │  Dernière opération
+ └─────┘
+  Ctrl+Shift+D pour masquer/afficher
+```
+
+### Résumé : quand chaque opération se déclenche
+
+```
+ Canvas quasi vide (< 3)           --> DÉVELOPPER approfondir
+ Oxygen stale (score < 50)         --> DÉVELOPPER diverger (haute / urgente si < 30)
+ Canvas convergent (diversité ↓)   --> DÉVELOPPER diverger
+ Beaucoup d'orphelins (> 30%)      --> RELIER
+ Canvas dense (densité > 0.8)      --> SYNTHÉTISER
+ Canvas mature (>= 15 connectées)  --> SYNTHÉTISER
+ Exploration naturelle             --> Pas de suggestion (null)
+ Défaut                            --> DÉVELOPPER approfondir
+```
+
+---
+
+## 6. L'Assemblage du Prompt (les 5 couches)
+
+```
+ ┌─────────────────────────────────────────────────┐
+ │  COUCHE 1 — Prompt système                      │
+ │  "Tu reçois un graphe de pensée non-linéaire.   │
+ │   Statuts : ○ neutre, 🎯 prioritaire..."         │
+ │  (commun à toutes les opérations)               │
+ └────────────────────────┬────────────────────────┘
+                          │
+ ┌────────────────────────v────────────────────────┐
+ │  COUCHE 0 — Cadrage structurel                  │
+ │  Anti-arborescence : oblige le LLM à produire   │
+ │  des boucles/remontées, pas juste des branches  │
+ └────────────────────────┬────────────────────────┘
+                          │
+ ┌────────────────────────v────────────────────────┐
+ │  COUCHE 2 — Contexte du graphe                  │
+ │  Synthèses réinjectées + vignettes triées       │
+ │  topologiquement + connexions                   │
+ └────────────────────────┬────────────────────────┘
+                          │
+ ┌────────────────────────v────────────────────────┐
+ │  COUCHE 3 — Instruction d'opération             │
+ │  8 templates selon opération × subMode × régime │
+ └────────────────────────┬────────────────────────┘
+                          │
+ ┌────────────────────────v────────────────────────┐
+ │  COUCHE 4 — Friction (optionnelle)              │
+ │  Injectée si oxygen score < 50                  │
+ │  Modérée (30-50) ou Forte (<30)                 │
+ └─────────────────────────────────────────────────┘
+```
+
+---
+
+# Les 8 Templates de Prompt
 
 ### Rôle des opérations
 

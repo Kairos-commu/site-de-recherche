@@ -44,7 +44,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/base.css" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -577,74 +577,6 @@
       </div>
     </footer>
 
-    <script>
-      // Mobile nav toggle
-      const navToggle = document.getElementById("navToggle");
-      const siteNav = document.getElementById("siteNav");
-
-      navToggle.addEventListener("click", () => {
-        siteNav.classList.toggle("open");
-      });
-
-      // Active nav on scroll
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll(".site-nav a");
-
-      window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100;
-          if (scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-          }
-        });
-      });
-
-      // Smooth scroll for nav links
-      navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (link.getAttribute("href").startsWith("#")) {
-            siteNav.classList.remove("open");
-          }
-        });
-      });
-
-      // Theme toggle
-      const themeToggle = document.getElementById("themeToggle");
-      const html = document.documentElement;
-
-      // Charger le thème depuis localStorage ou préférence système
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-
-      if (savedTheme) {
-        html.setAttribute("data-theme", savedTheme);
-      } else if (prefersDark) {
-        html.setAttribute("data-theme", "dark");
-      }
-
-      // Toggle au clic
-      themeToggle.addEventListener("click", () => {
-        const currentTheme = html.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-        if (newTheme === "light") {
-          html.removeAttribute("data-theme");
-        } else {
-          html.setAttribute("data-theme", "dark");
-        }
-
-        localStorage.setItem("theme", newTheme);
-      });
-    </script>
+    <script src="js/site.js"></script>
   </body>
 </html>
