@@ -15,6 +15,7 @@ site-de-recherche/
 ├── index.html                          # Page d'accueil (liste des articles)
 ├── about.html                          # Page À propos
 ├── contact.html                        # Page Contact
+├── 404.html                            # Page 404 GitHub Pages
 ├── presentation_kairos.html            # Présentation interactive KAIROS (standalone)
 │
 ├── mecanique-invisible.html            # Article : La mécanique invisible
@@ -40,6 +41,7 @@ site-de-recherche/
 │
 ├── Articles/                           # PDFs sources (gitignored)
 ├── favicon.svg
+├── og-image.jpg                        # Image OG partagée (deux silhouettes humain-IA)
 ├── feed.xml                            # Flux RSS
 ├── sitemap.xml                         # Sitemap SEO
 ├── robots.txt
@@ -50,7 +52,7 @@ site-de-recherche/
 
 | Page | CSS chargés |
 |------|------------|
-| `index.html`, `about.html`, `contact.html` | `css/base.css` |
+| `index.html`, `about.html`, `contact.html`, `404.html` | `css/base.css` |
 | 6 articles | `css/base.css` + `css/article.css` |
 | `presentation_kairos.html` | `css/kairos.css` uniquement (monde isolé) |
 
@@ -77,7 +79,7 @@ Variables centralisées dans `css/base.css` `:root` :
 - Persistance : `localStorage.theme` (`light` ou `dark`)
 - Détection automatique : `prefers-color-scheme: dark`
 - Attribut : `[data-theme="dark"]` sur `<html>`
-- Anti-FOUC : script inline en `<head>` de chaque page (lit localStorage avant le premier paint)
+- Anti-FOUC : script inline en `<head>` de chaque page (lit localStorage avant le premier paint) — présent sur les 10 pages (pas presentation_kairos qui est isolé)
 - `js/site.js` gère le toggle et la persistance côté runtime
 
 ## Docs Viewer (presentation_kairos.html)
@@ -101,28 +103,40 @@ Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie
 5. Ajouter la carte dans `index.html` section `#articles`
 6. Mettre à jour la nav prev/next des articles adjacents
 7. Ajouter dans `feed.xml` et `sitemap.xml`
+8. Ajouter le bloc `<script type="application/ld+json">` BlogPosting dans `<head>` (copier depuis un article existant, adapter les données)
 
 ## Conventions
 
 - **Pas de CSS inline** — tout dans css/base.css ou css/article.css
 - **Pas de JS inline** — tout dans js/site.js (sauf anti-FOUC et presentation_kairos)
-- **Meta tags obligatoires** : description, og:title, og:description, og:type, twitter:card
+- **Meta tags obligatoires** : description, og:title, og:description, og:type, twitter:card, og:image, twitter:image
+- **Anti-FOUC** : `<script>` inline dans `<head>` avant `<title>` (lit localStorage et applique data-theme)
 - **Favicon** : `<link rel="icon" type="image/svg+xml" href="favicon.svg">`
-- **Structure header/footer** : copiée identique dans chaque page (pas de templating)
+- **Footer site** : `Florent Klimacek — 2026` + liens Accueil, Articles, À propos, Contact, RSS (identique sur toutes les pages non-article)
+- **Footer article** : `Florent Klimacek — 2026` + lien retour accueil (identique sur tous les articles)
+- **Schema.org JSON-LD** : `<script type="application/ld+json">` avant `</head>` — BlogPosting (articles), WebSite (index), Person (about)
 
 ## Roadmap
 
 ### Court terme
-- [ ] Ajouter `<link rel="alternate" type="application/rss+xml">` dans les 8 pages qui n'ont pas le lien RSS (seules index + about l'ont)
-- [ ] Créer une page 404.html pour GitHub Pages
-- [ ] Nettoyer le CSS mort (anciennes classes `.captures-*` dans article.css)
+- [x] Ajouter `<link rel="alternate" type="application/rss+xml">` dans toutes les pages (fait — 9 pages ajoutées)
+- [x] Créer une page 404.html pour GitHub Pages (fait)
+- [x] Nettoyer le CSS mort (anciennes classes `.captures-*` dans article.css) — déjà absent, rien à supprimer
 
 ### Moyen terme
-- [ ] Ajouter un og:image pour chaque page (screenshot ou illustration)
+- [x] Ajouter un og:image pour chaque page (fait — `og-image.jpg` à la racine, référencé dans les 11 pages + JSON-LD)
 - [ ] Considérer un SSG (11ty, Hugo) si le site dépasse 15 pages (header/footer dupliqués dans 10 fichiers)
-- [ ] Ajouter des dates de publication visibles sur les cartes articles (index.html)
+- [x] Ajouter des dates de publication visibles sur les cartes articles (index.html) — déjà présentes via `.card__date`
+
+### Cohérence & qualité (fait)
+- [x] Anti-FOUC script ajouté sur 10 pages (lit localStorage avant le premier paint)
+- [x] Footers standardisés sur toutes les pages (format, liens, copyright)
+- [x] Inline CSS migré de index.html vers base.css (`.section__actions`, `.about-intro`, `.card--dark .card__icon`, etc.)
+- [x] Titres alignés (og:title, JSON-LD headline, `<title>`) pour mecanique-invisible et questiologie-llm
+- [x] JetBrains Mono ajouté à mecanique-invisible.html (manquait par rapport aux autres articles)
+- [x] Lien mort "Accéder à l'application" corrigé (pointait vers `#`, redirige maintenant vers presentation_kairos)
 
 ### Améliorations possibles
 - [ ] Lazy-loading des images (peu urgent — pas beaucoup d'images)
 - [ ] Sitemap automatique (actuellement maintenu à la main)
-- [ ] Schema.org / JSON-LD pour les articles (meilleur SEO)
+- [x] Schema.org / JSON-LD pour les articles (fait — BlogPosting sur 6 articles, WebSite sur index, Person sur about)

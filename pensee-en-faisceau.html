@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Anti-FOUC -->
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()</script>
   <title>La Pensée en Faisceau — Florent Klimacek</title>
   <meta name="description" content="Convergence entre cognition humaine et intelligence artificielle — comment certains modes de pensée atypiques trouvent un écho naturel dans les architectures LLM.">
 
@@ -13,7 +15,9 @@
   <meta property="og:url" content="https://kairos-commu.github.io/site-de-recherche/pensee-en-faisceau.html">
   <meta property="og:site_name" content="Florent Klimacek">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +25,36 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/article.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "La Pensée en Faisceau",
+    "description": "Convergence entre cognition humaine et intelligence artificielle — comment certains modes de pensée atypiques trouvent un écho naturel dans les architectures LLM.",
+    "datePublished": "2026-01-15",
+    "dateModified": "2026-01-15",
+    "inLanguage": "fr",
+    "url": "https://kairos-commu.github.io/site-de-recherche/pensee-en-faisceau.html",
+    "author": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://kairos-commu.github.io/site-de-recherche/about.html"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://kairos-commu.github.io/site-de-recherche/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://kairos-commu.github.io/site-de-recherche/pensee-en-faisceau.html"
+    },
+    "image": "https://kairos-commu.github.io/site-de-recherche/og-image.jpg"
+  }
+  </script>
 </head>
 <body>
 

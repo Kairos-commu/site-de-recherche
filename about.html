@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Anti-FOUC -->
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()</script>
   <title>À propos — Florent Klimacek</title>
   <meta name="description" content="Chercheur indépendant explorant les interactions humain-IA, fondateur du projet KAIROS.">
 
@@ -13,10 +15,13 @@
   <meta property="og:url" content="https://kairos-commu.github.io/site-de-recherche/about.html">
   <meta property="og:site_name" content="Florent Klimacek">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,6 +128,28 @@
       color: var(--accent);
     }
   </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Florent Klimacek",
+    "jobTitle": "Chercheur indépendant",
+    "url": "https://kairos-commu.github.io/site-de-recherche/about.html",
+    "email": "florent@klimacek.fr",
+    "sameAs": [
+      "https://github.com/Kairos-commu"
+    ],
+    "knowsAbout": [
+      "Interactions humain-IA",
+      "Résonance conversationnelle",
+      "Pensée en faisceau",
+      "Intelligence artificielle"
+    ],
+    "image": "https://kairos-commu.github.io/site-de-recherche/og-image.jpg"
+  }
+  </script>
 </head>
 <body>
 
@@ -161,14 +188,19 @@
   <main>
     <!-- Hero -->
     <section class="about-hero">
-      <div class="container">
-        <p class="hero__label">À propos</p>
-        <h1 class="hero__title">
-          Florent <span>Klimacek</span>
-        </h1>
-        <p class="hero__subtitle">
-          Chercheur indépendant · Fondateur du projet KAIROS
-        </p>
+      <div class="container hero__grid">
+        <div>
+          <p class="hero__label">À propos</p>
+          <h1 class="hero__title">
+            Florent <span>Klimacek</span>
+          </h1>
+          <p class="hero__subtitle">
+            Chercheur indépendant · Fondateur du projet KAIROS
+          </p>
+        </div>
+        <div class="hero__visual">
+          <img src="og-image.jpg" alt="Interaction humain-IA — deux silhouettes connectées par des données" class="hero__image">
+        </div>
       </div>
     </section>
 

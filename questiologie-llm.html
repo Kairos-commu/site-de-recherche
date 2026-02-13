@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Anti-FOUC -->
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()</script>
   <title>Influence des postures questiologiques sur les LLM — Florent Klimacek</title>
   <meta name="description" content="Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT — six types de questions analysés.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Questiologie et LLM">
-  <meta property="og:description" content="Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT.">
+  <meta property="og:description" content="Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT — six types de questions analysés.">
   <meta property="og:url" content="https://kairos-commu.github.io/site-de-recherche/questiologie-llm.html">
   <meta property="og:site_name" content="Florent Klimacek">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +25,36 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/article.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Influence des postures questiologiques sur les LLM",
+    "description": "Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT — six types de questions analysés.",
+    "datePublished": "2026-01-20",
+    "dateModified": "2026-01-20",
+    "inLanguage": "fr",
+    "url": "https://kairos-commu.github.io/site-de-recherche/questiologie-llm.html",
+    "author": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://kairos-commu.github.io/site-de-recherche/about.html"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://kairos-commu.github.io/site-de-recherche/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://kairos-commu.github.io/site-de-recherche/questiologie-llm.html"
+    },
+    "image": "https://kairos-commu.github.io/site-de-recherche/og-image.jpg"
+  }
+  </script>
 </head>
 <body>
 
@@ -29,7 +63,7 @@
     <a href="index.html" class="site-header-article__back">
       ← Retour à l'accueil
     </a>
-    <span class="site-header-article__title">Questiologie & LLM</span>
+    <span class="site-header-article__title">Questiologie et LLM</span>
     <button class="theme-toggle-article" id="themeToggle" aria-label="Changer de thème">
       <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
@@ -287,7 +321,7 @@
 
       <!-- Footer -->
       <footer>
-        <p>Florent Klimacek — Janvier 2026</p>
+        <p>Florent Klimacek — 2026</p>
         <p><a href="index.html">← Retour à l'accueil</a></p>
       </footer>
 

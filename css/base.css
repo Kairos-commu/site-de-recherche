@@ -297,6 +297,40 @@ a:hover {
   margin-top: var(--space-3xl);
 }
 
+/* Hero two-column layout */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__visual {
+    order: -1;
+  }
+
+  .hero__image {
+    max-width: 280px;
+  }
+}
+
 /* ============================================
    COMPONENTS — Cards
    ============================================ */
@@ -424,6 +458,15 @@ a:hover {
   color: var(--text-light);
 }
 
+.card--dark .card__icon {
+  background: rgba(245, 158, 11, 0.15);
+}
+
+.card--featured .card__title {
+  margin-top: var(--space-md);
+  font-size: 1.75rem;
+}
+
 /* ============================================
    COMPONENTS — Sections
    ============================================ */
@@ -464,6 +507,14 @@ a:hover {
 
 .section--dark .section__title {
   color: var(--text-inverse);
+}
+
+.section--dark .section__label {
+  color: var(--accent-light);
+}
+
+.section--dark .section__subtitle {
+  color: var(--text-light);
 }
 
 .section__subtitle {
@@ -514,6 +565,54 @@ a:hover {
   background: transparent;
   color: var(--accent);
   padding: var(--space-sm) 0;
+}
+
+.btn__badge {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-left: var(--space-sm);
+}
+
+.section__actions {
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+.section__actions .btn + .btn {
+  margin-left: var(--space-md);
+}
+
+.section--dark .btn--secondary {
+  border-color: var(--border-dark);
+  color: var(--text-light);
+}
+
+/* ============================================
+   COMPONENTS — About intro (index.html)
+   ============================================ */
+
+.about-intro {
+  text-align: center;
+}
+
+.about-intro__bio {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.about-intro__tags {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+}
+
+.about-intro__location {
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 /* ============================================
