@@ -62,13 +62,13 @@
 | F013 | Layout arbre hiérarchique | Bouton "Arbre" : réorganisation top-down via connexions `implies`. Algorithme Sugiyama (BFS layering, barycentre, centrage). Animation CSS 0.5s + RAF SVG. `fitViewportToNodes()` recadre après layout. Guard `newlyImported` en assisté. Composantes déconnectées côte à côte, isolés en bas. 23 tests unitaires. |
 | F024 | Smart import LLM | Les vignettes importées par DÉVELOPPER sont positionnées près de leur cible de connexion (au lieu de la grille au bas du viewport). Fallback `getVisibleBottomPosition()` si pas de cible. |
 | F025 | Relocalisation post-synthèse | Après archivage, les vignettes synthétisées glissent en colonne à droite de la zone active (animation 400ms). Garder la zone de travail dégagée. |
+| F023 | Version bêta web (iframe) | Version allégée de KAIROS pour intégration iframe dans un site de recherche. Core partagé (canvas, LLM API, Oxygen, métriques, undo/redo) + shim `window.fgraph` (DB no-op, LLM fetch direct, clés API en mémoire). 2 thèmes (Obsidian/Porcelain), 2 opérations (DÉVELOPPER/RELIER), API iframe postMessage. 6 fichiers créés : `web.html`, `web-app.ts`, `fgraph-shim.ts`, `api-key-ui.ts`, `iframe-api.ts`, `vite.web.config.js`. Build : `npm run dev:web` / `npm run build:web`. |
 
 ### Features planifiées
 
 | ID | Priorité | Description | Estimation |
 |---|---|---|---|
 | F021 | Haute | Onglets multi-canvas (barre d'onglets, Ctrl+T/W, drag entre canvas) | 8-10h |
-| F023 | Haute | Version bêta web — app tronquée pour site de recherche | 15-20h |
 | F001 | Moyenne | Curseur de friction (contrôle utilisateur du niveau) | Après stabilisation Oxygen |
 | F002 | Moyenne | Export PDF/SVG avancé (multi-pages, vectoriel, zone au choix) | 3-4h |
 | F003 | Moyenne | Pôles conteneurs (groupement, réduction/extension, drag groupé) | 6-8h |
@@ -89,17 +89,21 @@
 
 **Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `canvas.css` (styles tab bar).
 
-#### F023 — Version bêta web
+#### F023 — Version bêta web ✓
 
-Version tronquée de KAIROS pour intégration dans le site de recherche. Pas Electron, full web.
+**Implémentée.** Version allégée de KAIROS pour intégration iframe dans un site de recherche. Full web, pas Electron.
 
-**Garder** : Canvas engine (vignettes, connexions, pan/zoom, drag, sélection), mode assisté uniquement, 3 opérations LLM (API-only), pipeline prompt complet (5 couches, cadrage structurel, régimes A/B), Oxygen + friction, métriques + bandeau suggestion, synthèses (création + affichage), ancre structurelle (F016), undo/redo, 2 thèmes (Obsidian + Porcelain), validateur d'intégrité (F017).
+**Architecture** : Core partagé (même code TS que l'app Electron) + shim `window.fgraph` (DB no-op, LLM fetch direct multi-provider, clés API en mémoire session). Polyfill `CircularityDetector` pour compatibilité modules existants.
 
-**Couper** : Mode autonome (sas d'intention, équation de l'Entre), webview LLM (capture, providers DOM), multi-canvas, minimap, PromptLogManager (onglet Prompts), panneau O₂ détaillé (garder score, couper ponts/dominance), synthèse hiérarchique, filtres avancés, export/import JSON, recherche canvas.
+**Inclus** : Canvas engine complet, mode assisté, 2 opérations LLM (DÉVELOPPER + RELIER), pipeline prompt 5 couches, Oxygen + friction, métriques + bandeau, ancre structurelle, undo/redo, 2 thèmes (Obsidian + Porcelain), validateur d'intégrité.
 
-**Adapter** : SQLite → localStorage/IndexedDB. electron-store → clé API en session (jamais persistée) ou proxy backend rate-limited. 4 entry points HTML → 1 seul. `window.fgraph` → appels directs.
+**Coupé** : Mode autonome, webview LLM, synthèses, multi-canvas, minimap, PromptLogManager, panneau O₂ détaillé, filtres avancés, export/import JSON, recherche, audio.
 
-**Estimation volume** : ~20-25 fichiers TS, ~8 000-10 000 lignes (vs ~50 fichiers / ~24 000 lignes).
+**Fichiers créés** : `web.html`, `web-app.ts`, `web/fgraph-shim.ts`, `web/api-key-ui.ts`, `web/iframe-api.ts`, `styles/web.css`, `vite.web.config.js`.
+
+**Sécurité** : Clés API en mémoire uniquement, proxy URL whitelisted, origins iframe filtrées, erreurs sanitizées, jamais de persistence credentials.
+
+**Build** : `npm run dev:web` / `npm run build:web` (Vite, output `dist/web/`, ~197KB JS).
 
 ### Roadmap future
 
