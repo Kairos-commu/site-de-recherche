@@ -58,38 +58,36 @@
 | F018 | Fix clearGraph | Bouton "Effacer" : await sur les opérations async, refresh UI (métriques + bandeau suggestion), try/catch global. |
 | F019 | Panneau diagnostic O₂ | Onglet sidebar "O₂" : score avec couleur par niveau, barres de signaux center-origin (structure/écho/tags/friction), sparkline historique CSS (20 tours), diagnostic structurel en français (ponts/dominance/gaps/redondances via `graph-diagnostic.ts`), suggestion courante. Fichier : `assisted/app/oxygen-panel.ts`. |
 | F020 | Fix posture refresh | `applyPosture()` ne déclenchait aucun refresh visuel après changement de posture. Ajout `oxygen.evaluate()` + `metrics.recalculateDebounced()` → bandeau et debug strip mis à jour immédiatement. |
+| F022 | Refonte UX suggestions | Bandeau informatif (plus prescriptif), menu 3 opérations principal (DÉVELOPPER/RELIER/SYNTHÉTISER), SYNTHÉTISER retiré des suggestions (badge subtil conditionné par O₂ > 60 + ≥8 connectées), sélection = contexte libre, cap targetCount supprimé, cooldown supprimé. 10 fichiers modifiés. |
 
 ### Features planifiées
 
 | ID | Priorité | Description | Estimation |
 |---|---|---|---|
+| F021 | Haute | Onglets multi-canvas (barre d'onglets, Ctrl+T/W, drag entre canvas) | 8-10h |
+| F023 | Haute | Version bêta web — app tronquée pour site de recherche | 15-20h |
 | F001 | Moyenne | Curseur de friction (contrôle utilisateur du niveau) | Après stabilisation Oxygen |
 | F002 | Moyenne | Export PDF/SVG avancé (multi-pages, vectoriel, zone au choix) | 3-4h |
 | F003 | Moyenne | Pôles conteneurs (groupement, réduction/extension, drag groupé) | 6-8h |
+| F013 | Moyenne | Layout arbre hiérarchique (réorganisation top-down via `implies`) | 3-4h |
 | F004 | Basse | Auto-layout force-directed (type D3.js, animation fluide) | 4-5h |
 | F011 | Basse | Documentation intégrée (5ème entry point HTML, rendu markdown, recherche) | 6-8h |
-| F013 | Moyenne | Layout arbre hiérarchique (détails ci-dessous) | 3-4h |
-| F021 | Haute | Onglets multi-canvas (barre d'onglets, Ctrl+T/W, drag entre canvas) | 8-10h |
-| F022 | Haute | Refonte UX suggestions — bandeau informatif, menu 3 opérations principal, synthèse hors suggestions (détails ci-dessous) | 4-6h |
-| F023 | Haute | Version bêta web — app tronquée pour site de recherche (détails ci-dessous) | 15-20h |
 
-### F022 — Refonte UX suggestions (spec)
+---
 
-4 changements liés, à traiter ensemble :
+### Specs détaillées — Features planifiées
 
-**1. Suppression du cap de vignettes** : `targetCount` ne plafonne plus artificiellement. L'échantillonnage 15 vignettes pour le contexte LLM reste (contrainte tokens), mais ce n'est plus un cap UX.
-Fichiers : `prompt-templates.ts`, `llm.ts` (échantillonnage), `syntheses/creation.ts`
+#### F021 — Onglets multi-canvas
 
-**2. SYNTHÉTISER sort du bandeau** : `decideOperation()` ne retourne plus jamais SYNTHÉTISER. La synthèse devient une action consciente de l'utilisateur. Quand les conditions sont remplies (densité élevée, connectées nombreuses), un indicateur subtil apparaît (badge sur le bouton SYNTHÉTISER ou icône canvas). Jamais poussé, jamais intrusif.
-Fichiers : `metrics.ts` (decideOperation), `adaptive.ts` (bandeau)
+Évolution de F005 (modal "Mes graphes") vers une navigation par onglets. Prévu après stabilisation Oxygen + tests.
 
-**3. Simplification sélection** : La sélection fournit le contexte (régime B), pas l'opération. Plus d'arbre de décision 1-5/6-9/10+ qui impose une opération. L'utilisateur choisit librement via le menu.
-Fichiers : `metrics.ts` (decideOperationForSelection), `adaptive.ts`
+**Comportement** : Barre d'onglets en haut du canvas. Ctrl+T = nouveau canvas. Ctrl+W = fermer l'onglet courant. Drag & drop de vignettes entre canvas (onglets).
 
-**4. Menu 3 opérations = point d'entrée principal** : Le menu DÉVELOPPER/RELIER/SYNTHÉTISER (actuellement secondaire, override du bandeau) devient le point d'entrée principal. Le bandeau passe de prescriptif ("Accepter") à informatif ("Le canvas converge — penser à diversifier").
-Fichiers : `assisted.html`, `adaptive.ts`, `assisted.css`
+**Prérequis** : Infrastructure SQLite déjà prête (table `canvases`). F005 (multi-canvas modal) déjà implémenté.
 
-### F023 — Version bêta web (spec)
+**Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `canvas.css` (styles tab bar).
+
+#### F023 — Version bêta web
 
 Version tronquée de KAIROS pour intégration dans le site de recherche. Pas Electron, full web.
 
@@ -101,17 +99,7 @@ Version tronquée de KAIROS pour intégration dans le site de recherche. Pas Ele
 
 **Estimation volume** : ~20-25 fichiers TS, ~8 000-10 000 lignes (vs ~50 fichiers / ~24 000 lignes).
 
-### F021 — Onglets multi-canvas (spec)
-
-Évolution de F005 (modal "Mes graphes") vers une navigation par onglets. Prévu après stabilisation Oxygen + tests.
-
-**Comportement** : Barre d'onglets en haut du canvas. Ctrl+T = nouveau canvas. Ctrl+W = fermer l'onglet courant. Drag & drop de vignettes entre canvas (onglets).
-
-**Prérequis** : Infrastructure SQLite déjà prête (table `canvases`). F005 (multi-canvas modal) déjà implémenté.
-
-**Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `canvas.css` (styles tab bar).
-
-### F013 — Layout arbre hiérarchique (spec)
+#### F013 — Layout arbre hiérarchique
 
 Bouton "Arbre" qui réorganise les vignettes en arbre top-down via connexions `implies`.
 

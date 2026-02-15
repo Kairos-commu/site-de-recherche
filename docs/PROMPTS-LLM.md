@@ -279,7 +279,7 @@ Document unique : **comment le système décide quoi faire** et **ce qu'il envoi
 | DÉVELOPPER (approfondir) | `[NOUVELLE VIGNETTE]` + `[CONNEXION]` | Générer des idées ET les relier au graphe |
 | DÉVELOPPER (diverger) | `[NOUVELLE VIGNETTE]` + `[CONNEXION]` | Ouvrir des territoires adjacents (canvas convergent) |
 | RELIER | `[CONNEXION]` uniquement | Connecter les nœuds isolés/orphelins — maintenance structurelle |
-| SYNTHÉTISER | 3 blocs structurés (FIL ROUGE / ANGLES MORTS / QUESTION) | Produire une lecture structurée du graphe |
+| SYNTHÉTISER | Texte structuré (intro / développement / ouverture) | Restituer le contenu du graphe en prose continue |
 
 ---
 
@@ -658,7 +658,7 @@ Exemples :
 
 ## 3. SYNTHÉTISER
 
-SYNTHÉTISER produit une lecture structurée en **3 blocs obligatoires** : FIL ROUGE, ANGLES MORTS, QUESTION. Ce format remplace l'ancien format prose libre (4 blocs LECTURE/TENSIONS/ANGLES MORTS/QUESTION). TENSIONS a été supprimé car les frictions sont désormais visibles directement sur le canvas.
+SYNTHÉTISER produit un **texte structuré en prose continue** (introduction, développement, ouverture) qui restitue le contenu du graphe. Le texte ne contient pas de titres de section visibles — il se lit comme un texte classique. L'ouverture finale signale ce que le graphe n'a pas encore exploré, permettant de continuer après archivage.
 
 ### Régime A — Graphe entier (aucune sélection)
 
@@ -685,93 +685,59 @@ CONNEXIONS :
 
 Tu reçois un graphe cognitif (vignettes + connexions + tags).
 
-Produis EXACTEMENT 3 blocs. Rien d'autre. Pas d'introduction, pas de conclusion.
+Rédige un texte structuré qui restitue le contenu de ce graphe.
 
-FIL ROUGE
-Raconte le graphe comme si tu l'expliquais à quelqu'un qui ne le voit pas.
-- Narration linéaire des idées principales, en ordre logique (pas l'ordre de création).
-- 3 à 5 phrases en prose, pas de liste à puces.
-- Ne décris pas la structure ("ce graphe dessine..."), raconte le contenu.
-- Nomme les nœuds ou tags concernés quand c'est utile.
+INTRODUCTION
+- Pose le contexte : quel territoire ce graphe explore-t-il ?
+- Si une ancre (🎯) existe, pars d'elle.
+- 2-3 phrases.
 
-ANGLES MORTS
-- Présupposés non questionnés.
-- Zones sous-explorées, absences notables.
-- Liens manquants entre des nœuds qui devraient se parler.
+DÉVELOPPEMENT
+- Déploie les idées en suivant les connexions comme fil conducteur.
+- → (implication) : une idée conduit à une autre.
+- ↔ (résonance) : deux idées se répondent.
+- Nomme les vignettes et tags quand c'est utile, sans les lister mécaniquement.
+- Fais apparaître les tensions, les complémentarités, les zones denses.
+- N'ajoute pas de concepts absents du graphe. Le texte restitue, il n'interprète pas.
+- Adapte la longueur au graphe.
 
-QUESTION
-- Une seule question. Celle que le graphe pose sans la formuler.
-- Pas une question de synthèse ou de compromis.
-- Test : si on l'ajoutait comme vignette, elle forcerait à redessiner des connexions.
-- Pas rhétorique, pas consensuelle.
+OUVERTURE
+- Termine par ce que le graphe n'a pas encore exploré : présupposés non questionnés,
+  zones absentes, directions possibles.
+- Formule-le comme une invitation à poursuivre, pas comme un diagnostic.
 
-Format strict :
-FIL ROUGE
-(prose)
-
-ANGLES MORTS
-- ...
-
-QUESTION
-- ...
+Écris en prose continue. Pas de listes à puces, pas de titres de section visibles.
+Pas de préambule ("Voici la synthèse..."), commence directement.
 ```
 
 ### Régime B — Branche sélectionnée
 
 ```
 [SYNTHÈSES RÉINJECTÉES — optionnel]
-Explorations passées :
-Synthèse "Titre" (N vignettes, JJ/MM/AAAA) :
-Contenu...
----
+...
 
 SÉLECTION (focus) :
 1. [Texte] ✓ | #tag1
 2. [Texte] ✓ | #tag2
-3. [Texte] ✓ | #tag1 #tag3
 
 CONNEXIONS INTERNES :
 - "Nœud 1" → "Nœud 2" [mécanisme]
-- "Nœud 2" → "Nœud 3" [mécanisme]
 
 VOISINAGE (hors sélection mais connecté) :
-4. [Texte] ○ | #tag2
+3. [Texte] ○ | #tag2
    ↔ "Nœud 1" [mécanisme]
 
 ---
 
-Tu reçois une branche d'un graphe cognitif (vignettes sélectionnées + connexions + tags).
+Tu reçois une branche d'un graphe cognitif (vignettes sélectionnées + voisinage + connexions).
 
-Produis EXACTEMENT 3 blocs. Rien d'autre. Pas d'introduction, pas de conclusion.
+Rédige un texte structuré qui restitue le contenu de cette branche.
 
-FIL ROUGE
-Raconte cette branche comme si tu l'expliquais à quelqu'un qui ne la voit pas.
-- Narration linéaire des idées principales, en ordre logique (pas l'ordre de création).
-- 3 à 5 phrases en prose, pas de liste à puces.
-- Ne décris pas la structure ("cette branche dessine..."), raconte le contenu.
-- Nomme les nœuds ou tags concernés quand c'est utile.
+INTRODUCTION — quel sous-territoire cette sélection dessine-t-elle ?
+DÉVELOPPEMENT — suis les connexions, intègre le voisinage si pertinent.
+OUVERTURE — ce que la branche présuppose sans le dire.
 
-ANGLES MORTS
-- Présupposés non questionnés par cette branche.
-- Zones sous-explorées, absences notables.
-- Liens manquants entre des nœuds qui devraient se parler.
-- Le voisinage signale-t-il un angle mort ?
-
-QUESTION
-- Une seule question. Celle que la branche pose sans la formuler.
-- Pas une question de synthèse ou de compromis.
-- Test : si on l'ajoutait comme vignette, elle forcerait à redessiner des connexions.
-- Pas rhétorique, pas consensuelle.
-
-Format strict :
-FIL ROUGE
-(prose)
-
-ANGLES MORTS
-- ...
-
-QUESTION
-- ...
+Prose continue, pas de titres visibles, pas de préambule.
 ```
 
 ---
@@ -779,8 +745,7 @@ QUESTION
 ## Injection de Friction (DÉVELOPPER et RELIER)
 
 La friction fonctionne en 3 niveaux, pilotés par la surveillance de circularité.
-SYNTHÉTISER n'a pas de friction injectée — ses questions d'observation
-remplissent ce rôle structurellement.
+SYNTHÉTISER n'a pas de friction injectée.
 
 ### Signaux de circularité (6 signaux)
 
