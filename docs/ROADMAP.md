@@ -47,7 +47,7 @@
 | F005 | Multi-canvas | Save/load/switch via modal "Mes graphes". IDs `canvas_{uuid}`, default `'default'`. |
 | F006 | Migration API | Opérations DÉVELOPPER/RELIER/SYNTHÉTISER via API directe + fallback webview. Multi-provider. |
 | F007 | ESLint + Prettier + Husky | Flat config `.mjs`, 0 erreurs, lint-staged pre-commit. |
-| F008 | Tests unitaires Vitest | 269 tests, 10 fichiers. Script : `npm run test:unit`. |
+| F008 | Tests unitaires Vitest | 296 tests, 11 fichiers. Script : `npm run test:unit`. |
 | F015 | Suppression attracteurs + Diagnostic structurel | Attracteurs (scoring, badges, qualification LLM) supprimés (~1000 lignes). Remplacés par `graph-diagnostic.ts` : diagnostic structurel (dominance, ponts, redondances, trous) affiché dans le popup de synthèse. |
 | F014 | Tests pipeline LLM → connexions | 69 tests (unit) + 6 tests (e2e). Couvre parsing, matching 5 niveaux, orchestration, validation, intégration bout-en-bout. |
 | F009 | Logging structuré | `createLogger(tag)` avec niveaux DEBUG/INFO/WARN/ERROR/SILENT. |
@@ -59,6 +59,9 @@
 | F019 | Panneau diagnostic O₂ | Onglet sidebar "O₂" : score avec couleur par niveau, barres de signaux center-origin (structure/écho/tags/friction), sparkline historique CSS (20 tours), diagnostic structurel en français (ponts/dominance/gaps/redondances via `graph-diagnostic.ts`), suggestion courante. Fichier : `assisted/app/oxygen-panel.ts`. |
 | F020 | Fix posture refresh | `applyPosture()` ne déclenchait aucun refresh visuel après changement de posture. Ajout `oxygen.evaluate()` + `metrics.recalculateDebounced()` → bandeau et debug strip mis à jour immédiatement. |
 | F022 | Refonte UX suggestions | Bandeau informatif (plus prescriptif), menu 3 opérations principal (DÉVELOPPER/RELIER/SYNTHÉTISER), SYNTHÉTISER retiré des suggestions (badge subtil conditionné par O₂ > 60 + ≥8 connectées), sélection = contexte libre, cap targetCount supprimé, cooldown supprimé. 10 fichiers modifiés. |
+| F013 | Layout arbre hiérarchique | Bouton "Arbre" : réorganisation top-down via connexions `implies`. Algorithme Sugiyama (BFS layering, barycentre, centrage). Animation CSS 0.5s + RAF SVG. `fitViewportToNodes()` recadre après layout. Guard `newlyImported` en assisté. Composantes déconnectées côte à côte, isolés en bas. 23 tests unitaires. |
+| F024 | Smart import LLM | Les vignettes importées par DÉVELOPPER sont positionnées près de leur cible de connexion (au lieu de la grille au bas du viewport). Fallback `getVisibleBottomPosition()` si pas de cible. |
+| F025 | Relocalisation post-synthèse | Après archivage, les vignettes synthétisées glissent en colonne à droite de la zone active (animation 400ms). Garder la zone de travail dégagée. |
 
 ### Features planifiées
 
@@ -69,7 +72,6 @@
 | F001 | Moyenne | Curseur de friction (contrôle utilisateur du niveau) | Après stabilisation Oxygen |
 | F002 | Moyenne | Export PDF/SVG avancé (multi-pages, vectoriel, zone au choix) | 3-4h |
 | F003 | Moyenne | Pôles conteneurs (groupement, réduction/extension, drag groupé) | 6-8h |
-| F013 | Moyenne | Layout arbre hiérarchique (réorganisation top-down via `implies`) | 3-4h |
 | F004 | Basse | Auto-layout force-directed (type D3.js, animation fluide) | 4-5h |
 | F011 | Basse | Documentation intégrée (5ème entry point HTML, rendu markdown, recherche) | 6-8h |
 
@@ -98,16 +100,6 @@ Version tronquée de KAIROS pour intégration dans le site de recherche. Pas Ele
 **Adapter** : SQLite → localStorage/IndexedDB. electron-store → clé API en session (jamais persistée) ou proxy backend rate-limited. 4 entry points HTML → 1 seul. `window.fgraph` → appels directs.
 
 **Estimation volume** : ~20-25 fichiers TS, ~8 000-10 000 lignes (vs ~50 fichiers / ~24 000 lignes).
-
-#### F013 — Layout arbre hiérarchique
-
-Bouton "Arbre" qui réorganise les vignettes en arbre top-down via connexions `implies`.
-
-**Algorithme** : Graphe dirigé `implies` → racines = nœuds sans parent → BFS profondeur → barycentre par couche → positionnement (`LAYER_GAP=200px`, `NODE_GAP=350px`). `resonance` ignorées pour la hiérarchie. Composantes déconnectées côte à côte.
-
-**Fichiers** : `canvas/tree-layout.ts` (nouveau), `canvas.ts` (wrapper), `assisted.html` + `index.html` (boutons), `toolbar.ts` (setup), `canvas.css` (style disabled).
-
-**Comportement** : Disabled tant qu'une vignette a `newlyImported === true` (assisté). Toujours actif en autonome. CSS transition 0.5s + RAF pour connexions SVG. `history.saveState()` avant → Ctrl+Z revient.
 
 ### Roadmap future
 
