@@ -869,105 +869,27 @@
             claire et prévisible pour le modèle.
           </p>
 
-          <div class="card" style="margin: 2rem 0">
-            <div style="display: grid; gap: 1.5rem">
-              <div style="display: flex; gap: 1rem; align-items: flex-start">
-                <span
-                  style="
-                    background: var(--bg-concept);
-                    color: var(--accent-dark);
-                    padding: 0.25rem 0.75rem;
-                    border-radius: 4px;
-                    font-size: 0.8rem;
-                    font-weight: 500;
-                  "
-                  >1</span
-                >
+          <div class="card">
+            <div class="steps-grid">
+              <div class="steps-grid__item">
+                <span class="steps-grid__badge">1</span>
                 <div>
-                  <h4
-                    style="
-                      margin: 0 0 0.25rem;
-                      font-size: 1rem;
-                      color: var(--text-primary);
-                    "
-                  >
-                    L'intention
-                  </h4>
-                  <p
-                    style="
-                      margin: 0;
-                      color: var(--text-muted);
-                      font-size: 0.95rem;
-                    "
-                  >
-                    Ce que l'utilisateur veut réellement obtenir
-                  </p>
+                  <h4>L'intention</h4>
+                  <p>Ce que l'utilisateur veut réellement obtenir</p>
                 </div>
               </div>
-              <div style="display: flex; gap: 1rem; align-items: flex-start">
-                <span
-                  style="
-                    background: var(--bg-concept);
-                    color: var(--accent-dark);
-                    padding: 0.25rem 0.75rem;
-                    border-radius: 4px;
-                    font-size: 0.8rem;
-                    font-weight: 500;
-                  "
-                  >2</span
-                >
+              <div class="steps-grid__item">
+                <span class="steps-grid__badge">2</span>
                 <div>
-                  <h4
-                    style="
-                      margin: 0 0 0.25rem;
-                      font-size: 1rem;
-                      color: var(--text-primary);
-                    "
-                  >
-                    Le contexte essentiel
-                  </h4>
-                  <p
-                    style="
-                      margin: 0;
-                      color: var(--text-muted);
-                      font-size: 0.95rem;
-                    "
-                  >
-                    Uniquement les informations nécessaires, pas plus
-                  </p>
+                  <h4>Le contexte essentiel</h4>
+                  <p>Uniquement les informations nécessaires, pas plus</p>
                 </div>
               </div>
-              <div style="display: flex; gap: 1rem; align-items: flex-start">
-                <span
-                  style="
-                    background: var(--bg-concept);
-                    color: var(--accent-dark);
-                    padding: 0.25rem 0.75rem;
-                    border-radius: 4px;
-                    font-size: 0.8rem;
-                    font-weight: 500;
-                  "
-                  >3</span
-                >
+              <div class="steps-grid__item">
+                <span class="steps-grid__badge">3</span>
                 <div>
-                  <h4
-                    style="
-                      margin: 0 0 0.25rem;
-                      font-size: 1rem;
-                      color: var(--text-primary);
-                    "
-                  >
-                    L'instruction
-                  </h4>
-                  <p
-                    style="
-                      margin: 0;
-                      color: var(--text-muted);
-                      font-size: 0.95rem;
-                    "
-                  >
-                    L'action attendue, précise et explicite
-                  </p>
+                  <h4>L'instruction</h4>
+                  <p>L'action attendue, précise et explicite</p>
                 </div>
               </div>
             </div>
@@ -1017,140 +939,62 @@
           </p>
 
           <!-- Étape 1 -->
-          <div
-            style="
-              margin: 2rem 0;
-              padding: 1.5rem;
-              background: #f0fdf4;
-              border: 1px solid #bbf7d0;
-              border-radius: 10px;
-            "
-          >
-            <h4
-              style="
-                color: #15803d;
-                font-size: 0.8rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                margin-bottom: 1rem;
-              "
-            >
+          <div class="exercise-step exercise-step--success">
+            <h4 class="exercise-step__header">
               Étape 1 — Message correctement structuré
             </h4>
-            <div
-              style="
-                background: white;
-                border-radius: 6px;
-                padding: 1rem;
-                font-family: var(--font-mono);
-                font-size: 0.9rem;
-                color: var(--text-primary);
-              "
-            >
-              <p style="margin: 0 0 0.5rem">
+            <div class="exercise-step__code">
+              <p>
                 <strong>Intention :</strong> comprendre la différence entre
                 cohérence et logique.
               </p>
-              <p style="margin: 0 0 0.5rem">
+              <p>
                 <strong>Contexte :</strong> j'ai du mal à distinguer les deux
                 notions.
               </p>
-              <p style="margin: 0">
+              <p>
                 <strong>Instruction :</strong> expliquer chacune en un
                 paragraphe clair.
               </p>
             </div>
-            <p style="margin: 1rem 0 0; font-size: 0.9rem; color: #15803d">
+            <p class="exercise-step__annotation">
               → Cette demande oriente naturellement la réponse : deux
               paragraphes distincts, aucune digression, distinction nette.
             </p>
           </div>
 
           <!-- Étape 2 -->
-          <div
-            style="
-              margin: 2rem 0;
-              padding: 1.5rem;
-              background: #fef2f2;
-              border: 1px solid #fecaca;
-              border-radius: 10px;
-            "
-          >
-            <h4
-              style="
-                color: #b91c1c;
-                font-size: 0.8rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                margin-bottom: 1rem;
-              "
-            >
+          <div class="exercise-step exercise-step--error">
+            <h4 class="exercise-step__header">
               Étape 2 — Brouillage volontaire
             </h4>
-            <div
-              style="
-                background: white;
-                border-radius: 6px;
-                padding: 1rem;
-                font-family: var(--font-mono);
-                font-size: 0.9rem;
-                color: var(--text-primary);
-              "
-            >
-              <p style="margin: 0">
+            <div class="exercise-step__code">
+              <p>
                 « Explique la logique, donne des exemples, compare avec
                 l'entropie, puis fait un tableau récapitulatif. »
               </p>
             </div>
-            <p style="margin: 1rem 0 0; font-size: 0.9rem; color: #b91c1c">
+            <p class="exercise-step__annotation">
               → La demande combine plusieurs directions simultanées. Résultat :
               réponse plus longue, moins précise, moins lisible.
             </p>
           </div>
 
           <!-- Étape 3 -->
-          <div
-            style="
-              margin: 2rem 0;
-              padding: 1.5rem;
-              background: #f0fdf4;
-              border: 1px solid #bbf7d0;
-              border-radius: 10px;
-            "
-          >
-            <h4
-              style="
-                color: #15803d;
-                font-size: 0.8rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                margin-bottom: 1rem;
-              "
-            >
+          <div class="exercise-step exercise-step--success">
+            <h4 class="exercise-step__header">
               Étape 3 — Correction par séparation
             </h4>
-            <div
-              style="
-                background: white;
-                border-radius: 6px;
-                padding: 1rem;
-                font-family: var(--font-mono);
-                font-size: 0.9rem;
-                color: var(--text-primary);
-              "
-            >
-              <p style="margin: 0 0 0.5rem">
+            <div class="exercise-step__code">
+              <p>
                 <strong>A.</strong> Expliquer la logique et donner des exemples.
               </p>
-              <p style="margin: 0">
+              <p>
                 <strong>B.</strong> Comparer avec l'entropie et proposer un
                 tableau.
               </p>
             </div>
-            <p style="margin: 1rem 0 0; font-size: 0.9rem; color: #15803d">
+            <p class="exercise-step__annotation">
               → La stabilité revient immédiatement. Le découpage A/B restaure la
               cohérence.
             </p>
@@ -1180,46 +1024,17 @@
             pratique ou vérification personnelle.
           </p>
 
-          <div style="display: grid; gap: 1.5rem; margin: 2rem 0">
+          <div class="card-grid">
             <!-- Application 1 -->
             <div class="card">
-              <span class="tag" style="margin-bottom: 1rem">Vie courante</span>
-              <h4
-                style="
-                  color: var(--text-primary);
-                  font-size: 1.1rem;
-                  margin-bottom: 0.5rem;
-                "
-              >
-                Organiser un voyage simple
-              </h4>
-              <p
-                style="
-                  color: var(--text-muted);
-                  font-size: 0.95rem;
-                  margin-bottom: 1rem;
-                "
-              >
+              <span class="tag">Vie courante</span>
+              <h4 class="card__title">Organiser un voyage simple</h4>
+              <p class="card__desc">
                 Objectif : obtenir un itinéraire cohérent sans surcharge.
               </p>
-              <div
-                style="
-                  background: #fafaf9;
-                  padding: 1rem;
-                  border-radius: 6px;
-                  font-size: 0.9rem;
-                "
-              >
-                <p style="margin: 0 0 0.5rem; color: var(--text-secondary)">
-                  <strong>À faire :</strong>
-                </p>
-                <ul
-                  style="
-                    margin: 0;
-                    padding-left: 1.25rem;
-                    color: var(--text-muted);
-                  "
-                >
+              <div class="card__code-area">
+                <p><strong>À faire :</strong></p>
+                <ul>
                   <li>
                     Formuler l'intention ("préparer un week-end de 2 jours")
                   </li>
@@ -1235,43 +1050,16 @@
 
             <!-- Application 2 -->
             <div class="card">
-              <span class="tag" style="margin-bottom: 1rem">Vie courante</span>
-              <h4
-                style="
-                  color: var(--text-primary);
-                  font-size: 1.1rem;
-                  margin-bottom: 0.5rem;
-                "
-              >
+              <span class="tag">Vie courante</span>
+              <h4 class="card__title">
                 Cuisiner avec les ingrédients disponibles
               </h4>
-              <p
-                style="
-                  color: var(--text-muted);
-                  font-size: 0.95rem;
-                  margin-bottom: 1rem;
-                "
-              >
+              <p class="card__desc">
                 Objectif : générer une recette adaptée aux ingrédients du frigo.
               </p>
-              <div
-                style="
-                  background: #fafaf9;
-                  padding: 1rem;
-                  border-radius: 6px;
-                  font-size: 0.9rem;
-                "
-              >
-                <p style="margin: 0 0 0.5rem; color: var(--text-secondary)">
-                  <strong>À faire :</strong>
-                </p>
-                <ul
-                  style="
-                    margin: 0;
-                    padding-left: 1.25rem;
-                    color: var(--text-muted);
-                  "
-                >
+              <div class="card__code-area">
+                <p><strong>À faire :</strong></p>
+                <ul>
                   <li>Lister les ingrédients dans un message</li>
                   <li>
                     Indiquer les contraintes (rapide, végétarien…) dans un autre
@@ -1281,13 +1069,7 @@
                   </li>
                 </ul>
               </div>
-              <p
-                style="
-                  margin-top: 1rem;
-                  font-size: 0.85rem;
-                  color: var(--accent);
-                "
-              >
+              <p class="card__annotation">
                 → Séparer contraintes et ingrédients réduit l'entropie et
                 améliore la pertinence.
               </p>
@@ -1295,46 +1077,17 @@
 
             <!-- Application 3 -->
             <div class="card">
-              <span class="tag tag--outline" style="margin-bottom: 1rem"
-                >Entreprise</span
-              >
-              <h4
-                style="
-                  color: var(--text-primary);
-                  font-size: 1.1rem;
-                  margin-bottom: 0.5rem;
-                "
-              >
+              <span class="tag tag--outline">Entreprise</span>
+              <h4 class="card__title">
                 Reformuler une consigne professionnelle
               </h4>
-              <p
-                style="
-                  color: var(--text-muted);
-                  font-size: 0.95rem;
-                  margin-bottom: 1rem;
-                "
-              >
+              <p class="card__desc">
                 Objectif : produire une version plus claire d'un message
                 interne.
               </p>
-              <div
-                style="
-                  background: #fafaf9;
-                  padding: 1rem;
-                  border-radius: 6px;
-                  font-size: 0.9rem;
-                "
-              >
-                <p style="margin: 0 0 0.5rem; color: var(--text-secondary)">
-                  <strong>À faire :</strong>
-                </p>
-                <ul
-                  style="
-                    margin: 0;
-                    padding-left: 1.25rem;
-                    color: var(--text-muted);
-                  "
-                >
+              <div class="card__code-area">
+                <p><strong>À faire :</strong></p>
+                <ul>
                   <li>
                     Intention : "Rendre la consigne plus claire et
                     professionnelle"
@@ -1346,13 +1099,7 @@
                   </li>
                 </ul>
               </div>
-              <p
-                style="
-                  margin-top: 1rem;
-                  font-size: 0.85rem;
-                  color: var(--accent);
-                "
-              >
+              <p class="card__annotation">
                 → Une intention claire + un objectif précis = formulation
                 optimale.
               </p>
@@ -1360,45 +1107,16 @@
 
             <!-- Application 4 -->
             <div class="card">
-              <span class="tag tag--outline" style="margin-bottom: 1rem"
-                >Entreprise</span
-              >
-              <h4
-                style="
-                  color: var(--text-primary);
-                  font-size: 1.1rem;
-                  margin-bottom: 0.5rem;
-                "
-              >
+              <span class="tag tag--outline">Entreprise</span>
+              <h4 class="card__title">
                 Résumer une réunion de manière exploitable
               </h4>
-              <p
-                style="
-                  color: var(--text-muted);
-                  font-size: 0.95rem;
-                  margin-bottom: 1rem;
-                "
-              >
+              <p class="card__desc">
                 Objectif : obtenir un résumé actionnable.
               </p>
-              <div
-                style="
-                  background: #fafaf9;
-                  padding: 1rem;
-                  border-radius: 6px;
-                  font-size: 0.9rem;
-                "
-              >
-                <p style="margin: 0 0 0.5rem; color: var(--text-secondary)">
-                  <strong>À faire :</strong>
-                </p>
-                <ul
-                  style="
-                    margin: 0;
-                    padding-left: 1.25rem;
-                    color: var(--text-muted);
-                  "
-                >
+              <div class="card__code-area">
+                <p><strong>À faire :</strong></p>
+                <ul>
                   <li>Fournir notes brutes ou points clés</li>
                   <li>Préciser l'usage du résumé (email interne, support…)</li>
                   <li>
@@ -1407,13 +1125,7 @@
                   </li>
                 </ul>
               </div>
-              <p
-                style="
-                  margin-top: 1rem;
-                  font-size: 0.85rem;
-                  color: var(--accent);
-                "
-              >
+              <p class="card__annotation">
                 → Un résumé devient opérationnel si la destination est annoncée.
               </p>
             </div>
@@ -1448,81 +1160,21 @@
             maintenir une bonne qualité d'échange.
           </p>
 
-          <div class="two-columns" style="margin: 2rem 0">
-            <div
-              class="column-card"
-              style="
-                background: var(--bg-card);
-                border: 1px solid var(--border);
-              "
-            >
-              <h4
-                style="
-                  color: var(--text-primary);
-                  font-size: 1rem;
-                  margin-bottom: 1rem;
-                "
-              >
-                Niveau Intermédiaire
-              </h4>
-              <p
-                style="
-                  font-size: 0.9rem;
-                  color: var(--accent);
-                  font-weight: 500;
-                  margin-bottom: 0.75rem;
-                "
-              >
-                Stabiliser la conversation
-              </p>
-              <ul
-                style="
-                  font-size: 0.85rem;
-                  color: var(--text-muted);
-                  padding-left: 1.25rem;
-                  margin: 0;
-                "
-              >
+          <div class="two-columns">
+            <div class="column-card">
+              <h4>Niveau Intermédiaire</h4>
+              <p class="column-card__subtitle">Stabiliser la conversation</p>
+              <ul>
                 <li>Ton</li>
                 <li>Cohérence</li>
                 <li>Structure</li>
                 <li>Clarté</li>
               </ul>
             </div>
-            <div
-              class="column-card"
-              style="
-                background: var(--bg-dark);
-                border: 1px solid var(--border-dark);
-              "
-            >
-              <h4
-                style="
-                  color: var(--text-inverse);
-                  font-size: 1rem;
-                  margin-bottom: 1rem;
-                "
-              >
-                Niveau Expert
-              </h4>
-              <p
-                style="
-                  font-size: 0.9rem;
-                  color: var(--accent-light);
-                  font-weight: 500;
-                  margin-bottom: 0.75rem;
-                "
-              >
-                Stabiliser le modèle
-              </p>
-              <ul
-                style="
-                  font-size: 0.85rem;
-                  color: var(--text-light);
-                  padding-left: 1.25rem;
-                  margin: 0;
-                "
-              >
+            <div class="column-card column-card--dark">
+              <h4>Niveau Expert</h4>
+              <p class="column-card__subtitle">Stabiliser le modèle</p>
+              <ul>
                 <li>Métacognition</li>
                 <li>Attracteurs</li>
                 <li>Auto-correction</li>
@@ -1549,120 +1201,16 @@
           </blockquote>
 
           <!-- À retenir -->
-          <div
-            class="card"
-            style="
-              margin-top: 2rem;
-              background: var(--bg-concept);
-              border-color: #fde68a;
-            "
-          >
-            <h4
-              style="
-                color: var(--accent-dark);
-                font-size: 0.85rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                margin-bottom: 1.25rem;
-              "
-            >
-              À retenir
-            </h4>
-            <ul
-              style="
-                display: grid;
-                gap: 0.75rem;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-              "
-            >
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Un ton neutre et stable ancre la cohérence
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Une idée par message limite immédiatement l'entropie
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Micro-format simple : intention / contexte / instruction
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Paragraphes courts + structure lisible pour éviter la surcharge
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Rappels périodiques dans les échanges longs
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Découpage A/B immédiat en cas d'ambiguïté ou de multi-objectifs
-              </li>
-              <li
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  gap: 0.75rem;
-                  font-size: 0.95rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--accent)">•</span>
-                Pas d'outils avancés : la stabilité passe avant la
-                sophistication
-              </li>
+          <div class="card summary-card">
+            <h4 class="summary-card__title">À retenir</h4>
+            <ul class="summary-list">
+              <li><span>•</span>Un ton neutre et stable ancre la cohérence</li>
+              <li><span>•</span>Une idée par message limite immédiatement l'entropie</li>
+              <li><span>•</span>Micro-format simple : intention / contexte / instruction</li>
+              <li><span>•</span>Paragraphes courts + structure lisible pour éviter la surcharge</li>
+              <li><span>•</span>Rappels périodiques dans les échanges longs</li>
+              <li><span>•</span>Découpage A/B immédiat en cas d'ambiguïté ou de multi-objectifs</li>
+              <li><span>•</span>Pas d'outils avancés : la stabilité passe avant la sophistication</li>
             </ul>
           </div>
         </section>
@@ -1707,43 +1255,15 @@
             C/L/E, corrections minimales et vigilance légère mais continue.
           </p>
 
-          <div class="card" style="margin: 2rem 0">
-            <h4 style="color: var(--text-primary); margin-bottom: 1rem">
-              Ici, chaque message agit comme un composant d'architecture
-            </h4>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem">
-              Il influence :
-            </p>
-            <ul
-              style="
-                display: grid;
-                gap: 0.5rem;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                color: var(--text-muted);
-              "
-            >
-              <li style="display: flex; align-items: center; gap: 0.75rem">
-                <span style="color: var(--accent)">→</span> la stabilité interne
-                du modèle
-              </li>
-              <li style="display: flex; align-items: center; gap: 0.75rem">
-                <span style="color: var(--accent)">→</span> le mode de
-                raisonnement qu'il adopte
-              </li>
-              <li style="display: flex; align-items: center; gap: 0.75rem">
-                <span style="color: var(--accent)">→</span> la profondeur qu'il
-                est capable de maintenir
-              </li>
-              <li style="display: flex; align-items: center; gap: 0.75rem">
-                <span style="color: var(--accent)">→</span> la manière dont il
-                "comprend" les intentions
-              </li>
-              <li style="display: flex; align-items: center; gap: 0.75rem">
-                <span style="color: var(--accent)">→</span> et surtout la
-                cohérence sur longue distance
-              </li>
+          <div class="card">
+            <h4>Ici, chaque message agit comme un composant d'architecture</h4>
+            <p>Il influence :</p>
+            <ul class="card-list">
+              <li>la stabilité interne du modèle</li>
+              <li>le mode de raisonnement qu'il adopte</li>
+              <li>la profondeur qu'il est capable de maintenir</li>
+              <li>la manière dont il "comprend" les intentions</li>
+              <li>et surtout la cohérence sur longue distance</li>
             </ul>
           </div>
 
@@ -1782,15 +1302,7 @@
             qui justifie l'entrée dans un mode expert.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Perte progressive de cohérence
           </h3>
 
@@ -1815,15 +1327,7 @@
             </p>
           </div>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Augmentation naturelle de l'entropie
           </h3>
 
@@ -1843,15 +1347,7 @@
             modifient progressivement le cadre interprétatif global.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Limites des usages intuitifs
           </h3>
 
@@ -1874,36 +1370,18 @@
           </div>
 
           <!-- Exemple concret -->
-          <div
-            style="
-              margin: 2rem 0;
-              padding: 1.5rem;
-              background: var(--bg-card);
-              border: 1px solid var(--border);
-              border-left: 3px solid var(--accent);
-              border-radius: 0 8px 8px 0;
-            "
-          >
-            <h4
-              style="
-                font-size: 0.85rem;
-                font-weight: 600;
-                color: var(--accent-dark);
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                margin-bottom: 1rem;
-              "
-            >
+          <div class="example-concrete">
+            <h4 class="example-concrete__title">
               Exemple concret — Glissement de continuité
             </h4>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem">
+            <p>
               Un cas typique apparaît dans les projets rédactionnels longs.
               Lorsqu'une instruction comme « allons-y pour la section 1 » est
               formulée sans précision supplémentaire, le modèle peut interpréter
               la demande comme la nécessité de rédiger intégralement la section,
               même si un texte existe déjà.
             </p>
-            <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem">
+            <p>
               Dans ce cas, la logique reste intacte, le contenu est pertinent,
               le ton est correct — mais la continuité éditoriale est rompue. Le
               modèle a répondu correctement à une intention mal spécifiée, en
@@ -1936,15 +1414,7 @@
             conversationnelle.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Qu'est-ce qu'un CORE-SEED ?
           </h3>
 
@@ -1962,101 +1432,25 @@
             interprétations possibles et limite les glissements structurels.
           </p>
 
-          <div class="card" style="margin: 2rem 0">
-            <h4 style="color: var(--text-primary); margin-bottom: 1rem">
-              Un CORE-SEED bien posé influence :
-            </h4>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-              "
-            >
-              <div
-                style="
-                  padding: 1rem;
-                  background: #fafaf9;
-                  border-radius: 6px;
-                  text-align: center;
-                "
-              >
-                <p
-                  style="
-                    margin: 0;
-                    color: var(--text-secondary);
-                    font-size: 0.95rem;
-                  "
-                >
-                  Le <strong>ton</strong> général
-                </p>
+          <div class="card">
+            <h4>Un CORE-SEED bien posé influence :</h4>
+            <div class="influence-grid">
+              <div class="influence-grid__item">
+                <p>Le <strong>ton</strong> général</p>
               </div>
-              <div
-                style="
-                  padding: 1rem;
-                  background: #fafaf9;
-                  border-radius: 6px;
-                  text-align: center;
-                "
-              >
-                <p
-                  style="
-                    margin: 0;
-                    color: var(--text-secondary);
-                    font-size: 0.95rem;
-                  "
-                >
-                  La <strong>granularité</strong> attendue
-                </p>
+              <div class="influence-grid__item">
+                <p>La <strong>granularité</strong> attendue</p>
               </div>
-              <div
-                style="
-                  padding: 1rem;
-                  background: #fafaf9;
-                  border-radius: 6px;
-                  text-align: center;
-                "
-              >
-                <p
-                  style="
-                    margin: 0;
-                    color: var(--text-secondary);
-                    font-size: 0.95rem;
-                  "
-                >
-                  La <strong>structure</strong> des réponses
-                </p>
+              <div class="influence-grid__item">
+                <p>La <strong>structure</strong> des réponses</p>
               </div>
-              <div
-                style="
-                  padding: 1rem;
-                  background: #fafaf9;
-                  border-radius: 6px;
-                  text-align: center;
-                "
-              >
-                <p
-                  style="
-                    margin: 0;
-                    color: var(--text-secondary);
-                    font-size: 0.95rem;
-                  "
-                >
-                  Le traitement des <strong>ambiguïtés</strong>
-                </p>
+              <div class="influence-grid__item">
+                <p>Le traitement des <strong>ambiguïtés</strong></p>
               </div>
             </div>
           </div>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Les invariants du CORE-SEED
           </h3>
 
@@ -2066,7 +1460,7 @@
             contenu abordé. Dans un échange expert, ils incluent généralement :
           </p>
 
-          <div class="numbered-list" style="margin: 1.5rem 0">
+          <div class="numbered-list">
             <div class="numbered-item">
               <span class="number">01</span>
               <div>
@@ -2123,15 +1517,7 @@
             pour orienter ses réponses.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             CORE-SEED et attracteur conversationnel
           </h3>
 
@@ -2142,37 +1528,19 @@
             après de légères perturbations.
           </p>
 
-          <div class="two-columns" style="margin: 2rem 0">
-            <div
-              class="column-card red"
-              style="background: #fef2f2; border-color: #fecaca"
-            >
-              <h4 style="color: #b91c1c">Sans CORE-SEED explicite</h4>
-              <p
-                style="
-                  font-size: 0.9rem;
-                  color: var(--text-secondary);
-                  margin: 0;
-                "
-              >
+          <div class="two-columns">
+            <div class="column-card red">
+              <h4>Sans CORE-SEED explicite</h4>
+              <p>
                 Chaque message contribue à redéfinir implicitement le cadre. Le
                 fil devient sensible aux micro-variations : un changement de
                 ton, une demande hybride ou une surcharge informationnelle
                 peuvent suffire à déplacer l'attracteur actif.
               </p>
             </div>
-            <div
-              class="column-card green"
-              style="background: #f0fdf4; border-color: #bbf7d0"
-            >
-              <h4 style="color: #15803d">Avec CORE-SEED</h4>
-              <p
-                style="
-                  font-size: 0.9rem;
-                  color: var(--text-secondary);
-                  margin: 0;
-                "
-              >
+            <div class="column-card green">
+              <h4>Avec CORE-SEED</h4>
+              <p>
                 Ces perturbations sont amorties. Le modèle dispose d'un repère
                 stable pour interpréter les signaux contradictoires ou ambigus.
                 La fenêtre de convergence reste ouverte plus longtemps.
@@ -2180,15 +1548,7 @@
             </div>
           </div>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             CORE-SEED et vigilance utilisateur
           </h3>
 
@@ -2236,15 +1596,7 @@
             directe de l'architecture interne des modèles.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Similitudes avec des notions existantes
           </h3>
 
@@ -2254,7 +1606,7 @@
           </p>
 
           <!-- Tableau comparatif -->
-          <div class="table-container" style="margin: 2rem 0">
+          <div class="table-container">
             <table>
               <thead>
                 <tr>
@@ -2291,7 +1643,7 @@
                 <tr>
                   <td>
                     <strong>Attracteurs</strong><br /><span
-                      style="font-size: 0.8rem; color: var(--text-muted)"
+                      class="text-sm-muted"
                       >(théorie des systèmes dynamiques)</span
                     >
                   </td>
@@ -2321,15 +1673,7 @@
             </table>
           </div>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Ce que le CORE-SEED apporte de spécifique
           </h3>
 
@@ -2339,47 +1683,20 @@
             dimensions habituellement dispersées :
           </p>
 
-          <ul style="list-style: none; padding: 0; margin: 1.5rem 0">
-            <li
-              style="
-                display: flex;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-                color: var(--text-secondary);
-              "
-            >
-              <span style="color: var(--accent)">•</span>
+          <ul class="conclusion-list">
+            <li>
               une formalisation explicite d'invariants (ton, granularité,
               structure, absence de personnalisation)
             </li>
-            <li
-              style="
-                display: flex;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-                color: var(--text-secondary);
-              "
-            >
-              <span style="color: var(--accent)">•</span>
+            <li>
               une pensée orientée vers les fils longs et leurs contraintes
               propres
             </li>
-            <li
-              style="
-                display: flex;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-                color: var(--text-secondary);
-              "
-            >
-              <span style="color: var(--accent)">•</span>
+            <li>
               une distinction claire entre cadre structurel et exécution
               mécanique
             </li>
-            <li
-              style="display: flex; gap: 0.75rem; color: var(--text-secondary)"
-            >
-              <span style="color: var(--accent)">•</span>
+            <li>
               l'intégration explicite du rôle de l'utilisateur comme facteur de
               stabilisation externe
             </li>
@@ -2422,53 +1739,24 @@
             artificielle et les illusions cognitives qui peuvent en découler.
           </p>
 
-          <div class="card" style="margin: 2rem 0; background: #fafaf9">
-            <h4 style="color: var(--text-primary); margin-bottom: 1rem">
-              Ce document n'est pas :
-            </h4>
-            <ul style="list-style: none; padding: 0; margin: 0">
-              <li
-                style="
-                  display: flex;
-                  gap: 0.75rem;
-                  margin-bottom: 0.75rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--red)">✗</span>
+          <div class="card card--muted">
+            <h4>Ce document n'est pas :</h4>
+            <ul class="negation-list">
+              <li>
+                <span>✗</span>
                 Une description de l'architecture interne des modèles de langage
               </li>
-              <li
-                style="
-                  display: flex;
-                  gap: 0.75rem;
-                  margin-bottom: 0.75rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--red)">✗</span>
+              <li>
+                <span>✗</span>
                 Un guide de prompts garantissant des résultats
               </li>
-              <li
-                style="
-                  display: flex;
-                  gap: 0.75rem;
-                  margin-bottom: 0.75rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--red)">✗</span>
+              <li>
+                <span>✗</span>
                 Une couverture exhaustive de tous les usages des IA
                 conversationnelles
               </li>
-              <li
-                style="
-                  display: flex;
-                  gap: 0.75rem;
-                  color: var(--text-secondary);
-                "
-              >
-                <span style="color: var(--red)">✗</span>
+              <li>
+                <span>✗</span>
                 Une recette automatisable
               </li>
             </ul>
@@ -2483,15 +1771,7 @@
             l'usage, pas à dévoiler le fonctionnement intime des systèmes.
           </p>
 
-          <h3
-            style="
-              font-family: var(--font-serif);
-              font-size: 1.25rem;
-              font-weight: 400;
-              color: var(--text-primary);
-              margin: 2rem 0 1rem;
-            "
-          >
+          <h3>
             Responsabilité et vigilance de l'utilisateur
           </h3>
 
@@ -2544,13 +1824,7 @@
             stable et plus maîtrisée.
           </p>
 
-          <div
-            class="concept"
-            style="
-              background: linear-gradient(135deg, var(--bg-concept), #fff7ed);
-              border-color: var(--accent);
-            "
-          >
+          <div class="concept concept--highlight">
             <p class="concept-title">L'essentiel</p>
             <p>
               La véritable valeur ne réside pas dans la capacité à "obtenir de
@@ -2563,14 +1837,7 @@
             </p>
           </div>
 
-          <p
-            style="
-              text-align: center;
-              color: var(--text-muted);
-              margin-top: 3rem;
-              font-style: italic;
-            "
-          >
+          <p class="closing-text closing-text--italic">
             Ce document se clôt ici. Il remplit sa fonction de clarification et
             de mise en perspective. Les explorations plus libres, spéculatives
             ou méthodologiques pourront s'ouvrir ailleurs, dans un autre espace,
@@ -2596,14 +1863,10 @@
             zones d'ambiguïté.
           </p>
 
-          <div style="display: grid; gap: 1.5rem; margin: 2rem 0">
+          <div class="card-grid">
             <div class="card">
-              <h4 style="color: var(--text-primary); margin-bottom: 0.5rem">
-                ChatGPT — Le socle analytique
-              </h4>
-              <p
-                style="color: var(--text-muted); margin: 0; font-size: 0.95rem"
-              >
+              <h4 class="card__title">ChatGPT — Le socle analytique</h4>
+              <p class="card__desc">
                 Les échanges avec ChatGPT ont servi de socle analytique continu.
                 Ils ont permis de formaliser progressivement les concepts, de
                 tester leur stabilité sur la durée et d'expliciter les
@@ -2614,12 +1877,8 @@
             </div>
 
             <div class="card">
-              <h4 style="color: var(--text-primary); margin-bottom: 0.5rem">
-                Gemini & Claude — La validation croisée
-              </h4>
-              <p
-                style="color: var(--text-muted); margin: 0; font-size: 0.95rem"
-              >
+              <h4 class="card__title">Gemini & Claude — La validation croisée</h4>
+              <p class="card__desc">
                 Des tests parallèles ont été conduits avec Gemini et Claude, à
                 partir de questions volontairement similaires et d'un niveau
                 d'information minimal sur le contenu du travail. Les résultats
@@ -2630,16 +1889,9 @@
               </p>
             </div>
 
-            <div
-              class="card"
-              style="border-color: var(--accent); border-width: 2px"
-            >
-              <h4 style="color: var(--accent-dark); margin-bottom: 0.5rem">
-                Grok — Le point de rupture
-              </h4>
-              <p
-                style="color: var(--text-muted); margin: 0; font-size: 0.95rem"
-              >
+            <div class="card card--highlight">
+              <h4 class="card__title">Grok — Le point de rupture</h4>
+              <p class="card__desc">
                 Grok occupe une place particulière dans cette trajectoire. C'est
                 avec lui qu'est apparu le point de rupture initial : un
                 glissement narratif inattendu, une simulation d'intention et de
@@ -2674,13 +1926,7 @@
             </p>
           </blockquote>
 
-          <p
-            style="
-              text-align: center;
-              margin-top: 3rem;
-              color: var(--text-muted);
-            "
-          >
+          <p class="closing-text">
             <strong>17 décembre 2025</strong><br />
             Florent Klimacek
           </p>

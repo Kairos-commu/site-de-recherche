@@ -925,6 +925,509 @@ code {
 }
 
 /* ============================================
+   CONTENT H3 — Sous-titres de section
+   ============================================ */
+
+.content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 2rem 0 1rem;
+}
+
+/* ============================================
+   NUMBERED LIST (Conseils, invariants)
+   ============================================ */
+
+.numbered-list {
+  margin: 1.5rem 0;
+}
+
+.numbered-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.numbered-item:last-child {
+  margin-bottom: 0;
+}
+
+.numbered-item .number {
+  font-family: 'Inter', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.numbered-item h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.numbered-item p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ============================================
+   STEPS GRID (Badges numérotés)
+   ============================================ */
+
+.steps-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.steps-grid__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.steps-grid__badge {
+  background: var(--bg-concept);
+  color: var(--accent-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.steps-grid__item h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.steps-grid__item p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   EXERCISE STEPS (Succès / Erreur)
+   ============================================ */
+
+.exercise-step {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.exercise-step--success {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.exercise-step--error {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+[data-theme="dark"] .exercise-step--success {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+[data-theme="dark"] .exercise-step--error {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.exercise-step__header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.exercise-step--success .exercise-step__header,
+.exercise-step--success .exercise-step__annotation {
+  color: #15803d;
+}
+
+.exercise-step--error .exercise-step__header,
+.exercise-step--error .exercise-step__annotation {
+  color: #b91c1c;
+}
+
+.exercise-step__code {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .exercise-step__code {
+  background: var(--bg-card);
+}
+
+.exercise-step__code p {
+  margin: 0 0 0.5rem;
+}
+
+.exercise-step__code p:last-child {
+  margin-bottom: 0;
+}
+
+.exercise-step__annotation {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   CARD GRID LAYOUT
+   ============================================ */
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* ============================================
+   CARD INNER COMPONENTS
+   ============================================ */
+
+.card .tag {
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card__desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.card__desc:last-child {
+  margin-bottom: 0;
+}
+
+.card__code-area {
+  background: #fafaf9;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+[data-theme="dark"] .card__code-area {
+  background: #1c1917;
+}
+
+.card__code-area p {
+  margin: 0 0 0.5rem;
+  color: var(--text-secondary);
+}
+
+.card__code-area ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+.card__annotation {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* Card variants */
+.card--highlight {
+  border-color: var(--accent);
+  border-width: 2px;
+}
+
+.card--highlight .card__title {
+  color: var(--accent-dark);
+}
+
+.card--muted {
+  background: #fafaf9;
+}
+
+[data-theme="dark"] .card--muted {
+  background: #1c1917;
+}
+
+/* ============================================
+   TWO COLUMNS LAYOUT
+   ============================================ */
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 600px) {
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column-card {
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.column-card h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.column-card ul {
+  font-size: 0.85rem;
+  padding-left: 1.25rem;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.column-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.column-card__subtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+}
+
+/* Column card — dark variant */
+.column-card--dark {
+  background: var(--bg-dark);
+  border-color: var(--border-dark);
+}
+
+.column-card--dark h4 {
+  color: var(--text-inverse);
+}
+
+.column-card--dark .column-card__subtitle {
+  color: var(--accent-light);
+}
+
+.column-card--dark ul {
+  color: var(--text-light);
+}
+
+/* Column card — green variant */
+.column-card.green {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.column-card.green h4 {
+  color: #15803d;
+}
+
+[data-theme="dark"] .column-card.green {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+/* Column card — red variant */
+.column-card.red {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.column-card.red h4 {
+  color: #b91c1c;
+}
+
+[data-theme="dark"] .column-card.red {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================
+   SUMMARY CARD (À retenir)
+   ============================================ */
+
+.summary-card {
+  background: var(--bg-concept);
+  border-color: #fde68a;
+}
+
+[data-theme="dark"] .summary-card {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.summary-card__title {
+  color: var(--accent-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.summary-list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.summary-list li span {
+  color: var(--accent);
+}
+
+/* ============================================
+   EXAMPLE CONCRETE BOX
+   ============================================ */
+
+.example-concrete {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.example-concrete__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.example-concrete p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.example-concrete p:last-child {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   INFLUENCE GRID (CORE-SEED)
+   ============================================ */
+
+.influence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.influence-grid__item {
+  padding: 1rem;
+  background: #fafaf9;
+  border-radius: 6px;
+  text-align: center;
+}
+
+[data-theme="dark"] .influence-grid__item {
+  background: #1c1917;
+}
+
+.influence-grid__item p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   NEGATION LIST (✗ markers)
+   ============================================ */
+
+.negation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.negation-list li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.negation-list li:last-child {
+  margin-bottom: 0;
+}
+
+.negation-list li span {
+  color: var(--red);
+}
+
+/* ============================================
+   CLOSING TEXT
+   ============================================ */
+
+.closing-text {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 3rem;
+}
+
+.closing-text--italic {
+  font-style: italic;
+}
+
+/* ============================================
+   CONCEPT VARIANT — Highlight
+   ============================================ */
+
+.concept--highlight {
+  background: linear-gradient(135deg, var(--bg-concept), #fff7ed);
+  border-color: var(--accent);
+}
+
+[data-theme="dark"] .concept--highlight {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(245, 158, 11, 0.05));
+}
+
+/* Small muted annotation (table) */
+.text-sm-muted {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
    RESPONSIVE — Small phones (< 480px)
    ============================================ */
 
@@ -974,5 +1477,25 @@ code {
 
   .article-nav__title {
     font-size: 0.95rem;
+  }
+
+  /* Two columns → stack */
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  /* Influence grid → stack */
+  .influence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Exercise steps */
+  .exercise-step {
+    padding: 1rem;
+  }
+
+  .exercise-step__code {
+    padding: 0.75rem;
+    font-size: 0.85rem;
   }
 }
