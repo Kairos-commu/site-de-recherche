@@ -2219,6 +2219,8 @@
       .hero-equation {
         font-size: 1.8rem;
         padding: 1rem 1.5rem;
+        max-width: 100%;
+        overflow-x: auto;
       }
       .hero-legend { gap: 1.5rem; }
       .hero-legend span { font-size: 0.85rem; }
@@ -2232,6 +2234,7 @@
 
       /* Modes / Comparaison */
       .mode-card .mockup-main { padding: 1rem; }
+      .mockup-sidebar { width: 120px; }
       .mini-chat-human { margin-right: 1rem; }
       .mini-chat-llm { margin-left: 1rem; }
 
@@ -2264,9 +2267,13 @@
       .roadmap-item { padding: 1rem; }
       .roadmap-item::before { left: -1.75rem; width: 12px; height: 12px; }
 
+      /* Guide steps */
+      .guide-step { padding: 1rem; }
+
       /* Documentation */
       #documentation { padding: 3rem 1rem; }
       .docs-content { padding: 1rem; min-height: 300px; }
       .docs-content h1 { font-size: 1.5rem; }
       .docs-content h2 { font-size: 1.2rem; }
+      .docs-content code { overflow-wrap: break-word; }
     }

@@ -1089,11 +1089,23 @@ a:hover {
   .formula-display {
     flex-wrap: wrap;
     font-size: 0.85rem;
-    gap: 8px;
+    gap: 6px;
   }
 
   .formula-result {
     font-size: 1.2rem;
+  }
+
+  /* Formula tooltips — empêcher le débordement */
+  .formula-var::after {
+    white-space: normal;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  /* Stats */
+  .stat-value {
+    font-size: 1.1rem;
   }
 
   /* About intro */

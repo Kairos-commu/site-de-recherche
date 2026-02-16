@@ -332,6 +332,7 @@ blockquote {
   margin: 3rem 0;
   padding-left: 1.5rem;
   border-left: 2px solid var(--accent);
+  overflow-wrap: break-word;
 }
 
 blockquote p {
@@ -570,6 +571,8 @@ tr:hover {
   margin-bottom: 0.75rem;
   color: var(--text-secondary);
   text-align: left;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .conclusion-list li::before {
@@ -910,6 +913,11 @@ footer a:hover {
   visibility: hidden;
 }
 
+/* Inline code — empêcher le débordement horizontal */
+code {
+  overflow-wrap: break-word;
+}
+
 /* ============================================
    RESPONSIVE — Small phones (< 480px)
    ============================================ */
@@ -921,16 +929,30 @@ footer a:hover {
     padding: 2rem 1rem;
   }
 
-  /* Article content breathing room */
+  /* Article content — padding réduit */
   main {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
+  }
+
+  .content {
+    padding: 2rem 1rem;
   }
 
   /* Breadcrumb */
   .breadcrumb {
     font-size: 0.7rem;
     flex-wrap: wrap;
+  }
+
+  /* Section header line */
+  .section-header::after {
+    width: 40px;
+  }
+
+  /* Blockquote */
+  blockquote p {
+    font-size: 1.2rem;
   }
 
   /* Comparison cards */
