@@ -1530,8 +1530,8 @@
 
     .demo-o2-fill {
       height: 100%;
-      width: 65%;
-      background: var(--accent-green);
+      width: 50%;
+      background: var(--accent-orange);
       border-radius: 3px;
       transition: width 0.5s, background 0.5s;
     }
@@ -1539,7 +1539,7 @@
     .demo-o2-val {
       font-size: 0.75rem;
       font-weight: 700;
-      color: var(--accent-green);
+      color: var(--accent-orange);
       min-width: 24px;
       text-align: right;
       transition: color 0.5s;
@@ -1557,14 +1557,15 @@
     }
 
     .demo-svg line {
-      stroke: rgba(148, 163, 184, 0.4);
-      stroke-width: 1.5;
+      stroke: rgba(148, 163, 184, 0.6);
+      stroke-width: 2;
     }
 
     .demo-svg line.friction-line {
       stroke: var(--accent-red);
       stroke-dasharray: 6 4;
-      opacity: 0.7;
+      stroke-width: 2;
+      opacity: 0.8;
     }
 
     /* Vignette dragging */

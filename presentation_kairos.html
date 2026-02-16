@@ -763,7 +763,7 @@
               <div class="demo-o2-track">
                 <div class="demo-o2-fill" id="demo-o2-fill"></div>
               </div>
-              <span class="demo-o2-val" id="demo-o2-val">65</span>
+              <span class="demo-o2-val" id="demo-o2-val">50</span>
             </div>
             <button class="demo-btn reset" id="demo-btn-reset" title="Recommencer">↺</button>
           </div>
@@ -1052,7 +1052,7 @@
       // ── State ──
       var vignettes = [];
       var conns = [];
-      var o2 = 65;
+      var o2 = 50;
       var nextId = 0;
       var devRound = 0;
       var frictionDone = false;
@@ -1073,21 +1073,21 @@
         { texts: [
           { t: "Hard problem : pourquoi y a-t-il de l'expérience ?", tags: ["#philo"] },
           { t: "Qualia : irréductible expérience subjective", tags: ["#philo", "#neuro"] }
-        ], delta: +12 },
+        ], delta: +8 },
         { texts: [
           { t: "Plasticité synaptique et réorganisation cérébrale", tags: ["#neuro", "#apprentissage"] },
           { t: "Embodied cognition : penser avec le corps", tags: ["#embodiment"] }
-        ], delta: +8 },
+        ], delta: +5 },
         { texts: [
           { t: "Le réseau neuronal produit la conscience", tags: ["#neuro"] }
-        ], delta: -18, warn: "↻ Redondance — territoire déjà exploré" },
+        ], delta: -20, warn: "↻ Redondance — territoire déjà exploré" },
         { texts: [
           { t: "La conscience émerge des connexions neuronales", tags: ["#neuro"] }
-        ], delta: -22, warn: "⏸ Convergence excessive — O₂ en chute" },
+        ], delta: -25, warn: "⏸ Convergence excessive — O₂ en chute" },
         { texts: [
           { t: "L'art comme cognition non-verbale", tags: ["#art", "#rupture"] },
           { t: "La méditation altère la structure cérébrale", tags: ["#contemplation"] }
-        ], delta: +15 }
+        ], delta: +10 }
       ];
 
       var frictionTexts = [
@@ -1153,12 +1153,20 @@
           }
           area.appendChild(el);
         });
-        renderConns();
         updateO2();
+        // Delay SVG rendering to ensure DOM layout is complete
+        requestAnimationFrame(renderConns);
       }
 
       function renderConns() {
-        svg.innerHTML = '';
+        // Set SVG viewBox to match area dimensions
+        var w = area.offsetWidth;
+        var h = area.offsetHeight;
+        svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+        svg.setAttribute('width', w);
+        svg.setAttribute('height', h);
+        // Clear existing lines
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
         conns.forEach(function(c) {
           var fv = vignettes.find(function(v) { return v.id === c.from; });
           var tv = vignettes.find(function(v) { return v.id === c.to; });
@@ -1191,7 +1199,7 @@
         var text = userIdeas[userIdx % userIdeas.length];
         userIdx++;
         addV(text, rndPos(), rndPos());
-        o2 = clamp(o2 + 5);
+        o2 = clamp(o2 + 3);
         addLog('+ Vignette ajoutée', 'success');
         render();
       }
@@ -1239,7 +1247,7 @@
             addConn(orphans[i].id, orphans[i + 1].id);
             count++;
           }
-          o2 = clamp(o2 + 5);
+          o2 = clamp(o2 + 3);
           addLog('RELIER → ' + count + ' connexion(s) créée(s)', 'success');
         } else {
           addLog('Aucun orphelin à connecter', '');
@@ -1266,7 +1274,7 @@
       }
 
       function resetAll() {
-        vignettes = []; conns = []; o2 = 65; nextId = 0;
+        vignettes = []; conns = []; o2 = 50; nextId = 0;
         devRound = 0; frictionDone = false; userIdx = 0;
         logEl.innerHTML = '';
         frictionAlert.classList.remove('show');
