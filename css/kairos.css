@@ -1484,6 +1484,47 @@
     }
 
     /* ═══════════════════════════════════════════
+       SECTION ESSAYER — IFRAME KAIROS
+       ═══════════════════════════════════════════ */
+    #essayer {
+      padding: 6rem 0;
+      background: var(--bg-dark);
+    }
+
+    .essayer-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--accent-purple);
+      background: rgba(139, 92, 246, 0.08);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .kairos-iframe-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .kairos-iframe-wrapper iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      display: block;
+      background: #0d1117;
+    }
+
+    @media (max-width: 768px) {
+      .kairos-iframe-wrapper iframe {
+        height: 500px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
        CAS D'USAGE
        ═══════════════════════════════════════════ */
     #usecases {

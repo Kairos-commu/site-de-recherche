@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
+      font-src 'self';
+      img-src 'self' data: blob:;
+      connect-src 'self' https://api.anthropic.com https://api.openai.com https://generativelanguage.googleapis.com https://api.deepseek.com https://api.x.ai https://*.workers.dev http://localhost:*;
+      frame-ancestors 'self' https://kairos-commu.github.io http://localhost:* https://localhost:*;
+    " />
+    <title>KAIROS — Cartographie cognitive</title>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('kairos_theme') || 'obsidian')</script>
+    <script type="module" crossorigin src="./assets/web-HPdob_9n.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/web-CGVGKq4P.css">
+  </head>
+  <body class="mode-assisted">
+    <div class="container sidebar-hidden chat-hidden">
+      <!-- Canvas principal -->
+      <div class="canvas-area">
+        <!-- Toolbar simplifiée -->
+        <div class="main-toolbar">
+          <!-- Partie gauche : actions -->
+          <div class="toolbar-left">
+            <span class="toolbar-brand">KAIROS</span>
+            <button id="create-pole-btn" title="Créer une nouvelle vignette">
+              + Vignette
+            </button>
+            <button id="clear-btn" title="Réinitialiser le canvas">
+              Effacer
+            </button>
+            <button id="btn-tree-layout" title="Réorganiser en arbre hiérarchique">
+              Arbre
+            </button>
+          </div>
+
+          <!-- Partie droite : posture, thème, zoom, clé API -->
+          <div class="toolbar-right">
+            <!-- Sélecteur de posture -->
+            <div class="posture-dropdown">
+              <button id="btn-posture" class="btn-posture" title="Posture du système" aria-label="Posture du système">
+                <span id="posture-btn-swatch" class="posture-btn-swatch" style="background: #b8a04d"></span>
+                <span id="posture-label">Nommer</span>
+                <span class="posture-chevron">▾</span>
+              </button>
+              <div id="posture-menu" class="posture-menu hidden">
+                <button data-posture="accompagner" class="posture-option">
+                  <span class="posture-swatch" style="background: #4db8a8"></span>
+                  Accompagner
+                </button>
+                <button data-posture="nommer" class="posture-option active">
+                  <span class="posture-swatch" style="background: #b8a04d"></span>
+                  Nommer
+                </button>
+                <button data-posture="provoquer" class="posture-option">
+                  <span class="posture-swatch" style="background: #c05050"></span>
+                  Provoquer
+                </button>
+              </div>
+            </div>
+
+            <!-- Sélecteur de thème (2 thèmes seulement) -->
+            <div class="theme-dropdown">
+              <button id="btn-theme" class="btn-theme" title="Changer de thème" aria-label="Changer de thème">
+                <span id="theme-btn-swatch" class="theme-btn-swatch" style="background: #0f1117"></span>
+                <span id="theme-label">Obsidian</span>
+                <span class="theme-chevron">▾</span>
+              </button>
+              <div id="theme-menu" class="theme-menu hidden">
+                <button data-theme="obsidian" class="theme-option">
+                  <span class="theme-swatch" style="background: #0f1117"></span>
+                  Obsidian
+                </button>
+                <button data-theme="porcelain" class="theme-option">
+                  <span class="theme-swatch" style="background: #e8e6e0"></span>
+                  Porcelain
+                </button>
+              </div>
+            </div>
+
+            <!-- Indicateur de zoom -->
+            <div class="zoom-indicator">
+              Zoom: <strong id="current-zoom">100%</strong>
+            </div>
+
+            <div class="toolbar-separator"></div>
+
+            <!-- Bouton configuration API -->
+            <button id="api-config-btn" class="btn-api-config" title="Configurer la clé API" aria-label="Configurer la clé API">
+              API
+            </button>
+          </div>
+        </div>
+
+        <!-- SVG pour les connexions -->
+        <svg id="connections">
+          <defs>
+            <marker
+              id="arrow-implies"
+              markerWidth="12"
+              markerHeight="12"
+              refX="10"
+              refY="4"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L0,8 L10,4 z" fill="#a89050" />
+            </marker>
+            <marker
+              id="arrow-resonance"
+              markerWidth="10"
+              markerHeight="10"
+              refX="5"
+              refY="5"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,5 L5,0 L10,5 L5,10 z" fill="#4db8a8" />
+            </marker>
+          </defs>
+        </svg>
+
+        <!-- Conteneur des pôles (vignettes) -->
+        <div id="poles-container"></div>
+
+        <!-- Minimap (cachée, requise par CanvasManager) -->
+        <div id="minimap-container" style="display:none">
+          <canvas id="minimap-canvas" width="200" height="150"></canvas>
+          <div id="minimap-viewport"></div>
+          <button id="minimap-resize-btn"></button>
+        </div>
+
+        <!-- Indicateur oxygène -->
+        <div id="oxygen-strip" class="oxygen-strip" data-level="moderate">
+          <span class="oxygen-strip-score" id="oxygen-strip-score">50</span>
+        </div>
+
+        <!-- Légende -->
+        <div class="legend">
+          <div class="legend-title">Statuts</div>
+          <div class="legend-item">
+            <span class="legend-symbol">○</span> Non évalué
+          </div>
+          <div class="legend-item">
+            <span class="legend-symbol rejected">🎯</span> Ancre
+          </div>
+          <div style="margin-top: 10px" class="legend-title">Connexions</div>
+          <div class="legend-item">
+            <span style="color: #7a7a8a">→</span> Implique
+          </div>
+          <div class="legend-item">
+            <span style="color: #5a9a9a">- -</span> Résonance
+          </div>
+        </div>
+
+        <!-- Bouton flottant pour opérations sur la sélection -->
+        <div id="selection-llm-button" class="selection-llm-button hidden">
+          <span id="selection-llm-count">0</span> vignette(s)
+          <div class="selection-ops">
+            <button class="btn-sel-op" data-operation="DÉVELOPPER" title="Développer">DEV</button>
+            <button class="btn-sel-op" data-operation="RELIER" title="Relier">REL</button>
+          </div>
+        </div>
+
+        <!-- Bandeau de suggestion adaptatif -->
+        <div id="bandeau-suggestion" class="bandeau-suggestion">
+          <!-- Boutons Undo/Redo -->
+          <div class="history-buttons">
+            <button
+              id="btn-undo"
+              class="btn-history"
+              disabled
+              title="Rien à annuler"
+              aria-label="Annuler"
+            >
+              ↩
+            </button>
+            <button
+              id="btn-redo"
+              class="btn-history"
+              disabled
+              title="Rien à rétablir"
+              aria-label="Rétablir"
+            >
+              ↪
+            </button>
+          </div>
+
+          <div class="bandeau-separator"></div>
+
+          <span id="suggestion-texte" aria-live="polite"
+            >Canvas en construction — ajoutons des idées et tissons des liens.</span
+          >
+          <div class="suggestion-actions">
+            <div class="operations-menu">
+              <button class="btn-operation" data-operation="DÉVELOPPER" title="Développer de nouvelles idées">DÉVELOPPER</button>
+              <button class="btn-operation" data-operation="RELIER" title="Connecter les idées entre elles">RELIER</button>
+            </div>
+          </div>
+
+          <!-- Barre debug (masquable) -->
+          <div id="debug-metrics-strip" class="debug-metrics-strip">
+            <span id="dms-oxygen">O₂ —</span>
+            <span class="dms-sep">|</span>
+            <span id="dms-submode">mode —</span>
+            <span class="dms-sep">|</span>
+            <span id="dms-friction">friction —</span>
+            <span class="dms-sep">|</span>
+            <span id="dms-echo">écho —</span>
+            <span class="dms-sep">|</span>
+            <span id="dms-structure">struct —</span>
+            <span class="dms-sep">|</span>
+            <span id="dms-posture">nommer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal clé API (injectée par api-key-ui.ts) -->
+    <div id="api-key-modal" class="modal-overlay hidden">
+      <div class="modal-content api-key-modal-content">
+        <h3>Configuration API</h3>
+        <p class="api-key-warning">
+          🔒 Votre clé reste dans votre navigateur et n'est jamais transmise à nos serveurs.
+          Elle disparaît à la fermeture de l'onglet. Ne partagez jamais votre clé API.
+        </p>
+        <div class="api-key-form">
+          <label for="api-provider-select">Provider</label>
+          <select id="api-provider-select">
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="chatgpt">ChatGPT (OpenAI)</option>
+            <option value="gemini">Gemini (Google)</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="grok">Grok (xAI)</option>
+          </select>
+
+          <label for="api-model-input">Modèle</label>
+          <input type="text" id="api-model-input" placeholder="ex: claude-sonnet-4-20250514" />
+
+          <label for="api-key-input">Clé API</label>
+          <input type="password" id="api-key-input" placeholder="sk-..." autocomplete="off" />
+
+          <div class="api-key-actions">
+            <button id="api-key-save-btn" class="btn-primary">Valider</button>
+            <button id="api-key-cancel-btn" class="btn-secondary">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error handler global -->
+
+    <!-- Script principal version web -->
+  </body>
+</html>

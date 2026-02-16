@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "variable": "Friction",
+    "fichier": "seuils.json",
+    "description": "Seuils et paramètres de calcul pour la variable Friction",
+    "sources": [
+      "Calibration empirique - Conversation 'Démanteler les boucles fermées'",
+      "Théorie - Phase 1 (à ajuster après collecte données)"
+    ],
+    "version": "1.0",
+    "date": "2026-02-01",
+    "phase": "Bootstrap"
+  },
+
+  "calcul_friction": {
+    "description": "Méthode de calcul de F",
+    "formule": "F = max(0, F_positive - F_negative) * reception_modifier",
+    "note": "La friction négative soustrait, la réception module"
+  },
+
+  "conversion_score": {
+    "description": "Conversion des points bruts en score normalisé",
+    
+    "haute": {
+      "points_min": 8.0,
+      "score": 1.0,
+      "description": "Friction productive intense avec réception positive"
+    },
+    "moyenne_haute": {
+      "points_min": 5.0,
+      "points_max": 7.9,
+      "score": 0.75,
+      "description": "Friction significative"
+    },
+    "moyenne": {
+      "points_min": 2.5,
+      "points_max": 4.9,
+      "score": 0.5,
+      "description": "Friction modérée"
+    },
+    "basse": {
+      "points_min": 0.5,
+      "points_max": 2.4,
+      "score": 0.25,
+      "description": "Friction légère"
+    },
+    "nulle": {
+      "points_max": 0.4,
+      "score": 0.1,
+      "description": "Pas de friction détectée",
+      "note": "Score plancher à 0.1 pour éviter division par zéro"
+    }
+  },
+
+  "modificateurs_reception": {
+    "description": "Modificateurs appliqués selon la réception de la friction",
+    
+    "reception_positive_forte": {
+      "condition": "concession_explicite détectée",
+      "multiplicateur": 1.5,
+      "description": "La friction a produit un effet visible"
+    },
+    "reception_positive": {
+      "condition": "validation_approche OU desequilibre_cognitif",
+      "multiplicateur": 1.2,
+      "description": "La friction est acceptée"
+    },
+    "reception_neutre": {
+      "condition": "aucun signal de réception",
+      "multiplicateur": 1.0,
+      "description": "Pas d'information sur l'effet"
+    },
+    "reception_negative": {
+      "condition": "rejet_direct OU repetition_position",
+      "multiplicateur": 0.5,
+      "description": "La friction est rejetée"
+    },
+    "reception_negative_forte": {
+      "condition": "attaque_personnelle OU changement_sujet",
+      "multiplicateur": 0.2,
+      "description": "La friction a fermé l'espace"
+    }
+  },
+
+  "seuils_espace": {
+    "description": "Seuils pour la condition d'existence de l'espace (Niveau 1)",
+    
+    "friction_min_pour_emergence": {
+      "valeur": 0.25,
+      "description": "En dessous, pas assez de friction pour générer de l'émergence",
+      "note": "Correspond à au moins 1-2 moments de friction légère"
+    },
+    "friction_max_avant_rupture": {
+      "valeur": null,
+      "description": "Pas de maximum défini - dépend de la souplesse S",
+      "note": "F peut être très élevé si S > seuil (l'espace tient)"
+    }
+  },
+
+  "ponderation_sequentielle": {
+    "description": "Poids selon la position dans la conversation",
+    
+    "premier_tiers": {
+      "multiplicateur": 1.0,
+      "description": "Friction normale en début"
+    },
+    "deuxieme_tiers": {
+      "multiplicateur": 1.2,
+      "description": "Friction légèrement plus significative au milieu"
+    },
+    "dernier_tiers": {
+      "multiplicateur": 1.5,
+      "description": "Friction maintenue jusqu'à la fin = signal fort"
+    }
+  },
+
+  "interaction_avec_autres_variables": {
+    "description": "Comment F interagit avec I et L",
+    
+    "F_sans_I": {
+      "effet": "Friction sans intention = bruit",
+      "condition": "Si I < 0.25 et F > 0.5",
+      "action": "Réduire F de 50%"
+    },
+    "F_avec_L_eleve": {
+      "effet": "Friction dans format très linéaire = atténuée",
+      "condition": "Si L > 0.75",
+      "action": "Réduire F de 30%"
+    }
+  },
+
+  "calibration_empirique": {
+    "description": "Données de référence pour calibration",
+    
+    "conversation_reference": {
+      "id": "claude-f0c63ad5-aa14-4481-a69d-029f78f920b7",
+      "titre": "Démanteler les boucles fermées",
+      "F_estime": 0.9,
+      "justification": "Friction maximale demandée et maintenue, réception positive multiple"
+    },
+    
+    "ajustements_futurs": [
+      {
+        "date": null,
+        "ajustement": "À compléter après 100 sessions analysées"
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "_meta": {
+    "variable": "Friction",
+    "fichier": "initiateurs_friction.json",
+    "description": "Patterns qui initient une friction productive dans la conversation",
+    "sources": [
+      "Schegloff et al. (1977) - Repair sequences",
+      "van Eemeren et al. (2007) - Argumentative indicators",
+      "Conversation 'Démanteler les boucles fermées' (2026-01-31)"
+    ],
+    "version": "1.0",
+    "date": "2026-02-01",
+    "langue": "fr"
+  },
+
+  "initiateurs_directs": {
+    "description": "Marqueurs courts qui interrompent le flux pour initier une friction",
+    "items": [
+      "stop",
+      "attends",
+      "non",
+      "attend",
+      "une seconde",
+      "pause",
+      "halte"
+    ],
+    "poids": 2.0,
+    "source": "Conversation empirique + Repair initiation (Schegloff)",
+    "note": "Doivent apparaître en début de tour ou isolés"
+  },
+
+  "signalement_pattern": {
+    "description": "Expressions qui nomment un pattern de pensée en temps réel",
+    "items": [
+      "c'est exactement",
+      "tu viens de",
+      "ce qui vient de se passer",
+      "je remarque que",
+      "tu fais exactement",
+      "c'est le pattern",
+      "tu reproduis",
+      "voilà ce qui se passe"
+    ],
+    "poids": 2.5,
+    "source": "Conversation empirique - Meta-signalement",
+    "note": "Rend la structure de pensée visible à l'interlocuteur"
+  },
+
+  "questions_clarification": {
+    "description": "Questions qui forcent l'examen d'une position",
+    "items": [
+      "qu'est-ce qui",
+      "as-tu",
+      "la question est",
+      "qu'est-ce que ça prouve",
+      "comment tu sais",
+      "sur quoi tu te bases",
+      "quelle preuve",
+      "qu'est-ce qui changerait si"
+    ],
+    "poids": 1.5,
+    "source": "Conversation empirique + Socratic questioning",
+    "note": "L'effet dépend de la suite de la question"
+  },
+
+  "reformulations_deplacantes": {
+    "description": "Expressions qui recadrent ce que l'interlocuteur a dit",
+    "items": [
+      "ta vraie question",
+      "ce que tu dis vraiment",
+      "autrement dit",
+      "en d'autres termes",
+      "ce que ça signifie",
+      "traduit",
+      "reformulé"
+    ],
+    "poids": 1.5,
+    "source": "Conversation empirique + Edit terms (Schegloff)",
+    "note": "Déplace le cadre sans rejeter"
+  },
+
+  "marqueurs_contraste": {
+    "description": "Connecteurs qui introduisent une contradiction ou nuance",
+    "items": [
+      "mais",
+      "pourtant",
+      "or",
+      "sauf que",
+      "cependant",
+      "toutefois",
+      "néanmoins",
+      "en revanche"
+    ],
+    "poids": 1.0,
+    "source": "Discourse markers (Fraser, 1999) + van Eemeren",
+    "note": "Poids faible car très courants - contexte nécessaire"
+  },
+
+  "anti_mitigation": {
+    "description": "Expressions qui signalent une réponse directe sans euphémisme",
+    "items": [
+      "réponse brutale",
+      "question directe",
+      "honnêtement",
+      "sans détour",
+      "franchement",
+      "pour être clair",
+      "je vais être direct",
+      "sans tourner autour"
+    ],
+    "poids": 2.0,
+    "source": "Conversation empirique - Inversion du dispreferred",
+    "note": "Inverse le pattern de mitigation attendu"
+  },
+
+  "problematisation": {
+    "description": "Marqueurs qui introduisent un problème ou une objection",
+    "items": [
+      "problème",
+      "le souci",
+      "la difficulté",
+      "ce qui coince",
+      "ce qui ne marche pas",
+      "la faille",
+      "le point faible"
+    ],
+    "poids": 1.5,
+    "source": "Argumentative indicators (van Eemeren)",
+    "note": "Signale qu'une objection suit"
+  }
+}

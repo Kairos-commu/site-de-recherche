@@ -1,0 +1,77 @@
+{
+  "_meta": {
+    "variable": "Alignement",
+    "fichier": "corrections.json",
+    "description": "Marqueurs de desaccord/correction - reference pour analyse qualitative",
+    "sources": [
+      "Pomerantz A. (1984) - Agreeing and disagreeing with assessments",
+      "LIWC 2015 - Negate category",
+      "Conversation Analysis - Repair mechanisms (Schegloff et al., 1977)"
+    ],
+    "version": "2.0",
+    "date": "2026-02-01",
+    "note": "Refonte v2 : plus de poids negatifs, reference pour analyse"
+  },
+
+  "usage_v2": {
+    "description": "Utilisation dans le nouveau paradigme",
+    "role_alignement": "Ces marqueurs N'ANNULENT PAS le seuil A - desaccord != absence d'accordage",
+    "role_friction": "Certains de ces marqueurs sont reutilises dans friction/ comme initiateurs",
+    "note": "La presence de corrections AVEC validations = friction productive (bon signe)"
+  },
+
+  "corrections_fortes": {
+    "description": "Desaccord explicite et direct",
+    "items": [
+      "non",
+      "absolument pas",
+      "pas du tout",
+      "c'est faux",
+      "au contraire",
+      "je ne suis pas d'accord",
+      "c'est incorrect",
+      "ca ne va pas"
+    ],
+    "note": "Signaux forts de divergence cognitive - peut indiquer friction productive",
+    "lien_friction": "Voir friction/initiateurs_friction.json"
+  },
+
+  "corrections_moyennes": {
+    "description": "Desaccord modere ou correctif",
+    "items": [
+      "pas vraiment",
+      "pas exactement",
+      "ce n'est pas ca",
+      "plutot",
+      "en fait",
+      "je dirais plutot",
+      "pas tout a fait"
+    ],
+    "lien_friction": "Voir friction/initiateurs_friction.json"
+  },
+
+  "corrections_nuancees": {
+    "description": "Reformulation ou precision (repair mechanisms)",
+    "items": [
+      "je veux dire",
+      "en fait je pensais a",
+      "pour etre precis",
+      "ce que je voulais dire",
+      "laisse-moi reformuler",
+      "attends"
+    ],
+    "note": "Pas vraiment desaccord, mais ajustement necessaire"
+  },
+
+  "hesitations": {
+    "description": "Marqueurs d'incertitude face a proposition",
+    "items": [
+      "je ne suis pas sur",
+      "peut-etre pas",
+      "je ne sais pas trop",
+      "ca me semble bizarre",
+      "j'ai des doutes"
+    ],
+    "note": "Signal de non-alignement sans fermeture de l'espace"
+  }
+}

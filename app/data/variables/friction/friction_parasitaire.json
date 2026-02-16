@@ -1,0 +1,142 @@
+{
+  "_meta": {
+    "variable": "Friction",
+    "fichier": "friction_parasitaire.json",
+    "description": "Patterns de friction non-productive qui dissipent l'énergie sans générer d'émergence",
+    "sources": [
+      "Butera et al. (2019) - Competitive/Protective regulation",
+      "Brown & Levinson - Face-threatening acts",
+      "Conversation 'Démanteler les boucles fermées' (2026-01-31)"
+    ],
+    "version": "1.0",
+    "date": "2026-02-01",
+    "langue": "fr"
+  },
+
+  "hostilite_sans_direction": {
+    "description": "Attaques qui ne visent pas à faire avancer la réflexion",
+    "items": [
+      "c'est n'importe quoi",
+      "c'est stupide",
+      "tu racontes des conneries",
+      "arrête tes bêtises",
+      "ça ne veut rien dire",
+      "c'est ridicule"
+    ],
+    "poids": -3.0,
+    "source": "Face-threatening acts (Brown & Levinson)",
+    "note": "Friction qui ferme l'espace au lieu de l'ouvrir"
+  },
+
+  "interruption_sans_alternative": {
+    "description": "Couper sans proposer de direction",
+    "items": [
+      "non non non",
+      "stop arrête",
+      "tais-toi",
+      "laisse tomber"
+    ],
+    "poids": -2.5,
+    "source": "Conversation analysis",
+    "note": "Différent de 'Stop' suivi d'une analyse"
+  },
+
+  "competition_pure": {
+    "description": "Patterns qui transforment l'échange en compétition",
+    "items": [
+      "j'ai raison",
+      "tu as tort",
+      "je gagne",
+      "tu perds",
+      "c'est moi qui",
+      "je sais mieux"
+    ],
+    "poids": -2.0,
+    "source": "Butera - Competitive regulation",
+    "note": "L'objectif devient gagner, pas comprendre"
+  },
+
+  "mepris_explicite": {
+    "description": "Expressions de supériorité ou dénigrement",
+    "items": [
+      "évidemment tu ne comprends pas",
+      "c'est pourtant simple",
+      "même un enfant comprendrait",
+      "je ne vais pas t'expliquer",
+      "tu devrais savoir"
+    ],
+    "poids": -3.0,
+    "source": "Face-threatening acts",
+    "note": "Détruit la condition d'alignement minimal"
+  },
+
+  "sarcasme_destructeur": {
+    "description": "Ironie qui vise à blesser plutôt qu'éclairer",
+    "items": [
+      "bravo",
+      "génial",
+      "super",
+      "bien joué",
+      "impressionnant"
+    ],
+    "poids": -1.5,
+    "source": "Pragmatics - Irony detection",
+    "note": "ATTENTION: contexte nécessaire - ces mots peuvent être sincères",
+    "requires_context": true
+  },
+
+  "absolutisme": {
+    "description": "Formulations qui ferment toute possibilité d'exploration",
+    "items": [
+      "c'est impossible",
+      "ça ne marchera jamais",
+      "il n'y a pas d'autre façon",
+      "c'est comme ça",
+      "point final",
+      "fin de la discussion"
+    ],
+    "poids": -2.0,
+    "source": "Argumentation theory",
+    "note": "Ferme l'espace au lieu de le maintenir ouvert"
+  },
+
+  "manipulation_emotionnelle": {
+    "description": "Tentatives de contrôle par l'émotion plutôt que l'argument",
+    "items": [
+      "si tu m'aimais",
+      "tu me fais de la peine",
+      "tu es méchant",
+      "tu me déçois",
+      "après tout ce que j'ai fait"
+    ],
+    "poids": -2.5,
+    "source": "Rhetoric - Pathetic fallacy",
+    "note": "Déplace le terrain de l'épistémique vers l'émotionnel"
+  },
+
+  "bruit_sans_signal": {
+    "description": "Interventions qui n'apportent pas de contenu",
+    "items": [
+      "ouais ouais",
+      "bla bla bla",
+      "etc etc",
+      "peu importe",
+      "whatever"
+    ],
+    "poids": -1.0,
+    "source": "Information theory",
+    "note": "Dissipe l'énergie sans direction"
+  },
+
+  "deflection_systematique": {
+    "description": "Évitement constant du sujet central",
+    "patterns": [
+      "changement de sujet après chaque critique",
+      "réponse à côté systématique",
+      "whataboutism"
+    ],
+    "poids": -2.0,
+    "source": "Argumentation fallacies",
+    "note": "Requiert analyse séquentielle sur plusieurs tours"
+  }
+}

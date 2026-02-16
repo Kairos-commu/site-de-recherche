@@ -1,0 +1,174 @@
+{
+  "_meta": {
+    "variable": "Friction",
+    "fichier": "reponses_friction.json",
+    "description": "Patterns qui signalent la réception de la friction (côté utilisateur)",
+    "sources": [
+      "Piaget - Déséquilibre cognitif",
+      "Butera et al. (2019) - Sociocognitive conflict regulation",
+      "Conversation 'Démanteler les boucles fermées' (2026-01-31)"
+    ],
+    "version": "1.0",
+    "date": "2026-02-01",
+    "langue": "fr"
+  },
+
+  "reception_positive": {
+    "description": "Signaux que la friction a été reçue et produit un effet constructif",
+    
+    "concession_explicite": {
+      "items": [
+        "tu as raison",
+        "t'as raison",
+        "c'est vrai",
+        "effectivement",
+        "je n'avais pas vu",
+        "je me suis contredit",
+        "tu marques un point",
+        "t'as gagné",
+        "je me défends là",
+        "ok tu m'as eu"
+      ],
+      "poids": 2.5,
+      "source": "Conversation empirique",
+      "note": "Signal fort de friction productive"
+    },
+
+    "validation_approche": {
+      "items": [
+        "je vois ce que tu fais",
+        "je comprends où tu veux en venir",
+        "tu as raison de",
+        "c'est une bonne question",
+        "je n'y avais pas pensé"
+      ],
+      "poids": 2.0,
+      "source": "Conversation empirique",
+      "note": "Accepte la friction comme légitime"
+    },
+
+    "desequilibre_cognitif": {
+      "items": [
+        "j'ai la sensation que",
+        "je tourne en rond",
+        "je ne sais plus",
+        "ça me fait douter",
+        "je dois revoir",
+        "ça remet en question",
+        "je suis confus"
+      ],
+      "poids": 2.0,
+      "source": "Piaget - Disequilibrium",
+      "note": "Signal de perturbation cognitive productive"
+    },
+
+    "question_ouverte_retour": {
+      "items": [
+        "mais alors",
+        "donc comment",
+        "qu'est-ce que je fais",
+        "comment on peut",
+        "et si",
+        "dans ce cas"
+      ],
+      "poids": 1.5,
+      "source": "Conversation empirique",
+      "note": "Friction transformée en exploration"
+    },
+
+    "revision_position": {
+      "items": [
+        "en fait",
+        "finalement",
+        "je réalise que",
+        "maintenant que tu le dis",
+        "vu comme ça",
+        "sous cet angle"
+      ],
+      "poids": 2.0,
+      "source": "Piaget - Accommodation",
+      "note": "Signal de modification de position"
+    }
+  },
+
+  "reception_negative": {
+    "description": "Signaux que la friction est rejetée ou produit une défense rigide",
+
+    "repetition_position": {
+      "items": [
+        "mais non",
+        "je maintiens",
+        "comme je disais",
+        "je répète",
+        "encore une fois"
+      ],
+      "poids": -1.5,
+      "source": "Butera - Protective regulation",
+      "note": "Réaffirmation sans intégration de la critique"
+    },
+
+    "rejet_direct": {
+      "items": [
+        "tu ne comprends pas",
+        "ce n'est pas ça",
+        "tu te trompes",
+        "non c'est faux",
+        "pas du tout"
+      ],
+      "poids": -1.0,
+      "source": "Conversation analysis",
+      "note": "Peut être légitime si argumenté"
+    },
+
+    "changement_sujet": {
+      "items": [
+        "de toute façon",
+        "bref",
+        "passons",
+        "autre chose",
+        "peu importe"
+      ],
+      "poids": -2.0,
+      "source": "Conversation empirique",
+      "note": "Évitement de la friction"
+    },
+
+    "attaque_personnelle": {
+      "items": [
+        "tu es",
+        "tu fais toujours",
+        "c'est facile pour toi",
+        "tu ne peux pas comprendre"
+      ],
+      "poids": -2.5,
+      "source": "Butera - Competitive regulation",
+      "note": "Transformation en conflit relationnel"
+    }
+  },
+
+  "amplificateurs": {
+    "description": "Éléments qui amplifient l'effet de la friction (positif ou négatif)",
+    
+    "intensifieurs_positifs": {
+      "items": [
+        "vraiment",
+        "totalement",
+        "complètement",
+        "absolument"
+      ],
+      "multiplicateur": 1.3,
+      "note": "Amplifie la réception positive"
+    },
+
+    "marqueurs_reflexion": {
+      "items": [
+        "...",
+        "hmm",
+        "attends",
+        "laisse-moi réfléchir"
+      ],
+      "multiplicateur": 1.2,
+      "note": "Signal de traitement cognitif en cours"
+    }
+  }
+}

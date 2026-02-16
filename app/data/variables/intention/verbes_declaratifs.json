@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "variable": "Intention",
+    "description": "Marqueurs linguistiques indiquant une direction/but explicite",
+    "sources": [
+      "LIWC 2015 - Cognitive Processes category",
+      "Searle J.R. (1976) - Speech Act Theory (Directives)",
+      "Austin J.L. (1962) - How to Do Things with Words"
+    ],
+    "version": "1.0",
+    "date": "2026-01-24"
+  },
+  "verbes_directifs_forts": {
+    "description": "Actes illocutoires directifs explicites (Searle, 1976)",
+    "items": [
+      "je veux",
+      "j'ai besoin de",
+      "je dois",
+      "il faut que",
+      "il est nécessaire de",
+      "je cherche à",
+      "mon but est",
+      "mon objectif est",
+      "je souhaite"
+    ],
+    "poids": 1.0
+  },
+  "verbes_insight": {
+    "description": "Processus cognitifs d'insight (LIWC Insight category)",
+    "items": [
+      "comprendre",
+      "réaliser",
+      "découvrir",
+      "saisir",
+      "percevoir",
+      "clarifier",
+      "élucider",
+      "démêler"
+    ],
+    "poids": 1.0
+  },
+  "verbes_exploration": {
+    "description": "Marqueurs d'exploration cognitive intentionnelle",
+    "items": [
+      "explorer",
+      "examiner",
+      "analyser",
+      "étudier",
+      "investiguer",
+      "approfondir",
+      "creuser",
+      "questionner"
+    ],
+    "poids": 1.0
+  },
+  "marqueurs_hesitation": {
+    "description": "Indicateurs d'intention floue ou absente",
+    "items": [
+      "peut-être",
+      "je ne sais pas",
+      "éventuellement",
+      "si possible",
+      "je suppose",
+      "probablement",
+      "on verra"
+    ],
+    "poids": -0.5,
+    "note": "Réduit le score d'intention"
+  },
+  "structures_interrogatives": {
+    "description": "Questions directes indiquant recherche d'information",
+    "patterns": [
+      "comment",
+      "pourquoi",
+      "qu'est-ce que",
+      "quel est",
+      "quels sont",
+      "où se trouve",
+      "quand"
+    ],
+    "poids": 0.7,
+    "note": "Intention présente mais moins explicite qu'une directive"
+  }
+}

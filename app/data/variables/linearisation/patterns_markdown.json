@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "variable": "Linéarisation",
+    "description": "Structures de formatage dans les réponses IA",
+    "sources": [
+      "Markdown syntax specification",
+      "CommonMark spec (2014)"
+    ],
+    "version": "1.0",
+    "note": "Détection objective de structures de formatage"
+  },
+  "bullets_unordered": {
+    "description": "Listes à puces non ordonnées",
+    "patterns": [
+      "- ",
+      "* ",
+      "• "
+    ],
+    "regex": "^[\\s]*[-*•]\\s+",
+    "poids": 1.0,
+    "note": "Chaque occurrence compte pour +1"
+  },
+  "bullets_ordered": {
+    "description": "Listes numérotées",
+    "patterns": [
+      "1. ",
+      "2. ",
+      "3. "
+    ],
+    "regex": "^[\\s]*\\d+\\.\\s+",
+    "poids": 1.0,
+    "note": "Structure séquentielle forte"
+  },
+  "headers": {
+    "description": "Titres et sections markdown",
+    "patterns": {
+      "h1": "# ",
+      "h2": "## ",
+      "h3": "### ",
+      "h4": "#### "
+    },
+    "regex": "^#{1,4}\\s+",
+    "poids": 1.0,
+    "note": "Indique structuration hiérarchique"
+  },
+  "code_blocks": {
+    "description": "Blocs de code formatés",
+    "patterns": [
+      "```",
+      "`"
+    ],
+    "poids": 0.5,
+    "note": "Moins indicateur de linéarisation conversationnelle"
+  },
+  "blockquotes": {
+    "description": "Citations formatées",
+    "patterns": [
+      "> "
+    ],
+    "regex": "^>\\s+",
+    "poids": 0.5
+  }
+}

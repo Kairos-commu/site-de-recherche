@@ -30,6 +30,7 @@
       <li><a href="#probleme">Le Problème</a></li>
       <li><a href="#solution">Les Modes</a></li>
       <li><a href="#demo">Démo</a></li>
+      <li><a href="#essayer">Essayer</a></li>
       <li><a href="#usecases">Usages</a></li>
       <li><a href="#vision">Vision</a></li>
       <li><a href="#documentation">Docs</a></li>
@@ -793,6 +794,30 @@
     </div>
   </section>
 
+  <!-- Essayer KAIROS -->
+  <section id="essayer">
+    <div class="container">
+      <h2>Essayer KAIROS</h2>
+      <p>
+        Testez le vrai canvas KAIROS directement dans votre navigateur.
+        Créez des vignettes, connectez-les, et lancez les opérations
+        <strong>DÉVELOPPER</strong> et <strong>RELIER</strong> avec votre clé API.
+      </p>
+      <p class="essayer-note">
+        Session éphémère — rien n'est sauvegardé. Votre clé API reste en mémoire uniquement.
+      </p>
+      <div class="kairos-iframe-wrapper">
+        <iframe
+          id="kairos-iframe"
+          src="app/web.html"
+          sandbox="allow-scripts allow-same-origin"
+          title="KAIROS — Canvas de cartographie cognitive"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- Cas d'usage -->
   <section id="usecases">
     <div class="container">
@@ -1095,6 +1120,35 @@
     document.querySelectorAll('section > .container').forEach(el => {
       observer.observe(el);
     });
+
+    // ═══════════════════════════════════════════
+    // IFRAME KAIROS — COMMUNICATION
+    // ═══════════════════════════════════════════
+    const kairosIframe = document.getElementById('kairos-iframe');
+    if (kairosIframe) {
+      window.addEventListener('message', (event) => {
+        if (!event.data || typeof event.data.type !== 'string') return;
+
+        if (event.data.type === 'kairos:ready') {
+          // Configurer le thème (Obsidian par défaut dans l'iframe)
+          kairosIframe.contentWindow.postMessage({
+            type: 'kairos:config',
+            theme: 'obsidian'
+            // proxyUrl sera ajouté quand le Worker sera déployé :
+            // proxyUrl: 'https://kairos-llm-proxy.<account>.workers.dev/api/llm'
+          }, '*');
+          console.log('KAIROS iframe: ready, config envoyée');
+        }
+
+        if (event.data.type === 'kairos:nodeCount') {
+          console.log('KAIROS: ' + event.data.count + ' vignettes');
+        }
+
+        if (event.data.type === 'kairos:error') {
+          console.warn('KAIROS error:', event.data.message);
+        }
+      });
+    }
   </script>
 
   <!-- marked.js for Markdown rendering -->

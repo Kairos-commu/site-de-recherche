@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "variable": "Linéarisation",
+    "description": "Seuils de conversion pour score de linéarisation",
+    "version": "1.0",
+    "note": "Calculé uniquement sur réponses IA"
+  },
+  "longueur_phrases": {
+    "description": "Phrases longues comme indicateur de discours structuré",
+    "seuil_mots": 20,
+    "poids": 0.5,
+    "note": "Phrases > 20 mots suggèrent élaboration formelle"
+  },
+  "fragments_courts": {
+    "description": "Fragments courts comme indicateur de brut/spontané",
+    "seuil_mots": 10,
+    "poids": -0.5,
+    "note": "Fragments < 10 mots réduisent linéarisation"
+  },
+  "calcul_score": {
+    "description": "Formule de calcul du score brut",
+    "formule": "score_structure + score_longueur + score_conclusion + score_fragments",
+    "composantes": {
+      "score_structure": "nb_bullets + nb_headers + nb_numbered",
+      "score_longueur": "nb_phrases_longues × 0.5",
+      "score_conclusion": "nb_patterns_conclusion × 2",
+      "score_fragments": "nb_fragments × -0.5"
+    }
+  },
+  "conversion_score": {
+    "dominante": {
+      "score_min": 8,
+      "valeur": 1.0,
+      "description": "Structuration très marquée"
+    },
+    "presente": {
+      "score_min": 2,
+      "score_max": 7,
+      "valeur": 0.5,
+      "description": "Structuration modérée"
+    },
+    "absente": {
+      "score_max": 1,
+      "valeur": 0.0,
+      "description": "Réponse brute, peu structurée"
+    }
+  },
+  "ponderation_contextuelle": {
+    "description": "Pondération des marqueurs selon contexte structurel",
+    "zone_structured": {
+      "multiplicateur": 2.0,
+      "description": "Marqueur dans zone avec markdown/listes consécutives"
+    },
+    "zone_fragment": {
+      "multiplicateur": 0.3,
+      "description": "Marqueur dans zone de fragments courts (< 10 mots)"
+    },
+    "zone_normal": {
+      "multiplicateur": 1.0,
+      "description": "Marqueur dans texte conversationnel normal"
+    }
+  },
+  "densite_markdown": {
+    "description": "Ratio lignes markdown / total lignes",
+    "seuil_forte": 0.3,
+    "seuil_moyenne": 0.1,
+    "multiplicateur_forte": 1.5,
+    "multiplicateur_moyenne": 1.2,
+    "multiplicateur_faible": 1.0,
+    "note": "Si > 30% des lignes sont du markdown -> amplifier le score global"
+  },
+  "detection_zones": {
+    "description": "Critères pour identifier les zones textuelles",
+    "fragment": {
+      "max_words_per_line": 10,
+      "description": "Ligne avec <= 10 mots = fragment"
+    },
+    "structured": {
+      "min_consecutive_markdown": 2,
+      "description": ">= 2 lignes markdown consécutives = zone structurée"
+    }
+  }
+}
