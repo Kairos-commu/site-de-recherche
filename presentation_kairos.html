@@ -9,7 +9,7 @@
     style-src 'self' 'unsafe-inline';
     font-src 'self';
     img-src 'self' data:;
-    frame-src 'self';
+    frame-src 'self' https://app.mecanique-invisible.com;
     connect-src 'self';
   " />
   <title>KAIROS — Penser avec friction</title>
@@ -883,7 +883,7 @@
       <div class="kairos-iframe-wrapper">
         <iframe
           id="kairos-iframe"
-          src="app/web.html"
+          src="https://app.mecanique-invisible.com"
           sandbox="allow-scripts allow-same-origin"
           title="KAIROS — Canvas de cartographie cognitive"
           loading="lazy"
@@ -1385,25 +1385,17 @@
     // ═══════════════════════════════════════════
     const kairosIframe = document.getElementById('kairos-iframe');
     if (kairosIframe) {
-      // Origine attendue de l'iframe (same-origin en production, localhost en dev)
-      const KAIROS_ALLOWED_ORIGINS = [
-        window.location.origin,
-        'https://kairos-commu.github.io'
-      ];
+      const KAIROS_ORIGIN = 'https://app.mecanique-invisible.com';
 
       window.addEventListener('message', (event) => {
-        if (!KAIROS_ALLOWED_ORIGINS.includes(event.origin)) return;
+        if (event.origin !== KAIROS_ORIGIN) return;
         if (!event.data || typeof event.data.type !== 'string') return;
 
         if (event.data.type === 'kairos:ready') {
-          // Configurer le thème (Obsidian par défaut dans l'iframe)
           kairosIframe.contentWindow.postMessage({
             type: 'kairos:config',
             theme: 'obsidian'
-            // proxyUrl sera ajouté quand le Worker sera déployé :
-            // proxyUrl: 'https://kairos-llm-proxy.<account>.workers.dev/api/llm'
-          }, event.origin);
-          console.log('KAIROS iframe: ready, config envoyée');
+          }, KAIROS_ORIGIN);
         }
 
         if (event.data.type === 'kairos:nodeCount') {
