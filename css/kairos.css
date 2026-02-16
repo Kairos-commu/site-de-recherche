@@ -1554,6 +1554,126 @@
       color: var(--accent-purple);
     }
 
+    /* Bouton aide clé API */
+    .guide-help-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .guide-help-btn:hover {
+      background: #7c3aed;
+      transform: scale(1.15);
+    }
+
+    /* Panneau guide clés API */
+    .api-key-guide {
+      background: var(--bg-card);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .api-key-guide.hidden {
+      display: none;
+    }
+
+    .api-key-guide h4 {
+      color: var(--accent-purple);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .api-key-guide > p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .api-key-providers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .api-key-provider {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .api-key-provider strong {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .api-key-provider ol {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .api-key-provider li {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .api-key-provider a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    .api-key-provider a:hover {
+      text-decoration: underline;
+    }
+
+    .api-key-provider code {
+      background: rgba(139, 92, 246, 0.15);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+    }
+
+    .api-key-model {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .api-key-cost {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .api-key-providers {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 1024px) {
       .guide-grid {
         grid-template-columns: repeat(2, 1fr);

@@ -806,7 +806,7 @@
       <div class="guide-grid">
         <div class="guide-step">
           <div class="guide-step-number">1</div>
-          <h4>Entrez votre clé API</h4>
+          <h4>Entrez votre clé API <span class="guide-help-btn" onclick="document.getElementById('api-key-guide').classList.toggle('hidden')" title="Comment obtenir une clé ?">?</span></h4>
           <p>Au chargement, une fenêtre vous demande votre clé. Choisissez un provider (Claude, GPT, Gemini, DeepSeek, Grok) et collez votre clé. Elle reste en mémoire uniquement — jamais stockée.</p>
         </div>
         <div class="guide-step">
@@ -824,6 +824,50 @@
           <h4>Observez la jauge O₂</h4>
           <p>La barre en haut mesure la vitalité de votre pensée. Si elle descend sous 30, KAIROS injecte une <strong>friction</strong> — une contradiction pour relancer l'exploration.</p>
         </div>
+      </div>
+
+      <div id="api-key-guide" class="api-key-guide hidden">
+        <h4>Comment obtenir une clé API ?</h4>
+        <p>Une clé API vous permet d'utiliser un modèle de langage directement. Chaque provider offre un accès gratuit ou payant à l'usage.</p>
+        <div class="api-key-providers">
+          <div class="api-key-provider">
+            <strong>Claude (Anthropic)</strong>
+            <ol>
+              <li>Créez un compte sur <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></li>
+              <li>Allez dans <em>API Keys</em> et cliquez <em>Create Key</em></li>
+              <li>Copiez la clé (commence par <code>sk-ant-</code>)</li>
+            </ol>
+            <span class="api-key-model">Modèle recommandé : claude-sonnet-4-20250514</span>
+          </div>
+          <div class="api-key-provider">
+            <strong>GPT (OpenAI)</strong>
+            <ol>
+              <li>Créez un compte sur <a href="https://platform.openai.com" target="_blank" rel="noopener">platform.openai.com</a></li>
+              <li>Allez dans <em>API keys</em> et cliquez <em>Create new secret key</em></li>
+              <li>Copiez la clé (commence par <code>sk-</code>)</li>
+            </ol>
+            <span class="api-key-model">Modèle recommandé : gpt-4o</span>
+          </div>
+          <div class="api-key-provider">
+            <strong>Gemini (Google)</strong>
+            <ol>
+              <li>Allez sur <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></li>
+              <li>Cliquez <em>Create API key</em></li>
+              <li>Copiez la clé (commence par <code>AIza</code>)</li>
+            </ol>
+            <span class="api-key-model">Modèle recommandé : gemini-2.0-flash</span>
+          </div>
+          <div class="api-key-provider">
+            <strong>DeepSeek</strong>
+            <ol>
+              <li>Créez un compte sur <a href="https://platform.deepseek.com" target="_blank" rel="noopener">platform.deepseek.com</a></li>
+              <li>Allez dans <em>API Keys</em> et créez une clé</li>
+              <li>Copiez la clé</li>
+            </ol>
+            <span class="api-key-model">Modèle recommandé : deepseek-chat</span>
+          </div>
+        </div>
+        <p class="api-key-cost">La plupart des providers offrent des crédits gratuits au départ. Une session KAIROS coûte typiquement quelques centimes.</p>
       </div>
 
       <div class="guide-tips">
