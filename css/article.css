@@ -582,6 +582,12 @@ tr:hover {
   font-weight: bold;
 }
 
+/* Citation finale (clôture d'article) */
+.closing-quote {
+  margin-top: 2rem;
+  color: var(--text-primary);
+}
+
 /* ============================================
    POST-SCRIPTUM
    ============================================ */

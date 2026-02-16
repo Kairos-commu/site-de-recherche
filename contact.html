@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact — Florent Klimacek">
   <meta property="og:description" content="Contactez Florent Klimacek pour toute question sur les recherches humain-IA ou le projet KAIROS.">
-  <meta property="og:url" content="https://kairos-commu.github.io/site-de-recherche/contact.html">
+  <meta property="og:url" content="https://mecanique-invisible.com/contact.html">
   <meta property="og:site_name" content="Florent Klimacek">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
+  <meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://kairos-commu.github.io/site-de-recherche/og-image.jpg">
+  <meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -27,180 +27,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/base.css">
-
-  <style>
-    .contact-hero {
-      min-height: 40vh;
-      display: flex;
-      align-items: center;
-      padding: var(--space-4xl) 0 var(--space-2xl);
-      margin-top: 60px;
-    }
-
-    .contact-content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 var(--space-xl) var(--space-4xl);
-    }
-
-    .contact-content p {
-      margin-bottom: var(--space-lg);
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    .contact-content h2 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--text-primary);
-      margin-top: var(--space-3xl);
-      margin-bottom: var(--space-lg);
-    }
-
-    .contact-content h2::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 2px;
-      background: var(--accent);
-      margin-bottom: var(--space-md);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-lg);
-      margin-top: var(--space-xl);
-    }
-
-    .contact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: var(--space-xl);
-      transition: all var(--transition-fast);
-    }
-
-    .contact-card:hover {
-      border-color: var(--accent);
-    }
-
-    .contact-card__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: var(--bg-concept);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--space-md);
-    }
-
-    .contact-card__icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--accent);
-    }
-
-    .contact-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: var(--space-sm);
-    }
-
-    .contact-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: var(--space-md);
-    }
-
-    .contact-card a {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all var(--transition-fast);
-    }
-
-    .contact-card a:hover {
-      color: var(--accent-light);
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      margin-top: var(--space-xl);
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-sm) var(--space-lg);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: var(--text-primary);
-      text-decoration: none;
-      transition: all var(--transition-fast);
-    }
-
-    .social-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .social-link svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .note-box {
-      background: var(--bg-concept);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 8px;
-      padding: var(--space-lg);
-      margin-top: var(--space-2xl);
-    }
-
-    .note-box p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    .note-box strong {
-      color: var(--text-primary);
-    }
-
-    .location {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      margin-top: var(--space-xl);
-      padding: var(--space-md);
-      background: var(--bg-card);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .location svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--accent);
-    }
-  </style>
 </head>
 <body>
 
@@ -296,23 +122,11 @@
         Je suis particulièrement intéressé par les échanges autour de :
       </p>
 
-      <ul style="list-style: none; margin: var(--space-lg) 0; padding: 0;">
-        <li style="display: flex; align-items: flex-start; margin-bottom: var(--space-md); color: var(--text-secondary);">
-          <span style="color: var(--accent); margin-right: var(--space-md);">→</span>
-          <span><strong style="color: var(--text-primary);">Recherche</strong> — Méthodologies d'analyse des interactions humain-IA, réplication d'expériences</span>
-        </li>
-        <li style="display: flex; align-items: flex-start; margin-bottom: var(--space-md); color: var(--text-secondary);">
-          <span style="color: var(--accent); margin-right: var(--space-md);">→</span>
-          <span><strong style="color: var(--text-primary);">KAIROS</strong> — Retours d'expérience, suggestions de fonctionnalités, contributions au code</span>
-        </li>
-        <li style="display: flex; align-items: flex-start; margin-bottom: var(--space-md); color: var(--text-secondary);">
-          <span style="color: var(--accent); margin-right: var(--space-md);">→</span>
-          <span><strong style="color: var(--text-primary);">Collaborations</strong> — Projets de recherche, articles communs, conférences</span>
-        </li>
-        <li style="display: flex; align-items: flex-start; margin-bottom: var(--space-md); color: var(--text-secondary);">
-          <span style="color: var(--accent); margin-right: var(--space-md);">→</span>
-          <span><strong style="color: var(--text-primary);">Questions</strong> — Clarifications sur les articles, demandes d'approfondissement</span>
-        </li>
+      <ul class="about-list">
+        <li><strong>Recherche</strong> — Méthodologies d'analyse des interactions humain-IA, réplication d'expériences</li>
+        <li><strong>KAIROS</strong> — Retours d'expérience, suggestions de fonctionnalités, contributions au code</li>
+        <li><strong>Collaborations</strong> — Projets de recherche, articles communs, conférences</li>
+        <li><strong>Questions</strong> — Clarifications sur les articles, demandes d'approfondissement</li>
       </ul>
 
       <h2>Réseaux & ressources</h2>

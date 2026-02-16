@@ -690,6 +690,272 @@ a:hover {
   color: var(--text-primary);
 }
 
+/* --- Page À propos — hero, contenu, contact --- */
+
+.about-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  margin-top: 60px;
+}
+
+.about-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-4xl);
+}
+
+.about-content p {
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.about-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-lg);
+}
+
+.about-content h2::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+/* --- Composant contact-card (about.html + contact.html) --- */
+
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-xl);
+  transition: all var(--transition-fast);
+}
+
+.contact-card:hover {
+  border-color: var(--accent);
+}
+
+.about-content .contact-card {
+  margin-top: var(--space-2xl);
+}
+
+.contact-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.contact-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.contact-card__subtitle {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.contact-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--bg-concept);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.contact-card__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent);
+}
+
+.contact-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.contact-card a:hover {
+  color: var(--accent-light);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-concept);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Page Contact — hero, contenu, grid, social, note --- */
+
+.contact-hero {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  margin-top: 60px;
+}
+
+.contact-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-4xl);
+}
+
+.contact-content p {
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.contact-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-lg);
+}
+
+.contact-content h2::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.note-box {
+  background: var(--bg-concept);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.note-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.note-box strong {
+  color: var(--text-primary);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.location svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent);
+}
+
+/* --- Page 404 --- */
+
+.hero--404 {
+  text-align: center;
+}
+
+.hero--404 .hero__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.hero--404 .hero__subtitle {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
 /* ============================================
    COMPONENTS — Tags
    ============================================ */

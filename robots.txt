@@ -1,7 +1,7 @@
 # Robots.txt pour le site de recherche Florent Klimacek
-# https://kairos-commu.github.io/site-de-recherche/
+# https://mecanique-invisible.com/
 
 User-agent: *
 Allow: /
 
-Sitemap: https://kairos-commu.github.io/site-de-recherche/sitemap.xml
+Sitemap: https://mecanique-invisible.com/sitemap.xml
