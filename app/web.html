@@ -227,9 +227,9 @@
           🔒 Votre clé reste dans votre navigateur et n'est jamais transmise à nos serveurs.
           Elle disparaît à la fermeture de l'onglet. Ne partagez jamais votre clé API.
         </p>
-        <div class="api-key-form">
+        <div class="api-key-form" autocomplete="off">
           <label for="api-provider-select">Provider</label>
-          <select id="api-provider-select">
+          <select id="api-provider-select" autocomplete="off">
             <option value="claude">Claude (Anthropic)</option>
             <option value="chatgpt">ChatGPT (OpenAI)</option>
             <option value="gemini">Gemini (Google)</option>
@@ -238,10 +238,10 @@
           </select>
 
           <label for="api-model-input">Modèle</label>
-          <input type="text" id="api-model-input" placeholder="ex: claude-sonnet-4-20250514" />
+          <input type="text" id="api-model-input" placeholder="ex: claude-sonnet-4-20250514" autocomplete="off" />
 
           <label for="api-key-input">Clé API</label>
-          <input type="password" id="api-key-input" placeholder="sk-..." autocomplete="off" />
+          <input type="password" id="api-key-input" placeholder="sk-..." autocomplete="one-time-code" data-lpignore="true" data-1p-ignore />
 
           <div class="api-key-actions">
             <button id="api-key-save-btn" class="btn-primary">Valider</button>
