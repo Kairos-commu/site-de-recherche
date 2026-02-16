@@ -800,12 +800,43 @@
       <h2>Essayer KAIROS</h2>
       <p>
         Testez le vrai canvas KAIROS directement dans votre navigateur.
-        Créez des vignettes, connectez-les, et lancez les opérations
-        <strong>DÉVELOPPER</strong> et <strong>RELIER</strong> avec votre clé API.
+        Voici comment démarrer en 4 étapes.
       </p>
+
+      <div class="guide-grid">
+        <div class="guide-step">
+          <div class="guide-step-number">1</div>
+          <h4>Entrez votre clé API</h4>
+          <p>Au chargement, une fenêtre vous demande votre clé. Choisissez un provider (Claude, GPT, Gemini, DeepSeek, Grok) et collez votre clé. Elle reste en mémoire uniquement — jamais stockée.</p>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-number">2</div>
+          <h4>Créez des vignettes</h4>
+          <p>Cliquez <strong>+ Vignette</strong> pour ajouter une idée. Double-cliquez dessus pour l'éditer. Glissez-la pour la positionner. Chaque vignette est un nœud de votre pensée.</p>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-number">3</div>
+          <h4>Lancez DÉVELOPPER</h4>
+          <p>Cliquez <strong>DÉVELOPPER</strong> dans le bandeau. Le LLM analyse votre graphe et propose de nouvelles vignettes connectées à vos idées existantes.</p>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-number">4</div>
+          <h4>Observez la jauge O₂</h4>
+          <p>La barre en haut mesure la vitalité de votre pensée. Si elle descend sous 30, KAIROS injecte une <strong>friction</strong> — une contradiction pour relancer l'exploration.</p>
+        </div>
+      </div>
+
+      <div class="guide-tips">
+        <div class="guide-tip"><strong>RELIER</strong> — connecte les idées orphelines entre elles</div>
+        <div class="guide-tip"><strong>Clic droit</strong> sur une vignette — menu contextuel (supprimer, connecter, ancre)</div>
+        <div class="guide-tip"><strong>Ctrl+Z / Ctrl+Y</strong> — annuler / rétablir</div>
+        <div class="guide-tip"><strong>Molette</strong> — zoomer / dézoomer le canvas</div>
+      </div>
+
       <p class="essayer-note">
         Session éphémère — rien n'est sauvegardé. Votre clé API reste en mémoire uniquement.
       </p>
+
       <div class="kairos-iframe-wrapper">
         <iframe
           id="kairos-iframe"
