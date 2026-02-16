@@ -69,7 +69,7 @@
   margin-bottom: 2.5rem;
 }
 
-.nav-header h1 {
+.nav-header__label {
   font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
