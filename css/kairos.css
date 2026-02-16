@@ -1487,8 +1487,9 @@
        SECTION ESSAYER — IFRAME KAIROS
        ═══════════════════════════════════════════ */
     #essayer {
-      padding: 6rem 0;
+      padding: 6rem 2rem;
       background: var(--bg-dark);
+      min-height: auto;
     }
 
     /* Guide étapes */
