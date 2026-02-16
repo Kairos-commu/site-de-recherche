@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+/* Supprime le délai 300ms au tap sur mobile */
+a, button, [role="button"], input, select, textarea {
+  touch-action: manipulation;
+}
+
 :root {
   /* Couleurs principales */
   --bg-page: #e7e5e4;
@@ -974,4 +979,97 @@ a:hover {
   letter-spacing: 0.05em;
   color: var(--text-muted);
   margin-top: 4px;
+}
+
+/* ============================================
+   RESPONSIVE — Small phones (< 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  /* Reduce global spacing */
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding: var(--space-2xl) 0;
+  }
+
+  .hero--short {
+    min-height: auto;
+  }
+
+  .hero__subtitle {
+    font-size: 1.05rem;
+  }
+
+  .hero__image {
+    max-width: 220px;
+  }
+
+  /* Cards — allow narrower columns */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: var(--space-lg);
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .section__title {
+    font-size: 1.75rem;
+  }
+
+  /* Buttons side by side → stack */
+  .section__actions .btn + .btn {
+    margin-left: 0;
+    margin-top: var(--space-sm);
+  }
+
+  .section__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  /* Footer links wrap */
+  .site-footer__links {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  /* Featured visual */
+  .featured-quote {
+    font-size: 1.3rem;
+  }
+
+  .featured-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* Formula */
+  .formula-display {
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .formula-result {
+    font-size: 1.2rem;
+  }
+
+  /* About intro */
+  .about-intro__quote {
+    font-size: 1.2rem;
+  }
 }

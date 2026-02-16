@@ -2195,3 +2195,78 @@
       padding: 2rem;
       color: var(--accent-red);
     }
+
+    /* ═══════════════════════════════════════════
+       MOBILE ≤ 480px
+       ═══════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      /* Sections & typographie */
+      section {
+        padding: 3rem 1rem;
+        min-height: auto;
+      }
+
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.75rem; }
+      .subtitle { font-size: 1.1rem; margin-bottom: 2rem; }
+
+      /* Navigation */
+      nav { padding: 0.75rem 1rem; }
+      nav ul { gap: 1rem; flex-wrap: wrap; }
+      nav a { font-size: 0.8rem; }
+
+      /* Hero */
+      .hero-equation {
+        font-size: 1.8rem;
+        padding: 1rem 1.5rem;
+      }
+      .hero-legend { gap: 1.5rem; }
+      .hero-legend span { font-size: 0.85rem; }
+
+      /* Problème */
+      .quote-block {
+        padding: 1rem 1.25rem;
+        font-size: 1.1rem;
+      }
+      .chat-bubble { max-width: 100%; }
+
+      /* Modes / Comparaison */
+      .mode-card .mockup-main { padding: 1rem; }
+      .mini-chat-human { margin-right: 1rem; }
+      .mini-chat-llm { margin-left: 1rem; }
+
+      /* Mécanismes */
+      .mechanism-card { padding: 1.5rem; }
+
+      /* Démo interactive */
+      .demo-canvas { min-height: 280px; }
+      .demo-area { min-height: 300px; }
+      .demo-vignette { max-width: 150px; font-size: 0.75rem; }
+      .demo-panel { padding: 1rem; }
+      .demo-toolbar { flex-wrap: wrap; }
+
+      /* Avant / Après */
+      .comparison-content { padding: 1rem; }
+
+      /* Fondements */
+      .source-card { padding: 1rem; }
+
+      /* Section Essayer — iframe */
+      .kairos-iframe-wrapper iframe { height: 400px; }
+      .essayer-note { font-size: 0.8rem; }
+
+      /* Cas d'usage */
+      .usecase-card { padding: 1.5rem 1rem; }
+      .usecase-icon { font-size: 2.5rem; }
+
+      /* Vision / Roadmap */
+      .roadmap { padding-left: 2rem; }
+      .roadmap-item { padding: 1rem; }
+      .roadmap-item::before { left: -1.75rem; width: 12px; height: 12px; }
+
+      /* Documentation */
+      #documentation { padding: 3rem 1rem; }
+      .docs-content { padding: 1rem; min-height: 300px; }
+      .docs-content h1 { font-size: 1.5rem; }
+      .docs-content h2 { font-size: 1.2rem; }
+    }

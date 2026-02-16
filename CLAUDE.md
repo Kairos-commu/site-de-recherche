@@ -86,6 +86,24 @@ Variables centralisées dans `css/base.css` `:root` :
 
 `css/kairos.css` a son propre jeu de variables (purple/violet) — indépendant de base.css.
 
+## Responsive / Breakpoints
+
+Approche mobile-first progressive — les breakpoints sont organisés du plus large au plus étroit :
+
+| Breakpoint | Cible | Fichiers |
+|---|---|---|
+| `900px` | Tablettes — grids passent en 1 colonne, sidebar article masquée | `base.css`, `article.css`, `kairos.css` |
+| `768px` | Petites tablettes — header mobile, iframe réduit (500px) | `base.css`, `article.css`, `kairos.css` |
+| `600px` | Phablets — provider grid 1 col, guide grid 1 col | `kairos.css` |
+| `500px` | Petits écrans — use cases grid 1 colonne | `kairos.css` |
+| `480px` | Smartphones — paddings réduits, typo ajustée, cards 1 col, iframe 400px, touch optimisé | `base.css`, `article.css`, `kairos.css` |
+
+Conventions responsive :
+- **`touch-action: manipulation`** — appliqué globalement sur `a, button, [role="button"], input, select, textarea` (élimine le délai 300ms sur mobile)
+- **Marges fluides** — utiliser `max(0.5rem, 3vw)` plutôt que des valeurs fixes pour les marges de dialogue
+- **`min-height: auto`** — les sections passent en hauteur automatique sous 480px (pas de `100vh` sur mobile)
+- **Grids** — `grid-template-columns: 1fr` sur les petits écrans, pas de `minmax()` trop large
+
 ## Dark Mode
 
 - Toggle dans le header (toutes les pages)
