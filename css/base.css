@@ -610,6 +610,19 @@ a:hover {
   margin-bottom: var(--space-xl);
 }
 
+.about-intro__quote {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+  margin: var(--space-xl) auto;
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  max-width: 480px;
+}
+
 .about-intro__location {
   font-size: 0.9rem;
   color: var(--text-muted);

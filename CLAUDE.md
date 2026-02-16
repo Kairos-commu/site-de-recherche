@@ -4,7 +4,9 @@ Site statique GitHub Pages : articles de recherche sur les interactions humain-I
 
 ## URL
 
-https://kairos-commu.github.io/site-de-recherche/
+- **Production** : https://mecanique-invisible.com (domaine custom, CNAME → GitHub Pages)
+- **Alias GitHub** : https://kairos-commu.github.io/site-de-recherche/ (redirige vers le domaine custom)
+- **CNAME** : fichier `CNAME` à la racine contenant `mecanique-invisible.com`
 
 ## Architecture
 
@@ -54,6 +56,7 @@ site-de-recherche/
 ├── feed.xml                            # Flux RSS
 ├── sitemap.xml                         # Sitemap SEO
 ├── robots.txt
+├── CNAME                               # Domaine custom (mecanique-invisible.com)
 └── README.md
 ```
 
@@ -183,6 +186,99 @@ Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie
 - **Footer site** : `Florent Klimacek — 2026` + liens Accueil, Articles, À propos, Contact, RSS (identique sur toutes les pages non-article)
 - **Footer article** : `Florent Klimacek — 2026` + lien retour accueil (identique sur tous les articles)
 - **Schema.org JSON-LD** : `<script type="application/ld+json">` avant `</head>` — BlogPosting (articles), WebSite (index), Person (about)
+
+## Vigilance — site en production
+
+Ce site est public sur `mecanique-invisible.com`. Chaque modification est immédiatement visible. Respecter scrupuleusement les règles suivantes.
+
+### Sécurité
+
+- **Jamais de secrets dans le code** — pas de clés API, tokens, mots de passe, emails privés dans les fichiers commités. Vérifier chaque diff avant commit.
+- **Pas de `http://`** — tous les liens externes doivent être en `https://`. Les liens internes sont relatifs (pas de protocole).
+- **CSP obligatoire** — `presentation_kairos.html` et `app/web.html` ont chacun leur CSP `<meta>`. Ne pas ajouter de source externe sans mettre à jour la CSP.
+- **SRI obligatoire** — tout `<script>` ou `<link>` chargé depuis un CDN doit avoir un attribut `integrity` (hash sha384) et `crossorigin="anonymous"`.
+- **Pas de `target="_blank"` sans `rel="noopener"`** — prévient le tab-nabbing.
+- **Pas de `eval()`, `innerHTML` avec données utilisateur, ou `document.write()`** — prévient XSS.
+- **Source maps** — jamais déployées (`.gitignore` les exclut). Vérifier après chaque ajout de build Vite.
+- **postMessage** — toujours valider `event.origin` côté récepteur, toujours spécifier l'origine cible côté émetteur (jamais `'*'`).
+
+### URLs et liens
+
+- **Domaine canonique** : `https://mecanique-invisible.com/` — utilisé dans les meta `og:url`, JSON-LD, sitemap, feed.xml.
+- **Pas de liens morts** — vérifier que chaque `href` pointe vers une page existante. Tester après renommage ou suppression de page.
+- **Liens relatifs en interne** — `index.html`, pas `https://mecanique-invisible.com/index.html`.
+- **Liens externes en `https://`** — avec `target="_blank" rel="noopener"`.
+- **Ancres** — vérifier que les `id` ciblés existent bien (`href="#articles"` → `<section id="articles">`).
+
+### SEO et meta tags
+
+Chaque page DOIT contenir dans `<head>` :
+
+```html
+<!-- Obligatoire -->
+<title>Titre — Florent Klimacek</title>
+<meta name="description" content="...">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article|website">
+<meta property="og:title" content="...">
+<meta property="og:description" content="...">
+<meta property="og:url" content="https://mecanique-invisible.com/...">
+<meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
+<meta property="og:site_name" content="Florent Klimacek">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="...">
+<meta name="twitter:description" content="...">
+<meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
+
+<!-- Technique -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
+<link rel="canonical" href="https://mecanique-invisible.com/...">
+```
+
+Vérifications :
+- **`og:title`** = `<title>` = JSON-LD `headline` (cohérence stricte)
+- **`og:description`** — phrase complète, 120-160 caractères, pas tronquée
+- **`og:url`** — URL canonique complète avec domaine
+- **`og:image`** — URL absolue, image existante (pas de 404)
+
+### Cohérence inter-fichiers
+
+À chaque modification, vérifier la propagation :
+
+| Donnée modifiée | Fichiers à mettre à jour |
+|---|---|
+| Titre d'un article | `<title>`, `og:title`, `twitter:title`, JSON-LD `headline`, carte dans `index.html`, `feed.xml`, `sitemap.xml` |
+| Nouvel article | Suivre la checklist "Pour ajouter un nouvel article" (8 étapes) |
+| Suppression de page | `sitemap.xml`, `feed.xml`, nav prev/next des articles adjacents, liens depuis `index.html` |
+| Changement de domaine | `CNAME`, toutes les `og:url`, JSON-LD `url`, `sitemap.xml`, `feed.xml`, `robots.txt`, CSP `frame-ancestors` |
+| Mise à jour CDN | Version épinglée + nouveau hash SRI + vérifier CSP `script-src` |
+
+### Format et qualité du code
+
+- **Indentation** — 2 espaces en HTML/CSS/JS (pas de tabs)
+- **Encodage** — UTF-8 sans BOM, fin de ligne LF
+- **HTML valide** — pas de balises non fermées, attributs `alt` sur toutes les `<img>`, attributs `lang` sur `<html>`
+- **CSS** — pas de `!important` sauf nécessité absolue, pas de sélecteurs trop spécifiques
+- **Accessibilité** — attributs `aria-label` sur les boutons sans texte, `title` sur les liens ambigus, contraste suffisant (WCAG AA)
+- **Performance** — pas de ressources bloquantes inutiles, `loading="lazy"` sur les images et iframes below-the-fold
+- **Pas de console.log en production** — sauf dans les blocs iframe debug (KAIROS)
+
+### Avant chaque push
+
+Checklist mentale :
+
+1. `git diff` — relire chaque ligne modifiée
+2. Pas de secrets, clés API, chemins locaux (`C:\`, `D:\`, `/Users/`)
+3. Liens internes valides (pas de `href="#"` placeholder)
+4. Meta tags cohérents (titre, description, og, JSON-LD)
+5. Sitemap et feed.xml à jour si ajout/suppression de page
+6. CSS/JS : pas d'inline ajouté (sauf anti-FOUC)
+7. Fichier CNAME toujours présent (GitHub Pages le supprime parfois lors de reconfiguration)
 
 ## Roadmap
 
