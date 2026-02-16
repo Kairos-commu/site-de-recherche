@@ -1342,7 +1342,7 @@
 
     .demo-area {
       padding: 1rem;
-      min-height: 350px;
+      min-height: 420px;
       position: relative;
     }
 
@@ -1354,9 +1354,11 @@
       border-radius: 8px;
       font-size: 0.8rem;
       color: var(--text-secondary);
-      max-width: 150px;
-      cursor: pointer;
-      transition: all 0.3s;
+      max-width: 200px;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
       animation: popIn 0.3s ease;
     }
 
@@ -1482,6 +1484,141 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.02); }
     }
+
+    /* Bouton DÉVELOPPER */
+    .demo-btn.primary {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+      font-weight: 600;
+    }
+
+    .demo-btn.primary:hover {
+      background: #7c3aed;
+      border-color: #7c3aed;
+    }
+
+    .demo-btn.primary:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    /* Jauge O₂ inline toolbar */
+    .demo-o2-inline {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-left: auto;
+      padding: 0.3rem 0.6rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+    }
+
+    .demo-o2-lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .demo-o2-track {
+      width: 80px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .demo-o2-fill {
+      height: 100%;
+      width: 65%;
+      background: var(--accent-green);
+      border-radius: 3px;
+      transition: width 0.5s, background 0.5s;
+    }
+
+    .demo-o2-val {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      min-width: 24px;
+      text-align: right;
+      transition: color 0.5s;
+    }
+
+    /* SVG connexions */
+    .demo-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .demo-svg line {
+      stroke: rgba(148, 163, 184, 0.4);
+      stroke-width: 1.5;
+    }
+
+    .demo-svg line.friction-line {
+      stroke: var(--accent-red);
+      stroke-dasharray: 6 4;
+      opacity: 0.7;
+    }
+
+    /* Vignette dragging */
+    .demo-vignette.dragging {
+      cursor: grabbing;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Tags dans les vignettes */
+    .demo-vignette .vtags {
+      margin-top: 0.3rem;
+    }
+
+    .demo-vignette .vtag {
+      display: inline-block;
+      font-size: 0.6rem;
+      color: var(--accent-cyan);
+      margin-right: 0.25rem;
+    }
+
+    /* Mode d'emploi panel */
+    .demo-how p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      padding: 0.3rem 0;
+      max-width: none;
+    }
+
+    .demo-how-o2 {
+      padding: 0.5rem 0.75rem !important;
+      background: rgba(239, 68, 68, 0.08);
+      border-radius: 6px;
+      border-left: 3px solid var(--accent-red);
+      margin-top: 0.5rem !important;
+    }
+
+    /* Journal */
+    .demo-log {
+      max-height: 160px;
+      overflow-y: auto;
+      font-size: 0.75rem;
+    }
+
+    .demo-log-entry {
+      padding: 0.3rem 0;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .demo-log-entry.warn { color: var(--accent-orange); }
+    .demo-log-entry.danger { color: var(--accent-red); }
+    .demo-log-entry.success { color: var(--accent-green); }
 
     /* ═══════════════════════════════════════════
        SECTION ESSAYER — IFRAME KAIROS

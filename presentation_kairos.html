@@ -746,57 +746,46 @@
   <!-- Démo Interactive -->
   <section id="demo">
     <div class="container">
-      <h2>Démo Interactive — Jauge Oxygène</h2>
+      <h2>Démo Interactive</h2>
       <p>
-        Simulez la jauge Oxygène. Ajoutez des vignettes et observez
-        le score baisser quand les idées se répètent, ou remonter quand elles divergent.
+        Explorez les mécaniques de KAIROS sans clé API.
+        Ajoutez des vignettes, lancez DÉVELOPPER et observez la jauge O₂ réagir.
       </p>
 
       <div class="demo-container">
         <div class="demo-canvas">
           <div class="demo-toolbar">
-            <button class="demo-btn" onclick="addVignette('similar')">+ Idée similaire</button>
-            <button class="demo-btn" onclick="addVignette('new')">+ Idée nouvelle</button>
-            <button class="demo-btn" onclick="addVignette('validation')">+ "Exactement !"</button>
-            <button class="demo-btn reset" onclick="resetDemo()">↺ Reset</button>
+            <button class="demo-btn" id="demo-btn-add">+ Vignette</button>
+            <button class="demo-btn primary" id="demo-btn-dev">DÉVELOPPER</button>
+            <button class="demo-btn" id="demo-btn-rel">RELIER</button>
+            <div class="demo-o2-inline">
+              <span class="demo-o2-lbl">O₂</span>
+              <div class="demo-o2-track">
+                <div class="demo-o2-fill" id="demo-o2-fill"></div>
+              </div>
+              <span class="demo-o2-val" id="demo-o2-val">65</span>
+            </div>
+            <button class="demo-btn reset" id="demo-btn-reset" title="Recommencer">↺</button>
           </div>
           <div class="demo-area" id="demo-area">
-            <div class="demo-vignette" style="top: 50px; left: 30px;">
-              La conscience émerge du cerveau
-            </div>
+            <svg class="demo-svg" id="demo-svg"></svg>
           </div>
         </div>
 
         <div class="demo-panel">
-          <h4>🫁 Jauge Oxygène</h4>
-          <div class="demo-score">
-            <span class="demo-score-label">O₂</span>
-            <span class="demo-score-value low" id="demo-score">75</span>
+          <h4>Mode d'emploi</h4>
+          <div class="demo-how">
+            <p><strong>+ Vignette</strong> — ajoutez vos idées au canvas</p>
+            <p><strong>DÉVELOPPER</strong> — le LLM propose des idées connectées</p>
+            <p><strong>RELIER</strong> — connecte les vignettes orphelines</p>
+            <p class="demo-how-o2">La jauge <strong>O₂</strong> baisse quand les idées convergent. Sous 30 → <strong>friction</strong> injectée.</p>
           </div>
-          <div class="demo-threshold">
-            <div class="demo-threshold-bar" id="demo-bar" style="width: 75%; background: var(--accent-green);"></div>
-          </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
-            <span style="color: var(--accent-green);">Respire >50</span> &bull;
-            <span style="color: var(--accent-orange);">Stagne 30-50</span> &bull;
-            <span style="color: var(--accent-red);">Asphyxie <30</span>
-          </p>
 
-          <div class="demo-signals">
-            <div class="demo-signal" id="signal-redundancy">
-              ↻ Redondance détectée (Jaccard)
-            </div>
-            <div class="demo-signal" id="signal-stagnation">
-              ⏸ Stagnation (pas de nouveauté)
-            </div>
-            <div class="demo-signal" id="signal-tags">
-              🏷 Nouveaux tags (bonus O₂)
-            </div>
-          </div>
+          <h4 style="margin-top: 1.5rem;">Journal</h4>
+          <div class="demo-log" id="demo-log"></div>
 
           <div class="demo-friction-alert" id="friction-alert">
-            ⚡ ZONE ASPHYXIE — FRICTION INJECTÉE !<br>
-            <small>Le LLM va proposer une contradiction</small>
+            ⚡ ZONE ASPHYXIE — FRICTION INJECTÉE
           </div>
         </div>
       </div>
@@ -1049,135 +1038,286 @@
 
   <script>
     // ═══════════════════════════════════════════
-    // DÉMO INTERACTIVE — JAUGE OXYGÈNE
+    // DÉMO INTERACTIVE — SIMULATION KAIROS
     // ═══════════════════════════════════════════
-    let oxygenScore = 75;
-    let vignetteCount = 1;
-    let turnsWithoutNew = 0;
-    let frictionTriggered = false;
-    const demoArea = document.getElementById('demo-area');
+    (function() {
+      var area = document.getElementById('demo-area');
+      var svg = document.getElementById('demo-svg');
+      var logEl = document.getElementById('demo-log');
+      var o2Fill = document.getElementById('demo-o2-fill');
+      var o2ValEl = document.getElementById('demo-o2-val');
+      var frictionAlert = document.getElementById('friction-alert');
+      if (!area) return;
 
-    const ideas = [
-      "Le cerveau génère la conscience",
-      "La conscience est un phénomène cérébral",
-      "L'esprit émerge du neuronal",
-      "Le mental vient du physique",
-      "Conscience = activité neuronale"
-    ];
+      // ── State ──
+      var vignettes = [];
+      var conns = [];
+      var o2 = 65;
+      var nextId = 0;
+      var devRound = 0;
+      var frictionDone = false;
+      var userIdx = 0;
 
-    const newIdeas = [
-      "Et si la conscience était quantique ?",
-      "Le rôle de l'environnement ?",
-      "Conscience collective possible ?",
-      "Limites de l'approche réductionniste",
-      "Lien avec l'intelligence artificielle ?"
-    ];
+      // ── Pools ──
+      var userIdeas = [
+        "L'IA peut-elle être consciente ?",
+        "L'émotion précède la raison",
+        "La mémoire reconstruit le souvenir",
+        "Le langage structure la pensée",
+        "L'intuition : savoir sans comprendre",
+        "Le libre arbitre existe-t-il ?",
+        "L'attention est une ressource limitée"
+      ];
 
-    function addVignette(type) {
-      vignetteCount++;
-      const vignette = document.createElement('div');
-      vignette.className = 'demo-vignette';
+      var devPool = [
+        { texts: [
+          { t: "Hard problem : pourquoi y a-t-il de l'expérience ?", tags: ["#philo"] },
+          { t: "Qualia : irréductible expérience subjective", tags: ["#philo", "#neuro"] }
+        ], delta: +12 },
+        { texts: [
+          { t: "Plasticité synaptique et réorganisation cérébrale", tags: ["#neuro", "#apprentissage"] },
+          { t: "Embodied cognition : penser avec le corps", tags: ["#embodiment"] }
+        ], delta: +8 },
+        { texts: [
+          { t: "Le réseau neuronal produit la conscience", tags: ["#neuro"] }
+        ], delta: -18, warn: "↻ Redondance — territoire déjà exploré" },
+        { texts: [
+          { t: "La conscience émerge des connexions neuronales", tags: ["#neuro"] }
+        ], delta: -22, warn: "⏸ Convergence excessive — O₂ en chute" },
+        { texts: [
+          { t: "L'art comme cognition non-verbale", tags: ["#art", "#rupture"] },
+          { t: "La méditation altère la structure cérébrale", tags: ["#contemplation"] }
+        ], delta: +15 }
+      ];
 
-      // Position aléatoire
-      const maxX = demoArea.offsetWidth - 160;
-      const maxY = demoArea.offsetHeight - 60;
-      vignette.style.left = Math.random() * maxX + 'px';
-      vignette.style.top = Math.random() * maxY + 'px';
+      var frictionTexts = [
+        "Et si la conscience n'était qu'une illusion rétrospective ?",
+        "Penser sans langage — est-ce encore penser ?",
+        "L'IA met en crise notre définition de la pensée"
+      ];
 
-      if (type === 'similar') {
-        vignette.textContent = ideas[Math.floor(Math.random() * ideas.length)];
-        vignette.classList.add('similar');
-        oxygenScore = Math.max(0, oxygenScore - 15);
-        turnsWithoutNew++;
-        activateSignal('signal-redundancy');
-      } else if (type === 'validation') {
-        vignette.textContent = ['Exactement !', 'Oui, c\'est ça', 'Tout à fait', 'Parfait'][Math.floor(Math.random() * 4)];
-        vignette.classList.add('similar');
-        oxygenScore = Math.max(0, oxygenScore - 10);
-        turnsWithoutNew++;
-        activateSignal('signal-redundancy');
-      } else {
-        vignette.textContent = newIdeas[Math.floor(Math.random() * newIdeas.length)];
-        turnsWithoutNew = 0;
-        oxygenScore = Math.min(100, oxygenScore + 15);
-        activateSignal('signal-tags');
-        deactivateSignal('signal-stagnation');
+      // ── Helpers ──
+      function rndPos() { return 0.08 + Math.random() * 0.72; }
+
+      function addV(text, rx, ry, tags, isFric) {
+        var w = area.offsetWidth || 600;
+        var h = area.offsetHeight || 400;
+        var v = {
+          id: nextId++, text: text, tags: tags || [],
+          x: rx * (w - 180) + 10,
+          y: ry * (h - 70) + 10,
+          isFriction: !!isFric
+        };
+        vignettes.push(v);
+        return v;
       }
 
-      if (turnsWithoutNew >= 3) {
-        oxygenScore = Math.max(0, oxygenScore - 10);
-        activateSignal('signal-stagnation');
+      function addConn(fromId, toId, isFric) {
+        conns.push({ from: fromId, to: toId, isFriction: !!isFric });
       }
 
-      demoArea.appendChild(vignette);
-      updateScore();
+      function clamp(val) { return Math.max(0, Math.min(100, val)); }
 
-      if (oxygenScore < 30 && !frictionTriggered) {
-        triggerFriction();
+      function addLog(text, type) {
+        var e = document.createElement('div');
+        e.className = 'demo-log-entry' + (type ? ' ' + type : '');
+        e.textContent = text;
+        logEl.prepend(e);
+        while (logEl.children.length > 12) logEl.lastChild.remove();
       }
-    }
 
-    function activateSignal(id) {
-      document.getElementById(id).classList.add('active');
-    }
+      // ── Render ──
+      function render() {
+        area.querySelectorAll('.demo-vignette').forEach(function(el) { el.remove(); });
+        vignettes.forEach(function(v) {
+          var el = document.createElement('div');
+          el.className = 'demo-vignette' + (v.isFriction ? ' friction' : '');
+          el.setAttribute('data-id', v.id);
+          el.style.left = v.x + 'px';
+          el.style.top = v.y + 'px';
 
-    function deactivateSignal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
+          var span = document.createElement('span');
+          span.textContent = v.text;
+          el.appendChild(span);
 
-    function updateScore() {
-      const scoreEl = document.getElementById('demo-score');
-      const barEl = document.getElementById('demo-bar');
+          if (v.tags && v.tags.length) {
+            var tagDiv = document.createElement('div');
+            tagDiv.className = 'vtags';
+            v.tags.forEach(function(t) {
+              var s = document.createElement('span');
+              s.className = 'vtag';
+              s.textContent = t;
+              tagDiv.appendChild(s);
+            });
+            el.appendChild(tagDiv);
+          }
+          area.appendChild(el);
+        });
+        renderConns();
+        updateO2();
+      }
 
-      scoreEl.textContent = oxygenScore;
+      function renderConns() {
+        svg.innerHTML = '';
+        conns.forEach(function(c) {
+          var fv = vignettes.find(function(v) { return v.id === c.from; });
+          var tv = vignettes.find(function(v) { return v.id === c.to; });
+          if (!fv || !tv) return;
+          var fe = area.querySelector('[data-id="' + c.from + '"]');
+          var te = area.querySelector('[data-id="' + c.to + '"]');
+          if (!fe || !te) return;
+          var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', fv.x + fe.offsetWidth / 2);
+          line.setAttribute('y1', fv.y + fe.offsetHeight / 2);
+          line.setAttribute('x2', tv.x + te.offsetWidth / 2);
+          line.setAttribute('y2', tv.y + te.offsetHeight / 2);
+          if (c.isFriction) line.classList.add('friction-line');
+          svg.appendChild(line);
+        });
+      }
 
-      // Couleur selon le score (inversée : haut = bien)
-      scoreEl.className = 'demo-score-value';
-      if (oxygenScore > 50) scoreEl.classList.add('low');       // vert = respire
-      else if (oxygenScore >= 30) scoreEl.classList.add('medium'); // orange = stagne
-      else scoreEl.classList.add('high');                        // rouge = asphyxie
+      function updateO2() {
+        o2 = clamp(o2);
+        o2Fill.style.width = o2 + '%';
+        o2ValEl.textContent = o2;
+        var color = o2 > 50 ? 'var(--accent-green)' :
+                    o2 >= 30 ? 'var(--accent-orange)' : 'var(--accent-red)';
+        o2Fill.style.background = color;
+        o2ValEl.style.color = color;
+      }
 
-      // Barre de progression
-      barEl.style.width = oxygenScore + '%';
-      barEl.style.background = oxygenScore > 50 ? 'var(--accent-green)'
-        : oxygenScore >= 30 ? 'var(--accent-orange)'
-        : 'var(--accent-red)';
-    }
+      // ── Actions ──
+      function userAdd() {
+        var text = userIdeas[userIdx % userIdeas.length];
+        userIdx++;
+        addV(text, rndPos(), rndPos());
+        o2 = clamp(o2 + 5);
+        addLog('+ Vignette ajoutée', 'success');
+        render();
+      }
 
-    function triggerFriction() {
-      frictionTriggered = true;
-      document.getElementById('friction-alert').classList.add('show');
+      function developper() {
+        var btn = document.getElementById('demo-btn-dev');
+        btn.textContent = '⏳ Réflexion…';
+        btn.disabled = true;
 
-      // Ajouter une vignette friction
-      setTimeout(() => {
-        const vignette = document.createElement('div');
-        vignette.className = 'demo-vignette friction';
-        vignette.innerHTML = '<small style="color: var(--accent-red)">[FRICTION]</small><br>Et si le cerveau n\'était qu\'un récepteur ?';
-        vignette.style.left = '50%';
-        vignette.style.top = '60%';
-        vignette.style.transform = 'translateX(-50%)';
-        demoArea.appendChild(vignette);
-        // Friction acceptée = bonus
-        oxygenScore = Math.min(100, oxygenScore + 20);
-        updateScore();
-      }, 500);
-    }
+        setTimeout(function() {
+          var round = Math.min(devRound, devPool.length - 1);
+          var pool = devPool[round];
+          var src = vignettes[Math.floor(Math.random() * vignettes.length)];
 
-    function resetDemo() {
-      oxygenScore = 75;
-      vignetteCount = 1;
-      turnsWithoutNew = 0;
-      frictionTriggered = false;
+          pool.texts.forEach(function(item) {
+            var v = addV(item.t, rndPos(), rndPos(), item.tags);
+            if (src) addConn(src.id, v.id);
+          });
 
-      // Supprimer toutes les vignettes sauf la première
-      const vignettes = demoArea.querySelectorAll('.demo-vignette');
-      vignettes.forEach((v, i) => { if (i > 0) v.remove(); });
+          o2 = clamp(o2 + pool.delta);
+          if (pool.warn) {
+            addLog(pool.warn, 'warn');
+          } else {
+            addLog('DÉVELOPPER → ' + pool.texts.length + ' vignette(s) connectée(s)', 'success');
+          }
 
-      // Reset UI
-      updateScore();
-      document.getElementById('friction-alert').classList.remove('show');
-      document.querySelectorAll('.demo-signal').forEach(s => s.classList.remove('active'));
-    }
+          devRound++;
+          render();
+
+          if (o2 < 30 && !frictionDone) triggerFriction();
+
+          btn.textContent = 'DÉVELOPPER';
+          btn.disabled = false;
+        }, 900);
+      }
+
+      function relier() {
+        var connected = {};
+        conns.forEach(function(c) { connected[c.from] = true; connected[c.to] = true; });
+        var orphans = vignettes.filter(function(v) { return !connected[v.id]; });
+
+        if (orphans.length >= 2) {
+          var count = 0;
+          for (var i = 0; i < orphans.length - 1; i += 2) {
+            addConn(orphans[i].id, orphans[i + 1].id);
+            count++;
+          }
+          o2 = clamp(o2 + 5);
+          addLog('RELIER → ' + count + ' connexion(s) créée(s)', 'success');
+        } else {
+          addLog('Aucun orphelin à connecter', '');
+        }
+        render();
+      }
+
+      function triggerFriction() {
+        frictionDone = true;
+        frictionAlert.classList.add('show');
+        addLog('⚡ ZONE ASPHYXIE — FRICTION !', 'danger');
+
+        setTimeout(function() {
+          var text = frictionTexts[Math.floor(Math.random() * frictionTexts.length)];
+          var v = addV(text, 0.25 + Math.random() * 0.4, 0.2 + Math.random() * 0.4, ['#friction'], true);
+          var target = vignettes[Math.floor(Math.random() * (vignettes.length - 1))];
+          if (target) addConn(v.id, target.id, true);
+
+          o2 = clamp(o2 + 20);
+          addLog('Friction acceptée — O₂ +20', 'success');
+          render();
+          setTimeout(function() { frictionAlert.classList.remove('show'); }, 2500);
+        }, 700);
+      }
+
+      function resetAll() {
+        vignettes = []; conns = []; o2 = 65; nextId = 0;
+        devRound = 0; frictionDone = false; userIdx = 0;
+        logEl.innerHTML = '';
+        frictionAlert.classList.remove('show');
+        init();
+      }
+
+      // ── Drag & Drop ──
+      var dragEl = null, dragOff = { x: 0, y: 0 };
+
+      area.addEventListener('pointerdown', function(e) {
+        var el = e.target.closest('.demo-vignette');
+        if (!el) return;
+        dragEl = el;
+        var rect = el.getBoundingClientRect();
+        dragOff.x = e.clientX - rect.left;
+        dragOff.y = e.clientY - rect.top;
+        el.setPointerCapture(e.pointerId);
+        el.classList.add('dragging');
+      });
+
+      area.addEventListener('pointermove', function(e) {
+        if (!dragEl) return;
+        var areaRect = area.getBoundingClientRect();
+        var x = e.clientX - areaRect.left - dragOff.x;
+        var y = e.clientY - areaRect.top - dragOff.y;
+        dragEl.style.left = x + 'px';
+        dragEl.style.top = y + 'px';
+        var id = parseInt(dragEl.getAttribute('data-id'));
+        var v = vignettes.find(function(v) { return v.id === id; });
+        if (v) { v.x = x; v.y = y; }
+        renderConns();
+      });
+
+      area.addEventListener('pointerup', function() {
+        if (dragEl) { dragEl.classList.remove('dragging'); dragEl = null; }
+      });
+
+      // ── Bind ──
+      document.getElementById('demo-btn-add').addEventListener('click', userAdd);
+      document.getElementById('demo-btn-dev').addEventListener('click', developper);
+      document.getElementById('demo-btn-rel').addEventListener('click', relier);
+      document.getElementById('demo-btn-reset').addEventListener('click', resetAll);
+
+      // ── Init ──
+      function init() {
+        addV('La conscience émerge du cerveau', 0.35, 0.35, ['#initial']);
+        addLog('Canvas initialisé', 'success');
+        render();
+      }
+      init();
+    })();
 
     // ═══════════════════════════════════════════
     // NAVIGATION & ANIMATIONS
