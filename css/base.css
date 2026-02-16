@@ -661,6 +661,35 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* --- Axes de recherche (about.html) --- */
+
+.about-list {
+  list-style: none;
+  margin: var(--space-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.about-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.about-list li strong {
+  color: var(--text-primary);
+}
+
 /* ============================================
    COMPONENTS — Tags
    ============================================ */
