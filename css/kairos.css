@@ -1498,9 +1498,14 @@
       border-color: #7c3aed;
     }
 
+    .demo-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     .demo-btn.primary:disabled {
-      opacity: 0.6;
-      cursor: wait;
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
     /* Jauge O₂ inline toolbar */
