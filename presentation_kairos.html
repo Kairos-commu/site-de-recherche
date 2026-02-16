@@ -1194,17 +1194,39 @@
         o2ValEl.style.color = color;
       }
 
+      var MAX_VIGNETTES = 12;
+
+      function checkLimits() {
+        var addBtn = document.getElementById('demo-btn-add');
+        var devBtn = document.getElementById('demo-btn-dev');
+        if (vignettes.length >= MAX_VIGNETTES) {
+          addBtn.disabled = true;
+          devBtn.disabled = true;
+          addBtn.title = 'Limite atteinte';
+          devBtn.title = 'Limite atteinte';
+          if (!logEl.querySelector('.demo-limit-msg')) {
+            var e = document.createElement('div');
+            e.className = 'demo-log-entry success demo-limit-msg';
+            e.textContent = '✓ Démo complète — essayez le vrai canvas ci-dessous !';
+            logEl.prepend(e);
+          }
+        }
+      }
+
       // ── Actions ──
       function userAdd() {
+        if (vignettes.length >= MAX_VIGNETTES) return;
         var text = userIdeas[userIdx % userIdeas.length];
         userIdx++;
         addV(text, rndPos(), rndPos());
         o2 = clamp(o2 + 3);
         addLog('+ Vignette ajoutée', 'success');
         render();
+        checkLimits();
       }
 
       function developper() {
+        if (vignettes.length >= MAX_VIGNETTES) return;
         var btn = document.getElementById('demo-btn-dev');
         btn.textContent = '⏳ Réflexion…';
         btn.disabled = true;
@@ -1215,6 +1237,7 @@
           var src = vignettes[Math.floor(Math.random() * vignettes.length)];
 
           pool.texts.forEach(function(item) {
+            if (vignettes.length >= MAX_VIGNETTES) return;
             var v = addV(item.t, rndPos(), rndPos(), item.tags);
             if (src) addConn(src.id, v.id);
           });
@@ -1233,6 +1256,7 @@
 
           btn.textContent = 'DÉVELOPPER';
           btn.disabled = false;
+          checkLimits();
         }, 900);
       }
 
