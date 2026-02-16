@@ -2,6 +2,9 @@
 *.pdf
 Articles/
 
+# Source maps (ne pas déployer en production)
+*.map
+
 # Dossiers résiduels
 mnt/
 

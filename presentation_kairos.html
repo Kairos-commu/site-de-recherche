@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+    style-src 'self' 'unsafe-inline';
+    font-src 'self';
+    img-src 'self' data:;
+    frame-src 'self';
+    connect-src 'self';
+  " />
   <title>KAIROS — Penser avec friction</title>
   <meta name="description" content="KAIROS — Application Electron de cartographie cognitive avec jauge Oxygène, détection de circularité et injection de friction.">
   <meta property="og:type" content="website">
@@ -1203,7 +1212,14 @@
     // ═══════════════════════════════════════════
     const kairosIframe = document.getElementById('kairos-iframe');
     if (kairosIframe) {
+      // Origine attendue de l'iframe (same-origin en production, localhost en dev)
+      const KAIROS_ALLOWED_ORIGINS = [
+        window.location.origin,
+        'https://kairos-commu.github.io'
+      ];
+
       window.addEventListener('message', (event) => {
+        if (!KAIROS_ALLOWED_ORIGINS.includes(event.origin)) return;
         if (!event.data || typeof event.data.type !== 'string') return;
 
         if (event.data.type === 'kairos:ready') {
@@ -1213,7 +1229,7 @@
             theme: 'obsidian'
             // proxyUrl sera ajouté quand le Worker sera déployé :
             // proxyUrl: 'https://kairos-llm-proxy.<account>.workers.dev/api/llm'
-          }, '*');
+          }, event.origin);
           console.log('KAIROS iframe: ready, config envoyée');
         }
 
@@ -1229,7 +1245,9 @@
   </script>
 
   <!-- marked.js for Markdown rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"
+          integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+"
+          crossorigin="anonymous"></script>
   <script>
     // ═══════════════════════════════════════════
     // DOCUMENTATION VIEWER

@@ -16,7 +16,16 @@ site-de-recherche/
 ├── about.html                          # Page À propos
 ├── contact.html                        # Page Contact
 ├── 404.html                            # Page 404 GitHub Pages
-├── presentation_kairos.html            # Présentation interactive KAIROS (standalone)
+├── presentation_kairos.html            # Présentation interactive KAIROS + iframe beta web
+│
+├── app/                                # KAIROS beta web (build Vite depuis repo Kairos)
+│   ├── web.html                        # Point d'entrée (chargé via iframe)
+│   ├── assets/
+│   │   ├── web-*.js                    # Bundle JS (TypeScript compilé)
+│   │   ├── web-*.css                   # Bundle CSS
+│   │   └── *.woff2                     # Polices embarquées
+│   └── data/
+│       └── variables/                  # JSON linguistiques (alignement, friction, intention, linearisation)
 │
 ├── mecanique-invisible.html            # Article : La mécanique invisible
 ├── politesse-algorithmique.html        # Article : La Politesse Algorithmique
@@ -55,6 +64,7 @@ site-de-recherche/
 | `index.html`, `about.html`, `contact.html`, `404.html` | `css/base.css` |
 | 6 articles | `css/base.css` + `css/article.css` |
 | `presentation_kairos.html` | `css/kairos.css` uniquement (monde isolé) |
+| `app/web.html` (iframe) | `app/assets/web-*.css` (bundle autonome) |
 
 Toutes les pages chargent `js/site.js` en fin de `<body>`.
 
@@ -90,6 +100,64 @@ La section "Documentation" (#documentation) charge les fichiers `docs/*.md` via 
 - JS inline dans la page (pas dans site.js — spécifique à cette page)
 - Ne fonctionne PAS en `file://` (CORS) — uniquement sur serveur HTTP
 
+## KAIROS Beta Web (iframe)
+
+La section "Essayer" (#essayer) de `presentation_kairos.html` embarque l'application KAIROS en version web via un iframe.
+
+### Architecture
+
+- **Parent** : `presentation_kairos.html` — contient l'iframe et le listener postMessage
+- **Iframe** : `app/web.html` — build Vite autonome (bundle JS + CSS + polices + données JSON)
+- **Données** : `app/data/variables/` — fichiers JSON linguistiques (pas de secrets)
+
+### iframe
+
+```html
+<iframe
+  id="kairos-iframe"
+  src="app/web.html"
+  sandbox="allow-scripts allow-same-origin"
+  title="KAIROS — Canvas de cartographie cognitive"
+  loading="lazy"
+></iframe>
+```
+
+### Communication postMessage
+
+Le parent et l'iframe communiquent via `postMessage` :
+
+1. L'iframe envoie `kairos:ready` quand il est chargé
+2. Le parent répond avec `kairos:config` (thème, etc.)
+
+L'iframe valide les origines entrantes via une whitelist :
+```js
+["http://localhost:3000", "http://localhost:5173", "http://localhost:5174",
+ "https://kairos-commu.github.io"]
+```
+
+### CSP (Content Security Policy)
+
+`app/web.html` a sa propre CSP via `<meta http-equiv>` :
+- `connect-src` : autorise les API LLM (Anthropic, OpenAI, Google, DeepSeek, xAI) + `*.workers.dev` + localhost
+- `frame-ancestors` : restreint l'embedding à `kairos-commu.github.io` et localhost
+- `script-src` / `style-src` : `'self' 'unsafe-inline'`
+
+### Clés API
+
+- Stockées en mémoire volatile (`Map` JS) — jamais dans `localStorage`
+- Disparaissent à la fermeture de l'onglet
+- L'utilisateur les saisit via un modal dans l'iframe
+- Les appels API sont directs (navigateur → API LLM), pas de backend
+
+### Sécurité
+
+- Le parent valide `event.origin` via whitelist avant de traiter les messages
+- `postMessage()` utilise `event.origin` comme cible (pas de wildcard `'*'`)
+- `presentation_kairos.html` a sa propre CSP `<meta>` (script-src inclut jsdelivr pour marked.js)
+- `marked.js` épinglé à v15.0.12 avec hash SRI
+- Les fichiers `.map` sont dans `.gitignore` (pas déployés)
+- Point restant : `allow-scripts allow-same-origin` ensemble sur un iframe same-origin affaiblit le sandbox
+
 ## Sync depuis Kairos
 
 Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie `doc projet/*.md` → `docs/` ici quand les MD changent sur `main`.
@@ -108,7 +176,7 @@ Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie
 ## Conventions
 
 - **Pas de CSS inline** — tout dans css/base.css ou css/article.css
-- **Pas de JS inline** — tout dans js/site.js (sauf anti-FOUC et presentation_kairos)
+- **Pas de JS inline** — tout dans js/site.js (sauf anti-FOUC, presentation_kairos, et app/web.html qui est un build Vite)
 - **Meta tags obligatoires** : description, og:title, og:description, og:type, twitter:card, og:image, twitter:image
 - **Anti-FOUC** : `<script>` inline dans `<head>` avant `<title>` (lit localStorage et applique data-theme)
 - **Favicon** : `<link rel="icon" type="image/svg+xml" href="favicon.svg">`
@@ -135,6 +203,13 @@ Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie
 - [x] Titres alignés (og:title, JSON-LD headline, `<title>`) pour mecanique-invisible et questiologie-llm
 - [x] JetBrains Mono ajouté à mecanique-invisible.html (manquait par rapport aux autres articles)
 - [x] Lien mort "Accéder à l'application" corrigé (pointait vers `#`, redirige maintenant vers presentation_kairos)
+
+### Sécurité iframe KAIROS (fait)
+- [x] Valider `event.origin` dans le listener postMessage du parent (presentation_kairos.html)
+- [x] Remplacer `'*'` par l'origine cible spécifique dans `postMessage()`
+- [x] Ajouter une CSP `<meta>` sur presentation_kairos.html
+- [x] Ajouter un hash SRI sur le `<script>` marked.js (CDN) — v15.0.12 épinglée
+- [x] Exclure le fichier `.map` du déploiement (source map via .gitignore + référence retirée du bundle)
 
 ### Améliorations possibles
 - [ ] Lazy-loading des images (peu urgent — pas beaucoup d'images)
