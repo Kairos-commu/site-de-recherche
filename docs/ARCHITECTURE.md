@@ -211,6 +211,18 @@ Pruning automatique : max 50 entrées par canvas.
 
 ## 3. Historique des Décisions
 
+### 2026-02-17 — Refonte architecture CSS (F026)
+
+`canvas.css` monolithique (4400 lignes) → architecture modulaire en 6 étapes :
+1. Fondations : `@layer` cascade (reset → tokens → themes → base → components → modes → pages → utilities), design tokens 3 niveaux (primitives/sémantiques/composant), reset, base
+2. Éclatement `canvas.css` en 11 fichiers composants (`styles/components/`)
+3. Renommage `--theme-*` → `--*` (CSS + 8 fichiers TS)
+4. Conversion vers CSS nesting natif (`&`) dans tous les composants
+5. Unification modes : `mode-common.css` avec `--mode-primary/secondary/light/glow` + `prefers-reduced-motion` + `:focus-visible`
+6. Centralisation des 9 `@keyframes` dans `effects/animations.css`
+
+Point d'entrée unique `index.css`. Legacy `canvas.css` + `fonts.css` supprimés. Bundle CSS stable (~163 kB). 296 tests unitaires passés à chaque étape.
+
 ### 2026-02-09 — Audit interface mode assisté
 
 Audit complet (HTML, CSS, TS, UX) avant ajout de features. 46 items (A001-A046), 8 sessions, ~25h. Priorité : intégrité données → mémoire → UX → design → accessibilité → architecture → analyseur → polish.

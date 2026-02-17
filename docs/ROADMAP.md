@@ -63,6 +63,7 @@
 | F024 | Smart import LLM | Les vignettes importées par DÉVELOPPER sont positionnées près de leur cible de connexion (au lieu de la grille au bas du viewport). Fallback `getVisibleBottomPosition()` si pas de cible. |
 | F025 | Relocalisation post-synthèse | Après archivage, les vignettes synthétisées glissent en colonne à droite de la zone active (animation 400ms). Garder la zone de travail dégagée. |
 | F023 | Version bêta web (iframe) | Version allégée de KAIROS pour intégration iframe dans un site de recherche. Core partagé (canvas, LLM API, Oxygen, métriques, undo/redo) + shim `window.fgraph` (DB no-op, LLM fetch direct, clés API en mémoire). 2 thèmes (Obsidian/Porcelain), 2 opérations (DÉVELOPPER/RELIER), API iframe postMessage. 6 fichiers créés : `web.html`, `web-app.ts`, `fgraph-shim.ts`, `api-key-ui.ts`, `iframe-api.ts`, `vite.web.config.js`. Build : `npm run dev:web` / `npm run build:web`. |
+| F026 | Refonte architecture CSS | `canvas.css` monolithique (4400 lignes) → architecture modulaire : `@layer` cascade, design tokens 3 niveaux (primitives/sémantiques/composant), 11 fichiers composants avec CSS nesting natif, animations centralisées (`effects/animations.css`), mode color system (`modes/mode-common.css`), variables raccourcies (`--theme-*` → `--*`). Point d'entrée unique `index.css`. Legacy `canvas.css` + `fonts.css` supprimés. |
 
 ### Features planifiées
 
@@ -87,7 +88,7 @@
 
 **Prérequis** : Infrastructure SQLite déjà prête (table `canvases`). F005 (multi-canvas modal) déjà implémenté.
 
-**Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `canvas.css` (styles tab bar).
+**Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `styles/components/` (styles tab bar).
 
 #### F023 — Version bêta web ✓
 
