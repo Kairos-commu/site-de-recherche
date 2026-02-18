@@ -272,13 +272,13 @@
         </p>
 
         <p>
-          Le multi-provider est arrivé naturellement. Six LLM accessibles depuis la même interface. KAIROS est agnostique — il n'est inféodé à aucun modèle. La triangulation que je pratiquais manuellement depuis des mois est devenue une fonctionnalité.
+          Le multi-provider est arrivé naturellement. Quatre LLM accessibles depuis la même interface — Claude, ChatGPT, Gemini, DeepSeek. KAIROS est agnostique — il n'est inféodé à aucun modèle. La triangulation que je pratiquais manuellement depuis des mois est devenue une fonctionnalité.
         </p>
 
         <div class="concept">
           <p class="concept-title">Détection de circularité</p>
           <p>
-            Six signaux pondérés : reformulation, boucles de connexion dans le graphe, stagnation, validation vide, saturation de tags, écho LLM. Surveillance toutes les trois secondes. Injection de friction quand le score dépasse un seuil. L'outil ne dit pas « vous tournez en rond ». Il introduit un grain de sable qui force la pensée à se repositionner.
+            Six signaux pondérés : reformulation, boucles de connexion dans le graphe, stagnation, validation vide, saturation de tags, écho LLM. Recalcul déclenché par chaque action utilisateur (event-driven, debounce 100 ms). Injection de friction quand le score dépasse un seuil. L'outil ne dit pas « vous tournez en rond ». Il introduit un grain de sable qui force la pensée à se repositionner.
           </p>
         </div>
       </section>
@@ -292,7 +292,7 @@
 
       <section>
         <p>
-          En parallèle du développement, un cadre de mesure a pris forme. L'équation de résonance — <strong>R = (I × F) / L</strong> — avec ses conditions d'existence (souplesse, linéarisation, alignement) et sa dynamique. L'entre — cet espace entre l'utilisateur et le modèle — comme état binaire plutôt que comme score continu.
+          En parallèle du développement, un cadre de mesure a pris forme. L'équation de résonance — <strong>R = (I × F) / L</strong> — où I est l'Intention, F la Friction et L la Linéarisation — avec ses conditions d'existence et sa dynamique. L'entre — cet espace entre l'utilisateur et le modèle — comme état continu [0,1] plutôt que comme score binaire.
         </p>
 
         <p>
@@ -300,7 +300,7 @@
         </p>
 
         <p>
-          Le mode autonome, lui, est l'horizon. C'est là que les équations prendront leur forme opérationnelle — une surveillance silencieuse où le système trace les métriques sans les afficher, où l'utilisateur ne voit rien mais où l'outil sait. Le paradoxe étant que surveiller activement l'entre dans le mode autonome revient à le perturber. C'est un problème ouvert.
+          Le mode autonome est aujourd'hui implémenté. Il offre un canvas libre où l'utilisateur dialogue avec le LLM sans opérations explicites — intention définie au départ, dialogue non-directif, landing page avec le choix entre les deux modes. Les équations y prennent une forme silencieuse : le système trace les métriques sans les afficher, l'utilisateur ne voit rien mais l'outil sait. Le paradoxe étant que surveiller activement l'entre dans le mode autonome revient à le perturber. C'est un problème ouvert.
         </p>
       </section>
 
@@ -313,7 +313,7 @@
 
       <section>
         <p>
-          JavaScript vanilla, localStorage, fichiers de plusieurs milliers de lignes — le prototype fonctionnait, mais à 24 000 lignes, chaque modification devenait un risque. La migration vers TypeScript a été nécessaire. 125 tests unitaires. SQLite pour la persistance. Modularisation des fichiers les plus massifs.
+          JavaScript vanilla, localStorage, fichiers de plusieurs milliers de lignes — le prototype fonctionnait, mais à 24 000 lignes, chaque modification devenait un risque. La migration vers TypeScript a été nécessaire. 296 tests unitaires. SQLite pour la persistance. Modularisation des fichiers les plus massifs.
         </p>
 
         <p>

@@ -449,10 +449,10 @@
                 </div>
               </li>
               <li>
-                <span class="feature-icon">🧲</span>
+                <span class="feature-icon">📊</span>
                 <div>
-                  <strong>Identification des attracteurs</strong>
-                  <span>Repère ce qui capte trop l'attention</span>
+                  <strong>Diagnostic structurel du graphe</strong>
+                  <span>Détecte dominances, ponts, redondances et trous</span>
                 </div>
               </li>
             </ul>
@@ -467,7 +467,7 @@
               <div class="mockup-toolbar">
                 <span class="mockup-btn active">Mode Assisté</span>
                 <span class="mockup-btn">+ Vignette</span>
-                <span class="mockup-btn active-badge">🧲 Attracteurs</span>
+                <span class="mockup-btn active-badge">📊 Diagnostic</span>
                 <div class="friction-indicator">
                   <span>⚡</span>
                   <span>4</span>
@@ -550,7 +550,7 @@
             <tr>
               <td>Style de dialogue</td>
               <td>Questions ouvertes, non-directif</td>
-              <td>Opérations explicites (DÉVELOPPER, RELIER...)</td>
+              <td>Opérations explicites (DÉVELOPPER, RELIER, SYNTHÉTISER)</td>
             </tr>
             <tr>
               <td>Vitalité cognitive</td>
@@ -609,18 +609,18 @@
           </ul>
         </div>
 
-        <!-- Attracteurs -->
+        <!-- Diagnostic structurel -->
         <div class="mechanism-card">
-          <div class="mechanism-icon">🧲</div>
-          <h3>Détection d'Attracteurs</h3>
+          <div class="mechanism-icon">📊</div>
+          <h3>Diagnostic Structurel</h3>
           <p>
-            Identifie les vignettes qui captent trop l'attention et risquent de biaiser la réflexion.
+            Analyse la topologie du graphe pour détecter les déséquilibres et guider la réflexion.
           </p>
           <ul class="signal-list">
-            <li>Score composite (connexions, sélections, LLM)</li>
-            <li>Badge visuel sur les vignettes</li>
-            <li>Pénalité si contribue à la circularité</li>
-            <li>Détection automatique à chaque tour</li>
+            <li>Détection de dominance (vignette trop centrale)</li>
+            <li>Identification des ponts structurels</li>
+            <li>Repérage des redondances et trous</li>
+            <li>Recalcul event-driven à chaque action</li>
           </ul>
         </div>
       </div>
@@ -682,8 +682,8 @@
       </p>
 
       <div class="evolution-flow">
-        <div class="evolution-step problem">
-          <h4>Version 1</h4>
+        <div class="evolution-step problem" style="opacity: 0.6;">
+          <h4>Version 1 <span style="font-size: 0.7em; font-weight: normal; color: var(--text-muted);">— abandonnée</span></h4>
           <div class="equation">R = (I/E) × f(O) × (A-L)</div>
           <p>
             A (Alignement) comme multiplicateur favorisait les boucles.
@@ -974,6 +974,18 @@
           <h4>Étudiants</h4>
           <p>Apprendre à penser contre soi-même</p>
         </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon">📋</div>
+          <h4>Chefs de projet</h4>
+          <p>Structurer un projet de recherche, cartographier les dépendances</p>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-icon">📝</div>
+          <h4>Rédacteurs</h4>
+          <p>Préparer une thèse, un mémoire ou un argumentaire structuré</p>
+        </div>
       </div>
 
       <div class="quote-block" style="margin-top: 3rem; text-align: center;">
@@ -996,11 +1008,11 @@
           <h4>Canvas & Modes</h4>
           <ul>
             <li>Canvas interactif avec vignettes et connexions</li>
-            <li>Intégration webview LLM (Claude, ChatGPT, Gemini)</li>
+            <li>4 providers LLM (Claude, ChatGPT, Gemini, DeepSeek)</li>
             <li>Mode Assisté (DÉVELOPPER, RELIER, SYNTHÉTISER)</li>
             <li>Mode Autonome avec gate d'intention</li>
             <li>Détection de circularité et injection de friction</li>
-            <li>Détection d'attracteurs cognitifs</li>
+            <li>Diagnostic structurel du graphe</li>
           </ul>
         </div>
 
@@ -1011,29 +1023,31 @@
             <li>Jauge Oxygène (5 signaux, score 0-100, 3 zones)</li>
             <li>Multi-canvas : gestion de plusieurs graphes</li>
             <li>4 thèmes visuels (Obsidian, Porcelain, Aurora, Kraft)</li>
-            <li>Migration API directe (Claude, GPT, Gemini sans webview)</li>
+            <li>Migration API directe (Claude, ChatGPT, Gemini, DeepSeek)</li>
             <li>Synthèses structurées (format 3 blocs)</li>
             <li>DÉVELOPPER crée vignettes ET connexions</li>
           </ul>
         </div>
 
-        <div class="roadmap-item current">
-          <div class="phase">→ En cours</div>
-          <h4>Session 7 — Raffinement</h4>
+        <div class="roadmap-item done">
+          <div class="phase">✓ Sessions 7-8 (fév. 2026)</div>
+          <h4>Refonte visuelle & Version web</h4>
           <ul>
-            <li>Onglets canvas avec provider par onglet</li>
-            <li>Calibration fine de la jauge Oxygène</li>
-            <li>Système de postures adaptatif</li>
+            <li>Refonte CSS complète de l'application</li>
+            <li>Vue Profondeur 2.5D (4 couches, parallaxe souris)</li>
+            <li>Connexions SVG organiques (Bézier, glow pulsé, particules)</li>
+            <li>Version web navigateur (démo sans API)</li>
+            <li>Validateur d'intégrité (8 invariants, repair auto)</li>
           </ul>
         </div>
 
-        <div class="roadmap-item future">
-          <div class="phase">◇ À venir</div>
-          <h4>Intelligence Contextuelle</h4>
+        <div class="roadmap-item current">
+          <div class="phase">→ Prochain chantier</div>
+          <h4>Mode Scientifique (F028)</h4>
           <ul>
-            <li>Slider de friction personnalisable</li>
-            <li>Analyse sémantique avancée des vignettes</li>
+            <li>Protocole de recherche structuré</li>
             <li>Export vers formats académiques</li>
+            <li>Traçabilité des sources et citations</li>
           </ul>
         </div>
 
@@ -1078,7 +1092,7 @@
       <strong>KAIROS</strong> — Application Electron de cartographie cognitive
     </p>
     <p class="version">
-      Version 1.0.0 | Février 2026<br>
+      Version 0.3.x | Février 2026<br>
       Concept & développement : Florent
     </p>
     <p style="margin-top: 1.5rem;">
