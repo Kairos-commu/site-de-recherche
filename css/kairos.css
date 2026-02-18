@@ -2276,4 +2276,124 @@
       .docs-content h1 { font-size: 1.5rem; }
       .docs-content h2 { font-size: 1.2rem; }
       .docs-content code { overflow-wrap: break-word; }
+
+      .essayer-demo-content { padding: 2.5rem 1.5rem; }
+      .essayer-demo-cta { padding: 0.875rem 2rem; font-size: 1rem; }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION ESSAYER DEMO
+       ═══════════════════════════════════════════ */
+
+    .section-essayer-demo {
+      min-height: auto;
+      padding: 5rem 2rem;
+      background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f1a 50%, var(--bg-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-essayer-demo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 300px at 50% 50%, rgba(139, 92, 246, 0.06), transparent),
+        radial-gradient(ellipse 400px 200px at 30% 60%, rgba(6, 182, 212, 0.04), transparent);
+      pointer-events: none;
+    }
+
+    .essayer-demo-content {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: 16px;
+      background: rgba(26, 26, 37, 0.6);
+      backdrop-filter: blur(8px);
+      position: relative;
+    }
+
+    .essayer-demo-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-purple);
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-essayer-demo h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .essayer-demo-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .essayer-demo-desc strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .essayer-demo-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .essayer-demo-chip {
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .essayer-demo-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2.25rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-purple), #6d3bdb);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+    }
+
+    .essayer-demo-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45);
+    }
+
+    .essayer-demo-cta-arrow {
+      font-size: 1.2rem;
+      transition: transform 0.25s ease;
+    }
+
+    .essayer-demo-cta:hover .essayer-demo-cta-arrow {
+      transform: translateX(4px);
     }

@@ -3,5 +3,6 @@
 
 User-agent: *
 Allow: /
+Disallow: /app/
 
 Sitemap: https://mecanique-invisible.com/sitemap.xml

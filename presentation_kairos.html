@@ -764,13 +764,13 @@
     </div>
   </section>
 
-  <!-- Démo Interactive -->
+  <!-- Démo Interactive — aperçu pédagogique -->
   <section id="demo">
     <div class="container">
-      <h2>Démo Interactive</h2>
+      <h2>Le moteur cognitif</h2>
       <p>
-        Explorez les mécaniques de KAIROS sans clé API.
-        Ajoutez des vignettes, lancez DÉVELOPPER et observez la jauge O₂ réagir.
+        Observez la mécanique centrale de KAIROS : la jauge O₂ mesure la diversité cognitive.
+        Quand les idées convergent trop, une <strong>friction</strong> est injectée pour relancer la pensée.
       </p>
 
       <div class="demo-container">
@@ -794,19 +794,19 @@
         </div>
 
         <div class="demo-panel">
-          <h4>Mode d'emploi</h4>
+          <h4>Comment ça marche</h4>
           <div class="demo-how">
-            <p><strong>+ Vignette</strong> — ajoutez vos idées au canvas</p>
-            <p><strong>DÉVELOPPER</strong> — le LLM propose des idées connectées</p>
+            <p><strong>+ Vignette</strong> — ajoutez des idées au canvas</p>
+            <p><strong>DÉVELOPPER</strong> — génère des idées connectées</p>
             <p><strong>RELIER</strong> — connecte les vignettes orphelines</p>
-            <p class="demo-how-o2">La jauge <strong>O₂</strong> baisse quand les idées convergent. Sous 30 → <strong>friction</strong> injectée.</p>
+            <p class="demo-how-o2"><strong>O₂</strong> = diversité cognitive. Quand elle chute sous 30, KAIROS injecte une <strong>friction</strong> pour briser la convergence.</p>
           </div>
 
           <h4 style="margin-top: 1.5rem;">Journal</h4>
           <div class="demo-log" id="demo-log"></div>
 
           <div class="demo-friction-alert" id="friction-alert">
-            ⚡ ZONE ASPHYXIE — FRICTION INJECTÉE
+            ZONE ASPHYXIE — FRICTION INJECTÉE
           </div>
         </div>
       </div>
@@ -814,16 +814,26 @@
   </section>
 
   <!-- Essayer le canvas -->
-  <section id="essayer" style="padding: 3rem 0; text-align: center;">
+  <section id="essayer" class="section-essayer-demo">
     <div class="container">
-      <h2>Essayer le Canvas</h2>
-      <p style="margin-bottom: 2rem;">
-        Explorez le vrai canvas KAIROS directement dans votre navigateur — sans cle API, sans installation.
-        Creez des vignettes, reliez-les, et decouvrez la cartographie cognitive.
-      </p>
-      <a href="demo/" class="cta-btn" target="_blank" rel="noopener">
-        Lancer la demo interactive
-      </a>
+      <div class="essayer-demo-content">
+        <div class="essayer-demo-badge">Nouveau</div>
+        <h2>Explorez le Canvas</h2>
+        <p class="essayer-demo-desc">
+          Créez des vignettes, lancez <strong>DÉVELOPPER</strong> pour générer des idées,
+          utilisez <strong>RELIER</strong> pour connecter votre pensée — le tout directement
+          dans votre navigateur, sans clé API, sans installation.
+        </p>
+        <div class="essayer-demo-features">
+          <span class="essayer-demo-chip">Drag &amp; drop</span>
+          <span class="essayer-demo-chip">Connexions SVG</span>
+          <span class="essayer-demo-chip">Undo / Redo</span>
+        </div>
+        <a href="demo/" class="essayer-demo-cta" target="_blank" rel="noopener">
+          Lancer la démo interactive
+          <span class="essayer-demo-cta-arrow">&rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 
