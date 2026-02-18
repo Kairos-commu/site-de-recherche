@@ -12,7 +12,10 @@
 |---|---|---|---|
 | B001 | Moyenne | Performance >200 vignettes (rendu lent) | A008 corrigé (Map O(1)), A035 corrigé (spatial-grid). Amélioration partielle. |
 | B002 | Basse | Capture webview timeout 8s sur certains providers | Fallback manuel dispo. A034 mitigé (sélecteurs centralisés). |
+| B005 | ~~Basse~~ | Synthèses : "0 vignettes / Invalid Date" après rechargement. `loadSyntheses` utilisait les noms snake_case (`row.created_at`, `row.vignettes_source_ids`) sur des objets déjà formatés en camelCase par `formatRow()` du repository SQLite. | **Résolu** — Noms alignés sur le format camelCase retourné par `formatRow()`. |
+| B006 | ~~Basse~~ | Animations connexions SVG (`connection-flow`) tuées par `prefers-reduced-motion: reduce` (Win 11). Le `animation-duration: 0.01ms !important` de `base.css` (`@layer base`) battait les déclarations dans `@layer components`. | **Résolu** — Override dans `reset.css` (`@layer reset`) pour `.connection-implies`, `.connection-resonance` et `.connection-glow-layer`. |
 | B003 | ~~HAUTE~~ | Oxygen score instable : evaluate() et recordTurn() utilisaient deux modèles incompatibles (snapshot vs delta), double-comptage écho, stagnation exponentielle | **Résolu** — Modèle 100% snapshot. Score = `clamp(0,100, 50 + structural + echo + tagDiversity + friction)`. evaluate() et recordTurn() produisent le même score. 28 tests unitaires. |
+| B004 | ~~HAUTE~~ | Score oxygen change au rechargement d'un canvas : les vignettes archivées (synthesized=true) et leurs connexions étaient incluses dans le calcul | **Résolu** — `filterActiveGraph()` dans `oxygen.ts` exclut les nœuds synthesized et leurs connexions avant calcul, comme le fait déjà `metrics.ts`. |
 
 ### Bugs de cohérence événementielle
 
@@ -64,11 +67,16 @@
 | F025 | Relocalisation post-synthèse | Après archivage, les vignettes synthétisées glissent en colonne à droite de la zone active (animation 400ms). Garder la zone de travail dégagée. |
 | F023 | Version bêta web (iframe) | Version allégée de KAIROS pour intégration iframe dans un site de recherche. Core partagé (canvas, LLM API, Oxygen, métriques, undo/redo) + shim `window.fgraph` (DB no-op, LLM fetch direct, clés API en mémoire). 2 thèmes (Obsidian/Porcelain), 2 opérations (DÉVELOPPER/RELIER), API iframe postMessage. 6 fichiers créés : `web.html`, `web-app.ts`, `fgraph-shim.ts`, `api-key-ui.ts`, `iframe-api.ts`, `vite.web.config.js`. Build : `npm run dev:web` / `npm run build:web`. |
 | F026 | Refonte architecture CSS | `canvas.css` monolithique (4400 lignes) → architecture modulaire : `@layer` cascade, design tokens 3 niveaux (primitives/sémantiques/composant), 11 fichiers composants avec CSS nesting natif, animations centralisées (`effects/animations.css`), mode color system (`modes/mode-common.css`), variables raccourcies (`--theme-*` → `--*`). Point d'entrée unique `index.css`. Legacy `canvas.css` + `fonts.css` supprimés. |
+| F027 | Vue Profondeur (2.5D) — Phase 1 | Toggle opt-in "Profondeur" (bouton toolbar + touche D). 4 couches de profondeur simulées (scale 0.75→1.03, opacité 0.25→1.0, blur 0→1px, shadow elevation-1→4). Critère Z = récence (`modified`/`created`). Parallaxe souris ±20px + micro-rotation ±8° (perspective per-node 600px). Connexions SVG suivent la profondeur (opacity + marker-end masqué). Drag & drop préservé (snap au front). Fonction `setDepthLayerFn()` swappable pour Phase 2. Fonctionne en assisté + autonome, 4 thèmes. **Bugfix fév. 2026** : timestamps `created` corrigés (ISO string → `Date.now()`), `modified` assigné sur drag end + édition texte, `depthByRecency` robustifié (normalisation string→number, fallback index quand timestamps identiques). Fichiers : `canvas/depth-view.ts`, `canvas/nodes.ts`, `canvas/interactions.ts`, `canvas/menus.ts`, `styles/components/depth-view.css`, tokens dans `tokens.css`. |
+| F029 | Connexions SVG organiques | Courbes Bézier organiques (courbure basée sur distance totale, min 30px, S-curve naturel). Couche glow (stroke 6px, opacity pulsée 0.12↔0.22). Particules SMIL animées (2 cercles/connexion, `animateMotion` + `mpath`). Implies : 2 particules vertes source→cible. Resonance : 1 particule ambrée par direction. Fix markers cassés `index.html`, ajout gradients/filtres manquants `web.html`. Fichiers : `canvas/connections.ts`, `connections.css`, `animations.css`, `reset.css`, 3 HTML. |
+| F030 | Allègement toolbar assisté | Bouton "Effacer" remplacé par "Nouveau" (crée un nouveau graphe vierge, l'ancien reste en DB). Boutons "Exporter" (JSON) et "Importer" retirés du header (méthodes `exportGraph`/`importGraph` conservées en code). Exports PNG/Markdown restent dans le bandeau. Fichiers : `assisted.html`, `toolbar.ts`, `assisted-app.ts`. |
+| F031 | Refonte toolbar deux niveaux | Toolbar restructurée en 2 niveaux : barre primaire (Home, Vignette, Mes graphes, nom canvas, filtres visibilité, recherche collapsible 🔍, toggle ⋯) + tiroir secondaire collapsible (Nouveau, Arbre, Profondeur, sélection par statut, posture, thème, audio). Bouton "Mode Assisté" supprimé (redondant avec Home). Zoom indicator déplacé sur la minimap. Recherche collapsible (icône → expand au clic/Ctrl+F, collapse au blur). État tiroir persisté en localStorage. Animations CSS `max-height` + overrides `prefers-reduced-motion` dans `reset.css`. Fichiers : `assisted.html`, `toolbar.css`, `reset.css`, `toolbar.ts`, `search.ts`, `assisted-app.ts`. |
 
 ### Features planifiées
 
 | ID | Priorité | Description | Estimation |
 |---|---|---|---|
+| F028 | **HAUTE** | **Mode Scientifique — Phase 2** (3ème mode, statuts sémantiques, cycle de vie des vignettes) | ⚠️ Chantier majeur — voir spec détaillée |
 | F021 | Haute | Onglets multi-canvas (barre d'onglets, Ctrl+T/W, drag entre canvas) | 8-10h |
 | F001 | Moyenne | Curseur de friction (contrôle utilisateur du niveau) | Après stabilisation Oxygen |
 | F002 | Moyenne | Export PDF/SVG avancé (multi-pages, vectoriel, zone au choix) | 3-4h |
@@ -105,6 +113,93 @@
 **Sécurité** : Clés API en mémoire uniquement, proxy URL whitelisted, origins iframe filtrées, erreurs sanitizées, jamais de persistence credentials.
 
 **Build** : `npm run dev:web` / `npm run build:web` (Vite, output `dist/web/`, ~197KB JS).
+
+#### F028 — Mode Scientifique (Phase 2) ⚠️ VIGILANCE ACCRUE
+
+> **Chantier majeur** — touche au modèle de données, à la BDD, à la landing page, et crée un 3ème mode complet. Chaque étape doit être testée en isolation. Ne pas mélanger avec d'autres features. Migrations BDD irréversibles : tester sur une copie de la base avant tout.
+
+**Vision** : Un 3ème mode conçu pour la recherche et l'investigation méthodique. Contrairement au mode Assisté (vignettes libres), le mode Scientifique structure le cycle de vie de chaque vignette via des **statuts sémantiques**.
+
+**Statuts sémantiques** (cycle de vie d'une vignette) :
+| Statut | Sens | Couche Z (Vue Profondeur) | Limite |
+|---|---|---|---|
+| `focus` | Ce sur quoi l'utilisateur travaille maintenant | Layer 3 (premier plan) | 2-3 max |
+| `active` | Chantier en cours, investigation ouverte | Layer 2 | Illimité |
+| `validated` | Contenu stabilisé, confirmé, socle de référence | Layer 2 | Illimité |
+| `archived` | Idées abandonnées, brouillons dépassés, hypothèses réfutées | Layer 0 (fond) | Illimité |
+| `absorbed` | Intégrée dans une synthèse. Lien vers synthèse parent | Layer 0 | Auto via SYNTHÉTISER |
+
+Statuts potentiels futurs : `hypothesis`, `contradicted`, `pending-review`.
+
+**Impact BDD** :
+- Nouveau champ `depth_status TEXT DEFAULT 'active'` sur la table `nodes` (migration ALTER TABLE)
+- Contrainte CHECK sur les valeurs autorisées
+- La colonne `status` existante (`neutral`/`priority`) reste indépendante (ancre structurelle)
+- `depth_status` n'existe que pour les canvas en mode `scientific` (les canvas assisté/autonome l'ignorent)
+
+**Landing page** :
+- 3ème carte mode "Scientifique" (nom/icône/description à définir)
+- Nouveau mode dans la table `canvases` : `mode: 'assisted' | 'autonomous' | 'scientific'`
+
+**Fichiers à créer** :
+- `src/renderer/scientific.html` — 5ème entry point HTML
+- `src/renderer/js/scientific-app.ts` — Orchestrateur du mode (pattern de assisted-app.ts)
+- `src/renderer/js/scientific/` — Sous-modules (statut-manager, transitions, metrics)
+- `src/renderer/styles/scientific.css` — Styles mode-spécifiques (non-layered, accent couleur à définir)
+
+**Fichiers à modifier** :
+- `src/database/db.js` — Migration `depth_status` + nouveau CHECK
+- `src/database/repositories/nodes.js` — CRUD depth_status
+- `src/renderer/js/types/kairos.ts` — `KairosNode.depthStatus?: DepthStatus`
+- `src/renderer/js/canvas/depth-view.ts` — Nouvelle `depthBySemantic()` utilisant `depth_status`
+- `src/renderer/landing.html` + `styles/landing.css` — 3ème carte
+- `main.js` — Nouveau entry point dans loadURL/loadFile
+- `vite.config.js` — Nouveau entry point multi-page
+- `preload.js` — Potentiellement de nouvelles API IPC
+
+**Intégration Vue Profondeur (F027)** :
+- En mode Scientifique, le critère Z par défaut = `depthBySemantic` (statut détermine la couche)
+- `setDepthLayerFn(depthBySemantic)` appelé à l'init du mode
+- Les tokens CSS de profondeur sont réutilisés tel quel
+
+**Transitions entre statuts** :
+- `active → focus` : action utilisateur (max 2-3 focus simultanés, enforce côté TS)
+- `focus → active` : action utilisateur (ou auto quand un autre nœud prend le focus)
+- `active → validated` : action utilisateur (confirmation explicite)
+- `validated → active` : action utilisateur (réouverture)
+- `any → archived` : action utilisateur
+- `active → absorbed` : automatique via SYNTHÉTISER (lien vers synthèse parent stocké)
+- Pas de transition directe `archived → focus` (obliger à passer par `active`)
+
+**UI de gestion des statuts** :
+- Menu contextuel enrichi (clic droit sur vignette → section "Statut")
+- Raccourcis clavier (1=focus, 2=active, 3=validated, 4=archived)
+- Éventuellement : drag & drop vers des zones de dépôt (drop zones latérales par statut)
+- Indicateur visuel par statut (icône + couleur de bordure + badge)
+
+**Métriques spécifiques au mode** :
+- Taux de validation (validated / total non-archived)
+- Couverture (ratio de l'espace conceptuel exploré)
+- Progression (combien de vignettes ont avancé dans le cycle)
+- Intégration Oxygen : le score pourrait pondérer les statuts
+
+**⚠️ Points de vigilance** :
+1. **Migration BDD** : `ALTER TABLE nodes ADD COLUMN depth_status` — tester sur copie, prévoir rollback
+2. **Rétrocompatibilité** : Les canvas assisté/autonome existants ne doivent PAS être affectés par le nouveau champ
+3. **Performance** : Avec >100 vignettes + statuts + Vue Profondeur, surveiller les recalculs
+4. **Complexité UI** : Pas tout implémenter d'un coup — commencer par les statuts de base (focus/active/validated/archived), ajouter absorbed + transitions auto après
+5. **Tests** : Écrire des tests unitaires pour les transitions de statut AVANT d'implémenter l'UI
+6. **Pas de régression** : Les modes assisté et autonome doivent être 100% identiques avant/après
+
+**Plan d'exécution suggéré** (par étapes indépendantes) :
+1. Migration BDD + types TS + repository (sans UI)
+2. `depthBySemantic()` dans depth-view.ts (testable isolément)
+3. Landing page : 3ème carte + entry point HTML minimal
+4. scientific-app.ts : orchestrateur squelette (canvas + toolbar + statuts)
+5. UI de changement de statut (menu contextuel + raccourcis)
+6. Indicateurs visuels par statut (CSS)
+7. Transitions automatiques (absorbed via SYNTHÉTISER)
+8. Métriques spécifiques
 
 ### Roadmap future
 
