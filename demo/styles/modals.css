@@ -1,0 +1,214 @@
+@layer components {
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-modals);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+
+/* Modal */
+.modal {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  min-width: 360px;
+  max-width: 500px;
+  width: 90vw;
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.2s ease;
+}
+
+.modal-title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.modal-field {
+  margin-bottom: var(--space-4);
+}
+
+.modal-label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.modal-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.modal-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-primary-soft);
+}
+
+.modal-input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-primary-soft);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.modal-btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition: all var(--duration-normal);
+}
+
+.modal-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.modal-btn.primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.modal-btn.primary:hover {
+  opacity: 0.9;
+}
+
+.modal-btn.danger {
+  background: var(--accent-rose-soft);
+  border-color: var(--accent-rose);
+  color: var(--accent-rose);
+}
+
+.modal-btn.danger:hover {
+  background: var(--accent-rose);
+  color: white;
+}
+
+/* Context menu (node ⋮) */
+.context-menu {
+  position: fixed;
+  z-index: var(--z-popovers);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) 0;
+  min-width: 180px;
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.12s ease;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  text-align: left;
+}
+
+.context-menu-item:hover {
+  background: var(--bg-hover);
+}
+
+.context-menu-item.danger {
+  color: var(--accent-rose);
+}
+
+.context-menu-item.danger:hover {
+  background: var(--accent-rose-soft);
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-1) 0;
+}
+
+/* Connection type menu */
+.connection-type-menu {
+  position: fixed;
+  z-index: var(--z-popovers);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.12s ease;
+}
+
+.connection-type-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  width: 100%;
+  text-align: left;
+  transition: all var(--duration-fast);
+}
+
+.connection-type-option:hover {
+  background: var(--bg-hover);
+  border-color: var(--border);
+}
+
+.connection-type-symbol {
+  font-size: var(--text-lg);
+  width: 24px;
+  text-align: center;
+}
+
+}

@@ -1,0 +1,123 @@
+@layer components {
+
+.main-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  z-index: var(--z-floating);
+  position: relative;
+  gap: 8px;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--accent-warm);
+  letter-spacing: 0.5px;
+  margin-right: 8px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition: all var(--duration-normal);
+  white-space: nowrap;
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.toolbar-btn.primary {
+  background: var(--accent-primary-soft);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.toolbar-btn.primary:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.toolbar-btn.danger {
+  color: var(--accent-rose);
+  border-color: var(--accent-rose-soft);
+}
+
+.toolbar-btn.danger:hover {
+  background: var(--accent-rose-soft);
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+.zoom-indicator {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.zoom-indicator strong {
+  color: var(--text-secondary);
+}
+
+/* Mobile toolbar */
+@media (max-width: 768px) {
+  .main-toolbar {
+    flex-wrap: wrap;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .toolbar-brand {
+    font-size: var(--text-base);
+    margin-right: 4px;
+  }
+
+  .toolbar-btn {
+    padding: 5px 8px;
+    font-size: var(--text-xs);
+  }
+
+  .zoom-indicator {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar-left,
+  .toolbar-right {
+    gap: 4px;
+  }
+
+  .zoom-indicator {
+    display: none;
+  }
+}
+
+}

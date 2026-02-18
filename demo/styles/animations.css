@@ -1,0 +1,54 @@
+@layer components {
+
+@keyframes connection-flow {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes import-halo {
+  0%, 100% { box-shadow: var(--node-shadow), 0 0 15px rgba(90, 154, 191, 0.3); }
+  50% { box-shadow: var(--node-shadow), 0 0 25px rgba(90, 154, 191, 0.5); }
+}
+
+@keyframes import-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes friction-pulse {
+  0%, 100% { box-shadow: var(--shadow-md), 0 0 15px rgba(231, 76, 60, 0.3); }
+  50% { box-shadow: var(--shadow-md), 0 0 30px rgba(231, 76, 60, 0.5), 0 0 60px rgba(231, 76, 60, 0.2); }
+}
+
+@keyframes pulse-warning {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 100, 100, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(255, 100, 100, 0.8); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* New node appearing from DÉVELOPPER */
+@keyframes nodeAppear {
+  0% { opacity: 0; transform: scale(0.6); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.pole.newly-created {
+  animation: nodeAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Friction vignette pulsing */
+.pole.friction-vignette {
+  animation: friction-pulse 2s ease-in-out 3;
+}
+
+}

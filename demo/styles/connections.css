@@ -1,0 +1,65 @@
+@layer components {
+
+#connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-canvas);
+  transform-origin: 0 0;
+  overflow: visible;
+}
+
+.connection-line {
+  stroke-width: 2;
+  fill: none;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: stroke-width 0.15s, opacity 0.15s;
+}
+
+.connection-line:hover,
+.connection-line.hovered {
+  stroke-width: 4;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.connection-hitbox {
+  stroke-width: 16;
+  stroke: transparent;
+  fill: none;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+.connection-implies {
+  stroke-dasharray: 6 4;
+  animation: connection-flow 1.5s linear infinite;
+  stroke-linecap: round;
+}
+
+.connection-resonance {
+  stroke-dasharray: 4 6;
+  animation: connection-flow 2s linear infinite;
+  stroke-linecap: round;
+}
+
+/* Gradient stops — themed via CSS variables */
+.grad-implies-start { stop-color: var(--accent-primary); stop-opacity: 0.7; }
+.grad-implies-end { stop-color: var(--accent-green); stop-opacity: 0.7; }
+.grad-resonance-start { stop-color: var(--accent-warm); stop-opacity: 0.6; }
+.grad-resonance-end { stop-color: var(--accent-amber); stop-opacity: 0.6; }
+
+/* Temporary connection line (during connection mode) */
+.connection-temp {
+  stroke: var(--accent-green);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+}

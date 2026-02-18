@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr" data-theme="obsidian">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIROS — Démo cartographie cognitive</title>
+  <meta name="description" content="Démo interactive de KAIROS : explorez la cartographie cognitive, créez des vignettes, lancez DÉVELOPPER et observez la jauge O₂.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KAIROS — Démo cartographie cognitive">
+  <meta property="og:description" content="Explorez la cartographie cognitive : créez des vignettes, lancez DÉVELOPPER et observez la jauge O₂ réagir.">
+  <meta property="og:url" content="https://mecanique-invisible.com/demo/">
+  <meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
+  <meta property="og:site_name" content="Florent Klimacek">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KAIROS — Démo cartographie cognitive">
+  <meta name="twitter:description" content="Explorez la cartographie cognitive : créez des vignettes, lancez DÉVELOPPER et observez la jauge O₂ réagir.">
+  <meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
+
+  <link rel="canonical" href="https://mecanique-invisible.com/demo/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+<body class="mode-assisted">
+  <div class="container">
+    <!-- Toolbar (outside canvas-area to avoid overflow:hidden clipping) -->
+    <div class="main-toolbar">
+        <div class="toolbar-left">
+          <a href="../presentation_kairos.html" class="toolbar-brand" title="Retour a la presentation">KAIROS</a>
+          <div class="toolbar-separator"></div>
+          <button id="create-pole-btn" class="toolbar-btn primary">+ Vignette</button>
+          <button id="clear-btn" class="toolbar-btn danger">Effacer</button>
+        </div>
+        <div class="toolbar-right">
+          <div class="zoom-indicator">
+            Zoom: <strong id="current-zoom">100%</strong>
+          </div>
+        </div>
+      </div>
+
+    <div class="canvas-area">
+      <!-- SVG connections layer -->
+      <svg id="connections">
+        <defs>
+          <!-- Arrow for implies -->
+          <marker id="arrow-implies" markerWidth="12" markerHeight="12"
+                  refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,8 L10,4 z" fill="#a89050" />
+          </marker>
+          <!-- Diamond for resonance -->
+          <marker id="arrow-resonance" markerWidth="10" markerHeight="10"
+                  refX="5" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,5 L5,0 L10,5 L5,10 z" fill="#4db8a8" />
+          </marker>
+          <!-- Gradients -->
+          <linearGradient id="grad-implies" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" class="grad-implies-start" />
+            <stop offset="100%" class="grad-implies-end" />
+          </linearGradient>
+          <linearGradient id="grad-resonance" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" class="grad-resonance-start" />
+            <stop offset="100%" class="grad-resonance-end" />
+          </linearGradient>
+          <!-- Glow filter -->
+          <filter id="connection-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- Nodes container -->
+      <div id="poles-container"></div>
+
+      <!-- Connection mode indicator -->
+      <div id="connection-mode-indicator" class="connection-mode-indicator">
+        Mode connexion — cliquez sur une vignette
+      </div>
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-title">Statuts</div>
+        <div class="legend-item"><span class="legend-symbol">&#9675;</span> Neutre</div>
+        <div class="legend-item"><span class="legend-symbol">&#127919;</span> Ancre</div>
+        <div style="margin-top: 10px" class="legend-title">Connexions</div>
+        <div class="legend-item"><span class="legend-symbol" style="color: #7a7a8a">&rarr;</span> Implique</div>
+        <div class="legend-item"><span class="legend-symbol" style="color: #5a9a9a">&harr;</span> Resonance</div>
+      </div>
+
+      <!-- Bandeau suggestion -->
+      <div id="bandeau-suggestion" class="bandeau-suggestion">
+        <div class="history-buttons">
+          <button id="btn-undo" class="btn-history" disabled title="Annuler (Ctrl+Z)">&#8617;</button>
+          <button id="btn-redo" class="btn-history" disabled title="Retablir (Ctrl+Y)">&#8618;</button>
+        </div>
+        <div class="bandeau-separator"></div>
+        <div class="o2-gauge" title="Jauge O₂ — diversite cognitive du graphe">
+          <span class="o2-label">O₂</span>
+          <div class="o2-track">
+            <div class="o2-fill" id="o2-fill"></div>
+          </div>
+          <span class="o2-value" id="o2-value">50</span>
+        </div>
+        <div class="bandeau-separator"></div>
+        <span id="suggestion-texte" aria-live="polite">
+          Canvas vide — creez votre premiere vignette.
+        </span>
+        <div class="suggestion-actions">
+          <div class="operations-menu">
+            <button class="btn-operation primary" id="btn-developper" title="Generer de nouvelles idees connectees">
+              DEVELOPPER
+            </button>
+            <button class="btn-operation" id="btn-relier" title="Connecter les vignettes orphelines">
+              RELIER
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="demo-app.js"></script>
+</body>
+</html>
