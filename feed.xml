@@ -6,9 +6,18 @@
     <link>https://mecanique-invisible.com/</link>
     <atom:link href="https://mecanique-invisible.com/feed.xml" rel="self" type="application/rss+xml"/>
     <language>fr-FR</language>
-    <lastBuildDate>Wed, 18 Feb 2026 10:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 18 Feb 2026 12:00:00 +0100</lastBuildDate>
     <managingEditor>florent@klimacek.fr (Florent Klimacek)</managingEditor>
     <webMaster>florent@klimacek.fr (Florent Klimacek)</webMaster>
+
+    <item>
+      <title>Le Vibe Coding sous le Microscope</title>
+      <description>Deux audits de 1 000 interactions vibe coding sur un projet de 24 000 lignes révèlent les mécaniques invisibles du développement assisté par IA.</description>
+      <link>https://mecanique-invisible.com/vibe-coding.html</link>
+      <guid isPermaLink="true">https://mecanique-invisible.com/vibe-coding.html</guid>
+      <pubDate>Wed, 18 Feb 2026 12:00:00 +0100</pubDate>
+      <category>Étude</category>
+    </item>
 
     <item>
       <title>Genèse de KAIROS</title>
