@@ -191,6 +191,11 @@ Statuts potentiels futurs : `hypothesis`, `contradicted`, `pending-review`.
 5. **Tests** : Écrire des tests unitaires pour les transitions de statut AVANT d'implémenter l'UI
 6. **Pas de régression** : Les modes assisté et autonome doivent être 100% identiques avant/après
 
+**Stratégie de branche** : Développer sur `feature/scientific-mode` (branche dédiée depuis `main`).
+- **Isolable** (nouveaux fichiers, pas de conflit) : `scientific.html`, `scientific-app.ts`, `scientific/`, `scientific.css`, `depthBySemantic()` dans `depth-view.ts`
+- **Touche à l'existant** (merge attentif) : `db.js` (migration), `repositories/nodes.js`, `types/kairos.ts`, `landing.html`, `landing.css`, `main.js`, `vite.config.js`
+- Merge vers `main` uniquement après validation complète de chaque étape sur la branche
+
 **Plan d'exécution suggéré** (par étapes indépendantes) :
 1. Migration BDD + types TS + repository (sans UI)
 2. `depthBySemantic()` dans depth-view.ts (testable isolément)
