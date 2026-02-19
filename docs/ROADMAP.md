@@ -25,9 +25,9 @@
 |---|---|---|---|
 | C001 | ~~HAUTE~~ | ~~Event name mismatch llmSend/llmSendTracked~~ | **Résolu** — code attracteur supprimé |
 | C002 | ~~HAUTE~~ | ~~nodeId vs nodeIds structure mismatch~~ | **Résolu** — code attracteur supprimé |
-| C003 | Moyenne | `context-chat.ts` écoute `canvas:nodeAdded`, `canvas:nodeDeleted`, `canvas:connectionCreated` mais les événements réels n'ont pas le préfixe `canvas:`. | Listeners context-chat jamais déclenchés |
-| C004 | Basse | `degreeHistory` déclaré dans `createInitialBehaviorLogs()`, sérialisé/désérialisé, mais **jamais alimenté**. | Code mort à supprimer |
-| C005 | Basse | Champs `vignetteValidees`, `vignetteEnCours`, `vignetteRejetees`, `ratioValidation` jamais assignés dans MetricsManager. | Affichent "0✓ 0◌ 0✗" en permanence |
+| C003 | ~~Moyenne~~ | ~~`context-chat.ts` écoute `canvas:nodeAdded`, `canvas:nodeDeleted`, `canvas:connectionCreated` mais les événements réels n'ont pas le préfixe `canvas:`.~~ | **Résolu** — listeners corrigés dans context-chat.ts, toolbar.ts, depth-view.ts, iframe-api.ts (`canvas:nodeAdded` → `nodeCreated`, etc.) |
+| C004 | ~~Basse~~ | ~~`degreeHistory` déclaré dans `createInitialBehaviorLogs()`, sérialisé/désérialisé, mais **jamais alimenté**.~~ | **Résolu** — `degreeHistory` supprimé de config.ts, history.ts et test |
+| C005 | ~~Basse~~ | ~~Champs `vignetteValidees`, `vignetteEnCours`, `vignetteRejetees`, `ratioValidation` jamais assignés dans MetricsManager.~~ | **Résolu** — champs supprimés de MetricsManager |
 
 ### Workaround Electron actif
 
@@ -65,12 +65,15 @@
 | F013 | Layout arbre hiérarchique | Bouton "Arbre" : réorganisation top-down via connexions `implies`. Algorithme Sugiyama (BFS layering, barycentre, centrage). Animation CSS 0.5s + RAF SVG. `fitViewportToNodes()` recadre après layout. Guard `newlyImported` en assisté. Composantes déconnectées côte à côte, isolés en bas. 23 tests unitaires. |
 | F024 | Smart import LLM | Les vignettes importées par DÉVELOPPER sont positionnées près de leur cible de connexion (au lieu de la grille au bas du viewport). Fallback `getVisibleBottomPosition()` si pas de cible. |
 | F025 | Relocalisation post-synthèse | Après archivage, les vignettes synthétisées glissent en colonne à droite de la zone active (animation 400ms). Garder la zone de travail dégagée. |
-| F023 | Version bêta web (iframe) | Version allégée de KAIROS pour intégration iframe dans un site de recherche. Core partagé (canvas, LLM API, Oxygen, métriques, undo/redo) + shim `window.fgraph` (DB no-op, LLM fetch direct, clés API en mémoire). 2 thèmes (Obsidian/Porcelain), 2 opérations (DÉVELOPPER/RELIER), API iframe postMessage. 6 fichiers créés : `web.html`, `web-app.ts`, `fgraph-shim.ts`, `api-key-ui.ts`, `iframe-api.ts`, `vite.web.config.js`. Build : `npm run dev:web` / `npm run build:web`. |
+| F023 | ~~Version bêta web (iframe)~~ | **Abandonné** — supprimé de la codebase. Fichiers `web.html`, `web-app.ts`, `web/`, `web.css`, `vite.web.config.js` supprimés. |
 | F026 | Refonte architecture CSS | `canvas.css` monolithique (4400 lignes) → architecture modulaire : `@layer` cascade, design tokens 3 niveaux (primitives/sémantiques/composant), 11 fichiers composants avec CSS nesting natif, animations centralisées (`effects/animations.css`), mode color system (`modes/mode-common.css`), variables raccourcies (`--theme-*` → `--*`). Point d'entrée unique `index.css`. Legacy `canvas.css` + `fonts.css` supprimés. |
 | F027 | Vue Profondeur (2.5D) — Phase 1 | Toggle opt-in "Profondeur" (bouton toolbar + touche D). 4 couches de profondeur simulées (scale 0.75→1.03, opacité 0.25→1.0, blur 0→1px, shadow elevation-1→4). Critère Z = récence (`modified`/`created`). Parallaxe souris ±20px + micro-rotation ±8° (perspective per-node 600px). Connexions SVG suivent la profondeur (opacity + marker-end masqué). Drag & drop préservé (snap au front). Fonction `setDepthLayerFn()` swappable pour Phase 2. Fonctionne en assisté + autonome, 4 thèmes. **Bugfix fév. 2026** : timestamps `created` corrigés (ISO string → `Date.now()`), `modified` assigné sur drag end + édition texte, `depthByRecency` robustifié (normalisation string→number, fallback index quand timestamps identiques). Fichiers : `canvas/depth-view.ts`, `canvas/nodes.ts`, `canvas/interactions.ts`, `canvas/menus.ts`, `styles/components/depth-view.css`, tokens dans `tokens.css`. |
 | F029 | Connexions SVG organiques | Courbes Bézier organiques (courbure basée sur distance totale, min 30px, S-curve naturel). Couche glow (stroke 6px, opacity pulsée 0.12↔0.22). Particules SMIL animées (2 cercles/connexion, `animateMotion` + `mpath`). Implies : 2 particules vertes source→cible. Resonance : 1 particule ambrée par direction. Fix markers cassés `index.html`, ajout gradients/filtres manquants `web.html`. Fichiers : `canvas/connections.ts`, `connections.css`, `animations.css`, `reset.css`, 3 HTML. |
 | F030 | Allègement toolbar assisté | Bouton "Effacer" remplacé par "Nouveau" (crée un nouveau graphe vierge, l'ancien reste en DB). Boutons "Exporter" (JSON) et "Importer" retirés du header (méthodes `exportGraph`/`importGraph` conservées en code). Exports PNG/Markdown restent dans le bandeau. Fichiers : `assisted.html`, `toolbar.ts`, `assisted-app.ts`. |
 | F031 | Refonte toolbar deux niveaux | Toolbar restructurée en 2 niveaux : barre primaire (Home, Vignette, Mes graphes, nom canvas, filtres visibilité, recherche collapsible 🔍, toggle ⋯) + tiroir secondaire collapsible (Nouveau, Arbre, Profondeur, sélection par statut, posture, thème, audio). Bouton "Mode Assisté" supprimé (redondant avec Home). Zoom indicator déplacé sur la minimap. Recherche collapsible (icône → expand au clic/Ctrl+F, collapse au blur). État tiroir persisté en localStorage. Animations CSS `max-height` + overrides `prefers-reduced-motion` dans `reset.css`. Fichiers : `assisted.html`, `toolbar.css`, `reset.css`, `toolbar.ts`, `search.ts`, `assisted-app.ts`. |
+| F032 | Refonte landing page (App Launcher) | Landing page transformée de "page marketing web" en "app launcher". Header compact (KAIROS 24px avec shimmer), cartes de mode compactes data-driven (icône + label + tagline, sans listes de features), bouton info (ℹ) avec popover descriptif par mode, liste des canvas récents depuis SQLite (max 7, filtrés non-vides, temps relatif), section masquée si aucun canvas. Architecture data-driven : tableau `MODES[]` = source unique, ajouter un mode = ajouter un objet. Keyboard shortcuts data-driven. Préparation F028 (3ème mode). Fichiers : `landing.html`, `landing.ts`, `landing.css`. |
+| F033 | Optimisation perf vignettes + connexions SVG | `transition: all` scopé par propriété, `will-change` conditionnel (hover/drag only), cache SVG connexions (`_cachedPathD`), animations particules pausées par défaut (`animation-play-state: paused`), viewport culling particules (hors écran = pausées). Fix hover mode autonome (manquait `scale()`). 296 tests OK. |
+| F034 | Design v2 : Thèmes visuels | Porcelain : fond canvas grège taupe (`#C8C3BB`), vignettes crème (`#EBE8E2`), toolbar/bandeau/panels crème clair, chat header redesigné, context-chat aligné, hover vert sauge. Dark themes (Obsidian/Aurora/Kraft) : contraste fond↔vignettes augmenté (~14pts de delta luminosité), `bg-elevated` ajusté. Accent bar (`.node-accent-bar`) supprimée sur tous les thèmes — design minimaliste. Reflet métallique sur vignettes standard : radial gradient + arête lumineuse + bande diagonale au hover, tokens `--node-sheen`/`--node-edge-light` par thème. Kraft : police Georgia → Lora (`@fontsource/lora`). |
 
 ### Features planifiées
 
@@ -98,21 +101,9 @@
 
 **Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `styles/components/` (styles tab bar).
 
-#### F023 — Version bêta web ✓
+#### F023 — Version bêta web (abandonné)
 
-**Implémentée.** Version allégée de KAIROS pour intégration iframe dans un site de recherche. Full web, pas Electron.
-
-**Architecture** : Core partagé (même code TS que l'app Electron) + shim `window.fgraph` (DB no-op, LLM fetch direct multi-provider, clés API en mémoire session). Polyfill `CircularityDetector` pour compatibilité modules existants.
-
-**Inclus** : Canvas engine complet, mode assisté, 2 opérations LLM (DÉVELOPPER + RELIER), pipeline prompt 5 couches, Oxygen + friction, métriques + bandeau, ancre structurelle, undo/redo, 2 thèmes (Obsidian + Porcelain), validateur d'intégrité.
-
-**Coupé** : Mode autonome, webview LLM, synthèses, multi-canvas, minimap, PromptLogManager, panneau O₂ détaillé, filtres avancés, export/import JSON, recherche, audio.
-
-**Fichiers créés** : `web.html`, `web-app.ts`, `web/fgraph-shim.ts`, `web/api-key-ui.ts`, `web/iframe-api.ts`, `styles/web.css`, `vite.web.config.js`.
-
-**Sécurité** : Clés API en mémoire uniquement, proxy URL whitelisted, origins iframe filtrées, erreurs sanitizées, jamais de persistence credentials.
-
-**Build** : `npm run dev:web` / `npm run build:web` (Vite, output `dist/web/`, ~197KB JS).
+**Supprimé.** Version allégée de KAIROS pour intégration iframe — fonctionnalité abandonnée. Tous les fichiers web supprimés (web.html, web-app.ts, web/, web.css, vite.web.config.js).
 
 #### F028 — Mode Scientifique (Phase 2) ⚠️ VIGILANCE ACCRUE
 
