@@ -52,7 +52,7 @@
 | F005 | Multi-canvas | Save/load/switch via modal "Mes graphes". IDs `canvas_{uuid}`, default `'default'`. |
 | F006 | Migration API | Opérations DÉVELOPPER/RELIER/SYNTHÉTISER via API directe + fallback webview. Multi-provider. |
 | F007 | ESLint + Prettier + Husky | Flat config `.mjs`, 0 erreurs, lint-staged pre-commit. |
-| F008 | Tests unitaires Vitest | 308 tests, 12 fichiers. Script : `npm run test:unit`. |
+| F008 | Tests unitaires Vitest | 343 tests, 13 fichiers. Script : `npm run test:unit`. |
 | F015 | Suppression attracteurs + Diagnostic structurel | Attracteurs (scoring, badges, qualification LLM) supprimés (~1000 lignes). Remplacés par `graph-diagnostic.ts` : diagnostic structurel (dominance, ponts, redondances, trous) affiché dans le popup de synthèse. |
 | F014 | Tests pipeline LLM → connexions | 69 tests (unit) + 6 tests (e2e). Couvre parsing, matching 5 niveaux, orchestration, validation, intégration bout-en-bout. |
 | F009 | Logging structuré | `createLogger(tag)` avec niveaux DEBUG/INFO/WARN/ERROR/SILENT. |
@@ -80,8 +80,456 @@
 | F036 | Modal de démarrage = choix API (pas webview) | Le modal "Modèle LLM" sélectionne désormais le **provider API** pour les opérations (DÉVELOPPER/RELIER/SYNTHÉTISER), plus le webview. **Badges clé API** : ✓ (vert) si clé configurée, · (gris) si non — providers sans clé restent sélectionnables (fallback webview). `await llm.whenReady()` avant le modal pour connaître l'état des clés. **Résultat enrichi** : `{ provider, apiName, webviewName, model? }` avec mapping chatgpt→openai. Le modal sauvegarde `kairos_api_provider` + `kairos_api_mode_enabled` + `kairos_llm_provider`. **Dropdown webview** synchronise l'API : changer de provider en cours de graphe met aussi à jour `kairos_api_provider`. Ollama : section Local, auto-détection, dropdown modèle inline (F035-UX). 3 fichiers modifiés : `session.ts`, `assisted-app.ts`, `providers.ts`. |
 | F037 | Prompt Log v2 — Parsing visuel + indicateurs import canvas | Refonte de l'onglet "Prompts" (sidebar) : séparation system/user prompt, résultat parsé auto-ouvert, cards par vignette/connexion avec indicateur ✓/– d'import canvas. Annotation `_imported` au moment de l'import (fiable, par référence). Fallback similarité Jaccard pour vieilles entrées. Fix "undefined (undefined)" dans friction signals. Event `importResultUpdated` + `refreshLatestEntry()`. Fichiers : `prompt-log.ts`, `capture.ts`, `llm-api.ts`, `assisted.css`. |
 | F038 | Suppression canvas (landing page) | Suppression unitaire (bouton poubelle au hover, confirmation modale) et multiple (mode sélection avec checkboxes, barre d'action, tout-sélectionner). Canvas actif protégé. Appel `deleteCanvas()` (CASCADE SQLite). 9 fonctions ajoutées. Fichiers : `landing.ts`, `landing.css`. |
+| F039 | Fond Ambiant Dynamique ("Âme de Kairos") | Le fond statique SVG (`neural-network.svg` + grille de points) remplacé par un fond Canvas 2D vivant réagissant à l'état du graphe, l'heure du jour, les actions utilisateur et le thème. 7 couches de rendu : géométrie sacrée (5 motifs : Fibonacci, Fleur de Vie, Métatron, Graine de Vie, Sri Yantra, attribués par canvas via hash), flow field (70 particules Simplex), wash heure du jour, fantômes topologiques, bioluminescence, effets transitoires, sillage curseur. Animation "tracé au stylo" à l'ouverture (12s), puis pulsation douce. Réactivité : ripple (création node), implosion + fantôme 30-60s (suppression), flash connexion, flash synaptique (LLM). Palette dynamique : 4 thèmes × 4 périodes jour × 2 modes. Porcelain ultra-subtil (`multiply`), thèmes sombres plus visibles (`screen`). Performance : ~13fps, <1ms/frame, pause pendant drag, pool pré-alloué (0 GC). `prefers-reduced-motion` : frame statique unique. Mode assisté : bioluminescence liée au score oxygen, flash synaptique LLM. Mode autonome : pulse radial violet (remplace CSS `breathe`). 7 modules dans `src/renderer/js/ambient/` (~1700 lignes). 35 tests unitaires ajoutés (343 total, 13 fichiers). |
 
 ### Features planifiées
+
+# F032 — Système de Modes KAIROS
+
+## Contexte
+
+KAIROS possède actuellement 2 modes : Assisté (rouge/orange) et Autonome (violet).
+L'objectif est d'étendre à 6 modes-persona sans dupliquer le moteur.
+Chaque mode est un **skin sémantique** : même socle technique, vocabulaire différent.
+
+---
+
+## Principe architectural
+
+```
+┌─────────────────────────────────────────────┐
+│              MODE REGISTRY                   │
+│  mode-registry.ts — point d'entrée unique   │
+├─────────────────────────────────────────────┤
+│                                             │
+│   ModeDefinition {                          │
+│     id: ModeId                              │
+│     label: string                           │
+│     icon: string (emoji UTF-8)              │
+│     baseMode: 'assisted' | 'autonomous'     │
+│     theme: ModeThemeOverrides               │
+│     nodeTypes: NodeTypeDefinition[]         │
+│     connectionTypes: ConnectionTypeDef[]    │
+│     oxygenRules: OxygenRuleSet              │
+│     frictionBehavior: FrictionProfile       │
+│     exportFormats: ExportDefinition[]       │
+│     canvasLayout: CanvasLayoutHint          │
+│   }                                         │
+│                                             │
+└──────────────┬──────────────────────────────┘
+               │
+       registerMode(def)
+               │
+     ┌─────────┴─────────────┐
+     │    ENGINE (inchangé)   │
+     │                        │
+     │  • Canvas 2D           │
+     │  • SQLite + UUID       │
+     │  • Oxygène (score)     │
+     │  • Friction (inject)   │
+     │  • Connexions SVG      │
+     │  • Toolbar             │
+     │  • Thèmes              │
+     └────────────────────────┘
+```
+
+Chaque mode s'enregistre via `registerMode()`. Le moteur lit la définition active et adapte son comportement. **Aucune logique métier propre à un mode ne doit vivre dans le moteur.**
+
+---
+
+## Interfaces TypeScript
+
+### ModeId
+
+```typescript
+type ModeId =
+  | 'researcher'    // 🔬 Chercheur
+  | 'creative'      // 🎨 Créatif
+  | 'philosopher'   // 🧠 Philosophe
+  | 'student'       // 📚 Étudiant
+  | 'project-lead'  // 📋 Chef de projet
+  | 'writer';       // ✍️ Rédacteur
+```
+
+### ModeDefinition
+
+```typescript
+interface ModeDefinition {
+  id: ModeId;
+  label: string;                    // ex: "Mode Chercheur"
+  labelShort: string;               // ex: "Chercheur"
+  icon: string;                     // emoji UTF-8 (jamais hex escape)
+  description: string;              // tooltip / onboarding
+
+  // Héritage du mode de base existant
+  baseMode: 'assisted' | 'autonomous';
+
+  // Surcharges visuelles
+  theme: ModeThemeOverrides;
+
+  // Sémantique
+  nodeTypes: NodeTypeDefinition[];
+  connectionTypes: ConnectionTypeDefinition[];
+
+  // Comportement
+  oxygenRules: OxygenRuleSet;
+  frictionBehavior: FrictionProfile;
+
+  // Canvas
+  canvasLayout: CanvasLayoutHint;
+
+  // Sortie
+  exportFormats: ExportDefinition[];
+}
+```
+
+### NodeTypeDefinition
+
+```typescript
+interface NodeTypeDefinition {
+  id: string;                       // ex: 'hypothesis', 'idea', 'task'
+  label: string;                    // affiché dans le menu création
+  icon: string;                     // emoji UTF-8
+  color: string;                    // CSS custom property ou hex
+  defaultStatus?: string;           // statut initial (ex: 'pending')
+  availableStatuses?: StatusDef[];  // statuts possibles pour ce type
+}
+
+interface StatusDef {
+  id: string;                       // ex: 'validated', 'refuted', 'blocked'
+  label: string;
+  icon: string;
+  color: string;
+}
+```
+
+### ConnectionTypeDefinition
+
+```typescript
+interface ConnectionTypeDefinition {
+  id: string;                       // ex: 'implies', 'resonance', 'supports'
+  label: string;
+  color: string;                    // couleur du trait SVG
+  style: 'solid' | 'dashed' | 'dotted';
+  animated: boolean;                // particules SMIL oui/non
+  directional: boolean;             // flèche oui/non
+  glowColor?: string;              // override glow pulsé
+}
+```
+
+### OxygenRuleSet
+
+```typescript
+interface OxygenRuleSet {
+  // Le score reste 0-100, calcul snapshot.
+  // Chaque mode définit le POIDS de chaque facteur.
+  weights: {
+    structural: number;             // poids composante structurelle
+    echo: number;                   // poids détection répétition
+    tagDiversity: number;           // poids diversité tags/types
+    friction: number;               // poids friction acceptée
+  };
+
+  // Seuils personnalisés par mode
+  thresholds: {
+    breathe: number;                // défaut 50
+    stale: number;                  // défaut 30
+  };
+
+  // Descriptions contextuelles pour l'UI
+  zoneLabels: {
+    breathe: string;                // ex: "Exploration active" / "Argumentation solide"
+    stale: string;                  // ex: "Convergence prématurée" / "Pas de preuve nouvelle"
+    asphyxia: string;               // ex: "Fixation détectée" / "Structure déséquilibrée"
+  };
+}
+```
+
+### FrictionProfile
+
+```typescript
+interface FrictionProfile {
+  // Type de friction dominant
+  style: 'counter-argument'         // Chercheur : injecter l'objection
+       | 'anti-convergence'         // Créatif : empêcher la fixation
+       | 'socratic'                 // Philosophe : questionner les prémisses
+       | 'pedagogic'               // Étudiant : guider sans donner la réponse
+       | 'stress-test'             // Chef de projet : tester la robustesse
+       | 'gap-detection';          // Rédacteur : repérer les trous
+
+  // Intensité de base (0-1), modulable par F001 slider si implémenté
+  baseIntensity: number;
+
+  // Prompts système injectés quand oxygène < stale
+  promptTemplates: {
+    mild: string;                   // oxygène entre stale et breathe
+    strong: string;                 // oxygène < stale (asphyxia)
+  };
+
+  // Trigger conditions spécifiques au mode
+  triggers: FrictionTrigger[];
+}
+
+interface FrictionTrigger {
+  condition: string;                // description lisible (pour doc + LLM)
+  detector: string;                 // nom de la fonction détecteur à appeler
+  response: string;                 // template de friction à injecter
+}
+```
+
+### CanvasLayoutHint
+
+```typescript
+interface CanvasLayoutHint {
+  // Suggestion de disposition initiale
+  defaultLayout: 'freeform'         // Créatif, Philosophe : canvas vide
+                | 'tree'            // Chercheur, Rédacteur : structure arborescente
+                | 'timeline'        // Chef de projet : axe temporel
+                | 'columns';        // Étudiant : colonnes par statut
+
+  // Activation parallax (F027 vue profondeur)
+  depthViewEnabled: boolean;
+
+  // Grille d'accroche optionnelle
+  snapToGrid: boolean;
+  gridSize?: number;                // px
+}
+```
+
+### ExportDefinition
+
+```typescript
+interface ExportDefinition {
+  id: string;                       // ex: 'academic-graph', 'outline-md'
+  label: string;                    // affiché dans le menu export
+  format: 'markdown' | 'json' | 'html' | 'docx' | 'png' | 'svg';
+  generator: string;                // nom du module d'export à appeler
+  description: string;
+}
+```
+
+---
+
+## Stockage SQLite
+
+### Nouvelle table `modes`
+
+```sql
+CREATE TABLE IF NOT EXISTS modes (
+  id TEXT PRIMARY KEY,              -- ModeId
+  definition TEXT NOT NULL,         -- JSON sérialisé de ModeDefinition
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now'))
+);
+```
+
+### Extension table `nodes`
+
+```sql
+-- Ajout colonnes (migration)
+ALTER TABLE nodes ADD COLUMN mode_id TEXT REFERENCES modes(id);
+ALTER TABLE nodes ADD COLUMN node_type TEXT DEFAULT 'default';
+ALTER TABLE nodes ADD COLUMN status TEXT DEFAULT NULL;
+```
+
+### Extension table `connections`
+
+```sql
+-- Ajout colonne (migration)
+ALTER TABLE connections ADD COLUMN connection_type TEXT DEFAULT 'implies';
+```
+
+### Extension table `canvas` (ou équivalent)
+
+```sql
+-- Chaque canvas est lié à un mode
+ALTER TABLE canvas ADD COLUMN mode_id TEXT REFERENCES modes(id);
+```
+
+> **Note migration** : les nœuds/connexions existants reçoivent `mode_id = NULL` (rétrocompatible). Le moteur traite `NULL` comme le comportement actuel (assisté/autonome classique).
+
+---
+
+## Fichiers à créer
+
+```
+src/
+├── modes/
+│   ├── mode-registry.ts            # registerMode(), getActiveMode(), switchMode()
+│   ├── mode-types.ts               # toutes les interfaces ci-dessus
+│   ├── mode-defaults.ts            # les 6 définitions de mode
+│   ├── mode-migration.ts           # migration SQLite (ajout colonnes)
+│   └── definitions/
+│       ├── researcher.ts            # ModeDefinition chercheur
+│       ├── creative.ts              # ModeDefinition créatif
+│       ├── philosopher.ts           # ModeDefinition philosophe
+│       ├── student.ts               # ModeDefinition étudiant
+│       ├── project-lead.ts          # ModeDefinition chef de projet
+│       └── writer.ts                # ModeDefinition rédacteur
+```
+
+### Fichiers existants à modifier
+
+| Fichier | Modification |
+|---------|-------------|
+| `canvas-manager.ts` | Lire `getActiveMode()` pour filtrer `nodeTypes` et `connectionTypes` disponibles |
+| `oxygen-gauge.ts` | Lire `oxygenRules` du mode actif pour les poids et seuils |
+| `friction-engine.ts` (ou équivalent) | Lire `frictionBehavior` du mode actif pour style + prompts |
+| `connection-renderer.ts` | Lire `connectionTypes` du mode actif pour couleur/style/animation |
+| `toolbar.ts` | Adapter les boutons de création au `nodeTypes` du mode actif |
+| `export-manager.ts` (ou à créer) | Lire `exportFormats` du mode actif |
+| CSS mode files | Chaque mode peut surcharger via `ModeThemeOverrides` (couleur accent, etc.) |
+
+---
+
+## Mode Registry — API
+
+```typescript
+// mode-registry.ts
+
+const registry = new Map<ModeId, ModeDefinition>();
+
+export function registerMode(def: ModeDefinition): void {
+  registry.set(def.id, def);
+}
+
+export function getMode(id: ModeId): ModeDefinition {
+  const mode = registry.get(id);
+  if (!mode) throw new Error(`Mode inconnu: ${id}`);
+  return mode;
+}
+
+export function getActiveMode(): ModeDefinition {
+  // Lit le mode actif depuis le state manager / localStorage / canvas courant
+  const activeId = getCurrentModeId();
+  return getMode(activeId);
+}
+
+export function switchMode(id: ModeId): void {
+  // 1. Valider que le mode existe
+  // 2. Sauvegarder état canvas courant
+  // 3. Appliquer ModeThemeOverrides (CSS custom properties)
+  // 4. Recharger toolbar (nodeTypes du nouveau mode)
+  // 5. Recharger connexions disponibles
+  // 6. Recalculer oxygène avec nouveaux poids
+  // 7. Émettre event 'mode:switched'
+}
+
+export function getAllModes(): ModeDefinition[] {
+  return Array.from(registry.values());
+}
+```
+
+---
+
+## Intégration avec l'existant
+
+### Assisté / Autonome → baseMode
+
+Les 2 modes actuels deviennent le **socle comportemental**. Chaque mode-persona hérite de l'un des deux :
+
+| Mode persona | baseMode | Raison |
+|-------------|----------|--------|
+| Chercheur | `assisted` | Besoin de guidance, validation active |
+| Créatif | `autonomous` | Canvas libre, pas d'interférence |
+| Philosophe | `autonomous` | Exploration profonde, pas de suggestion |
+| Étudiant | `assisted` | Besoin de guidage pédagogique |
+| Chef de projet | `assisted` | Structure imposée, alertes actives |
+| Rédacteur | `assisted` | Détection de trous, suggestions structure |
+
+### CSS
+
+Chaque mode ajoute une classe sur le conteneur racine :
+
+```css
+/* Le body ou #app reçoit la classe du mode */
+.mode-researcher { /* surcharges */ }
+.mode-creative { /* surcharges */ }
+/* etc. */
+```
+
+Les fichiers `assisted.css` et `autonomous.css` existants (non-layered, priorité max) continuent de fonctionner. Les surcharges mode viennent AVANT dans la cascade (via `ModeThemeOverrides` injectées en CSS custom properties).
+
+### Events
+
+Nouvel event à émettre :
+
+```typescript
+// Quand le mode change
+eventBus.emit('mode:switched', { from: oldModeId, to: newModeId });
+
+// Les sous-modules écoutent et se reconfigurent
+eventBus.on('mode:switched', ({ to }) => {
+  const mode = getMode(to);
+  // reconfigurer avec mode.oxygenRules, mode.frictionBehavior, etc.
+});
+```
+
+> **Attention C003** : vérifier que le préfixe d'event est cohérent. Utiliser `mode:` comme namespace.
+
+---
+
+## Sélecteur de mode — UX
+
+### Point d'entrée
+
+À la création d'un nouveau canvas (ou au premier lancement), l'utilisateur choisit son mode. Grille de 6 cartes identique au design actuel du site (screenshot).
+
+### Changement en cours de session
+
+Un indicateur compact dans la toolbar (icône + label court) permet de voir le mode actif. Le changement de mode en cours de canvas est **possible mais avec avertissement** : les nœuds existants dont le type n'existe pas dans le nouveau mode deviennent `type: 'generic'` (pas de perte de données).
+
+---
+
+## Ordre d'implémentation recommandé
+
+```
+Phase 1 — Fondation (cette feature F032)
+  ├── mode-types.ts (interfaces)
+  ├── mode-registry.ts (register/get/switch)
+  ├── mode-migration.ts (ALTER TABLE)
+  ├── 6 fichiers definitions/ (squelettes, contenu minimal)
+  ├── Intégration toolbar (sélecteur de mode)
+  └── Tests unitaires (registre, switch, migration)
+
+Phase 2 — Câblage moteur
+  ├── canvas-manager lit nodeTypes du mode actif
+  ├── oxygen-gauge lit oxygenRules du mode actif
+  ├── friction-engine lit frictionBehavior du mode actif
+  ├── connection-renderer lit connectionTypes du mode actif
+  └── Tests intégration
+
+Phase 3 — Enrichissement par mode (itératif)
+  ├── Chercheur (prioritaire, aligne avec F028)
+  ├── Rédacteur
+  ├── Chef de projet
+  ├── Créatif
+  ├── Philosophe
+  └── Étudiant
+
+Phase 4 — Exports spécifiques
+  ├── export-manager.ts
+  └── Un générateur par format listé dans ExportDefinition
+```
+
+---
+
+## Règles pour Claude Code
+
+- IDs : `crypto.randomUUID()` uniquement
+- Emojis CSS : littéral UTF-8 (`'🔬'`), jamais hex escape
+- Hooks : appeler via `cm.method()`, jamais la fonction locale
+- Hover `.pole` : garder `scale(max(var(--node-scale, 1), 1.08))`
+- SVG : jamais `feGaussianBlur` sur éléments animés
+- Event prefix : `mode:` pour tous les events du système de modes
+- Après implémentation : lancer les 343+ tests Vitest existants
+- Nouvelles interfaces dans `mode-types.ts`, pas dispersées
+
+---
+
+## Résumé en une phrase
+
+> Un registre de modes branché sur le moteur existant via 7 interfaces typées. Chaque mode déclare ses types de nœuds, connexions, règles d'oxygène, profil de friction et formats d'export. Le moteur lit la définition active — aucune logique métier par mode dans le moteur.
 
 | ID | Priorité | Description | Estimation |
 |---|---|---|---|
