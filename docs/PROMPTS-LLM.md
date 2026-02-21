@@ -50,6 +50,9 @@ Document unique : **comment le système décide quoi faire** et **ce qu'il envoi
          v
  +-----------------------+
  | LLM (API ou webview)  |  Génère la réponse
+ |                       |  6 providers API : Claude, OpenAI, Gemini, DeepSeek, Grok, Ollama (local)
+ |                       |  5 providers webview : Claude, ChatGPT, Gemini, DeepSeek (Grok masqué)
+ |                       |  Ollama = API-only (pas de fallback webview)
  +-----------------------+
          |
          v

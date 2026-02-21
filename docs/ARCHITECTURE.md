@@ -121,8 +121,8 @@ Le sas n'est pas un formulaire, c'est un **ralentisseur** : vidéo, audio ambian
 | MetricsManager | `assisted/metrics.ts` | Calcul 11 métriques, suggestions adaptatives, cooldown synthèse |
 | CanvasAnalyzer | `assisted/canvas-analyzer.ts` + `analyzer/*.ts` | Attracteurs + friction + diversité (façade unifiée) |
 | SynthesesManager | `assisted/syntheses.ts` + `syntheses/*.ts` | Archivage, restauration, réinjection, export |
-| WebviewHandler | `assisted/webview-handler.ts` + `webview/*.ts` | Communication bidirectionnelle LLM (5 providers) |
-| LLMManager | `assisted/llm.ts` | Construction prompts, tri topologique, échantillonnage |
+| WebviewHandler | `assisted/webview-handler.ts` + `webview/*.ts` | Communication bidirectionnelle LLM (5 providers webview) |
+| LLMManager | `assisted/llm.ts` | Construction prompts, tri topologique, échantillonnage. 6 providers API (Claude, OpenAI, Gemini, DeepSeek, Grok masqué, Ollama local) |
 | LLMApiManager | `assisted/llm-api.ts` + `llm-api/*.ts` | Appels API directe, routage API/webview, parsing |
 | PromptLogManager | `assisted/app/prompt-log.ts` | Historique prompts SQLite, onglet Prompts sidebar |
 | HistoryManager | `history.ts` | Undo/Redo (50 états max) |
@@ -145,13 +145,12 @@ User action (click, drag, etc.)
 | `connectionsChanged` | `connections.ts` | `assisted-app.ts` | Recalcul métriques |
 | `nodeDeleted` | `nodes.ts` | `assisted-app.ts` | Recalcul métriques |
 | `responseCaptured` | `capture.ts` | `assisted-app.ts` | Notification réponse LLM |
-| `llmOperationStarted` | `adaptive.ts` | UI | Loading states |
-| `llmOperationCompleted` | `adaptive.ts` | UI | Loading states |
+| `nodeEditStart` | `menus.ts` | `assisted-app.ts` | Début édition vignette |
 | `connectionsPendingResult` | `connections.ts` | UI | Feedback connexions en attente |
 
 ### CanvasAnalyzer — Composantes
 
-**Attracteurs cognitifs** (`analyzer/attractors.ts`) :
+**Attracteurs cognitifs** (logique distribuée dans `analyzer/config.ts` + `analyzer/friction.ts`) :
 
 Score composite = `degree` (0.30) + `recentAttachments` (0.25) + `selectionFrequency` (0.25) + `llmInteractions` (0.20).
 
@@ -191,11 +190,12 @@ Pruning automatique : max 50 entrées par canvas.
 
 | Action | Fichiers à modifier |
 |---|---|
-| Ajouter un provider LLM | `llm.ts` (providers) + `webview/providers.ts` (sélecteurs) + `assisted.html` (option) |
+| Ajouter un provider LLM cloud | `llm.ts` (providers) + `webview/providers.ts` (sélecteurs) + `assisted.html` (option) + `main.js` (handler IPC) + `config-modal.ts` (PROVIDERS_INFO) + `router.ts` (API_SUPPORTED_PROVIDERS) |
+| Ajouter un provider LLM local | Idem sans webview : `llm.ts` + `main.js` + `config-modal.ts` (isLocal) + `router.ts` (hasAPIKey exception) + `executor.ts` (timeout 180s). Cf. pattern Ollama |
 | Ajouter une métrique | `metrics.ts` → `calculateMetrics()` + interface + `hasSignificantChange()` + display |
 | Modifier template prompt | `data/prompt-templates.ts` → `defaultTemplates`. Variables `{var}` interpolées. |
 | Ajouter signal circularité | `analyzer/config.ts` (SIGNALS + poids) + `analyzer/friction.ts` (détection) |
-| Modifier scoring attracteurs | `analyzer/config.ts` (weights) + `analyzer/attractors.ts` (normalisation) |
+| Modifier scoring attracteurs | `analyzer/config.ts` (weights) + `analyzer/friction.ts` (normalisation) |
 
 ### Checklist modification
 
@@ -210,6 +210,10 @@ Pruning automatique : max 50 entrées par canvas.
 ---
 
 ## 3. Historique des Décisions
+
+### 2026-02-19 — Intégration Ollama (F035)
+
+Provider LLM local, **API-only** (pas de webview). Choix de l'API native `/api/chat` plutôt que l'endpoint OpenAI-compatible `/v1/chat/completions` pour un meilleur contrôle des paramètres (num_ctx, keep_alive) sur les modèles locaux moins puissants. Pas de clé API, timeout 180s (le premier appel charge le modèle en RAM/GPU), exception `hasAPIKey`. Détection et liste de modèles via `GET /api/tags`. UI dans le config modal avec pastille de connexion + dropdown dynamique. Code LM Studio nettoyé (fév. 2026). Modèles testés : `qwen3:8b`, `gemma3:4b` (capables de respecter le format structuré des templates Kairos). À tester : `phi-4-mini`, `llama3.2:3b`.
 
 ### 2026-02-17 — Refonte architecture CSS (F026)
 
@@ -248,4 +252,3 @@ Opérations passaient par webview (injection DOM + scraping, fragile). Ajout che
 | `CLAUDE.md` (racine) | Référence développeur : commandes, fichiers, patterns, build, storage, CSS, conventions |
 | `PROMPTS-LLM.md` | Métriques, arbre de décision, pipeline complet métriques → LLM, templates de prompt |
 | `ROADMAP.md` | Bugs actifs, features, roadmap v0.4 → v1.0 |
-| `SIMULATION.md` | Guide de test manuel exhaustif (14 catégories, ~130 scénarios) |
