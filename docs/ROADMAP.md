@@ -87,6 +87,10 @@
 | F041 | Reconfiguration providers LLM | Gemini (Google) retiré. Ajout Mistral (`api.mistral.ai`, OpenAI-compatible, modèle par défaut `mistral-large-latest`) et Groq (`api.groq.com`, OpenAI-compatible, dropdown modèles dynamique via IPC `llm-list-models`, modèle persisté `localStorage('kairos_groq_model')`). Mistral et Groq = API-only (pas de webview). Nouveau handler IPC `llm-list-models` + bridge `llmListModels` dans preload.js. Card hybride Groq dans config modal (clé API + dropdown modèles). Companion mis à jour (dropdown provider + `fetchGroqModels()`). 12 fichiers modifiés : `main.js`, `preload.js`, `llm.ts`, `config-modal.ts`, `router.ts`, `providers.ts`, `session.ts`, `assisted.html`, `index.html`, `intention.html`, `companion-app.ts`, `companion/llm.ts`. `callGemini()` supprimé (dead code). 343 tests OK. |
 | F042 | Signal "Saturation tags" (jauge O₂) | 5e signal oxygen : analyse le recouvrement de tags entre paires connectées. Malus progressif -10 à -20 dès ≥50% des paires saturées (≥1 tag partagé). Seuil min 4 paires taguées. Nouvelle ligne "Saturation" dans le panneau O₂ (barre + ratio %). Fonction `evaluateTagSaturation()` dans `oxygen.ts`. 7 tests unitaires ajoutés. Fichiers : `oxygen.ts`, `assisted.html`, `oxygen-panel.ts`, `oxygen.test.ts`. |
 | F043 | Tree layout robuste sans ancre | Le layout arbre fonctionnait mal sans nœud prioritaire (ancre 🎯). Fix : 1) `findConnectedComponents` utilise toutes les connexions (implies + resonance) pour garder le graphe cohésif, 2) auto-sélection du root le plus connecté par composante, 3) BFS bidirectionnel systématique (suit implies + resonance pour atteindre tous les nœuds). Nouvelle fonction `findBestRoot()`. 8 tests unitaires ajoutés (358 total). Fichiers : `tree-layout.ts`, `tree-layout.test.ts`. |
+| F021 | Onglets multi-canvas (mode assisté) | Barre d'onglets navigateur au-dessus de la toolbar pour switch instantané entre canvas. Tab bar `position: absolute; top: 0` dans `.canvas-area`, toolbar décalée à `top: 42px`. State `TabBarState { tabs, activeCanvasId }` persisté `localStorage('kairos_open_tabs')`. Click tab = switch, × = close (dernier → landing.html), [+] = nouveau graphe léger, double-clic = rename inline, clic droit = menu contextuel. Raccourcis Ctrl+T/W. Protection tabs dans `cleanupEmptyCanvases()`. Synchronisation modale "Mes graphes". 11 tests unitaires (369 total, 14 fichiers). Fichiers créés : `tab-bar.ts`, `tab-bar.css`. Fichiers modifiés : `assisted.html`, `toolbar.css`, `index.css`, `reset.css`, `assisted-app.ts`, `canvas-modal.ts`, `canvas-manager.ts`. |
+| F021b | Config LLM per-canvas + Fix O₂ | Chaque canvas stocke son provider/modèle LLM en SQLite (`llm_provider`, `llm_model` colonnes ajoutées à `canvases`). Au switch de tab, la config est appliquée aux clés globales localStorage (pattern "write-through global"). Le pipeline LLM (router/executor) n'est pas modifié. Badge provider (1 lettre) sur chaque onglet. Nouveau module `canvas-llm-config.ts` (3 fonctions : apply/save/get). **Fix bug O₂** : `switchToCanvas()` ne dispatchait pas `oxygenUpdated` → panneau O₂ sidebar bloqué sur l'ancien score. Fix : ajout dispatch event après `oxygen.evaluate()`. Fichiers créés : `canvas-llm-config.ts`. Fichiers modifiés : `db.js`, `canvas.js` (repo), `tab-bar.ts`, `tab-bar.css`, `assisted-app.ts`, `config-modal.ts`. |
+| F021c | Tab bar style pilule | Onglets redessinés en style pilule/capsule : bordures arrondies, onglet actif avec fond accent coloré, onglet [+] en bordure pointillée (dashed) + bouton. Fichier modifié : `tab-bar.css`. |
+| F022b | Refonte modale Configuration LLM | Toggle "Mode API" et dropdown provider supprimés (reliquats webview). Remplacés par cartes radio : 1 clic = sélection provider, carte sélectionnée expanded avec input clé inline + dropdown modèle (Groq/Ollama). 6 providers (Claude, ChatGPT, DeepSeek, Mistral, Groq, Ollama). **Fix bug session.ts** : `PROVIDER_MAP` manquait `mistral` et `groq` → sélectionner ces providers écrivait `apiName: 'claude'` (fallback). Fichiers modifiés : `config-modal.ts` (refonte complète), `session.ts` (fix PROVIDER_MAP). |
 | F039 | Fond Ambiant Dynamique ("Âme de Kairos") | Le fond statique SVG (`neural-network.svg` + grille de points) remplacé par un fond Canvas 2D vivant réagissant à l'état du graphe, l'heure du jour, les actions utilisateur et le thème. 7 couches de rendu : géométrie sacrée (5 motifs : Fibonacci, Fleur de Vie, Métatron, Graine de Vie, Sri Yantra, attribués par canvas via hash), flow field (70 particules Simplex), wash heure du jour, fantômes topologiques, bioluminescence, effets transitoires, sillage curseur. Animation "tracé au stylo" à l'ouverture (12s), puis pulsation douce. Réactivité : ripple (création node), implosion + fantôme 30-60s (suppression), flash connexion, flash synaptique (LLM). Palette dynamique : 4 thèmes × 4 périodes jour × 2 modes. Porcelain ultra-subtil (`multiply`), thèmes sombres plus visibles (`screen`). Performance : ~13fps, <1ms/frame, pause pendant drag, pool pré-alloué (0 GC). `prefers-reduced-motion` : frame statique unique. Mode assisté : bioluminescence liée au score oxygen, flash synaptique LLM. Mode autonome : pulse radial violet (remplace CSS `breathe`). 7 modules dans `src/renderer/js/ambient/` (~1700 lignes). 35 tests unitaires ajoutés (343 total, 13 fichiers). |
 
 ### Features planifiées
@@ -541,7 +545,7 @@ Phase 4 — Exports spécifiques
 | ID | Priorité | Description | Estimation |
 |---|---|---|---|
 | F028 | **HAUTE** | **Mode Scientifique — Phase 2** (3ème mode, statuts sémantiques, cycle de vie des vignettes) | ⚠️ Chantier majeur — voir spec détaillée |
-| F021 | Haute | Onglets multi-canvas (barre d'onglets, Ctrl+T/W, drag entre canvas) | 8-10h |
+| F021 | ~~Haute~~ | ~~Onglets multi-canvas~~ | **Implémenté** — voir Features terminées |
 | F001 | Moyenne | Curseur de friction (contrôle utilisateur du niveau) | Après stabilisation Oxygen |
 | F002 | Moyenne | Export PDF/SVG avancé (multi-pages, vectoriel, zone au choix) | 3-4h |
 | F003 | Moyenne | Pôles conteneurs (groupement, réduction/extension, drag groupé) | 6-8h |
@@ -552,15 +556,24 @@ Phase 4 — Exports spécifiques
 
 ### Specs détaillées — Features planifiées
 
-#### F021 — Onglets multi-canvas
+#### F021 — Onglets multi-canvas ✓ IMPLÉMENTÉ (22 fév. 2026)
 
-Évolution de F005 (modal "Mes graphes") vers une navigation par onglets. Prévu après stabilisation Oxygen + tests.
+Barre d'onglets navigateur au-dessus de la toolbar en mode assisté. Switch instantané entre canvas ouverts.
 
-**Comportement** : Barre d'onglets en haut du canvas. Ctrl+T = nouveau canvas. Ctrl+W = fermer l'onglet courant. Drag & drop de vignettes entre canvas (onglets).
+**Implémenté** :
+- Tab bar (`tab-bar.ts` ~300 lignes, `tab-bar.css` ~100 lignes) : click switch, × ferme, [+] nouveau, double-clic renomme inline
+- Menu contextuel clic droit (Renommer, Fermer, Fermer les autres, Mes graphes)
+- Middle-click ferme l'onglet. Dernier onglet → retour landing
+- Raccourcis Ctrl+T (nouveau) / Ctrl+W (fermer)
+- État persisté `localStorage('kairos_open_tabs')`, validé contre SQLite au démarrage
+- Synchronisé avec la modale "Mes graphes" (ouvrir/nouveau/dupliquer/supprimer/renommer)
+- `cleanupEmptyCanvases()` protège les canvas avec onglets ouverts
+- 11 tests unitaires (369 total, tous passent)
+- Override `prefers-reduced-motion` dans `reset.css`
 
-**Prérequis** : Infrastructure SQLite déjà prête (table `canvases`). F005 (multi-canvas modal) déjà implémenté.
+**Fichiers** : `assisted/app/tab-bar.ts` (nouveau), `styles/components/tab-bar.css` (nouveau), `assisted.html`, `toolbar.css`, `assisted-app.ts`, `canvas-modal.ts`, `canvas-manager.ts` (modifiés)
 
-**Fichiers probables** : `canvas/tab-bar.ts` (nouveau), `assisted.html` + `index.html` (conteneur onglets), `canvas-manager.ts` (switch logic), `assisted.css` + `styles/components/` (styles tab bar).
+**Non implémenté (v2)** : drag & drop entre onglets, mode autonome (assisté uniquement pour l'instant)
 
 #### F023 — Version bêta web (abandonné)
 
@@ -660,7 +673,65 @@ Statuts potentiels futurs : `hypothesis`, `contradicted`, `pending-review`.
 
 ### Roadmap future
 
-**v0.4.x (Q2 2026)**
+---
+
+## 3. Version Bêta — Plan de lancement
+
+### Phase A — Bêta privée (10-20 testeurs) — Priorité immédiate
+
+**Objectif** : Quelqu'un d'autre que le créateur peut installer l'app, comprendre ce qu'elle fait, et l'utiliser sans assistance.
+
+#### A1. Onboarding (priorité n°1)
+
+| ID | Tâche | Approche | Estimation |
+|---|---|---|---|
+| BETA-01 | **Premier démarrage** | Écran/flow dédié au tout premier lancement : explication du concept KAIROS, choix du provider LLM, canvas démo optionnel | 6-8h |
+| BETA-02 | **Canvas démo pré-rempli** | 5-6 vignettes + connexions, montre DÉVELOPPER/RELIER/SYNTHÉTISER en action. Chargeable depuis le premier démarrage ou depuis la landing page | 2-3h |
+| BETA-03 | **Tooltips contextuels** | Coach marks légers au premier lancement du mode assisté : boutons opérations, jauge O₂, bandeau suggestion, tiroir toolbar | 4-6h |
+| BETA-04 | **Guide config LLM** | Améliorer le modal de configuration : instructions claires par provider ("Où trouver ma clé API ?"), liens directs, validation de clé avec feedback visuel | 3-4h |
+
+#### A2. Robustesse (priorité n°2)
+
+| ID | Tâche | Approche | Estimation |
+|---|---|---|---|
+| BETA-05 | **Error boundaries** | Catch des erreurs critiques (LLM timeout, SQLite fail, DOM crash) avec message utilisateur clair au lieu d'un écran blanc | 3-4h |
+| BETA-06 | **Backup automatique SQLite** | Copie périodique de `kairos.db` (toutes les 30 min ou à la fermeture) dans un dossier `backups/` avec rotation (5 derniers) | 2-3h |
+| BETA-07 | **Logs exportables** | Bouton "Exporter les logs" dans les settings pour faciliter le debug des retours testeurs | 1-2h |
+| BETA-08 | **Validation clé API au démarrage** | Test de connexion silencieux au provider configuré, notification si la clé est invalide/expirée | 2-3h |
+
+#### A3. Build & Distribution (priorité n°3)
+
+| ID | Tâche | Approche | Estimation |
+|---|---|---|---|
+| BETA-09 | **Build Windows propre** | Vérifier electron-builder, icône, metadata, installeur NSIS. Tester sur une machine vierge | 2-3h |
+| BETA-10 | **GitHub Releases** | Publier le `.exe` sur GitHub Releases (privé ou public). README d'installation avec screenshots | 1-2h |
+| BETA-11 | **Formulaire retours** | Google Form ou equivalent, lien accessible depuis l'app (menu aide ou footer landing) | 1h |
+
+**Total estimé Phase A** : ~25-40h
+
+### Phase B — Bêta semi-publique (50-100 utilisateurs) — Après retours Phase A
+
+| ID | Tâche | Notes |
+|---|---|---|
+| BETA-12 | Signature Windows (certificat code signing) | Supprime l'avertissement SmartScreen |
+| BETA-13 | Auto-updater (electron-updater + GitHub Releases) | Indispensable pour itérer vite |
+| BETA-14 | Build Mac `.dmg` | Signature Apple ($99/an) si budget |
+| BETA-15 | Landing page web (vitrine, pas l'app) | Présentation + lien téléchargement |
+| BETA-16 | Analytics d'usage basiques (opt-in) | Comprendre ce que les gens utilisent vraiment |
+| BETA-17 | Onboarding enrichi selon retours Phase A | Itérer sur les points de friction identifiés |
+
+### Phase C — Bêta publique — Après stabilisation Phase B
+
+| ID | Tâche | Notes |
+|---|---|---|
+| BETA-18 | Mode scientifique (F028) comme différenciateur | Feature flagship |
+| BETA-19 | 2-3 canvas templates thématiques | Recherche, rédaction, brainstorming |
+| BETA-20 | Vidéo démo 2 min | Pour Product Hunt / réseaux |
+| BETA-21 | Site web avec documentation | Docs utilisateur, pas juste dev |
+
+---
+
+**v0.4.x (Q2 2026)** — Après bêta privée
 - Recherche avancée dans synthèses (tags, date, contenu)
 - Templates de canvas prédéfinis
 - Mode présentation (navigation guidée)
