@@ -245,6 +245,56 @@ Opérations passaient par webview (injection DOM + scraping, fragile). Ajout che
 
 ---
 
+## 4. Companion — Chat LLM comparatif (fév. 2026)
+
+### Concept
+
+Fenêtre Electron secondaire offrant un chat LLM libre (sans structure en graphe) pour explorer un sujet et comparer avec l'exploration assistée de KAIROS. L'intent est le seul contexte transmis au LLM — pas de contenu canvas.
+
+### Architecture
+
+```
+┌─────────────────────┐    ┌─────────────────────┐
+│   Main Window       │    │  Companion Window    │
+│   (canvas KAIROS)   │    │  (chat libre)        │
+│                     │    │                      │
+│  window.fgraph.*    │    │  window.fgraph.*     │
+└────────┬────────────┘    └────────┬─────────────┘
+         │  IPC                     │  IPC
+         └──────────┬───────────────┘
+              ┌─────┴──────┐
+              │ main.js    │
+              │ (Electron) │
+              │            │
+              │ kairos.db  │  ← companion_sessions + companion_messages
+              │ llm-query  │  ← même handler, réutilisé
+              └────────────┘
+```
+
+Les deux fenêtres partagent le même `preload.js` → mêmes APIs `window.fgraph`.
+
+### Fichiers
+
+| Fichier | Rôle |
+|---------|------|
+| `companion.html` | Entry point HTML (anti-FOUC + CSS + TS) |
+| `styles/companion.css` | CSS non-layered (sidebar, chat, formulaire, badges) |
+| `js/companion-app.ts` | SPA : sessions, chat, formulaire création |
+| `js/companion/llm.ts` | Appels LLM via `window.fgraph.llmQuery()` |
+| `js/companion/types.ts` | Types TypeScript (sessions, messages) |
+| `database/repositories/companion.js` | Repository SQLite (sessions + messages CRUD) |
+
+### Tables SQLite
+
+- `companion_sessions` : id, intent, kairos_canvas_id (FK → canvases), provider, model, created_at, ended_at
+- `companion_messages` : id, session_id (FK CASCADE), role, content, ts, tokens_in, tokens_out, latency_ms
+
+### Ouverture
+
+Bouton "Companion" dans le tiroir toolbar assisté → `window.fgraph.openCompanionWindow(canvasId)` → IPC `open-companion-window` → `createCompanionWindow()` dans `main.js`. Le `canvasId` est passé en query param pour pré-lier un canvas.
+
+---
+
 ## Documents complémentaires
 
 | Document | Contenu |
