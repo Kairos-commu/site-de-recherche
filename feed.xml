@@ -6,9 +6,18 @@
     <link>https://mecanique-invisible.com/</link>
     <atom:link href="https://mecanique-invisible.com/feed.xml" rel="self" type="application/rss+xml"/>
     <language>fr-FR</language>
-    <lastBuildDate>Mon, 24 Feb 2026 10:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Feb 2026 14:00:00 +0100</lastBuildDate>
     <managingEditor>florent@klimacek.fr (Florent Klimacek)</managingEditor>
     <webMaster>florent@klimacek.fr (Florent Klimacek)</webMaster>
+
+    <item>
+      <title>La friction productive : ce que la suppression du coût cognitif coûte réellement</title>
+      <description>Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.</description>
+      <link>https://mecanique-invisible.com/cout-cognitif.html</link>
+      <guid isPermaLink="true">https://mecanique-invisible.com/cout-cognitif.html</guid>
+      <pubDate>Mon, 24 Feb 2026 14:00:00 +0100</pubDate>
+      <category>Article</category>
+    </item>
 
     <item>
       <title>L'IA est partout. Sauf dans les mains des gens.</title>

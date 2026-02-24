@@ -161,6 +161,89 @@
   }
 
   // ─────────────────────────────────────────
+  // SCROLL REVEAL (IntersectionObserver)
+  // ─────────────────────────────────────────
+  // Observe les elements avec [data-reveal].
+  // Ajoute .is-visible quand ils entrent dans le viewport.
+  // Respecte prefers-reduced-motion.
+
+  function initScrollReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var elements = document.querySelectorAll('[data-reveal]');
+    if (!elements || elements.length === 0) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  // ─────────────────────────────────────────
+  // DATA-VIZ ANIMATION (articles)
+  // ─────────────────────────────────────────
+  // Anime les barres des graphiques a leur entree dans le viewport.
+
+  function initDataVizAnimation() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var vizContainers = document.querySelectorAll('.data-viz');
+    if (!vizContainers || vizContainers.length === 0) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-animated');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    vizContainers.forEach(function (viz) {
+      observer.observe(viz);
+    });
+  }
+
+  // ─────────────────────────────────────────
+  // HERO PARALLAX (index.html)
+  // ─────────────────────────────────────────
+  // Leger parallax sur l'image hero au scroll.
+
+  function initHeroParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var heroImage = document.querySelector('.hero__image');
+    if (!heroImage) return;
+
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var scrollY = window.scrollY;
+          if (scrollY < window.innerHeight) {
+            heroImage.style.transform = 'translateY(' + (scrollY * 0.12) + 'px)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  // ─────────────────────────────────────────
   // INITIALISATION
   // ─────────────────────────────────────────
 
@@ -169,4 +252,7 @@
   initNavLinkBehavior(nav);
   initActiveNav();
   initProgressBar();
+  initScrollReveal();
+  initDataVizAnimation();
+  initHeroParallax();
 })();

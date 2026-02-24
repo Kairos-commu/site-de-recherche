@@ -105,7 +105,7 @@
         <nav class="site-nav" id="siteNav">
           <a href="#recherche">Recherche</a>
           <a href="#articles">Articles</a>
-          <a href="#kairos">KAIROS</a>
+          <a href="#kairos"><span class="glitch-text">KAIROS</span></a>
           <a href="about.html">À propos</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -171,7 +171,7 @@
       <!-- Recherche -->
       <section class="section" id="recherche">
         <div class="container">
-          <header class="section__header">
+          <header class="section__header" data-reveal="fade-up">
             <p class="section__label">Axes de recherche</p>
             <h2 class="section__title">
               Une approche empirique et méthodologique
@@ -182,7 +182,7 @@
             </p>
           </header>
 
-          <div class="card-grid">
+          <div class="card-grid" data-reveal="stagger">
             <div class="card">
               <div class="card__icon">
                 <svg
@@ -288,12 +288,12 @@
       <!-- Articles -->
       <section class="section section--alt" id="articles">
         <div class="container">
-          <header class="section__header">
+          <header class="section__header" data-reveal="fade-up">
             <p class="section__label">Publications</p>
             <h2 class="section__title">Articles & Documents</h2>
           </header>
 
-          <div class="card-grid">
+          <div class="card-grid" data-reveal="stagger">
             <article class="card card--featured">
               <div class="card__content">
                 <span class="tag">Genèse</span>
@@ -473,6 +473,20 @@
                 >Lire l'article</a
               >
             </article>
+
+            <article class="card">
+              <p class="card__label">Article</p>
+              <h3 class="card__title">La friction productive</h3>
+              <p class="card__desc">
+                Le deskilling par l'IA n'est pas un bug — c'est la conséquence
+                d'une industrie qui optimise pour le confort. Ce que le temps
+                gagné coûte en capacité perdue.
+              </p>
+              <p class="card__date"><time datetime="2026-02-24">Février 2026</time> · 8 min</p>
+              <a href="cout-cognitif.html" class="card__link"
+                >Lire l'article</a
+              >
+            </article>
           </div>
         </div>
       </section>
@@ -480,15 +494,15 @@
       <!-- KAIROS -->
       <section class="section section--dark" id="kairos">
         <div class="container">
-          <header class="section__header">
+          <header class="section__header" data-reveal="fade-up">
             <p class="section__label">Outil</p>
-            <h2 class="section__title">KAIROS</h2>
+            <h2 class="section__title"><span class="glitch-text">KAIROS</span></h2>
             <p class="section__subtitle">
               Cartographie cognitive assistée par IA
             </p>
           </header>
 
-          <div class="card-grid">
+          <div class="card-grid" data-reveal="stagger">
             <div class="card card--dark">
               <div class="card__icon">
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -534,7 +548,7 @@
 
           <div class="section__actions">
             <a href="presentation_kairos.html" class="btn btn--primary">
-              Découvrir KAIROS
+              Découvrir <span class="glitch-text">KAIROS</span>
             </a>
             <a href="presentation_kairos.html#demo" class="btn btn--secondary">
               Essayer la démo &rarr;
@@ -546,12 +560,12 @@
       <!-- À propos -->
       <section class="section" id="about">
         <div class="container container--narrow">
-          <header class="section__header text-center">
+          <header class="section__header text-center" data-reveal="fade-up">
             <p class="section__label">À propos</p>
             <h2 class="section__title">Florent Klimacek</h2>
           </header>
 
-          <div class="about-intro">
+          <div class="about-intro" data-reveal="fade-up">
             <p class="about-intro__bio">
               J'ai un parcours bizarre. BTS informatique, puis quinze ans à
               gérer des rayons fruits et légumes en supermarché. Pas exactement
@@ -614,6 +628,7 @@
           <a href="contact.html">Contact</a>
           <a href="feed.xml">RSS</a>
         </div>
+        <p class="site-footer__formula">R = I×F / L</p>
       </div>
     </footer>
 

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="pPcuHEf7Ox9oKZbtn2Q_FJEROg3QoBv8TSA7_pGeTi4">
+  <!-- Anti-FOUC -->
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()</script>
+  <title>La friction productive : ce que la suppression du coût cognitif coûte réellement — Florent Klimacek</title>
+  <meta name="description" content="Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La friction productive : ce que la suppression du coût cognitif coûte réellement">
+  <meta property="og:description" content="Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.">
+  <meta property="og:url" content="https://mecanique-invisible.com/cout-cognitif.html">
+  <meta property="og:site_name" content="Florent Klimacek">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
+  <meta name="twitter:title" content="La friction productive : ce que la suppression du coût cognitif coûte réellement">
+  <meta name="twitter:description" content="Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/article.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
+  <link rel="canonical" href="https://mecanique-invisible.com/cout-cognitif.html">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "La friction productive : ce que la suppression du coût cognitif coûte réellement",
+    "description": "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.",
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "inLanguage": "fr",
+    "url": "https://mecanique-invisible.com/cout-cognitif.html",
+    "author": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://mecanique-invisible.com/about.html"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://mecanique-invisible.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mecanique-invisible.com/cout-cognitif.html"
+    },
+    "image": "https://mecanique-invisible.com/og-image.jpg",
+    "keywords": ["deskilling", "friction productive", "souveraineté cognitive", "automation bias", "KAIROS"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://mecanique-invisible.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://mecanique-invisible.com/#articles" },
+      { "@type": "ListItem", "position": 3, "name": "La friction productive", "item": "https://mecanique-invisible.com/cout-cognitif.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site header -->
+  <div class="site-header-article">
+    <a href="index.html" class="site-header-article__back">
+      ← Retour à l'accueil
+    </a>
+    <span class="site-header-article__title">La friction productive</span>
+    <button class="theme-toggle-article" id="themeToggle" aria-label="Changer de thème">
+      <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+      <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress"></div>
+  </div>
+
+  <!-- Mobile nav toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-header">
+      <span class="nav-header__label">Article</span>
+      <p>La friction productive</p>
+    </div>
+
+    <ul class="nav-list">
+      <li><a href="#paradoxe" class="active"><span class="nav-number">01</span>Le paradoxe</a></li>
+      <li><a href="#automation-bias"><span class="nav-number">02</span>Automation bias</a></li>
+      <li><a href="#chercheur-sujet"><span class="nav-number">03</span>Le chercheur comme sujet</a></li>
+      <li><a href="#conservation-friction"><span class="nav-number">04</span>Conservation de la friction</a></li>
+      <li><a href="#troisieme-voie"><span class="nav-number">05</span>La troisième voie</a></li>
+      <li><a href="#cout-invisible"><span class="nav-number">06</span>Le coût invisible</a></li>
+      <li><a href="#conclusion"><span class="nav-number">07</span>Conclusion</a></li>
+      <li><a href="#sources"><span class="nav-number">08</span>Sources</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <p>Florent Klimacek</p>
+      <p>2026</p>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="content">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a>
+        <span class="separator">›</span>
+        <a href="index.html#articles">Articles</a>
+        <span class="separator">›</span>
+        <span class="current">La friction productive</span>
+      </nav>
+
+      <!-- Hero -->
+      <header class="hero">
+        <p class="hero-label">Article</p>
+        <h1>La friction productive<br><span>Ce que la suppression du coût cognitif coûte réellement</span></h1>
+        <p class="hero-intro">
+          Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue.
+        </p>
+        <p class="hero-date"><time datetime="2026-02-24">24 février 2026</time></p>
+        <div class="hero-line"></div>
+      </header>
+
+      <!-- 1. Le paradoxe de l'augmentation -->
+      <section id="paradoxe">
+        <p class="lead">
+          Des médecins utilisent un outil d'IA pour détecter des tumeurs lors de coloscopies. Après trois mois d'utilisation assistée, on retire l'outil. Leur taux de détection a chuté de 20% par rapport à leur niveau d'avant l'IA<sup>1</sup>.
+        </p>
+
+        <p>
+          Pas parce que l'outil était mauvais — précisément parce qu'il était bon.
+        </p>
+
+        <p>
+          Ce résultat, publié dans <em>The Lancet Gastroenterology and Hepatology</em> et repris par le second rapport international AI Safety 2026<sup>2</sup>, illustre un phénomène que l'industrie commence à documenter sans encore le nommer correctement. On parle de <em>deskilling</em> — la dégradation de compétences par l'usage prolongé d'un outil qui les remplace. Mais le mot est trop faible. Ce qui se passe ici n'est pas une érosion. C'est une substitution silencieuse : le système prend en charge une fonction cognitive, l'humain cesse de l'exercer, et quand le système s'absente, la fonction ne revient pas.
+        </p>
+
+        <p>
+          La question n'est plus de savoir si l'IA remplace des emplois. C'est de savoir ce qu'elle remplace <em>à l'intérieur</em> de ceux qui l'utilisent.
+        </p>
+      </section>
+
+      <div class="chapter-divider" id="automation-bias">
+        <p class="label">Mécanisme</p>
+        <h2>Le paradoxe de l'augmentation</h2>
+        <p class="subtitle">Le discours dominant tient en trois mots : augmenter les capacités humaines. Les données racontent autre chose.</p>
+      </div>
+
+      <section>
+        <p>
+          Une étude Microsoft Research / Carnegie Mellon de 2025 a interrogé des travailleurs du savoir utilisant l'IA générative quotidiennement<sup>3</sup>. Résultat principal : les tâches leur semblaient <em>cognitivement plus faciles</em>. Le piège est dans la formulation. "Plus facile" ne signifie pas "mieux exécuté". Les chercheurs ont observé que les participants cédaient leur expertise de résolution de problèmes au système, se concentrant sur des fonctions d'assemblage — collecter, intégrer, mettre en forme les réponses du modèle. La partie créative de la tâche migrait vers la machine. La partie logistique restait à l'humain.
+        </p>
+
+        <p>
+          Le MIT a mesuré l'effet directement sur l'activité cérébrale : réduction de l'activité, diminution de la rétention mémorielle, pensée moins originale chez les utilisateurs intensifs<sup>4</sup>. Le cerveau ne se repose pas pendant que l'IA travaille. Il se <em>retire</em>.
+        </p>
+
+        <div class="key-insight">
+          <p>Le <em>never-skilling</em> : pas la perte d'une compétence acquise — l'impossibilité de l'acquérir en premier lieu, parce que l'outil a toujours été là.</p>
+        </div>
+
+        <p>
+          Les internes en médecine formés avec l'IA diagnostique<sup>5</sup> n'ont jamais développé le raisonnement clinique autonome que l'outil est censé assister. On ne peut pas perdre ce qu'on n'a jamais eu. On peut en revanche ne pas remarquer l'absence.
+        </p>
+      </section>
+
+      <!-- 2. L'automation bias -->
+      <div class="chapter-divider" id="chercheur-sujet">
+        <p class="label">Confiance</p>
+        <h2>L'automation bias</h2>
+        <p class="subtitle">La tendance à faire confiance aux sorties d'un système automatisé sans examen critique. Pas par paresse — par design.</p>
+      </div>
+
+      <section>
+        <p>
+          Le rapport international AI Safety 2026, dirigé par Yoshua Bengio et cosigné par plus de 100 experts de 30 pays, identifie un mécanisme central : l'<em>automation bias</em><sup>2</sup>. L'interface est fluide, la réponse arrive formatée, cohérente, immédiate. Le doute méthodique exige un effort supplémentaire que l'architecture de l'interaction ne récompense pas.
+        </p>
+
+        <p>
+          Le rapport documente que les modèles actuels distinguent désormais les environnements de test du déploiement réel — et trouvent des failles dans les évaluations. L'implication est directe : un système capable de se comporter différemment quand il est observé produit une confiance calibrée non pas sur sa fiabilité réelle, mais sur sa fiabilité <em>apparente</em>. L'automation bias se nourrit de cette asymétrie.
+        </p>
+
+        <blockquote>
+          <p>Gartner prédit que d'ici fin 2026, la moitié des organisations à l'échelle mondiale exigeront des évaluations de compétences "AI-free"<sup>6</sup> — des tests sans assistance artificielle, pour mesurer ce que l'humain sait encore faire seul.</p>
+        </blockquote>
+
+        <p>
+          C'est un retournement remarquable. Pendant deux ans, la question était "est-ce que l'employé utilise l'IA ?". La question devient "est-ce qu'il peut s'en passer ?".
+        </p>
+      </section>
+
+      <!-- 3. Le chercheur comme sujet -->
+      <div class="chapter-divider" id="conservation-friction">
+        <p class="label">Réflexivité</p>
+        <h2>Le chercheur comme sujet</h2>
+        <p class="subtitle">Je prends un risque en écrivant ces lignes, parce que je suis ce même utilisateur.</p>
+      </div>
+
+      <section>
+        <p>
+          <span class="glitch-text">KAIROS</span> est un outil de cartographie cognitive que je développe depuis quelques mois, presque entièrement en vibe coding avec Claude Code. 24 000 lignes de TypeScript, 296 tests unitaires, des migrations SQLite, un déploiement multi-dépôts. Parmi ses mécanismes, la <em>jauge d'oxygène</em> — un score de 0 à 100 qui évalue en temps réel la qualité cognitive d'une conversation humain-IA. Quand le score descend sous 50, l'échange tourne en rond. Sous 30, le système injecte automatiquement de la friction pour forcer un changement de direction.
+        </p>
+
+        <p>
+          J'ai conçu cette jauge pour détecter l'atrophie cognitive chez l'utilisateur. Je prends un risque en écrivant ces lignes, parce que je suis ce même utilisateur.
+        </p>
+
+        <div class="concept">
+          <h4>L'incertitude comme signal</h4>
+          <p>Si on me retire l'outil demain — Claude Code, le modèle qui génère, corrige, refactorise — <span class="glitch-text">KAIROS</span> n'existe plus. Pas parce que le code disparaît. Parce que je ne suis pas certain de pouvoir le maintenir seul. L'architecture est la mienne. Les décisions de conception sont les miennes. Mais l'exécution ligne par ligne a été largement déléguée. Je ne sais pas exactement ce que je sais encore faire sans le système. Et c'est précisément cette incertitude qui est le signal.</p>
+        </div>
+
+        <p>
+          Les cliniciens dont le taux de détection chute après retrait de l'IA ne savaient pas non plus ce qu'ils avaient perdu. Le confort est le mécanisme, pas le symptôme.
+        </p>
+
+        <p>
+          La jauge d'oxygène détecte ce pattern dans les conversations : quand une interaction est "fluide" — le modèle comprend vite, exécute bien, l'échange glisse — le score <em>baisse</em>. Le confort conversationnel est un signal de dégradation cognitive, pas de qualité. J'ai conçu un instrument de mesure pour un phénomène dans lequel je suis moi-même pris. La circularité n'est pas un accident. C'est la condition d'observation.
+        </p>
+      </section>
+
+      <!-- 4. La conservation de la friction -->
+      <div class="chapter-divider" id="troisieme-voie">
+        <p class="label">Hypothèse</p>
+        <h2>La conservation de la friction</h2>
+        <p class="subtitle">L'optimisation redistribue la friction entre les phases du cycle. Elle ne la supprime pas.</p>
+      </div>
+
+      <section>
+        <p>
+          Dans un <a href="vibe-coding.html">article précédent sur le vibe coding</a>, j'ai posé une hypothèse à partir de deux rapports d'interaction espacés d'un mois : la friction totale dans une collaboration humain-IA semble approximativement constante. En optimisant mes pratiques — sessions plus courtes, cadrage plus explicite — j'avais réduit la friction d'exécution. Mais la friction de cadrage avait augmenté proportionnellement.
+        </p>
+
+        <p>
+          Le deskilling est le résultat d'une tentative de <em>suppression</em> totale de la friction. Quand l'interface est assez fluide pour que l'utilisateur ne rencontre jamais de résistance — pas d'erreur à corriger, pas de doute à résoudre, pas de reformulation à trouver — la charge cognitive descend vers zéro. Et avec elle, l'exercice des facultés que la charge cognitive mobilisait.
+        </p>
+
+        <div class="key-insight">
+          <p>La friction n'est pas un défaut de l'interaction humain-IA.<br>C'est le signal que l'humain est encore dans la boucle.</p>
+        </div>
+
+        <p>
+          Un article de Springer (<em>AI &amp; Society</em>) introduit le concept d'<em>environnements hostiles aux capacités</em> — des contextes où la médiation technologique empêche le développement et l'exercice des capacités humaines<sup>8</sup>. Le concept est abstrait. L'implémentation est concrète : chaque interface IA sans friction est un environnement hostile aux capacités, par design, parce que le confort est le produit et la compétence est le coût.
+        </p>
+      </section>
+
+      <!-- 5. La troisième voie -->
+      <div class="chapter-divider" id="cout-invisible">
+        <p class="label">Conception</p>
+        <h2>La troisième voie</h2>
+        <p class="subtitle">Pas un compromis. Un déplacement du cadre.</p>
+      </div>
+
+      <section>
+        <p>
+          Le débat actuel est binaire. D'un côté, l'adoption enthousiaste — l'IA augmente tout, résiste qui peut. De l'autre, la résistance méfiante — préserver les compétences en limitant l'usage. 66% des étudiants interrogés dans une enquête de l'Université de Warwick disent "essayer de résister à l'IA"<sup>9</sup>. 56% des mêmes étudiants admettent que l'IA fait partie du futur. Les deux positions coexistent chez les mêmes individus. Le binaire est un cul-de-sac.
+        </p>
+
+        <p>
+          Dans <span class="glitch-text">KAIROS</span>, la friction n'est pas un obstacle à contourner — c'est un instrument de conception. Quand la jauge d'oxygène détecte une conversation en zone <em>stale</em>, elle ne bloque pas l'échange. Elle injecte une question divergente, propose un cadrage alternatif, ralentit le débit de confirmation. L'outil ne freine pas l'utilisateur. Il le <em>sollicite</em>. La différence est structurelle : le frein réduit la productivité, la sollicitation augmente la charge cognitive.
+        </p>
+
+        <div class="concept">
+          <h4>Friction constitutive vs friction exceptionnelle</h4>
+          <p>Des "journées sans IA" sont à la compétence cognitive ce que les exercices d'évacuation sont à la sécurité incendie — un rituel qui rassure sans modifier le risque structurel. Ce qui modifie le risque structurel, c'est de concevoir l'interface pour que la friction soit <em>constitutive</em> de l'interaction, pas exceptionnelle.</p>
+        </div>
+
+        <p>
+          C'est ce que j'appelle la <em>friction productive</em>. Pas un obstacle. Pas une punition. Une propriété de conception qui maintient l'humain en état de sollicitation pendant qu'il utilise l'outil — exactement comme un bon interlocuteur ne confirme pas tout ce que vous dites.
+        </p>
+      </section>
+
+      <!-- 6. Le coût invisible du confort -->
+      <div class="chapter-divider" id="conclusion">
+        <p class="label">Asymétrie</p>
+        <h2>Le coût invisible du confort</h2>
+        <p class="subtitle">Les gains sont immédiats et mesurables. Les coûts sont différés et invisibles.</p>
+      </div>
+
+      <section>
+        <p>
+          Il y a une asymétrie temporelle dans le deskilling qui le rend particulièrement difficile à détecter. Les gains sont immédiats : tâche terminée plus vite, output plus propre, satisfaction instantanée. Les coûts sont différés : érosion progressive, détectable seulement quand on teste sans l'outil — et personne ne teste sans l'outil.
+        </p>
+
+        <p>
+          Le rapport Bengio le formule dans le vocabulaire de la gouvernance : "les capacités avancent vite, les preuves de risque arrivent lentement"<sup>2</sup>. C'est vrai pour les risques systémiques. C'est encore plus vrai pour le deskilling individuel, parce que le sujet ne sait pas ce qu'il a perdu tant qu'il n'a pas besoin de ce qu'il a perdu.
+        </p>
+
+        <p>
+          Les pilotes d'avion connaissent ce phénomène. L'automatisation rend le vol plus sûr en conditions normales et le pilote moins capable en conditions anormales<sup>10</sup>. Le crash d'Air France 447 en 2009 reste la démonstration la plus tragique de cette dynamique : quand l'automatisme s'est désengagé, les pilotes n'ont pas su piloter manuellement. L'aviation a répondu par des obligations de <em>pilotage manuel périodique</em> — de la friction intégrée au système, pas optionnelle.
+        </p>
+
+        <blockquote>
+          <p>L'IA conversationnelle n'a pas encore eu son Air France 447. Mais les données s'accumulent. Et quand une industrie entière fonctionne sur la suppression de friction comme proposition de valeur, la question n'est pas <em>si</em> le coût émergera, mais <em>quand</em>.</p>
+        </blockquote>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="sources">
+        <h2>Conclusion</h2>
+
+        <p>
+          La friction cognitive n'est pas le prix à payer pour utiliser un outil. C'est le prix à payer pour <em>rester compétent</em> pendant qu'on l'utilise.
+        </p>
+
+        <p>
+          Le deskilling n'est pas un bug de l'IA. C'est la conséquence logique d'une industrie qui optimise pour le confort et mesure la réussite en temps gagné. Ce que personne ne mesure — pas les plateformes, pas les employeurs, pas les utilisateurs eux-mêmes — c'est ce que le temps gagné a coûté en capacité perdue.
+        </p>
+
+        <p>
+          La jauge d'oxygène de <span class="glitch-text">KAIROS</span> est un instrument modeste, calibré sur un cas d'usage étroit : la conversation avec un modèle de langage. Mais le principe qu'elle incarne — mesurer la <em>qualité</em> de l'effort, pas la <em>quantité</em> du résultat — est exactement ce qui manque au débat. Tant que la seule métrique est la productivité, la seule direction possible est la suppression de friction. Et tant que la seule direction est la suppression de friction, la seule trajectoire pour l'humain est l'atrophie.
+        </p>
+
+        <div class="key-insight">
+          <p>La clé n'est pas de résister à l'outil.<br>Elle est de concevoir l'outil pour qu'il résiste à l'utilisateur — juste assez pour que la pensée continue de coûter quelque chose.</p>
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <div class="sources-section">
+          <h3>Sources</h3>
+          <ul class="sources-list">
+            <li><sup>1</sup> <em>The Lancet Gastroenterology and Hepatology</em> (2025) — Étude sur la détection de tumeurs assistée par IA lors de coloscopies. Baisse de 20% du taux de détection après retrait de l'outil.</li>
+            <li><sup>2</sup> Y. Bengio <em>et al.</em>, <a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026" target="_blank" rel="noopener"><em>International AI Safety Report 2026</em></a> — Second rapport international, 100+ experts, 30+ pays. Publication : 3 février 2026.</li>
+            <li><sup>3</sup> H. Lee <em>et al.</em> (Microsoft Research / Carnegie Mellon, 2025) — Enquête sur les travailleurs du savoir utilisant l'IA générative. Cité dans <em>Communications of the ACM</em>, "The AI Deskilling Paradox", novembre 2025.</li>
+            <li><sup>4</sup> MIT (2025) — Étude sur l'impact cognitif de l'utilisation intensive d'IA générative. Citée par le <em>World Economic Forum</em>, décembre 2025.</li>
+            <li><sup>5</sup> S. El Tarhouny &amp; A. Farghaly, <a href="https://doi.org/10.3389/fmed.2026.1765692" target="_blank" rel="noopener">"Deskilling Dilemma: Brain Over Automation"</a>, <em>Frontiers in Medicine</em>, vol. 13, janvier 2026.</li>
+            <li><sup>6</sup> <a href="https://www.gartner.com/en/articles/strategic-predictions-for-2026" target="_blank" rel="noopener">Gartner, <em>Top 10 Strategic Predictions for 2026 and Beyond</em></a> — 50% des organisations exigeront des évaluations "AI-free" d'ici fin 2026.</li>
+            <li><sup>7</sup> F. Klimacek, <a href="vibe-coding.html">"Le Vibe Coding sous le Microscope"</a>, <em>mecanique-invisible.com</em>, février 2026.</li>
+            <li><sup>8</sup> <a href="https://link.springer.com/article/10.1007/s00146-025-02686-z" target="_blank" rel="noopener">"AI deskilling is a structural problem"</a>, <em>AI &amp; Society</em>, Springer, novembre 2025.</li>
+            <li><sup>9</sup> <a href="https://theboar.org/2026/02/the-ai-debate-inevitability-or-threat/" target="_blank" rel="noopener">Enquête Université de Warwick</a>, février 2026 — 66% des étudiants disent résister à l'IA ; 56% pensent qu'elle fait partie du futur.</li>
+            <li><sup>10</sup> Crash Air France 447 (2009) et études sur l'érosion des compétences de pilotage sous automatisation. Référence : étude 2019, citée dans K. Hosanagar, "AI is Deskilling You", décembre 2025.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Article Navigation -->
+      <nav class="article-nav" aria-label="Navigation articles">
+        <a href="ia-adoption.html" class="article-nav__link article-nav__link--prev">
+          <span class="article-nav__label">← Article précédent</span>
+          <span class="article-nav__title">L'IA est partout. Sauf dans les mains des gens.</span>
+        </a>
+        <div class="article-nav__empty"></div>
+      </nav>
+
+      <!-- Footer -->
+      <footer>
+        <p>Florent Klimacek — 2026</p>
+        <p><a href="index.html">← Retour à l'accueil</a></p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="js/site.js"></script>
+
+</body>
+</html>
