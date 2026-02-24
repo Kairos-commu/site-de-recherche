@@ -1436,6 +1436,354 @@ code {
 }
 
 /* ============================================
+   DATA VISUALIZATIONS
+   Charts inline pour articles data-driven
+   ============================================ */
+
+.data-viz {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.data-viz__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.data-viz__source {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.data-viz__source a {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+/* --- Gap Chart (barres appariées : déclaré vs réel) --- */
+
+.gap-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gap-pair__title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+  text-align: left;
+}
+
+.gap-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 52px;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.gap-row__label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.gap-row__track {
+  height: 20px;
+  background: var(--bg-page);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gap-row__fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.gap-row__fill--muted {
+  background: var(--border);
+}
+
+.gap-row__fill--accent {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+
+.gap-row__value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+.gap-row__value--muted {
+  color: var(--text-muted);
+}
+
+.gap-row__value--accent {
+  color: var(--accent);
+}
+
+/* --- Funnel Chart (barres décroissantes) --- */
+
+.funnel-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.funnel-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.funnel-row__bar-wrap {
+  flex: 1;
+  display: flex;
+}
+
+.funnel-row__bar {
+  height: 30px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 3px;
+  min-width: 4px;
+}
+
+.funnel-row__info {
+  min-width: 170px;
+  flex-shrink: 0;
+}
+
+.funnel-row__label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: block;
+}
+
+.funnel-row__value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* --- Rank List (positions pays) --- */
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rank-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+.rank-item--top {
+  background: rgba(217, 119, 6, 0.04);
+}
+
+[data-theme="dark"] .rank-item--top {
+  background: rgba(217, 119, 6, 0.06);
+}
+
+.rank-item--highlight {
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.rank-position {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.rank-item--highlight .rank-position {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rank-country {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.rank-item--highlight .rank-country {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.rank-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.rank-gap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.rank-gap__line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.rank-gap__text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Stat Shift (avant/après) --- */
+
+.stat-shift {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.stat-shift__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.stat-shift__year {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-shift__value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stat-shift__arrow {
+  color: var(--border);
+  font-size: 1.1rem;
+}
+
+.stat-shift__delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--red);
+  padding: 0.2rem 0.5rem;
+  background: rgba(220, 38, 38, 0.08);
+  border-radius: 4px;
+}
+
+/* --- Sources Bibliography --- */
+
+.sources-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.sources-section h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.sources-list li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  text-indent: -0.5rem;
+  text-align: left;
+}
+
+.sources-list li::before {
+  content: '–';
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.sources-list a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+}
+
+.sources-list a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* --- Responsive data-viz (600px) --- */
+
+@media (max-width: 600px) {
+  .gap-row {
+    grid-template-columns: 70px 1fr 48px;
+  }
+
+  .gap-row__label {
+    font-size: 0.65rem;
+  }
+
+  .funnel-row__info {
+    min-width: 120px;
+  }
+
+  .funnel-row__label {
+    font-size: 0.7rem;
+  }
+
+  .rank-gap__text {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============================================
    RESPONSIVE — Small phones (< 480px)
    ============================================ */
 
@@ -1505,5 +1853,27 @@ code {
   .exercise-step__code {
     padding: 0.75rem;
     font-size: 0.85rem;
+  }
+
+  /* Data visualizations */
+  .data-viz {
+    padding: 1rem;
+  }
+
+  .gap-row {
+    grid-template-columns: 60px 1fr 42px;
+  }
+
+  .funnel-row__info {
+    min-width: 100px;
+  }
+
+  .stat-shift {
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .stat-shift__value {
+    font-size: 1.1rem;
   }
 }

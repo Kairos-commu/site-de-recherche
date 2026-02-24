@@ -6,9 +6,18 @@
     <link>https://mecanique-invisible.com/</link>
     <atom:link href="https://mecanique-invisible.com/feed.xml" rel="self" type="application/rss+xml"/>
     <language>fr-FR</language>
-    <lastBuildDate>Wed, 18 Feb 2026 12:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Feb 2026 10:00:00 +0100</lastBuildDate>
     <managingEditor>florent@klimacek.fr (Florent Klimacek)</managingEditor>
     <webMaster>florent@klimacek.fr (Florent Klimacek)</webMaster>
+
+    <item>
+      <title>L'IA est partout. Sauf dans les mains des gens.</title>
+      <description>Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle.</description>
+      <link>https://mecanique-invisible.com/ia-adoption.html</link>
+      <guid isPermaLink="true">https://mecanique-invisible.com/ia-adoption.html</guid>
+      <pubDate>Mon, 24 Feb 2026 10:00:00 +0100</pubDate>
+      <category>Analyse</category>
+    </item>
 
     <item>
       <title>Le Vibe Coding sous le Microscope</title>
