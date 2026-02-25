@@ -132,6 +132,11 @@ jsonLdRaw: |
       {%- for article in collections.articles | reverse %}
         {%- if article.data.card.featured %}
       <article class="card card--featured">
+        {% if article.data.heroImage %}
+        <div class="card__thumb card__thumb--featured">
+          <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
+        </div>
+        {% endif %}
         <div class="card__content">
           <span class="tag">{{ article.data.card.tag }}</span>
           <h3 class="card__title">{{ article.data.card.title }}</h3>
@@ -162,12 +167,19 @@ jsonLdRaw: |
 
       {%- for article in collections.articles | reverse %}
         {%- if not article.data.card.featured %}
-      <article class="card">
-        <p class="card__label">{{ article.data.card.label }}</p>
-        <h3 class="card__title">{{ article.data.card.title }}</h3>
-        <p class="card__desc">{{ article.data.card.desc }}</p>
-        <p class="card__date"><time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}</p>
-        <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
+      <article class="card card--has-thumb">
+        {% if article.data.heroImage %}
+        <div class="card__thumb">
+          <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="card__body">
+          <p class="card__label">{{ article.data.card.label }}</p>
+          <h3 class="card__title">{{ article.data.card.title }}</h3>
+          <p class="card__desc">{{ article.data.card.desc }}</p>
+          <p class="card__date"><time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}</p>
+          <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
+        </div>
       </article>
         {%- endif %}
       {%- endfor %}

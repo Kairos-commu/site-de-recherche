@@ -22,6 +22,8 @@ heroLabel: "Recherche"
 heroH1: "La Pensée en<br><span>Faisceau</span>"
 heroIntro: "Convergence entre cognition humaine et intelligence artificielle —\ncomment certains modes de pensée atypiques trouvent un écho inattendu dans l'architecture des LLM."
 headerTitle: "La Pensée en Faisceau"
+heroImage: "/images/pensee_en_faisceau.png"
+heroImageAlt: "Illustration — La Pensée en Faisceau"
 breadcrumbName: "La Pensée en Faisceau"
 sections:
   - id: ouverture

@@ -22,6 +22,8 @@ heroLabel: "Prologue"
 heroH1: "La mécanique<br /><span>invisible</span> des IA"
 heroIntro: "Comprendre les illusions cognitives et les dynamiques structurelles\n            des échanges avec les intelligences artificielles."
 headerTitle: "La mécanique invisible des IA"
+heroImage: "/images/mecanique_invisible.png"
+heroImageAlt: "Illustration — La mécanique invisible des IA conversationnelles"
 breadcrumbName: "La mécanique invisible"
 sections:
   - id: prologue

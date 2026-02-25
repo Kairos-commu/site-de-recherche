@@ -247,11 +247,31 @@ main {
   letter-spacing: 0.02em;
 }
 
+/* Hero image — illustration de couverture */
+.hero-image-wrapper {
+  margin-top: 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .hero-image-wrapper {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-dark);
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .hero-line {
   width: 60px;
   height: 1px;
   background: linear-gradient(90deg, var(--accent), transparent);
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   transform-origin: left;
   animation: lineGrow 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) 0.5s both;
 }

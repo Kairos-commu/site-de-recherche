@@ -23,6 +23,8 @@ heroLabel: "Article"
 heroH1: "La mort du clic<br><span>Quand le contenu devient matière première</span>"
 heroIntro: "60% des recherches Google se terminent sans clic. ChatGPT génère 190 fois moins de trafic que Google. Le contenu ne perd pas en qualité — il perd sa fonction de destination."
 headerTitle: "La mort du clic"
+heroImage: "/images/la_mort_du_clic.png"
+heroImageAlt: "Illustration — La mort du clic"
 breadcrumbName: "La mort du clic"
 sections:
   - id: effondrement

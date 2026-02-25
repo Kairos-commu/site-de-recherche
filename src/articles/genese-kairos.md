@@ -23,6 +23,8 @@ heroLabel: "Genèse"
 heroH1: "Genèse de<br /><span class=\"glitch-text\">KAIROS</span>"
 heroIntro: "Construire ce que ma propre recherche m'interdisait — la genèse de\n            l'outil qui ne devait pas exister."
 headerTitle: "Genèse de KAIROS"
+heroImage: "/images/genese.png"
+heroImageAlt: "Illustration — Genèse de KAIROS"
 breadcrumbName: "Genèse de KAIROS"
 sections:
   - id: point-de-depart

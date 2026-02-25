@@ -22,6 +22,8 @@ heroLabel: "Article"
 heroH1: "La friction productive<br><span>Ce que la suppression du coût cognitif coûte réellement</span>"
 heroIntro: "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
 headerTitle: "La friction productive"
+heroImage: "/images/deskilling.png"
+heroImageAlt: "Illustration — La friction productive"
 breadcrumbName: "La friction productive"
 sections:
   - id: paradoxe

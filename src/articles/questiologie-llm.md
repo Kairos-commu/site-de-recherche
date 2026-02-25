@@ -23,6 +23,8 @@ heroLabel: "Analyse comparative empirique"
 heroH1: "Influence des postures <span>questiologiques</span> sur les LLM"
 heroIntro: "Comment la formulation d'une question oriente la génération —\nune étude comparative entre Claude et ChatGPT."
 headerTitle: "Questiologie et LLM"
+heroImage: "/images/Questiologie.png"
+heroImageAlt: "Illustration — Questiologie et LLM"
 breadcrumbName: "Questiologie et LLM"
 sections:
   - id: introduction

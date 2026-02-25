@@ -22,6 +22,8 @@ heroLabel: "Analyse croisée"
 heroH1: "La neutralité comme<br><span>illusion de permission</span>"
 heroIntro: "Analyse croisée de cinq modèles de langage sur les mécanismes conversationnels\n          qui créent l'impression d'une \"ouverture\" progressive du système."
 headerTitle: "La neutralité comme illusion de permission"
+heroImage: "/images/neutralite_permission.png"
+heroImageAlt: "Illustration — La neutralité comme illusion de permission"
 breadcrumbName: "La neutralité comme illusion de permission"
 sections:
   - id: introduction

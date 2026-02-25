@@ -70,6 +70,11 @@ ogType: article
         {{ heroIntro | safe }}
       </p>
       <p class="hero-date"><time datetime="{{ datePublished }}">{{ datePublished | dateFr }}</time></p>
+      {% if heroImage %}
+      <div class="hero-image-wrapper">
+        <img src="{{ heroImage }}" alt="{{ heroImageAlt | default(headline) }}" class="hero-image" loading="eager">
+      </div>
+      {% endif %}
       <div class="hero-line"></div>
     </header>
 

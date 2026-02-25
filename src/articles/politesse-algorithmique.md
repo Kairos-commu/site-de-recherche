@@ -22,6 +22,8 @@ heroLabel: "Analyse comparative"
 heroH1: "La Politesse<br><span>Algorithmique</span>"
 heroIntro: "Comment les IA modèlent le langage critique du capitalisme —\nune expérience comparative sur cinq grands modèles de langage."
 headerTitle: "La Politesse Algorithmique"
+heroImage: "/images/la_politesse_algo.png"
+heroImageAlt: "Illustration — La Politesse Algorithmique"
 breadcrumbName: "La Politesse Algorithmique"
 sections:
   - id: introduction
