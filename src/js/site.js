@@ -173,6 +173,7 @@
     var elements = document.querySelectorAll('[data-reveal]');
     if (!elements || elements.length === 0) return;
 
+    var isMobile = window.innerWidth <= 768;
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -181,8 +182,8 @@
         }
       });
     }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: isMobile ? 0.02 : 0.15,
+      rootMargin: isMobile ? '0px' : '0px 0px -40px 0px'
     });
 
     elements.forEach(function (el) {
