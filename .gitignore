@@ -4,7 +4,7 @@ node_modules/
 
 # Fichiers sources (non déployés sur GitHub Pages)
 *.pdf
-Articles/
+/Articles/
 
 # Source maps (ne pas déployer en production)
 *.map
