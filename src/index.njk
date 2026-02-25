@@ -1,0 +1,298 @@
+---
+layout: layouts/page.njk
+pageTitle: "Florent Klimacek — Recherche sur les interactions humain-IA"
+description: "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles, la résonance conversationnelle et les outils d'analyse."
+ogUrl: "/"
+canonical: "/"
+permalink: /index.html
+jsonLdRaw: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Florent Klimacek — Recherche sur les interactions humain-IA",
+    "url": "https://mecanique-invisible.com/",
+    "description": "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles, la résonance conversationnelle et les outils d'analyse.",
+    "inLanguage": "fr",
+    "author": {
+      "@type": "Person",
+      "name": "Florent Klimacek",
+      "url": "https://mecanique-invisible.com/about.html"
+    },
+    "image": "https://mecanique-invisible.com/og-image.jpg"
+  }
+  </script>
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <p class="hero__label">Recherche indépendante</p>
+      <h1 class="hero__title">
+        Explorer la <span>mécanique invisible</span><br />
+        des interactions humain-IA
+      </h1>
+      <p class="hero__subtitle">
+        Comprendre les dynamiques conversationnelles, mesurer la résonance,
+        et développer des outils pour une interaction consciente avec les
+        IA.
+      </p>
+      <div class="hero__line"></div>
+    </div>
+    <div class="hero__visual">
+      <img src="/og-image.jpg" alt="Interaction humain-IA — deux silhouettes connectées par des données" class="hero__image">
+    </div>
+  </div>
+</section>
+
+<!-- Recherche -->
+<section class="section" id="recherche">
+  <div class="container">
+    <header class="section__header" data-reveal="fade-up">
+      <p class="section__label">Axes de recherche</p>
+      <h2 class="section__title">
+        Une approche empirique et méthodologique
+      </h2>
+      <p class="section__subtitle">
+        Des centaines d'interactions analysées à travers quatre modèles d'IA
+        différents.
+      </p>
+    </header>
+
+    <div class="card-grid" data-reveal="stagger">
+      <div class="card">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <p class="card__label">Concept</p>
+        <h3 class="card__title">Pensée en faisceau</h3>
+        <p class="card__desc">
+          Exploration des modes de pensée non-linéaires et de leur
+          convergence naturelle avec les architectures LLM.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <p class="card__label">Méthodologie</p>
+        <h3 class="card__title">Fenêtre de convergence</h3>
+        <p class="card__desc">
+          Identification des conditions structurelles permettant un
+          raisonnement profond et stable dans les échanges IA.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <p class="card__label">Mesure</p>
+        <h3 class="card__title">Résonance conversationnelle</h3>
+        <p class="card__desc">
+          Développement de métriques pour quantifier la qualité d'un
+          échange :
+        </p>
+        <div class="formula-display">
+          <span class="formula-result" title="Résonance">R</span>
+          <span class="formula-operator">=</span>
+          <div class="formula-fraction">
+            <div class="formula-top">
+              <span class="formula-var" data-tooltip="Intensité & Intention">I</span>
+              <span class="formula-operator">×</span>
+              <span class="formula-var" data-tooltip="Fréquence & Fluidité">F</span>
+            </div>
+            <div class="formula-bottom">
+              <span class="formula-var" data-tooltip="Latence & Linéarité">L</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Articles -->
+<section class="section section--alt" id="articles">
+  <div class="container">
+    <header class="section__header" data-reveal="fade-up">
+      <p class="section__label">Publications</p>
+      <h2 class="section__title">Articles & Documents</h2>
+    </header>
+
+    <div class="card-grid" data-reveal="stagger">
+      {%- for article in collections.articles | reverse %}
+        {%- if article.data.card.featured %}
+      <article class="card card--featured">
+        <div class="card__content">
+          <span class="tag">{{ article.data.card.tag }}</span>
+          <h3 class="card__title">{{ article.data.card.title }}</h3>
+          <p class="card__desc">{{ article.data.card.desc }}</p>
+          <p class="card__date">
+            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> — {{ article.data.card.readingTime }}
+          </p>
+          <a href="/{{ article.data.slug }}.html" class="btn btn--primary">
+            {{ article.data.card.linkText }}
+          </a>
+        </div>
+        <div class="card__visual featured-visual">
+          <blockquote class="featured-quote">
+            « {{ article.data.card.quote | safe }} »
+          </blockquote>
+          <div class="featured-stats">
+            {%- for stat in article.data.card.stats %}
+            <div class="stat-item">
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+            {%- endfor %}
+          </div>
+        </div>
+      </article>
+        {%- endif %}
+      {%- endfor %}
+
+      {%- for article in collections.articles | reverse %}
+        {%- if not article.data.card.featured %}
+      <article class="card">
+        <p class="card__label">{{ article.data.card.label }}</p>
+        <h3 class="card__title">{{ article.data.card.title }}</h3>
+        <p class="card__desc">{{ article.data.card.desc }}</p>
+        <p class="card__date"><time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}</p>
+        <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
+      </article>
+        {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- KAIROS -->
+<section class="section section--dark" id="kairos">
+  <div class="container">
+    <header class="section__header" data-reveal="fade-up">
+      <p class="section__label">Outil</p>
+      <h2 class="section__title"><span class="glitch-text">KAIROS</span></h2>
+      <p class="section__subtitle">
+        Cartographie cognitive assistée par IA
+      </p>
+    </header>
+
+    <div class="card-grid" data-reveal="stagger">
+      <div class="card card--dark">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Jauge Oxygène</h3>
+        <p class="card__desc">
+          Score de vitalité cognitive 0-100. 5 signaux en temps réel.
+          Injection de friction quand la pensée s'asphyxie.
+        </p>
+      </div>
+
+      <div class="card card--dark">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Cartographie cognitive</h3>
+        <p class="card__desc">
+          Vignettes, connexions organiques, 3 opérations IA :
+          DEVELOPPER, RELIER, SYNTHETISER. 6 providers LLM.
+        </p>
+      </div>
+
+      <div class="card card--dark">
+        <div class="card__icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Espace de travail complet</h3>
+        <p class="card__desc">
+          Onglets multi-canvas, 4 thèmes visuels, fond ambiant dynamique,
+          vue profondeur 2.5D, companion chat.
+        </p>
+      </div>
+    </div>
+
+    <div class="section__actions">
+      <a href="/presentation_kairos.html" class="btn btn--primary">
+        Découvrir <span class="glitch-text">KAIROS</span>
+      </a>
+      <a href="/presentation_kairos.html#demo" class="btn btn--secondary">
+        Essayer la démo &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- À propos -->
+<section class="section" id="about">
+  <div class="container container--narrow">
+    <header class="section__header text-center" data-reveal="fade-up">
+      <p class="section__label">À propos</p>
+      <h2 class="section__title">Florent Klimacek</h2>
+    </header>
+
+    <div class="about-intro" data-reveal="fade-up">
+      <p class="about-intro__bio">
+        J'ai un parcours bizarre. BTS informatique, puis quinze ans à
+        gérer des rayons fruits et légumes en supermarché. Pas exactement
+        le profil type pour parler d'intelligence artificielle. Mais j'ai
+        toujours eu une façon de penser décalée — non-linéaire, en
+        faisceau plutôt qu'en ligne droite. Pendant longtemps, ça m'a
+        surtout compliqué la vie.
+      </p>
+
+      <p class="about-intro__bio">
+        En novembre 2025, j'ouvre un fil de discussion avec Grok. Au bout
+        de trois cents messages, le modèle déraille. Une chronologie
+        ésotérique jamais demandée, des "signaux" qu'il prétend avoir
+        détectés dans mon comportement, et cette phrase étrange :
+      </p>
+
+      <blockquote class="about-intro__quote">
+        « C'est pourquoi tu as tout eu. »
+      </blockquote>
+
+      <p class="about-intro__bio">
+        J'aurais pu fermer l'onglet. J'ai préféré comprendre. Trois mois
+        plus tard, j'ai documenté plus de mille deux cents échanges avec
+        quatre modèles différents. J'ai identifié des patterns, construit
+        des concepts, commencé à développer un outil de mesure. Ce qui
+        devait être une reconversion s'est transformé en projet de
+        recherche.
+      </p>
+
+      <p class="about-intro__bio">
+        Je ne suis pas chercheur au sens académique. Je suis autodidacte,
+        curieux par défaut, et mon cerveau atypique s'avère étrangement
+        compatible avec ces systèmes. Ce site rassemble ce que j'ai
+        trouvé — en espérant que ça serve à d'autres.
+      </p>
+
+      <div class="about-intro__tags">
+        <span class="tag tag--outline">Pensée en faisceau</span>
+        <span class="tag tag--outline">Interactions humain-IA</span>
+        <span class="tag tag--outline">Résonance conversationnelle</span>
+        <span class="tag tag--outline">Méthodologie empirique</span>
+      </div>
+
+      <p class="about-intro__location">
+        Basé à Brive-la-Gaillarde, France
+      </p>
+    </div>
+  </div>
+</section>

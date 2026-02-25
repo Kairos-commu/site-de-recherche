@@ -1,0 +1,14 @@
+<!-- Open Graph -->
+<meta property="og:type" content="{{ ogType | default('website') }}">
+<meta property="og:title" content="{{ ogTitle | default(pageTitle) }}">
+<meta property="og:description" content="{{ ogDescription | default(description) }}">
+{%- if ogUrl %}
+<meta property="og:url" content="{{ site.url }}{{ ogUrl }}">
+{%- endif %}
+<meta property="og:site_name" content="Florent Klimacek">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:image" content="{{ site.ogImage }}">
+<meta name="twitter:card" content="{{ twitterCard | default('summary_large_image') }}">
+<meta name="twitter:image" content="{{ site.ogImage }}">
+<meta name="twitter:title" content="{{ ogTitle | default(pageTitle) }}">
+<meta name="twitter:description" content="{{ ogDescription | default(description) }}">

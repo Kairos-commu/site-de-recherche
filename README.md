@@ -1,109 +1,75 @@
 # Site Florent Klimacek
 
-Site regroupant la recherche sur les interactions humain-IA : articles, analyses et le projet KAIROS.
+Site de recherche sur les interactions humain-IA : articles, analyses et le projet KAIROS.
 
-## Structure des fichiers
+**URL** : https://mecanique-invisible.com
+
+## Stack
+
+- **SSG** : [Eleventy (11ty)](https://www.11ty.dev/) v3.x avec templates Nunjucks
+- **Deploiement** : GitHub Actions → GitHub Pages
+- **CSS/JS** : vanilla, pas de framework
+
+## Commandes
+
+```bash
+npm install          # Installer les dependances
+npm run build        # Construire le site dans _site/
+npm run serve        # Serveur local avec hot reload (localhost:8080)
+```
+
+## Structure
 
 ```
 site-de-recherche/
-├── index.html                          # Page d'accueil
-├── about.html                          # Page À propos
-├── contact.html                        # Page Contact
-├── presentation_kairos.html            # Présentation interactive KAIROS
+├── src/                          # Source 11ty
+│   ├── _includes/
+│   │   ├── layouts/              # base.njk, page.njk, article.njk
+│   │   └── partials/             # head-meta, site-header, site-footer, article-nav
+│   ├── _data/site.json           # Metadonnees globales
+│   ├── articles/                 # 11 articles (.md avec frontmatter YAML)
+│   ├── css/                      # base.css, article.css, kairos.css
+│   ├── js/site.js                # Theme toggle, nav, scroll, progress bar
+│   ├── index.njk                 # Accueil (cartes auto-generees)
+│   ├── about.njk, contact.njk, 404.njk
+│   ├── feed.njk, sitemap.njk    # RSS et sitemap auto-generes
+│   ├── presentation_kairos.html  # Presentation KAIROS (passthrough)
+│   └── demo/                     # App demo KAIROS (passthrough)
 │
-├── css/
-│   ├── base.css                        # Variables, reset, header, footer, dark mode, responsive
-│   ├── article.css                     # Sidebar, progress bar, breadcrumb, contenu article
-│   └── kairos.css                      # Styles propres à presentation_kairos.html
-│
-├── js/
-│   └── site.js                         # Theme toggle, mobile nav, smooth scroll, progress bar
-│
-├── docs/                               # MD synchronisés depuis Kairos (GitHub Action)
-│   ├── ARCHITECTURE.md
-│   ├── PROMPTS-LLM.md
-│   ├── ROADMAP.md
-│   └── index.md
-│
-├── Articles/                           # PDFs sources
-├── favicon.svg                         # Favicon SVG
-├── feed.xml                            # Flux RSS
-├── sitemap.xml                         # Sitemap pour moteurs de recherche
-├── robots.txt                          # Instructions crawlers
-│
-└── [Articles HTML]
-    ├── mecanique-invisible.html        # La mécanique invisible des IA conversationnelles
-    ├── politesse-algorithmique.html    # La Politesse Algorithmique
-    ├── pensee-en-faisceau.html         # La Pensée en Faisceau
-    ├── neutralite-illusion-permission.html  # La neutralité comme illusion de permission
-    ├── questiologie-llm.html           # Questiologie et LLM
-    └── parler-depuis-apres.html        # Parler depuis l'après
+├── eleventy.config.js            # Config 11ty
+├── package.json
+├── .github/workflows/deploy.yml  # CI/CD
+└── CLAUDE.md                     # Instructions pour Claude Code
 ```
 
-## Articles disponibles
+## Articles
 
-| Article | Description | Temps de lecture |
-|---------|-------------|------------------|
-| **La mécanique invisible** | Document fondateur — illusions cognitives, fenêtre de convergence, dynamiques structurelles | ~45 min |
-| **La Politesse Algorithmique** | Comment les IA modèlent le langage critique du capitalisme | ~12 min |
-| **La Pensée en Faisceau** | Convergence entre cognition humaine et intelligence artificielle | ~15 min |
-| **La neutralité comme illusion** | Analyse des mécanismes créant l'impression d'ouverture du système | ~8 min |
-| **Questiologie et LLM** | Influence des postures questiologiques sur les réponses (Claude vs ChatGPT) | ~10 min |
-| **Parler depuis l'après** | Dialogue philosophique explorant les limites du langage | ~12 min |
+| Article | Description | Lecture |
+|---------|-------------|---------|
+| **La mecanique invisible** | Document fondateur — illusions cognitives, fenetre de convergence | ~45 min |
+| **La Politesse Algorithmique** | Comment les IA modelent le langage critique du capitalisme | ~4 min |
+| **La Pensee en Faisceau** | Convergence entre cognition humaine et IA | ~4 min |
+| **La neutralite comme illusion** | Mecanismes creant l'impression d'ouverture du systeme | ~3 min |
+| **Questiologie et LLM** | Postures questiologiques et reponses Claude vs ChatGPT | ~3 min |
+| **Parler depuis l'apres** | Dialogue philosophique sur les limites du langage | ~5 min |
+| **Genese de KAIROS** | De l'impossibilite theorique a la construction concrete | ~6 min |
+| **Le Vibe Coding sous le Microscope** | Audit de 1 000 interactions vibe coding | ~12 min |
+| **L'IA est partout. Sauf dans les mains des gens.** | Adoption reelle de l'IA vs discours | ~10 min |
+| **La friction productive** | Deskilling par l'IA et cout cognitif | ~8 min |
+| **La mort du clic** | Cannibalisation du contenu web par l'IA | ~8 min |
 
-## Fonctionnalités
+## Ajouter un article
 
-### Mode sombre
-- Toggle jour/nuit sur toutes les pages
-- Persistance via localStorage
-- Détection automatique (`prefers-color-scheme`)
-- Transition fluide
+1. Creer `src/articles/mon-article.md` avec frontmatter YAML (copier un existant)
+2. `npm run build` — index, feed, sitemap et nav prev/next se mettent a jour automatiquement
 
-### Navigation
-- Fil d'Ariane (breadcrumb) sur les articles
-- Navigation précédent/suivant entre articles
-- Barre de progression de lecture
-- Menu latéral avec scroll actif
+## Deploiement
 
-### SEO & Partage
-- Balises Open Graph et Twitter Card
-- Sitemap XML, robots.txt
-- Flux RSS
+Chaque push sur `main` declenche le workflow GitHub Actions :
+1. `npm ci` + `npm run build`
+2. Deploy `_site/` sur GitHub Pages
 
-### Documentation KAIROS
-- Docs viewer intégré dans `presentation_kairos.html`
-- Synchronisation automatique depuis le repo Kairos via GitHub Action
-
-## CSS
-
-3 fichiers CSS, pas de styles inline :
-
-| Fichier | Rôle | Utilisé par |
-|---------|------|-------------|
-| `css/base.css` | Variables, reset, header, footer, dark mode | Toutes les pages sauf KAIROS |
-| `css/article.css` | Sidebar, progress, breadcrumb, contenu | 6 articles |
-| `css/kairos.css` | Styles standalone présentation | `presentation_kairos.html` |
-
-## JS
-
-Un seul fichier partagé : `js/site.js` (theme toggle, mobile nav, smooth scroll, progress bar).
-
-Le JS spécifique à la démo KAIROS et au docs viewer reste inline dans `presentation_kairos.html`.
-
-## Pour ajouter un nouvel article
-
-1. Copier `pensee-en-faisceau.html` comme template
-2. Remplacer contenu, titre, meta tags, breadcrumb, prev/next
-3. CSS : `css/base.css` + `css/article.css`
-4. JS : `js/site.js` en fin de body
-5. Ajouter la carte dans `index.html` section `#articles`
-6. Mettre à jour la nav prev/next des articles adjacents
-7. Ajouter dans `feed.xml` et `sitemap.xml`
-
-## Hébergement
-
-GitHub Pages — branche `main`, dossier racine.
-URL : https://kairos-commu.github.io/site-de-recherche/
+Configuration GitHub Pages : **Settings > Pages > Source > GitHub Actions**
 
 ---
 

@@ -1,0 +1,36 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/index.html" class="site-header__logo">
+      florent<span>.</span>klimacek
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <nav class="site-nav" id="siteNav">
+      {%- if siteNavPrefix %}
+      <a href="{{ siteNavPrefix }}#recherche">Recherche</a>
+      <a href="{{ siteNavPrefix }}#articles">Articles</a>
+      <a href="{{ siteNavPrefix }}#kairos"><span class="glitch-text">KAIROS</span></a>
+      {%- else %}
+      <a href="#recherche">Recherche</a>
+      <a href="#articles">Articles</a>
+      <a href="#kairos"><span class="glitch-text">KAIROS</span></a>
+      {%- endif %}
+      <a href="/about.html"{% if activeNav == 'about' %} class="active"{% endif %}>À propos</a>
+      <a href="/contact.html"{% if activeNav == 'contact' %} class="active"{% endif %}>Contact</a>
+    </nav>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+      <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+      <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+      </svg>
+    </button>
+  </div>
+</header>

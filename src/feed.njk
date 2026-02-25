@@ -1,0 +1,28 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Florent Klimacek — Recherche humain-IA</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}/</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>fr-FR</language>
+    {%- set newest = collections.articles | last %}
+    <lastBuildDate>{{ newest.data.datePublished | dateRfc822(newest.data.feedTime) }}</lastBuildDate>
+    <managingEditor>{{ site.author.email }} ({{ site.author.name }})</managingEditor>
+    <webMaster>{{ site.author.email }} ({{ site.author.name }})</webMaster>
+{% for article in collections.articles | reverse %}
+    <item>
+      <title>{{ article.data.headline }}</title>
+      <description>{{ article.data.description }}</description>
+      <link>{{ site.url }}/{{ article.data.slug }}.html</link>
+      <guid isPermaLink="true">{{ site.url }}/{{ article.data.slug }}.html</guid>
+      <pubDate>{{ article.data.datePublished | dateRfc822(article.data.feedTime) }}</pubDate>
+      <category>{{ article.data.feedCategory }}</category>
+    </item>
+{% endfor %}
+  </channel>
+</rss>

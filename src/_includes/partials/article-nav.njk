@@ -1,0 +1,33 @@
+{%- set articleList = collections.articles %}
+{%- set currentIndex = -1 %}
+{%- for article in articleList %}
+  {%- if article.data.slug == slug %}
+    {%- set currentIndex = loop.index0 %}
+  {%- endif %}
+{%- endfor %}
+
+{%- if currentIndex > 0 %}
+  {%- set prevArticle = articleList[currentIndex - 1] %}
+{%- endif %}
+{%- if currentIndex < articleList.length - 1 %}
+  {%- set nextArticle = articleList[currentIndex + 1] %}
+{%- endif %}
+
+<nav class="article-nav" aria-label="Navigation articles">
+  {%- if prevArticle %}
+  <a href="/{{ prevArticle.data.slug }}.html" class="article-nav__link article-nav__link--prev">
+    <span class="article-nav__label">← Article précédent</span>
+    <span class="article-nav__title">{{ prevArticle.data.headline }}</span>
+  </a>
+  {%- else %}
+  <div class="article-nav__empty"></div>
+  {%- endif %}
+  {%- if nextArticle %}
+  <a href="/{{ nextArticle.data.slug }}.html" class="article-nav__link article-nav__link--next">
+    <span class="article-nav__label">Article suivant →</span>
+    <span class="article-nav__title">{{ nextArticle.data.headline }}</span>
+  </a>
+  {%- else %}
+  <div class="article-nav__empty"></div>
+  {%- endif %}
+</nav>

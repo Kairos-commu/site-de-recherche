@@ -1,0 +1,89 @@
+---
+layout: layouts/base.njk
+extraCss: article.css
+ogType: article
+---
+<!-- Site header -->
+<div class="site-header-article">
+  <a href="/index.html" class="site-header-article__back">
+    ← Retour à l'accueil
+  </a>
+  <span class="site-header-article__title">{{ headerTitle | default(headline) }}</span>
+  <button class="theme-toggle-article" id="themeToggle" aria-label="Changer de thème">
+    <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+    <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar">
+  <div class="progress-bar-fill" id="progress"></div>
+</div>
+
+<!-- Mobile nav toggle -->
+<button class="nav-toggle" id="navToggle" aria-label="Menu">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+</button>
+
+<!-- Navigation -->
+<nav id="nav">
+  <div class="nav-header">
+    <span class="nav-header__label">{{ navLabel }}</span>
+    <p>{{ navDescription }}</p>
+  </div>
+
+  <ul class="nav-list">
+    {%- for section in sections %}
+    <li><a href="#{{ section.id }}"{% if loop.first %} class="active"{% endif %}><span class="nav-number">{{ loop.index | pad }}</span>{{ section.title }}</a></li>
+    {%- endfor %}
+  </ul>
+
+  <div class="nav-footer">
+    <p>Florent Klimacek</p>
+    <p>{{ site.year }}</p>
+  </div>
+</nav>
+
+<!-- Main content -->
+<main>
+  <div class="content">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="/index.html">Accueil</a>
+      <span class="separator">›</span>
+      <a href="/index.html#articles">Articles</a>
+      <span class="separator">›</span>
+      <span class="current">{{ breadcrumbName | default(headline) }}</span>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+      <p class="hero-label">{{ heroLabel }}</p>
+      <h1>{{ heroH1 | safe }}</h1>
+      <p class="hero-intro">
+        {{ heroIntro | safe }}
+      </p>
+      <p class="hero-date"><time datetime="{{ datePublished }}">{{ datePublished | dateFr }}</time></p>
+      <div class="hero-line"></div>
+    </header>
+
+    <!-- Article content -->
+    {{ content | safe }}
+
+    <!-- Article Navigation (prev/next) -->
+    {% include "partials/article-nav.njk" %}
+
+    <!-- Footer -->
+    <footer>
+      <p>Florent Klimacek — {{ site.year }}</p>
+      <p><a href="/index.html">← Retour à l'accueil</a></p>
+    </footer>
+
+  </div>
+</main>

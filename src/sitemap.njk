@@ -1,0 +1,44 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>{{ site.url }}/</loc>
+    {%- set newest = collections.articles | last %}
+    <lastmod>{{ newest.data.datePublished }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+{% for article in collections.articles %}
+  <url>
+    <loc>{{ site.url }}/{{ article.data.slug }}.html</loc>
+    <lastmod>{{ article.data.dateModified | default(article.data.datePublished) }}</lastmod>
+    <changefreq>{{ article.data.sitemapChangefreq | default("monthly") }}</changefreq>
+    <priority>{{ article.data.sitemapPriority | default("0.8") }}</priority>
+  </url>
+{% endfor %}
+  <url>
+    <loc>{{ site.url }}/presentation_kairos.html</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>{{ site.url }}/about.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>{{ site.url }}/contact.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

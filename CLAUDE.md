@@ -1,72 +1,175 @@
 # CLAUDE.md — site-de-recherche
 
-Site statique GitHub Pages : articles de recherche sur les interactions humain-IA + présentation du projet KAIROS.
+Site statique GitHub Pages construit avec **Eleventy (11ty)** : articles de recherche sur les interactions humain-IA + présentation du projet KAIROS.
 
 ## URL
 
-- **Production** : https://mecanique-invisible.com (domaine custom, CNAME → GitHub Pages)
+- **Production** : https://mecanique-invisible.com (domaine custom, CNAME -> GitHub Pages)
 - **Alias GitHub** : https://kairos-commu.github.io/site-de-recherche/ (redirige vers le domaine custom)
-- **CNAME** : fichier `CNAME` à la racine contenant `mecanique-invisible.com`
+- **CNAME** : fichier `src/CNAME` contenant `mecanique-invisible.com`
+
+## Build & Commandes
+
+```bash
+npm run build    # Construit le site dans _site/
+npm run serve    # Serveur local avec hot reload (http://localhost:8080)
+```
+
+- **SSG** : Eleventy v3.x avec templates Nunjucks
+- **Deploiement** : GitHub Actions (`.github/workflows/deploy.yml`) — build + deploy sur push `main`
+- **Source** : `src/` — **Output** : `_site/` (gitignored)
 
 ## Architecture
 
-Site statique pur — pas de build tool, pas de framework, pas de SSG. HTML + CSS + JS servis directement par GitHub Pages.
-
 ```
 site-de-recherche/
-├── index.html                          # Page d'accueil (liste des articles)
-├── about.html                          # Page À propos
-├── contact.html                        # Page Contact
-├── 404.html                            # Page 404 GitHub Pages
-├── presentation_kairos.html            # Présentation interactive KAIROS
+├── src/                                  # Source 11ty
+│   ├── _includes/
+│   │   ├── layouts/
+│   │   │   ├── base.njk                  # Shell HTML : head, meta, fonts, CSS, JSON-LD, site.js
+│   │   │   ├── page.njk                  # Extends base : site-header + main + site-footer
+│   │   │   └── article.njk               # Extends base : article header, sidebar, hero, prev/next
+│   │   └── partials/
+│   │       ├── head-meta.njk             # OG + Twitter meta tags
+│   │       ├── site-header.njk           # Logo + nav + theme toggle
+│   │       ├── site-footer.njk           # Copyright + liens + formule
+│   │       └── article-nav.njk           # Prev/next auto-calcule depuis la collection
+│   │
+│   ├── _data/
+│   │   └── site.json                     # Metadonnees globales (url, author, year, etc.)
+│   │
+│   ├── articles/                         # Collection d'articles (11 fichiers .md)
+│   │   ├── articles.json                 # Defaults : layout article.njk, tags ["article"]
+│   │   ├── mecanique-invisible.md        # Document fondateur (featured)
+│   │   ├── politesse-algorithmique.md
+│   │   ├── neutralite-illusion-permission.md
+│   │   ├── pensee-en-faisceau.md
+│   │   ├── questiologie-llm.md
+│   │   ├── parler-depuis-apres.md
+│   │   ├── genese-kairos.md              # Featured
+│   │   ├── vibe-coding.md
+│   │   ├── ia-adoption.md
+│   │   ├── cout-cognitif.md
+│   │   └── mort-du-clic.md
+│   │
+│   ├── index.njk                         # Accueil (cartes auto-generees depuis la collection)
+│   ├── about.njk                         # Page A propos
+│   ├── contact.njk                       # Page Contact
+│   ├── 404.njk                           # Page 404
+│   ├── feed.njk                          # Genere feed.xml depuis la collection
+│   ├── sitemap.njk                       # Genere sitemap.xml depuis la collection
+│   │
+│   ├── css/                              # Passthrough copy
+│   │   ├── base.css                      # Variables, reset, header, footer, dark mode, responsive
+│   │   ├── article.css                   # Sidebar, progress bar, breadcrumb, contenu article
+│   │   └── kairos.css                    # Styles presentation_kairos (monde isole)
+│   ├── js/
+│   │   └── site.js                       # Theme toggle, mobile nav, smooth scroll, progress bar
+│   │
+│   ├── presentation_kairos.html          # Passthrough brut (jamais traite par 11ty)
+│   ├── demo/                             # App demo KAIROS (passthrough)
+│   ├── docs/                             # MD synchronises depuis Kairos (passthrough)
+│   ├── favicon.svg, og-image.jpg         # Passthrough
+│   ├── CNAME, robots.txt                 # Passthrough
 │
-├── mecanique-invisible.html            # Article : La mécanique invisible
-├── politesse-algorithmique.html        # Article : La Politesse Algorithmique
-├── pensee-en-faisceau.html             # Article : La Pensée en Faisceau
-├── neutralite-illusion-permission.html # Article : La neutralité comme illusion
-├── questiologie-llm.html              # Article : Questiologie et LLM
-├── parler-depuis-apres.html           # Article : Parler depuis l'après
-│
-├── css/
-│   ├── base.css                        # Variables, reset, header, footer, dark mode, responsive
-│   ├── article.css                     # Sidebar, progress bar, breadcrumb, contenu article
-│   └── kairos.css                      # Styles propres à presentation_kairos.html
-│
-├── js/
-│   └── site.js                         # Theme toggle, mobile nav, smooth scroll, progress bar
-│
-├── docs/                               # MD synchronisés depuis Kairos via GitHub Action
-│   ├── ARCHITECTURE.md
-│   ├── PROMPTS-LLM.md
-│   ├── ROADMAP.md
-│   └── index.md
-│
-├── Articles/                           # PDFs sources (gitignored)
-├── favicon.svg
-├── og-image.jpg                        # Image OG partagée (deux silhouettes humain-IA)
-├── feed.xml                            # Flux RSS
-├── sitemap.xml                         # Sitemap SEO
-├── robots.txt
-├── CNAME                               # Domaine custom (mecanique-invisible.com)
+├── _site/                                # Output build (gitignored)
+├── eleventy.config.js                    # Config 11ty
+├── package.json                          # @11ty/eleventy devDependency
+├── .github/workflows/deploy.yml          # CI/CD GitHub Pages
+├── .gitignore
+├── CLAUDE.md
 └── README.md
 ```
 
+## Comment 11ty fonctionne ici
+
+### Layout chain (cascade de contenu)
+11ty utilise `layout:` dans le frontmatter YAML (PAS `{% extends %}`). Le contenu du fichier enfant devient `{{ content }}` dans le layout parent.
+
+```
+article.md -> article.njk -> base.njk
+  contenu       {{ content | safe }}    {{ content | safe }}
+```
+
+**Important** : les `{% block %}` Nunjucks ne fonctionnent PAS avec le systeme de layout 11ty. Tout passe par `{{ content | safe }}`.
+
+### Collection articles
+- Definie dans `eleventy.config.js` : triee par `datePublished` puis `order` (tiebreaker pour articles meme date)
+- `src/articles/articles.json` applique automatiquement `layout: "layouts/article.njk"` et `tags: ["article"]`
+- `index.njk`, `feed.njk`, `sitemap.njk` bouclent sur `collections.articles`
+
+### Filtres custom
+- `dateFr` : "2026-02-25" -> "25 fevrier 2026"
+- `dateMonthFr` : "2026-02-25" -> "Fevrier 2026"
+- `dateRfc822` : pour feed.xml
+- `pad` : "1" -> "01" (numeros de section sidebar)
+
+### Passthrough copy
+Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
+- `src/css/`, `src/js/`, `src/demo/`, `src/docs/`
+- `src/favicon.svg`, `src/og-image.jpg`, `src/CNAME`, `src/robots.txt`
+- `src/presentation_kairos.html`
+
+### Fichiers ignores par 11ty
+`src/docs/**`, `src/demo/**`, `src/presentation_kairos.html` sont dans `eleventyConfig.ignores` pour ne pas etre traites comme templates.
+
 ## Pages et CSS
 
-| Page | CSS chargés |
+| Page | CSS charges |
 |------|------------|
-| `index.html`, `about.html`, `contact.html`, `404.html` | `css/base.css` |
-| 6 articles | `css/base.css` + `css/article.css` |
-| `presentation_kairos.html` | `css/kairos.css` uniquement (monde isolé) |
+| `index.njk`, `about.njk`, `contact.njk`, `404.njk` | `css/base.css` |
+| 11 articles | `css/base.css` + `css/article.css` (via `extraCss` dans article.njk) |
+| `presentation_kairos.html` | `css/kairos.css` uniquement (monde isole, passthrough) |
 
-Toutes les pages chargent `js/site.js` en fin de `<body>`.
+Toutes les pages chargent `js/site.js` en fin de `<body>` (via base.njk).
+
+## Pour ajouter un nouvel article
+
+1. Creer `src/articles/mon-article.md` avec le frontmatter YAML (copier depuis un article existant)
+2. `npm run build` — l'article apparait automatiquement dans index.html, feed.xml, sitemap.xml, et la nav prev/next se met a jour
+
+Frontmatter minimal requis :
+```yaml
+---
+slug: mon-article
+pageTitle: "Titre — Florent Klimacek"
+headline: "Titre"
+description: "Description 120-160 chars"
+ogTitle: "Titre"
+ogDescription: "Description"
+ogUrl: "https://mecanique-invisible.com/mon-article.html"
+canonical: "/mon-article.html"
+datePublished: "2026-03-01"
+keywords: ["mot-cle"]
+permalink: "/mon-article.html"
+order: 12
+navLabel: "Sommaire"
+navDescription: "Sous-titre"
+heroLabel: "Article"
+heroH1: "Titre <em>en italique</em>"
+heroIntro: "Introduction"
+headerTitle: "Titre court"
+breadcrumbName: "Titre"
+sections:
+  - { id: "section1", title: "Section 1" }
+card:
+  label: "Article"
+  title: "Titre carte"
+  desc: "Description carte"
+  readTime: "5 min"
+  featured: false
+---
+<section id="section1">
+  <h2>Section 1</h2>
+  <p>Contenu HTML avec les classes CSS du site...</p>
+</section>
+```
 
 ## CSS Variables
 
-Variables centralisées dans `css/base.css` `:root` :
+Variables centralisees dans `src/css/base.css` `:root` :
 
 ```css
-/* Couleurs principales */
 --bg-page, --bg-card, --bg-card-hover
 --text-primary, --text-secondary, --text-muted
 --accent (amber #d97706), --accent-hover, --accent-light
@@ -74,190 +177,83 @@ Variables centralisées dans `css/base.css` `:root` :
 /* Sombre via [data-theme="dark"] */
 ```
 
-`css/kairos.css` a son propre jeu de variables (purple/violet) — indépendant de base.css.
+`src/css/kairos.css` a son propre jeu de variables (purple/violet) — independant de base.css.
 
 ## Responsive / Breakpoints
 
-Approche mobile-first progressive — les breakpoints sont organisés du plus large au plus étroit :
+Approche mobile-first progressive :
 
 | Breakpoint | Cible | Fichiers |
 |---|---|---|
-| `900px` | Tablettes — grids passent en 1 colonne, sidebar article masquée | `base.css`, `article.css`, `kairos.css` |
+| `900px` | Tablettes — grids 1 col, sidebar masquee | `base.css`, `article.css`, `kairos.css` |
 | `768px` | Petites tablettes — header mobile | `base.css`, `article.css`, `kairos.css` |
-| `600px` | Phablets — O₂ formula adapté | `kairos.css` |
-| `500px` | Petits écrans — use cases et features grid 1 colonne | `kairos.css` |
-| `480px` | Smartphones — paddings réduits, typo ajustée, cards 1 col, touch optimisé | `base.css`, `article.css`, `kairos.css` |
-
-Conventions responsive :
-- **`touch-action: manipulation`** — appliqué globalement sur `a, button, [role="button"], input, select, textarea` (élimine le délai 300ms sur mobile)
-- **Marges fluides** — utiliser `max(0.5rem, 3vw)` plutôt que des valeurs fixes pour les marges de dialogue
-- **`min-height: auto`** — les sections passent en hauteur automatique sous 480px (pas de `100vh` sur mobile)
-- **Grids** — `grid-template-columns: 1fr` sur les petits écrans, pas de `minmax()` trop large
+| `600px` | Phablets | `kairos.css` |
+| `500px` | Petits ecrans — grids 1 col | `kairos.css` |
+| `480px` | Smartphones — paddings reduits, touch | `base.css`, `article.css`, `kairos.css` |
 
 ## Dark Mode
 
 - Toggle dans le header (toutes les pages)
 - Persistance : `localStorage.theme` (`light` ou `dark`)
-- Détection automatique : `prefers-color-scheme: dark`
+- Detection automatique : `prefers-color-scheme: dark`
 - Attribut : `[data-theme="dark"]` sur `<html>`
-- Anti-FOUC : script inline en `<head>` de chaque page (lit localStorage avant le premier paint) — présent sur les 10 pages (pas presentation_kairos qui est isolé)
-- `js/site.js` gère le toggle et la persistance côté runtime
+- Anti-FOUC : script inline dans base.njk `<head>` (applique avant le premier paint)
+- `js/site.js` gere le toggle cote runtime
 
 ## Docs Viewer (presentation_kairos.html)
 
-La section "Documentation" (#documentation) charge les fichiers `docs/*.md` via `fetch()` + `marked.js` (CDN).
+Fichier passthrough — jamais traite par 11ty. Charge `docs/*.md` via `fetch()` + `marked.js` (CDN).
 
-- 3 boutons sidebar : Architecture, Métriques & Prompts, Roadmap
-- JS inline dans la page (pas dans site.js — spécifique à cette page)
-- Ne fonctionne PAS en `file://` (CORS) — uniquement sur serveur HTTP
+- JS inline dans la page (specifique, pas dans site.js)
+- Ne fonctionne PAS en `file://` (CORS)
 
 ## Sync depuis Kairos
 
-Le repo Kairos a une GitHub Action (`.github/workflows/sync-docs.yml`) qui copie `doc projet/*.md` → `docs/` ici quand les MD changent sur `main`.
-
-## Pour ajouter un nouvel article
-
-1. Copier `pensee-en-faisceau.html` comme template
-2. Remplacer contenu, titre, meta tags, breadcrumb, prev/next
-3. CSS : `css/base.css` + `css/article.css` (pas de styles inline)
-4. JS : `js/site.js` en fin de body (pas de scripts inline)
-5. Ajouter la carte dans `index.html` section `#articles`
-6. Mettre à jour la nav prev/next des articles adjacents
-7. Ajouter dans `feed.xml` et `sitemap.xml`
-8. Ajouter le bloc `<script type="application/ld+json">` BlogPosting dans `<head>` (copier depuis un article existant, adapter les données)
+Le repo Kairos a une GitHub Action qui copie `doc projet/*.md` -> `src/docs/` ici.
+**Note** : si le workflow Kairos ecrit encore dans `docs/` a la racine, le mettre a jour pour ecrire dans `src/docs/`.
 
 ## Conventions
 
-- **Pas de CSS inline** — tout dans css/base.css ou css/article.css
-- **Pas de JS inline** — tout dans js/site.js (sauf anti-FOUC et presentation_kairos qui a son JS inline)
-- **Meta tags obligatoires** : description, og:title, og:description, og:type, twitter:card, og:image, twitter:image
-- **Anti-FOUC** : `<script>` inline dans `<head>` avant `<title>` (lit localStorage et applique data-theme)
-- **Favicon** : `<link rel="icon" type="image/svg+xml" href="favicon.svg">`
-- **Footer site** : `Florent Klimacek — 2026` + liens Accueil, Articles, À propos, Contact, RSS (identique sur toutes les pages non-article)
-- **Footer article** : `Florent Klimacek — 2026` + lien retour accueil (identique sur tous les articles)
-- **Schema.org JSON-LD** : `<script type="application/ld+json">` avant `</head>` — BlogPosting (articles), WebSite (index), Person (about)
+- **Pas de CSS inline** — tout dans src/css/base.css ou src/css/article.css
+- **Pas de JS inline** — tout dans src/js/site.js (sauf anti-FOUC dans base.njk et presentation_kairos)
+- **Meta tags** — geres automatiquement par les layouts (head-meta.njk) depuis le frontmatter
+- **JSON-LD** — BlogPosting auto-genere pour les articles (via base.njk), WebSite/Person via `jsonLdRaw` dans frontmatter des pages
+- **Contenu article en HTML** — les fichiers .md contiennent du HTML brut (classes CSS specifiques : `.lead`, `.key-insight`, `.chapter-divider`, `.concept`, `.sources-section`)
 
 ## Vigilance — site en production
 
-Ce site est public sur `mecanique-invisible.com`. Chaque modification est immédiatement visible. Respecter scrupuleusement les règles suivantes.
+Ce site est public sur `mecanique-invisible.com`. Chaque push declenche un build + deploy automatique.
 
-### Sécurité
+### Securite
 
-- **Jamais de secrets dans le code** — pas de clés API, tokens, mots de passe, emails privés dans les fichiers commités. Vérifier chaque diff avant commit.
-- **Pas de `http://`** — tous les liens externes doivent être en `https://`. Les liens internes sont relatifs (pas de protocole).
-- **CSP obligatoire** — `presentation_kairos.html` a sa propre CSP `<meta>`. Ne pas ajouter de source externe sans mettre à jour la CSP.
-- **SRI obligatoire** — tout `<script>` ou `<link>` chargé depuis un CDN doit avoir un attribut `integrity` (hash sha384) et `crossorigin="anonymous"`.
-- **Pas de `target="_blank"` sans `rel="noopener"`** — prévient le tab-nabbing.
-- **Pas de `eval()`, `innerHTML` avec données utilisateur, ou `document.write()`** — prévient XSS.
-- **Source maps** — jamais déployées (`.gitignore` les exclut). Vérifier après chaque ajout de build Vite.
-- **postMessage** — toujours valider `event.origin` côté récepteur, toujours spécifier l'origine cible côté émetteur (jamais `'*'`).
-
-### URLs et liens
-
-- **Domaine canonique** : `https://mecanique-invisible.com/` — utilisé dans les meta `og:url`, JSON-LD, sitemap, feed.xml.
-- **Pas de liens morts** — vérifier que chaque `href` pointe vers une page existante. Tester après renommage ou suppression de page.
-- **Liens relatifs en interne** — `index.html`, pas `https://mecanique-invisible.com/index.html`.
-- **Liens externes en `https://`** — avec `target="_blank" rel="noopener"`.
-- **Ancres** — vérifier que les `id` ciblés existent bien (`href="#articles"` → `<section id="articles">`).
+- **Jamais de secrets dans le code**
+- **Pas de `http://`** — liens externes en `https://`
+- **CSP** — `presentation_kairos.html` a sa propre CSP `<meta>`
+- **SRI** — CDN avec `integrity` + `crossorigin="anonymous"`
+- **`target="_blank"`** -> toujours avec `rel="noopener"`
+- **Pas de `eval()`, `innerHTML` avec donnees utilisateur, `document.write()`**
+- **postMessage** — toujours valider `event.origin`
 
 ### SEO et meta tags
 
-Chaque page DOIT contenir dans `<head>` :
+Geres automatiquement par les layouts depuis le frontmatter. Verifier :
+- `og:title` = `<title>` = JSON-LD `headline` (coherence stricte)
+- `og:description` — 120-160 caracteres
+- `og:url` — URL canonique complete
+- `og:image` — URL absolue existante
 
-```html
-<!-- Obligatoire -->
-<title>Titre — Florent Klimacek</title>
-<meta name="description" content="...">
+### Coherence inter-fichiers (simplifie par 11ty)
 
-<!-- Open Graph -->
-<meta property="og:type" content="article|website">
-<meta property="og:title" content="...">
-<meta property="og:description" content="...">
-<meta property="og:url" content="https://mecanique-invisible.com/...">
-<meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
-<meta property="og:site_name" content="Florent Klimacek">
-<meta property="og:locale" content="fr_FR">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="...">
-<meta name="twitter:description" content="...">
-<meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
-
-<!-- Technique -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
-<link rel="canonical" href="https://mecanique-invisible.com/...">
-```
-
-Vérifications :
-- **`og:title`** = `<title>` = JSON-LD `headline` (cohérence stricte)
-- **`og:description`** — phrase complète, 120-160 caractères, pas tronquée
-- **`og:url`** — URL canonique complète avec domaine
-- **`og:image`** — URL absolue, image existante (pas de 404)
-
-### Cohérence inter-fichiers
-
-À chaque modification, vérifier la propagation :
-
-| Donnée modifiée | Fichiers à mettre à jour |
+| Donnee modifiee | Action |
 |---|---|
-| Titre d'un article | `<title>`, `og:title`, `twitter:title`, JSON-LD `headline`, carte dans `index.html`, `feed.xml`, `sitemap.xml` |
-| Nouvel article | Suivre la checklist "Pour ajouter un nouvel article" (8 étapes) |
-| Suppression de page | `sitemap.xml`, `feed.xml`, nav prev/next des articles adjacents, liens depuis `index.html` |
-| Changement de domaine | `CNAME`, toutes les `og:url`, JSON-LD `url`, `sitemap.xml`, `feed.xml`, `robots.txt`, CSP `frame-ancestors` |
-| Mise à jour CDN | Version épinglée + nouveau hash SRI + vérifier CSP `script-src` |
-
-### Format et qualité du code
-
-- **Indentation** — 2 espaces en HTML/CSS/JS (pas de tabs)
-- **Encodage** — UTF-8 sans BOM, fin de ligne LF
-- **HTML valide** — pas de balises non fermées, attributs `alt` sur toutes les `<img>`, attributs `lang` sur `<html>`
-- **CSS** — pas de `!important` sauf nécessité absolue, pas de sélecteurs trop spécifiques
-- **Accessibilité** — attributs `aria-label` sur les boutons sans texte, `title` sur les liens ambigus, contraste suffisant (WCAG AA)
-- **Performance** — pas de ressources bloquantes inutiles, `loading="lazy"` sur les images et iframes below-the-fold
-- **Pas de console.log en production** — sauf dans les blocs iframe debug (KAIROS)
+| Titre d'un article | Modifier le frontmatter du .md — tout se propage automatiquement |
+| Nouvel article | Creer un .md dans src/articles/ — index, feed, sitemap, nav auto |
+| Suppression d'article | Supprimer le .md — tout se met a jour au build |
+| Changement de domaine | `src/_data/site.json` + `src/CNAME` |
 
 ### Avant chaque push
 
-Checklist mentale :
-
-1. `git diff` — relire chaque ligne modifiée
-2. Pas de secrets, clés API, chemins locaux (`C:\`, `D:\`, `/Users/`)
-3. Liens internes valides (pas de `href="#"` placeholder)
-4. Meta tags cohérents (titre, description, og, JSON-LD)
-5. Sitemap et feed.xml à jour si ajout/suppression de page
-6. CSS/JS : pas d'inline ajouté (sauf anti-FOUC)
-7. Fichier CNAME toujours présent (GitHub Pages le supprime parfois lors de reconfiguration)
-
-## Roadmap
-
-### Court terme
-- [x] Ajouter `<link rel="alternate" type="application/rss+xml">` dans toutes les pages (fait — 9 pages ajoutées)
-- [x] Créer une page 404.html pour GitHub Pages (fait)
-- [x] Nettoyer le CSS mort (anciennes classes `.captures-*` dans article.css) — déjà absent, rien à supprimer
-
-### Moyen terme
-- [x] Ajouter un og:image pour chaque page (fait — `og-image.jpg` à la racine, référencé dans les 11 pages + JSON-LD)
-- [ ] Considérer un SSG (11ty, Hugo) si le site dépasse 15 pages (header/footer dupliqués dans 10 fichiers)
-- [x] Ajouter des dates de publication visibles sur les cartes articles (index.html) — déjà présentes via `.card__date`
-
-### Cohérence & qualité (fait)
-- [x] Anti-FOUC script ajouté sur 10 pages (lit localStorage avant le premier paint)
-- [x] Footers standardisés sur toutes les pages (format, liens, copyright)
-- [x] Inline CSS migré de index.html vers base.css (`.section__actions`, `.about-intro`, `.card--dark .card__icon`, etc.)
-- [x] Titres alignés (og:title, JSON-LD headline, `<title>`) pour mecanique-invisible et questiologie-llm
-- [x] JetBrains Mono ajouté à mecanique-invisible.html (manquait par rapport aux autres articles)
-- [x] Lien mort "Accéder à l'application" corrigé (pointait vers `#`, redirige maintenant vers presentation_kairos)
-
-### Sécurité iframe KAIROS (fait)
-- [x] Valider `event.origin` dans le listener postMessage du parent (presentation_kairos.html)
-- [x] Remplacer `'*'` par l'origine cible spécifique dans `postMessage()`
-- [x] Ajouter une CSP `<meta>` sur presentation_kairos.html
-- [x] Ajouter un hash SRI sur le `<script>` marked.js (CDN) — v15.0.12 épinglée
-- [x] Exclure le fichier `.map` du déploiement (source map via .gitignore + référence retirée du bundle)
-
-### Améliorations possibles
-- [ ] Lazy-loading des images (peu urgent — pas beaucoup d'images)
-- [ ] Sitemap automatique (actuellement maintenu à la main)
-- [x] Schema.org / JSON-LD pour les articles (fait — BlogPosting sur 6 articles, WebSite sur index, Person sur about)
+1. `npm run build` — verifier que le build passe sans erreur
+2. Pas de secrets, cles API, chemins locaux
+3. Meta tags coherents (verifier le frontmatter)
+4. CNAME present dans `src/`

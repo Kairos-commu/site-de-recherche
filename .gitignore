@@ -1,3 +1,7 @@
+# Build output (généré par 11ty)
+_site/
+node_modules/
+
 # Fichiers sources (non déployés sur GitHub Pages)
 *.pdf
 Articles/
@@ -7,6 +11,9 @@ Articles/
 
 # Dossiers résiduels
 mnt/
+
+# Claude Code
+.claude/
 
 # Fichiers système
 .DS_Store
