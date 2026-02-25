@@ -1600,6 +1600,11 @@ a:hover {
 
 /* Mobile — pas de stagger (grille trop haute en 1 colonne) */
 @media (max-width: 768px) {
+  [data-reveal="stagger"] {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
   [data-reveal="stagger"] > * {
     opacity: 1;
     transform: none;
