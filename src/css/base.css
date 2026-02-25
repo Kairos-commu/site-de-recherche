@@ -1177,6 +1177,232 @@ a:hover {
 }
 
 /* ============================================
+   COMPONENTS — Manifeste
+   ============================================ */
+
+.manifeste-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manifeste-hero__image {
+  max-width: 560px;
+  margin: 0 auto var(--space-2xl);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .manifeste-hero__image {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  border-color: var(--border-dark);
+}
+
+.manifeste-hero__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.manifeste-number {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--accent);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.manifeste-content p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.manifeste-content p strong {
+  color: var(--text-primary);
+}
+
+/* Piliers du manifeste */
+.manifeste-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.manifeste-pillar {
+  padding-left: var(--space-xl);
+  border-left: 2px solid var(--accent);
+}
+
+.manifeste-pillar h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.manifeste-pillar p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* Profils cibles */
+.manifeste-profiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.manifeste-profile {
+  background: var(--bg-card);
+  border-left: 3px solid var(--border);
+  padding: var(--space-xl);
+  transition: border-color 0.3s var(--ease-out-expo);
+}
+
+.manifeste-profile:hover {
+  border-left-color: var(--accent);
+}
+
+.manifeste-profile h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.manifeste-profile p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.manifeste-profile__detail {
+  font-size: 0.85rem !important;
+  color: var(--accent) !important;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .manifeste-profiles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA grid */
+.manifeste-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.manifeste-cta {
+  display: block;
+  background: var(--bg-card);
+  border-left: 3px solid var(--border);
+  padding: var(--space-xl);
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease-out-expo),
+    transform 0.3s var(--ease-out-expo),
+    box-shadow 0.3s var(--ease-out-expo);
+}
+
+.manifeste-cta:hover {
+  border-left-color: var(--accent);
+  box-shadow: -4px 0 16px var(--accent-glow);
+  transform: translateX(2px);
+}
+
+.manifeste-cta h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.manifeste-cta p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .manifeste-cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Citation manifeste */
+.manifeste-quote {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 var(--space-2xl);
+  padding: var(--space-xl) var(--space-2xl);
+  position: relative;
+}
+
+.manifeste-quote::before,
+.manifeste-quote::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+  margin: 0 auto;
+}
+
+.manifeste-quote::before {
+  margin-bottom: var(--space-lg);
+}
+
+.manifeste-quote::after {
+  margin-top: var(--space-lg);
+}
+
+.manifeste-signature {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.manifeste-signature span {
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .manifeste-hero__image {
+    max-width: 100%;
+  }
+
+  .manifeste-number {
+    font-size: 2rem;
+  }
+
+  .manifeste-quote {
+    font-size: 1.2rem;
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+/* ============================================
    COMPONENTS — Footer
    ============================================ */
 
