@@ -53,6 +53,7 @@ site-de-recherche/
 │   │   └── mort-du-clic.md
 │   │
 │   ├── index.njk                         # Accueil (cartes auto-generees depuis la collection)
+│   ├── manifeste.njk                     # Page Manifeste / landing (texte de filtrage)
 │   ├── about.njk                         # Page A propos
 │   ├── contact.njk                       # Page Contact
 │   ├── 404.njk                           # Page 404
@@ -66,6 +67,7 @@ site-de-recherche/
 │   ├── js/
 │   │   └── site.js                       # Theme toggle, mobile nav, smooth scroll, progress bar
 │   │
+│   ├── images/                           # Images articles (WebP) + vue complete
 │   ├── presentation_kairos.html          # Passthrough brut (jamais traite par 11ty)
 │   ├── demo/                             # App demo KAIROS (passthrough)
 │   ├── docs/                             # MD synchronises depuis Kairos (passthrough)
@@ -106,7 +108,7 @@ article.md -> article.njk -> base.njk
 
 ### Passthrough copy
 Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
-- `src/css/`, `src/js/`, `src/demo/`, `src/docs/`
+- `src/css/`, `src/js/`, `src/images/`, `src/demo/`, `src/docs/`
 - `src/favicon.svg`, `src/og-image.jpg`, `src/CNAME`, `src/robots.txt`
 - `src/presentation_kairos.html`
 
@@ -117,7 +119,7 @@ Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
 
 | Page | CSS charges |
 |------|------------|
-| `index.njk`, `about.njk`, `contact.njk`, `404.njk` | `css/base.css` |
+| `index.njk`, `manifeste.njk`, `about.njk`, `contact.njk`, `404.njk` | `css/base.css` |
 | 11 articles | `css/base.css` + `css/article.css` (via `extraCss` dans article.njk) |
 | `presentation_kairos.html` | `css/kairos.css` uniquement (monde isole, passthrough) |
 
@@ -149,6 +151,8 @@ heroLabel: "Article"
 heroH1: "Titre <em>en italique</em>"
 heroIntro: "Introduction"
 headerTitle: "Titre court"
+heroImage: "/images/mon-article.webp"
+heroImageAlt: "Illustration — Titre"
 breadcrumbName: "Titre"
 sections:
   - { id: "section1", title: "Section 1" }
@@ -240,7 +244,7 @@ Geres automatiquement par les layouts depuis le frontmatter. Verifier :
 - `og:title` = `<title>` = JSON-LD `headline` (coherence stricte)
 - `og:description` — 120-160 caracteres
 - `og:url` — URL canonique complete
-- `og:image` — URL absolue existante
+- `og:image` — auto depuis `heroImage` si present, sinon fallback `site.ogImage`
 
 ### Coherence inter-fichiers (simplifie par 11ty)
 

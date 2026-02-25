@@ -22,7 +22,7 @@ heroLabel: "Analyse"
 heroH1: "L'IA est partout.<br><span>Sauf dans les mains des gens.</span>"
 heroIntro: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle."
 headerTitle: "L'IA est partout. Sauf dans les mains des gens."
-heroImage: "/images/ia_partout.png"
+heroImage: "/images/ia_partout.webp"
 heroImageAlt: "Illustration — L'IA est partout"
 breadcrumbName: "L'IA est partout. Sauf dans les mains des gens."
 sections:

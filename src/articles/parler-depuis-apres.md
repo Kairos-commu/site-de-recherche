@@ -22,7 +22,7 @@ heroLabel: "Exploration"
 heroH1: "Parler depuis<br><span>l'après</span>"
 heroIntro: "Dialogue avec une IA qui finit par se taire"
 headerTitle: "Parler depuis l'après"
-heroImage: "/images/parler_depuis_apres.png"
+heroImage: "/images/parler_depuis_apres.webp"
 heroImageAlt: "Illustration — Parler depuis l'après"
 breadcrumbName: "Parler depuis l'après"
 sections:

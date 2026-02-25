@@ -7,8 +7,16 @@
 {%- endif %}
 <meta property="og:site_name" content="Florent Klimacek">
 <meta property="og:locale" content="{{ site.locale }}">
+{%- if heroImage %}
+<meta property="og:image" content="{{ site.url }}{{ heroImage }}">
+{%- else %}
 <meta property="og:image" content="{{ site.ogImage }}">
+{%- endif %}
 <meta name="twitter:card" content="{{ twitterCard | default('summary_large_image') }}">
+{%- if heroImage %}
+<meta name="twitter:image" content="{{ site.url }}{{ heroImage }}">
+{%- else %}
 <meta name="twitter:image" content="{{ site.ogImage }}">
+{%- endif %}
 <meta name="twitter:title" content="{{ ogTitle | default(pageTitle) }}">
 <meta name="twitter:description" content="{{ ogDescription | default(description) }}">

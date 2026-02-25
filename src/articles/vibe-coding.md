@@ -22,7 +22,7 @@ heroLabel: "Étude"
 heroH1: "Le Vibe Coding<br><span>sous le Microscope</span>"
 heroIntro: "Ce que 1 000 interactions révèlent sur les mécaniques invisibles\n          du développement assisté par IA."
 headerTitle: "Le Vibe Coding sous le Microscope"
-heroImage: "/images/vibe_coding.png"
+heroImage: "/images/vibe_coding.webp"
 heroImageAlt: "Illustration — Le Vibe Coding sous le Microscope"
 breadcrumbName: "Le Vibe Coding sous le Microscope"
 sections:
