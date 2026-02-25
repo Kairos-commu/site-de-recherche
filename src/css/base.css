@@ -1598,17 +1598,12 @@ a:hover {
 [data-reveal="stagger"].is-visible > *:nth-child(8) { animation-delay: calc(var(--stagger-delay) * 8); }
 [data-reveal="stagger"].is-visible > *:nth-child(9) { animation-delay: calc(var(--stagger-delay) * 9); }
 
-/* Mobile — stagger instantane (grille trop haute en 1 colonne) */
+/* Mobile — pas de stagger (grille trop haute en 1 colonne) */
 @media (max-width: 768px) {
   [data-reveal="stagger"] > * {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  [data-reveal="stagger"].is-visible > * {
-    animation-duration: 0.4s;
-  }
-  [data-reveal="stagger"].is-visible > *:nth-child(n+4) {
-    animation-delay: 0s;
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 
