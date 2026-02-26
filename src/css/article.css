@@ -1912,6 +1912,137 @@ code {
 }
 
 /* ============================================
+   PQC — Physique Quantique Conversationnelle
+   Conteneurs visuels et classes spécifiques
+   ============================================ */
+
+/* Conteneur dark forcé pour les diagrammes SVG */
+.pqc-visual {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: #111115;
+  border: 1px solid #2a2a32;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pqc-visual--full {
+  margin: 3rem -1rem;
+  padding: 2.5rem 2rem;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
+.pqc-visual__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #706d65;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.pqc-visual svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Classes SVG internes scopées sous .pqc-visual */
+.pqc-visual svg text {
+  font-family: 'DM Sans', var(--font-sans);
+}
+
+.pqc-visual svg .label {
+  fill: #706d65;
+  font-size: 11px;
+}
+
+.pqc-visual svg .label-bright {
+  fill: #c8c5be;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pqc-visual svg .mono {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: #706d65;
+}
+
+/* Table dans conteneur PQC */
+.pqc-visual table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.pqc-visual th {
+  text-align: left;
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  color: #706d65;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #2a2a32;
+}
+
+.pqc-visual td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(42, 42, 50, 0.5);
+  vertical-align: top;
+  color: #c8c5be;
+}
+
+.pqc-visual td:first-child {
+  color: #eae7e0;
+  font-weight: 500;
+}
+
+/* Verdict — conclusion en gras */
+.pqc-verdict {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Séparateur fin */
+.pqc-sep {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
+  border: none;
+}
+
+/* Animation courbe de respiration (Section 3 — Ouverture) */
+@keyframes pqc-breathe {
+  0%, 100% {
+    d: path("M 0 50 Q 50 20, 100 45 Q 150 70, 200 40 Q 250 10, 300 50 Q 350 80, 400 45 Q 450 15, 500 50");
+  }
+  50% {
+    d: path("M 0 50 Q 50 60, 100 30 Q 150 10, 200 55 Q 250 80, 300 35 Q 350 15, 400 60 Q 450 75, 500 40");
+  }
+}
+
+.pqc-breath-line {
+  animation: pqc-breathe 6s ease-in-out infinite;
+}
+
+/* PQC responsive */
+@media (max-width: 640px) {
+  .pqc-visual {
+    margin: 2rem -0.5rem;
+    padding: 1.25rem;
+  }
+  .pqc-visual--full {
+    margin: 2.5rem -1rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* ============================================
    RESPONSIVE — Small phones (< 480px)
    ============================================ */
 
@@ -2034,5 +2165,9 @@ code {
 
   .nav-list a {
     transition: none;
+  }
+
+  .pqc-breath-line {
+    animation: none;
   }
 }
