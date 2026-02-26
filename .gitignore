@@ -12,6 +12,9 @@ node_modules/
 # Dossiers résiduels
 mnt/
 
+# Documentation Kairos (consultable localement uniquement)
+src/docs/
+
 # Claude Code
 .claude/
 

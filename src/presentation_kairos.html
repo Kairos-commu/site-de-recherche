@@ -1427,16 +1427,37 @@
       }
     });
 
-    // Load default doc when section becomes visible (lazy load)
-    const docsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadDoc(currentDoc);
-          docsObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.1 });
-    docsObserver.observe(document.getElementById('documentation'));
+    // Hide docs section entirely if files are unavailable (production)
+    async function checkDocsAvailable() {
+      try {
+        const response = await fetch('docs/ARCHITECTURE.md', { method: 'HEAD' });
+        if (!response.ok) throw new Error();
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    checkDocsAvailable().then(available => {
+      if (!available) {
+        // Hide documentation section and its nav link
+        const docsSection = document.getElementById('documentation');
+        if (docsSection) docsSection.style.display = 'none';
+        const docsNavLink = document.querySelector('a[href="#documentation"]');
+        if (docsNavLink) docsNavLink.closest('li').style.display = 'none';
+        return;
+      }
+      // Docs available: lazy-load when section becomes visible
+      const docsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadDoc(currentDoc);
+            docsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+      docsObserver.observe(document.getElementById('documentation'));
+    });
   </script>
 </body>
 </html>
