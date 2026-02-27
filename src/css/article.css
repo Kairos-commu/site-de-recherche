@@ -267,6 +267,75 @@ main {
   height: auto;
 }
 
+/* Images zoomables — cursor hint */
+.hero-image,
+.content-wrapper img {
+  cursor: zoom-in;
+}
+
+/* Lightbox overlay */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.image-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 6px;
+  cursor: zoom-out;
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+
+.image-lightbox.active img {
+  transform: scale(1);
+}
+
+.image-lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.image-lightbox__close:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .image-lightbox img {
+    max-width: 98vw;
+    max-height: 85vh;
+    border-radius: 0;
+  }
+}
+
 .hero-line {
   width: 60px;
   height: 1px;
@@ -2169,5 +2238,10 @@ code {
 
   .pqc-breath-line {
     animation: none;
+  }
+
+  .image-lightbox,
+  .image-lightbox img {
+    transition: none;
   }
 }

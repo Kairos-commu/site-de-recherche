@@ -245,6 +245,68 @@
   }
 
   // ─────────────────────────────────────────
+  // IMAGE ZOOM (lightbox)
+  // ─────────────────────────────────────────
+  // Clic sur une image d'article → overlay plein ecran.
+  // Fermeture : clic overlay, bouton ×, touche Escape.
+
+  function initImageZoom() {
+    var images = document.querySelectorAll('.hero-image, .content-wrapper img');
+    if (!images || images.length === 0) return;
+
+    function closeLightbox(overlay) {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      overlay.addEventListener('transitionend', function () {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, { once: true });
+    }
+
+    images.forEach(function (img) {
+      img.addEventListener('click', function () {
+        var overlay = document.createElement('div');
+        overlay.className = 'image-lightbox';
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'image-lightbox__close';
+        closeBtn.setAttribute('aria-label', 'Fermer');
+        closeBtn.textContent = '\u00D7';
+
+        var zoomedImg = document.createElement('img');
+        zoomedImg.src = img.src;
+        zoomedImg.alt = img.alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(zoomedImg);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(function () {
+          overlay.classList.add('active');
+        });
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === zoomedImg) {
+            closeLightbox(overlay);
+          }
+        });
+
+        closeBtn.addEventListener('click', function () {
+          closeLightbox(overlay);
+        });
+
+        function onEscape(e) {
+          if (e.key === 'Escape') {
+            closeLightbox(overlay);
+            document.removeEventListener('keydown', onEscape);
+          }
+        }
+        document.addEventListener('keydown', onEscape);
+      });
+    });
+  }
+
+  // ─────────────────────────────────────────
   // INITIALISATION
   // ─────────────────────────────────────────
 
@@ -256,4 +318,5 @@
   initScrollReveal();
   initDataVizAnimation();
   initHeroParallax();
+  initImageZoom();
 })();
