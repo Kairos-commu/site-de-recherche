@@ -1,0 +1,82 @@
+---
+layout: layouts/page.njk
+pageTitle: "Articles — Florent Klimacek"
+description: "Tous les articles de recherche sur les interactions humain-IA : analyses, études comparatives, explorations et documents fondateurs."
+ogTitle: "Articles — Florent Klimacek"
+ogDescription: "Tous les articles de recherche sur les interactions humain-IA."
+ogUrl: "/articles.html"
+canonical: "/articles.html"
+twitterCard: summary
+siteNavPrefix: "/index.html"
+activeNav: articles
+permalink: /articles.html
+jsonLdRaw: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Articles — Florent Klimacek",
+    "description": "Tous les articles de recherche sur les interactions humain-IA.",
+    "url": "https://mecanique-invisible.com/articles.html",
+    "author": {
+      "@type": "Person",
+      "name": "Florent Klimacek"
+    }
+  }
+  </script>
+---
+
+<!-- Hero -->
+<section class="hero hero--short">
+  <div class="container">
+    <p class="hero__label">Publications</p>
+    <h1 class="hero__title">Tous les <span>articles</span></h1>
+    <p class="hero__subtitle">
+      {{ collections.articles | length }} publications — recherche, analyses et explorations
+    </p>
+    <div class="hero__line"></div>
+  </div>
+</section>
+
+<!-- Filter + Articles -->
+<section class="section section--alt" id="archive">
+  <div class="container">
+
+    <!-- Filter bar -->
+    <div class="filter-bar" data-reveal="fade-up">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      {%- for label in collections.articles | uniqueLabels %}
+      <button class="filter-btn" data-filter="{{ label }}">{{ label }}</button>
+      {%- endfor %}
+    </div>
+
+    <!-- Article count -->
+    <p class="archive-count" id="archiveCount">
+      {{ collections.articles | length }} articles
+    </p>
+
+    <!-- Article grid -->
+    <div class="card-grid" id="archiveGrid" data-reveal="stagger">
+      {%- for article in collections.articles | reverse %}
+        {%- set filterLabel = article.data.card.tag if article.data.card.featured else article.data.card.label %}
+      <article class="card card--has-thumb" data-label="{{ filterLabel }}">
+        {% if article.data.heroImage %}
+        <div class="card__thumb">
+          <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="card__body">
+          <p class="card__label">{{ filterLabel }}</p>
+          <h3 class="card__title">{{ article.data.card.title }}</h3>
+          <p class="card__desc">{{ article.data.card.desc }}</p>
+          <p class="card__date">
+            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}
+          </p>
+          <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>

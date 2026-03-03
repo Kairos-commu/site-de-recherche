@@ -229,8 +229,7 @@ jsonLdRaw: |
         {%- endif %}
       {%- endfor %}
 
-      {%- for article in collections.articles | reverse %}
-        {%- if not article.data.card.featured %}
+      {%- for article in collections.articles | reverse | nonFeatured | limit(4) %}
       <article class="card card--has-thumb">
         {% if article.data.heroImage %}
         <div class="card__thumb">
@@ -245,8 +244,13 @@ jsonLdRaw: |
           <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
         </div>
       </article>
-        {%- endif %}
       {%- endfor %}
+    </div>
+
+    <div class="section__actions">
+      <a href="/articles.html" class="btn btn--secondary">
+        Voir tous les articles →
+      </a>
     </div>
   </div>
 </section>

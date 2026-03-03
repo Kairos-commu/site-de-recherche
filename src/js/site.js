@@ -307,6 +307,51 @@
   }
 
   // ─────────────────────────────────────────
+  // ARCHIVE FILTER (articles.html)
+  // ─────────────────────────────────────────
+  // Filtre les cartes par data-label.
+  // Boutons .filter-btn avec data-filter.
+
+  function initArchiveFilter() {
+    var filterBar = document.querySelector('.filter-bar');
+    if (!filterBar) return;
+
+    var buttons = filterBar.querySelectorAll('.filter-btn');
+    var grid = document.getElementById('archiveGrid');
+    var countEl = document.getElementById('archiveCount');
+    if (!grid || buttons.length === 0) return;
+
+    var cards = grid.querySelectorAll('.card[data-label]');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        // Update active button
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        // Filter cards
+        var visibleCount = 0;
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.getAttribute('data-label') === filter) {
+            card.classList.remove('card--hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('card--hidden');
+          }
+        });
+
+        // Update count
+        if (countEl) {
+          var label = visibleCount === 1 ? 'article' : 'articles';
+          countEl.textContent = visibleCount + ' ' + label;
+        }
+      });
+    });
+  }
+
+  // ─────────────────────────────────────────
   // INITIALISATION
   // ─────────────────────────────────────────
 
@@ -319,4 +364,5 @@
   initDataVizAnimation();
   initHeroParallax();
   initImageZoom();
+  initArchiveFilter();
 })();

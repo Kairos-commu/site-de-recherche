@@ -77,6 +77,28 @@ module.exports = function (eleventyConfig) {
     return String(num).padStart(2, "0");
   });
 
+  // Articles non-featured uniquement
+  eleventyConfig.addFilter("nonFeatured", function (articles) {
+    return articles.filter(function (a) { return !a.data.card.featured; });
+  });
+
+  // Limiter un tableau a N elements
+  eleventyConfig.addFilter("limit", function (arr, n) {
+    return arr.slice(0, n);
+  });
+
+  // Labels uniques pour le filtre archive
+  eleventyConfig.addFilter("uniqueLabels", function (articles) {
+    var labels = [];
+    articles.forEach(function (a) {
+      var label = a.data.card.featured ? a.data.card.tag : a.data.card.label;
+      if (label && labels.indexOf(label) === -1) {
+        labels.push(label);
+      }
+    });
+    return labels;
+  });
+
   // ─────────────────────────────────────────
   // CONFIGURATION
   // ─────────────────────────────────────────

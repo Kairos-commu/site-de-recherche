@@ -13,11 +13,11 @@
     <nav class="site-nav" id="siteNav">
       {%- if siteNavPrefix %}
       <a href="{{ siteNavPrefix }}#recherche">Recherche</a>
-      <a href="{{ siteNavPrefix }}#articles">Articles</a>
+      <a href="/articles.html"{% if activeNav == 'articles' %} class="active"{% endif %}>Articles</a>
       <a href="{{ siteNavPrefix }}#kairos"><span class="glitch-text">KAIROS</span></a>
       {%- else %}
       <a href="#recherche">Recherche</a>
-      <a href="#articles">Articles</a>
+      <a href="/articles.html">Articles</a>
       <a href="#kairos"><span class="glitch-text">KAIROS</span></a>
       {%- endif %}
       <a href="/manifeste.html"{% if activeNav == 'manifeste' %} class="active"{% endif %}>Manifeste</a>

@@ -1403,6 +1403,74 @@ a:hover {
 }
 
 /* ============================================
+   COMPONENTS — Archive Filter Bar
+   ============================================ */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.archive-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.card--hidden {
+  display: none;
+}
+
+[data-theme="dark"] .filter-btn {
+  border-color: var(--border-dark);
+}
+
+[data-theme="dark"] .filter-btn:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .filter-bar {
+    gap: var(--space-xs);
+  }
+
+  .filter-btn {
+    font-size: 0.65rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+/* ============================================
    COMPONENTS — Footer
    ============================================ */
 
