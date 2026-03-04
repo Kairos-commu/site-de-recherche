@@ -12,18 +12,18 @@
     img-src 'self' data:;
     connect-src 'self';
   " />
-  <title>KAIROS — Penser avec friction</title>
-  <meta name="description" content="KAIROS — Application Electron de cartographie cognitive assistée par IA. Jauge Oxygène, injection de friction, 6 providers LLM, 4 thèmes visuels.">
+  <title>KAIROS — Cartographie cognitive assistée par IA</title>
+  <meta name="description" content="KAIROS — Application Electron de cartographie cognitive. Transformez vos conversations IA en pensée structurée. 7 providers LLM, système Oxygène, injection de friction.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="KAIROS — Penser avec friction">
-  <meta property="og:description" content="KAIROS — Application Electron de cartographie cognitive assistée par IA. Jauge Oxygène, injection de friction, 6 providers LLM, 4 thèmes visuels.">
+  <meta property="og:title" content="KAIROS — Cartographie cognitive assistée par IA">
+  <meta property="og:description" content="KAIROS — Application Electron de cartographie cognitive. Transformez vos conversations IA en pensée structurée. 7 providers LLM, système Oxygène, injection de friction.">
   <meta property="og:url" content="https://mecanique-invisible.com/presentation_kairos.html">
   <meta property="og:site_name" content="Florent Klimacek">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:image" content="https://mecanique-invisible.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="KAIROS — Penser avec friction">
-  <meta name="twitter:description" content="KAIROS — Application Electron de cartographie cognitive assistée par IA. Jauge Oxygène, injection de friction, 6 providers LLM, 4 thèmes visuels.">
+  <meta name="twitter:title" content="KAIROS — Cartographie cognitive assistée par IA">
+  <meta name="twitter:description" content="KAIROS — Application Electron de cartographie cognitive. Transformez vos conversations IA en pensée structurée. 7 providers LLM, système Oxygène, injection de friction.">
   <meta name="twitter:image" content="https://mecanique-invisible.com/og-image.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="feed.xml">
@@ -40,7 +40,7 @@
     "@type": "SoftwareApplication",
     "name": "KAIROS",
     "applicationCategory": "EducationalApplication",
-    "description": "KAIROS — Application Electron de cartographie cognitive assistée par IA. Jauge Oxygène, injection de friction, 6 providers LLM, 4 thèmes visuels.",
+    "description": "KAIROS — Application Electron de cartographie cognitive assistée par IA. Système Oxygène, injection de friction, 7 providers LLM, 4 thèmes visuels.",
     "url": "https://mecanique-invisible.com/presentation_kairos.html",
     "operatingSystem": "Windows, macOS, Linux",
     "author": {
@@ -56,14 +56,14 @@
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html" style="color: var(--accent);">← Site</a></li>
+      <li><a href="index.html" style="color: var(--accent);">&#8592; Site</a></li>
       <li><a href="#hero">Accueil</a></li>
-      <li><a href="#genese">Genèse</a></li>
-      <li><a href="#probleme">Le Problème</a></li>
-      <li><a href="#solution">Les Modes</a></li>
-      <li><a href="#oxygen">Oxygène</a></li>
+      <li><a href="#probleme">Le Probl&egrave;me</a></li>
+      <li><a href="#comment">Le Canvas</a></li>
+      <li><a href="#oxygen">Oxyg&egrave;ne</a></li>
+      <li><a href="#cocreation">Co-cr&eacute;ation</a></li>
       <li><a href="#features">Features</a></li>
-      <li><a href="#demo">Démo</a></li>
+      <li><a href="#demo">D&eacute;mo</a></li>
       <li><a href="demo/" target="_blank" rel="noopener">Essayer</a></li>
       <li><a href="#usecases">Usages</a></li>
       <li><a href="#documentation">Docs</a></li>
@@ -74,121 +74,60 @@
   <section id="hero">
     <div class="container" style="text-align: center;">
       <h1 class="fade-in">KAIROS</h1>
-      <p class="subtitle fade-in delay-1">Penser avec friction</p>
+      <p class="subtitle fade-in delay-1">Cartographie cognitive assist&eacute;e par IA</p>
 
       <div class="hero-equation fade-in delay-2" style="display: inline-flex; align-items: center; gap: 1.5rem;">
         <span style="font-size: 2.5rem;">O<sub style="font-size: 1.5rem;">2</sub></span>
         <span style="font-size: 1.5rem; color: var(--text-muted);">=</span>
         <span style="display: flex; gap: 1rem; align-items: center;">
           <span style="color: var(--accent-green);">100</span>
-          <span style="color: var(--text-muted); font-size: 1.2rem;">→</span>
+          <span style="color: var(--text-muted); font-size: 1.2rem;">&rarr;</span>
           <span style="color: var(--accent-orange);">50</span>
-          <span style="color: var(--text-muted); font-size: 1.2rem;">→</span>
+          <span style="color: var(--text-muted); font-size: 1.2rem;">&rarr;</span>
           <span style="color: var(--accent-red);">0</span>
         </span>
       </div>
 
       <div class="hero-legend fade-in delay-3">
-        <span style="color: var(--accent-green);"><strong>>50</strong> Respire</span>
+        <span style="color: var(--accent-green);"><strong>&gt;50</strong> Respire</span>
         <span style="color: var(--accent-orange);"><strong>30-50</strong> Stagne</span>
         <span style="color: var(--accent-red);"><strong>&lt;30</strong> Asphyxie</span>
       </div>
 
       <p style="margin: 2rem auto; max-width: 650px;" class="fade-in delay-3">
-        Une application Electron de cartographie cognitive qui mesure la <strong>vitalité</strong> de votre pensée
-        en temps réel. Quand le canvas s'asphyxie, KAIROS injecte de la friction
-        pour relancer l'exploration.
+        Transformez vos conversations IA en pens&eacute;e structur&eacute;e. KAIROS remplace le chat lin&eacute;aire
+        par un canvas de vignettes connect&eacute;es, mesure la <strong>vitalit&eacute;</strong> de votre r&eacute;flexion
+        en temps r&eacute;el, et injecte de la friction quand les id&eacute;es tournent en rond.
       </p>
 
       <div class="hero-chips fade-in delay-3" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1rem;">
-        <span class="hero-chip">6 providers LLM</span>
-        <span class="hero-chip">4 thèmes visuels</span>
+        <span class="hero-chip">7 providers LLM</span>
+        <span class="hero-chip">4 th&egrave;mes visuels</span>
         <span class="hero-chip">Onglets multi-canvas</span>
         <span class="hero-chip">Fond ambiant dynamique</span>
-        <span class="hero-chip">369 tests unitaires</span>
+        <span class="hero-chip">597 tests unitaires</span>
       </div>
     </div>
     <div class="scroll-indicator"></div>
   </section>
 
-  <!-- Genèse -->
-  <section id="genese">
-    <div class="container">
-      <h2>La Genèse</h2>
-      <p>
-        KAIROS est né d'une observation personnelle : une compatibilité cognitive
-        avec les LLM rarement trouvée dans les échanges humains.
-      </p>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4>Observation initiale</h4>
-          <p>
-            Une sensation de <span class="highlight-text">"pensée en faisceau"</span> —
-            ce traitement non-linéaire et parallèle de l'information —
-            qui trouve un écho dans l'architecture même des LLM.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>Exploration théorique</h4>
-          <p>
-            Documentation systématique des <span class="highlight-text">"mécaniques invisibles"</span>
-            des conversations IA : effets miroir, asymétries informationnelles,
-            illusions de permission.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>Cadre de mesure</h4>
-          <p>
-            L'idée de mesurer la qualité conversationnelle donne naissance à
-            l'<span class="highlight-text">équation de résonance</span> :
-            R = (I/E) × f(O) × (A-L)
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>Sessions de friction</h4>
-          <p>
-            Après des sessions de friction cognitive intense,
-            <span class="highlight-text">recentrage de l'objectif</span> :
-            non plus prouver une "résonance" objective,
-            mais créer un outil pratique pour préserver les insights.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>Outil concret</h4>
-          <p>
-            KAIROS naît : un amplificateur de pensée qui détecte les boucles
-            et injecte de la <span class="highlight-text">friction productive</span>.
-          </p>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        Le fil conducteur : qu'est-ce qui fait qu'une conversation avec une IA "fonctionne" vraiment ?
-      </div>
-    </div>
-  </section>
-
   <!-- Le Problème -->
   <section id="probleme">
     <div class="container">
-      <h2>Le Problème</h2>
+      <h2>Le Probl&egrave;me</h2>
       <p>
-        Quand on interagit avec un LLM, une dynamique silencieuse s'installe :
-        l'accord mutuel. Le LLM valide, l'humain acquiesce, et la pensée tourne en rond.
+        Quand on r&eacute;fl&eacute;chit avec un LLM, une dynamique silencieuse s'installe :
+        l'accord mutuel. Le mod&egrave;le valide, vous acquiescez, et la pens&eacute;e s'enferme
+        dans une boucle de confort.
       </p>
 
       <div class="problem-visual">
         <div class="chat-bubble chat-human">
-          "Je pense que la conscience émerge du cerveau"
+          "Je pense que la conscience &eacute;merge du cerveau"
         </div>
-        <div class="loop-arrow">⟳</div>
+        <div class="loop-arrow">&#x27F3;</div>
         <div class="chat-bubble chat-llm">
-          "Oui, c'est une perspective intéressante. La conscience comme propriété émergente..."
+          "Oui, c'est une perspective int&eacute;ressante. La conscience comme propri&eacute;t&eacute; &eacute;mergente..."
         </div>
       </div>
 
@@ -196,39 +135,41 @@
         <div class="chat-bubble chat-human">
           "Exactement !"
         </div>
-        <div class="loop-arrow">⟳</div>
+        <div class="loop-arrow">&#x27F3;</div>
         <div class="chat-bubble chat-llm">
-          "Tout à fait, cette vision s'aligne avec..."
+          "Tout &agrave; fait, cette vision s'aligne avec..."
         </div>
       </div>
 
       <div class="quote-block">
-        "Trop d'alignement annule l'entre. Sans friction, pas de bifurcation."
+        Six &eacute;changes plus tard, aucune id&eacute;e nouvelle. Reformulation polie, validation mutuelle,
+        z&eacute;ro bifurcation.
       </div>
 
       <p>
-        La friction n'est pas du bruit à réduire. C'est le <strong>moteur de l'émergence</strong>.
-        Un LLM qui valide en boucle est rigide. Un LLM qui accueille la contradiction sans s'effondrer est souple.
+        La friction n'est pas du bruit &agrave; r&eacute;duire. C'est le <strong>moteur de l'&eacute;mergence</strong>.
+        Quand vos id&eacute;es se ressemblent trop, KAIROS introduit une question qui d&eacute;range &mdash;
+        pour relancer la pens&eacute;e.
       </p>
 
       <!-- Avant / Après -->
-      <h3 style="margin-top: 4rem; text-align: center; color: var(--text-primary);">Avant / Après</h3>
+      <h3 style="margin-top: 4rem; text-align: center; color: var(--text-primary);">Avant / Apr&egrave;s</h3>
 
       <div class="comparison-container">
         <div class="comparison-box before">
-          <div class="comparison-header">Sans KAIROS</div>
+          <div class="comparison-header">Chat classique</div>
           <div class="comparison-content">
             <div class="mini-chat">
-              <div class="mini-chat-human">La conscience émerge du cerveau</div>
+              <div class="mini-chat-human">La conscience &eacute;merge du cerveau</div>
               <div class="mini-chat-llm">Oui, c'est une perspective fascinante...</div>
               <div class="mini-chat-human">Exactement !</div>
-              <div class="mini-chat-llm">Tout à fait, cette vision s'aligne...</div>
-              <div class="mini-chat-human">C'est ça !</div>
-              <div class="mini-chat-llm">Précisément, on peut dire que...</div>
+              <div class="mini-chat-llm">Tout &agrave; fait, cette vision s'aligne...</div>
+              <div class="mini-chat-human">C'est &ccedil;a !</div>
+              <div class="mini-chat-llm">Pr&eacute;cis&eacute;ment, on peut dire que...</div>
             </div>
             <div class="comparison-result">
-              ⟳ Boucle de validation<br>
-              <small>Aucune idée nouvelle après 6 échanges</small>
+              &#x27F3; Boucle de validation<br>
+              <small>Aucune id&eacute;e nouvelle apr&egrave;s 6 &eacute;changes</small>
             </div>
           </div>
         </div>
@@ -237,15 +178,15 @@
           <div class="comparison-header">Avec KAIROS</div>
           <div class="comparison-content">
             <div class="mini-chat">
-              <div class="mini-chat-human">La conscience émerge du cerveau</div>
+              <div class="mini-chat-human">La conscience &eacute;merge du cerveau</div>
               <div class="mini-chat-llm">Oui, c'est une perspective fascinante...</div>
               <div class="mini-chat-human">Exactement !</div>
-              <div class="mini-chat-friction">O₂ &lt; 30 — injection de friction</div>
-              <div class="mini-chat-llm">[FRICTION] Et si le cerveau n'était qu'un récepteur plutôt qu'un générateur ?</div>
-              <div class="mini-chat-human">Hmm... intéressant. Ça changerait quoi ?</div>
+              <div class="mini-chat-friction">O&#8322; &lt; 30 &mdash; injection de friction</div>
+              <div class="mini-chat-llm">[FRICTION] Et si le cerveau n'&eacute;tait qu'un r&eacute;cepteur plut&ocirc;t qu'un g&eacute;n&eacute;rateur ?</div>
+              <div class="mini-chat-human">Hmm... int&eacute;ressant. &Ccedil;a changerait quoi ?</div>
             </div>
             <div class="comparison-result">
-              ↗ Bifurcation créée<br>
+              &nearr; Bifurcation cr&eacute;&eacute;e<br>
               <small>Nouvelle piste d'exploration</small>
             </div>
           </div>
@@ -254,277 +195,125 @@
     </div>
   </section>
 
-  <!-- Solution / Modes -->
-  <section id="solution">
+  <!-- Comment KAIROS répond -->
+  <section id="comment">
     <div class="container">
-      <h2>Deux Modes, Deux Philosophies</h2>
+      <h2>Le Canvas remplace le Chat</h2>
       <p class="section-intro">
-        KAIROS ne propose pas un outil unique mais <strong>deux postures radicalement différentes</strong>
-        face à l'IA — parce que penser n'a pas toujours le même besoin.
+        Au lieu d'un fil de messages qui d&eacute;file, KAIROS pose vos id&eacute;es sur un canvas spatial.
+        Chaque id&eacute;e est une <strong>vignette</strong>, chaque lien une <strong>connexion</strong>.
+        Le r&eacute;sultat est un graphe de pens&eacute;e que vous pouvez explorer, r&eacute;organiser et structurer.
       </p>
 
-      <div class="modes-container">
-        <!-- Mode Autonome -->
-        <div class="mode-card autonome">
-          <div class="mode-header">
-            <div class="mode-icon-badge">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#f59e0b" stroke-width="2" fill="none"/>
-                <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Mode Autonome</h3>
-            <p class="mode-tagline">L'IA comme compagnon de pensée.<br>Elle accompagne sans diriger.</p>
-          </div>
-          <div class="mode-content">
-            <div class="mode-philosophy">
-              <p>
-                Avant d'entrer dans le canvas, KAIROS pose une question simple :
-                <em>"Quelle est ton intention ?"</em> Ce sas n'est pas une formalité —
-                c'est le premier acte de friction. Nommer ce qu'on cherche, c'est déjà
-                commencer à penser.
-              </p>
-            </div>
-
-            <ul class="mode-features">
-              <li>
-                <span class="feature-icon">🚪</span>
-                <div>
-                  <strong>Gate d'intention</strong>
-                  <span>Déclarer sa direction avant d'explorer</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">🖐️</span>
-                <div>
-                  <strong>Construction manuelle</strong>
-                  <span>Chaque vignette est créée par vous</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">❓</span>
-                <div>
-                  <strong>Questions plutôt que réponses</strong>
-                  <span>Le LLM interroge, il ne conclut pas</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">🌊</span>
-                <div>
-                  <strong>Dialogue non-directif</strong>
-                  <span>L'espace reste ouvert, sans suggestions</span>
-                </div>
-              </li>
-            </ul>
-
-            <p class="mode-ideal">
-              <strong>Idéal pour :</strong> exploration profonde, émergence d'idées,
-              moments où on ne sait pas encore ce qu'on cherche.
-            </p>
-
-            <!-- Mockup Mode Autonome -->
-            <div class="intention-gate">
-              <h4>Quelle est ton intention ?</h4>
-              <input type="text" class="intention-input" placeholder="Comprendre pourquoi je bloque sur ce projet..." readonly>
-              <button class="intention-btn">Entrer dans le canvas →</button>
-              <p class="gate-hint">Ce sas force à nommer ce qu'on cherche — premier acte de friction</p>
-            </div>
-
-            <div class="app-mockup" style="margin-top: 1rem;">
-              <div class="mockup-toolbar">
-                <span class="mockup-btn">🏠</span>
-                <span class="mockup-btn">+ Vignette</span>
-                <span class="mockup-btn">💬 Dialogue</span>
-              </div>
-              <div class="mockup-body">
-                <div class="mockup-canvas autonome-canvas">
-                  <svg class="connections-svg">
-                    <line x1="80" y1="60" x2="180" y2="100"/>
-                    <line x1="180" y1="100" x2="140" y2="180"/>
-                  </svg>
-                  <div class="vignette" style="top: 30px; left: 40px;">
-                    Le blocage vient de la peur
-                    <span class="vignette-tag">#intuition</span>
-                  </div>
-                  <div class="vignette" style="top: 80px; left: 150px;">
-                    Peur de quoi exactement ?
-                  </div>
-                  <div class="vignette" style="top: 160px; left: 100px;">
-                    Peur de réussir ? (bizarre)
-                  </div>
-                </div>
-                <div class="mockup-chat">
-                  <div class="chat-bubble user">Le LLM ne propose pas de réponses, il pose des questions</div>
-                  <div class="chat-bubble ai">Qu'est-ce qui te fait dire que c'est la peur ?<br>Y a-t-il eu un moment précis où ça a commencé ?</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Mockup unique du mode assisté -->
+      <div class="app-mockup" style="margin-top: 2rem;">
+        <div class="mockup-tab-bar">
+          <span class="mockup-tab active">Conscience IA</span>
+          <span class="mockup-tab">&Eacute;thique tech</span>
+          <span class="mockup-tab add">+</span>
         </div>
-
-        <!-- Mode Assisté -->
-        <div class="mode-card assiste">
-          <div class="mode-header">
-            <div class="mode-icon-badge">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="2"/>
-                <circle cx="12" cy="12" r="4" fill="#ef4444"/>
-                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+        <div class="mockup-toolbar">
+          <span class="mockup-btn">&#127968;</span>
+          <span class="mockup-btn">Tous</span>
+          <span class="mockup-btn">&#9675;</span>
+          <span class="mockup-btn">&#127919;</span>
+          <span class="mockup-btn">&#128269;</span>
+          <span class="mockup-btn active-badge">&ctdot;</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-canvas">
+            <svg class="connections-svg">
+              <line x1="70" y1="50" x2="160" y2="80"/>
+              <line x1="160" y1="80" x2="100" y2="150"/>
+              <line x1="100" y1="150" x2="180" y2="180"/>
+            </svg>
+            <div class="vignette selected" style="top: 25px; left: 30px;">
+              Conscience = &eacute;mergence
+              <span class="vignette-tag">#hypoth&egrave;se</span>
             </div>
-            <h3>Mode Assisté</h3>
-            <p class="mode-tagline">L'IA comme assistant méthodologique.<br>Elle analyse, suggère et structure avec vous.</p>
+            <div class="vignette" style="top: 60px; left: 130px;">
+              Le cerveau g&eacute;n&egrave;re tout
+            </div>
+            <div class="vignette" style="top: 130px; left: 60px;">
+              Mais quid du v&eacute;cu ?
+            </div>
+            <div class="vignette friction" style="top: 160px; left: 150px;">
+              Et si le cerveau ne suffisait pas ?
+            </div>
           </div>
-          <div class="mode-content">
-            <div class="mode-philosophy">
-              <p>
-                Le Mode Assisté ne pense pas à votre place — il <em>structure</em> votre pensée.
-                Des opérations explicites transforment le vague en concret.
-                La jauge Oxygène détecte quand votre pensée converge trop et injecte de la friction.
-              </p>
+          <div class="mockup-sidebar">
+            <div class="sidebar-section">
+              <h4>Op&eacute;rations</h4>
+              <button class="sidebar-btn primary">&#9654; D&Eacute;VELOPPER</button>
+              <button class="sidebar-btn">&harr; RELIER</button>
+              <button class="sidebar-btn">&loz; SYNTH&Eacute;TISER</button>
+              <button class="sidebar-btn">&#9672; PERSPECTIVES</button>
             </div>
-
-            <ul class="mode-features">
-              <li>
-                <span class="feature-icon">▶</span>
-                <div>
-                  <strong>DÉVELOPPER, RELIER, SYNTHÉTISER</strong>
-                  <span>3 opérations structurées. DÉVELOPPER crée vignettes ET connexions.</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">🫁</span>
-                <div>
-                  <strong>Jauge Oxygène — vitalité cognitive</strong>
-                  <span>Score 0-100 en temps réel, 5 signaux, 3 zones</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">📊</span>
-                <div>
-                  <strong>Diagnostic structurel du graphe</strong>
-                  <span>Détecte dominances, ponts, redondances et trous</span>
-                </div>
-              </li>
-              <li>
-                <span class="feature-icon">🗂️</span>
-                <div>
-                  <strong>Onglets multi-canvas</strong>
-                  <span>Naviguer entre graphes comme des onglets. Config LLM par canvas.</span>
-                </div>
-              </li>
-            </ul>
-
-            <p class="mode-ideal">
-              <strong>Idéal pour :</strong> analyse structurée, cartographie de problèmes complexes,
-              synthèse de matériaux, éviter les boucles de validation.
-            </p>
-
-            <!-- Mockup Mode Assisté -->
-            <div class="app-mockup">
-              <div class="mockup-tab-bar">
-                <span class="mockup-tab active">Conscience IA</span>
-                <span class="mockup-tab">Éthique tech</span>
-                <span class="mockup-tab add">+</span>
+            <div class="mockup-webview">
+              <div class="webview-header">
+                <span class="provider">Claude</span>
+                <span class="friction-badge">O&#8322; &lt; 30 &mdash; friction</span>
               </div>
-              <div class="mockup-toolbar">
-                <span class="mockup-btn">🏠</span>
-                <span class="mockup-btn">Tous</span>
-                <span class="mockup-btn">○</span>
-                <span class="mockup-btn">🎯</span>
-                <span class="mockup-btn">🔍</span>
-                <span class="mockup-btn active-badge">⋯</span>
-              </div>
-              <div class="mockup-body">
-                <div class="mockup-canvas">
-                  <svg class="connections-svg">
-                    <line x1="70" y1="50" x2="160" y2="80"/>
-                    <line x1="160" y1="80" x2="100" y2="150"/>
-                    <line x1="100" y1="150" x2="180" y2="180"/>
-                  </svg>
-                  <div class="vignette selected" style="top: 25px; left: 30px;">
-                    Conscience = émergence
-                    <span class="vignette-tag">#hypothèse</span>
-                  </div>
-                  <div class="vignette" style="top: 60px; left: 130px;">
-                    Le cerveau génère tout
-                  </div>
-                  <div class="vignette" style="top: 130px; left: 60px;">
-                    Mais quid du vécu ?
-                  </div>
-                  <div class="vignette friction" style="top: 160px; left: 150px;">
-                    Et si le cerveau ne suffisait pas ?
-                  </div>
-                </div>
-                <div class="mockup-sidebar">
-                  <div class="sidebar-section">
-                    <h4>Opérations</h4>
-                    <button class="sidebar-btn primary">▶ DÉVELOPPER</button>
-                    <button class="sidebar-btn">↔ RELIER</button>
-                    <button class="sidebar-btn">◇ SYNTHÉTISER</button>
-                  </div>
-                  <div class="mockup-webview">
-                    <div class="webview-header">
-                      <span class="provider">Claude</span>
-                      <span class="friction-badge">O₂ &lt; 30 — friction</span>
-                    </div>
-                    <div class="webview-content">
-                      <strong>[FRICTION]</strong> Tu affirmes que "le cerveau génère tout" depuis
-                      3 tours. Mais qu'est-ce qui distingue cette position du
-                      réductionnisme classique que tu critiquais plus tôt ?
-                    </div>
-                  </div>
-                </div>
+              <div class="webview-content">
+                <strong>[FRICTION]</strong> Tu affirmes que "le cerveau g&eacute;n&egrave;re tout" depuis
+                3 tours. Mais qu'est-ce qui distingue cette position du
+                r&eacute;ductionnisme classique ?
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Comparaison directe -->
-      <div class="modes-comparison">
-        <h3>En résumé</h3>
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Mode Autonome</th>
-              <th>Mode Assisté</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Posture du LLM</td>
-              <td>Compagnon — accompagne</td>
-              <td>Assistant — structure</td>
-            </tr>
-            <tr>
-              <td>Qui mène ?</td>
-              <td>Vous menez, le LLM suit</td>
-              <td>Collaboration guidée</td>
-            </tr>
-            <tr>
-              <td>Vignettes</td>
-              <td>Création manuelle uniquement</td>
-              <td>Suggestions + création manuelle</td>
-            </tr>
-            <tr>
-              <td>Style de dialogue</td>
-              <td>Questions ouvertes, non-directif</td>
-              <td>Opérations explicites (DÉVELOPPER, RELIER, SYNTHÉTISER)</td>
-            </tr>
-            <tr>
-              <td>Vitalité cognitive</td>
-              <td>Tracée mais invisible</td>
-              <td>Jauge Oxygène (5 signaux, score 0-100)</td>
-            </tr>
-            <tr>
-              <td>Cas d'usage</td>
-              <td>Exploration, émergence, introspection</td>
-              <td>Analyse, cartographie, synthèse</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 4 opérations -->
+      <h3 style="margin-top: 3rem; text-align: center; color: var(--text-primary);">4 op&eacute;rations, pas de menu cach&eacute;</h3>
+
+      <div class="mechanisms-grid" style="margin-top: 1.5rem;">
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#9654;</div>
+          <h3>D&Eacute;VELOPPER</h3>
+          <p>
+            G&eacute;n&egrave;re de nouvelles vignettes connect&eacute;es &agrave; partir du graphe existant.
+            Deux sous-modes automatiques : <strong>approfondir</strong> quand le graphe est ouvert,
+            <strong>diverger</strong> quand il converge trop.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            G&eacute;n&eacute;ration d&eacute;gressive : 3 vignettes au d&eacute;but, puis 2, puis 1 seule cibl&eacute;e
+            quand le canvas m&ucirc;rit. L'IA s'efface progressivement.
+          </p>
+        </div>
+
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&harr;</div>
+          <h3>RELIER</h3>
+          <p>
+            Connecte les vignettes orphelines entre elles. Pas de nouveau contenu &mdash;
+            uniquement des connexions. Tisse la structure du graphe.
+          </p>
+        </div>
+
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&loz;</div>
+          <h3>SYNTH&Eacute;TISER</h3>
+          <p>
+            Lecture structur&eacute;e du graphe en 3 blocs :
+            <strong>fil rouge</strong> (narrative g&eacute;n&eacute;rale),
+            <strong>angles morts</strong> (zones sous-explor&eacute;es),
+            <strong>question structurelle</strong> (la question que le graphe pose sans la formuler).
+          </p>
+        </div>
+
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#9672;</div>
+          <h3>PERSPECTIVES</h3>
+          <p>
+            Analyse de convergence ind&eacute;pendante. 3 p&eacute;rim&egrave;tres possibles :
+            graphe actif, synth&egrave;se archiv&eacute;e, ou s&eacute;lection de vignettes.
+            Produit un fil rouge, des leviers d'action et les tensions d&eacute;tect&eacute;es.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            Export en document HTML &eacute;ditorial (design glassmorphism, arcs SVG, typographie soign&eacute;e).
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -532,71 +321,145 @@
   <!-- Système Oxygène -->
   <section id="oxygen">
     <div class="container">
-      <h2>Le Système Oxygène</h2>
+      <h2>Le Syst&egrave;me Oxyg&egrave;ne</h2>
       <p>
-        KAIROS mesure la <strong>vitalité cognitive</strong> de votre canvas en temps réel.
-        Un score unique, 5 signaux indépendants, et une intervention automatique
-        quand la pensée s'asphyxie.
+        KAIROS mesure la <strong>vitalit&eacute; cognitive</strong> de votre canvas en temps r&eacute;el.
+        Un score de 0 &agrave; 100, un triangle radar &agrave; 3 axes, et une intervention automatique
+        quand la pens&eacute;e s'asphyxie.
       </p>
 
-      <div class="o2-formula-block" style="text-align: center; margin: 2rem 0;">
-        <code class="o2-formula">score = clamp(0, 100, 50 + structure + écho + saturation + diversité + friction)</code>
+      <!-- Triangle radar -->
+      <div style="text-align: center; margin: 3rem 0 2rem;">
+        <div class="equation-diagram">
+          <div class="var-box intention">
+            <div class="var-letter">&psi;</div>
+            <div class="var-name">Divergence</div>
+            <div class="var-desc">Ouverture du graphe &mdash; potentiel d'exploration</div>
+          </div>
+
+          <div class="var-box friction">
+            <div class="var-letter">C</div>
+            <div class="var-name">Coh&eacute;rence</div>
+            <div class="var-desc">Profondeur des cha&icirc;nes de raisonnement</div>
+          </div>
+
+          <div class="var-box linearisation">
+            <div class="var-letter">S</div>
+            <div class="var-name">Souverainet&eacute;</div>
+            <div class="var-desc">Proportion de pens&eacute;e propre vs d&eacute;l&eacute;gu&eacute;e</div>
+          </div>
+        </div>
       </div>
 
       <div class="mechanisms-grid">
-        <!-- Jauge O₂ -->
+        <!-- Signaux structurels -->
         <div class="mechanism-card">
-          <div class="mechanism-icon">🫁</div>
-          <h3>5 signaux indépendants</h3>
+          <div class="mechanism-icon">&#129693;</div>
+          <h3>Signaux structurels</h3>
           <p>
-            Chaque signal contribue au score final par addition/soustraction autour du point neutre 50.
+            Le score se calcule autour d'un point neutre &agrave; 50, modul&eacute;
+            par 4 signaux et 4 grandeurs topologiques.
           </p>
           <ul class="signal-list">
-            <li><strong>Structure</strong> — ratio connexions/nœuds, seuil sous-connecté 0.5, îlots déconnectés (-5 par composante)</li>
-            <li><strong>Écho</strong> — similarité Jaccard &gt;0.35 entre paires de vignettes (malus -20)</li>
-            <li><strong>Saturation tags</strong> — >50% des paires connectées partagent un tag (malus -10 à -20)</li>
-            <li><strong>Diversité tags</strong> — ≥3 nouveaux tags = +20, stagnation = -15</li>
-            <li><strong>Friction</strong> — friction acceptée récemment = +15</li>
+            <li><strong>Structure</strong> &mdash; ratio connexions/n&oelig;uds, d&eacute;tection d'&icirc;lots d&eacute;connect&eacute;s</li>
+            <li><strong>Diversit&eacute; des tags</strong> &mdash; &ge;3 nouveaux tags = bonus, stagnation = malus</li>
+            <li><strong>Friction</strong> &mdash; friction accept&eacute;e r&eacute;cemment = bonus</li>
+            <li><strong>Convergence</strong> &mdash; bonus si des perspectives ont &eacute;t&eacute; g&eacute;n&eacute;r&eacute;es</li>
           </ul>
         </div>
 
-        <!-- Zones + Injection -->
+        <!-- Triangle + Zones -->
         <div class="mechanism-card">
-          <div class="mechanism-icon">💥</div>
+          <div class="mechanism-icon">&#9650;</div>
+          <h3>Triangle radar</h3>
+          <p>
+            3 axes ind&eacute;pendants de 0 &agrave; 100 qui mesurent l'&eacute;quilibre de votre pens&eacute;e.
+          </p>
+          <ul class="signal-list">
+            <li><strong>Divergence (&psi;)</strong> &mdash; ratio de n&oelig;uds sans cha&icirc;nage sortant</li>
+            <li><strong>Coh&eacute;rence</strong> &mdash; plus longue cha&icirc;ne d'implication dans le graphe</li>
+            <li><strong>Souverainet&eacute;</strong> &mdash; 50% n&oelig;uds manuels + 25% connexions manuelles + 25% n&oelig;uds LLM &eacute;dit&eacute;s</li>
+          </ul>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            La posture cognitive choisie (Accompagner, Nommer, Provoquer) redistribue les poids du triangle.
+          </p>
+        </div>
+
+        <!-- Zones + Diagnostic -->
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#128161;</div>
           <h3>3 zones, 1 action</h3>
           <p>
-            Le score détermine le comportement du système et le mode de suggestion.
+            Le score d&eacute;termine le comportement du syst&egrave;me.
           </p>
           <ul class="signal-list">
-            <li><span style="color: var(--accent-green);"><strong>Respire (&gt;50)</strong></span> — pensée diversifiée, exploration libre</li>
-            <li><span style="color: var(--accent-orange);"><strong>Stagne (30-50)</strong></span> — force le mode <em>diverger</em> dans les suggestions</li>
-            <li><span style="color: var(--accent-red);"><strong>Asphyxie (&lt;30)</strong></span> — injection automatique d'une friction au LLM</li>
+            <li><span style="color: var(--accent-green);"><strong>Respire (&gt;50)</strong></span> &mdash; exploration libre, pas d'intervention</li>
+            <li><span style="color: var(--accent-orange);"><strong>Stagne (30-50)</strong></span> &mdash; force le mode <em>diverger</em></li>
+            <li><span style="color: var(--accent-red);"><strong>Asphyxie (&lt;30)</strong></span> &mdash; injection automatique d'une friction</li>
           </ul>
           <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
-            La friction n'est pas une punition — c'est une contradiction productive
-            qui brise la convergence et ouvre de nouvelles pistes.
+            <strong>Diagnostic contenu</strong> : &eacute;cho s&eacute;mantique (redondances entre vignettes via thesaurus 42K entr&eacute;es),
+            saturation et concentration de tags. Ce diagnostic est informatif &mdash; il ne modifie pas le score,
+            mais peut le plafonner : un graphe redondant ne peut pas afficher 95.
           </p>
-        </div>
-
-        <!-- Diagnostic structurel -->
-        <div class="mechanism-card">
-          <div class="mechanism-icon">📊</div>
-          <h3>Diagnostic structurel</h3>
-          <p>
-            En plus du score O₂, KAIROS analyse la topologie du graphe pour identifier les déséquilibres.
-          </p>
-          <ul class="signal-list">
-            <li><strong>Dominance</strong> — vignette trop centrale qui capte toutes les connexions</li>
-            <li><strong>Ponts</strong> — connexions critiques dont la suppression isolerait des zones</li>
-            <li><strong>Redondances</strong> — vignettes qui disent la même chose</li>
-            <li><strong>Trous</strong> — zones sous-explorées du graphe</li>
-          </ul>
         </div>
       </div>
 
       <div class="quote-block" style="margin-top: 2rem;">
-        Modèle <strong>snapshot pur</strong> : le score reflète l'état actuel du canvas,
-        pas une accumulation historique. Chaque action repart du même calcul.
+        Mod&egrave;le <strong>snapshot pur</strong> : le score refl&egrave;te l'&eacute;tat actuel du canvas,
+        pas une accumulation historique. Chaque action repart du m&ecirc;me calcul.
+      </div>
+    </div>
+  </section>
+
+  <!-- Co-création -->
+  <section id="cocreation">
+    <div class="container">
+      <h2>Co-cr&eacute;ation</h2>
+      <p>
+        L'IA construit sur vos id&eacute;es, pas l'inverse. KAIROS trace l'origine de chaque &eacute;l&eacute;ment
+        et mesure votre appropriation du graphe.
+      </p>
+
+      <div class="mechanisms-grid" style="margin-top: 2rem;">
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#9997;</div>
+          <h3>Tra&ccedil;abilit&eacute; des origines</h3>
+          <p>
+            Chaque vignette porte son origine : <strong>user</strong>, <strong>LLM</strong>,
+            <strong>friction</strong>, ou <strong>capture</strong>.
+            Les vignettes cr&eacute;&eacute;es manuellement sont marqu&eacute;es [USER] dans le contexte LLM &mdash;
+            l'IA construit dessus au lieu de les reformuler.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            Les vignettes cr&eacute;&eacute;es depuis le dernier cycle LLM sont marqu&eacute;es [USER&middot;NEW]
+            et deviennent prioritaires dans la prochaine g&eacute;n&eacute;ration.
+          </p>
+        </div>
+
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#9878;</div>
+          <h3>Souverainet&eacute; mesur&eacute;e</h3>
+          <p>
+            L'axe Souverainet&eacute; du triangle radar quantifie votre appropriation du graphe :
+            n&oelig;uds cr&eacute;&eacute;s manuellement, connexions trac&eacute;es par vous, et vignettes LLM
+            que vous avez &eacute;dit&eacute;es pour les faire v&ocirc;tres.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            Un graphe enti&egrave;rement g&eacute;n&eacute;r&eacute; par l'IA aura une souverainet&eacute; proche de z&eacute;ro.
+            KAIROS le signale, sans l'interdire.
+          </p>
+        </div>
+
+        <div class="mechanism-card">
+          <div class="mechanism-icon">&#128261;</div>
+          <h3>G&eacute;n&eacute;ration d&eacute;gressive</h3>
+          <p>
+            Plus le canvas m&ucirc;rit, moins l'IA g&eacute;n&egrave;re. Au d&eacute;but, D&Eacute;VELOPPER
+            propose 3 vignettes. Puis 2. Puis 1 seule, cibl&eacute;e.
+            L'IA s'efface quand la pens&eacute;e se structure.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -606,79 +469,79 @@
     <div class="container">
       <h2>Ce que KAIROS fait aujourd'hui</h2>
       <p>
-        ~29 000 lignes de TypeScript, 369 tests unitaires, pas de framework.
-        Tout ce qui suit est implémenté et fonctionnel.
+        ~29 000 lignes de TypeScript, 597 tests unitaires, pas de framework.
+        Tout ce qui suit est impl&eacute;ment&eacute; et fonctionnel.
       </p>
 
-      <h3 class="features-group-title">Canvas & Visuel</h3>
+      <h3 class="features-group-title">Canvas &amp; Visuel</h3>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-card-icon">🎨</div>
-          <h4>4 thèmes visuels</h4>
-          <p>Obsidian (dark), Porcelain (light taupe), Aurora (dark blue), Kraft (warm sépia avec police Lora).</p>
+          <div class="feature-card-icon">&#127912;</div>
+          <h4>4 th&egrave;mes visuels</h4>
+          <p>Obsidian (dark, d&eacute;faut), Porcelain (light taupe), Aurora (dark blue), Kraft (warm s&eacute;pia).</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">〰️</div>
+          <div class="feature-card-icon">&#12316;&#65039;</div>
           <h4>Connexions SVG organiques</h4>
-          <p>Courbes Bézier avec glow pulsé et particules SMIL animées. Implies (vert, directionnel) et résonance (ambre, bidirectionnel).</p>
+          <p>Courbes B&eacute;zier avec glow puls&eacute; et particules SMIL anim&eacute;es. Implies (vert, directionnel) et r&eacute;sonance (ambre, bidirectionnel).</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">🔮</div>
+          <div class="feature-card-icon">&#128302;</div>
           <h4>Vue profondeur 2.5D</h4>
-          <p>4 couches de profondeur (scale, opacité, blur), parallaxe souris, micro-rotation par vignette.</p>
+          <p>4 couches de profondeur (scale, opacit&eacute;, blur), parallaxe souris, micro-rotation par vignette.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">✨</div>
+          <div class="feature-card-icon">&#10024;</div>
           <h4>Fond ambiant dynamique</h4>
-          <p>Géométrie sacrée (5 motifs par canvas), flow field, effets réactifs (ripple, implosion, flash LLM). Palette adaptée au thème et à l'heure du jour.</p>
+          <p>G&eacute;om&eacute;trie sacr&eacute;e (5 motifs), flow field, audio-r&eacute;actif. Palette adapt&eacute;e au th&egrave;me et &agrave; l'heure du jour.</p>
         </div>
       </div>
 
       <h3 class="features-group-title">Intelligence</h3>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-card-icon">🤖</div>
-          <h4>6 providers LLM</h4>
-          <p>Claude, ChatGPT, DeepSeek, Mistral, Groq (cloud) + Ollama (local). Config par cartes radio, clé API inline, dropdown modèles.</p>
+          <div class="feature-card-icon">&#129302;</div>
+          <h4>7 providers LLM</h4>
+          <p>Claude (Anthropic), ChatGPT (OpenAI), DeepSeek, Mistral, Groq, Ollama (local), Grok. Config par cartes radio, cl&eacute; API inline, dropdown mod&egrave;les.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">📋</div>
-          <h4>Synthèses structurées</h4>
-          <p>3 blocs : fil rouge (narrative), angles morts (sous-exploré), question structurelle. Vignettes archivées et repositionnées.</p>
+          <div class="feature-card-icon">&#128203;</div>
+          <h4>Synth&egrave;ses structur&eacute;es</h4>
+          <p>3 blocs : fil rouge (narrative), angles morts (sous-explor&eacute;), question structurelle. Vignettes archiv&eacute;es et repositionn&eacute;es.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">🎯</div>
+          <div class="feature-card-icon">&#127919;</div>
           <h4>Import intelligent</h4>
-          <p>Les vignettes générées par DÉVELOPPER sont positionnées près de leur cible de connexion, pas empilées en bas du canvas.</p>
+          <p>Les vignettes g&eacute;n&eacute;r&eacute;es par D&Eacute;VELOPPER sont positionn&eacute;es pr&egrave;s de leur cible de connexion, pas empil&eacute;es en bas du canvas.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">📜</div>
+          <div class="feature-card-icon">&#128220;</div>
           <h4>Prompt log visuel</h4>
-          <p>Historique complet des interactions LLM. Parsing visuel avec indicateurs d'import par vignette et connexion.</p>
+          <p>Historique de chaque interaction LLM. S&eacute;paration prompt syst&egrave;me / prompt utilisateur. Indicateurs d'import par vignette (&check; accept&eacute; / &ndash; ignor&eacute;).</p>
         </div>
       </div>
 
       <h3 class="features-group-title">Espace de travail</h3>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-card-icon">🗂️</div>
+          <div class="feature-card-icon">&#128450;&#65039;</div>
           <h4>Onglets multi-canvas</h4>
-          <p>Tab bar navigateur (Ctrl+T / Ctrl+W). Chaque canvas a son propre provider et modèle LLM. Badge provider sur chaque onglet.</p>
+          <p>Tab bar navigateur (Ctrl+T / Ctrl+W). Chaque canvas a son propre provider et mod&egrave;le LLM. Badge provider sur chaque onglet.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">💬</div>
-          <h4>Companion chat</h4>
-          <p>Fenêtre Electron secondaire pour explorer un sujet en chat LLM libre. Compare avec l'exploration structurée du canvas.</p>
+          <div class="feature-card-icon">&#127925;</div>
+          <h4>Lecteur audio d'ambiance</h4>
+          <p>Visualisation audio int&eacute;gr&eacute;e + mode radio web (7 stations). Fond ambiant audio-r&eacute;actif.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">🧭</div>
+          <div class="feature-card-icon">&#129517;</div>
           <h4>Onboarding complet</h4>
-          <p>Welcome, configuration LLM, 8 slides immersifs, canvas démo (7 vignettes + 5 connexions), coach marks contextuels.</p>
+          <p>9 slides plein &eacute;cran, canvas de d&eacute;monstration &eacute;ph&eacute;m&egrave;re, 5 coach marks contextuels. Wizard de configuration LLM int&eacute;gr&eacute;.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-card-icon">📥</div>
-          <h4>Export Markdown</h4>
-          <p>Journal chronologique : prompts, réponses, résultats parsés avec statut d'import, synthèses, état final du canvas.</p>
+          <div class="feature-card-icon">&#128737;</div>
+          <h4>S&eacute;curit&eacute; &amp; robustesse</h4>
+          <p>Backups SQLite toutes les 30 min + au quit. Error boundaries, logs persistants, validation cl&eacute; API au d&eacute;marrage.</p>
         </div>
       </div>
     </div>
@@ -687,188 +550,89 @@
   <!-- Fondements -->
   <section id="fondements">
     <div class="container">
-      <h2>Fondements Théoriques</h2>
+      <h2>Fondements Th&eacute;oriques</h2>
       <p>
-        KAIROS s'appuie sur des travaux académiques en analyse conversationnelle,
+        KAIROS s'appuie sur des travaux acad&eacute;miques en analyse conversationnelle,
         psychologie cognitive et linguistique pragmatique.
       </p>
 
       <div class="sources-grid">
         <div class="source-card">
-          <div class="source-icon">🔧</div>
+          <div class="source-icon">&#128295;</div>
           <h4>Repair Sequences</h4>
-          <div class="author">Schegloff, Jefferson & Sacks (1977)</div>
+          <div class="author">Schegloff, Jefferson &amp; Sacks (1977)</div>
           <p>
-            La réparation conversationnelle détecte et résout les problèmes de compréhension.
+            La r&eacute;paration conversationnelle d&eacute;tecte et r&eacute;sout les probl&egrave;mes de compr&eacute;hension.
             KAIROS utilise ces marqueurs pour identifier les moments de friction productive.
           </p>
         </div>
 
         <div class="source-card">
-          <div class="source-icon">⚔️</div>
+          <div class="source-icon">&#9876;&#65039;</div>
           <h4>Conflit Socio-Cognitif</h4>
-          <div class="author">Piaget, Doise & Mugny (1984)</div>
+          <div class="author">Piaget, Doise &amp; Mugny (1984)</div>
           <p>
-            Le conflit entre perspectives différentes stimule l'apprentissage et le développement cognitif.
+            Le conflit entre perspectives diff&eacute;rentes stimule l'apprentissage et le d&eacute;veloppement cognitif.
             La friction n'est pas un obstacle mais un moteur.
           </p>
         </div>
 
         <div class="source-card">
-          <div class="source-icon">💬</div>
+          <div class="source-icon">&#128172;</div>
           <h4>Discourse Markers</h4>
           <div class="author">Fraser (1999)</div>
           <p>
-            Les marqueurs de discours signalent les relations entre énoncés.
+            Les marqueurs de discours signalent les relations entre &eacute;nonc&eacute;s.
             "But", "however", "actually" indiquent une friction productive.
           </p>
         </div>
 
         <div class="source-card">
-          <div class="source-icon">🔄</div>
-          <h4>Régulation du Conflit</h4>
-          <div class="author">Butera, Sommet & Darnon (2019)</div>
+          <div class="source-icon">&#128260;</div>
+          <h4>R&eacute;gulation du Conflit</h4>
+          <div class="author">Butera, Sommet &amp; Darnon (2019)</div>
           <p>
-            Régulation épistémique (productif) vs compétitive (parasitaire).
+            R&eacute;gulation &eacute;pist&eacute;mique (productif) vs comp&eacute;titive (parasitaire).
             KAIROS distingue friction qui fait avancer vs friction qui bloque.
           </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Équation -->
-  <section id="equation">
-    <div class="container" style="text-align: center;">
-      <h2>L'Équation de Résonance</h2>
-      <p style="margin: 0 auto;">
-        Le modèle théorique derrière KAIROS. La résonance (R) émerge quand
-        l'intention et la friction se combinent face à la linéarisation.
-      </p>
-
-      <div class="equation-diagram">
-        <div class="var-box intention">
-          <div class="var-letter">I</div>
-          <div class="var-name">Intention</div>
-          <div class="var-desc">Trajectoire, direction claire</div>
-        </div>
-
-        <span class="equation-operator">×</span>
-
-        <div class="var-box friction">
-          <div class="var-letter">F</div>
-          <div class="var-name">Friction</div>
-          <div class="var-desc">Résistance productive</div>
-        </div>
-
-        <span class="equation-operator">÷</span>
-
-        <div class="var-box linearisation">
-          <div class="var-letter">L</div>
-          <div class="var-name">Linéarisation</div>
-          <div class="var-desc">Perte par séquentialité</div>
-        </div>
-      </div>
-
-      <div class="quote-block" style="max-width: 700px; margin: 2rem auto;">
-        La friction productive génère des bifurcations.
-        Elle crée de la trace mémorielle et transforme l'accordage en quelque chose de fertile.
-      </div>
-
-      <p style="margin: 0 auto;">
-        <strong>Friction productive</strong> : contradiction avec direction, question qui clarifie<br>
-        <strong>Friction parasitaire</strong> : interruption sans direction, hostilité sans contenu
-      </p>
-    </div>
-  </section>
-
-  <!-- Évolution -->
-  <section id="evolution">
-    <div class="container">
-      <h2>L'Évolution de l'Équation</h2>
-      <p>
-        L'équation de résonance a évolué à travers l'expérimentation.
-        Chaque itération a révélé des problèmes et des insights.
-      </p>
-
-      <div class="evolution-flow">
-        <div class="evolution-step problem" style="opacity: 0.6;">
-          <h4>Version 1 <span style="font-size: 0.7em; font-weight: normal; color: var(--text-muted);">— abandonnée</span></h4>
-          <div class="equation">R = (I/E) × f(O) × (A-L)</div>
-          <p>
-            A (Alignement) comme multiplicateur favorisait les boucles.
-            E (Énergie) était mal définie.
-          </p>
-        </div>
-
-        <div class="evolution-arrow">→</div>
-
-        <div class="evolution-insight">
-          <h4>Découverte</h4>
-          <p>
-            "Trop d'alignement annule l'entre.
-            Sans friction, pas de bifurcation."
-          </p>
-        </div>
-
-        <div class="evolution-arrow">→</div>
-
-        <div class="evolution-step solution">
-          <h4>Version 2</h4>
-          <div class="equation" style="color: var(--accent-light);">R = (I × F) / L</div>
-          <p>
-            F (Friction) devient central.
-            A passe en condition de seuil.
-            E absorbé dans L.
-          </p>
-        </div>
-
-        <div class="evolution-arrow">→</div>
-
-        <div class="evolution-insight">
-          <h4>Passage au concret</h4>
-          <p>
-            L'équation était un cadre théorique.
-            Il faut une mesure en temps réel.
-          </p>
-        </div>
-
-        <div class="evolution-arrow">→</div>
-
-        <div class="evolution-step solution" style="border-color: rgba(34, 197, 94, 0.5);">
-          <h4>Version 3</h4>
-          <div class="equation" style="color: var(--accent-green);">O₂ = 0-100</div>
-          <p>
-            Jauge Oxygène : 5 signaux,
-            score glissant, 3 zones.
-            Mesure la vitalité cognitive du canvas.
-          </p>
-        </div>
-      </div>
-
+      <!-- Équation de résonance — résumé -->
       <div style="margin-top: 3rem; text-align: center;">
-        <h3 style="color: var(--text-primary); margin-bottom: 1.5rem;">Ce qui a changé</h3>
-        <div class="sources-grid" style="max-width: 800px; margin: 0 auto;">
-          <div class="source-card">
-            <h4 style="color: var(--accent-red);">Alignement (A)</h4>
-            <p>Avant : multiplicateur → plus = mieux</p>
-            <p style="color: var(--accent-green);">Après : seuil binaire → juste assez pour ouvrir l'espace</p>
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">L'&Eacute;quation de R&eacute;sonance</h3>
+        <p style="margin: 0 auto 1.5rem; max-width: 600px;">
+          Le mod&egrave;le th&eacute;orique derri&egrave;re KAIROS. La r&eacute;sonance &eacute;merge quand
+          l'intention et la friction se combinent face &agrave; la lin&eacute;arisation.
+        </p>
+
+        <div class="equation-diagram">
+          <div class="var-box intention">
+            <div class="var-letter">I</div>
+            <div class="var-name">Intention</div>
+            <div class="var-desc">Trajectoire, direction claire</div>
           </div>
-          <div class="source-card">
-            <h4 style="color: var(--accent-orange);">Friction (F)</h4>
-            <p>Avant : absente du modèle</p>
-            <p style="color: var(--accent-green);">Après : variable centrale au numérateur</p>
+
+          <span class="equation-operator">&times;</span>
+
+          <div class="var-box friction">
+            <div class="var-letter">F</div>
+            <div class="var-name">Friction</div>
+            <div class="var-desc">R&eacute;sistance productive</div>
           </div>
-          <div class="source-card">
-            <h4 style="color: var(--accent-red);">Énergie (E)</h4>
-            <p>Avant : variable floue, difficilement mesurable</p>
-            <p style="color: var(--accent-green);">Après : absorbée dans L (coût du medium)</p>
+
+          <span class="equation-operator">&divide;</span>
+
+          <div class="var-box linearisation">
+            <div class="var-letter">L</div>
+            <div class="var-name">Lin&eacute;arisation</div>
+            <div class="var-desc">Perte par s&eacute;quentialit&eacute;</div>
           </div>
-          <div class="source-card">
-            <h4 style="color: var(--accent-light);">Objectif</h4>
-            <p>Avant : prouver une résonance objective</p>
-            <p style="color: var(--accent-green);">Après : outil pratique pour préserver les insights</p>
-          </div>
+        </div>
+
+        <div class="quote-block" style="max-width: 700px; margin: 2rem auto;">
+          La friction productive g&eacute;n&egrave;re des bifurcations.
+          Elle cr&eacute;e de la trace m&eacute;morielle et transforme l'accordage en quelque chose de fertile.
         </div>
       </div>
     </div>
@@ -879,24 +643,25 @@
     <div class="container">
       <h2>Le moteur cognitif</h2>
       <p>
-        Observez la mécanique centrale de KAIROS : la jauge O₂ mesure la diversité cognitive.
-        Quand les idées convergent trop, une <strong>friction</strong> est injectée pour relancer la pensée.
+        Observez la m&eacute;canique centrale de KAIROS : la jauge O&#8322; mesure la diversit&eacute; cognitive.
+        Quand les id&eacute;es convergent trop, une <strong>friction</strong> est inject&eacute;e pour relancer la pens&eacute;e.
       </p>
 
       <div class="demo-container">
         <div class="demo-canvas">
           <div class="demo-toolbar">
             <button class="demo-btn" id="demo-btn-add">+ Vignette</button>
-            <button class="demo-btn primary" id="demo-btn-dev">DÉVELOPPER</button>
+            <button class="demo-btn primary" id="demo-btn-dev">D&Eacute;VELOPPER</button>
             <button class="demo-btn" id="demo-btn-rel">RELIER</button>
+            <button class="demo-btn" id="demo-btn-synth">SYNTH&Eacute;TISER</button>
             <div class="demo-o2-inline">
-              <span class="demo-o2-lbl">O₂</span>
+              <span class="demo-o2-lbl">O&#8322;</span>
               <div class="demo-o2-track">
                 <div class="demo-o2-fill" id="demo-o2-fill"></div>
               </div>
               <span class="demo-o2-val" id="demo-o2-val">50</span>
             </div>
-            <button class="demo-btn reset" id="demo-btn-reset" title="Recommencer">↺</button>
+            <button class="demo-btn reset" id="demo-btn-reset" title="Recommencer">&#8634;</button>
           </div>
           <div class="demo-area" id="demo-area">
             <svg class="demo-svg" id="demo-svg"></svg>
@@ -904,19 +669,20 @@
         </div>
 
         <div class="demo-panel">
-          <h4>Comment ça marche</h4>
+          <h4>Comment &ccedil;a marche</h4>
           <div class="demo-how">
-            <p><strong>+ Vignette</strong> — ajoutez des idées au canvas</p>
-            <p><strong>DÉVELOPPER</strong> — génère des idées connectées</p>
-            <p><strong>RELIER</strong> — connecte les vignettes orphelines</p>
-            <p class="demo-how-o2"><strong>O₂</strong> = diversité cognitive. Quand elle chute sous 30, KAIROS injecte une <strong>friction</strong> pour briser la convergence.</p>
+            <p><strong>+ Vignette</strong> &mdash; ajoutez des id&eacute;es au canvas</p>
+            <p><strong>D&Eacute;VELOPPER</strong> &mdash; g&eacute;n&egrave;re des id&eacute;es connect&eacute;es</p>
+            <p><strong>RELIER</strong> &mdash; connecte les vignettes orphelines</p>
+            <p><strong>SYNTH&Eacute;TISER</strong> &mdash; lecture structur&eacute;e du graphe</p>
+            <p class="demo-how-o2"><strong>O&#8322;</strong> = vitalit&eacute; cognitive. Quand elle chute sous 30, KAIROS injecte une <strong>friction</strong> pour briser la convergence.</p>
           </div>
 
           <h4 style="margin-top: 1.5rem;">Journal</h4>
           <div class="demo-log" id="demo-log"></div>
 
           <div class="demo-friction-alert" id="friction-alert">
-            ZONE ASPHYXIE — FRICTION INJECTÉE
+            ZONE ASPHYXIE &mdash; FRICTION INJECT&Eacute;E
           </div>
         </div>
       </div>
@@ -929,19 +695,19 @@
       <div class="essayer-demo-content">
         <h2>Explorez le Canvas</h2>
         <p class="essayer-demo-desc">
-          Créez des vignettes, lancez <strong>DÉVELOPPER</strong> pour générer des idées,
-          utilisez <strong>RELIER</strong> pour connecter votre pensée — le tout directement
-          dans votre navigateur, sans clé API, sans installation.
+          Cr&eacute;ez des vignettes, lancez <strong>D&Eacute;VELOPPER</strong> pour g&eacute;n&eacute;rer des id&eacute;es,
+          utilisez <strong>RELIER</strong> pour connecter votre pens&eacute;e &mdash; le tout directement
+          dans votre navigateur, sans cl&eacute; API, sans installation.
         </p>
         <div class="essayer-demo-features">
-          <span class="essayer-demo-chip">Drag & drop</span>
+          <span class="essayer-demo-chip">Drag &amp; drop</span>
           <span class="essayer-demo-chip">Connexions SVG</span>
-          <span class="essayer-demo-chip">Jauge O₂</span>
-          <span class="essayer-demo-chip">4 thèmes</span>
+          <span class="essayer-demo-chip">Jauge O&#8322;</span>
+          <span class="essayer-demo-chip">4 th&egrave;mes</span>
           <span class="essayer-demo-chip">Undo / Redo</span>
         </div>
         <a href="demo/" class="essayer-demo-cta" target="_blank" rel="noopener">
-          Lancer la démo interactive
+          Lancer la d&eacute;mo interactive
           <span class="essayer-demo-cta-arrow">&rarr;</span>
         </a>
       </div>
@@ -953,50 +719,50 @@
     <div class="container">
       <h2>Pour Qui ?</h2>
       <p>
-        KAIROS s'adresse à ceux qui utilisent les LLM pour réfléchir,
+        KAIROS s'adresse &agrave; ceux qui utilisent les LLM pour r&eacute;fl&eacute;chir,
         pas seulement pour produire.
       </p>
 
       <div class="usecases-grid">
         <div class="usecase-card">
-          <div class="usecase-icon">🔬</div>
+          <div class="usecase-icon">&#128300;</div>
           <h4>Chercheurs</h4>
-          <p>Explorer des hypothèses sans tomber dans la confirmation bias</p>
+          <p>Explorer des hypoth&egrave;ses sans tomber dans le biais de confirmation</p>
         </div>
 
         <div class="usecase-card">
-          <div class="usecase-icon">🎨</div>
-          <h4>Créatifs</h4>
-          <p>Brainstormer sans tourner en rond sur les mêmes idées</p>
+          <div class="usecase-icon">&#127912;</div>
+          <h4>Cr&eacute;atifs</h4>
+          <p>Brainstormer sans tourner en rond sur les m&ecirc;mes id&eacute;es</p>
         </div>
 
         <div class="usecase-card">
-          <div class="usecase-icon">🧠</div>
+          <div class="usecase-icon">&#129504;</div>
           <h4>Philosophes</h4>
-          <p>Pousser une réflexion au-delà de l'accord confortable</p>
+          <p>Pousser une r&eacute;flexion au-del&agrave; de l'accord confortable</p>
         </div>
 
         <div class="usecase-card">
-          <div class="usecase-icon">📚</div>
-          <h4>Étudiants</h4>
-          <p>Apprendre à penser contre soi-même</p>
+          <div class="usecase-icon">&#128218;</div>
+          <h4>&Eacute;tudiants</h4>
+          <p>Apprendre &agrave; structurer une r&eacute;flexion et d&eacute;tecter ses angles morts</p>
         </div>
 
         <div class="usecase-card">
-          <div class="usecase-icon">📋</div>
+          <div class="usecase-icon">&#128203;</div>
           <h4>Chefs de projet</h4>
-          <p>Structurer un projet de recherche, cartographier les dépendances</p>
+          <p>Cartographier un probl&egrave;me complexe, identifier les d&eacute;pendances</p>
         </div>
 
         <div class="usecase-card">
-          <div class="usecase-icon">📝</div>
-          <h4>Rédacteurs</h4>
-          <p>Préparer une thèse, un mémoire ou un argumentaire structuré</p>
+          <div class="usecase-icon">&#128221;</div>
+          <h4>R&eacute;dacteurs</h4>
+          <p>Pr&eacute;parer une th&egrave;se, un m&eacute;moire ou un argumentaire structur&eacute;</p>
         </div>
       </div>
 
       <div class="quote-block" style="margin-top: 3rem; text-align: center;">
-        "KAIROS n'est pas un outil de productivité. C'est un outil de pensée."
+        KAIROS n'est pas un outil de productivit&eacute;. C'est un outil de pens&eacute;e.
       </div>
     </div>
   </section>
@@ -1006,14 +772,14 @@
     <div class="container">
       <h2>Documentation Technique</h2>
       <p>
-        Documentation du projet KAIROS, synchronisée automatiquement depuis le repository.
+        Documentation du projet KAIROS, synchronis&eacute;e automatiquement depuis le repository.
       </p>
 
       <div class="docs-layout">
         <div class="docs-sidebar" id="docs-sidebar">
-          <button class="docs-sidebar-btn active" data-doc="ARCHITECTURE">Architecture & Vision</button>
-          <button class="docs-sidebar-btn" data-doc="PROMPTS-LLM">Métriques & Prompts</button>
-          <button class="docs-sidebar-btn" data-doc="ROADMAP">Roadmap & Bugs</button>
+          <button class="docs-sidebar-btn active" data-doc="ARCHITECTURE">Architecture &amp; Vision</button>
+          <button class="docs-sidebar-btn" data-doc="PROMPTS-LLM">M&eacute;triques &amp; Prompts</button>
+          <button class="docs-sidebar-btn" data-doc="ROADMAP">Roadmap &amp; Bugs</button>
         </div>
         <div class="docs-content" id="docs-content">
           <div class="docs-loading">Chargement de la documentation...</div>
@@ -1025,14 +791,14 @@
   <!-- Footer -->
   <footer>
     <p>
-      <strong>KAIROS</strong> — Application Electron de cartographie cognitive
+      <strong>KAIROS</strong> &mdash; Cartographie cognitive assist&eacute;e par IA
     </p>
     <p class="version">
-      Version 0.3.x | Février 2026<br>
-      Concept & développement : Florent
+      Version 0.4.x | Mars 2026<br>
+      Concept &amp; d&eacute;veloppement : Florent
     </p>
     <p style="margin-top: 1.5rem;">
-      <a href="index.html">← Retour au site principal</a>
+      <a href="index.html">&larr; Retour au site principal</a>
     </p>
   </footer>
 
@@ -1276,6 +1042,25 @@
         render();
       }
 
+      function synthetiser() {
+        if (vignettes.length < 3) {
+          addLog('Pas assez de vignettes pour synthétiser', '');
+          return;
+        }
+        var btn = document.getElementById('demo-btn-synth');
+        btn.textContent = '⏳ Analyse…';
+        btn.disabled = true;
+
+        setTimeout(function() {
+          addLog('SYNTHÉTISER → Fil rouge : la conscience comme émergence', 'success');
+          addLog('Angle mort détecté : le rôle du corps dans la cognition', 'warn');
+          o2 = clamp(o2 + 5);
+          render();
+          btn.textContent = 'SYNTHÉTISER';
+          btn.disabled = false;
+        }, 1200);
+      }
+
       function triggerFriction() {
         frictionDone = true;
         frictionAlert.classList.add('show');
@@ -1337,6 +1122,7 @@
       document.getElementById('demo-btn-add').addEventListener('click', userAdd);
       document.getElementById('demo-btn-dev').addEventListener('click', developper);
       document.getElementById('demo-btn-rel').addEventListener('click', relier);
+      document.getElementById('demo-btn-synth').addEventListener('click', synthetiser);
       document.getElementById('demo-btn-reset').addEventListener('click', resetAll);
 
       // ── Init ──

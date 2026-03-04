@@ -2217,3 +2217,27 @@
     .essayer-demo-cta:hover .essayer-demo-cta-arrow {
       transform: translateX(4px);
     }
+
+    /* ═══════════════════════════════════════════
+       SECTION COMMENT (Le Canvas)
+       ═══════════════════════════════════════════ */
+    #comment {
+      background: var(--bg-dark);
+    }
+
+    #comment .mechanisms-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      #comment .mechanisms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION CO-CRÉATION
+       ═══════════════════════════════════════════ */
+    #cocreation {
+      background: var(--bg-section);
+    }
