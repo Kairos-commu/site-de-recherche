@@ -15,10 +15,12 @@
       <a href="{{ siteNavPrefix }}#recherche">Recherche</a>
       <a href="/articles.html"{% if activeNav == 'articles' %} class="active"{% endif %}>Articles</a>
       <a href="{{ siteNavPrefix }}#kairos"><span class="glitch-text">KAIROS</span></a>
+      <a href="/download.html"{% if activeNav == 'download' %} class="active"{% endif %}>Telecharger</a>
       {%- else %}
       <a href="#recherche">Recherche</a>
       <a href="/articles.html">Articles</a>
       <a href="#kairos"><span class="glitch-text">KAIROS</span></a>
+      <a href="/download.html">Telecharger</a>
       {%- endif %}
       <a href="/manifeste.html"{% if activeNav == 'manifeste' %} class="active"{% endif %}>Manifeste</a>
       <a href="/about.html"{% if activeNav == 'about' %} class="active"{% endif %}>À propos</a>
