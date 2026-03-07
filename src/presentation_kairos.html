@@ -6,11 +6,12 @@
   <meta name="google-site-verification" content="pPcuHEf7Ox9oKZbtn2Q_FJEROg3QoBv8TSA7_pGeTi4">
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data:;
-    connect-src 'self';
+    img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com;
+    connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com;
+    frame-src https://www.googletagmanager.com;
   " />
   <title>KAIROS — Cartographie cognitive assistée par IA</title>
   <meta name="description" content="KAIROS — Application Electron de cartographie cognitive. Transformez vos conversations IA en pensée structurée. 7 providers LLM, système Oxygène, injection de friction.">
@@ -51,8 +52,19 @@
     "image": "https://mecanique-invisible.com/og-image.jpg"
   }
   </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NVRS9LXJ');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVRS9LXJ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <!-- Navigation -->
   <nav>
     <ul>
