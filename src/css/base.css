@@ -1998,6 +1998,148 @@ a:hover {
 }
 
 /* ============================================
+   COMPONENTS — Dialogue (parcours suggéré)
+   ============================================ */
+
+.dialogue {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dialogue__question {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.dialogue__avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialogue__text {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.dialogue__choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.dialogue__choice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.dialogue__choice:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .dialogue__choice:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.dialogue__choice-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.dialogue__choice-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.dialogue__choice-target {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .dialogue__text {
+    font-size: 1.5rem;
+  }
+
+  .dialogue__choices {
+    grid-template-columns: 1fr;
+  }
+
+  .dialogue__avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dialogue__question {
+    gap: var(--space-md);
+  }
+
+  .dialogue__text {
+    font-size: 1.3rem;
+  }
+
+  .dialogue__choice {
+    padding: var(--space-lg);
+  }
+
+  .dialogue__choice-label {
+    font-size: 1.05rem;
+  }
+}
+
+/* ============================================
+   COMPONENTS — KAIROS screenshot
+   ============================================ */
+
+.kairos-screenshot {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+.kairos-screenshot img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
    RESPONSIVE — Small phones (< 480px)
    ============================================ */
 
