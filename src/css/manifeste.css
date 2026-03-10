@@ -1,0 +1,540 @@
+/* ============================================
+   MANIFESTE — Univers visuel autonome
+   Deux palettes (dark par défaut, light dispo)
+   ============================================ */
+
+/* ─── Palette claire (défaut) ─── */
+body {
+  --m-bg: #f5f0eb;
+  --m-bg-elevated: #ebe5dd;
+  --m-bg-glass: rgba(0, 0, 0, 0.03);
+  --m-text: #1c1917;
+  --m-text-body: #3d3733;
+  --m-text-dim: #57534e;
+  --m-text-faint: #a8a29e;
+  --m-accent: #b45309;
+  --m-accent-glow: rgba(217, 119, 6, 0.1);
+  --m-border: rgba(0, 0, 0, 0.1);
+  --m-border-accent: rgba(180, 83, 9, 0.3);
+
+  background: var(--m-bg) !important;
+  color: var(--m-text) !important;
+}
+
+/* ─── Palette sombre ─── */
+[data-theme="dark"] body,
+body[data-theme="dark"] {
+  --m-bg: #0f0e0d;
+  --m-bg-elevated: #1a1816;
+  --m-bg-glass: rgba(255, 255, 255, 0.04);
+  --m-text: #e8e4df;
+  --m-text-body: #cdc7bf;
+  --m-text-dim: #a8a29e;
+  --m-text-faint: #5c5752;
+  --m-accent: #d97706;
+  --m-accent-glow: rgba(217, 119, 6, 0.12);
+  --m-border: rgba(255, 255, 255, 0.08);
+  --m-border-accent: rgba(217, 119, 6, 0.25);
+}
+
+/* ─── Header & footer utilisent la palette manifeste ─── */
+.site-header {
+  background: var(--m-bg) !important;
+  border-bottom-color: var(--m-border) !important;
+}
+
+.site-header a,
+.site-header .nav__link {
+  color: var(--m-text-dim) !important;
+}
+
+.site-header a:hover,
+.site-header .nav__link:hover,
+.site-header .nav__link--active {
+  color: var(--m-accent) !important;
+}
+
+.site-header .logo__text {
+  color: var(--m-text) !important;
+}
+
+.site-footer {
+  background: var(--m-bg) !important;
+  border-top-color: var(--m-border) !important;
+  color: var(--m-text-dim) !important;
+}
+
+.site-footer a {
+  color: var(--m-text-dim) !important;
+}
+
+.site-footer a:hover {
+  color: var(--m-accent) !important;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  color: var(--m-text-dim) !important;
+}
+
+/* ─── Hero — immersif, centré, minimaliste ─── */
+.hero--short {
+  padding: 6rem 0 4rem;
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+.manifeste-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manifeste-hero__image {
+  max-width: 420px;
+  margin: 0 auto 3rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  border: none;
+}
+
+.manifeste-hero__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.manifeste-hero .hero__title {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--m-text);
+  margin-bottom: 1.5rem;
+}
+
+.manifeste-hero .hero__title span {
+  color: var(--m-accent);
+}
+
+.manifeste-hero .hero__subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--m-text-body);
+  line-height: 1.6;
+  max-width: 560px !important;
+}
+
+.manifeste-hero .hero__line {
+  width: 48px;
+  height: 1px;
+  background: var(--m-accent);
+  opacity: 0.4;
+  margin-top: 2.5rem;
+}
+
+/* ─── Sections — large respiration ─── */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section--alt {
+  background: var(--m-bg-elevated) !important;
+}
+
+.section--alt::before,
+.section--alt::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--m-border);
+}
+
+.section--alt::before { top: 0; }
+.section--alt::after { bottom: 0; }
+
+/* ─── Numéros — géants, fantômes ─── */
+.manifeste-number {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 300;
+  color: var(--m-accent);
+  opacity: 0.07;
+  line-height: 0.8;
+  margin-bottom: -0.5rem;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+/* ─── Titres ─── */
+.section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--m-text);
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+/* ─── Texte ─── */
+.manifeste-content p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 2;
+  color: var(--m-text-body);
+  max-width: 620px;
+}
+
+.manifeste-content p strong {
+  color: var(--m-accent);
+  font-weight: 500;
+}
+
+/* ─── Piliers — colonnes, ligne accent, verre ─── */
+.manifeste-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 3rem;
+  flex-direction: column;
+}
+
+.manifeste-pillar {
+  padding: 2.5rem 2rem;
+  border-left: none;
+  border-top: 2px solid var(--m-border-accent);
+  background: var(--m-bg-glass);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.manifeste-pillar:hover {
+  background: var(--m-accent-glow);
+  transform: none;
+}
+
+.manifeste-pillar h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--m-text);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.manifeste-pillar p {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--m-text-body);
+  margin-bottom: 0;
+}
+
+.manifeste-pillar p strong {
+  color: var(--m-accent);
+}
+
+/* ─── Profils — cards flottantes ─── */
+.manifeste-profiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  border: none;
+}
+
+.manifeste-profile {
+  background: var(--m-bg-elevated);
+  border: 1px solid var(--m-border);
+  border-left: none;
+  padding: 2.5rem 2rem;
+  transition:
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.manifeste-profile:hover {
+  border-color: var(--m-border-accent);
+  background: var(--m-bg-glass);
+}
+
+.manifeste-profile:not(:last-child) {
+  border-right: 1px solid var(--m-border);
+}
+
+.manifeste-profile h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--m-text);
+  margin-bottom: 1rem;
+}
+
+.manifeste-profile h3::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--m-accent);
+  margin-top: 0.75rem;
+  transition: width 0.4s ease;
+}
+
+.manifeste-profile:hover h3::after {
+  width: 40px;
+}
+
+.manifeste-profile p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--m-text-body);
+  margin-bottom: 0.5rem;
+}
+
+.manifeste-profile__detail {
+  font-size: 0.85rem !important;
+  color: var(--m-accent) !important;
+  margin-bottom: 0 !important;
+  font-style: italic;
+}
+
+/* ─── CTA — deux blocs, impact maximal ─── */
+.manifeste-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  border: none;
+}
+
+.manifeste-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2.5rem;
+  text-decoration: none;
+  background: var(--m-bg-glass);
+  border: 1px solid var(--m-border);
+  border-left: 3px solid transparent;
+  transition:
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.manifeste-cta:first-child {
+  border-right: 1px solid var(--m-border);
+}
+
+.manifeste-cta:hover {
+  border-left-color: var(--m-accent);
+  background: var(--m-accent-glow);
+  box-shadow: none;
+  transform: none;
+}
+
+.manifeste-cta h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--m-text);
+  margin-bottom: 1rem;
+}
+
+.manifeste-cta .glitch-text {
+  color: var(--m-accent);
+}
+
+.manifeste-cta p {
+  font-size: 0.95rem;
+  color: var(--m-text-body);
+  margin-bottom: 1.5rem;
+  max-width: none;
+  line-height: 1.7;
+}
+
+.manifeste-cta .card__link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--m-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Citation — plein écran, dramatique ─── */
+.manifeste-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--m-text);
+  text-align: center;
+  margin: 0 auto 2rem;
+  padding: 3rem 2rem;
+  position: relative;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+}
+
+.manifeste-quote::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--m-accent);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+  position: static;
+  transform: none;
+  font-size: inherit;
+}
+
+.manifeste-quote::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--m-accent);
+  opacity: 0.5;
+  margin: 2rem auto 0;
+}
+
+.manifeste-signature {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--m-text-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.manifeste-signature span {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 0.8rem;
+  text-transform: none;
+  letter-spacing: 0;
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--m-text-faint);
+}
+
+/* ─── Mobile nav burger ─── */
+.mobile-nav__content {
+  background: var(--m-bg) !important;
+}
+
+.mobile-nav__link {
+  color: var(--m-text-body) !important;
+}
+
+.mobile-nav__link:hover {
+  color: var(--m-accent) !important;
+}
+
+.burger span {
+  background: var(--m-text-dim) !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .manifeste-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .manifeste-pillar {
+    border-top: 1px solid var(--m-border);
+    border-left: 2px solid var(--m-border-accent);
+  }
+
+  .manifeste-pillar:first-child {
+    border-top: 2px solid var(--m-border-accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero--short {
+    padding: 4rem 0 3rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .manifeste-profiles {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .manifeste-profile {
+    border: none;
+    border-bottom: 1px solid var(--m-border);
+    padding: 2rem 1.5rem;
+  }
+
+  .manifeste-profile:not(:last-child) {
+    border-right: none;
+  }
+
+  .manifeste-profile:last-child {
+    border-bottom: none;
+  }
+
+  .manifeste-cta-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .manifeste-cta {
+    border-right: none !important;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .manifeste-cta:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--m-border);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero--short {
+    padding: 3rem 0 2rem;
+  }
+
+  .manifeste-hero__image {
+    max-width: 100%;
+  }
+
+  .manifeste-number {
+    font-size: 4rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .manifeste-quote {
+    font-size: 1.1rem;
+    padding: 2rem 1rem;
+  }
+
+  .manifeste-pillar {
+    padding: 1.5rem;
+  }
+
+  .manifeste-cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .manifeste-profile {
+    padding: 1.5rem;
+  }
+}
