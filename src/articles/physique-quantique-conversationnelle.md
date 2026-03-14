@@ -136,8 +136,7 @@ order: 0
     Des chercheurs commencent à voir les dégâts. À Londres, une équipe a montré que
     l'interaction avec une IA amplifie vos biais cognitifs de 15 à 25 % — sans que vous
     le sachiez. Au MIT, des neuroscientifiques ont mesuré une réduction de 55 % de
-    l'activité cérébrale chez les utilisateurs de ChatGPT. À Bonn, un papier décrit le
-    "piège de la souveraineté" : plus l'IA est compétente, plus vous cessez de penser
+    l'activité cérébrale chez les utilisateurs de ChatGPT. À l'université de Bonn, un papier publié dans Frontiers in AI décrit le « piège de la souveraineté » : plus l'IA est compétente, plus vous cessez de penser
     par vous-même.
   </p>
 
