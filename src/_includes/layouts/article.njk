@@ -70,6 +70,13 @@ ogType: article
         {{ heroIntro | safe }}
       </p>
       <p class="hero-date"><time datetime="{{ datePublished }}">{{ datePublished | dateFr }}</time></p>
+      {% if doi %}
+      <p class="hero-doi">
+        <a href="{{ doi }}" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/{{ doi | replace('https://doi.org/', '') }}.svg" alt="DOI {{ doi | replace('https://doi.org/', '') }}">
+        </a>
+      </p>
+      {% endif %}
       {% if heroImage %}
       <div class="hero-image-wrapper">
         <img src="{{ heroImage }}" alt="{{ heroImageAlt | default(headline) }}" class="hero-image" loading="eager">

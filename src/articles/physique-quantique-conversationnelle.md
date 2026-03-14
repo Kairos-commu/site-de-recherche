@@ -66,6 +66,7 @@ feedCategory: "Thèse"
 feedTime: "10:00:00"
 sitemapPriority: "0.9"
 sitemapChangefreq: "monthly"
+doi: "https://doi.org/10.5281/zenodo.19023026"
 order: 0
 ---
 

@@ -247,6 +247,15 @@ main {
   letter-spacing: 0.02em;
 }
 
+.hero-doi {
+  margin-top: 0.75rem;
+}
+
+.hero-doi img {
+  height: 20px;
+  vertical-align: middle;
+}
+
 /* Hero image — illustration de couverture */
 .hero-image-wrapper {
   margin-top: 2.5rem;
