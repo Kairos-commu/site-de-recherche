@@ -41,11 +41,70 @@ jsonLdRaw: |
   .dl-card { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2xl); }
   .dl-grid-3 { grid-template-columns: repeat(3, 1fr); }
   .dl-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
+
+  /* SmartScreen guide */
+  .ss-guide { margin-top: var(--space-xl); }
+  .ss-why {
+    display: flex; gap: var(--space-md); align-items: flex-start;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px; padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-xl); font-size: 0.9rem; line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .ss-why-icon { width: 16px; height: 16px; background: var(--accent); border-radius: 2px; flex-shrink: 0; margin-top: 3px; }
+  .ss-step { display: flex; gap: var(--space-lg); align-items: flex-start; margin-bottom: var(--space-xl); }
+  .ss-num {
+    width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .ss-num--1 { background: #6366f1; color: #fff; }
+  .ss-num--2 { background: #22c55e; color: #fff; }
+  .ss-step-body { flex: 1; }
+  .ss-step-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); margin-bottom: var(--space-md); }
+  .ss-dialog {
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 8px; padding: var(--space-md) var(--space-lg);
+    font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .ss-dialog-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+  .ss-shield { width: 14px; height: 14px; background: #3b82f6; border-radius: 2px; flex-shrink: 0; }
+  .ss-dialog-title { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); }
+  .ss-dialog-text { margin-bottom: var(--space-md); }
+  .ss-dialog-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-md); }
+  .ss-actions { display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; }
+  .ss-link {
+    color: #6366f1; text-decoration: underline; border: 2px dashed #ef4444;
+    padding: 0.25rem 0.5rem; border-radius: 4px; cursor: default; font-size: 0.85rem;
+  }
+  .ss-arrow { font-size: 0.8rem; color: #ef4444; font-weight: 700; white-space: nowrap; }
+  .ss-btn-primary {
+    background: #22c55e; color: #fff; border: none; border-radius: 4px;
+    padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: default; font-weight: 600;
+  }
+  .ss-btn-ghost {
+    color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 4px;
+    padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: default; background: transparent;
+  }
+  .ss-arrow-right { font-size: 0.8rem; color: #22c55e; font-weight: 700; white-space: nowrap; }
+  .ss-success {
+    display: flex; gap: var(--space-md); align-items: flex-start;
+    background: color-mix(in srgb, #22c55e 10%, transparent);
+    border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+    border-left: 4px solid #22c55e;
+    border-radius: 8px; padding: var(--space-md) var(--space-lg);
+    font-size: 0.9rem; line-height: 1.7; color: var(--text-secondary);
+  }
+  .ss-check { color: #22c55e; font-size: 1.1rem; font-weight: 700; flex-shrink: 0; }
+
   @media (max-width: 768px) {
     .dl-card { flex-direction: column; text-align: center; }
     .dl-card > div:first-child > div:first-child { justify-content: center; }
     .dl-grid-3 { grid-template-columns: 1fr !important; }
     .dl-grid-2 { grid-template-columns: 1fr; }
+    .ss-step { flex-direction: column; gap: var(--space-sm); }
   }
 </style>
 
@@ -85,11 +144,67 @@ jsonLdRaw: |
       </a>
     </div>
 
-    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: var(--space-lg); line-height: 1.6;">
-      <strong style="color: var(--text-secondary);">Note :</strong> Windows peut afficher un avertissement SmartScreen (&laquo; Editeur inconnu &raquo;).
-      Cliquez sur &laquo; Informations complementaires &raquo; puis &laquo; Executer quand meme &raquo;.
-      KAIROS est open-source et ne contient aucun malware.
-    </p>
+    <div class="ss-guide">
+
+      <div class="ss-why">
+        <div class="ss-why-icon"></div>
+        <div>
+          <strong style="color: var(--text-primary);">Pourquoi cette alerte ?</strong><br>
+          KAIROS est en version beta et n&rsquo;est pas encore signe numeriquement par Microsoft.
+          Windows bloque par defaut les applications non signees. C&rsquo;est normal et sans danger.
+          Suivez les 2 etapes ci-dessous pour lancer l&rsquo;application.
+        </div>
+      </div>
+
+      <div class="ss-step">
+        <div class="ss-num ss-num--1">1</div>
+        <div class="ss-step-body">
+          <p class="ss-step-title">Cliquez sur &laquo;&thinsp;Informations complementaires&thinsp;&raquo;</p>
+          <div class="ss-dialog">
+            <div class="ss-dialog-header">
+              <div class="ss-shield"></div>
+              <span class="ss-dialog-title">Windows a protege votre ordinateur</span>
+            </div>
+            <p class="ss-dialog-text">Microsoft Defender SmartScreen a empeche le demarrage d&rsquo;une application non reconnue. Son execution peut mettre votre ordinateur en danger.</p>
+            <div class="ss-actions">
+              <span class="ss-link">Informations complementaires</span>
+              <span class="ss-arrow">&larr; Cliquez ici</span>
+              <span class="ss-btn-ghost">Ne pas executer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-step">
+        <div class="ss-num ss-num--2">2</div>
+        <div class="ss-step-body">
+          <p class="ss-step-title">Cliquez sur &laquo;&thinsp;Executer quand meme&thinsp;&raquo;</p>
+          <div class="ss-dialog">
+            <div class="ss-dialog-header">
+              <div class="ss-shield"></div>
+              <span class="ss-dialog-title">Windows a protege votre ordinateur</span>
+            </div>
+            <p class="ss-dialog-text">Microsoft Defender SmartScreen a empeche le demarrage d&rsquo;une application non reconnue.</p>
+            <p class="ss-dialog-meta">Application&nbsp;: KAIROS-Setup.exe<br>Editeur&nbsp;: Editeur inconnu</p>
+            <div class="ss-actions">
+              <span class="ss-arrow-right">Cliquez ici &rarr;</span>
+              <span class="ss-btn-primary">Executer quand meme</span>
+              <span class="ss-btn-ghost">Ne pas executer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-success">
+        <span class="ss-check">&#10003;</span>
+        <div>
+          <strong style="color: var(--text-primary);">KAIROS se lance normalement.</strong><br>
+          Cette manipulation n&rsquo;est necessaire qu&rsquo;une seule fois.
+          En cas de probleme, contactez <a href="mailto:klimacekflorent@gmail.com" style="color: var(--accent);">klimacekflorent@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
