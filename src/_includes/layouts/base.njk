@@ -62,7 +62,7 @@
       "@type": "WebPage",
       "@id": "{{ site.url }}/{{ slug }}.html"
     },
-    "image": "{{ site.ogImage }}",
+    "image": "{{ (site.url + heroImage) if heroImage else site.ogImage }}",
     "keywords": {{ keywords | dump | safe }}
   }
   </script>
