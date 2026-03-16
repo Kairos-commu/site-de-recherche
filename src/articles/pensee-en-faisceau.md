@@ -55,6 +55,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 0
+doi: "https://doi.org/10.5281/zenodo.19053775"
 ---
 
       <!-- Ouverture -->

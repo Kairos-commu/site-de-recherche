@@ -49,6 +49,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 4
+doi: "https://doi.org/10.5281/zenodo.19053562"
 ---
 
       <!-- Introduction -->
