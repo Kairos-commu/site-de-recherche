@@ -13,7 +13,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/presentation_kairos.html");
   eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/downloads");
 
   // Exclude passthrough files from template processing
   eleventyConfig.ignores.add("src/docs/**");
