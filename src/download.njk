@@ -124,21 +124,64 @@ jsonLdRaw: |
   </div>
 </section>
 
-<!-- Guide utilisateur -->
+<!-- Présentation bêta -->
 <section class="section" style="padding-top: 0;">
-  <div class="container">
-    <div class="card" style="text-align: center; max-width: 720px; margin: 0 auto;">
-      <div class="card__icon" style="margin: 0 auto var(--space-sm);">
-        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-        </svg>
+  <div class="container" style="max-width: 800px; margin: 0 auto;">
+
+    <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-secondary); text-align: center; margin-bottom: var(--space-2xl);">
+      Amplificateur de pensée par cartographie cognitive assistée par IA.<br>
+      KAIROS vous accompagne dans l'exploration de vos idées : créez des vignettes,
+      reliez-les, et laissez l'IA enrichir votre réflexion. Le système détecte la structure
+      de votre graphe et vous guide vers les opérations les plus pertinentes.
+    </p>
+
+    <header class="section__header">
+      <p class="section__label">v1.0.1</p>
+      <h2 class="section__title">Nouveautés de cette version</h2>
+    </header>
+
+    <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl);">
+      <div class="card">
+        <h3 class="card__title">Onboarding progressif</h3>
+        <p class="card__desc">L'interface se dévoile au fur et à mesure de votre usage. Quatre paliers : cartographier, explorer avec l'IA, structurer, approfondir. Chaque déblocage s'accompagne d'une animation et d'une indication sur la prochaine étape.</p>
       </div>
-      <h3 class="card__title">Guide utilisateur dynamique</h3>
-      <p class="card__desc">
-        Nouveau dans la v1.0.1 &mdash; un guide utilisateur intégré directement dans l'application,
-        accessible depuis le menu d'aide. Documentation contextuelle et interactive pour prendre KAIROS en main.
-      </p>
+      <div class="card">
+        <h3 class="card__title">Configuration IA simplifiée</h3>
+        <p class="card__desc">La modale de configuration s'ouvre automatiquement à la création d'un graphe. Interface radio cards avec test de clé intégré. Trois fournisseurs disponibles : Claude, ChatGPT, DeepSeek.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Mode simple / expert</h3>
+        <p class="card__desc">Mode simple par défaut (interface épurée, progression guidée). Mode expert accessible d'un clic pour les utilisateurs avancés (tout visible immédiatement).</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Taille de police ajustable</h3>
+        <p class="card__desc">Trois niveaux (Normal, Grand, Très grand) via le bouton Aa dans la toolbar.</p>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3 class="card__title">Guide interactif enrichi</h3>
+        <p class="card__desc">Bouton ? dans la toolbar, 8 guides en deux niveaux. Liens cliquables vers les éléments d'interface avec highlight visuel. Détection automatique des fonctionnalités pas encore débloquées.</p>
+      </div>
     </div>
+
+    <header class="section__header">
+      <p class="section__label">Cœur</p>
+      <h2 class="section__title">Fonctionnalités principales</h2>
+    </header>
+
+    <div class="card" style="margin-bottom: var(--space-xl);">
+      <ul style="list-style: none; font-size: 0.95rem; line-height: 2.2; color: var(--text-secondary); columns: 2; column-gap: var(--space-2xl);">
+        <li>&#10003; Création libre de vignettes et connexions manuelles</li>
+        <li>&#10003; 3 opérations IA : Développer, Relier, Synthétiser</li>
+        <li>&#10003; Jauge O₂ : scoring cognitif en temps réel</li>
+        <li>&#10003; Perspectives : analyse en profondeur avec leviers d'action</li>
+        <li>&#10003; 4 thèmes visuels, 3 postures IA</li>
+        <li>&#10003; Géométrie sacrée en fond de canvas</li>
+        <li>&#10003; Multi-canvas, undo/redo</li>
+        <li>&#10003; Export PNG / Markdown</li>
+        <li>&#10003; Page d'accueil immersive (icosaèdre 3D)</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
