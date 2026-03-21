@@ -216,6 +216,26 @@ Fichier passthrough — jamais traite par 11ty. Charge `docs/*.md` via `fetch()`
 Le repo Kairos a une GitHub Action qui copie `doc projet/*.md` -> `src/docs/` ici.
 **Note** : si le workflow Kairos ecrit encore dans `docs/` a la racine, le mettre a jour pour ecrire dans `src/docs/`.
 
+## Deployer une nouvelle version KAIROS
+
+Le `.exe` est heberge via **GitHub Releases** (pas dans le repo — trop lourd pour Git, et LFS ne fonctionne pas avec GitHub Pages).
+
+**Script automatise** : `deploy-kairos.sh`
+
+```bash
+./deploy-kairos.sh "/chemin/vers/KAIROS Setup X.Y.Z.exe" X.Y.Z
+```
+
+Le script fait tout :
+1. Cree la GitHub Release `vX.Y.Z` et uploade le `.exe`
+2. Met a jour `src/download.njk` (version, lien, taille, date)
+3. Build le site
+4. Commit et push
+
+**Prerequis** : `gh` CLI installe et connecte (`gh auth login`).
+
+**Page de telechargement** : `src/download.njk` — les liens pointent vers `https://github.com/Kairos-commu/site-de-recherche/releases/download/vX.Y.Z/KAIROS.Setup.X.Y.Z.exe`
+
 ## Conventions
 
 - **Pas de CSS inline** — tout dans src/css/base.css ou src/css/article.css
