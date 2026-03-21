@@ -1,0 +1,113 @@
+@layer components {
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+/* Canvas background grid */
+.canvas-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Legend */
+.legend {
+  position: absolute;
+  bottom: 60px;
+  left: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--text-xs);
+  z-index: var(--z-floating);
+  opacity: 0.8;
+  transition: opacity var(--duration-normal);
+}
+
+.legend:hover {
+  opacity: 1;
+}
+
+.legend-title {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.65rem;
+}
+
+.legend-item {
+  color: var(--text-muted);
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-symbol {
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Connection mode indicator */
+.connection-mode-indicator {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-green);
+  color: white;
+  padding: 6px 16px;
+  border-radius: var(--radius-xl);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  z-index: var(--z-floating);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.2s ease;
+  display: none;
+}
+
+.connection-mode-indicator.active {
+  display: block;
+}
+
+/* Mobile legend */
+@media (max-width: 768px) {
+  .legend {
+    bottom: 50px;
+    left: 8px;
+    padding: 8px 10px;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legend {
+    display: none;
+  }
+}
+
+}

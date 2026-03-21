@@ -1,0 +1,141 @@
+@layer themes {
+
+/* ---- OBSIDIAN (dark, default) ---- */
+[data-theme="obsidian"] {
+  --bg-main: #0f1117;
+  --bg-surface: #181b22;
+  --bg-elevated: #21242d;
+  --bg-hover: #282c38;
+
+  --text-primary: #d0d4dc;
+  --text-secondary: #8a8f9e;
+  --text-muted: #555a66;
+
+  --border: #2a2e3a;
+  --border-hover: #3a3f4e;
+  --border-active: #4a5066;
+
+  --accent-primary: #6c8aff;
+  --accent-primary-soft: rgba(108, 138, 255, 0.12);
+  --accent-warm: #e8a855;
+  --accent-amber: #d4a050;
+  --accent-green: #4db87a;
+  --accent-rose: #e85a6a;
+  --accent-rose-soft: rgba(232, 90, 106, 0.15);
+  --accent-cyan: #3dd8eb;
+
+  --node-bg-start: #1a1d26;
+  --node-bg-end: #14161e;
+  --node-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 255, 255, 0.05);
+
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-glow-warm: 0 0 20px rgba(232, 168, 85, 0.15);
+
+  --tooltip-bg: rgba(24, 27, 34, 0.95);
+  --badge-red-bg: rgba(231, 76, 60, 0.08);
+
+  --btn-success: #4db87a;
+}
+
+/* ---- PORCELAIN (light) ---- */
+[data-theme="porcelain"] {
+  --bg-main: #f5f3ed;
+  --bg-surface: #edeae3;
+  --bg-elevated: #e5e2da;
+  --bg-hover: #dddad2;
+
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+
+  --border: #d5d2ca;
+  --border-hover: #c5c2ba;
+  --border-active: #b5b2aa;
+
+  --accent-primary: #4a6cf7;
+  --accent-primary-soft: rgba(74, 108, 247, 0.1);
+  --accent-warm: #c47a2a;
+  --accent-amber: #b08530;
+  --accent-green: #3a9a5a;
+  --accent-rose: #d04050;
+  --accent-rose-soft: rgba(208, 64, 80, 0.1);
+  --accent-cyan: #2ab8c8;
+
+  --node-bg-start: #faf8f3;
+  --node-bg-end: #f0ede6;
+  --node-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
+
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-glow-warm: 0 0 20px rgba(196, 122, 42, 0.12);
+
+  --tooltip-bg: rgba(237, 234, 227, 0.97);
+  --badge-red-bg: rgba(208, 64, 80, 0.06);
+
+  --btn-success: #3a9a5a;
+}
+
+/* ---- Theme Selector UI ---- */
+.theme-dropdown {
+  position: relative;
+}
+
+.btn-theme {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 5px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.theme-btn-swatch,
+.theme-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.theme-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  z-index: var(--z-popovers);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  min-width: 150px;
+  box-shadow: var(--shadow-lg);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.theme-option:hover {
+  background: var(--bg-hover);
+}
+
+.hidden {
+  display: none !important;
+}
+
+}

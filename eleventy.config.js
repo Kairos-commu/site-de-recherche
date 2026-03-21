@@ -12,12 +12,16 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/presentation_kairos.html");
+  eleventyConfig.addPassthroughCopy("src/presentation_kairos_en.html");
+  eleventyConfig.addPassthroughCopy("src/demo_en");
   eleventyConfig.addPassthroughCopy("src/images");
 
   // Exclude passthrough files from template processing
   eleventyConfig.ignores.add("src/docs/**");
   eleventyConfig.ignores.add("src/demo/**");
   eleventyConfig.ignores.add("src/presentation_kairos.html");
+  eleventyConfig.ignores.add("src/presentation_kairos_en.html");
+  eleventyConfig.ignores.add("src/demo_en/**");
 
   // ─────────────────────────────────────────
   // COLLECTIONS
