@@ -60,7 +60,7 @@ feedCategory: "Architecture"
 feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
-doi: "https://doi.org/10.5281/zenodo.19023026"
+doi: "https://doi.org/10.5281/zenodo.19159722"
 order: 0
 ---
 
@@ -672,5 +672,5 @@ score = clamp(0, 100)</code></pre>
 
   <div class="chapter-divider"></div>
 
-  <p><em>Document généré le 21 mars 2026 à partir de l'état réel du codebase KAIROS v1.0.2 (commit 3d6df63). Version PDF disponible sur <a href="https://doi.org/10.5281/zenodo.19023026" target="_blank" rel="noopener">Zenodo</a>.</em></p>
+  <p><em>Document généré le 21 mars 2026 à partir de l'état réel du codebase KAIROS v1.0.2 (commit 3d6df63). Version PDF disponible sur <a href="https://doi.org/10.5281/zenodo.19159722" target="_blank" rel="noopener">Zenodo</a>.</em></p>
 </section>
