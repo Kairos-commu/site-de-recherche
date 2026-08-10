@@ -189,7 +189,7 @@ order: 0
       <tr><td><strong>Opérations</strong></td><td>DÉVELOPPER, RELIER, SYNTHÉTISER, CONVERGENCE</td><td>Dialogue libre</td></tr>
       <tr><td><strong>Friction</strong></td><td>Injection automatique (O₂ &lt; 30)</td><td>Pas d'injection</td></tr>
       <tr><td><strong>Métriques</strong></td><td>Affichage temps réel</td><td>Suivi silencieux</td></tr>
-      <tr><td><strong>Équation</strong></td><td colspan="2">E = f(S) · (O × Δ) / (P + R)</td></tr>
+      <tr><td><strong>Équation</strong></td><td colspan="2">E<sub>T</sub> = O(S) · Δ(S) / (P(S) + R(S))</td></tr>
     </tbody>
   </table>
 
