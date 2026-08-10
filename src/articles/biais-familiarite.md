@@ -206,7 +206,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </blockquote>
 
         <p class="lead">
-          <em>Le cadre théorique mentionné dans cet article — la Physique Quantique Conversationnelle — est publié <a href="/physique-quantique-conversationnelle.html">ici</a>. Il propose quatre grandeurs pour mesurer la vitalité d'une conversation humain-IA : Ouverture, Résolution, Propagation, Souveraineté.</em>
+          <em>Le cadre théorique mentionné dans cet article — L'Entre, une Théorie des Plis — est publié <a href="/lentre-theorie-des-plis.html">ici</a>. Il propose quatre grandeurs pour mesurer la vitalité d'une conversation humain-IA : Ouverture, Résolution, Propagation, Souveraineté.</em>
         </p>
 
         <p>

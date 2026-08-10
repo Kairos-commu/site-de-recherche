@@ -35,6 +35,9 @@
   {%- if canonical %}
   <link rel="canonical" href="{{ site.url }}{{ canonical }}">
   {%- endif %}
+  {%- if extraHead %}
+  {{ extraHead | safe }}
+  {%- endif %}
 
   {%- if slug %}
   <!-- Schema.org BlogPosting -->

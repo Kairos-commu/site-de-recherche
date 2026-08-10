@@ -1,0 +1,21 @@
+<svg width="680" height="300" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Δ_brut devient Δ_intégré via la porte du lâcher-prise</title>
+<desc>Δ_brut arrive à gauche, rencontre une porte qui ne s'ouvre que si P+R chute. Si la porte s'ouvre, Δ_brut devient Δ_intégré à droite.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="300" fill="#FDFBF7"/>
+<rect x="50" y="100" width="140" height="90" rx="10" fill="#FBF1DC" stroke="#854F0B" stroke-width="0.5"/>
+<text x="120" y="140" font-size="15" font-weight="600" fill="#854F0B" text-anchor="middle">Δ_brut</text>
+<text x="120" y="160" font-size="12" fill="#854F0B" text-anchor="middle">non retravaillé</text>
+<line x1="190" y1="145" x2="270" y2="145" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="280" y="90" width="120" height="110" rx="10" fill="#FBEAE3" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="5 4"/>
+<text x="340" y="130" font-size="14" font-weight="600" fill="#993C1D" text-anchor="middle">porte</text>
+<text x="340" y="150" font-size="12" fill="#993C1D" text-anchor="middle">s'ouvre si</text>
+<text x="340" y="166" font-size="12" fill="#993C1D" text-anchor="middle">P+R chute</text>
+<line x1="400" y1="145" x2="480" y2="145" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="490" y="100" width="140" height="90" rx="10" fill="#E4F2EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="560" y="140" font-size="15" font-weight="600" fill="#0F6E56" text-anchor="middle">Δ_intégré</text>
+<text x="560" y="160" font-size="12" fill="#0F6E56" text-anchor="middle">relié, compressé</text>
+<path d="M190,190 C220,230 250,230 280,200" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+<text x="230" y="250" font-size="12" fill="#555" opacity="0.6" text-anchor="middle">porte fermée = reste bloqué</text>
+<text x="340" y="280" font-size="12" fill="#555" text-anchor="middle">le lâcher-prise ouvre la porte — indépendamment de la vérité de Δ</text>
+</svg>

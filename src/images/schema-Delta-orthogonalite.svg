@@ -1,0 +1,32 @@
+<svg width="680" height="380" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Δ_brut/intégré croisé avec piloté/subi — deux axes orthogonaux</title>
+<desc>Grille deux par deux. Axe horizontal : piloté à gauche, subi à droite. Axe vertical : intégré en haut, brut en bas. Quatre cases possibles.</desc>
+<rect width="680" height="380" fill="#FDFBF7"/>
+<text x="230" y="35" font-size="14" font-weight="600" fill="#333" text-anchor="middle">piloté</text>
+<text x="490" y="35" font-size="14" font-weight="600" fill="#333" text-anchor="middle">subi</text>
+<line x1="360" y1="50" x2="360" y2="360" stroke="#555" stroke-width="0.5" stroke-dasharray="4 4"/>
+<text x="30" y="140" font-size="14" font-weight="600" fill="#333" text-anchor="middle" transform="rotate(-90 30 140)">intégré</text>
+<text x="30" y="320" font-size="14" font-weight="600" fill="#333" text-anchor="middle" transform="rotate(-90 30 320)">brut</text>
+<line x1="60" y1="205" x2="620" y2="205" stroke="#555" stroke-width="0.5" stroke-dasharray="4 4"/>
+<rect x="70" y="60" width="280" height="135" rx="10" fill="#E4F2EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="90" y="90" font-size="12" fill="#0F6E56">cherché consciemment,</text>
+<text x="90" y="108" font-size="12" fill="#0F6E56">bien assimilé</text>
+<text x="90" y="130" font-size="11" fill="#0F6E56" opacity="0.7">ex. question posée exprès,</text>
+<text x="90" y="147" font-size="11" fill="#0F6E56" opacity="0.7">réponse intégrée</text>
+<rect x="370" y="60" width="250" height="135" rx="10" fill="#E4F2EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="390" y="90" font-size="12" fill="#0F6E56">non demandé,</text>
+<text x="390" y="108" font-size="12" fill="#0F6E56">assimilé quand même</text>
+<text x="390" y="130" font-size="11" fill="#0F6E56" opacity="0.7">ex. remarque reçue,</text>
+<text x="390" y="147" font-size="11" fill="#0F6E56" opacity="0.7">finit par changer le schéma</text>
+<rect x="70" y="215" width="280" height="135" rx="10" fill="#FBF1DC" stroke="#854F0B" stroke-width="0.5"/>
+<text x="90" y="245" font-size="12" fill="#854F0B">cherché consciemment,</text>
+<text x="90" y="263" font-size="12" fill="#854F0B">reste bloqué</text>
+<text x="90" y="285" font-size="11" fill="#854F0B" opacity="0.7">ex. question posée exprès,</text>
+<text x="90" y="302" font-size="11" fill="#854F0B" opacity="0.7">R ne cède jamais</text>
+<rect x="370" y="215" width="250" height="135" rx="10" fill="#FBF1DC" stroke="#854F0B" stroke-width="0.5"/>
+<text x="390" y="245" font-size="12" fill="#854F0B">non demandé,</text>
+<text x="390" y="263" font-size="12" fill="#854F0B">reste bloqué</text>
+<text x="390" y="285" font-size="11" fill="#854F0B" opacity="0.7">ex. remarque reçue,</text>
+<text x="390" y="302" font-size="11" fill="#854F0B" opacity="0.7">jamais retravaillée</text>
+<text x="340" y="372" font-size="12" fill="#555" text-anchor="middle">deux axes indépendants — les quatre cases existent, aucune n'est exclue</text>
+</svg>

@@ -2,9 +2,9 @@
 slug: kairos-technical-overview
 pageTitle: "KAIROS : Vue d'ensemble technique — Florent Klimacek"
 headline: "KAIROS : Vue d'ensemble technique"
-description: "Architecture, jauge Oxygène, friction cognitive, triangle PQC. Comment le cadre théorique devient un logiciel de cartographie cognitive assistée par IA."
+description: "Architecture, jauge Oxygène, friction cognitive, triangle radar. Comment le cadre théorique devient un logiciel de cartographie cognitive assistée par IA."
 ogTitle: "KAIROS : Vue d'ensemble technique"
-ogDescription: "Architecture, jauge Oxygène, friction cognitive, triangle PQC. Comment le cadre théorique devient un logiciel de cartographie cognitive assistée par IA."
+ogDescription: "Architecture, jauge Oxygène, friction cognitive, triangle radar. Comment le cadre théorique devient un logiciel de cartographie cognitive assistée par IA."
 ogUrl: "/kairos-technical-overview.html"
 canonical: "/kairos-technical-overview.html"
 datePublished: "2026-03-21"
@@ -14,18 +14,19 @@ keywords:
   - architecture technique
   - jauge Oxygène
   - friction cognitive
-  - triangle PQC
+  - triangle radar
   - cartographie cognitive
   - souveraineté cognitive
+  - L'Entre — Théorie des Plis
   - interactions humain-IA
   - Electron
   - TypeScript
 permalink: "/kairos-technical-overview.html"
 navLabel: "Architecture"
-navDescription: "Comment le cadre PQC devient un logiciel"
+navDescription: "Comment le cadre de L'Entre devient un logiciel"
 heroLabel: "Architecture"
 heroH1: "<span class=\"glitch-text\">KAIROS</span><br><span>Vue d'ensemble technique</span>"
-heroIntro: "51 000 lignes TypeScript, 725 tests, 8 fournisseurs LLM. Comment le cadre de la Physique Quantique Conversationnelle devient un logiciel de cartographie cognitive — architecture, jauge Oxygène, friction, souveraineté."
+heroIntro: "51 000 lignes TypeScript, 725 tests, 8 fournisseurs LLM. Comment le cadre de L'Entre — Théorie des Plis — devient un logiciel de cartographie cognitive — architecture, jauge Oxygène, friction, souveraineté."
 headerTitle: "KAIROS — Vue d'ensemble technique"
 heroImage: "/images/kairos-canvas.png"
 heroImageAlt: "Capture d'écran KAIROS — canvas de cartographie cognitive avec jauge Oxygène"
@@ -52,7 +53,7 @@ sections:
 card:
   label: "Architecture"
   title: "KAIROS — Vue d'ensemble technique"
-  desc: "Architecture, jauge Oxygène, friction cognitive, triangle PQC. Le pont entre la théorie et le code."
+  desc: "Architecture, jauge Oxygène, friction cognitive, triangle radar. Le pont entre la théorie et le code."
   readingTime: "20 min"
   linkText: "Lire le document"
   featured: false
@@ -78,7 +79,7 @@ order: 0
   </p>
 
   <p>
-    L'application opérationnalise le cadre théorique de la <a href="/physique-quantique-conversationnelle.html">Physique Quantique Conversationnelle</a> (PQC), reliant les métriques logicielles aux quatre variables conversationnelles (alignement, friction, intention, linéarisation). Le code source comprend ~51 000 lignes TypeScript, 725 tests unitaires, et supporte 8 fournisseurs LLM incluant des modèles locaux (Ollama).
+    L'application opérationnalise le cadre théorique de <a href="/lentre-theorie-des-plis.html">L'Entre — Théorie des Plis</a>, reliant les métriques logicielles aux quatre variables conversationnelles (alignement, friction, intention, linéarisation). Le code source comprend ~51 000 lignes TypeScript, 725 tests unitaires, et supporte 8 fournisseurs LLM incluant des modèles locaux (Ollama).
   </p>
 
   <div class="key-insight">
@@ -112,7 +113,7 @@ order: 0
   <h3>L'accordage passif</h3>
 
   <p>
-    Au-delà de la linéarisation, les interfaces conversationnelles produisent un <strong>accordage passif</strong> : l'utilisateur s'aligne progressivement sur le registre, le rythme et les catégories de l'IA, perdant la capacité de maintenir une direction propre. Ce phénomène correspond à la variable <em>alignement</em> du cadre PQC (Klimacek, 2026), qui distingue l'alignement productif (convergence vers un objet commun) de l'alignement passif (adoption non-critique du cadre proposé).
+    Au-delà de la linéarisation, les interfaces conversationnelles produisent un <strong>accordage passif</strong> : l'utilisateur s'aligne progressivement sur le registre, le rythme et les catégories de l'IA, perdant la capacité de maintenir une direction propre. Ce phénomène correspond à la variable <em>alignement</em> du cadre de L'Entre (Klimacek, 2026), qui distingue l'alignement productif (convergence vers un objet commun) de l'alignement passif (adoption non-critique du cadre proposé).
   </p>
 
   <h3>Hypothèse de KAIROS</h3>
@@ -233,7 +234,7 @@ order: 0
   <h2>Système Oxygène (O₂)</h2>
 
   <p class="lead">
-    Le cœur technique de KAIROS est un système de scoring cognitif temps réel, implémenté en 2 918 lignes réparties sur 6 modules. Ce système constitue le lien direct avec le cadre <a href="/physique-quantique-conversationnelle.html">PQC</a> (Klimacek, 2026).
+    Le cœur technique de KAIROS est un système de scoring cognitif temps réel, implémenté en 2 918 lignes réparties sur 6 modules. Ce système constitue le lien direct avec le cadre <a href="/lentre-theorie-des-plis.html">L'Entre</a> (Klimacek, 2026).
   </p>
 
   <h3>Score O₂ — Modèle snapshot pur</h3>
@@ -283,7 +284,7 @@ score = clamp(0, 100)</code></pre>
 
   <h3>Grandeurs topologiques (Signal 7)</h3>
 
-  <p>Quatre métriques purement topologiques mesurent la <em>forme</em> du graphe en écho aux variables PQC :</p>
+  <p>Quatre métriques purement topologiques mesurent la <em>forme</em> du graphe en écho aux variables de L'Entre :</p>
 
   <table>
     <thead>
@@ -305,7 +306,7 @@ score = clamp(0, 100)</code></pre>
     <strong>Contribution topologique totale</strong> : -11 à +20 points sur le score O₂.
   </div>
 
-  <h3>Triangle radar PQC (3 axes hybrides)</h3>
+  <h3>Triangle radar (3 axes hybrides)</h3>
 
   <p>Le triangle radar visualise trois axes indépendants (0–100), chacun combinant <strong>70% snapshot + 30% dynamique temporelle</strong> :</p>
 
@@ -360,11 +361,11 @@ score = clamp(0, 100)</code></pre>
 
   <p>Quand le malus virtuel total ≤ -25 (sévérité <em>warning</em>), le score est plafonné : ≤ -50 → max 55, ≤ -35 → max 65, ≤ -25 → max 75.</p>
 
-  <h3>Correspondance PQC ↔ O₂</h3>
+  <h3>Correspondance L'Entre ↔ O₂</h3>
 
   <table>
     <thead>
-      <tr><th>Variable PQC</th><th>Grandeur O₂</th><th>Axe radar</th></tr>
+      <tr><th>Variable L'Entre</th><th>Grandeur O₂</th><th>Axe radar</th></tr>
     </thead>
     <tbody>
       <tr><td>σ (superposition)</td><td>Ouverture (ψ)</td><td>Divergence</td></tr>
@@ -526,10 +527,10 @@ score = clamp(0, 100)</code></pre>
   <div class="section-number">Section 07</div>
   <h2>Fondements théoriques</h2>
 
-  <h3>Physique Quantique Conversationnelle (PQC)</h3>
+  <h3>L'Entre — Théorie des Plis</h3>
 
   <p class="lead">
-    KAIROS opérationnalise le cadre <a href="/physique-quantique-conversationnelle.html">PQC</a> (Klimacek, 2026), qui décrit quatre forces agissant sur toute conversation humain-IA.
+    KAIROS opérationnalise le cadre <a href="/lentre-theorie-des-plis.html">L'Entre</a> (Klimacek, 2026), qui décrit quatre forces agissant sur toute conversation humain-IA.
   </p>
 
   <p>
@@ -620,7 +621,7 @@ score = clamp(0, 100)</code></pre>
 
     <h3>Travaux de l'auteur</h3>
 
-    <p>Klimacek, F. (2026). <em>Physique Quantique Conversationnelle</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.19023026" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19023026</a></p>
+    <p>Klimacek, F. (2026). <em>L'Entre — Théorie des Plis</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.19023026" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19023026</a></p>
 
     <h3>Études empiriques récentes</h3>
 
