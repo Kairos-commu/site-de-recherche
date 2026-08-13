@@ -1,9 +1,9 @@
 ---
 layout: layouts/page.njk
 pageTitle: "Télécharger KAIROS — Florent Klimacek"
-description: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.1 bêta pour Windows. Système Oxygène, 7 providers LLM, guide utilisateur dynamique."
+description: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.3 bêta pour Windows. Système Oxygène, 6 providers LLM, guide utilisateur dynamique."
 ogTitle: "Télécharger KAIROS — Cartographie cognitive"
-ogDescription: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.1 bêta pour Windows."
+ogDescription: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.3 bêta pour Windows."
 ogUrl: "/download.html"
 canonical: "/download.html"
 siteNavPrefix: "/index.html"
@@ -18,7 +18,7 @@ jsonLdRaw: |
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Windows 10+",
     "softwareVersion": "1.0.3",
-    "description": "Application Electron de cartographie cognitive assistée par IA. Système Oxygène, injection de friction, 7 providers LLM.",
+    "description": "Application Electron de cartographie cognitive assistée par IA. Système Oxygène, injection de friction, 6 providers LLM.",
     "url": "https://mecanique-invisible.com/download.html",
     "downloadUrl": "https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.0.3/KAIROS.Setup.1.0.3.exe",
     "fileSize": "100 MB",
@@ -322,8 +322,8 @@ jsonLdRaw: |
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h3 class="card__title">7 providers LLM</h3>
-        <p class="card__desc">Claude, ChatGPT, DeepSeek, Mistral, Gemini, Groq, Ollama. Votre clé API, vos modèles.</p>
+        <h3 class="card__title">6 providers LLM</h3>
+        <p class="card__desc">Claude, ChatGPT, DeepSeek, Mistral, Groq, Ollama. Votre clé API, vos modèles.</p>
       </div>
     </div>
 
@@ -342,6 +342,11 @@ jsonLdRaw: |
       <p class="section__label">Prérequis</p>
       <h2 class="section__title">Configuration requise</h2>
     </header>
+
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--space-lg); max-width: 700px;">
+      Les deux configurations ci-dessous couvrent l'usage standard de KAIROS avec les modèles cloud
+      (Claude, ChatGPT, DeepSeek, Mistral, Groq &mdash; via API, sans calcul local).
+    </p>
 
     <div class="dl-grid-2">
       <div class="card">
@@ -369,13 +374,53 @@ jsonLdRaw: |
       </div>
     </div>
 
-    <div class="card" style="background: var(--bg-concept, var(--bg-card));">
+    <div class="card" style="background: var(--bg-concept, var(--bg-card)); margin-bottom: var(--space-2xl);">
       <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Bon à savoir</h3>
       <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
         <li>&#10003; Pas besoin de droits administrateur &mdash; installé dans <code style="font-family: var(--font-mono); font-size: 0.85em; background: var(--border-light); padding: 0.1em 0.4em; border-radius: 3px;">%LOCALAPPDATA%</code></li>
         <li>&#10003; Base de données SQLite embarquée &mdash; rien à installer</li>
         <li>&#10003; Nécessite une clé API LLM (Claude, ChatGPT ou DeepSeek) &mdash; pas de compte KAIROS</li>
         <li>&#10003; Windows uniquement pour le moment &mdash; Mac et Linux à venir</li>
+      </ul>
+    </div>
+
+    <header class="section__header">
+      <p class="section__label">Optionnel</p>
+      <h2 class="section__title">Usage avec modèles locaux (Ollama)</h2>
+    </header>
+
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--space-lg); max-width: 700px;">
+      Ces spécifications ne sont nécessaires que si vous choisissez d'utiliser des modèles locaux
+      via Ollama. En usage cloud uniquement, les spécifications minimales ci-dessus suffisent.
+    </p>
+
+    <div class="dl-grid-2">
+      <div class="card">
+        <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Minimum (CPU, sans GPU dédié)</h3>
+        <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
+          <li><strong>RAM</strong> &mdash; 16 Go</li>
+          <li><strong>Modèles adaptés</strong> &mdash; gemma3:4b, qwen3:8b</li>
+          <li><strong>Inférence</strong> &mdash; nettement plus lente qu'avec GPU</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-color: var(--accent); border-width: 2px;">
+        <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md); color: var(--accent);">Recommandé (avec GPU)</h3>
+        <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
+          <li><strong>VRAM</strong> &mdash; 12 Go ou plus</li>
+          <li><strong>Modèle par défaut</strong> &mdash; qwen3:14b (~9 Go en quantization Q4)</li>
+          <li><strong>Sans GPU dédié</strong> &mdash; 16 Go de RAM système au minimum</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--bg-concept, var(--bg-card));">
+      <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Espace disque additionnel (modèles Ollama)</h3>
+      <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
+        <li>&#10003; ~3 Go &mdash; gemma3:4b</li>
+        <li>&#10003; ~5 Go &mdash; qwen3:8b</li>
+        <li>&#10003; ~9 Go &mdash; qwen3:14b</li>
+        <li>&#10003; En plus des ~500 Mo de l'application &mdash; les modèles se téléchargent séparément via Ollama</li>
       </ul>
     </div>
   </div>
