@@ -126,7 +126,7 @@
 
       <div class="fade-in delay-3" style="margin-top: 2rem;">
         <a href="download.html" style="display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 1.05rem; transition: opacity 0.2s;">
-          T&eacute;l&eacute;charger KAIROS v1.0.1
+          T&eacute;l&eacute;charger KAIROS v1.0.3
         </a>
       </div>
     </div>
@@ -225,6 +225,8 @@
         Au lieu d'un fil de messages qui d&eacute;file, KAIROS pose vos id&eacute;es sur un canvas spatial.
         Chaque id&eacute;e est une <strong>vignette</strong>, chaque lien une <strong>connexion</strong>.
         Le r&eacute;sultat est un graphe de pens&eacute;e que vous pouvez explorer, r&eacute;organiser et structurer.
+        Ce qui suit d&eacute;crit le <strong>mode Assist&eacute;</strong> ; le <strong>mode Autonome</strong>,
+        plus exploratoire, est pr&eacute;sent&eacute; plus bas.
       </p>
 
       <!-- Mockup unique du mode assisté -->
@@ -362,7 +364,7 @@
           <div class="var-box friction">
             <div class="var-letter">C</div>
             <div class="var-name">Coh&eacute;rence</div>
-            <div class="var-desc">Profondeur des cha&icirc;nes de raisonnement</div>
+            <div class="var-desc">Profondeur des cha&icirc;nes de raisonnement, incluant la respiration cognitive du fil</div>
           </div>
 
           <div class="var-box linearisation">
@@ -404,6 +406,11 @@
           </ul>
           <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
             La posture cognitive choisie (Accompagner, Nommer, Provoquer) redistribue les poids du triangle.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+            La respiration cognitive n'est plus un multiplicateur s&eacute;par&eacute; du score : elle est
+            d&eacute;sormais absorb&eacute;e par l'axe Coh&eacute;rence, et c'est la sant&eacute; globale du
+            triangle qui pond&egrave;re le score O&#8322; final.
           </p>
         </div>
 
@@ -491,7 +498,7 @@
     <div class="container">
       <h2>Ce que KAIROS fait aujourd'hui</h2>
       <p>
-        ~29 000 lignes de TypeScript, 725 tests unitaires, pas de framework.
+        ~48 000 lignes de TypeScript (~72 000 lignes tous langages confondus &mdash; CSS, HTML et JS inclus), 725 tests unitaires, pas de framework.
         Tout ce qui suit est impl&eacute;ment&eacute; et fonctionnel.
       </p>
 
@@ -564,6 +571,38 @@
           <div class="feature-card-icon">&#128737;</div>
           <h4>S&eacute;curit&eacute; &amp; robustesse</h4>
           <p>Backups SQLite toutes les 30 min + au quit. Error boundaries, logs persistants, validation cl&eacute; API au d&eacute;marrage.</p>
+        </div>
+      </div>
+
+      <h3 class="features-group-title">Modes &amp; fonctionnalit&eacute;s r&eacute;centes</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128065;</div>
+          <h4>Mode Gardien</h4>
+          <p>S&eacute;curit&eacute; cognitive : d&eacute;tecte les patterns &agrave; risque dans les &eacute;changes
+          et tient un journal de bord des observations. Un filet, pas un contr&ocirc;le.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128172;</div>
+          <h4>Companion</h4>
+          <p>Un chat libre, ind&eacute;pendant du canvas : un espace de dialogue compl&eacute;mentaire pour
+          clarifier une id&eacute;e &agrave; la vol&eacute;e sans structurer le graphe. Il ne remplace pas
+          le canvas, il le compl&egrave;te.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128229;</div>
+          <h4>Import de sources externes</h4>
+          <p>Fichiers, PDF, URLs : KAIROS les r&eacute;sume automatiquement et les injecte comme vignettes
+          dans le canvas, pr&ecirc;tes &agrave; &ecirc;tre d&eacute;velopp&eacute;es ou reli&eacute;es au reste
+          de votre r&eacute;flexion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128301;</div>
+          <h4>Mode Autonome</h4>
+          <p>Au-del&agrave; du canvas assist&eacute; : dialogue non-directif, laboratoire de prompts, cartes
+          d'&eacute;mergence, attracteurs. Diff&eacute;rence structurelle avec le mode Assist&eacute; :
+          l'&eacute;quation de r&eacute;sonance y est <strong>passive</strong> &mdash; elle observe la dynamique
+          de l'&eacute;change &mdash; plut&ocirc;t qu'<strong>active</strong>, o&ugrave; elle guide et sugg&egrave;re.</p>
         </div>
       </div>
     </div>
@@ -827,7 +866,6 @@
         <div class="docs-sidebar" id="docs-sidebar">
           <button class="docs-sidebar-btn active" data-doc="ARCHITECTURE">Architecture &amp; Vision</button>
           <button class="docs-sidebar-btn" data-doc="PROMPTS-LLM">M&eacute;triques &amp; Prompts</button>
-          <button class="docs-sidebar-btn" data-doc="ROADMAP">Roadmap &amp; Bugs</button>
         </div>
         <div class="docs-content" id="docs-content">
           <div class="docs-loading">Chargement de la documentation...</div>
@@ -842,7 +880,7 @@
       <strong>KAIROS</strong> &mdash; Cartographie cognitive assist&eacute;e par IA
     </p>
     <p class="version">
-      Version 1.0.1 | Mars 2026<br>
+      Version 1.0.3<br>
       Concept &amp; d&eacute;veloppement : Florent
     </p>
     <p style="margin-top: 1.5rem;">
