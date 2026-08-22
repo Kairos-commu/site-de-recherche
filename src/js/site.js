@@ -375,6 +375,100 @@
   }
 
   // ─────────────────────────────────────────
+  // PAGE RAIL (accueil)
+  // ─────────────────────────────────────────
+  // Ancres sticky + barre de progression. Auto-détecte .page-rail.
+
+  function initPageRail() {
+    var rail = document.querySelector('.page-rail');
+    if (!rail) return;
+
+    var links = rail.querySelectorAll('a[href^="#"]');
+    var bar = document.getElementById('pageRailProgress');
+    var ids = [];
+    links.forEach(function (link) {
+      var id = (link.getAttribute('href') || '').slice(1);
+      if (id) ids.push(id);
+    });
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      if (bar && max > 0) {
+        bar.style.width = Math.min(100, (window.scrollY / max) * 100) + '%';
+      }
+
+      var current = ids[0] || '';
+      var offset = 140;
+      ids.forEach(function (id) {
+        var section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= offset) {
+          current = id;
+        }
+      });
+
+      links.forEach(function (link) {
+        var on = link.getAttribute('href') === '#' + current;
+        if (on) link.classList.add('is-active');
+        else link.classList.remove('is-active');
+      });
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  }
+
+  // ─────────────────────────────────────────
+  // KATEX (accueil — bloc équation)
+  // ─────────────────────────────────────────
+
+  function initKatex() {
+    var el = document.getElementById('eq-katex');
+    if (!el) return;
+
+    function render() {
+      if (typeof katex === 'undefined') return;
+      katex.render('E_{T} = \\dfrac{O(S) \\cdot \\Delta(S)}{P(S) + R(S)}', el, {
+        displayMode: true,
+        throwOnError: false
+      });
+    }
+
+    if (typeof katex !== 'undefined') render();
+    else window.addEventListener('load', render);
+  }
+
+  // ─────────────────────────────────────────
+  // VIDEO EMBED (thumbnail → lecture)
+  // ─────────────────────────────────────────
+
+  function initMediaEmbed() {
+    var wrap = document.querySelector('.media-embed[data-video-src]');
+    if (!wrap) return;
+    var btn = wrap.querySelector('.media-embed__play');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      var src = wrap.getAttribute('data-video-src');
+      if (!src) return;
+      var video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('preload', 'metadata');
+      wrap.replaceChildren(video);
+    });
+  }
+
+  // ─────────────────────────────────────────
   // INITIALISATION
   // ─────────────────────────────────────────
 
@@ -383,6 +477,9 @@
   initNavLinkBehavior(nav);
   initActiveNav();
   initProgressBar();
+  initPageRail();
+  initKatex();
+  initMediaEmbed();
   initScrollReveal();
   initDataVizAnimation();
   initHeroParallax();

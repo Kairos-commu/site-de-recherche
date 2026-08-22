@@ -1,13 +1,22 @@
 <footer class="site-footer">
-  <div class="container">
-    <p>Florent Klimacek — {{ site.year }}</p>
-    <div class="site-footer__links">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <p class="site-footer__mark" aria-hidden="true">MI</p>
+      <p>Florent Klimacek</p>
+      <p class="site-footer__tag">Recherche sur les interactions humain-IA</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Pied de page">
       <a href="/index.html">Accueil</a>
       <a href="/articles.html">Articles</a>
+      <a href="/manifeste.html">Manifeste</a>
+      <a href="/lentre-theorie-des-plis.html">L'Entre</a>
+      <a href="/presentation_kairos.html">KAIROS</a>
+      <a href="/download.html">Télécharger</a>
       <a href="/about.html">À propos</a>
       <a href="/contact.html">Contact</a>
       <a href="/feed.xml">RSS</a>
-    </div>
-    <p class="site-footer__formula">E<sub>T</sub> = O(S) · Δ(S) / (P(S) + R(S))</p>
+    </nav>
   </div>
+  <p class="site-footer__formula">E<sub>T</sub> = O(S) · Δ(S) / (P(S) + R(S))</p>
+  <p class="site-footer__copy">{{ site.year }}</p>
 </footer>

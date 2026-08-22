@@ -1,10 +1,15 @@
 ---
 layout: layouts/page.njk
+bodyClass: home
+extraCss: home.css
 pageTitle: "Florent Klimacek — Recherche sur les interactions humain-IA"
 description: "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles, la résonance conversationnelle et les outils d'analyse."
 ogUrl: "/"
 canonical: "/"
 permalink: /index.html
+extraHead: |
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
 jsonLdRaw: |
   <script type="application/ld+json">
   {
@@ -24,19 +29,32 @@ jsonLdRaw: |
   </script>
 ---
 
+<nav class="page-rail" aria-label="Parcours de la page">
+  <span class="page-rail__progress" id="pageRailProgress"></span>
+  <ul class="page-rail__list">
+    <li><a href="#observation">Observation</a></li>
+    <li><a href="#parcours">Chemins</a></li>
+    <li><a href="#equation">Équation</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#kairos">KAIROS</a></li>
+    <li><a href="#articles">Publications</a></li>
+    <li><a href="#these">Cadre</a></li>
+    <li><a href="#recherche">Recherche</a></li>
+  </ul>
+</nav>
+
 <!-- Hero -->
-<section class="hero hero--short">
+<section class="hero hero--short" id="top">
   <div class="container hero__grid">
-    <div>
+    <div class="hero__copy">
       <p class="hero__label">Recherche indépendante</p>
       <h1 class="hero__title">
         Vous parlez à l'<span>intelligence artificielle</span> ? Quelque chose d'autre se passe.
       </h1>
       <p class="hero__subtitle">
-        Recherche indépendante sur la mécanique invisible
-        des interactions humain-IA.
+        Un échange fluide, dense, surprenant en surface — et qui pourtant
+        ne fait plus bouger grand-chose.
       </p>
-      <div class="hero__line"></div>
     </div>
     <div class="hero__visual">
       <img src="/og-image.jpg" alt="Interaction humain-IA — deux silhouettes connectées par des données" class="hero__image">
@@ -44,57 +62,25 @@ jsonLdRaw: |
   </div>
 </section>
 
-<!-- Observation -->
-<section class="section" id="observation">
-  <div class="container container--narrow">
+<!-- Observation + chemins -->
+<section class="section home-intro" id="observation">
+  <div class="container">
     <div class="about-intro" data-reveal="fade-up">
       <p class="about-intro__bio">
-        J'observe depuis longtemps la même chose : un échange avec une IA qui reste fluide, dense, surprenant en surface — et qui pourtant ne fait plus bouger grand-chose. Pas d'erreur, pas de rupture. Juste un espace qui se referme sans que personne ne l'ait décidé.
+        J'observe depuis longtemps la même chose : pas d'erreur, pas de rupture.
+        Juste un espace qui se referme sans que personne ne l'ait décidé.
       </p>
-
       <p class="about-intro__bio">
-        Ce n'est pas un problème de sincérité du modèle. C'est structurel : plus un fil est long et cohérent, plus il converge vers ce qu'il contient déjà. Ça ne se corrige pas en demandant à la machine d'être plus honnête. Ça se détecte. Ça se mesure.
-      </p>
-
-      <p class="about-intro__bio">
-        De cette observation est née une théorie — <a href="/lentre-theorie-des-plis.html">L'Entre, théorie des Plis</a> — qui pose une équation simple : les conditions pour qu'une pensée vraiment nouvelle apparaisse, pas seulement une pensée cohérente.
-      </p>
-
-      <div class="formula-display">
-        <span class="formula-result" title="Émergence traversante">E<sub>T</sub></span>
-        <span class="formula-operator">=</span>
-        <div class="formula-fraction">
-          <div class="formula-top">
-            <span class="formula-var" data-tooltip="Espace disponible, modulé par S">O(S)</span>
-            <span class="formula-operator">·</span>
-            <span class="formula-var" data-tooltip="Intensité oscillante de perturbation, modulée par S">Δ(S)</span>
-          </div>
-          <div class="formula-bottom">
-            <span class="formula-var" data-tooltip="Pression exercée, modulée par S">P(S)</span>
-            <span class="formula-operator">+</span>
-            <span class="formula-var" data-tooltip="Ce qui résiste, modulé par S">R(S)</span>
-          </div>
-        </div>
-      </div>
-
-      <p class="about-intro__bio">
-        Et de la théorie, un outil en construction : <strong>KAIROS</strong>, qui tente de rendre cette mesure visible sur des échanges réels.
-      </p>
-
-      <p class="about-intro__bio">
-        Le travail continue, discrètement.
+        Ce n'est pas un problème de sincérité du modèle. C'est structurel : plus un fil
+        est long et cohérent, plus il converge vers ce qu'il contient déjà. Ça ne se
+        corrige pas en demandant à la machine d'être plus honnête. Ça se détecte. Ça se mesure.
       </p>
     </div>
-  </div>
-</section>
 
-<!-- Parcours -->
-<section class="section" id="parcours">
-  <div class="container">
-    <div class="dialogue" data-reveal="fade-up">
+    <div class="dialogue home-paths" id="parcours" data-reveal="fade-up">
       <div class="dialogue__question">
         <span class="dialogue__avatar">MI</span>
-        <p class="dialogue__text">Qu'est-ce qui vous amène ?</p>
+        <p class="dialogue__text">Par où commencer ?</p>
       </div>
       <div class="dialogue__choices">
         <a href="/manifeste.html" class="dialogue__choice">
@@ -113,6 +99,49 @@ jsonLdRaw: |
           <span class="dialogue__choice-target">Thèse L'Entre &rarr;</span>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Équation -->
+<section class="section equation-block" id="equation">
+  <div class="container">
+    <div class="equation-block__frame" data-reveal="fade-up">
+      <header class="section__header text-center">
+        <p class="section__label">Cadre</p>
+        <h2 class="section__title">L'émergence se mesure</h2>
+      </header>
+      <div id="eq-katex" role="img" aria-label="E T égale O de S fois delta de S, divisé par P de S plus R de S"></div>
+      <dl class="equation-legend">
+        <div>
+          <dt>E<sub>T</sub></dt>
+          <dd>Émergence traversante — une idée que vous n'aviez pas en entrant</dd>
+        </div>
+        <div>
+          <dt>O(S)</dt>
+          <dd>Espace encore disponible, modulé par la souveraineté</dd>
+        </div>
+        <div>
+          <dt>Δ(S)</dt>
+          <dd>Intensité de perturbation — ce qui déplace vraiment</dd>
+        </div>
+        <div>
+          <dt>P(S)</dt>
+          <dd>Pression exercée sur l'échange</dd>
+        </div>
+        <div>
+          <dt>R(S)</dt>
+          <dd>Ce qui résiste, le mur qui ne cède pas</dd>
+        </div>
+        <div>
+          <dt>S</dt>
+          <dd>Souveraineté — l'humain pense-t-il encore ?</dd>
+        </div>
+      </dl>
+      <p class="equation-block__note">
+        De cette mesure, un outil : <a href="#kairos">KAIROS</a>.
+        Le travail continue, discrètement.
+      </p>
     </div>
   </div>
 </section>
@@ -161,17 +190,17 @@ jsonLdRaw: |
 </section>
 
 <!-- KAIROS -->
-<section class="section section--dark" id="kairos">
+<section class="section section--dark section--kairos" id="kairos">
   <div class="container">
     <header class="section__header" data-reveal="fade-up">
       <p class="section__label">Outil</p>
       <h2 class="section__title"><span class="glitch-text">KAIROS</span></h2>
       <p class="section__subtitle">
-        Cartographie cognitive assistée par IA
+        Cartographie cognitive assistée par IA — rendre visible ce que le chat linéaire cache.
       </p>
     </header>
 
-    <div class="card-grid" data-reveal="stagger">
+    <div class="card-grid kairos-features" data-reveal="stagger">
       <div class="card card--dark">
         <div class="card__icon">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +209,7 @@ jsonLdRaw: |
         </div>
         <h3 class="card__title">Jauge Oxygène</h3>
         <p class="card__desc">
-          Score de vitalité cognitive 0-100. Triangle radar
+          Score de vitalité cognitive 0–100. Triangle radar
           (divergence, cohérence, souveraineté). Injection de friction
           quand la pensée s'asphyxie.
         </p>
@@ -194,7 +223,7 @@ jsonLdRaw: |
         </div>
         <h3 class="card__title">Cartographie cognitive</h3>
         <p class="card__desc">
-          Vignettes, connexions organiques, 3 opérations IA :
+          Vignettes, connexions organiques, trois opérations :
           DÉVELOPPER, RELIER, SYNTHÉTISER. Tous les providers LLM, détection automatique de clé.
         </p>
       </div>
@@ -205,25 +234,19 @@ jsonLdRaw: |
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
           </svg>
         </div>
-        <h3 class="card__title">Espace de travail complet</h3>
+        <h3 class="card__title">Espace de travail</h3>
         <p class="card__desc">
-          Onglets multi-canvas, 4 thèmes visuels, fond ambiant dynamique,
-          vue profondeur 2.5D, Companion, Mode Gardien.
+          Onglets multi-canvas, quatre thèmes, Companion, Mode Gardien.
+          Vos idées restent sur la machine.
         </p>
       </div>
     </div>
 
-    <div class="kairos-screenshot" data-reveal="fade-up">
-      <video
-        src="https://github.com/Kairos-commu/site-de-recherche/releases/download/media/kairos-presentation.mp4"
-        controls
-        preload="metadata"
-        playsinline
-        poster="/images/kairos-canvas.png"
-        style="width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
-      >
-        <a href="https://github.com/Kairos-commu/site-de-recherche/releases/download/media/kairos-presentation.mp4">Voir la vidéo de présentation</a>
-      </video>
+    <div class="media-embed" data-reveal="fade-up" data-video-src="{{ kairos.mediaVideo }}">
+      <button type="button" class="media-embed__play" aria-label="Lire la vidéo de présentation KAIROS">
+        <img src="/images/kairos-canvas.png" alt="Aperçu de KAIROS — canvas de vignettes" class="media-embed__poster" width="1280" height="720">
+        <span class="media-embed__icon" aria-hidden="true">▶</span>
+      </button>
     </div>
 
     <div class="section__actions">
@@ -248,25 +271,26 @@ jsonLdRaw: |
   <div class="container">
     <header class="section__header" data-reveal="fade-up">
       <p class="section__label">Publications</p>
-      <h2 class="section__title">Articles & Documents</h2>
+      <h2 class="section__title">Articles &amp; documents</h2>
     </header>
 
     <div class="card-grid" data-reveal="stagger">
       {%- for article in collections.articles | reverse %}
         {%- if article.data.card.featured %}
-      <article class="card card--featured">
+      <article class="card card--featured" data-kind="{{ article.data.card.tag or article.data.card.label }}">
         {% if article.data.heroImage %}
         <div class="card__thumb card__thumb--featured">
           <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
         </div>
         {% endif %}
         <div class="card__content">
-          <span class="tag">{{ article.data.card.tag }}</span>
+          <p class="pub-meta">
+            <span class="pub-meta__kind">{{ article.data.card.tag or article.data.card.label }}</span>
+            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time>
+            <span>{{ article.data.card.readingTime }}</span>
+          </p>
           <h3 class="card__title">{{ article.data.card.title }}</h3>
           <p class="card__desc">{{ article.data.card.desc }}</p>
-          <p class="card__date">
-            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> — {{ article.data.card.readingTime }}
-          </p>
           <a href="/{{ article.data.slug }}.html" class="btn btn--primary">
             {{ article.data.card.linkText }}
           </a>
@@ -288,28 +312,29 @@ jsonLdRaw: |
         {%- endif %}
       {%- endfor %}
 
-      {%- for article in collections.articles | reverse | nonFeatured %}
-        {%- if article.data.slug == "variable-manquante" or article.data.slug == "anesthesie-douce" %}
-      <article class="card card--has-thumb">
+      {%- for article in collections.articles | reverse | nonFeatured | limit(4) %}
+      <article class="card{% if article.data.heroImage %} card--has-thumb{% endif %}" data-kind="{{ article.data.card.tag or article.data.card.label }}">
         {% if article.data.heroImage %}
         <div class="card__thumb">
           <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
         </div>
         {% endif %}
         <div class="card__body">
-          <p class="card__label">{{ article.data.card.label }}</p>
+          <p class="pub-meta">
+            <span class="pub-meta__kind">{{ article.data.card.tag or article.data.card.label }}</span>
+            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time>
+            <span>{{ article.data.card.readingTime }}</span>
+          </p>
           <h3 class="card__title">{{ article.data.card.title }}</h3>
           <p class="card__desc">{{ article.data.card.desc }}</p>
-          <p class="card__date"><time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}</p>
-          <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
+          <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText or "Lire" }}</a>
         </div>
       </article>
-        {%- endif %}
       {%- endfor %}
     </div>
 
     <div class="section__actions">
-      <a href="/articles.html" class="btn btn--secondary">
+      <a href="/articles.html" class="btn btn--secondary btn--all-articles">
         Voir tous les articles →
       </a>
     </div>
@@ -431,25 +456,10 @@ jsonLdRaw: |
         <p class="card__label">Mesure</p>
         <h3 class="card__title">Résonance conversationnelle</h3>
         <p class="card__desc">
-          Développement de métriques pour quantifier la qualité d'un
-          échange :
+          Des métriques pour quantifier la qualité d'un échange —
+          pas le volume, les conditions de l'émergence.
+          <a href="#equation">Voir l'équation</a>.
         </p>
-        <div class="formula-display">
-          <span class="formula-result" title="Émergence traversante">E<sub>T</sub></span>
-          <span class="formula-operator">=</span>
-          <div class="formula-fraction">
-            <div class="formula-top">
-              <span class="formula-var" data-tooltip="Espace disponible, modulé par S">O(S)</span>
-              <span class="formula-operator">·</span>
-              <span class="formula-var" data-tooltip="Intensité oscillante de perturbation, modulée par S">Δ(S)</span>
-            </div>
-            <div class="formula-bottom">
-              <span class="formula-var" data-tooltip="Pression exercée, modulée par S">P(S)</span>
-              <span class="formula-operator">+</span>
-              <span class="formula-var" data-tooltip="Ce qui résiste, modulé par S">R(S)</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

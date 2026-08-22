@@ -112,7 +112,7 @@
   </script>
   {%- endif %}
 </head>
-<body>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVRS9LXJ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

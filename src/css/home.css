@@ -1,0 +1,458 @@
+/* ============================================
+   ACCUEIL — densité, rail, équation, KAIROS
+   Chargé uniquement sur index.html
+   ============================================ */
+
+body.home {
+  --home-header: 3.6rem;
+}
+
+body.home .section {
+  padding: 3.25rem 0;
+}
+
+body.home .section__header {
+  margin-bottom: var(--space-xl);
+}
+
+body.home .about-intro__bio {
+  margin-bottom: var(--space-lg);
+  line-height: 1.75;
+}
+
+body.home .hero {
+  min-height: 0;
+  padding: calc(var(--home-header) + 2.5rem) 0 2rem;
+}
+
+body.home .hero--short {
+  min-height: 0;
+}
+
+/* ============================================
+   RAIL DE PARCOURS (sticky)
+   ============================================ */
+
+.page-rail {
+  position: sticky;
+  top: var(--home-header);
+  z-index: 90;
+  background: color-mix(in srgb, var(--bg-page) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.page-rail__progress {
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transform-origin: left;
+}
+
+.page-rail__list {
+  display: flex;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.45rem var(--space-xl);
+  overflow-x: auto;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.page-rail__list::-webkit-scrollbar {
+  display: none;
+}
+
+.page-rail a {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.35rem 0.85rem;
+  border-left: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.page-rail a:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.page-rail a:hover,
+.page-rail a.is-active {
+  color: var(--accent);
+}
+
+.page-rail a.is-active {
+  font-weight: 600;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+body.home .hero__copy {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--space-xl);
+}
+
+body.home .hero__label {
+  margin-bottom: var(--space-md);
+}
+
+body.home .hero__title {
+  margin-bottom: 0;
+}
+
+body.home .hero__subtitle {
+  margin-top: var(--space-md);
+  margin-bottom: 0;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+body.home .hero__line {
+  display: none;
+}
+
+body.home .hero__grid {
+  gap: var(--space-2xl);
+}
+
+/* ============================================
+   INTRO + CHEMINS
+   ============================================ */
+
+.home-intro {
+  padding-top: 0.5rem;
+}
+
+.home-intro .about-intro {
+  max-width: 720px;
+  margin: 0 auto var(--space-2xl);
+}
+
+.home-intro .about-intro__bio:last-of-type {
+  margin-bottom: 0;
+}
+
+.home-paths .dialogue__question {
+  margin-bottom: var(--space-lg);
+}
+
+.home-paths .dialogue__choice {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+  background: var(--bg-card);
+}
+
+.home-paths .dialogue__choice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(28, 25, 23, 0.08);
+}
+
+.home-paths .dialogue__choice-label {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+/* ============================================
+   ÉQUATION
+   ============================================ */
+
+.equation-block {
+  background: var(--bg-concept);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.equation-block__frame {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.equation-block .katex-display {
+  margin: 0.4rem 0 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.equation-block .katex {
+  font-size: 1.35em;
+  color: var(--text-primary);
+}
+
+.equation-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 1.5rem;
+  text-align: left;
+  margin: 0;
+}
+
+.equation-legend div {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.equation-legend dt {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.equation-legend dd {
+  margin: 0;
+}
+
+.equation-block__note {
+  margin: var(--space-lg) 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   KAIROS
+   ============================================ */
+
+.section--kairos {
+  position: relative;
+}
+
+.section--kairos::before,
+.section--kairos::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.45;
+}
+
+.kairos-features .card__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.kairos-features .card__title {
+  font-size: 1.35rem;
+}
+
+.media-embed {
+  position: relative;
+  margin-top: var(--space-xl);
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.media-embed video,
+.media-embed__poster {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.media-embed__play {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.media-embed__play::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--bg-dark) 28%, transparent);
+  border-radius: 4px;
+}
+
+.media-embed__icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  background: color-mix(in srgb, var(--bg-dark) 55%, transparent);
+  color: #fff;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+}
+
+.media-embed__play:hover .media-embed__icon {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.media-embed__play:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   PUBLICATIONS
+   ============================================ */
+
+.pub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.pub-meta__kind {
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.card[data-kind] {
+  position: relative;
+}
+
+.card[data-kind]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  opacity: 0.22;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent),
+    var(--accent) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+.card[data-kind="Thèse"]::before {
+  background: radial-gradient(circle at 100% 0, var(--accent) 0 8px, transparent 9px);
+  opacity: 0.45;
+}
+
+.card[data-kind="Genèse"]::before {
+  background: linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+  opacity: 0.2;
+}
+
+.card[data-kind="Document fondateur"]::before {
+  background: repeating-linear-gradient(
+    0deg,
+    var(--accent),
+    var(--accent) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  opacity: 0.18;
+}
+
+.card[data-kind="Architecture"]::before {
+  background:
+    linear-gradient(var(--accent), var(--accent)) top right / 18px 1px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) top right / 1px 18px no-repeat;
+  opacity: 0.7;
+}
+
+.btn--all-articles {
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-width: 1.5px;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn--all-articles:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  body.home .hero {
+    padding-top: calc(var(--home-header) + 1.5rem);
+  }
+
+  body.home .hero__copy {
+    padding-left: var(--space-lg);
+  }
+
+  .page-rail__list {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .equation-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .equation-block .katex {
+    font-size: 1.1em;
+  }
+
+  .home-paths .dialogue__choice:hover {
+    transform: none;
+  }
+
+  body.home .section__actions .btn + .btn {
+    margin-left: 0;
+    margin-top: var(--space-sm);
+  }
+
+  body.home .section__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body.home .section {
+    padding: 2.4rem 0;
+  }
+
+  .media-embed__icon {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-paths .dialogue__choice:hover {
+    transform: none;
+  }
+}
