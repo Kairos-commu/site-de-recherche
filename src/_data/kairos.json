@@ -1,0 +1,132 @@
+{
+  "name": "KAIROS",
+  "version": "1.1.0",
+  "channel": "bêta",
+  "downloadsAvailable": false,
+  "pausedTitle": "Téléchargement temporairement indisponible",
+  "pausedMessage": "La prochaine bêta est en cours de finalisation. Le téléchargement sera rouvert ici dès qu'elle sera prête.",
+  "pausedCta": "Téléchargement bientôt disponible",
+  "date": "2026-08-22",
+  "dateFr": "22 août 2026",
+  "tagline": "Cartographie cognitive assistée par IA",
+  "blurb": "Amplificateur de pensée par cartographie cognitive assistée par IA. KAIROS vous accompagne dans l'exploration de vos idées : créez des vignettes, reliez-les, et laissez l'IA enrichir votre réflexion.",
+  "repoReleases": "https://github.com/Kairos-commu/site-de-recherche/releases",
+  "mediaVideo": "https://github.com/Kairos-commu/site-de-recherche/releases/download/media/kairos-presentation.mp4",
+  "primaryPlatform": "linux",
+  "platforms": {
+    "linux": {
+      "id": "linux",
+      "available": true,
+      "current": true,
+      "label": "Linux",
+      "os": "Linux x86_64",
+      "format": "AppImage",
+      "filename": "KAIROS-1.1.0.AppImage",
+      "url": "https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.1.0/KAIROS-1.1.0.AppImage",
+      "sizeMo": 144,
+      "version": "1.1.0",
+      "needsAdmin": false,
+      "note": "Rendez le fichier exécutable (chmod +x), puis double-cliquez."
+    },
+    "windows": {
+      "id": "windows",
+      "available": true,
+      "current": false,
+      "label": "Windows",
+      "os": "Windows 10+ (64-bit)",
+      "format": "Installeur .exe",
+      "filename": "KAIROS.Setup.1.0.3.exe",
+      "url": "https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.0.3/KAIROS.Setup.1.0.3.exe",
+      "sizeMo": 104,
+      "version": "1.0.3",
+      "dateFr": "25 mars 2026",
+      "needsAdmin": false,
+      "note": "Version précédente. Le build Windows 1.1.0 suivra. Windows SmartScreen peut afficher un avertissement (bêta non signée)."
+    },
+    "mac": {
+      "id": "mac",
+      "available": false,
+      "current": false,
+      "label": "macOS",
+      "os": "macOS",
+      "format": "DMG",
+      "note": "À venir."
+    }
+  },
+  "providers": {
+    "assisted": ["Claude", "Mistral", "Ollama"],
+    "full": ["Claude", "ChatGPT", "DeepSeek", "Mistral", "Groq", "Ollama", "Grok"]
+  },
+  "highlights": [
+    {
+      "title": "Mode Gardien",
+      "desc": "Filet cognitif : observe les patterns à risque dans les échanges, tient un journal, cite les vignettes concernées. Un filet, pas un contrôle."
+    },
+    {
+      "title": "Companion",
+      "desc": "Chat libre, indépendant du canvas. Pour clarifier une idée à la volée sans structurer le graphe. Recherche web optionnelle (Ollama + Tavily)."
+    },
+    {
+      "title": "Import de sources",
+      "desc": "Fichiers, PDF, URLs : KAIROS les résume et les pose comme vignettes, prêtes à être développées ou reliées. Le texte intégral n'est jamais injecté dans un prompt."
+    },
+    {
+      "title": "Diagnostic sémantique",
+      "desc": "Écho, saturation et concentration mesurés par embeddings locaux (bge-m3), plus par recouvrement de tags. Informatif : ça n'entre pas dans le score O₂."
+    }
+  ],
+  "features": [
+    "Création libre de vignettes et connexions manuelles",
+    "3 opérations IA : Développer, Relier, Synthétiser",
+    "Jauge O₂ : scoring cognitif en temps réel",
+    "Perspectives : analyse en profondeur avec leviers d'action",
+    "Mode Autonome : dialogue non-directif, cartes d'émergence",
+    "4 thèmes visuels, géométrie sacrée en fond de canvas",
+    "Multi-canvas, undo/redo, export PNG / Markdown",
+    "Page d'accueil immersive (icosaèdre 3D)"
+  ],
+  "requirements": {
+    "cloudNote": "Les configurations ci-dessous couvrent l'usage standard avec les modèles cloud (clé API, sans calcul local).",
+    "minimum": [
+      { "label": "OS", "value": "Linux x86_64 ou Windows 10 (64-bit)" },
+      { "label": "RAM", "value": "4 Go" },
+      { "label": "Disque", "value": "~200 Mo" },
+      { "label": "Écran", "value": "1280 × 720" },
+      { "label": "CPU", "value": "x64, 2 cœurs" },
+      { "label": "Réseau", "value": "Connexion internet (sauf Ollama local)" }
+    ],
+    "recommended": [
+      { "label": "OS", "value": "Linux récent ou Windows 11" },
+      { "label": "RAM", "value": "8 Go" },
+      { "label": "Disque", "value": "500 Mo" },
+      { "label": "Écran", "value": "1920 × 1080" },
+      { "label": "CPU", "value": "x64, 4 cœurs" },
+      { "label": "Réseau", "value": "Connexion internet" }
+    ],
+    "notes": [
+      "Pas besoin de droits administrateur — Linux : AppImage portable ; Windows : installé dans %LOCALAPPDATA%",
+      "Base de données SQLite embarquée — rien à installer",
+      "Clé API LLM (Claude ou Mistral en mode assisté) ou Ollama en local — pas de compte KAIROS",
+      "macOS à venir"
+    ],
+    "ollama": {
+      "intro": "Uniquement si vous choisissez des modèles locaux via Ollama. En usage cloud, les spécifications ci-dessus suffisent.",
+      "minimum": [
+        { "label": "RAM", "value": "16 Go" },
+        { "label": "Modèles adaptés", "value": "gemma3:4b, qwen3:8b" },
+        { "label": "Inférence", "value": "nettement plus lente qu'avec GPU" }
+      ],
+      "recommended": [
+        { "label": "VRAM", "value": "12 Go ou plus" },
+        { "label": "Modèle par défaut", "value": "qwen3:14b (~9 Go en quantization Q4)" },
+        { "label": "Sans GPU dédié", "value": "16 Go de RAM système au minimum" }
+      ],
+      "disk": [
+        "~3 Go — gemma3:4b",
+        "~5 Go — qwen3:8b",
+        "~9 Go — qwen3:14b",
+        "En plus des ~500 Mo de l'application — les modèles se téléchargent séparément via Ollama"
+      ]
+    }
+  }
+}

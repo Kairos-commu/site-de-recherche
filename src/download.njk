@@ -1,46 +1,31 @@
 ---
 layout: layouts/page.njk
 pageTitle: "Télécharger KAIROS — Florent Klimacek"
-description: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.3 bêta pour Windows. Système Oxygène, 6 providers LLM, guide utilisateur dynamique."
+description: "KAIROS, application de cartographie cognitive assistée par IA. Téléchargement de la prochaine bêta temporairement indisponible."
 ogTitle: "Télécharger KAIROS — Cartographie cognitive"
-ogDescription: "Télécharger KAIROS, application de cartographie cognitive assistée par IA. Version 1.0.3 bêta pour Windows."
+ogDescription: "KAIROS, application de cartographie cognitive assistée par IA. Téléchargement temporairement indisponible — prochaine bêta en finalisation."
 ogUrl: "/download.html"
 canonical: "/download.html"
 siteNavPrefix: "/index.html"
 activeNav: download
 permalink: /download.html
-jsonLdRaw: |
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "KAIROS",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Windows 10+",
-    "softwareVersion": "1.0.3",
-    "description": "Application Electron de cartographie cognitive assistée par IA. Système Oxygène, injection de friction, 6 providers LLM.",
-    "url": "https://mecanique-invisible.com/download.html",
-    "downloadUrl": "https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.0.3/KAIROS.Setup.1.0.3.exe",
-    "fileSize": "100 MB",
-    "author": {
-      "@type": "Person",
-      "name": "Florent Klimacek",
-      "url": "https://mecanique-invisible.com/about.html"
-    },
-    "image": "https://mecanique-invisible.com/og-image.jpg",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR"
-    }
-  }
-  </script>
 ---
 
 <style>
   .dl-card { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2xl); }
   .dl-grid-3 { grid-template-columns: repeat(3, 1fr); }
   .dl-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
+  .dl-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+  .dl-card--secondary { opacity: 0.92; }
+  .dl-badge {
+    display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent); margin-left: 0.5rem; vertical-align: middle;
+  }
+  .dl-badge--muted {
+    background: var(--border-light); color: var(--text-muted);
+  }
 
   /* SmartScreen guide */
   .ss-guide { margin-top: var(--space-xl); }
@@ -104,6 +89,7 @@ jsonLdRaw: |
     .dl-card > div:first-child > div:first-child { justify-content: center; }
     .dl-grid-3 { grid-template-columns: 1fr !important; }
     .dl-grid-2 { grid-template-columns: 1fr; }
+    .dl-platforms { grid-template-columns: 1fr; }
     .ss-step { flex-direction: column; gap: var(--space-sm); }
   }
 </style>
@@ -113,21 +99,21 @@ jsonLdRaw: |
   <div class="container" style="text-align: center;">
     <p class="hero__label">Téléchargement</p>
     <h1 class="hero__title">
-      <span class="glitch-text">KAIROS</span> <span>v1.0.3</span>
+      <span class="glitch-text">KAIROS</span>{% if kairos.downloadsAvailable %} <span>v{{ kairos.version }}</span>{% endif %}
     </h1>
     <p class="hero__subtitle" style="margin-left: auto; margin-right: auto; font-family: var(--font-serif); font-style: italic; font-size: 1.3rem;">
-      Cartographie cognitive assistée par IA — Version bêta
+      {{ kairos.tagline }}{% if kairos.downloadsAvailable %} — Version {{ kairos.channel }}{% endif %}
     </p>
     <div style="margin-top: var(--space-2xl); max-width: 720px; margin-left: auto; margin-right: auto;">
       <video
-        src="https://github.com/Kairos-commu/site-de-recherche/releases/download/media/kairos-presentation.mp4"
+        src="{{ kairos.mediaVideo }}"
         controls
         preload="metadata"
         playsinline
         poster="/images/kairos-hero.png"
         style="width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
       >
-        <a href="https://github.com/Kairos-commu/site-de-recherche/releases/download/media/kairos-presentation.mp4">Voir la vidéo de présentation</a>
+        <a href="{{ kairos.mediaVideo }}">Voir la vidéo de présentation</a>
       </video>
     </div>
   </div>
@@ -138,38 +124,26 @@ jsonLdRaw: |
   <div class="container" style="max-width: 800px; margin: 0 auto;">
 
     <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-secondary); text-align: center; margin-bottom: var(--space-2xl);">
-      Amplificateur de pensée par cartographie cognitive assistée par IA.<br>
-      KAIROS vous accompagne dans l'exploration de vos idées : créez des vignettes,
-      reliez-les, et laissez l'IA enrichir votre réflexion. Le système détecte la structure
-      de votre graphe et vous guide vers les opérations les plus pertinentes.
+      {{ kairos.blurb }}
     </p>
 
     <header class="section__header">
-      <p class="section__label">v1.0.1</p>
+      {%- if kairos.downloadsAvailable %}
+      <p class="section__label">v{{ kairos.version }}</p>
       <h2 class="section__title">Nouveautés de cette version</h2>
+      {%- else %}
+      <p class="section__label">Prochaine bêta</p>
+      <h2 class="section__title">Ce qui arrive</h2>
+      {%- endif %}
     </header>
 
     <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl);">
-      <div class="card">
-        <h3 class="card__title">Onboarding progressif</h3>
-        <p class="card__desc">L'interface se dévoile au fur et à mesure de votre usage. Quatre paliers : cartographier, explorer avec l'IA, structurer, approfondir. Chaque déblocage s'accompagne d'une animation et d'une indication sur la prochaine étape.</p>
+      {%- for item in kairos.highlights %}
+      <div class="card"{% if loop.last and (kairos.highlights.length % 2 == 1) %} style="grid-column: 1 / -1;"{% endif %}>
+        <h3 class="card__title">{{ item.title }}</h3>
+        <p class="card__desc">{{ item.desc }}</p>
       </div>
-      <div class="card">
-        <h3 class="card__title">Configuration IA simplifiée</h3>
-        <p class="card__desc">La modale de configuration s'ouvre automatiquement à la création d'un graphe. Interface radio cards avec test de clé intégré. Trois fournisseurs disponibles : Claude, ChatGPT, DeepSeek.</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">Mode simple / expert</h3>
-        <p class="card__desc">Mode simple par défaut (interface épurée, progression guidée). Mode expert accessible d'un clic pour les utilisateurs avancés (tout visible immédiatement).</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">Taille de police ajustable</h3>
-        <p class="card__desc">Trois niveaux (Normal, Grand, Très grand) via le bouton Aa dans la toolbar.</p>
-      </div>
-      <div class="card" style="grid-column: 1 / -1;">
-        <h3 class="card__title">Guide interactif enrichi</h3>
-        <p class="card__desc">Bouton ? dans la toolbar, 8 guides en deux niveaux. Liens cliquables vers les éléments d'interface avec highlight visuel. Détection automatique des fonctionnalités pas encore débloquées.</p>
-      </div>
+      {%- endfor %}
     </div>
 
     <header class="section__header">
@@ -179,15 +153,9 @@ jsonLdRaw: |
 
     <div class="card" style="margin-bottom: var(--space-xl);">
       <ul style="list-style: none; font-size: 0.95rem; line-height: 2.2; color: var(--text-secondary); columns: 2; column-gap: var(--space-2xl);">
-        <li>&#10003; Création libre de vignettes et connexions manuelles</li>
-        <li>&#10003; 3 opérations IA : Développer, Relier, Synthétiser</li>
-        <li>&#10003; Jauge O₂ : scoring cognitif en temps réel</li>
-        <li>&#10003; Perspectives : analyse en profondeur avec leviers d'action</li>
-        <li>&#10003; 4 thèmes visuels, 3 postures IA</li>
-        <li>&#10003; Géométrie sacrée en fond de canvas</li>
-        <li>&#10003; Multi-canvas, undo/redo</li>
-        <li>&#10003; Export PNG / Markdown</li>
-        <li>&#10003; Page d'accueil immersive (icosaèdre 3D)</li>
+        {%- for feat in kairos.features %}
+        <li>&#10003; {{ feat }}</li>
+        {%- endfor %}
       </ul>
     </div>
 
@@ -198,33 +166,90 @@ jsonLdRaw: |
 <section class="section" id="download">
   <div class="container">
 
-    <div class="card card--featured dl-card" style="padding: var(--space-2xl);">
-      <div style="flex: 1;">
-        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
-          <svg width="32" height="32" fill="none" stroke="var(--accent)" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-          </svg>
-          <h2 style="font-family: var(--font-serif); font-size: 1.6rem;">KAIROS Setup 1.0.3</h2>
+    {%- if not kairos.downloadsAvailable %}
+    <div class="ss-why" style="max-width: 720px; margin: 0 auto var(--space-2xl);">
+      <div class="ss-why-icon"></div>
+      <div>
+        <strong style="color: var(--text-primary);">{{ kairos.pausedTitle }}</strong><br>
+        {{ kairos.pausedMessage }}
+        Pour toute question : <a href="/contact.html" style="color: var(--accent);">contact</a>.
+      </div>
+    </div>
+    {%- else %}
+
+    <div class="dl-platforms">
+      {%- set linux = kairos.platforms.linux %}
+      {%- set windows = kairos.platforms.windows %}
+
+      <div class="card card--featured dl-card" style="padding: var(--space-2xl); flex-direction: column; align-items: stretch; text-align: left;">
+        <div>
+          <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+            <svg width="32" height="32" fill="none" stroke="var(--accent)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <h2 style="font-family: var(--font-serif); font-size: 1.4rem;">
+              Linux <span class="dl-badge">actuel</span>
+            </h2>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: var(--space-sm);">
+            {{ linux.os }} &middot; {{ linux.sizeMo }} Mo &middot; {{ linux.format }}
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: var(--space-lg);">
+            Version {{ kairos.channel }} {{ linux.version }} &middot; {{ kairos.dateFr }} &middot; Pas besoin de droits administrateur
+          </p>
         </div>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-sm);">Windows 10+ (64-bit) &middot; 104 Mo &middot; Installeur .exe</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">
-          Version bêta &middot; 18 mars 2026 &middot; Pas besoin de droits administrateur
+        <a href="{{ linux.url }}" class="btn btn--primary" style="font-size: 1.05rem; padding: 0.9rem 2rem; text-align: center;" download>
+          Télécharger l'AppImage
+        </a>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: var(--space-md);">
+          {{ linux.note }}
         </p>
       </div>
-      <a href="https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.0.3/KAIROS.Setup.1.0.3.exe" class="btn btn--primary" style="font-size: 1.05rem; padding: 0.9rem 2rem; white-space: nowrap;" download>
-        Télécharger pour Windows
-      </a>
+
+      <div class="card dl-card dl-card--secondary" style="padding: var(--space-2xl); flex-direction: column; align-items: stretch; text-align: left;">
+        <div>
+          <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+            <svg width="32" height="32" fill="none" stroke="var(--text-muted)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <h2 style="font-family: var(--font-serif); font-size: 1.4rem;">
+              Windows <span class="dl-badge dl-badge--muted">v{{ windows.version }}</span>
+            </h2>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: var(--space-sm);">
+            {{ windows.os }} &middot; {{ windows.sizeMo }} Mo &middot; {{ windows.format }}
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: var(--space-lg);">
+            {{ windows.note }}
+          </p>
+        </div>
+        <a href="{{ windows.url }}" class="btn btn--secondary" style="font-size: 1.05rem; padding: 0.9rem 2rem; text-align: center;" download>
+          Télécharger pour Windows
+        </a>
+      </div>
     </div>
 
-    <div class="ss-guide">
+    <div class="ss-guide" id="linux-run">
+      <div class="ss-why">
+        <div class="ss-why-icon"></div>
+        <div>
+          <strong style="color: var(--text-primary);">Lancer l'AppImage (Linux)</strong><br>
+          KAIROS n'a pas besoin d'être installé. Téléchargez le fichier, rendez-le exécutable, puis lancez-le.
+          Sur Ubuntu / GNOME : clic droit &rarr; Propriétés &rarr; cocher « Autoriser l'exécution ».
+          En terminal : <code style="font-family: var(--font-mono); font-size: 0.85em; background: var(--border-light); padding: 0.1em 0.4em; border-radius: 3px;">chmod +x {{ linux.filename }} && ./{{ linux.filename }}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="ss-guide" id="smartscreen">
 
       <div class="ss-why">
         <div class="ss-why-icon"></div>
         <div>
-          <strong style="color: var(--text-primary);">Pourquoi cette alerte ?</strong><br>
+          <strong style="color: var(--text-primary);">Windows : pourquoi cette alerte ?</strong><br>
           KAIROS est en version bêta et n&rsquo;est pas encore signé numériquement par Microsoft.
           Windows bloque par défaut les applications non signées. C&rsquo;est normal et sans danger.
-          Suivez les 2 étapes ci-dessous pour lancer l&rsquo;application.
+          Suivez les 2 étapes ci-dessous pour lancer l&rsquo;installeur.
         </div>
       </div>
 
@@ -277,6 +302,7 @@ jsonLdRaw: |
       </div>
 
     </div>
+    {%- endif %}
   </div>
 </section>
 
@@ -303,7 +329,7 @@ jsonLdRaw: |
           </svg>
         </div>
         <h3 class="card__title">Système Oxygène</h3>
-        <p class="card__desc">Score de vitalité cognitive 0-100. 5 signaux en temps réel. Injection de friction quand la pensée s'asphyxie.</p>
+        <p class="card__desc">Score de vitalité cognitive 0-100. Snapshot du graphe, triangle radar (divergence, cohérence, souveraineté), friction automatique sous 30.</p>
       </div>
 
       <div class="card">
@@ -313,7 +339,7 @@ jsonLdRaw: |
           </svg>
         </div>
         <h3 class="card__title">Canvas cognitif</h3>
-        <p class="card__desc">Vignettes, connexions organiques, 3 opérations IA : DÉVELOPPER, RELIER, SYNTHÉTISER.</p>
+        <p class="card__desc">Vignettes, connexions organiques, 3 opérations IA : DÉVELOPPER, RELIER, SYNTHÉTISER. Mode Autonome en complément.</p>
       </div>
 
       <div class="card">
@@ -322,8 +348,8 @@ jsonLdRaw: |
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h3 class="card__title">6 providers LLM</h3>
-        <p class="card__desc">Claude, ChatGPT, DeepSeek, Mistral, Groq, Ollama. Votre clé API, vos modèles.</p>
+        <h3 class="card__title">Providers LLM</h3>
+        <p class="card__desc">Mode assisté : {{ kairos.providers.assisted | join(", ") }}. Autonome et Companion : roster complet ({{ kairos.providers.full | join(", ") }}). Votre clé, vos modèles.</p>
       </div>
     </div>
 
@@ -344,32 +370,25 @@ jsonLdRaw: |
     </header>
 
     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--space-lg); max-width: 700px;">
-      Les deux configurations ci-dessous couvrent l'usage standard de KAIROS avec les modèles cloud
-      (Claude, ChatGPT, DeepSeek, Mistral, Groq &mdash; via API, sans calcul local).
+      {{ kairos.requirements.cloudNote }}
     </p>
 
     <div class="dl-grid-2">
       <div class="card">
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Minimum</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-          <li><strong>OS</strong> &mdash; Windows 10 (64-bit)</li>
-          <li><strong>RAM</strong> &mdash; 4 Go</li>
-          <li><strong>Disque</strong> &mdash; ~200 Mo</li>
-          <li><strong>Écran</strong> &mdash; 1280 &times; 720</li>
-          <li><strong>CPU</strong> &mdash; x64, 2 cœurs</li>
-          <li><strong>Réseau</strong> &mdash; Connexion internet</li>
+          {%- for row in kairos.requirements.minimum %}
+          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          {%- endfor %}
         </ul>
       </div>
 
       <div class="card" style="border-color: var(--accent); border-width: 2px;">
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md); color: var(--accent);">Recommandé</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-          <li><strong>OS</strong> &mdash; Windows 11</li>
-          <li><strong>RAM</strong> &mdash; 8 Go</li>
-          <li><strong>Disque</strong> &mdash; 500 Mo</li>
-          <li><strong>Écran</strong> &mdash; 1920 &times; 1080</li>
-          <li><strong>CPU</strong> &mdash; x64, 4 cœurs</li>
-          <li><strong>Réseau</strong> &mdash; Connexion internet</li>
+          {%- for row in kairos.requirements.recommended %}
+          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          {%- endfor %}
         </ul>
       </div>
     </div>
@@ -377,10 +396,9 @@ jsonLdRaw: |
     <div class="card" style="background: var(--bg-concept, var(--bg-card)); margin-bottom: var(--space-2xl);">
       <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Bon à savoir</h3>
       <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-        <li>&#10003; Pas besoin de droits administrateur &mdash; installé dans <code style="font-family: var(--font-mono); font-size: 0.85em; background: var(--border-light); padding: 0.1em 0.4em; border-radius: 3px;">%LOCALAPPDATA%</code></li>
-        <li>&#10003; Base de données SQLite embarquée &mdash; rien à installer</li>
-        <li>&#10003; Nécessite une clé API LLM (Claude, ChatGPT ou DeepSeek) &mdash; pas de compte KAIROS</li>
-        <li>&#10003; Windows uniquement pour le moment &mdash; Mac et Linux à venir</li>
+        {%- for note in kairos.requirements.notes %}
+        <li>&#10003; {{ note | safe }}</li>
+        {%- endfor %}
       </ul>
     </div>
 
@@ -390,26 +408,25 @@ jsonLdRaw: |
     </header>
 
     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--space-lg); max-width: 700px;">
-      Ces spécifications ne sont nécessaires que si vous choisissez d'utiliser des modèles locaux
-      via Ollama. En usage cloud uniquement, les spécifications minimales ci-dessus suffisent.
+      {{ kairos.requirements.ollama.intro }}
     </p>
 
     <div class="dl-grid-2">
       <div class="card">
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Minimum (CPU, sans GPU dédié)</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-          <li><strong>RAM</strong> &mdash; 16 Go</li>
-          <li><strong>Modèles adaptés</strong> &mdash; gemma3:4b, qwen3:8b</li>
-          <li><strong>Inférence</strong> &mdash; nettement plus lente qu'avec GPU</li>
+          {%- for row in kairos.requirements.ollama.minimum %}
+          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          {%- endfor %}
         </ul>
       </div>
 
       <div class="card" style="border-color: var(--accent); border-width: 2px;">
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md); color: var(--accent);">Recommandé (avec GPU)</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-          <li><strong>VRAM</strong> &mdash; 12 Go ou plus</li>
-          <li><strong>Modèle par défaut</strong> &mdash; qwen3:14b (~9 Go en quantization Q4)</li>
-          <li><strong>Sans GPU dédié</strong> &mdash; 16 Go de RAM système au minimum</li>
+          {%- for row in kairos.requirements.ollama.recommended %}
+          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          {%- endfor %}
         </ul>
       </div>
     </div>
@@ -417,15 +434,15 @@ jsonLdRaw: |
     <div class="card" style="background: var(--bg-concept, var(--bg-card));">
       <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Espace disque additionnel (modèles Ollama)</h3>
       <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
-        <li>&#10003; ~3 Go &mdash; gemma3:4b</li>
-        <li>&#10003; ~5 Go &mdash; qwen3:8b</li>
-        <li>&#10003; ~9 Go &mdash; qwen3:14b</li>
-        <li>&#10003; En plus des ~500 Mo de l'application &mdash; les modèles se téléchargent séparément via Ollama</li>
+        {%- for line in kairos.requirements.ollama.disk %}
+        <li>&#10003; {{ line }}</li>
+        {%- endfor %}
       </ul>
     </div>
   </div>
 </section>
 
+{%- if kairos.downloadsAvailable %}
 <!-- Installation -->
 <section class="section section--alt" id="install">
   <div class="container">
@@ -438,19 +455,19 @@ jsonLdRaw: |
       <div class="card" style="text-align: center;">
         <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--accent); margin-bottom: var(--space-sm);">1</div>
         <h3 class="card__title">Télécharger</h3>
-        <p class="card__desc">Lancez le fichier <code style="font-family: var(--font-mono); font-size: 0.85em;">KAIROS-Setup-1.0.3.exe</code> téléchargé ci-dessus.</p>
+        <p class="card__desc">Linux : <code style="font-family: var(--font-mono); font-size: 0.85em;">{{ linux.filename }}</code>. Windows : l'installeur <code style="font-family: var(--font-mono); font-size: 0.85em;">{{ windows.filename }}</code>.</p>
       </div>
 
       <div class="card" style="text-align: center;">
         <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--accent); margin-bottom: var(--space-sm);">2</div>
-        <h3 class="card__title">Installer</h3>
-        <p class="card__desc">L'installeur se lance automatiquement. Aucune option à configurer.</p>
+        <h3 class="card__title">Lancer</h3>
+        <p class="card__desc">Linux : rendez l'AppImage exécutable, puis double-cliquez. Windows : l'installeur se lance ; aucune option à configurer.</p>
       </div>
 
       <div class="card" style="text-align: center;">
         <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--accent); margin-bottom: var(--space-sm);">3</div>
-        <h3 class="card__title">Configurer votre clé API</h3>
-        <p class="card__desc">Au premier lancement, renseignez votre clé API (Claude, ChatGPT ou DeepSeek) dans les paramètres.</p>
+        <h3 class="card__title">Configurer l'IA</h3>
+        <p class="card__desc">Au premier graphe, renseignez une clé API ({{ kairos.providers.assisted | join(", ") }}) ou branchez Ollama en local.</p>
       </div>
     </div>
   </div>
@@ -466,8 +483,23 @@ jsonLdRaw: |
       KAIROS est gratuit, open-source, et n'envoie aucune donnée.
       Vos idées restent sur votre machine.
     </p>
-    <a href="https://github.com/Kairos-commu/site-de-recherche/releases/download/v1.0.3/KAIROS.Setup.1.0.3.exe" class="btn btn--primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;" download>
-      Télécharger KAIROS v1.0.3
+    <a href="{{ linux.url }}" class="btn btn--primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;" download>
+      Télécharger KAIROS v{{ kairos.version }} (Linux)
     </a>
   </div>
 </section>
+{%- else %}
+<section class="section section--dark" id="cta">
+  <div class="container container--narrow" style="text-align: center;">
+    <h2 style="font-family: var(--font-serif); font-size: 2rem; color: #fafaf9; margin-bottom: var(--space-md);">
+      {{ kairos.pausedTitle }}
+    </h2>
+    <p style="color: #94a3b8; margin-bottom: var(--space-xl); max-width: 500px; margin-left: auto; margin-right: auto;">
+      {{ kairos.pausedMessage }}
+    </p>
+    <a href="/presentation_kairos.html" class="btn btn--primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+      Découvrir KAIROS
+    </a>
+  </div>
+</section>
+{%- endif %}

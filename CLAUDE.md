@@ -36,7 +36,8 @@ site-de-recherche/
 │   │       └── article-nav.njk           # Prev/next auto-calcule depuis la collection
 │   │
 │   ├── _data/
-│   │   └── site.json                     # Metadonnees globales (url, author, year, etc.)
+│   │   ├── site.json                     # Metadonnees globales (url, author, year, etc.)
+│   │   └── kairos.json                   # Source unique KAIROS (version, plateformes, highlights)
 │   │
 │   ├── articles/                         # Collection d'articles (11 fichiers .md)
 │   │   ├── articles.json                 # Defaults : layout article.njk, tags ["article"]
@@ -111,6 +112,7 @@ Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
 - `src/css/`, `src/js/`, `src/images/`, `src/demo/`, `src/docs/`
 - `src/favicon.svg`, `src/og-image.jpg`, `src/CNAME`, `src/robots.txt`
 - `src/presentation_kairos.html`
+- `src/_data/kairos.json` → `_site/kairos.json` (lu par les pages présentation HTML)
 
 ### Fichiers ignores par 11ty
 `src/docs/**`, `src/demo/**`, `src/presentation_kairos.html` sont dans `eleventyConfig.ignores` pour ne pas etre traites comme templates.
@@ -204,37 +206,51 @@ Approche mobile-first progressive :
 - Anti-FOUC : script inline dans base.njk `<head>` (applique avant le premier paint)
 - `js/site.js` gere le toggle cote runtime
 
-## Docs Viewer (presentation_kairos.html)
+## Pages KAIROS — source unique
 
-Fichier passthrough — jamais traite par 11ty. Charge `docs/*.md` via `fetch()` + `marked.js` (CDN).
+Tous les faits produit (version, date, URLs de download, tailles, providers, highlights, prérequis) vivent dans `src/_data/kairos.json`.
 
-- JS inline dans la page (specifique, pas dans site.js)
-- Ne fonctionne PAS en `file://` (CORS)
+| Consommateur | Comment |
+|---|---|
+| `download.njk` | 11ty injecte `kairos.*` au build |
+| `index.njk` | CTA « Télécharger v{{ kairos.version }} » |
+| `base.njk` | JSON-LD SoftwareApplication (page download) |
+| `presentation_kairos.html` / `_en.html` | passthrough HTML ; `fetch('kairos.json')` met à jour `[data-kairos-version]` |
 
-## Sync depuis Kairos
+**Ne plus hardcoder la version** dans `download.njk` ni l'accueil. La présentation HTML garde un fallback no-JS, synchronisé par le fetch.
 
-Le repo Kairos a une GitHub Action qui copie `doc projet/*.md` -> `src/docs/` ici.
-**Note** : si le workflow Kairos ecrit encore dans `docs/` a la racine, le mettre a jour pour ecrire dans `src/docs/`.
+**Pause téléchargement** : `downloadsAvailable: false` dans `kairos.json` masque tous les boutons/liens binaires (accueil, download, présentation, JSON-LD). Remettre à `true` (le fait automatiquement `deploy-kairos.sh`) pour rouvrir.
 
-## Deployer une nouvelle version KAIROS
+**Ne pas** recopier `doc projet/*.md` (ROADMAP, ARCHITECTURE, PROMPTS-LLM) vers le site public. Ces fichiers sont internes. Les textes publics sont les articles 11ty (`kairos-technical-overview.md`, `genese-kairos.md`, etc.).
 
-Le `.exe` est heberge via **GitHub Releases** (pas dans le repo — trop lourd pour Git, et LFS ne fonctionne pas avec GitHub Pages).
+## Déployer une nouvelle version KAIROS
 
-**Script automatise** : `deploy-kairos.sh`
+Les binaires sont hébergés via **GitHub Releases** (pas dans le repo — trop lourds pour Git, et LFS ne fonctionne pas avec GitHub Pages).
+
+**Script** : `deploy-kairos.sh` — **à lancer à la main**, pas par un agent (effet public : release + site prod).
 
 ```bash
-./deploy-kairos.sh "/chemin/vers/KAIROS Setup X.Y.Z.exe" X.Y.Z
+# depuis site-de-recherche/, binaires déjà dans ../kairos-app/release/
+./deploy-kairos.sh 1.1.0
 ```
 
-Le script fait tout :
-1. Cree la GitHub Release `vX.Y.Z` et uploade le `.exe`
-2. Met a jour `src/download.njk` (version, lien, taille, date)
-3. Build le site
-4. Commit et push
+Le script :
+1. Cherche `KAIROS-X.Y.Z.AppImage` et éventuellement `KAIROS Setup X.Y.Z.exe` dans `../kairos-app/release/`
+2. Crée (ou complète) la GitHub Release `vX.Y.Z` et uploade les binaires
+3. Met à jour `src/_data/kairos.json` (version, URLs, tailles, date) — **pas** de sed sur le HTML
+4. Build le site
+5. Commit et push
 
-**Prerequis** : `gh` CLI installe et connecte (`gh auth login`).
+**Prérequis** : `gh` CLI installé et connecté (`gh auth login`).
 
-**Page de telechargement** : `src/download.njk` — les liens pointent vers `https://github.com/Kairos-commu/site-de-recherche/releases/download/vX.Y.Z/KAIROS.Setup.X.Y.Z.exe`
+**Après un changement de faits sans nouveau binaire** (highlights, providers, texte O₂) : éditer `kairos.json` et/ou la présentation HTML, `npm run build`, commit, push. Pas besoin du script.
+
+## Ce fil / routine de mise à jour
+
+1. Feature visible dans l'UI de l'app → se demander si elle mérite une carte dans `kairos.highlights` et/ou la section features de `presentation_kairos.html`
+2. Nouveau binaire → `./deploy-kairos.sh X.Y.Z`
+3. Nouvel article de recherche → `src/articles/*.md` (déjà auto-indexé)
+4. Ne pas synchroniser la ROADMAP brute
 
 ## Conventions
 
@@ -274,6 +290,7 @@ Geres automatiquement par les layouts depuis le frontmatter. Verifier :
 | Nouvel article | Creer un .md dans src/articles/ — index, feed, sitemap, nav auto |
 | Suppression d'article | Supprimer le .md — tout se met a jour au build |
 | Changement de domaine | `src/_data/site.json` + `src/CNAME` |
+| Version / binaire KAIROS | `src/_data/kairos.json` (ou `./deploy-kairos.sh X.Y.Z`) |
 
 ### Avant chaque push
 

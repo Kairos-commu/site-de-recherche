@@ -84,6 +84,33 @@
   {%- if jsonLdRaw %}
   {{ jsonLdRaw | safe }}
   {%- endif %}
+  {%- if activeNav == "download" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KAIROS",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Linux, Windows 10+",
+    "softwareVersion": "{{ kairos.version }}",
+    "description": "Application Electron de cartographie cognitive assistée par IA. Système Oxygène, injection de friction, modes Assisté et Autonome.",
+    "url": "{{ site.url }}/download.html"{% if kairos.downloadsAvailable %},
+    "downloadUrl": "{{ kairos.platforms.linux.url }}",
+    "fileSize": "{{ kairos.platforms.linux.sizeMo }} MB"{% endif %},
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author.name }}",
+      "url": "{{ site.url }}/about.html"
+    },
+    "image": "{{ site.ogImage }}",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+  {%- endif %}
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

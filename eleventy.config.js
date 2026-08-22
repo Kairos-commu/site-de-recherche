@@ -15,6 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/presentation_kairos_en.html");
   eleventyConfig.addPassthroughCopy("src/demo_en");
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy({ "src/_data/kairos.json": "kairos.json" });
 
   // Exclude passthrough files from template processing
   eleventyConfig.ignores.add("src/docs/**");

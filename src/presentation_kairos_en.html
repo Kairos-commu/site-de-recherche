@@ -43,7 +43,7 @@
     "@type": "SoftwareApplication",
     "name": "KAIROS",
     "applicationCategory": "EducationalApplication",
-    "description": "KAIROS — AI-assisted cognitive mapping application. Oxygen system, friction injection, 7 LLM providers, 4 visual themes.",
+    "description": "KAIROS — AI-assisted cognitive mapping application. Oxygen system, friction injection, 4 visual themes, Assisted and Autonomous modes.",
     "url": "https://mecanique-invisible.com/presentation_kairos_en.html",
     "operatingSystem": "Windows, macOS, Linux",
     "author": {
@@ -80,7 +80,7 @@
       <li><a href="#demo">Demo</a></li>
       <li><a href="demo_en/" target="_blank" rel="noopener">Try it</a></li>
       <li><a href="#usecases">Use cases</a></li>
-      <li><a href="#documentation">Docs</a></li>
+      <li><a href="#documentation">Read</a></li>
       <li><a href="download.html" style="color: var(--accent); font-weight: 500;">Download</a></li>
       <li><a href="presentation_kairos.html" class="lang-switch" style="margin-left: 0.5rem; padding: 0.2rem 0.5rem; border-left: 1px solid var(--text-muted); font-size: 0.85rem; opacity: 0.7;">FR</a></li>
     </ul>
@@ -119,16 +119,16 @@
       </p>
 
       <div class="hero-chips fade-in delay-3" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1rem;">
-        <span class="hero-chip">6 LLM providers</span>
+        <span class="hero-chip">Claude, Mistral, Ollama</span>
         <span class="hero-chip">4 visual themes</span>
         <span class="hero-chip">Multi-canvas tabs</span>
-        <span class="hero-chip">Dynamic ambient background</span>
-        <span class="hero-chip">725 unit tests</span>
+        <span class="hero-chip">Guardian mode</span>
+        <span class="hero-chip">Companion</span>
       </div>
 
       <div class="fade-in delay-3" style="margin-top: 2rem;">
-        <a href="download.html" style="display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 1.05rem; transition: opacity 0.2s;">
-          Download KAIROS v1.0.1
+        <a href="download.html" data-kairos-download-cta style="display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 1.05rem; transition: opacity 0.2s;">
+          Download coming soon
         </a>
       </div>
     </div>
@@ -381,13 +381,13 @@
           <h3>Structural Signals</h3>
           <p>
             The score is calculated around a neutral point of 50, modulated
-            by 4 signals and 4 topological metrics.
+            by 3 structural signals and 4 topological metrics.
           </p>
           <ul class="signal-list">
             <li><strong>Structure</strong> &mdash; connection/node ratio, detection of disconnected islands</li>
-            <li><strong>Tag diversity</strong> &mdash; &ge;3 new tags = bonus, stagnation = penalty</li>
             <li><strong>Friction</strong> &mdash; recently accepted friction = bonus</li>
             <li><strong>Convergence</strong> &mdash; bonus if perspectives were generated</li>
+            <li><strong>Topology</strong> &mdash; openness, resolution, propagation, sovereignty</li>
           </ul>
         </div>
 
@@ -404,7 +404,8 @@
             <li><strong>Sovereignty</strong> &mdash; 50% manual nodes + 25% manual connections + 25% edited LLM nodes</li>
           </ul>
           <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
-            The chosen cognitive posture (Accompany, Name, Provoke) redistributes the triangle's weights.
+            Triangle weights are fixed. A punctual &laquo;&nbsp;Unfiltered&nbsp;&raquo; gesture
+            changes the tone of an exchange, not the score calculation.
           </p>
         </div>
 
@@ -421,9 +422,9 @@
             <li><span style="color: var(--accent-red);"><strong>Suffocating (&lt;30)</strong></span> &mdash; automatic friction injection</li>
           </ul>
           <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
-            <strong>Content diagnostics</strong>: semantic echo (redundancy between cards via 42K-entry thesaurus),
-            tag saturation and concentration. These diagnostics are informational &mdash; they don't modify the score,
-            but can cap it: a redundant graph can't display 95.
+            <strong>Content diagnostics</strong>: echo, saturation and concentration measured
+            by local embeddings (bge-m3). Informational &mdash; they don't modify the score,
+            but a redundant graph can be capped (a saturated canvas won't display 95).
           </p>
         </div>
       </div>
@@ -450,7 +451,7 @@
           <h3>Origin Tracking</h3>
           <p>
             Every card carries its origin: <strong>user</strong>, <strong>LLM</strong>,
-            <strong>friction</strong>, or <strong>capture</strong>.
+            <strong>friction</strong>, or <strong>import</strong> (external source).
             Cards created manually are tagged [USER] in the LLM context &mdash;
             the AI builds on them instead of rephrasing them.
           </p>
@@ -492,7 +493,7 @@
     <div class="container">
       <h2>What KAIROS Does Today</h2>
       <p>
-        ~29,000 lines of TypeScript, 725 unit tests, no framework.
+        TypeScript, no framework, Electron, embedded SQLite.
         Everything below is implemented and functional.
       </p>
 
@@ -524,8 +525,8 @@
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-card-icon">&#129302;</div>
-          <h4>6 LLM providers</h4>
-          <p>Claude (Anthropic), ChatGPT (OpenAI), DeepSeek, Mistral, Groq, Ollama (local). Config via radio cards, inline API key, model dropdown.</p>
+          <h4>LLM providers</h4>
+          <p>Assisted mode: Claude, Mistral, Ollama (structured-format reliability). Autonomous and Companion: full roster, including ChatGPT, DeepSeek, Groq, Grok. Your key, your models.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-icon">&#128203;</div>
@@ -565,6 +566,35 @@
           <div class="feature-card-icon">&#128737;</div>
           <h4>Security &amp; robustness</h4>
           <p>SQLite backups every 30 min + on quit. Error boundaries, persistent logs, API key validation on startup.</p>
+        </div>
+      </div>
+
+      <h3 class="features-group-title">Modes &amp; recent features</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128065;</div>
+          <h4>Guardian mode</h4>
+          <p>Cognitive safety net: detects at-risk patterns in exchanges
+          and keeps an observation log. A net, not a control.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128172;</div>
+          <h4>Companion</h4>
+          <p>A free chat, independent of the canvas: a complementary dialogue space to
+          clarify an idea on the fly without structuring the graph. Optional web search.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128229;</div>
+          <h4>External source import</h4>
+          <p>Files, PDFs, URLs: KAIROS summarises them and injects them as cards
+          into the canvas, ready to be developed or linked.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">&#128301;</div>
+          <h4>Autonomous mode</h4>
+          <p>Beyond the assisted canvas: non-directive dialogue, prompt lab, emergence
+          cards, attractors. The resonance equation is <strong>passive</strong> here
+          &mdash; it observes the exchange rather than guiding it.</p>
         </div>
       </div>
     </div>
@@ -819,19 +849,21 @@
   <!-- Documentation -->
   <section id="documentation">
     <div class="container">
-      <h2>Technical Documentation</h2>
+      <h2>Go further</h2>
       <p>
-        KAIROS project documentation, automatically synced from the repository.
+        Internal application docs are not mirrored here.
+        Two public texts describe the frame and the architecture (in French).
       </p>
-
-      <div class="docs-layout">
-        <div class="docs-sidebar" id="docs-sidebar">
-          <button class="docs-sidebar-btn active" data-doc="ARCHITECTURE">Architecture &amp; Vision</button>
-          <button class="docs-sidebar-btn" data-doc="PROMPTS-LLM">Metrics &amp; Prompts</button>
-          <button class="docs-sidebar-btn" data-doc="ROADMAP">Roadmap &amp; Bugs</button>
+      <div class="mechanisms-grid" style="margin-top: 2rem;">
+        <div class="mechanism-card">
+          <h3>Technical overview</h3>
+          <p>Architecture, Oxygen gauge, friction, radar triangle. The bridge between L'Entre and the software.</p>
+          <p style="margin-top: 1rem;"><a href="kairos-technical-overview.html">Read the document &rarr;</a></p>
         </div>
-        <div class="docs-content" id="docs-content">
-          <div class="docs-loading">Loading documentation...</div>
+        <div class="mechanism-card">
+          <h3>Genesis of KAIROS</h3>
+          <p>From theoretical impossibility to a concrete build: why the canvas replaced the chat.</p>
+          <p style="margin-top: 1rem;"><a href="genese-kairos.html">Read the article &rarr;</a></p>
         </div>
       </div>
     </div>
@@ -843,7 +875,7 @@
       <strong>KAIROS</strong> &mdash; AI-Assisted Cognitive Mapping
     </p>
     <p class="version">
-      Version 1.0.1 | March 2026<br>
+      Beta in preparation<br>
       Concept &amp; development: Florent
     </p>
     <p style="margin-top: 1.5rem;">
@@ -1212,87 +1244,18 @@
     });
   </script>
 
-  <!-- marked.js for Markdown rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"
-          integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+"
-          crossorigin="anonymous"></script>
-  <!-- DOMPurify for sanitizing rendered Markdown -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.3.1/dist/purify.min.js"
-          integrity="sha384-80VlBZnyAwkkqtSfg5NhPyZff6nU4K/qniLBL8Jnm4KDv6jZhLiYtJbhglg/i9ww"
-          crossorigin="anonymous"></script>
   <script>
-    // ═══════════════════════════════════════════
-    // DOCUMENTATION VIEWER
-    // ═══════════════════════════════════════════
-    const docsContent = document.getElementById('docs-content');
-    const docsSidebar = document.getElementById('docs-sidebar');
-    let currentDoc = 'ARCHITECTURE';
-
-    async function loadDoc(name) {
-      docsContent.innerHTML = '<div class="docs-loading">Loading...</div>';
-      currentDoc = name;
-
-      // Update active button
-      docsSidebar.querySelectorAll('.docs-sidebar-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.doc === name);
-      });
-
-      try {
-        const response = await fetch('docs/' + name + '.md');
-        if (!response.ok) throw new Error('Document not found');
-        const markdown = await response.text();
-        docsContent.innerHTML = DOMPurify.sanitize(marked.parse(markdown));
-      } catch (e) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'docs-error';
-        errorDiv.textContent = 'Unable to load the document.';
-        const detail = document.createElement('small');
-        detail.textContent = e.message;
-        errorDiv.appendChild(document.createElement('br'));
-        errorDiv.appendChild(detail);
-        docsContent.replaceChildren(errorDiv);
-      }
-    }
-
-    // Click handlers on sidebar buttons
-    docsSidebar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.docs-sidebar-btn');
-      if (btn && btn.dataset.doc) {
-        loadDoc(btn.dataset.doc);
-      }
-    });
-
-    // Hide docs section entirely if files are unavailable (production)
-    async function checkDocsAvailable() {
-      try {
-        const response = await fetch('docs/ARCHITECTURE.md', { method: 'HEAD' });
-        if (!response.ok) throw new Error();
-        return true;
-      } catch {
-        return false;
-      }
-    }
-
-    checkDocsAvailable().then(available => {
-      if (!available) {
-        // Hide documentation section and its nav link
-        const docsSection = document.getElementById('documentation');
-        if (docsSection) docsSection.style.display = 'none';
-        const docsNavLink = document.querySelector('a[href="#documentation"]');
-        if (docsNavLink) docsNavLink.closest('li').style.display = 'none';
-        return;
-      }
-      // Docs available: lazy-load when section becomes visible
-      const docsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            loadDoc(currentDoc);
-            docsObserver.disconnect();
-          }
+    fetch('kairos.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (meta) {
+      if (!meta) return;
+      if (meta.downloadsAvailable && meta.version) {
+        document.querySelectorAll('[data-kairos-version]').forEach(function (el) {
+          el.textContent = el.textContent.indexOf('v') === 0 ? 'v' + meta.version : meta.version;
         });
-      }, { threshold: 0.1 });
-      docsObserver.observe(document.getElementById('documentation'));
-    });
+        document.querySelectorAll('[data-kairos-download-cta]').forEach(function (el) {
+          el.textContent = 'Download KAIROS v' + meta.version;
+        });
+      }
+    }).catch(function () {});
   </script>
 </body>
 </html>

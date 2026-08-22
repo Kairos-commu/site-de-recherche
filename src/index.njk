@@ -180,8 +180,9 @@ jsonLdRaw: |
         </div>
         <h3 class="card__title">Jauge Oxygène</h3>
         <p class="card__desc">
-          Score de vitalité cognitive 0-100. 5 signaux en temps réel.
-          Injection de friction quand la pensée s'asphyxie.
+          Score de vitalité cognitive 0-100. Triangle radar
+          (divergence, cohérence, souveraineté). Injection de friction
+          quand la pensée s'asphyxie.
         </p>
       </div>
 
@@ -194,7 +195,7 @@ jsonLdRaw: |
         <h3 class="card__title">Cartographie cognitive</h3>
         <p class="card__desc">
           Vignettes, connexions organiques, 3 opérations IA :
-          DÉVELOPPER, RELIER, SYNTHÉTISER. 6 providers LLM.
+          DÉVELOPPER, RELIER, SYNTHÉTISER. Claude, Mistral, Ollama en mode assisté.
         </p>
       </div>
 
@@ -207,7 +208,7 @@ jsonLdRaw: |
         <h3 class="card__title">Espace de travail complet</h3>
         <p class="card__desc">
           Onglets multi-canvas, 4 thèmes visuels, fond ambiant dynamique,
-          vue profondeur 2.5D, companion chat.
+          vue profondeur 2.5D, Companion, Mode Gardien.
         </p>
       </div>
     </div>
@@ -226,9 +227,15 @@ jsonLdRaw: |
     </div>
 
     <div class="section__actions">
+      {%- if kairos.downloadsAvailable %}
       <a href="/download.html" class="btn btn--primary">
-        Télécharger <span class="glitch-text">KAIROS</span> v1.0.1
+        Télécharger <span class="glitch-text">KAIROS</span> v{{ kairos.version }}
       </a>
+      {%- else %}
+      <a href="/download.html" class="btn btn--primary">
+        {{ kairos.pausedCta }}
+      </a>
+      {%- endif %}
       <a href="/presentation_kairos.html" class="btn btn--secondary">
         Découvrir <span class="glitch-text">KAIROS</span> &rarr;
       </a>

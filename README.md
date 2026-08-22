@@ -30,8 +30,10 @@ site-de-recherche/
 │   ├── articles/                 # 11 articles (.md avec frontmatter YAML)
 │   ├── css/                      # base.css, article.css, kairos.css
 │   ├── js/site.js                # Theme toggle, nav, scroll, progress bar
+│   ├── _data/kairos.json         # Source unique version / téléchargements KAIROS
 │   ├── index.njk                 # Accueil (cartes auto-generees)
 │   ├── about.njk, contact.njk, 404.njk
+│   ├── download.njk              # Téléchargement bêta (alimenté par kairos.json)
 │   ├── feed.njk, sitemap.njk    # RSS et sitemap auto-generes
 │   ├── presentation_kairos.html  # Presentation KAIROS (passthrough)
 │   └── demo/                     # App demo KAIROS (passthrough)
@@ -70,6 +72,12 @@ Chaque push sur `main` declenche le workflow GitHub Actions :
 2. Deploy `_site/` sur GitHub Pages
 
 Configuration GitHub Pages : **Settings > Pages > Source > GitHub Actions**
+
+## Bêta KAIROS
+
+Faits produit (version, plateformes, URLs) : `src/_data/kairos.json`.
+`downloadsAvailable: false` met la page de téléchargement en pause (aucun binaire servi).
+Publier un binaire : `./deploy-kairos.sh X.Y.Z` (binaires dans `../kairos-app/release/`). Action publique — à lancer à la main. Il rouvre aussi les téléchargements.
 
 ---
 
