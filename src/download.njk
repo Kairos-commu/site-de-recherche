@@ -349,7 +349,7 @@ permalink: /download.html
           </svg>
         </div>
         <h3 class="card__title">Providers LLM</h3>
-        <p class="card__desc">Mode assisté : {{ kairos.providers.assisted | join(", ") }}. Autonome et Companion : roster complet ({{ kairos.providers.full | join(", ") }}). Votre clé, vos modèles.</p>
+        <p class="card__desc">{{ kairos.providers.all | join(", ") }}. Coller une clé API : le fournisseur est détecté. Ollama en local, sans clé.</p>
       </div>
     </div>
 
@@ -467,7 +467,7 @@ permalink: /download.html
       <div class="card" style="text-align: center;">
         <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--accent); margin-bottom: var(--space-sm);">3</div>
         <h3 class="card__title">Configurer l'IA</h3>
-        <p class="card__desc">Au premier graphe, renseignez une clé API ({{ kairos.providers.assisted | join(", ") }}) ou branchez Ollama en local.</p>
+        <p class="card__desc">Au premier graphe, collez une clé API (détection automatique) ou branchez Ollama en local.</p>
       </div>
     </div>
   </div>

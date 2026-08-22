@@ -54,8 +54,7 @@
     }
   },
   "providers": {
-    "assisted": ["Claude", "Mistral", "Ollama"],
-    "full": ["Claude", "ChatGPT", "DeepSeek", "Mistral", "Groq", "Ollama", "Grok"]
+    "all": ["Claude", "ChatGPT", "DeepSeek", "Mistral", "Groq", "Ollama", "Grok"]
   },
   "highlights": [
     {
@@ -106,25 +105,25 @@
     "notes": [
       "Pas besoin de droits administrateur — Linux : AppImage portable ; Windows : installé dans %LOCALAPPDATA%",
       "Base de données SQLite embarquée — rien à installer",
-      "Clé API LLM (Claude ou Mistral en mode assisté) ou Ollama en local — pas de compte KAIROS",
+      "Clé API LLM (détection automatique du fournisseur) ou Ollama en local — pas de compte KAIROS",
       "macOS à venir"
     ],
     "ollama": {
       "intro": "Uniquement si vous choisissez des modèles locaux via Ollama. En usage cloud, les spécifications ci-dessus suffisent.",
       "minimum": [
         { "label": "RAM", "value": "16 Go" },
-        { "label": "Modèles adaptés", "value": "gemma3:4b, qwen3:8b" },
+        { "label": "Modèles adaptés", "value": "gemma3:4b, qwen3:8b (qwen3:14b si assez de RAM)" },
         { "label": "Inférence", "value": "nettement plus lente qu'avec GPU" }
       ],
       "recommended": [
         { "label": "VRAM", "value": "12 Go ou plus" },
-        { "label": "Modèle par défaut", "value": "qwen3:14b (~9 Go en quantization Q4)" },
+        { "label": "Modèle prioritaire", "value": "qwen3:14b (~9 Go en quantization Q4)" },
         { "label": "Sans GPU dédié", "value": "16 Go de RAM système au minimum" }
       ],
       "disk": [
-        "~3 Go — gemma3:4b",
+        "~9 Go — qwen3:14b (prioritaire)",
         "~5 Go — qwen3:8b",
-        "~9 Go — qwen3:14b",
+        "~3 Go — gemma3:4b",
         "En plus des ~500 Mo de l'application — les modèles se téléchargent séparément via Ollama"
       ]
     }

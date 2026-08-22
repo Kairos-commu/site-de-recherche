@@ -163,12 +163,12 @@ order: 12
       <tr><td><strong>Opérations</strong></td><td>DÉVELOPPER, RELIER, SYNTHÉTISER, PERSPECTIVES</td><td>Chat libre, Prompt Lab, cartes d'émergence</td></tr>
       <tr><td><strong>Friction</strong></td><td>Injection automatique (O₂ &lt; 30)</td><td>Pas d'injection</td></tr>
       <tr><td><strong>O₂</strong></td><td>Actif — score, triangle, bandeau</td><td>Passif — observation, pas de guidage</td></tr>
-      <tr><td><strong>Providers</strong></td><td>Claude, Mistral, Ollama</td><td>Roster complet</td></tr>
+      <tr><td><strong>Providers</strong></td><td colspan="2">Roster complet, tous modes</td></tr>
     </tbody>
   </table>
 
   <p>
-    Le roster assisté est volontairement restreint : ces trois fournisseurs respectent de façon fiable le format structuré <code>[NOUVELLE VIGNETTE]</code> / <code>[CONNEXION]</code>. ChatGPT, DeepSeek, Groq et Grok restent disponibles en Autonome et Companion.
+    Claude, ChatGPT, DeepSeek, Mistral, Groq, Grok, Ollama. Coller une clé API suffit : le fournisseur est détecté automatiquement. Ollama tourne en local, sans clé.
   </p>
 
   <h3>Canvas spatial</h3>
@@ -384,18 +384,21 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
 
   <table>
     <thead>
-      <tr><th>Fournisseur</th><th>Type</th><th>Assisté</th><th>Autonome / Companion</th></tr>
+      <tr><th>Fournisseur</th><th>Type</th><th>Timeout</th></tr>
     </thead>
     <tbody>
-      <tr><td>Claude (Anthropic)</td><td>Cloud, 30s</td><td>Oui</td><td>Oui</td></tr>
-      <tr><td>Mistral</td><td>Cloud, 30s</td><td>Oui</td><td>Oui</td></tr>
-      <tr><td>Ollama</td><td>Local, 240s</td><td>Oui</td><td>Oui</td></tr>
-      <tr><td>ChatGPT, DeepSeek, Groq, Grok</td><td>Cloud, 30s</td><td>Non</td><td>Oui</td></tr>
+      <tr><td>Claude (Anthropic)</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>ChatGPT (OpenAI)</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>DeepSeek</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>Mistral</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>Groq</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>Grok (xAI)</td><td>Cloud</td><td>30s</td></tr>
+      <tr><td>Ollama</td><td>Local</td><td>240s</td></tr>
     </tbody>
   </table>
 
   <p>
-    Ollama est spawné à la demande (pas de service système permanent), avec <code>keep_alive: 30s</code> pour libérer la VRAM. Modèles assistés testés : <code>qwen3:8b</code>, <code>gemma3:4b</code>. Embeddings : <code>bge-m3</code>, séparé du chat.
+    Tous disponibles dans tous les modes. Champ de détection automatique : coller une clé, le provider s'active. Ollama est spawné à la demande (pas de service système permanent), avec <code>keep_alive: 30s</code> pour libérer la VRAM. Modèles Ollama testés : <code>qwen3:14b</code> (prioritaire), <code>qwen3:8b</code>, <code>gemma3:4b</code>. Embeddings : <code>bge-m3</code>, séparé du chat.
   </p>
 
   <h3>Ce qui est en place</h3>
