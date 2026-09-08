@@ -79,6 +79,18 @@ Faits produit (version, plateformes, URLs) : `src/_data/kairos.json`.
 `downloadsAvailable: false` met la page de téléchargement en pause (aucun binaire servi).
 Publier un binaire : `./deploy-kairos.sh X.Y.Z` (binaires dans `../kairos-app/release/`). Action publique — à lancer à la main. Il rouvre aussi les téléchargements.
 
+## Licence
+
+Le contenu éditorial (les articles de `src/articles/`) est protégé par le droit d'auteur —
+© Florent Klimacek, tous droits réservés. Le code du site (config Eleventy, CSS, JS) n'a pas
+de licence explicite ; il documente comment le site fonctionne, pas une réutilisation prévue.
+
+## Voir aussi
+
+- **[Kairos-commu](https://github.com/Kairos-commu)** — le profil.
+- **[socle](https://github.com/Kairos-commu/socle)** — la méthode de travail avec un agent de
+  code, extraite entre autres de ce dépôt (cf. sa section « Éprouvé sur »).
+
 ---
 
 Florent Klimacek — 2026
