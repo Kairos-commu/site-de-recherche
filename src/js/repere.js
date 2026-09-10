@@ -97,8 +97,11 @@
     // la caméra glisse en descendant : on traverse l'espace
     const wide = W>900;
     const cx = (wide ? W*0.70 : W*0.5) - scroll*(wide ? W*0.16 : 0);
-    const cy = (wide ? H*0.48 : H*0.32) - scroll*H*0.10;
-    const R  = Math.min(W,H)*(wide?0.30:0.26)*(1-scroll*0.24);
+    const cy = (wide ? H*0.48 : H*0.30) - scroll*H*0.10;
+    const R  = Math.min(W,H)*(wide?0.30:0.24)*(1-scroll*0.24);
+    // sur petit écran le décor passe derrière le texte faute de place :
+    // il s'efface au lieu de lui disputer la lecture
+    const dim = wide ? 1 : 0.45;
 
     const beat = still?0:pulse(t,mood.beat);
     const spin = still?0.6:t*0.11;
@@ -107,7 +110,7 @@
     const col = mood.r.toFixed(0)+','+mood.g.toFixed(0)+','+mood.b.toFixed(0);
 
     // ---- les trois orbites : le plan du site, dessiné ----
-    const oa = mood.orb*lit*gather;
+    const oa = mood.orb*lit*gather*dim;
     if (oa > 0.02) {
       for (let i=0;i<ORBITS.length;i++){
         const o = ORBITS[i], rx = R*o.k, ry = rx*Math.sin(TILT);
@@ -130,8 +133,8 @@
 
     // ---- la lueur du cœur ----
     const gr = ctx.createRadialGradient(cx,cy,0,cx,cy,R*(1.5+beat*0.5));
-    gr.addColorStop(0,  'rgba('+col+','+(0.30*mood.glow*lit*(1+beat*0.7)).toFixed(3)+')');
-    gr.addColorStop(0.4,'rgba('+col+','+(0.07*mood.glow*lit).toFixed(3)+')');
+    gr.addColorStop(0,  'rgba('+col+','+(0.30*mood.glow*lit*dim*(1+beat*0.7)).toFixed(3)+')');
+    gr.addColorStop(0.4,'rgba('+col+','+(0.07*mood.glow*lit*dim).toFixed(3)+')');
     gr.addColorStop(1,  'rgba('+col+',0)');
     ctx.fillStyle=gr; ctx.fillRect(cx-R*2,cy-R*2,R*4,R*4);
 
@@ -155,7 +158,7 @@
 
       const px = cx + xr*R*rr, py = cy + yr*R*rr;
       const depth = (zr+1)*0.5;
-      const a = (0.10+depth*depth*0.62)*mood.glow*lit;
+      const a = (0.10+depth*depth*0.62)*mood.glow*lit*dim;
       const sz = 0.75+depth*1.5;
       ctx.fillStyle='rgba('+col+','+a.toFixed(3)+')';
       ctx.fillRect(px-sz/2,py-sz/2,sz,sz);
