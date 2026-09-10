@@ -71,7 +71,7 @@
 }
 
 .nav-header__label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -117,7 +117,8 @@
 }
 
 .nav-list .nav-number {
-  font-family: 'Inter', monospace;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.7rem;
   opacity: 0.5;
   margin-right: 0.5rem;
@@ -205,7 +206,7 @@ main {
 }
 
 .hero-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -368,7 +369,8 @@ section {
 }
 
 .section-number {
-  font-family: 'Inter', monospace;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.8rem;
   color: var(--accent);
   letter-spacing: 0.1em;
@@ -507,7 +509,7 @@ blockquote p {
 }
 
 .concept-title {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -579,7 +581,7 @@ blockquote p {
 }
 
 .model-card h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -785,7 +787,7 @@ tr:hover {
 }
 
 .postscriptum .date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--accent);
   margin-top: 1.5rem;
@@ -849,7 +851,7 @@ footer a:hover {
 }
 
 .site-header-article__back {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-primary);
   text-decoration: none;
@@ -1135,7 +1137,7 @@ code {
 }
 
 .numbered-item .number {
-  font-family: 'Inter', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent);
@@ -1620,7 +1622,7 @@ code {
 }
 
 .data-viz__title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -1702,7 +1704,7 @@ code {
 }
 
 .gap-row__value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 500;
   text-align: right;
@@ -1762,7 +1764,7 @@ code {
 }
 
 .funnel-row__value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--accent);
@@ -1818,7 +1820,7 @@ code {
 }
 
 .rank-position {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -1840,7 +1842,7 @@ code {
 }
 
 .rank-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -1894,7 +1896,7 @@ code {
 }
 
 .stat-shift__value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -1906,7 +1908,7 @@ code {
 }
 
 .stat-shift__delta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--red);
@@ -1924,7 +1926,7 @@ code {
 }
 
 .sources-section h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -2253,4 +2255,62 @@ code {
   .image-lightbox img {
     transition: none;
   }
+}
+
+/* ─────────────────────────────────────────
+   ENGINEERING NOTES (English section, /notes/)
+   ───────────────────────────────────────── */
+.content--note .hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.content--note table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.content--note th,
+.content--note td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border, rgba(128,128,128,0.25));
+}
+.content--note th {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.content--note .table-scroll {
+  overflow-x: auto;
+}
+.content--note h2 {
+  margin-top: 3rem;
+}
+.content--note .failure {
+  margin: 1.6rem 0 2.2rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent, #c9a227);
+}
+.content--note .failure h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+.content--note .failure p {
+  margin: 0.35rem 0;
+}
+.content--note .failure p strong {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-right: 0.4rem;
+}
+.note-footer-lead {
+  max-width: 60ch;
 }
