@@ -33,7 +33,7 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-sans);
       background: var(--bg-dark);
       color: var(--text-primary);
       line-height: 1.6;
@@ -91,7 +91,7 @@
     }
 
     h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: var(--font-serif);
       font-size: 4rem;
       font-weight: 300;
       margin-bottom: 1rem;
@@ -102,7 +102,7 @@
     }
 
     h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: var(--font-serif);
       font-size: 2.5rem;
       font-weight: 300;
       margin-bottom: 2rem;
@@ -1739,7 +1739,7 @@
       background: rgba(217, 119, 6, 0.1);
       border: 1px solid rgba(217, 119, 6, 0.25);
       border-radius: 8px;
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-family: var(--font-mono);
       font-size: 0.9rem;
       color: var(--accent-light);
       letter-spacing: 0.02em;
@@ -1991,7 +1991,7 @@
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       font-size: 0.85rem;
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-family: var(--font-mono);
       color: var(--accent-light);
     }
 
