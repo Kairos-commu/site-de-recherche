@@ -85,20 +85,24 @@ a, button, [role="button"], input, select, textarea {
    ============================================ */
 
 [data-theme="dark"] {
+  /* Neutres refroidis (10/09) : le site sombre etait brun (#1c1a19, R>G>B)
+     et le repere bleu-nuit — la transition entre les deux se voyait comme
+     un defaut. Meme luminance a 0,01 pres, donc aucun contraste perdu :
+     ils montent tous. L'accent ambre ne bouge pas, il porte l'identite. */
   --focus-ring: #f59e0b;
-  --bg-page: #1c1a19;
-  --bg-dark: #141211;
-  --bg-card: #272422;
-  --bg-card-hover: #33302e;
+  --bg-page: #181a1f;
+  --bg-dark: #111318;
+  --bg-card: #22252b;
+  --bg-card-hover: #2e3138;
   --bg-concept: #4a2508;
 
   --text-primary: #fafaf9;
-  --text-secondary: #e7e5e4;
-  --text-muted: #a8a29e;
+  --text-secondary: #e4e7ec;
+  --text-muted: #9fa5ae;
   --accent: #f59e0b;
   --accent-light: #fbbf24;
   --accent-dark: #d97706;
-  --text-light: #78716c;
+  --text-light: #6d747e;
   --text-inverse: #292524;
 
   --accent-glow: rgba(217, 119, 6, 0.2);
@@ -106,9 +110,9 @@ a, button, [role="button"], input, select, textarea {
   --cold-light: #cbd5e1;
   --cold-dark: #64748b;
 
-  --border: #33302e;
-  --border-light: #272422;
-  --border-dark: #78716c;
+  --border: #2e3138;
+  --border-light: #22252b;
+  --border-dark: #6d747e;
 
   --noise-opacity: 0.02;
 }
