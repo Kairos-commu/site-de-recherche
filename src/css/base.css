@@ -34,6 +34,7 @@ a, button, [role="button"], input, select, textarea {
   --accent-light: #f59e0b;
   --accent-dark: #b45309;
   --accent-glow: rgba(217, 119, 6, 0.15);
+  --focus-ring: #b45309;
 
   /* Froid — machine, système */
   --cold: #64748b;
@@ -84,6 +85,7 @@ a, button, [role="button"], input, select, textarea {
    ============================================ */
 
 [data-theme="dark"] {
+  --focus-ring: #f59e0b;
   --bg-page: #1c1a19;
   --bg-dark: #141211;
   --bg-card: #272422;
@@ -2308,3 +2310,16 @@ a:hover {
     justify-content: center;
   }
 }
+
+/* ---------------------------------------------------------
+   Focus clavier — un seul point d'entrée pour tout le site.
+   :where() met la spécificité à zéro : aucune règle existante
+   n'est écrasée, et rien n'a besoin de !important pour passer.
+   --------------------------------------------------------- */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* la souris ne déclenche pas l'anneau, le clavier oui */
+:where(a, button, summary):focus:not(:focus-visible) { outline: none; }
