@@ -29,7 +29,7 @@ heroLabel: "Architecture"
 heroH1: "<span class=\"glitch-text\">KAIROS</span><br><span>Vue d'ensemble technique</span>"
 heroIntro: "Comment le cadre de L'Entre — Théorie des Plis — devient un logiciel de cartographie cognitive : architecture, jauge Oxygène, friction, souveraineté. Document vivant, sans DOI."
 headerTitle: "KAIROS — Vue d'ensemble technique"
-heroImage: "/images/kairos-canvas.png"
+heroImage: "/images/kairos-canvas.webp"
 heroImageAlt: "Capture d'écran KAIROS — canvas de cartographie cognitive avec jauge Oxygène"
 breadcrumbName: "KAIROS — Vue d'ensemble technique"
 sections:
