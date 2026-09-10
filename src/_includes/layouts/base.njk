@@ -120,5 +120,8 @@
   {{ content | safe }}
 
   <script src="/js/site.js"></script>
+  {%- if extraJs %}
+  <script src="/js/{{ extraJs }}" defer></script>
+  {%- endif %}
 </body>
 </html>
