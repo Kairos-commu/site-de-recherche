@@ -308,7 +308,12 @@ a:hover {
   stroke: var(--text-primary);
 }
 
-@media (max-width: 768px) {
+/* 900px, pas 768 : l'ajout du lien Choragos (10/09) porte la nav a 8
+   liens, qui deborde en ligne entre 768 et ~890px (Contact tronque, A
+   propos sur 2 lignes) — verifie a l'ecran, pas suppose. 900px est deja
+   le seuil tablette du reste du site (article.css/kairos.css), reutilise
+   ici plutot qu'un troisieme seuil arbitraire. */
+@media (max-width: 900px) {
   .nav-toggle {
     display: block;
   }

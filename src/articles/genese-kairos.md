@@ -8,7 +8,7 @@ ogDescription: "De l'impossibilité théorique à la construction concrète — 
 ogUrl: "/genese-kairos.html"
 canonical: "/genese-kairos.html"
 datePublished: "2026-02-18"
-dateModified: "2026-02-18"
+dateModified: "2026-09-11"
 keywords:
   - KAIROS
   - genèse
@@ -385,4 +385,15 @@ order: 0
               plus de savoir s'il fallait le faire, mais jusqu'où il peut aller.
             </p>
           </blockquote>
+
+          <div class="note-box">
+            <p>
+              <strong>Mise à jour, septembre 2026 —</strong> un premier prototype
+              de rendu 3D conçu pour ce canvas a fini par essaimer en dehors de
+              l'app. Il est devenu le cœur de
+              <a href="/choragos-kora.html">Choragos</a>, une application sœur
+              qui ne cartographie plus la pensée : elle y répond, à la voix, en
+              local. Les deux partent toujours de la même intuition.
+            </p>
+          </div>
         </section>
