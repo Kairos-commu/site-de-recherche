@@ -187,6 +187,9 @@ body.repere .rep-layer { position: relative; z-index: 2; }
 .rep-proof code { font-family: inherit; color: var(--v-quotidien); }
 
 /* ---------- portes de sortie ---------- */
+/* strong en serif (--font-serif) : le reste du site titre en serif, la
+   porte doit déjà porter cette typo avant qu'on la franchisse — sinon le
+   changement de police au clic s'ajoute au changement de décor. */
 .rep-doors { display: grid; gap: 1px; background: var(--border); }
 @media (min-width: 44rem) { .rep-doors { grid-template-columns: repeat(2, 1fr); } }
 .rep-door {
@@ -195,12 +198,15 @@ body.repere .rep-layer { position: relative; z-index: 2; }
   transition: background var(--transition-normal);
 }
 .rep-door:hover, .rep-door:focus-visible { background: rgba(12, 17, 26, .92); }
+/* première porte, en avant : c'est la suite directe de sa propre voix */
+.rep-door--lead { grid-column: 1 / -1; background: rgba(12, 17, 26, .85); }
+.rep-door--lead strong { font-size: 1.34rem; }
 .rep-door span {
   font-family: var(--font-mono); font-size: .66rem; font-weight: 500;
   letter-spacing: .16em; text-transform: uppercase; color: var(--accent);
 }
 .rep-door strong {
-  font-family: var(--font-sans); font-size: 1.15rem; font-weight: 500;
+  font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
   letter-spacing: -.015em; line-height: 1.3;
 }
 .rep-door em { font-style: normal; color: var(--text-muted); font-size: .93rem; line-height: 1.5; }
