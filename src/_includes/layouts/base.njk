@@ -7,6 +7,13 @@
   {%- if noindex %}
   <meta name="robots" content="noindex">
   {%- endif %}
+  {#- CSP pour tout le site (11/09 — elle ne vivait que sur la page KAIROS). Construite sur
+      l'inventaire RÉEL de ce que les pages chargent : Google Fonts, GTM/GA, le badge DOI de
+      Zenodo, le grain en data: URI de base.css, la vidéo de présentation servie par une release GitHub
+      (github.com redirige vers objects.githubusercontent.com — trouvé par le test, pas supposé). Les scripts inline sont
+      autorisés parce que GTM et la démo KAIROS en sont. Aucun CDN de script : KaTeX n'est
+      chargé nulle part, cdn.jsdelivr.net de l'ancienne CSP était sans usage. -#}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://zenodo.org https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; media-src 'self' https://github.com https://*.githubusercontent.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -14,8 +21,6 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NVRS9LXJ');</script>
   <!-- End Google Tag Manager -->
-  <!-- Anti-FOUC -->
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()</script>
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description }}">
 
@@ -117,9 +122,13 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVRS9LXJ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <!-- Le décor de Kora, sur chaque page (js/repere.js) -->
+  <canvas class="kora-cosmos" aria-hidden="true"></canvas>
+  <div class="kora-veil" aria-hidden="true"></div>
   {{ content | safe }}
 
   <script src="/js/site.js"></script>
+  <script src="/js/repere.js" defer></script>
   {%- if extraJs %}
   <script src="/js/{{ extraJs }}" defer></script>
   {%- endif %}

@@ -9,37 +9,6 @@
   'use strict';
 
   // ─────────────────────────────────────────
-  // THEME TOGGLE
-  // ─────────────────────────────────────────
-  // Fonctionne avec .theme-toggle (home) et .theme-toggle-article (articles).
-  // Lit/ecrit localStorage('theme'), applique data-theme sur <html>.
-
-  function initTheme() {
-    var html = document.documentElement;
-    var savedTheme = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme) {
-      html.setAttribute('data-theme', savedTheme);
-    } else if (prefersDark) {
-      html.setAttribute('data-theme', 'dark');
-    }
-
-    // Cherche le bouton theme (home ou article)
-    var themeToggle = document.querySelector('.theme-toggle')
-      || document.querySelector('.theme-toggle-article');
-
-    if (!themeToggle) return;
-
-    themeToggle.addEventListener('click', function () {
-      var currentTheme = html.getAttribute('data-theme');
-      var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  }
-
-  // ─────────────────────────────────────────
   // MOBILE NAVIGATION
   // ─────────────────────────────────────────
   // Fonctionne avec #siteNav (home, about, contact)
@@ -61,6 +30,25 @@
 
     // Retourne la reference nav pour les autres features
     return nav;
+  }
+
+  // ─────────────────────────────────────────
+  // SOMMAIRE D'ARTICLE (petit écran)
+  // ─────────────────────────────────────────
+  // #tocToggle ouvre/ferme #nav (le sommaire latéral). Le burger #navToggle
+  // du header commun, lui, ouvre #siteNav — les deux coexistent sur un
+  // article depuis que le header est le même partout (11/09).
+
+  function initTocToggle() {
+    var toggle = document.getElementById('tocToggle');
+    var toc = document.getElementById('nav');
+    if (!toggle || !toc) return;
+    toggle.addEventListener('click', function () {
+      toc.classList.toggle('open');
+    });
+    toc.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { toc.classList.remove('open'); });
+    });
   }
 
   // ─────────────────────────────────────────
@@ -108,10 +96,11 @@
     var sections = document.querySelectorAll('section[id], .chapter-divider[id]');
     if (!sections || sections.length === 0) return;
 
-    // Detecte les liens de nav selon le type de page
-    var navLinks = document.querySelectorAll('.site-nav a');
+    // Detecte les liens de nav selon le type de page : le sommaire d'article
+    // d'abord (il coexiste avec le header commun depuis le 11/09), sinon la nav du site
+    var navLinks = document.querySelectorAll('.nav-list a');
     if (!navLinks || navLinks.length === 0) {
-      navLinks = document.querySelectorAll('.nav-list a');
+      navLinks = document.querySelectorAll('.site-nav a');
     }
     if (!navLinks || navLinks.length === 0) return;
 
@@ -472,8 +461,8 @@
   // INITIALISATION
   // ─────────────────────────────────────────
 
-  initTheme();
   var nav = initMobileNav();
+  initTocToggle();
   initNavLinkBehavior(nav);
   initActiveNav();
   initProgressBar();

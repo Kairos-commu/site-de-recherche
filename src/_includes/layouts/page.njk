@@ -4,6 +4,12 @@ layout: layouts/base.njk
 {% include "partials/site-header.njk" %}
 
 <main>
+  {%- set seuilCompact = true %}
+  {%- if koraSeuil %}
+  <div class="container">
+    {% include "partials/kora-seuil.njk" %}
+  </div>
+  {%- endif %}
   {{ content | safe }}
 </main>
 

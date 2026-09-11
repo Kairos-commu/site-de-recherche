@@ -11,8 +11,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/og-image.jpg");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy("src/presentation_kairos.html");
-  eleventyConfig.addPassthroughCopy("src/presentation_kairos_en.html");
   eleventyConfig.addPassthroughCopy("src/demo_en");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy({ "src/_data/kairos.json": "kairos.json" });
@@ -20,8 +18,6 @@ module.exports = function (eleventyConfig) {
   // Exclude passthrough files from template processing
   eleventyConfig.ignores.add("src/docs/**");
   eleventyConfig.ignores.add("src/demo/**");
-  eleventyConfig.ignores.add("src/presentation_kairos.html");
-  eleventyConfig.ignores.add("src/presentation_kairos_en.html");
   eleventyConfig.ignores.add("src/demo_en/**");
 
   // ─────────────────────────────────────────
@@ -41,6 +37,13 @@ module.exports = function (eleventyConfig) {
       });
   });
 
+  // Engineering notes (English section, src/notes/*.md), oldest first
+  eleventyConfig.addCollection("notes", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("src/notes/*.md")
+      .sort((a, b) => new Date(a.data.published) - new Date(b.data.published));
+  });
+
   // ─────────────────────────────────────────
   // FILTERS
   // ─────────────────────────────────────────
@@ -53,6 +56,33 @@ module.exports = function (eleventyConfig) {
     ];
     const d = new Date(dateStr + "T12:00:00");
     return d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+  });
+
+  // "6 September 2026"
+  eleventyConfig.addFilter("dateEn", function (dateStr) {
+    const months = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    const d = new Date(dateStr + "T12:00:00");
+    return d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+  });
+
+  // 19 → "dix-neuf" — un compte écrit en lettres dans une phrase ne doit pas
+  // être figé à la main à côté d'une collection qui se compte toute seule
+  // (l'accueil disait « Vingt articles » pour 19 publiés, 11/09)
+  eleventyConfig.addFilter("nombreFr", function (n) {
+    const u = ["zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf","dix",
+      "onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf"];
+    const d = ["", "", "vingt","trente","quarante","cinquante","soixante"];
+    n = Number(n);
+    if (!Number.isInteger(n) || n < 0) return String(n);
+    if (n < 20) return u[n];
+    if (n < 70) {
+      const t = Math.floor(n / 10), r = n % 10;
+      if (r === 0) return d[t];
+      if (r === 1) return d[t] + " et un";
+      return d[t] + "-" + u[r];
+    }
+    return String(n);
   });
 
   // "Février 2026"

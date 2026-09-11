@@ -3,16 +3,8 @@
    Styles partagés pour tous les articles
    ============================================ */
 
-/* Variables additionnelles pour les articles */
-:root {
-  --bg-nav: #1c1917;
-  --text-nav: #a8a29e;
-}
-
-[data-theme="dark"] {
-  --bg-nav: #141211;
-  --text-nav: #78716c;
-}
+/* Les tokens (--bg-nav, --text-nav, --header-h…) vivent dans base.css :root :
+   une seule nuit pour tout le site depuis le 11/09, plus de thème clair. */
 
 /* ============================================
    PROGRESS BAR
@@ -20,7 +12,7 @@
 
 .progress-bar {
   position: fixed;
-  top: 49px;
+  top: var(--header-h);
   left: 0;
   width: 100%;
   height: 3px;
@@ -43,11 +35,11 @@
 #nav {
   position: fixed;
   left: 0;
-  top: 52px;
+  top: var(--header-h);
   width: 260px;
-  height: calc(100vh - 52px);
+  height: calc(100vh - var(--header-h));
   background: var(--bg-nav);
-  border-right: 1px solid #33302e;
+  border-right: 1px solid var(--bg-raised);
   padding: 3rem 1.5rem;
   overflow-y: auto;
   z-index: 50;
@@ -143,7 +135,7 @@
 .nav-footer {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #33302e;
+  border-top: 1px solid var(--bg-raised);
 }
 
 .nav-footer p {
@@ -153,27 +145,31 @@
 }
 
 /* Mobile toggle */
-.nav-toggle {
+/* Sommaire sur petit écran : un bouton flottant en bas à gauche, distinct du
+   burger du header commun (qui ouvre la navigation du site, pas le sommaire). */
+.toc-toggle {
   display: none;
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
   z-index: 60;
   background: var(--bg-nav);
-  border: 1px solid #33302e;
-  border-radius: 8px;
-  padding: 0.5rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 0.6rem;
   cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
 }
 
-.nav-toggle svg {
-  width: 24px;
-  height: 24px;
+.toc-toggle svg {
+  width: 22px;
+  height: 22px;
   stroke: var(--text-nav);
+  display: block;
 }
 
 @media (max-width: 900px) {
-  .nav-toggle {
+  .toc-toggle {
     display: block;
   }
 }
@@ -190,7 +186,8 @@ main {
 .content {
   max-width: 720px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  /* le header commun est fixe : la colonne commence dessous, jamais derrière */
+  padding: calc(var(--header-h) + 2.5rem) 2rem 4rem;
 }
 
 /* ============================================
@@ -266,7 +263,7 @@ main {
   border: 1px solid var(--border-light);
 }
 
-[data-theme="dark"] .hero-image-wrapper {
+.hero-image-wrapper {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   border-color: var(--border-dark);
 }
@@ -504,7 +501,7 @@ blockquote p {
   border-radius: 0;
 }
 
-[data-theme="dark"] .concept {
+.concept {
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.06), transparent);
 }
 
@@ -606,14 +603,10 @@ blockquote p {
 .model-card .result {
   font-size: 0.9rem;
   padding: 1rem;
-  background: #fafaf9;
+  background: var(--bg-raised);
   border-radius: 6px;
   border-left: 3px solid var(--accent);
   color: var(--text-secondary);
-}
-
-[data-theme="dark"] .model-card .result {
-  background: #272422;
 }
 
 /* ============================================
@@ -679,11 +672,7 @@ table {
 }
 
 thead {
-  background: #fafaf9;
-}
-
-[data-theme="dark"] thead {
-  background: #272422;
+  background: var(--bg-raised);
 }
 
 th {
@@ -705,11 +694,7 @@ tr:last-child td {
 }
 
 tr:hover {
-  background: #fafaf9;
-}
-
-[data-theme="dark"] tr:hover {
-  background: #33302e;
+  background: var(--bg-raised);
 }
 
 .danger-low {
@@ -764,13 +749,9 @@ tr:hover {
 .postscriptum {
   margin-top: 4rem;
   padding: 2rem;
-  background: #fafaf9;
+  background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: 8px;
-}
-
-[data-theme="dark"] .postscriptum {
-  background: #33302e;
 }
 
 .postscriptum h3 {
@@ -822,94 +803,8 @@ footer a:hover {
    SITE HEADER (TOP BAR)
    ============================================ */
 
-.site-header-article {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  background: rgba(245, 240, 235, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  background-image: linear-gradient(rgba(245, 240, 235, 0.92), rgba(245, 240, 235, 0.92)),
-    linear-gradient(90deg, transparent, var(--accent-glow, rgba(217, 119, 6, 0.15)), transparent);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-[data-theme="dark"] .site-header-article {
-  background: rgba(28, 26, 25, 0.92);
-  background-image: linear-gradient(rgba(28, 26, 25, 0.92), rgba(28, 26, 25, 0.92)),
-    linear-gradient(90deg, transparent, var(--accent-glow, rgba(217, 119, 6, 0.25)), transparent);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-
-.site-header-article__back {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.site-header-article__back:hover {
-  color: var(--accent);
-}
-
-.site-header-article__title {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  flex: 1;
-  text-align: center;
-}
-
-/* Theme toggle pour articles */
-.theme-toggle-article {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.4rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease;
-  flex-shrink: 0;
-}
-
-.theme-toggle-article:hover {
-  border-color: var(--accent);
-}
-
-.theme-toggle-article svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--text-muted);
-  transition: stroke 0.15s ease;
-}
-
-.theme-toggle-article:hover svg {
-  stroke: var(--accent);
-}
-
-.theme-toggle-article .icon-moon {
-  display: block;
-}
-.theme-toggle-article .icon-sun {
-  display: none;
-}
-
-[data-theme="dark"] .theme-toggle-article .icon-moon {
-  display: none;
-}
-[data-theme="dark"] .theme-toggle-article .icon-sun {
-  display: block;
-}
+/* Le header est celui de tout le site (partials/site-header.njk) — un article
+   n'a plus son propre bandeau « Retour à l'accueil » : on ne sort pas de chez Kora. */
 
 /* ============================================
    DIALOGUE STYLES (for parler-depuis-apres)
@@ -1215,12 +1110,12 @@ code {
   border-color: #fecaca;
 }
 
-[data-theme="dark"] .exercise-step--success {
+.exercise-step--success {
   background: rgba(34, 197, 94, 0.08);
   border-color: rgba(34, 197, 94, 0.2);
 }
 
-[data-theme="dark"] .exercise-step--error {
+.exercise-step--error {
   background: rgba(239, 68, 68, 0.08);
   border-color: rgba(239, 68, 68, 0.2);
 }
@@ -1252,7 +1147,7 @@ code {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .exercise-step__code {
+.exercise-step__code {
   background: var(--bg-card);
 }
 
@@ -1304,14 +1199,10 @@ code {
 }
 
 .card__code-area {
-  background: #fafaf9;
+  background: var(--bg-raised);
   padding: 1rem;
   border-radius: 6px;
   font-size: 0.9rem;
-}
-
-[data-theme="dark"] .card__code-area {
-  background: #272422;
 }
 
 .card__code-area p {
@@ -1342,11 +1233,7 @@ code {
 }
 
 .card--muted {
-  background: #fafaf9;
-}
-
-[data-theme="dark"] .card--muted {
-  background: #272422;
+  background: var(--bg-raised);
 }
 
 /* ============================================
@@ -1428,7 +1315,7 @@ code {
   color: #15803d;
 }
 
-[data-theme="dark"] .column-card.green {
+.column-card.green {
   background: rgba(34, 197, 94, 0.08);
   border-color: rgba(34, 197, 94, 0.2);
 }
@@ -1443,7 +1330,7 @@ code {
   color: #b91c1c;
 }
 
-[data-theme="dark"] .column-card.red {
+.column-card.red {
   background: rgba(239, 68, 68, 0.08);
   border-color: rgba(239, 68, 68, 0.2);
 }
@@ -1457,7 +1344,7 @@ code {
   border-color: #fde68a;
 }
 
-[data-theme="dark"] .summary-card {
+.summary-card {
   border-color: rgba(245, 158, 11, 0.3);
 }
 
@@ -1535,13 +1422,9 @@ code {
 
 .influence-grid__item {
   padding: 1rem;
-  background: #fafaf9;
+  background: var(--bg-raised);
   border-radius: 6px;
   text-align: center;
-}
-
-[data-theme="dark"] .influence-grid__item {
-  background: #272422;
 }
 
 .influence-grid__item p {
@@ -1598,7 +1481,7 @@ code {
   border-color: var(--accent);
 }
 
-[data-theme="dark"] .concept--highlight {
+.concept--highlight {
   background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(245, 158, 11, 0.05));
 }
 
@@ -1810,7 +1693,7 @@ code {
   background: rgba(217, 119, 6, 0.04);
 }
 
-[data-theme="dark"] .rank-item--top {
+.rank-item--top {
   background: rgba(217, 119, 6, 0.06);
 }
 
@@ -2031,7 +1914,7 @@ code {
 
 /* Classes SVG internes scopées sous .pqc-visual */
 .pqc-visual svg text {
-  font-family: 'DM Sans', var(--font-sans);
+  font-family: var(--font-sans);
 }
 
 .pqc-visual svg .label {
@@ -2140,7 +2023,7 @@ code {
   }
 
   .content {
-    padding: 2rem 1rem;
+    padding: calc(var(--header-h) + 1.5rem) 1rem 2rem;
   }
 
   /* Breadcrumb */
@@ -2278,7 +2161,7 @@ code {
   border-bottom: 1px solid var(--border, rgba(128,128,128,0.25));
 }
 .content--note th {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -2304,7 +2187,7 @@ code {
   margin: 0.35rem 0;
 }
 .content--note .failure p strong {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;

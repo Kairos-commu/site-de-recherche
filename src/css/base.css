@@ -15,40 +15,60 @@ a, button, [role="button"], input, select, textarea {
 }
 
 :root {
-  /* Couleurs principales */
-  --bg-page: #f5f0eb;
-  --bg-dark: #1c1917;
-  --bg-card: #ffffff;
-  --bg-card-hover: #fafaf9;
-  --bg-concept: #fffbeb;
+  /* ============================================================
+     UNE SEULE NUIT (11/09) — Kora est l'hôte de tout le site.
+     Ces valeurs étaient celles de body.repere (l'accueil) ; elles
+     sont maintenant les tokens de chaque page, et il n'y a plus de
+     thème clair ni de bascule. Une page ne redéfinit plus une couleur
+     de fond : elle consomme ces tokens.
+     ============================================================ */
+
+  /* Fonds — du plus profond au plus relevé */
+  --bg-page: #05070B;
+  --bg-dark: #05070B;
+  --bg-alt: #080B11;          /* section alternée, à peine relevée */
+  --bg-raised: #0F141C;       /* section « sombre » d'avant : relevée, pas inversée */
+  --bg-nav: #090D14;          /* sommaire latéral des articles */
+  --bg-card: rgba(9, 13, 20, .86);
+  --bg-card-hover: rgba(12, 17, 26, .92);
+  --bg-concept: rgba(233, 165, 68, .07);
 
   /* Texte */
-  --text-primary: #292524;
-  --text-secondary: #44403c;
-  --text-muted: #57534e;
-  --text-light: #a8a29e;
-  --text-inverse: #fafaf9;
+  --text-primary: #EEF2F8;
+  --text-secondary: #C2CCDA;
+  --text-muted: #A6B2C4;
+  --text-light: #6A7688;
+  --text-nav: #A6B2C4;
+  --text-inverse: #05070B;
 
-  /* Accent — chaud, humain */
-  --accent: #d97706;
-  --accent-light: #f59e0b;
-  --accent-dark: #b45309;
-  --accent-glow: rgba(217, 119, 6, 0.15);
-  --focus-ring: #b45309;
+  /* Accent — l'ambre de Kora, il porte l'identité */
+  --accent: #E9A544;
+  --accent-light: #F2B45C;
+  --accent-dark: #C9861F;
+  --accent-glow: rgba(233, 165, 68, .18);
+  --focus-ring: #F2B45C;
 
   /* Froid — machine, système */
-  --cold: #64748b;
-  --cold-light: #94a3b8;
-  --cold-dark: #475569;
+  --cold: #94a3b8;
+  --cold-light: #cbd5e1;
+  --cold-dark: #64748b;
+
+  /* Les trois sommets, aux couleurs de l'orbe (repris de l'application) */
+  --v-recherche: #E9A544;
+  --v-quotidien: #6FC9E4;
+  --v-jeu:       #A98FC9;
 
   /* Bordures */
-  --border: #d6d3d1;
-  --border-light: #e7e5e4;
-  --border-dark: #44403c;
+  --border: rgba(150, 170, 200, .16);
+  --border-light: rgba(150, 170, 200, .10);
+  --border-dark: rgba(150, 170, 200, .34);
 
   /* États */
-  --green: #16a34a;
-  --red: #dc2626;
+  --green: #4ade80;
+  --red: #f87171;
+
+  /* Gabarit */
+  --header-h: 60px;           /* hauteur du header commun, VERROUILLEE par .site-header__inner — tout ce qui se cale dessous s'y refere */
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -77,52 +97,12 @@ a, button, [role="button"], input, select, textarea {
   --stagger-delay: 0.08s;
 
   /* Texture */
-  --noise-opacity: 0.03;
+  --noise-opacity: 0.02;
 }
 
 /* ============================================
    MODE SOMBRE
    ============================================ */
-
-[data-theme="dark"] {
-  /* Neutres refroidis (10/09) : le site sombre etait brun (#1c1a19, R>G>B)
-     et le repere bleu-nuit — la transition entre les deux se voyait comme
-     un defaut. Meme luminance a 0,01 pres, donc aucun contraste perdu :
-     ils montent tous. L'accent ambre ne bouge pas, il porte l'identite. */
-  --focus-ring: #f59e0b;
-  --bg-page: #181a1f;
-  --bg-dark: #111318;
-  --bg-card: #22252b;
-  --bg-card-hover: #2e3138;
-  --bg-concept: #4a2508;
-
-  --text-primary: #fafaf9;
-  --text-secondary: #e4e7ec;
-  --text-muted: #9fa5ae;
-  --accent: #f59e0b;
-  --accent-light: #fbbf24;
-  --accent-dark: #d97706;
-  --text-light: #6d747e;
-  --text-inverse: #292524;
-
-  --accent-glow: rgba(217, 119, 6, 0.2);
-  --cold: #94a3b8;
-  --cold-light: #cbd5e1;
-  --cold-dark: #64748b;
-
-  --border: #2e3138;
-  --border-light: #22252b;
-  --border-dark: #6d747e;
-
-  --noise-opacity: 0.02;
-}
-
-/* Transition douce lors du changement de thème */
-html {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
 
 html {
   scroll-behavior: smooth;
@@ -148,6 +128,87 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
+}
+
+/* ============================================
+   LE DÉCOR — Kora, sur chaque page (11/09)
+   Un canvas plein écran (js/repere.js) sous tout le contenu. Sur
+   l'accueil (body.repere) elle se condense et vit ; ailleurs elle
+   VEILLE : plus petite, en périphérie, au repos — présente, jamais
+   en concurrence avec le texte. Le voile assombrit la nuit pour la
+   lecture ; il est plus fort hors de l'accueil.
+   ============================================ */
+
+.kora-cosmos {
+  position: fixed; inset: 0; z-index: 0;
+  width: 100%; height: 100%; display: block;
+}
+.kora-veil {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(120% 80% at 50% 45%,
+    transparent 30%, rgba(5, 7, 11, .55) 78%, rgba(2, 3, 6, .92) 100%);
+}
+body:not(.repere) .kora-veil {
+  background: radial-gradient(70% 60% at 82% 22%,
+    rgba(5, 7, 11, .10) 0%, rgba(5, 7, 11, .62) 55%, rgba(3, 4, 7, .90) 100%);
+}
+/* le canvas est positionné (z-index 0) : tout ce qui doit passer AU-DESSUS
+   doit l'être aussi, sinon un élément statique passe dessous. Le header
+   garde son position:fixed / z-index:100 d'origine. */
+main,
+.site-footer { position: relative; z-index: 2; }
+
+/* ============================================
+   LE SEUIL — Kora présente chaque page (11/09)
+   Même grammaire que l'ouverture de l'accueil (eyebrow mono, texte sans),
+   à la couleur de Kora au repos. Sur un article il précède le hero ; sur
+   une page il est le premier bloc sous le header (--compact).
+   ============================================ */
+
+.kora-seuil {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md) var(--space-lg);
+  align-items: baseline;
+  margin: 0 0 var(--space-2xl);
+  padding: var(--space-md) 0 var(--space-md) var(--space-lg);
+  border-left: 1px solid var(--v-quotidien);
+  max-width: 44rem;
+}
+.kora-seuil--compact {
+  margin: calc(var(--header-h) + var(--space-2xl)) 0 0;
+}
+.kora-seuil .kora-seuil__who {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--v-quotidien);
+  margin: 0;
+}
+.kora-seuil .kora-seuil__said p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 .5em;
+}
+.kora-seuil .kora-seuil__said p:last-child { margin-bottom: 0; }
+/* un hero qui suit un seuil n'a plus besoin de dégager le header lui-même */
+.kora-seuil--compact + section,
+.container:has(> .kora-seuil--compact) + section {
+  padding-top: var(--space-xl);
+  min-height: 0;
+}
+@media (max-width: 600px) {
+  .kora-seuil { grid-template-columns: 1fr; gap: var(--space-xs); }
+}
+
+/* Le footer commun sous un article : à droite du sommaire, comme le contenu */
+body.article .site-footer { margin-left: 260px; }
+@media (max-width: 900px) {
+  body.article .site-footer { margin-left: 0; }
 }
 
 /* ============================================
@@ -217,17 +278,9 @@ a:hover {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(245, 240, 235, 0.92);
+  background: rgba(5, 7, 11, .82);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
-  background-image: linear-gradient(var(--bg-page), var(--bg-page)),
-    linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-
-[data-theme="dark"] .site-header {
-  background: rgba(28, 26, 25, 0.92);
   background-image: linear-gradient(var(--bg-page), var(--bg-page)),
     linear-gradient(90deg, transparent, var(--accent-glow), transparent);
   background-origin: border-box;
@@ -238,7 +291,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) var(--space-xl);
+  box-sizing: border-box;
+  min-height: var(--header-h);
+  padding: 0 var(--space-xl);
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -612,37 +667,22 @@ a:hover {
   padding: var(--space-xl);
 }
 
-/* Card dark */
-.card--dark {
-  background: var(--bg-dark);
-  border-left-color: var(--border-dark);
-}
-
-.card--dark .card__title,
-.card--dark .card__desc {
-  color: var(--text-inverse);
-}
-
-.card--dark .card__desc {
-  color: var(--text-light);
-}
-
 .card--dark .card__icon {
   background: rgba(245, 158, 11, 0.15);
 }
 
-/* Dark mode : cards dans section sombre — fond relevé, texte clair */
-[data-theme="dark"] .card--dark {
-  background: #272422;
+/* Card « sombre » : sur une nuit, elle est relevée, pas inversée */
+.card--dark {
+  background: var(--bg-raised);
   border-left-color: var(--accent);
 }
 
-[data-theme="dark"] .card--dark .card__title,
-[data-theme="dark"] .card--dark .card__desc {
+.card--dark .card__title,
+.card--dark .card__desc {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .card--dark .card__desc {
+.card--dark .card__desc {
   color: var(--text-secondary);
 }
 
@@ -659,35 +699,26 @@ a:hover {
   padding: var(--space-4xl) 0;
 }
 
+/* Section « sombre » : relevée par rapport à la nuit, jamais inversée */
 .section--dark {
-  background: var(--bg-dark);
-  color: var(--text-inverse);
-}
-
-/* Dark mode : la section "sombre" s'inverse — fond relevé + texte clair */
-[data-theme="dark"] .section--dark {
-  background: #33302e;
+  background: var(--bg-raised);
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .section--dark .section__title {
+.section--dark .section__title {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .section--dark .section__label {
+.section--dark .section__label {
   color: var(--accent);
 }
 
-[data-theme="dark"] .section--dark .section__subtitle {
+.section--dark .section__subtitle {
   color: var(--text-secondary);
 }
 
 .section--alt {
-  background: #faf8f5;
-}
-
-[data-theme="dark"] .section--alt {
-  background: #272422;
+  background: var(--bg-alt);
 }
 
 .section__header {
@@ -785,11 +816,6 @@ a:hover {
 }
 
 .section--dark .btn--secondary {
-  border-color: var(--border-dark);
-  color: var(--text-light);
-}
-
-[data-theme="dark"] .section--dark .btn--secondary {
   border-color: var(--border);
   color: var(--text-secondary);
 }
@@ -1206,13 +1232,8 @@ a:hover {
   margin: 0 auto var(--space-2xl);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--border-light);
-}
-
-[data-theme="dark"] .manifeste-hero__image {
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
-  border-color: var(--border-dark);
+  border: 1px solid var(--border-dark);
 }
 
 .manifeste-hero__image img {
@@ -1437,7 +1458,7 @@ a:hover {
   text-transform: uppercase;
   color: var(--text-muted);
   background: transparent;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-dark);
   border-radius: 999px;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1463,14 +1484,6 @@ a:hover {
 
 .card--hidden {
   display: none;
-}
-
-[data-theme="dark"] .filter-btn {
-  border-color: var(--border-dark);
-}
-
-[data-theme="dark"] .filter-btn:hover {
-  border-color: var(--accent);
 }
 
 @media (max-width: 480px) {
@@ -1669,57 +1682,6 @@ a:hover {
 }
 
 /* ============================================
-   THEME TOGGLE
-   ============================================ */
-
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
-  background: var(--bg-card);
-}
-
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--text-muted);
-  transition: stroke var(--transition-fast), transform 0.4s var(--ease-out-expo);
-}
-
-.theme-toggle:hover svg {
-  stroke: var(--accent);
-}
-
-.theme-toggle:active svg {
-  transform: rotate(180deg);
-}
-
-/* Icône lune visible en mode clair */
-.theme-toggle .icon-moon {
-  display: block;
-}
-.theme-toggle .icon-sun {
-  display: none;
-}
-
-/* Icône soleil visible en mode sombre */
-[data-theme="dark"] .theme-toggle .icon-moon {
-  display: none;
-}
-[data-theme="dark"] .theme-toggle .icon-sun {
-  display: block;
-}
-/* ============================================
    FORMULA DISPLAY
    ============================================ */
 
@@ -1768,8 +1730,8 @@ a:hover {
   font-size: 1rem;
 }
 
-/* Adaptation pour le mode sombre automatique */
-[data-theme="dark"] .formula-display {
+/* Fond de la formule sur la nuit (précède : la règle générale, dont le fond est écrasé ici) */
+.formula-display {
   background: rgba(245, 158, 11, 0.05);
   border-color: rgba(245, 158, 11, 0.2);
 }
@@ -2100,7 +2062,7 @@ a:hover {
 }
 
 .dialogue__text {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 400;
   color: var(--text-primary);
@@ -2129,10 +2091,6 @@ a:hover {
 .dialogue__choice:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .dialogue__choice:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 

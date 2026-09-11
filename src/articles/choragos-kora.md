@@ -57,6 +57,8 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 20
+activeNav: choragos
+koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 ---
 
 <!-- En local -->

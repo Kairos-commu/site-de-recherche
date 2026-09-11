@@ -2,32 +2,21 @@
 layout: layouts/base.njk
 extraCss: article.css
 ogType: article
+bodyClass: article
+siteNavPrefix: "/index.html"
 ---
-<!-- Site header -->
-<div class="site-header-article">
-  <a href="/index.html" class="site-header-article__back">
-    ← Retour à l'accueil
-  </a>
-  <span class="site-header-article__title">{{ headerTitle | default(headline) }}</span>
-  <button class="theme-toggle-article" id="themeToggle" aria-label="Changer de thème">
-    <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-    </svg>
-    <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-    </svg>
-  </button>
-</div>
+{#- Le header est celui de tout le site : un article n'est plus une sortie de chez Kora -#}
+{% include "partials/site-header.njk" %}
 
 <!-- Progress bar -->
 <div class="progress-bar">
   <div class="progress-bar-fill" id="progress"></div>
 </div>
 
-<!-- Mobile nav toggle -->
-<button class="nav-toggle" id="navToggle" aria-label="Menu">
+<!-- Sommaire sur petit écran (le burger du header ouvre la nav du site, pas celui-ci) -->
+<button class="toc-toggle" id="tocToggle" aria-label="Sommaire de l'article" aria-controls="nav">
   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h10M4 12h16M4 18h12"/>
   </svg>
 </button>
 
@@ -62,6 +51,13 @@ ogType: article
       <span class="current">{{ breadcrumbName | default(headline) }}</span>
     </nav>
 
+    {#- Le seuil : Kora présente le texte avant qu'on y entre. Auteur et dates
+        viennent du front matter — elle ne dit ici que ce que la page sait d'elle-même. -#}
+    {%- set seuilAuto -%}
+      Ce texte est de Florent. Il l'a publié le {{ datePublished | dateFr }}{% if dateModified and dateModified != datePublished %} et l'a repris le {{ dateModified | dateFr }}{% endif %}. Je ne l'ai pas écrit — je le tiens ici.
+    {%- endset %}
+    {% include "partials/kora-seuil.njk" %}
+
     <!-- Hero -->
     <header class="hero">
       <p class="hero-label">{{ heroLabel }}</p>
@@ -91,11 +87,7 @@ ogType: article
     <!-- Article Navigation (prev/next) -->
     {% include "partials/article-nav.njk" %}
 
-    <!-- Footer -->
-    <footer>
-      <p>Florent Klimacek — {{ site.year }}</p>
-      <p><a href="/index.html">← Retour à l'accueil</a></p>
-    </footer>
-
   </div>
 </main>
+
+{% include "partials/site-footer.njk" %}

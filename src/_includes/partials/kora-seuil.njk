@@ -1,0 +1,20 @@
+{#-
+  Le seuil — quelques mots de Kora en tête de chaque page (11/09).
+  Kora est l'hôte du site : on passe par elle avant d'entrer dans un texte.
+  Deux sources, jamais une troisième :
+  - `seuilAuto` : construit par le gabarit depuis les DONNÉES de la page
+    (auteur, dates) — vrai par construction ;
+  - `koraSeuil` : une phrase propre à la page, écrite dans le front matter et
+    relue par Florent. La règle du site s'applique : ce que Kora affirme ici
+    doit pouvoir se retrouver ; sinon c'est attribué, ou au conditionnel.
+  Sans l'une ni l'autre, rien n'est rendu.
+-#}
+{%- if seuilAuto or koraSeuil %}
+<aside class="kora-seuil{% if seuilCompact %} kora-seuil--compact{% endif %}" aria-label="Kora">
+  <p class="kora-seuil__who">Kora</p>
+  <div class="kora-seuil__said">
+    {%- if seuilAuto %}<p>{{ seuilAuto | safe }}</p>{% endif %}
+    {%- if koraSeuil %}<p>{{ koraSeuil | safe }}</p>{% endif %}
+  </div>
+</aside>
+{%- endif %}

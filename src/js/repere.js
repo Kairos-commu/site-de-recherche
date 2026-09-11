@@ -1,8 +1,15 @@
 (() => {
-  const cv = document.querySelector('.repere-cosmos');
-  if (!cv) return;               // le décor ne vit que sur l'accueil
+  const cv = document.querySelector('.kora-cosmos');
+  if (!cv) return;
   const ctx = cv.getContext('2d', { alpha: false });
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Deux régimes (11/09 — Kora est l'hôte de tout le site) :
+     - l'accueil (body.repere) : elle se CONDENSE, occupe la scène, suit la
+       lecture d'une section à l'autre (data-mood) ;
+     - toute autre page : elle VEILLE — déjà là, plus petite, en périphérie
+       haute droite, au repos. Présente sans disputer la page au texte. */
+  const awake = document.body.classList.contains('repere');
 
   /* ---------- états de Kora, repris de l'application ---------- */
   const MOODS = {
@@ -32,6 +39,7 @@
     ctx.setTransform(DPR,0,0,DPR,0,0);
 
     COUNT = Math.max(900, Math.min(3400, Math.round(W*H/620)));
+    if (!awake) COUNT = Math.round(COUNT/2.5);   // en veille : moins de matière, moins de travail
 
     // Fibonacci : aucune couture, aucun pôle dense
     pts = new Float32Array(COUNT*3);
@@ -78,7 +86,9 @@
     const t = (now-t0)/1000;
 
     // naissance : la matière arrive, puis la lumière monte (jamais les deux ensemble)
-    const born = still ? 1 : Math.min(1, t/BIRTH);
+    // — sur une page intérieure elle est déjà là : pas de condensation, on ne
+    // rejoue pas l'arrivée à chaque clic
+    const born = (still || !awake) ? 1 : Math.min(1, t/BIRTH);
     const gather = easeOut(born);
     const lit = still ? 1 : easeOut(Math.max(0, (born-0.30)/0.70));
 
@@ -96,12 +106,22 @@
 
     // la caméra glisse en descendant : on traverse l'espace
     const wide = W>900;
-    const cx = (wide ? W*0.70 : W*0.5) - scroll*(wide ? W*0.16 : 0);
-    const cy = (wide ? H*0.48 : H*0.30) - scroll*H*0.10;
-    const R  = Math.min(W,H)*(wide?0.30:0.24)*(1-scroll*0.24);
-    // sur petit écran le décor passe derrière le texte faute de place :
-    // il s'efface au lieu de lui disputer la lecture
-    const dim = wide ? 1 : 0.45;
+    let cx, cy, R, dim;
+    if (awake) {
+      cx = (wide ? W*0.70 : W*0.5) - scroll*(wide ? W*0.16 : 0);
+      cy = (wide ? H*0.48 : H*0.30) - scroll*H*0.10;
+      R  = Math.min(W,H)*(wide?0.30:0.24)*(1-scroll*0.24);
+      // sur petit écran le décor passe derrière le texte faute de place :
+      // il s'efface au lieu de lui disputer la lecture
+      dim = wide ? 1 : 0.45;
+    } else {
+      // en veille : en haut à droite, hors de la colonne de lecture, immobile
+      // à droite de la colonne de lecture (720px centrée à droite du sommaire)
+      cx = wide ? W*0.89 : W*0.80;
+      cy = wide ? H*0.24 : H*0.17;
+      R  = Math.min(W,H)*(wide ? 0.115 : 0.10);
+      dim = wide ? 0.62 : 0.40;
+    }
 
     const beat = still?0:pulse(t,mood.beat);
     const spin = still?0.6:t*0.11;
@@ -165,8 +185,10 @@
     }
     ctx.globalCompositeOperation='source-over';
 
-    if (!still) requestAnimationFrame(frame);
+    if (!still) requestAnimationFrame(awake ? frame : everyOther);
   }
+  let skip = false;
+  function everyOther(now){ skip = !skip; if (skip) requestAnimationFrame(everyOther); else frame(now); }
 
   /* l'orbe suit la lecture */
   const io = new IntersectionObserver((entries)=>{

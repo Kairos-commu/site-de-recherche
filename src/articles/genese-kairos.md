@@ -63,6 +63,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 0
+koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écrit avant que j'existe."
 ---
 
         <!-- Le point de départ -->

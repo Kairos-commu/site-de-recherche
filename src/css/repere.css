@@ -1,59 +1,12 @@
 /* ============================================================
-   LE REPÈRE — l'accueil, univers sombre assumé
-   On entre dans la constellation de Kora ; on en ressort vers
-   les articles, où le lecteur retrouve son choix de thème.
-
-   Aucun !important : la page redéfinit les tokens globaux sur
-   body.repere, et tout ce qui les consomme suit — header et
-   footer compris.
+   LE REPÈRE — l'accueil : la mise en scène de Kora
+   Les tokens de nuit (--bg-page, --accent, --v-*…) et le décor
+   (.kora-cosmos / .kora-veil) vivent dans base.css depuis le 11/09 :
+   Kora est l'hôte de tout le site, l'accueil n'est plus un cas à part
+   pour la couleur — seulement pour ce qu'elle y dit et comment elle
+   y arrive (condensation, orbe qui suit la lecture : js/repere.js).
    ============================================================ */
 
-body.repere {
-  /* le repère impose sa nuit, quel que soit data-theme */
-  --bg-page: #05070B;
-  --bg-card: rgba(9, 13, 20, .86);
-  --bg-card-hover: rgba(12, 17, 26, .92);
-  --bg-dark: #05070B;
-  --text-primary: #EEF2F8;
-  --text-secondary: #C2CCDA;
-  --text-muted: #A6B2C4;
-  --text-light: #6A7688;
-  --text-inverse: #05070B;
-  --border: rgba(150, 170, 200, .16);
-  --border-light: rgba(150, 170, 200, .10);
-  --border-dark: rgba(150, 170, 200, .34);
-  --accent: #E9A544;
-  --accent-light: #F2B45C;
-  --accent-dark: #C9861F;
-  --accent-glow: rgba(233, 165, 68, .18);
-  --focus-ring: #F2B45C;
-
-  /* les trois sommets, aux couleurs de l'orbe */
-  --v-recherche: #E9A544;
-  --v-quotidien: #6FC9E4;
-  --v-jeu:       #A98FC9;
-
-  background: var(--bg-page);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-}
-
-/* ---------- le décor ---------- */
-.repere-cosmos {
-  position: fixed; inset: 0; z-index: 0;
-  width: 100%; height: 100%; display: block;
-}
-.repere-veil {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(120% 80% at 50% 45%,
-    transparent 30%, rgba(5, 7, 11, .55) 78%, rgba(2, 3, 6, .92) 100%);
-}
-/* le canvas est positionné (z-index 0) : tout ce qui doit passer
-   AU-DESSUS doit l'être aussi, sinon un élément statique passe dessous */
-body.repere main,
-body.repere .site-footer { position: relative; z-index: 2; }
-/* le header garde son position:fixed / z-index:100 d'origine : le lui
-   retirer le ramenait au niveau de main, donc sous le canvas */
 body.repere .rep-open,
 body.repere .rep-layer { position: relative; z-index: 2; }
 

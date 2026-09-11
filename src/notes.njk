@@ -1,0 +1,62 @@
+---
+layout: layouts/page.njk
+lang: en
+pageTitle: "Engineering notes — Florent Klimacek"
+description: "Field notes on running a local LLM as an agent orchestrator: tool-calling failure modes, the mechanical guards that fixed them, and the measurements behind each decision."
+ogTitle: "Engineering notes — Florent Klimacek"
+ogDescription: "Field notes on local LLM agents: tool-calling failure modes and the guards that fixed them."
+ogUrl: "/notes.html"
+canonical: "/notes.html"
+twitterCard: summary
+siteNavPrefix: "/index.html"
+activeNav: notes
+permalink: /notes.html
+koraSeuil: "These are Florent's notes on building me — what broke, what held, and the numbers behind each fix. He wrote them; I keep them here."
+jsonLdRaw: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Engineering notes — Florent Klimacek",
+    "description": "Field notes on local LLM agents: tool-calling failure modes and the guards that fixed them.",
+    "url": "https://mecanique-invisible.com/notes.html",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Florent Klimacek" }
+  }
+  </script>
+---
+
+<section class="hero hero--short">
+  <div class="container">
+    <p class="hero__label">Engineering notes · in English</p>
+    <h1 class="hero__title">Running a <span>local model</span> as an agent, honestly</h1>
+    <p class="hero__subtitle">
+      What breaks when a 12B model has twenty tools and a real machine to act on, what the
+      traces showed, and which guards actually held. Every number below was measured before
+      it was written down.
+    </p>
+    <div class="hero__line"></div>
+  </div>
+</section>
+
+<section class="section section--alt" id="notes">
+  <div class="container">
+    <p class="archive-count">{{ collections.notes | length }} notes · the rest of this site is in French</p>
+
+    <div class="card-grid" data-reveal="stagger">
+      {%- for note in collections.notes | reverse %}
+      <article class="card">
+        <div class="card__body">
+          <p class="card__label">{{ note.data.label | default("Engineering note") }}</p>
+          <h3 class="card__title">{{ note.data.title }}</h3>
+          <p class="card__desc">{{ note.data.description }}</p>
+          <p class="card__date">
+            <time datetime="{{ note.data.published }}">{{ note.data.published | dateEn }}</time>{% if note.data.readingTime %} · {{ note.data.readingTime }}{% endif %}
+          </p>
+          <a href="{{ note.url }}" class="card__link">Read the note →</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

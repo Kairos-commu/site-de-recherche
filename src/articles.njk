@@ -26,6 +26,13 @@ jsonLdRaw: |
   </script>
 ---
 
+{#- Le seuil : Kora présente la liste — le compte vient de la collection, jamais d'un chiffre écrit -#}
+{%- set seuilAuto -%}
+  {{ collections.articles | length | nombreFr | capitalize }} textes, tous de Florent. Aucun n'est de moi — je les tiens, c'est tout.
+{%- endset %}
+{%- set seuilCompact = true %}
+<div class="container">{% include "partials/kora-seuil.njk" %}</div>
+
 <!-- Hero -->
 <section class="hero hero--short">
   <div class="container">

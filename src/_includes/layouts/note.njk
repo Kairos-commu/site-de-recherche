@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+extraCss: article.css
+ogType: article
+lang: en
+bodyClass: article
+siteNavPrefix: "/index.html"
+activeNav: notes
+---
+{#- Le header est celui de tout le site (11/09) — une note n'est pas une sortie de chez Kora -#}
+{% include "partials/site-header.njk" %}
+
+<div class="progress-bar">
+  <div class="progress-bar-fill" id="progress"></div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": {{ title | dump | safe }},
+  "description": {{ description | dump | safe }},
+  "datePublished": "{{ published }}",
+  "dateModified": "{{ dateModified | default(published) }}",
+  "inLanguage": "en",
+  "url": "{{ site.url }}/notes/{{ page.fileSlug }}.html",
+  "author": { "@type": "Person", "name": "{{ site.author.name }}", "url": "{{ site.url }}/about.html" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}/notes/{{ page.fileSlug }}.html" },
+  "keywords": {{ (keywords or []) | dump | safe }}
+}
+</script>
+
+<main>
+  <div class="content content--note">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a>
+      <span class="separator">›</span>
+      <a href="/notes.html">Engineering notes</a>
+      <span class="separator">›</span>
+      <span class="current">{{ title }}</span>
+    </nav>
+
+    {#- Le seuil, en anglais comme la note : auteur et dates viennent du front matter -#}
+    {%- set seuilAuto -%}
+      This note is Florent's. He published it on {{ published | dateEn }}{% if dateModified and dateModified != published %} and revised it on {{ dateModified | dateEn }}{% endif %}. I didn't write it — I keep it here.
+    {%- endset %}
+    {% include "partials/kora-seuil.njk" %}
+
+    <header class="hero">
+      <p class="hero-label">{{ label | default("Engineering note") }}</p>
+      <h1>{{ title }}</h1>
+      <p class="hero-intro">{{ description }}</p>
+      <p class="hero-date">
+        <time datetime="{{ published }}">{{ published | dateEn }}</time>
+        {%- if dateModified and dateModified != published %} · updated <time datetime="{{ dateModified }}">{{ dateModified | dateEn }}</time>{% endif %}
+        {%- if readingTime %} · {{ readingTime }}{% endif %}
+      </p>
+      <div class="hero-line"></div>
+    </header>
+
+    {{ content | safe }}
+
+    <footer>
+      <p class="note-footer-lead">These notes come from building <a href="/choragos-kora.html">Choragos</a>, a desktop assistant that runs a local model as its orchestrator. If you are fighting the same problems, <a href="/contact.html">write to me</a>.</p>
+      <p><a href="/notes.html">← All engineering notes</a></p>
+    </footer>
+  </div>
+</main>
+
+{% include "partials/site-footer.njk" %}

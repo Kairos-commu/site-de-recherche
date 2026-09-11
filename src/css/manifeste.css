@@ -1,87 +1,31 @@
 /* ============================================
-   MANIFESTE — Univers visuel autonome
-   Deux palettes (dark par défaut, light dispo)
+   MANIFESTE — mise en page propre, palette du site
+   Les --m-* étaient une seconde palette (claire/sombre, à coups de
+   sur le header et le footer). Depuis le 11/09 le site n'a
+   qu'une nuit, celle de Kora : les --m-* ne sont plus que des ALIAS des
+   tokens de base.css, gardés pour que les règles ci-dessous restent
+   lisibles. Aucune couleur n'est décidée ici.
    ============================================ */
 
-/* ─── Palette claire (défaut) ─── */
-body {
-  --m-bg: #f5f0eb;
-  --m-bg-elevated: #ebe5dd;
-  --m-bg-glass: rgba(0, 0, 0, 0.03);
-  --m-text: #1c1917;
-  --m-text-body: #3d3733;
-  --m-text-dim: #57534e;
-  --m-text-faint: #a8a29e;
-  --m-accent: #b45309;
-  --m-accent-glow: rgba(217, 119, 6, 0.1);
-  --m-border: rgba(0, 0, 0, 0.1);
-  --m-border-accent: rgba(180, 83, 9, 0.3);
-
-  background: var(--m-bg) !important;
-  color: var(--m-text) !important;
-}
-
-/* ─── Palette sombre ─── */
-[data-theme="dark"] body,
-body[data-theme="dark"] {
-  --m-bg: #0f0e0d;
-  --m-bg-elevated: #1a1816;
+body.manifeste {
+  --m-bg: var(--bg-page);
+  --m-bg-elevated: var(--bg-raised);
   --m-bg-glass: rgba(255, 255, 255, 0.04);
-  --m-text: #e8e4df;
-  --m-text-body: #cdc7bf;
-  --m-text-dim: #a8a29e;
-  --m-text-faint: #5c5752;
-  --m-accent: #d97706;
-  --m-accent-glow: rgba(217, 119, 6, 0.12);
-  --m-border: rgba(255, 255, 255, 0.08);
-  --m-border-accent: rgba(217, 119, 6, 0.25);
-}
-
-/* ─── Header & footer utilisent la palette manifeste ─── */
-.site-header {
-  background: var(--m-bg) !important;
-  border-bottom-color: var(--m-border) !important;
-}
-
-.site-header a,
-.site-header .nav__link {
-  color: var(--m-text-dim) !important;
-}
-
-.site-header a:hover,
-.site-header .nav__link:hover,
-.site-header .nav__link--active {
-  color: var(--m-accent) !important;
-}
-
-.site-header .logo__text {
-  color: var(--m-text) !important;
-}
-
-.site-footer {
-  background: var(--m-bg) !important;
-  border-top-color: var(--m-border) !important;
-  color: var(--m-text-dim) !important;
-}
-
-.site-footer a {
-  color: var(--m-text-dim) !important;
-}
-
-.site-footer a:hover {
-  color: var(--m-accent) !important;
-}
-
-/* Theme toggle */
-.theme-toggle {
-  color: var(--m-text-dim) !important;
+  --m-text: var(--text-primary);
+  --m-text-body: var(--text-secondary);
+  --m-text-dim: var(--text-muted);
+  --m-text-faint: var(--text-light);
+  --m-accent: var(--accent);
+  --m-accent-glow: var(--accent-glow);
+  --m-border: var(--border);
+  --m-border-accent: rgba(233, 165, 68, 0.3);
 }
 
 /* ─── Hero — immersif, centré, minimaliste ─── */
 .hero--short {
   padding: 6rem 0 4rem;
-  background: transparent !important;
-  border-bottom: none !important;
+  background: transparent;
+  border-bottom: none;
 }
 
 .manifeste-hero {
@@ -127,7 +71,7 @@ body[data-theme="dark"] {
   font-style: italic;
   color: var(--m-text-body);
   line-height: 1.6;
-  max-width: 560px !important;
+  max-width: 560px;
 }
 
 .manifeste-hero .hero__line {
@@ -145,7 +89,7 @@ body[data-theme="dark"] {
 }
 
 .section--alt {
-  background: var(--m-bg-elevated) !important;
+  background: var(--m-bg-elevated);
 }
 
 .section--alt::before,
@@ -300,9 +244,9 @@ body[data-theme="dark"] {
 }
 
 .manifeste-profile__detail {
-  font-size: 0.85rem !important;
-  color: var(--m-accent) !important;
-  margin-bottom: 0 !important;
+  font-size: 0.85rem;
+  color: var(--m-accent);
+  margin-bottom: 0;
   font-style: italic;
 }
 
@@ -427,23 +371,6 @@ body[data-theme="dark"] {
   color: var(--m-text-faint);
 }
 
-/* ─── Mobile nav burger ─── */
-.mobile-nav__content {
-  background: var(--m-bg) !important;
-}
-
-.mobile-nav__link {
-  color: var(--m-text-body) !important;
-}
-
-.mobile-nav__link:hover {
-  color: var(--m-accent) !important;
-}
-
-.burger span {
-  background: var(--m-text-dim) !important;
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .manifeste-pillars {
@@ -494,7 +421,7 @@ body[data-theme="dark"] {
   }
 
   .manifeste-cta {
-    border-right: none !important;
+    border-right: none;
     padding: 2.5rem 1.5rem;
   }
 

@@ -2,33 +2,31 @@
 layout: layouts/page.njk
 bodyClass: repere
 extraCss: repere.css
-extraJs: repere.js
-pageTitle: "Florent Klimacek — Recherche sur les interactions humain-IA"
+pageTitle: "Kora, assistante locale — Florent Klimacek, recherche sur les interactions humain-IA"
 description: "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles. Kora, assistante locale, y présente ce qu'elle sait faire, ce qu'elle ne sait pas faire, et le fichier d'où vient chaque affirmation."
 ogUrl: "/"
 canonical: "/"
 permalink: /index.html
+# image de partage : la page elle-même, capturée (Kora condensée) — pas le logo générique du site
+heroImage: "/images/og-kora.jpg"
 jsonLdRaw: |
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Florent Klimacek — Recherche sur les interactions humain-IA",
+    "name": "Kora, assistante locale — Florent Klimacek",
     "url": "https://mecanique-invisible.com/",
-    "description": "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles, la résonance conversationnelle et les outils d'analyse.",
+    "description": "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles. Kora, assistante locale, y présente ce qu'elle sait faire, ce qu'elle ne sait pas faire, et le fichier d'où vient chaque affirmation.",
     "inLanguage": "fr",
     "author": {
       "@type": "Person",
       "name": "Florent Klimacek",
       "url": "https://mecanique-invisible.com/about.html"
     },
-    "image": "https://mecanique-invisible.com/og-image.jpg"
+    "image": "https://mecanique-invisible.com/images/og-kora.jpg"
   }
   </script>
 ---
-
-<canvas class="repere-cosmos" aria-hidden="true"></canvas>
-<div class="repere-veil" aria-hidden="true"></div>
 
 <!-- Ouverture — Kora seule -->
 <section class="rep-open container" id="observation" data-mood="rest">
@@ -167,7 +165,7 @@ jsonLdRaw: |
           contient déjà. Ça ne se corrige pas en demandant à la machine d'être
           plus honnête. Ça se détecte. Ça se mesure.
         </blockquote>
-        <p>Vingt articles, une thèse, une équation. Rien de tout cela ne m'appartient.</p>
+        <p>{{ collections.articles | length | nombreFr | capitalize }} articles, une thèse, une équation. Rien de tout cela ne m'appartient.</p>
       </div>
       <div class="rep-voice rep-voice--her">
         <p class="rep-who">Kora — ce qu'elle peut prouver</p>
@@ -211,7 +209,7 @@ jsonLdRaw: |
       </a>
       <a class="rep-door" href="/articles.html">
         <span>Publications</span>
-        <strong>Vingt articles</strong>
+        <strong>{{ collections.articles | length | nombreFr | capitalize }} articles</strong>
         <em>La politesse algorithmique, la pensée en faisceau, le coût cognitif, l'adoption réelle de l'IA.</em>
       </a>
       <a class="rep-door" href="/genese-kairos.html" id="kairos">
