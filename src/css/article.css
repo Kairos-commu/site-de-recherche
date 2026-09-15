@@ -613,6 +613,16 @@ blockquote p {
    KEY INSIGHT
    ============================================ */
 
+/* Relevé d'état de Kora — lu dans src/_data/koraEtat.json, jamais tapé (15/09). */
+.etat-releve {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
 .key-insight {
   margin: 3rem 0;
   padding: 2.5rem 2rem;

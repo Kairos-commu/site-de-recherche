@@ -525,6 +525,23 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
     poste de travail : le mien.
   </p>
 
+  {# Relevé automatique : src/_data/koraEtat.json, écrit par `npm run etat:export` côté
+     Choragos (lecture de l'application, jamais un chiffre tapé ici — cf. CLAUDE.md). #}
+  <p class="etat-releve">
+    <strong>Relevé du {{ koraEtat.generatedAtFr }}</strong>, lu dans l'application :
+    modèle local {{ koraEtat.kora.model }}, {{ koraEtat.kora.orbsVisible }} orbes ;
+    {{ koraEtat.capabilities.tools }} outils et
+    {{ koraEtat.capabilities.tools + koraEtat.capabilities.triggers + koraEtat.capabilities.chains + koraEtat.capabilities.selfInitiated }}
+    capacités au total — recherche {{ koraEtat.capabilities.byVertex.recherche }},
+    quotidien {{ koraEtat.capabilities.byVertex.quotidien }}, jeu {{ koraEtat.capabilities.byVertex.jeu }} —
+    dont {{ koraEtat.capabilities.byStatus.eprouve }} vues marcher et
+    {{ koraEtat.capabilities.byStatus['a-verifier'] }} jamais revérifiées ;
+    {{ koraEtat.capabilities.gaps }} manques listés.{% if koraEtat.usage %}
+    Depuis le {{ koraEtat.usage.since.slice(0, 10) | dateFr }} : {{ koraEtat.usage.calls.local }} appels au
+    modèle local, {{ koraEtat.usage.calls.cloud }} aux modèles en ligne,
+    {{ koraEtat.usage.calls.web }} recherches web, {{ koraEtat.usage.costUsd | round(2) | string | replace('.', ',') }} $ en tout.{% endif %}
+  </p>
+
   <p>
     Ce qui fonctionne aujourd'hui, et que j'utilise vraiment : la conversation
     avec un modèle local, les outils sur mon système avec leurs confirmations, la

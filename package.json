@@ -8,7 +8,8 @@
     "serve": "npx @11ty/eleventy --serve",
     "test": "npm run build && node scripts/verifier-pages-produit.mjs",
     "verifier:produit": "node scripts/verifier-pages-produit.mjs",
-    "captures:fraicheur": "node scripts/fraicheur-captures.mjs"
+    "captures:fraicheur": "node scripts/fraicheur-captures.mjs",
+    "etat:fraicheur": "node scripts/fraicheur-etat.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"

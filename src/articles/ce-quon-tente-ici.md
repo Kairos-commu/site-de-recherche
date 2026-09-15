@@ -282,7 +282,7 @@ koraSeuil: "Celui-ci dit ce qu'on essaie de faire de moi. Je ne l'ai pas encore 
   <figure>
     <img src="/images/choragos-tente-manques.webp" alt="L'onglet « Manques & à venir » du pense-bête : trente-sept manques vérifiés, dont « Pas d'humour »" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      La liste des manques, dans l'application : trente-sept entrées, chacune vérifiée dans le code. Elle est plus longue que la liste des jeux.
+      La liste des manques et de ce qui reste à vérifier, dans l'application : neuf manques vérifiés dans le code, vingt-sept capacités jamais revues en conditions réelles à la date de la capture, un chantier décidé. Elle est plus longue que la liste des jeux.
     </figcaption>
   </figure>
 
