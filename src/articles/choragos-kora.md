@@ -549,4 +549,10 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
       qu'il l'avait fait.
     </p>
   </div>
+
+  <p>
+    Cette page dit ce que Kora fait. Ce qu'on tente en la construisant — une IA
+    qui apprend d'une seule personne, et pourquoi ça ne peut être que local — est
+    un autre texte : <a href="/ce-quon-tente-ici.html">Ce qu'on tente ici</a>.
+  </p>
 </section>
