@@ -4,11 +4,11 @@ pageTitle: "Choragos — Un assistant IA qui tourne sur ma machine — Florent K
 headline: "Choragos — Un assistant IA qui tourne sur ma machine"
 description: "Kora est une assistante IA qui tourne en local : le modèle, la reconnaissance vocale et la voix de synthèse sont sur ma machine. Ce qu'elle sait faire, ce qui la retient de mentir, et les murs qu'elle n'a pas franchis."
 ogTitle: "Choragos — Un assistant IA qui tourne sur ma machine"
-ogDescription: "Kora tourne en local : 402 appels au modèle de ma machine contre 50 au cloud en trois jours, pour 0,51 $. Ce qu'elle fait, ses garde-fous, et ses murs."
+ogDescription: "Kora tourne en local : 402 appels au modèle de ma machine contre 50 au cloud en deux jours, pour 0,51 $. Ce qu'elle fait, ses garde-fous, et ses murs."
 ogUrl: "/choragos-kora.html"
 canonical: "/choragos-kora.html"
 datePublished: "2026-09-04"
-dateModified: "2026-09-08"
+dateModified: "2026-09-15"
 keywords:
   - Choragos
   - Kora
@@ -64,16 +64,18 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 <!-- En local -->
 <section id="en-local">
   <p class="lead">
-    Sur les deux derniers jours d'usage réel, Choragos a passé
+    Sur deux jours d'usage réel, les 3 et 4 septembre 2026, Choragos a passé
     <strong>402 appels au modèle qui tourne sur ma machine</strong> et
     <strong>50 appels à des services en ligne</strong>. Facture de la période :
-    <strong>0,51 $</strong>. Ces chiffres ne sont pas une estimation — ils sont
-    lus dans la base de l'application, qui compte chaque appel.
+    <strong>0,51 $</strong>. Ces chiffres ne sont pas une estimation — ils ont
+    été lus le 4 septembre dans la base de l'application, qui compte chaque
+    appel.
   </p>
 
   <p>
-    Le modèle s'appelle gemma4:12b. Il pèse 7,6 Go sur le disque, occupe environ
-    8 Go de mémoire vidéo, et tourne sur la carte graphique de mon ordinateur de
+    Le modèle s'appelle gemma4:12b. Il pèse 7,6 Go sur le disque, occupe 8,4 Go
+    de mémoire vidéo une fois chargé avec son contexte de 32 768 jetons (mesuré
+    le 15 septembre 2026), et tourne sur la carte graphique de mon ordinateur de
     bureau. Il n'y a ni abonnement, ni quota mensuel, ni condition d'utilisation
     à accepter pour lui parler. Quand la connexion tombe, il répond quand même.
   </p>
@@ -481,16 +483,20 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
   <figure>
     <img src="/images/choragos-manques.webp" alt="L'onglet « Manques et à venir » du pense-bête : ce que Kora ne sait pas faire, avec la raison" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      Dix-sept entrées, chacune avec sa raison. Un manque qui n'est pas écrit
-      quelque part redevient une promesse.
+      Dix-sept entrées le 8 septembre 2026, chacune avec sa raison — la liste
+      bouge avec le code. Un manque qui n'est pas écrit quelque part redevient
+      une promesse.
     </figcaption>
   </figure>
 
   <p>
-    Aucune écriture ni suppression de fichier à la voix, et il n'y en aura pas :
-    le canal vocal n'ouvre qu'un jeu d'actions réversibles. Aucune mémoire à la
-    voix non plus. Un modèle en ligne appelé en secours n'a aucun outil, donc il
-    peut expliquer mais jamais agir. Et l'arrêt d'urgence à la voix n'est plus
+    À la voix, une seule action s'exécute sans me demander : le contrôle de la
+    musique. Tout le reste — ouvrir, écrire, supprimer — passe par la même bulle
+    qu'au clavier, et une bulle rouge attend un oui explicite. Jusqu'au
+    15 septembre 2026, le canal vocal n'ouvrait qu'un jeu d'actions réversibles ;
+    depuis, il passe par le même moteur que le panneau de conversation, avec les
+    mêmes paliers — la frontière est devenue un garde-fou. Un modèle en ligne
+    appelé en secours n'a aucun outil, donc il peut expliquer mais jamais agir. Et l'arrêt d'urgence à la voix n'est plus
     entendu quand le mot d'éveil filtre tout ce qui ne commence pas par
     « Kora » — le bouton rouge, lui, marche toujours.
   </p>

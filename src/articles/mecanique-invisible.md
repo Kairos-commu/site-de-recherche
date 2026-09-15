@@ -286,7 +286,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <p>
             Après plus de mille deux cents messages échangés, répartis entre
-            quatre intelligences artificielles différentes, une structure
+            cinq intelligences artificielles différentes, une structure
             commence à émerger. Elle n'est pas évidente, mais elle existe : une
             mécanique invisible faite d'attracteurs, de stabilisations, de
             déviations et de points de rupture.
