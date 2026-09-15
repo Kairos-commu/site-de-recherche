@@ -9,7 +9,8 @@
     "test": "npm run build && node scripts/verifier-pages-produit.mjs",
     "verifier:produit": "node scripts/verifier-pages-produit.mjs",
     "captures:fraicheur": "node scripts/fraicheur-captures.mjs",
-    "etat:fraicheur": "node scripts/fraicheur-etat.mjs"
+    "etat:fraicheur": "node scripts/fraicheur-etat.mjs",
+    "guide:sync": "node scripts/sync-guide.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"

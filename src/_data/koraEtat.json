@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-15T14:45:55.989Z",
+  "generatedAt": "2026-09-15T14:52:54.607Z",
   "generatedAtFr": "15 septembre 2026",
   "app": {
-    "commit": "cd29a6c",
-    "commitDate": "2026-09-15T16:45:41+02:00",
-    "commits": 330,
+    "commit": "8337c9c",
+    "commitDate": "2026-09-15T16:51:11+02:00",
+    "commits": 331,
     "firstCommitDate": "2026-08-31T12:03:21+02:00",
     "daysSinceStart": 15
   },
@@ -64,20 +64,20 @@
   },
   "usage": {
     "since": "2026-09-06T13:17:16.649Z",
-    "until": "2026-09-15T14:45:08.722Z",
+    "until": "2026-09-15T14:46:45.873Z",
     "days": 10,
     "calls": {
-      "total": 1531,
-      "local": 1151,
+      "total": 1535,
+      "local": 1154,
       "cloud": 127,
-      "web": 253,
+      "web": 254,
       "errors": 15
     },
     "costUsd": 1.181,
     "last7d": {
-      "local": 742,
+      "local": 745,
       "cloud": 76,
-      "web": 140,
+      "web": 141,
       "costUsd": 0.644
     },
     "localModels": [
@@ -85,12 +85,12 @@
     ]
   },
   "corpus": {
-    "exchanges": 183,
-    "accepted": 36,
+    "exchanges": 184,
+    "accepted": 37,
     "corrected": 50,
     "rejected": 5,
     "unjudged": 92,
-    "toolTurns": 4,
+    "toolTurns": 5,
     "koraThreads": 19
   },
   "memory": {

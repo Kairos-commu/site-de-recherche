@@ -1,10 +1,10 @@
 ---
 title: "Building a local agent you can trust — what we learned, in order"
-label: "Guide · living document"
-description: "The decisions behind Kora, a desktop agent on a 12B local model with real access to one person's files, mail and voice — each with the incident that forced it and the mechanism that holds it. Revised as the project moves."
+label: "Guide · living document · source on GitHub"
+description: "The decisions behind Kora, a desktop agent on a 12B local model with real access to one person's files, mail and voice — each with the incident that forced it and the mechanism that holds it. Rendered from github.com/Kairos-commu/kora."
 published: "2026-09-15"
 dateModified: "2026-09-15"
-readingTime: "25 min"
+readingTime: "21 min"
 keywords:
   - local LLM agent
   - Ollama
@@ -33,8 +33,9 @@ prompt), and **what to copy**.
 
 It is dated by section, not rewritten. When a decision changes, the section gets an
 addendum with its date, and the [revisions](#revisions) log at the bottom says what moved.
-Figures in the banner below are read from the application at build time (a JSON exported
-by the app, committed with the site) — they are not typed here and they are not a promise.
+Figures in the state line below are read from the application (a JSON the app exports —
+`state.json` here, the same file on the site at build time) — they are not typed, and they
+are not a promise.
 
 <div class="failure">
 <p><strong>State as of {{ koraEtat.generatedAt.slice(0, 10) | dateEn }}</strong> (commit <code>{{ koraEtat.app.commit }}</code>, day {{ koraEtat.app.daysSinceStart }} of the project) —
@@ -43,7 +44,8 @@ local model <code>{{ koraEtat.kora.model }}</code>, {{ koraEtat.kora.orbsVisible
 (research {{ koraEtat.capabilities.byVertex.recherche }}, daily life {{ koraEtat.capabilities.byVertex.quotidien }}, play {{ koraEtat.capabilities.byVertex.jeu }}) —
 {{ koraEtat.capabilities.byStatus.eprouve }} seen working in real use, {{ koraEtat.capabilities.byStatus['a-verifier'] }} never re-checked, {{ koraEtat.capabilities.gaps }} listed gaps.{% if koraEtat.usage %}
 Since {{ koraEtat.usage.since.slice(0, 10) | dateEn }}: {{ koraEtat.usage.calls.local }} local calls, {{ koraEtat.usage.calls.cloud }} cloud calls, {{ koraEtat.usage.calls.web }} web searches, ${{ koraEtat.usage.costUsd | round(2) }} total.{% endif %}{% if koraEtat.corpus %}
-Fine-tune corpus: {{ koraEtat.corpus.exchanges }} exchanges, {{ koraEtat.corpus.accepted + koraEtat.corpus.corrected + koraEtat.corpus.rejected }} judged.{% endif %}</p>
+Fine-tune corpus: {{ koraEtat.corpus.exchanges }} exchanges, {{ koraEtat.corpus.accepted + koraEtat.corpus.corrected + koraEtat.corpus.rejected }} judged.{% endif %}
+Source and contracts: <a href="https://github.com/Kairos-commu/kora" target="_blank" rel="noopener">github.com/Kairos-commu/kora</a>.</p>
 </div>
 
 ## 1. The hardware you actually have

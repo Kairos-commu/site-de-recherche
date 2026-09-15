@@ -291,6 +291,7 @@ Geres automatiquement par les layouts depuis le frontmatter. Verifier :
 | Suppression d'article | Supprimer le .md — tout se met a jour au build |
 | Changement de domaine | `src/_data/site.json` + `src/CNAME` |
 | Version / binaire KAIROS | `src/_data/kairos.json` (ou `./deploy-kairos.sh X.Y.Z`) |
+| Guide « Building a local agent you can trust » (Notes) | SOURCE = `~/kairos/kora/GUIDE.md` (github.com/Kairos-commu/kora) ; `npm run guide:sync` réécrit la note (bandeau d'état njk, liens relatifs, dateModified = dernière révision) — ne jamais éditer la note à la main |
 | État de Kora (page Choragos & Kora, bloc « Relevé du … ») | `npm run etat:export` dans `../choragos` écrit `src/_data/koraEtat.json` — des COMPTES lus dans l'appli, jamais un chiffre tapé ; commiter le JSON ; `npm run etat:fraicheur` dit son âge |
 
 ### Avant chaque push
