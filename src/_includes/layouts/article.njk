@@ -76,6 +76,9 @@ siteNavPrefix: "/index.html"
       {% if heroImage %}
       <div class="hero-image-wrapper">
         <img src="{{ heroImage }}" alt="{{ heroImageAlt | default(headline) }}" class="hero-image" loading="eager">
+        {%- if heroImageCredit %}
+        <p class="hero-image-credit">{{ heroImageCredit }}</p>
+        {%- endif %}
       </div>
       {% endif %}
       <div class="hero-line"></div>

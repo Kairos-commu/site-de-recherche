@@ -2207,3 +2207,11 @@ code {
 .note-footer-lead {
   max-width: 60ch;
 }
+
+/* Mention d'une illustration générée par IA (26/09, AI Act art. 50) */
+.hero-image-credit {
+  margin-top: var(--space-xs, 0.5rem);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: right;
+}

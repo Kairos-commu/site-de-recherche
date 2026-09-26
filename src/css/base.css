@@ -1553,6 +1553,11 @@ a:hover {
   margin-top: var(--space-sm);
 }
 
+.site-footer__copy a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .site-footer__grid {
     grid-template-columns: 1fr;

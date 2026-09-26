@@ -27,7 +27,8 @@ heroH1: "L'Entre<br><span>Théorie des Plis</span>"
 heroIntro: "Certaines conversations laissent une idée que vous n'aviez pas avant d'entrer. D'autres livrent une réponse sans que vous ayez pensé. L'équation E_T rend cette différence mesurable."
 headerTitle: "L'Entre — Théorie des Plis"
 heroImage: "/images/lentre-theorie-des-plis.png"
-heroImageAlt: "Illustration — L'Entre, Théorie des Plis"
+heroImageAlt: "Illustration générée par IA — L'Entre, Théorie des Plis"
+heroImageCredit: "Illustration générée par IA (OpenAI gpt-image)."
 breadcrumbName: "L'Entre — Théorie des Plis"
 sections:
   - id: fondations
