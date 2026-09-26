@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-26T13:07:23.784Z",
+  "generatedAt": "2026-09-26T13:39:27.353Z",
   "generatedAtFr": "26 septembre 2026",
   "app": {
-    "commit": "4d5c439",
-    "commitDate": "2026-09-26T14:51:48+02:00",
-    "commits": 564,
+    "commit": "88cd356",
+    "commitDate": "2026-09-26T15:38:29+02:00",
+    "commits": 573,
     "firstCommitDate": "2026-08-31T12:03:21+02:00",
     "daysSinceStart": 26
   },
@@ -23,42 +23,42 @@
     ]
   },
   "capabilities": {
-    "tools": 35,
+    "tools": 29,
     "triggers": 40,
-    "chains": 13,
+    "chains": 14,
     "selfInitiated": 20,
     "gaps": 9,
     "planned": 1,
     "byVertex": {
-      "recherche": 15,
-      "quotidien": 93,
-      "jeu": 29
+      "recherche": 14,
+      "quotidien": 88,
+      "jeu": 28
     },
     "byStatus": {
-      "marche": 49,
+      "marche": 48,
       "echoue": 0,
-      "repris": 28,
-      "aucun": 31,
-      "eprouve": 49,
-      "a-verifier": 59
+      "repris": 27,
+      "aucun": 28,
+      "eprouve": 48,
+      "a-verifier": 55
     },
     "byVertexStatus": {
       "recherche": {
         "marche": 6,
         "echoue": 0,
         "repris": 4,
-        "aucun": 5
+        "aucun": 4
       },
       "quotidien": {
-        "marche": 43,
+        "marche": 42,
         "echoue": 0,
-        "repris": 21,
-        "aucun": 29
+        "repris": 20,
+        "aucun": 26
       },
       "jeu": {
         "marche": 13,
         "echoue": 0,
-        "repris": 8,
+        "repris": 7,
         "aucun": 8
       }
     },
@@ -70,18 +70,18 @@
   },
   "usage": {
     "since": "2026-09-06T13:17:16.649Z",
-    "until": "2026-09-25T20:28:35.818Z",
-    "days": 20,
+    "until": "2026-09-26T13:22:27.742Z",
+    "days": 21,
     "calls": {
-      "total": 2636,
-      "local": 2188,
+      "total": 2639,
+      "local": 2191,
       "cloud": 143,
       "web": 305,
       "errors": 17
     },
     "costUsd": 1.43,
     "last7d": {
-      "local": 674,
+      "local": 677,
       "cloud": 10,
       "web": 34,
       "costUsd": 0.141
