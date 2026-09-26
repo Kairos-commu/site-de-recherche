@@ -27,7 +27,8 @@ heroH1: "La Grammaire<br><span>des Nœuds</span>"
 heroIntro: "Trois nœuds en vingt-cinq ans. Le même schéma à chaque fois — impasse, pré-positionnement, catalyseur, nouveau régime. Un mécanisme qui n'exige aucune magie."
 headerTitle: "La Grammaire des Nœuds"
 heroImage: "/images/la_grammaire_des_noeuds.png"
-heroImageAlt: "Illustration — La Grammaire des Nœuds : comment le réel se plie avant de casser"
+heroImageAlt: "Illustration générée par IA — La Grammaire des Nœuds : comment le réel se plie avant de casser"
+heroImageCredit: "Illustration générée par IA (Google)."
 breadcrumbName: "La Grammaire des Nœuds"
 sections:
   - id: texte-evenement
