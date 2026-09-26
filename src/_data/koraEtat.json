@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-15T14:52:54.607Z",
-  "generatedAtFr": "15 septembre 2026",
+  "generatedAt": "2026-09-26T13:07:23.784Z",
+  "generatedAtFr": "26 septembre 2026",
   "app": {
-    "commit": "8337c9c",
-    "commitDate": "2026-09-15T16:51:11+02:00",
-    "commits": 331,
+    "commit": "4d5c439",
+    "commitDate": "2026-09-26T14:51:48+02:00",
+    "commits": 564,
     "firstCommitDate": "2026-08-31T12:03:21+02:00",
-    "daysSinceStart": 15
+    "daysSinceStart": 26
   },
   "kora": {
     "model": "gemma4:12b",
@@ -23,37 +23,43 @@
     ]
   },
   "capabilities": {
-    "tools": 21,
-    "triggers": 25,
-    "chains": 10,
-    "selfInitiated": 9,
+    "tools": 35,
+    "triggers": 40,
+    "chains": 13,
+    "selfInitiated": 20,
     "gaps": 9,
     "planned": 1,
     "byVertex": {
-      "recherche": 9,
-      "quotidien": 52,
-      "jeu": 16
+      "recherche": 15,
+      "quotidien": 93,
+      "jeu": 29
     },
     "byStatus": {
-      "eprouve": 36,
-      "a-verifier": 24,
-      "limite": 5
+      "marche": 49,
+      "echoue": 0,
+      "repris": 28,
+      "aucun": 31,
+      "eprouve": 49,
+      "a-verifier": 59
     },
     "byVertexStatus": {
       "recherche": {
-        "eprouve": 5,
-        "a-verifier": 3,
-        "limite": 1
+        "marche": 6,
+        "echoue": 0,
+        "repris": 4,
+        "aucun": 5
       },
       "quotidien": {
-        "eprouve": 29,
-        "a-verifier": 18,
-        "limite": 5
+        "marche": 43,
+        "echoue": 0,
+        "repris": 21,
+        "aucun": 29
       },
       "jeu": {
-        "eprouve": 8,
-        "a-verifier": 7,
-        "limite": 1
+        "marche": 13,
+        "echoue": 0,
+        "repris": 8,
+        "aucun": 8
       }
     },
     "gapsByVertex": {
@@ -64,46 +70,47 @@
   },
   "usage": {
     "since": "2026-09-06T13:17:16.649Z",
-    "until": "2026-09-15T14:46:45.873Z",
-    "days": 10,
+    "until": "2026-09-25T20:28:35.818Z",
+    "days": 20,
     "calls": {
-      "total": 1535,
-      "local": 1154,
-      "cloud": 127,
-      "web": 254,
-      "errors": 15
+      "total": 2636,
+      "local": 2188,
+      "cloud": 143,
+      "web": 305,
+      "errors": 17
     },
-    "costUsd": 1.181,
+    "costUsd": 1.43,
     "last7d": {
-      "local": 745,
-      "cloud": 76,
-      "web": 141,
-      "costUsd": 0.644
+      "local": 674,
+      "cloud": 10,
+      "web": 34,
+      "costUsd": 0.141
     },
     "localModels": [
-      "gemma4:12b"
+      "gemma4:12b",
+      "kora-ft-2026-09-18-2"
     ]
   },
   "corpus": {
-    "exchanges": 184,
-    "accepted": 37,
-    "corrected": 50,
-    "rejected": 5,
-    "unjudged": 92,
-    "toolTurns": 5,
-    "koraThreads": 19
+    "exchanges": 331,
+    "accepted": 68,
+    "corrected": 72,
+    "rejected": 14,
+    "unjudged": 177,
+    "toolTurns": 396,
+    "koraThreads": 23
   },
   "memory": {
-    "dynamicEntries": 17
+    "dynamicEntries": 12
   },
   "wakeword": {
-    "recordings": 224
+    "recordings": 524
   },
-  "voicePrototypes": 103,
+  "voicePrototypes": 158,
   "research": {
-    "notes": 38,
-    "readings": 67,
-    "topics": 17,
-    "nothingEmerged": 2
+    "notes": 44,
+    "readings": 82,
+    "topics": 20,
+    "nothingEmerged": 4
   }
 }
