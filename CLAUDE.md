@@ -109,7 +109,7 @@ article.md -> article.njk -> base.njk
 
 ### Passthrough copy
 Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
-- `src/css/`, `src/js/`, `src/images/`, `src/demo/`, `src/docs/`
+- `src/css/`, `src/fonts/`, `src/js/`, `src/images/`, `src/demo/`, `src/docs/`
 - `src/favicon.svg`, `src/og-image.jpg`, `src/CNAME`, `src/robots.txt`
 - `src/presentation_kairos.html`
 - `src/_data/kairos.json` → `_site/kairos.json` (lu par les pages présentation HTML)
@@ -273,6 +273,16 @@ Ce site est public sur `mecanique-invisible.com`. Chaque push declenche un build
 - **`target="_blank"`** -> toujours avec `rel="noopener"`
 - **Pas de `eval()`, `innerHTML` avec donnees utilisateur, `document.write()`**
 - **postMessage** — toujours valider `event.origin`
+
+### Confidentialité et IA (26/09)
+
+- **Aucun cookie, aucune mesure d'audience, aucun script tiers** : GTM/GA retirés, polices
+  auto-hébergées (`src/fonts/` + `css/fonts.css`). Seuls tiers au chargement : badge Zenodo,
+  vidéo GitHub de `download.njk`. Tout tiers ajouté change DANS LE MÊME COMMIT la CSP de
+  `base.njk` et `mentions-legales.njk` (qui les énumère).
+- **Illustration générée par IA** : `heroImageAlt` commence par « Illustration générée par IA »
+  et `heroImageCredit` nomme l'outil (légende sous l'image). Pour vérifier une image :
+  `strings img | grep -i "trainedAlgorithmicMedia\|c2pa"`.
 
 ### SEO et meta tags
 

@@ -341,29 +341,6 @@
   }
 
   // ─────────────────────────────────────────
-  // DOWNLOAD TRACKING (GTM / GA)
-  // ─────────────────────────────────────────
-  // Envoie un evenement dataLayer quand un lien .exe est clique.
-
-  function initDownloadTracking() {
-    var links = document.querySelectorAll('a[href$=".exe"]');
-    if (!links || links.length === 0) return;
-
-    links.forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            event: 'file_download',
-            file_name: link.getAttribute('href').split('/').pop(),
-            file_extension: 'exe',
-            link_url: link.href
-          });
-        }
-      });
-    });
-  }
-
-  // ─────────────────────────────────────────
   // PAGE RAIL (accueil)
   // ─────────────────────────────────────────
   // Ancres sticky + barre de progression. Auto-détecte .page-rail.
@@ -474,5 +451,4 @@
   initHeroParallax();
   initImageZoom();
   initArchiveFilter();
-  initDownloadTracking();
 })();
