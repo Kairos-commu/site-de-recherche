@@ -8,6 +8,7 @@ ogDescription: "Six modèles, un même texte, une même consigne. Plus l'IA accu
 ogUrl: "/biais-familiarite.html"
 canonical: "/biais-familiarite.html"
 datePublished: "2026-02-27"
+orbit: 2
 dateModified: "2026-02-27"
 keywords:
   - biais de familiarité

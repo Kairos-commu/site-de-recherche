@@ -8,6 +8,7 @@ ogUrl: "/download.html"
 canonical: "/download.html"
 siteNavPrefix: "/index.html"
 activeNav: download
+seuilEnPage: true
 permalink: /download.html
 koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application sœur de la mienne. Moi, je ne me télécharge pas encore."
 ---
@@ -95,88 +96,71 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
   }
 </style>
 
-<!-- Hero -->
-<section class="hero" style="min-height: auto; padding: var(--space-4xl) 0 var(--space-xl);">
-  <div class="container" style="text-align: center;">
-    <p class="hero__label">Téléchargement</p>
-    <h1 class="hero__title">
-      <span class="glitch-text">KAIROS</span>{% if kairos.downloadsAvailable %} <span>v{{ kairos.version }}</span>{% endif %}
-    </h1>
-    <p class="hero__subtitle" style="margin-left: auto; margin-right: auto; font-family: var(--font-serif); font-style: italic; font-size: 1.3rem;">
-      {{ kairos.tagline }}{% if kairos.downloadsAvailable %} — Version {{ kairos.channel }}{% endif %}
-    </p>
-    <div style="margin-top: var(--space-2xl); max-width: 720px; margin-left: auto; margin-right: auto;">
-      <video
-        src="{{ kairos.mediaVideo }}"
-        controls
-        preload="metadata"
-        playsinline
-        poster="/images/kairos-hero.png"
-        style="width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
-      >
+<!-- KAIROS · Observatoire (03/10) : hero, encart d'état, nouveautés, fonctionnalités.
+     Toute la logique kairos.downloadsAvailable est gardée ; les sections de téléchargement,
+     d'installation et de configuration qui suivent sont celles d'avant. -->
+<div class="obs obs-page">
+  <section class="page-hero page-hero--kairos">
+    <img class="page-hero__img" src="/images/kairos-canvas.webp" alt="KAIROS — canvas de vignettes connectées" loading="eager">
+    <div class="page-hero__voile" aria-hidden="true"></div>
+    <div class="page-hero__bas page-hero__bas--large">
+      <aside class="kora-seuil kora-seuil--voile" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p>{{ koraSeuil }}</p></div></aside>
+      <h1 class="page-hero__kairos">KAIROS{% if kairos.downloadsAvailable %} <span>v{{ kairos.version }}</span>{% endif %}</h1>
+      <p class="page-hero__sous">{{ kairos.tagline }}{% if kairos.downloadsAvailable %} — Version {{ kairos.channel }}{% endif %}</p>
+    </div>
+  </section>
+
+  <div class="kdl">
+    <div class="kdl__intro">
+      <p class="kdl__blurb">{{ kairos.blurb }}</p>
+      <div class="kdl__etat">
+        <p class="eyebrow eyebrow--accent">v{{ kairos.version }} · {{ kairos.channel }} · {{ kairos.dateFr }}</p>
+        {%- if kairos.downloadsAvailable %}
+        <p class="kdl__etat-titre">Téléchargement disponible</p>
+        <p class="kdl__etat-texte"><a href="#download">Linux et Windows, ci-dessous →</a></p>
+        {%- else %}
+        <p class="kdl__etat-titre">{{ kairos.pausedTitle }}</p>
+        <p class="kdl__etat-texte">{{ kairos.pausedMessage }} Pour toute question : <a href="/contact.html">contact</a>.</p>
+        {%- endif %}
+      </div>
+    </div>
+
+    <section class="kdl__bloc">
+      <p class="eyebrow eyebrow--accent">{% if kairos.downloadsAvailable %}v{{ kairos.version }} · nouveautés de cette version{% else %}Prochaine bêta · ce qui arrive{% endif %}</p>
+      <div class="filets kdl__highlights">
+        {%- for item in kairos.highlights %}
+        <div><h3>{{ item.title }}</h3><p>{{ item.desc }}</p></div>
+        {%- endfor %}
+      </div>
+    </section>
+
+    <section class="kdl__coeur">
+      <div><p class="eyebrow eyebrow--accent">Cœur</p><h2>Fonctionnalités principales</h2></div>
+      <div>
+        <ul class="kdl__features">
+          {%- for feat in kairos.features %}
+          <li>{{ feat }}</li>
+          {%- endfor %}
+        </ul>
+        <p class="kdl__fournisseurs">Fournisseurs : {{ kairos.providers.all | join(", ") }}</p>
+      </div>
+    </section>
+
+    <section class="kdl__video">
+      <p class="eyebrow eyebrow--accent">Présentation</p>
+      <video src="{{ kairos.mediaVideo }}" controls preload="metadata" playsinline poster="/images/kairos-hero.png">
         <a href="{{ kairos.mediaVideo }}">Voir la vidéo de présentation</a>
       </video>
-    </div>
+    </section>
   </div>
-</section>
-
-<!-- Présentation bêta -->
-<section class="section" style="padding-top: 0;">
-  <div class="container" style="max-width: 800px; margin: 0 auto;">
-
-    <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-secondary); text-align: center; margin-bottom: var(--space-2xl);">
-      {{ kairos.blurb }}
-    </p>
-
-    <header class="section__header">
-      {%- if kairos.downloadsAvailable %}
-      <p class="section__label">v{{ kairos.version }}</p>
-      <h2 class="section__title">Nouveautés de cette version</h2>
-      {%- else %}
-      <p class="section__label">Prochaine bêta</p>
-      <h2 class="section__title">Ce qui arrive</h2>
-      {%- endif %}
-    </header>
-
-    <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl);">
-      {%- for item in kairos.highlights %}
-      <div class="card"{% if loop.last and (kairos.highlights.length % 2 == 1) %} style="grid-column: 1 / -1;"{% endif %}>
-        <h3 class="card__title">{{ item.title }}</h3>
-        <p class="card__desc">{{ item.desc }}</p>
-      </div>
-      {%- endfor %}
-    </div>
-
-    <header class="section__header">
-      <p class="section__label">Cœur</p>
-      <h2 class="section__title">Fonctionnalités principales</h2>
-    </header>
-
-    <div class="card" style="margin-bottom: var(--space-xl);">
-      <ul style="list-style: none; font-size: 0.95rem; line-height: 2.2; color: var(--text-secondary); columns: 2; column-gap: var(--space-2xl);">
-        {%- for feat in kairos.features %}
-        <li>&#10003; {{ feat }}</li>
-        {%- endfor %}
-      </ul>
-    </div>
-
-  </div>
-</section>
+</div>
 
 <!-- Download principal -->
 <section class="section" id="download">
   <div class="container">
 
-    {%- if not kairos.downloadsAvailable %}
-    <div class="ss-why" style="max-width: 720px; margin: 0 auto var(--space-2xl);">
-      <div class="ss-why-icon"></div>
-      <div>
-        <strong style="color: var(--text-primary);">{{ kairos.pausedTitle }}</strong><br>
-        {{ kairos.pausedMessage }}
-        Pour toute question : <a href="/contact.html" style="color: var(--accent);">contact</a>.
-      </div>
-    </div>
-    {%- else %}
+    {#- en pause : l'encart d'état du haut de page le dit (03/10) -#}
+    {%- if kairos.downloadsAvailable %}
 
     <div class="dl-platforms">
       {%- set linux = kairos.platforms.linux %}

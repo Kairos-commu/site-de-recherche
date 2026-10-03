@@ -10,7 +10,8 @@
     "verifier:produit": "node scripts/verifier-pages-produit.mjs",
     "captures:fraicheur": "node scripts/fraicheur-captures.mjs",
     "etat:fraicheur": "node scripts/fraicheur-etat.mjs",
-    "guide:sync": "node scripts/sync-guide.mjs"
+    "guide:sync": "node scripts/sync-guide.mjs",
+    "kora:sync": "node scripts/kora-sync.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"

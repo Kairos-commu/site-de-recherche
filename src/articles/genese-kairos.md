@@ -8,6 +8,7 @@ ogDescription: "De l'impossibilité théorique à la construction concrète — 
 ogUrl: "/genese-kairos.html"
 canonical: "/genese-kairos.html"
 datePublished: "2026-02-18"
+orbit: 0
 dateModified: "2026-09-11"
 keywords:
   - KAIROS

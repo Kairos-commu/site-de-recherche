@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/observatoire.css">
   {%- if extraCss %}
   <link rel="stylesheet" href="/css/{{ extraCss }}">
   {%- endif %}
@@ -108,13 +109,12 @@
   {%- endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
-  <!-- Le décor de Kora, sur chaque page (js/repere.js) -->
-  <canvas class="kora-cosmos" aria-hidden="true"></canvas>
-  <div class="kora-veil" aria-hidden="true"></div>
+  {#- 03/10 : plus de décor plein écran. Kora est dessinée là où la page la pose
+      (canvas[data-orb], js/repere.js) — la puce du header, une scène, une marge. -#}
   {{ content | safe }}
 
+  <script src="/js/repere.js"></script>
   <script src="/js/site.js"></script>
-  <script src="/js/repere.js" defer></script>
   {%- if extraJs %}
   <script src="/js/{{ extraJs }}" defer></script>
   {%- endif %}

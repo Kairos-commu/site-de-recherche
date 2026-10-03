@@ -1,0 +1,11 @@
+---
+permalink: /css/constellation.css
+eleventyExcludeFromCollections: true
+---
+/* GÉNÉRÉ au build par src/constellation-css.njk — ne pas éditer.
+   Positions des astres dans le repère 1280×860 de la scène, et graduations de la
+   frise, calculées depuis collections.articles (filtre `constellation`). */
+{%- for s in collections.articles | constellation %}
+#astre-{{ s.slug }} { left: {{ s.left }}px; top: {{ s.top }}px; width: {{ s.size }}px; height: {{ s.size }}px; }
+#tick-{{ s.slug }} { left: {{ s.tick }}%; height: {{ s.tickH }}px; }
+{%- endfor %}

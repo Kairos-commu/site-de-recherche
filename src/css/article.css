@@ -28,166 +28,18 @@
   box-shadow: 0 0 8px var(--accent-glow, rgba(217, 119, 6, 0.15));
 }
 
-/* ============================================
-   NAVIGATION SIDEBAR
-   ============================================ */
-
-#nav {
-  position: fixed;
-  left: 0;
-  top: var(--header-h);
-  width: 260px;
-  height: calc(100vh - var(--header-h));
-  background: var(--bg-nav);
-  border-right: 1px solid var(--bg-raised);
-  padding: 3rem 1.5rem;
-  overflow-y: auto;
-  z-index: 50;
-}
-
-@media (max-width: 900px) {
-  #nav {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  #nav.open {
-    transform: translateX(0);
-  }
-  main {
-    margin-left: 0 !important;
-  }
-}
-
-.nav-header {
-  margin-bottom: 2.5rem;
-}
-
-.nav-header__label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-
-.nav-header p {
-  font-size: 0.75rem;
-  color: var(--text-nav);
-  line-height: 1.5;
-}
-
-.nav-list {
-  list-style: none;
-}
-
-.nav-list li {
-  margin-bottom: 0.25rem;
-}
-
-.nav-list a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.85rem;
-  color: #78716c;
-  text-decoration: none;
-  border-radius: 2px;
-  transition: all 0.25s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
-}
-
-.nav-list a:hover {
-  color: #d6d3d1;
-  background: rgba(255,255,255,0.05);
-  transform: translateX(4px);
-}
-
-.nav-list a.active {
-  color: var(--accent-light);
-  background: rgba(217, 119, 6, 0.1);
-  border-left: 2px solid var(--accent);
-}
-
-.nav-list .nav-number {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-size: 0.7rem;
-  opacity: 0.5;
-  margin-right: 0.5rem;
-}
-
-/* Nav hierarchy for chapters */
-.nav-list .nav-section {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #57534e;
-  padding: 1rem 0.75rem 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.nav-list .nav-section:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.nav-footer {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--bg-raised);
-}
-
-.nav-footer p {
-  font-size: 0.7rem;
-  color: #57534e;
-  margin-bottom: 0.25rem;
-}
-
-/* Mobile toggle */
-/* Sommaire sur petit écran : un bouton flottant en bas à gauche, distinct du
-   burger du header commun (qui ouvre la navigation du site, pas le sommaire). */
-.toc-toggle {
-  display: none;
-  position: fixed;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  z-index: 60;
-  background: var(--bg-nav);
-  border: 1px solid var(--border-dark);
-  border-radius: 999px;
-  padding: 0.6rem;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
-}
-
-.toc-toggle svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--text-nav);
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .toc-toggle {
-    display: block;
-  }
-}
+/* 03/10 : le sommaire latéral fixe de 260 px (#nav, .toc-toggle) est retiré au
+   profit de la barre d'instrument en bas de l'article (voir OBSERVATOIRE, en fin). */
 
 /* ============================================
    MAIN CONTENT
    ============================================ */
 
-main {
-  margin-left: 260px;
-  min-height: 100vh;
-}
-
 .content {
   max-width: 720px;
   margin: 0 auto;
-  /* le header commun est fixe : la colonne commence dessous, jamais derrière */
-  padding: calc(var(--header-h) + 2.5rem) 2rem 4rem;
+  /* 03/10 : le header est sticky (il occupe sa place) — plus de décalage de sa hauteur */
+  padding: 2.5rem 2rem 4rem;
 }
 
 /* ============================================
@@ -398,16 +250,13 @@ section {
 }
 
 /* ============================================
-   TYPOGRAPHY — TEXTE JUSTIFIÉ
+   TYPOGRAPHY
    ============================================ */
 
+/* 03/10 : aligné à gauche — plus de justification ni de césure */
 p {
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
 }
 
 p.lead {
@@ -507,7 +356,7 @@ blockquote p {
 
 .concept-title {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* 03/10 : mono ≥ 12 px */
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1909,7 +1758,7 @@ code {
 
 .pqc-visual__label {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* 03/10 : mono ≥ 12 px */
   color: #706d65;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1940,7 +1789,7 @@ code {
 
 .pqc-visual svg .mono {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 0.75rem; /* 03/10 : mono ≥ 12 px */
   fill: #706d65;
 }
 
@@ -2033,7 +1882,7 @@ code {
   }
 
   .content {
-    padding: calc(var(--header-h) + 1.5rem) 1rem 2rem;
+    padding: 1.5rem 1rem 2rem;   /* 03/10 : header sticky */
   }
 
   /* Breadcrumb */
@@ -2214,4 +2063,217 @@ code {
   font-size: 0.8rem;
   color: var(--text-muted);
   text-align: right;
+}
+
+/* ============================================================
+   OBSERVATOIRE (03/10) — le gabarit d'article de la refonte.
+   Hero plein écran, corps 680 px + marge de Kora 260 px, intertitres
+   de partie en bandes pleine largeur avec une orbe, barre d'instrument
+   sticky en bas. Texte aligné à gauche, taille réglable (--reading-size,
+   16 → 23 px, localStorage.readingSize, site.js).
+   ============================================================ */
+
+/* conteneur : les bandes pleine largeur se calent sur 100cqw (la largeur de main, sans
+   la barre de défilement — 100vw la compte et déborde) */
+.obs-article { overflow-x: clip; --gutter: 32px; container-type: inline-size; }
+.obs-article section { scroll-margin-top: 80px; }
+.obs-article .chapter-divider { scroll-margin-top: 60px; }
+
+/* --- Hero --- */
+.art-hero { position: relative; height: 640px; overflow: hidden; }
+.art-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .5; display: block; }
+.art-hero > canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.art-hero__voile { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 7, 11, .3) 0%, rgba(5, 7, 11, .15) 40%, #05070B 100%); }
+.art-hero__haut, .art-hero__bas { position: absolute; left: 0; right: 0; max-width: 960px; margin: 0 auto; padding: 0 var(--gutter); }
+.art-hero__haut { top: 28px; }
+.art-hero__haut a { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); }
+.art-hero__haut a:hover { color: var(--text-primary); }
+.art-hero__bas { bottom: 56px; }
+.art-hero__meta { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--oc); margin-bottom: 16px !important; }
+.art-hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: 88px; line-height: .95; letter-spacing: -.02em; color: var(--text-primary); text-wrap: balance; max-width: 880px; }
+.art-hero__intro { font-family: var(--font-serif); font-size: 27px; line-height: 1.3; color: var(--text-secondary); margin-top: 20px !important; max-width: 680px; text-wrap: pretty; }
+.art-hero__doi { margin-top: 16px !important; }
+.art-hero__doi img { height: 20px; vertical-align: middle; }
+.art-hero__credit { position: absolute; right: var(--gutter); bottom: 16px; font-family: var(--font-mono); font-size: 12px; color: var(--text-light); }
+
+/* --- Corps : texte + marge de Kora --- */
+.art-corps {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) 260px;
+  gap: 56px;
+  justify-content: center;
+  padding: 24px var(--gutter) 0;
+}
+.obs-article .art-texte.content { max-width: none; margin: 0; padding: 0; }
+.art-texte {
+  font-family: var(--font-sans);
+  font-size: var(--reading-size, 19px);
+  line-height: 1.8;
+  color: var(--text-body);
+}
+.art-texte p { font-size: inherit; line-height: 1.8; color: var(--text-body); margin-bottom: 26px; text-wrap: pretty; }
+.art-texte p.lead { font-size: inherit; color: var(--text-body); }
+.art-texte strong { color: var(--text-primary); }
+
+/* Comptes attestés : un nombre lu dans les journaux de Kora ou dans koraEtat — rien d'autre */
+.atteste { font-weight: inherit; color: var(--text-primary); border-bottom: 1px dashed var(--v-quotidien); }
+
+/* key-insight devient une citation */
+.art-texte .key-insight { margin: 40px 0; padding: 12px 0 12px 28px; background: none; text-align: left; border-left: 2px solid var(--accent); }
+.art-texte .key-insight::before, .art-texte .key-insight::after { display: none; }
+.art-texte .key-insight p { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 36px; line-height: 1.25; color: var(--text-primary); text-align: left; margin: 0; }
+.art-texte .key-insight p + p { margin-top: 16px; }
+.art-texte .key-insight em.highlight { font-style: italic; background: none; padding: 0; font-weight: 400; }
+
+/* La marge de Kora */
+.art-marge {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  align-self: start;
+  padding: 16px 18px;
+  background: rgba(111, 201, 228, .07);
+  border-top: 2px solid var(--v-quotidien);
+}
+.art-marge p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); }
+.art-marge .art-marge__qui { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--v-quotidien); }
+.art-marge .art-marge__propre { color: var(--text-primary); }
+.art-marge .art-marge__note { font-size: 13.5px; color: var(--text-muted); padding-top: 10px; border-top: 1px solid rgba(111, 201, 228, .25); }
+
+/* --- Intertitres de partie : une bande pleine largeur, une orbe dont l'humeur varie --- */
+.art-texte .chapter-divider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100cqw;
+  min-height: 420px;
+  margin: 80px 0 56px calc(-1 * max(var(--gutter), (100cqw - 996px) / 2));
+  padding: 0 max(var(--gutter), calc((100cqw - 960px) / 2 + var(--gutter)));
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.chapter-divider > canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; z-index: 0; }
+.chapter-divider > :not(canvas) { position: relative; z-index: 1; }
+.art-texte .chapter-divider .label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--v-quotidien);
+  margin: 0 0 10px;
+}
+.chapter-divider[data-orb-mood="search"] .label { color: var(--v-recherche); }
+.chapter-divider[data-orb-mood="speak"] .label { color: var(--v-jeu); }
+.chapter-divider[data-orb-mood="cold"] .label { color: var(--cold-orb); }
+.chapter-divider[data-mood="rest"] .label::after { content: " · Kora au repos"; }
+.chapter-divider[data-mood="search"] .label::after { content: " · Kora en recherche"; }
+.chapter-divider[data-mood="speak"] .label::after { content: " · Kora en parole"; }
+.chapter-divider[data-mood="cold"] .label::after { content: " · Kora en veille"; }
+.art-texte .chapter-divider h2 { font-family: var(--font-serif); font-weight: 400; font-size: 92px; line-height: 1; color: var(--text-primary); margin: 0; max-width: 60%; }
+.art-texte .chapter-divider .chapter-divider__sub,
+.art-texte .chapter-divider h2 + p { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.4; color: var(--text-secondary); margin: 10px 0 0; max-width: 520px; }
+
+/* --- stat-shift devient des barres horizontales (largeurs posées par site.js) --- */
+.art-texte .stat-shift {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin: 32px 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.art-texte .stat-shift__item { display: contents; }
+.art-texte .stat-shift__year { font-family: var(--font-mono); font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+.art-texte .stat-shift__value {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 84px;
+  gap: 14px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+.art-texte .stat-shift__value::before { content: ""; display: block; height: 20px; width: var(--w, 100%); background: rgba(150, 170, 200, .4); }
+.art-texte .stat-shift__item:last-of-type .stat-shift__value { color: var(--accent); }
+.art-texte .stat-shift__item:last-of-type .stat-shift__value::before { background: var(--accent); }
+.art-texte .stat-shift__arrow { display: none; }
+.art-texte .stat-shift__delta { grid-column: 1 / -1; justify-self: start; font-size: 13px; font-weight: 400; color: var(--accent); background: none; padding: 0; }
+
+/* --- Précédent / suivant --- */
+.obs-article .article-nav { max-width: 744px; margin: 0 auto; padding: 80px var(--gutter) 150px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border: 0; }
+.obs-article .article-nav__link { display: grid; gap: 6px; align-content: start; padding: 20px; border: 1px solid var(--rule); border-radius: 0; background: none; color: inherit; transition: border-color var(--transition-fast); }
+.obs-article .article-nav__link:hover { border-color: var(--accent); background: none; transform: none; }
+.obs-article .article-nav__link--next { text-align: right; }
+.obs-article .article-nav__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+.obs-article .article-nav__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.25; color: var(--text-primary); }
+
+/* --- Barre d'instrument --- */
+.instrument {
+  position: sticky;
+  bottom: 20px;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  margin-top: -90px;
+  pointer-events: none;
+}
+.instrument__barre {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 52px;
+  padding: 0 14px 0 10px;
+  background: rgba(12, 17, 26, .95);
+  border: 1px solid rgba(150, 170, 200, .24);
+  box-shadow: 0 18px 50px -12px rgba(0, 0, 0, .9);
+}
+.instrument canvas { display: block; width: 30px; height: 30px; }
+.instrument p { margin: 0; font-family: var(--font-mono); font-size: 12.5px; white-space: nowrap; }
+.instrument__section { color: var(--text-primary); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.instrument__reste { color: var(--text-muted); }
+.instrument__taille { display: flex; align-items: center; gap: 4px; padding-left: 14px; border-left: 1px solid rgba(150, 170, 200, .24); }
+.instrument__taille button {
+  width: 34px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid var(--rule-btn);
+  border-radius: 0;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.instrument__taille button + span + button { font-size: 16px; }
+.instrument__taille button:hover { border-color: var(--accent); color: var(--accent); }
+.instrument__taille button:disabled { opacity: .4; cursor: default; }
+.instrument__taille span { width: 48px; text-align: center; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+
+@media (max-width: 1100px) {
+  .art-corps { grid-template-columns: minmax(0, 680px); gap: 32px; }
+  .art-marge { order: -1; }
+  .art-texte .chapter-divider { margin-left: calc(-1 * max(var(--gutter), (100cqw - 680px) / 2)); }
+}
+@media (max-width: 700px) {
+  .obs-article { --gutter: 20px; }
+  .art-hero { height: 520px; }
+  .art-hero h1 { font-size: 52px; }
+  .art-hero__intro { font-size: 21px; }
+  .art-texte .key-insight p { font-size: 27px; }
+  .art-texte .chapter-divider { min-height: 300px; margin-top: 56px; margin-bottom: 40px; }
+  .art-texte .chapter-divider h2 { font-size: 56px; max-width: none; }
+  .art-texte .stat-shift { grid-template-columns: 1fr; gap: 6px; }
+  .obs-article .article-nav { grid-template-columns: 1fr; padding-bottom: 120px; }
+  .instrument__section { display: none; }
+  .instrument__barre { gap: 12px; }
 }

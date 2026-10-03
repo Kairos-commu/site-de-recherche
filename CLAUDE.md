@@ -84,6 +84,25 @@ site-de-recherche/
 └── README.md
 ```
 
+## Observatoire (refonte du 03/10)
+
+- **CSS** : `css/observatoire.css` sur toutes les pages, après `base.css` (header sticky, footer,
+  seuil, accueil, Lire, État de Kora, pages annexes) ; `article.css` porte l'article (bloc
+  OBSERVATOIRE en fin). Plus de décor plein écran : Kora est dessinée sur chaque
+  `canvas[data-orb]` par `js/repere.js` (options en `data-*`, `KoraOrb.setMood`).
+- **Aucun style inline calculé** : positions des astres et graduations de la frise →
+  `/css/constellation.css` (généré par `src/constellation-css.njk`) ; largeurs des barres →
+  `/css/etat-barres.css` (`src/etat-barres-css.njk`, depuis `koraEtat.json`).
+- **Front matter `orbit`** sur chaque article : `0` thèse, `1` outils et terrain, `2` analyses
+  (`_data/orbites.json`). Un nouvel article sans `orbit` n'apparaît ni en orbite ni dans les filtres.
+- **Kora** : `npm run kora:sync` copie depuis `~/kairos/kora` COMMITÉ (`git show HEAD:`)
+  `state.json` → `koraEtat.json`, `spec/tools.json` → `koraTools.json`, et ce qui est collé
+  dans `GUIDE.md` → `koraGuide.json` (jamais `addenda/*.md`). Page `etat-kora.njk` : aucun
+  nombre tapé. Captures de Choragos : `_data/capturesKora.json` (`ou` : accueil | etat).
+- **Comptes attestés** : `.atteste` (pointillé cyan) seulement sur un nombre lu dans les
+  journaux ou `koraEtat` ; `attestes: true` en front matter fait dire la règle par la marge.
+- Une page refondue place son seuil elle-même : `seuilEnPage: true` (sinon `page.njk` le rend).
+
 ## Comment 11ty fonctionne ici
 
 ### Layout chain (cascade de contenu)

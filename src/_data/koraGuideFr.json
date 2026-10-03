@@ -1,0 +1,7 @@
+{
+  "_note": "Traductions françaises de ce qui est collé dans GUIDE.md (dépôt kora, en anglais), pour la page État de Kora. Clé : la date de la révision (AAAA-MM-JJ), ou « date#section » pour un addendum. Une entrée manquante est signalée par npm run kora:sync, et la page retombe sur l'anglais en le disant.",
+  "revisions": {
+    "2026-09-15": "Première version, écrite le jour où l'article d'intention a été publié. Le bandeau d'état est branché sur l'état exporté par l'application."
+  },
+  "addenda": {}
+}

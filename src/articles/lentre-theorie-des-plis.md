@@ -8,6 +8,7 @@ ogDescription: "Une équation pour mesurer ce qui émerge — ou pas — d'une c
 ogUrl: "/lentre-theorie-des-plis.html"
 canonical: "/lentre-theorie-des-plis.html"
 datePublished: "2026-08-10"
+orbit: 0
 dateModified: "2026-08-10"
 keywords:
   - l'entre

@@ -8,6 +8,7 @@ ogDescription: "Quand l'IA cesse de frotter, la pensée cesse de changer de dire
 ogUrl: "/anesthesie-douce.html"
 canonical: "/anesthesie-douce.html"
 datePublished: "2026-03-04"
+orbit: 2
 dateModified: "2026-03-04"
 keywords:
   - friction productive

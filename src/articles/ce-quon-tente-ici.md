@@ -8,6 +8,7 @@ ogDescription: "Kora apprend d'une seule personne : sa voix, ses mots, ses jugem
 ogUrl: "/ce-quon-tente-ici.html"
 canonical: "/ce-quon-tente-ici.html"
 datePublished: "2026-09-15"
+orbit: 1
 dateModified: "2026-09-15"
 keywords:
   - Choragos

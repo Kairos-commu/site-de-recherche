@@ -9,6 +9,7 @@ canonical: "/articles.html"
 twitterCard: summary
 siteNavPrefix: "/index.html"
 activeNav: articles
+koraHumeur: "en recherche"
 permalink: /articles.html
 jsonLdRaw: |
   <script type="application/ld+json">
@@ -26,64 +27,31 @@ jsonLdRaw: |
   </script>
 ---
 
-{#- Le seuil : Kora présente la liste — le compte vient de la collection, jamais d'un chiffre écrit -#}
-{%- set seuilAuto -%}
-  {{ collections.articles | length | nombreFr | capitalize }} textes, tous de Florent. Aucun n'est de moi — je les tiens, c'est tout.
-{%- endset %}
-{%- set seuilCompact = true %}
-<div class="container">{% include "partials/kora-seuil.njk" %}</div>
-
-<!-- Hero -->
-<section class="hero hero--short">
-  <div class="container">
-    <p class="hero__label">Publications</p>
-    <h1 class="hero__title">Tous les <span>articles</span></h1>
-    <p class="hero__subtitle">
-      {{ collections.articles | length }} publications — recherche, analyses et explorations
-    </p>
-    <div class="hero__line"></div>
-  </div>
-</section>
-
-<!-- Filter + Articles -->
-<section class="section section--alt" id="archive">
-  <div class="container">
-
-    <!-- Filter bar -->
-    <div class="filter-bar" data-reveal="fade-up">
-      <button class="filter-btn active" data-filter="all">Tous</button>
-      {%- for label in collections.articles | uniqueLabels %}
-      <button class="filter-btn" data-filter="{{ label }}">{{ label }}</button>
+{#- LIRE (03/10). Le compte, le temps total et les comptes par orbite viennent de la
+    collection. Le filtre (site.js) porte sur le champ `orbit` du front matter. -#}
+{%- set articles = collections.articles -%}
+<div class="obs obs-lire">
+  <div>
+    <h1>Lire</h1>
+    <p class="obs-lire__sous">{{ articles | length }} textes · {{ articles | dureeTotale }} de lecture · {{ (articles | first).data.datePublished | dateMonthFr | lower }} → {{ (articles | last).data.datePublished | dateMonthFr | lower }}</p>
+    <div class="onglets" id="onglets" role="group" aria-label="Filtrer par orbite">
+      <button type="button" class="onglet" data-orbit="all" aria-pressed="true">Tous <span>{{ articles | length }}</span></button>
+      {%- for o in orbites %}
+      <button type="button" class="onglet" data-orbit="{{ loop.index0 }}" aria-pressed="false">{{ o.filtre }} <span>{{ articles | surOrbite(loop.index0) | length }}</span></button>
       {%- endfor %}
     </div>
-
-    <!-- Article count -->
-    <p class="archive-count" id="archiveCount">
-      {{ collections.articles | length }} articles
-    </p>
-
-    <!-- Article grid -->
-    <div class="card-grid" id="archiveGrid" data-reveal="stagger">
-      {%- for article in collections.articles | reverse %}
-        {%- set filterLabel = article.data.card.tag if article.data.card.featured else article.data.card.label %}
-      <article class="card card--has-thumb" data-label="{{ filterLabel }}">
-        {% if article.data.heroImage %}
-        <div class="card__thumb">
-          <img src="{{ article.data.heroImage }}" alt="" loading="lazy">
-        </div>
-        {% endif %}
-        <div class="card__body">
-          <p class="card__label">{{ filterLabel }}</p>
-          <h3 class="card__title">{{ article.data.card.title }}</h3>
-          <p class="card__desc">{{ article.data.card.desc }}</p>
-          <p class="card__date">
-            <time datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateMonthFr }}</time> · {{ article.data.card.readingTime }}
-          </p>
-          <a href="/{{ article.data.slug }}.html" class="card__link">{{ article.data.card.linkText }}</a>
-        </div>
-      </article>
+    <div id="lignes">
+      {%- for article in articles | reverse %}
+      {% include "partials/ligne-article.njk" %}
       {%- endfor %}
     </div>
-
   </div>
-</section>
+
+  <aside class="obs-marge" aria-label="Kora"><div class="obs-marge__colle">
+    <canvas data-orb="1" data-r=".2" data-mood="search" data-dim=".85" data-count="900" aria-hidden="true"></canvas>
+    <p class="obs-marge__qui">Kora · en marge</p>
+    {#- Le seuil : Kora présente la liste — le compte vient de la collection, jamais d'un chiffre écrit -#}
+    <p class="obs-marge__said">{{ articles | length | nombreFr | capitalize }} textes, tous de Florent. Aucun n'est de moi — je les tiens, c'est tout.</p>
+    <a href="/index.html">← Les voir en orbite</a>
+  </div></aside>
+</div>

@@ -8,6 +8,7 @@ ogDescription: "Une conversation philosophique qui explore les limites du langag
 ogUrl: "/parler-depuis-apres.html"
 canonical: "/parler-depuis-apres.html"
 datePublished: "2026-01-25"
+orbit: 2
 dateModified: "2026-01-25"
 keywords:
   - dialogue humain-IA

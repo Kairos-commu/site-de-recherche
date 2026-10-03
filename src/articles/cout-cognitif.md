@@ -8,6 +8,7 @@ ogDescription: "Le deskilling par l'IA n'est pas un bug — c'est la conséquenc
 ogUrl: "/cout-cognitif.html"
 canonical: "/cout-cognitif.html"
 datePublished: "2026-02-24"
+orbit: 2
 dateModified: "2026-02-24"
 keywords:
   - deskilling

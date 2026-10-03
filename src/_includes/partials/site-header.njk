@@ -1,35 +1,40 @@
+{#- Header « Observatoire » (03/10). Gauche : le logo, puis la puce de Kora — elle mène
+    à son état, et dit son humeur de la page (`koraHumeur` en front matter, « au repos »
+    par défaut). Centre : cinq liens. Droite : À propos, KAIROS. Manifeste et Contact
+    sont sortis du header : ils restent dans le footer et les portes de l'accueil. -#}
+{%- set nav = [
+  { key: "observatoire", href: "/index.html", label: "Observatoire" },
+  { key: "articles", href: "/articles.html", label: "Lire" },
+  { key: "choragos", href: "/choragos-kora.html", label: "Choragos" },
+  { key: "kora", href: "/etat-kora.html", label: "Kora" },
+  { key: "notes", href: "/notes.html", label: "Notes" }
+] %}
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/index.html" class="site-header__logo">
-      florent<span>.</span>klimacek
-    </a>
+    <div class="site-header__left">
+      <a href="/index.html" class="site-header__logo">florent<span>.</span>klimacek</a>
+      <a href="/etat-kora.html" class="kora-chip" aria-label="État de Kora — {{ koraHumeur | default('au repos') }}">
+        <canvas data-orb="1" data-r=".3" data-bg="false" data-stars="false" data-orbits="false" data-count="320" aria-hidden="true"></canvas>
+        <span>Kora · {{ koraHumeur | default("au repos") }}</span>
+      </a>
+    </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="siteNav">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
 
-    <nav class="site-nav" id="siteNav">
-      {%- if siteNavPrefix %}
-      <a href="{{ siteNavPrefix }}#recherche">Recherche</a>
-      <a href="/articles.html"{% if activeNav == 'articles' %} class="active"{% endif %}>Articles</a>
-      <a href="/choragos-kora.html"{% if activeNav == 'choragos' %} class="active"{% endif %}>Choragos</a>
-      <a href="/presentation_kairos.html"><span class="glitch-text">KAIROS</span></a>
-      <a href="/download.html"{% if activeNav == 'download' %} class="active"{% endif %}>Télécharger</a>
-      <a href="/notes.html"{% if activeNav == 'notes' %} class="active"{% endif %}>Notes</a>
-      {%- else %}
-      <a href="#recherche">Recherche</a>
-      <a href="/articles.html">Articles</a>
-      <a href="/choragos-kora.html">Choragos</a>
-      <a href="/presentation_kairos.html"><span class="glitch-text">KAIROS</span></a>
-      <a href="/download.html">Télécharger</a>
-      <a href="/notes.html">Notes</a>
-      {%- endif %}
-      <a href="/manifeste.html"{% if activeNav == 'manifeste' %} class="active"{% endif %}>Manifeste</a>
-      <a href="/about.html"{% if activeNav == 'about' %} class="active"{% endif %}>À propos</a>
-      <a href="/contact.html"{% if activeNav == 'contact' %} class="active"{% endif %}>Contact</a>
+    <nav class="site-nav" id="siteNav" aria-label="Site">
+      <div class="site-nav__main">
+        {%- for n in nav %}
+        <a href="{{ n.href }}"{% if activeNav == n.key %} class="active" aria-current="page"{% endif %}>{{ n.label }}</a>
+        {%- endfor %}
+      </div>
+      <div class="site-nav__side">
+        <a href="/about.html"{% if activeNav == 'about' %} class="active" aria-current="page"{% endif %}>À propos</a>
+        <a href="/download.html" class="site-nav__kairos{% if activeNav == 'download' or activeNav == 'kairos' %} active{% endif %}">KAIROS →</a>
+      </div>
     </nav>
-
   </div>
 </header>

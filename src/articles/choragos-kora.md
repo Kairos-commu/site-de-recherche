@@ -8,6 +8,7 @@ ogDescription: "Kora tourne en local : 402 appels au modèle de ma machine contr
 ogUrl: "/choragos-kora.html"
 canonical: "/choragos-kora.html"
 datePublished: "2026-09-04"
+orbit: 1
 dateModified: "2026-09-15"
 keywords:
   - Choragos
@@ -27,8 +28,8 @@ heroLabel: "Outil"
 heroH1: "Choragos<br /><span class=\"glitch-text\">Kora, en local</span>"
 heroIntro: "Le modèle qui répond ne tourne pas dans un centre de données. Il tourne dans la pièce où je travaille."
 headerTitle: "Choragos & Kora"
-heroImage: "/images/choragos-hero.jpg"
-heroImageAlt: "Choragos — Kora au centre de sa constellation d'agents, orbites visibles"
+heroImage: "/images/choragos-2026-10-03-tenue-anneaux.webp"
+heroImageAlt: "Choragos — Kora en tenue « anneaux » au centre de la scène, capture du 3 octobre 2026"
 breadcrumbName: "Choragos & Kora"
 sections:
   - id: en-local
@@ -59,15 +60,17 @@ sitemapChangefreq: "monthly"
 order: 20
 activeNav: choragos
 koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
+# comptes lus dans la base de l'appli (402, 50, 0,51 $) : soulignés en pointillé, dits par la marge
+attestes: true
 ---
 
 <!-- En local -->
 <section id="en-local">
   <p class="lead">
     Sur deux jours d'usage réel, les 3 et 4 septembre 2026, Choragos a passé
-    <strong>402 appels au modèle qui tourne sur ma machine</strong> et
-    <strong>50 appels à des services en ligne</strong>. Facture de la période :
-    <strong>0,51 $</strong>. Ces chiffres ne sont pas une estimation — ils ont
+    <strong class="atteste">402 appels au modèle qui tourne sur ma machine</strong> et
+    <strong class="atteste">50 appels à des services en ligne</strong>. Facture de la période :
+    <strong class="atteste">0,51 $</strong>. Ces chiffres ne sont pas une estimation — ils ont
     été lus le 4 septembre dans la base de l'application, qui compte chaque
     appel.
   </p>
@@ -88,7 +91,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
   </p>
 
   <figure>
-    <img src="/images/choragos-cles-vides.webp" alt="Le panneau de réglages de Choragos : les sept champs de clés API sont vides, le moteur de voix est réglé sur Piper (local)" class="hero-image" loading="lazy">
+    <img src="/images/choragos-2026-10-03-cles-vides.webp" alt="Le panneau de réglages de Choragos sur une installation neuve : les huit champs de clés API sont vides, et le plafond de dépense quotidien est en dessous" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       Une installation neuve, sans une seule clé renseignée. Kora fonctionne
       quand même : c'est l'état par défaut, pas un mode dégradé.
@@ -107,7 +110,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- La constellation -->
-<div class="chapter-divider" id="la-constellation">
+<div class="chapter-divider" id="la-constellation" data-mood="rest">
   <p class="label">Partie I</p>
   <h2>La constellation</h2>
 </div>
@@ -148,7 +151,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
   </p>
 
   <figure>
-    <img src="/images/choragos-kora-seule.webp" alt="Kora seule au lancement de Choragos, avant l'appel des agents" class="hero-image" loading="lazy">
+    <img src="/images/choragos-2026-10-03-kora-seule.webp" alt="Kora seule au lancement de Choragos, avant l'appel des agents" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       Au lancement : Kora seule. Les agents en ligne ne viennent que si on les
       appelle.
@@ -167,7 +170,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- Ce qu'elle fait -->
-<div class="chapter-divider" id="ce-quelle-fait">
+<div class="chapter-divider" id="ce-quelle-fait" data-mood="search">
   <p class="label">Partie II</p>
   <h2>Ce qu'elle fait</h2>
 </div>
@@ -235,7 +238,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- La voix -->
-<div class="chapter-divider" id="la-voix">
+<div class="chapter-divider" id="la-voix" data-mood="speak">
   <p class="label">Partie III</p>
   <h2>La voix</h2>
 </div>
@@ -341,7 +344,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- Les garde-fous -->
-<div class="chapter-divider" id="garde-fous">
+<div class="chapter-divider" id="garde-fous" data-mood="cold">
   <p class="label">Partie IV</p>
   <h2>Les garde-fous</h2>
 </div>
@@ -424,7 +427,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- Les murs -->
-<div class="chapter-divider" id="les-murs">
+<div class="chapter-divider" id="les-murs" data-mood="cold">
   <p class="label">Partie V</p>
   <h2>Les murs</h2>
 </div>
@@ -513,7 +516,7 @@ koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 </section>
 
 <!-- Où ça en est -->
-<div class="chapter-divider" id="etat">
+<div class="chapter-divider" id="etat" data-mood="rest">
   <p class="label">Conclusion</p>
   <h2>Où ça en est</h2>
 </div>

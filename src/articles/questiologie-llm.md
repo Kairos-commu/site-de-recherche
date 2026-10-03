@@ -8,6 +8,7 @@ ogDescription: "Étude comparative de l'influence des postures questiologiques s
 ogUrl: "/questiologie-llm.html"
 canonical: "/questiologie-llm.html"
 datePublished: "2026-01-20"
+orbit: 2
 dateModified: "2026-01-20"
 keywords:
   - questiologie

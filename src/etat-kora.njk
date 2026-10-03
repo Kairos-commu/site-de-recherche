@@ -1,0 +1,216 @@
+---
+layout: layouts/page.njk
+pageTitle: "L'état de Kora — Florent Klimacek"
+description: "Les comptes de Kora lus dans l'application, jamais tapés : capacités vérifiées, appels locaux et en ligne, apprentissage, recherche, paliers d'outils et les sept invariants."
+ogTitle: "L'état de Kora — Florent Klimacek"
+ogDescription: "Les comptes de Kora lus dans l'application : capacités, appels, apprentissage, recherche, paliers d'outils et invariants."
+ogUrl: "/etat-kora.html"
+canonical: "/etat-kora.html"
+twitterCard: summary
+activeNav: kora
+koraHumeur: "au repos"
+permalink: /etat-kora.html
+extraHead: '<link rel="stylesheet" href="/css/etat-barres.css">'
+jsonLdRaw: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "L'état de Kora — Florent Klimacek",
+    "description": "Les comptes de Kora lus dans l'application, jamais tapés.",
+    "url": "https://mecanique-invisible.com/etat-kora.html",
+    "inLanguage": "fr",
+    "author": { "@type": "Person", "name": "Florent Klimacek", "url": "https://mecanique-invisible.com/about.html" }
+  }
+  </script>
+---
+{#- ÉTAT DE KORA (03/10). AUCUN NOMBRE TAPÉ : tout vient de koraEtat.json (= state.json de
+    github.com/Kairos-commu/kora), koraTools.json (= spec/tools.json) et koraGuide.json (ce qui
+    est collé dans GUIDE.md) — les trois écrits par  npm run kora:sync. -#}
+{%- set e = koraEtat -%}
+{%- set c = e.capabilities -%}
+{%- set u = e.usage -%}
+{%- set k = e.corpus -%}
+{%- set somme = c.tools + c.triggers + c.chains + c.selfInitiated -%}
+<div class="obs">
+
+<section class="obs-hero obs-hero--etat">
+  <canvas data-orb="1" data-cx=".72" data-cy=".5" data-r=".2" data-tilt=".4" data-mood="rest" data-count="2000" aria-hidden="true"></canvas>
+  <div class="obs-hero__inner">
+    <div class="obs-hero__texte">
+      <p class="eyebrow eyebrow--kora">Relevé du {{ e.generatedAtFr }} · etat:export</p>
+      <h1>L'état de Kora</h1>
+      <p class="obs-hero__said">Des comptes lus dans l'application, jamais un chiffre tapé. Le même fichier est publié dans le dépôt public de Kora, avec l'architecture qu'on peut reconstruire.</p>
+      <p class="obs-hero__meta">{{ e.app.commits | nombre }} commits en {{ e.app.daysSinceStart }} jours · {{ u.localModels | join(" et ") }} · <a href="https://github.com/Kairos-commu/kora" target="_blank" rel="noopener">github.com/Kairos-commu/kora</a></p>
+    </div>
+  </div>
+</section>
+
+{%- set captures = capturesKora | ou("ou", "etat") | sort(true, false, "date") %}
+<section class="etat-captures" aria-label="Captures de l'application">
+  {%- for cap in captures %}
+  <figure>
+    <div><img src="{{ cap.src }}" alt="{{ cap.alt }}" loading="lazy"></div>
+    <figcaption>{{ cap.legende }} · {{ cap.date | dateCourtFr }}</figcaption>
+  </figure>
+  {%- endfor %}
+</section>
+
+<!-- 01 · Capacités -->
+<section class="etat-section" id="capacites">
+  <div class="etat-section__tete">
+    <p class="eyebrow">01 · Capacités</p>
+    <h2>Ce qu'elle sait faire, et ce qui est vérifié</h2>
+    <p>{{ c.tools }} outils, {{ c.triggers }} déclencheurs, {{ c.chains }} enchaînements, {{ c.selfInitiated }} initiatives : {{ somme }} capacités. {{ c.byStatus.eprouve }} vues marcher, {{ c.byStatus["a-verifier"] }} jamais revérifiées. {{ c.gaps }} manques listés.</p>
+  </div>
+  <div class="cap-lignes">
+    {%- for v in [["recherche", "Recherche"], ["quotidien", "Quotidien"], ["jeu", "Jeu"]] %}
+    {%- set vs = c.byVertexStatus[v[0]] %}
+    {%- set g = c.gapsByVertex[v[0]] %}
+    <div class="cap-ligne">
+      <span class="cap-ligne__nom cap-ligne__nom--{{ v[0] }}">{{ v[1] }}</span>
+      <div class="barre barre--22 b-cap-{{ v[0] }}" role="img" aria-label="{{ v[1] }} : {{ c.byVertex[v[0]] }} capacités — {{ vs.marche }} « marche », {{ vs.repris }} « repris », {{ vs.aucun }} « aucun »{% if vs.echoue %}, {{ vs.echoue }} « échoue »{% endif %}">
+        <span class="s-marche b-cap-{{ v[0] }}-marche"></span><span class="s-repris b-cap-{{ v[0] }}-repris"></span><span class="s-aucun b-cap-{{ v[0] }}-aucun"></span>{% if vs.echoue %}<span class="s-echoue b-cap-{{ v[0] }}-echoue"></span>{% endif %}
+      </div>
+      <span class="cap-ligne__compte">{{ c.byVertex[v[0]] }} · {{ g }} manque{% if g > 1 %}s{% endif %}</span>
+    </div>
+    {%- endfor %}
+    <p class="barre-legende cap-legende"><span class="t-local">■ « marche »</span><span class="t-web">■ « repris »</span><span>■ « aucun »</span><span>{{ c.byStatus.echoue }} « échoue » · statuts tels qu'exportés</span></p>
+  </div>
+</section>
+
+<!-- 02 · Appels -->
+{%- set tot = u.calls.local + u.calls.cloud + u.calls.web %}
+{%- set t7 = u.last7d.local + u.last7d.cloud + u.last7d.web %}
+<section class="etat-section" id="appels">
+  <div class="etat-section__tete">
+    <p class="eyebrow">02 · Appels</p>
+    <h2>Le local d'abord, le cloud compté</h2>
+    <p>{{ u.days }} jours, {{ u.since | periodeFr(u.until) }}. Un plafond quotidien est vérifié avant chaque appel réseau.</p>
+  </div>
+  <div class="etat-pile">
+    <div class="etat-bloc">
+      <p class="etat-bloc__titre">{{ u.days }} jours · {{ u.calls.total | nombre }} appels · {{ u.calls.errors }} erreurs · {{ u.costUsd | nombre(2) }} $</p>
+      <div class="barre barre--30" role="img" aria-label="{{ u.calls.local }} appels locaux, {{ u.calls.cloud }} en ligne, {{ u.calls.web }} recherches web"><span class="c-local b-total-local"></span><span class="c-cloud b-total-cloud"></span><span class="c-web b-total-web"></span></div>
+      <p class="barre-legende" aria-hidden="true"><span class="t-local">{{ u.calls.local | nombre }} locaux</span><span class="t-cloud">{{ u.calls.cloud | nombre }} en ligne</span><span class="t-web">{{ u.calls.web | nombre }} recherches web</span></p>
+    </div>
+    <div class="etat-bloc">
+      <p class="etat-bloc__titre">7 derniers jours · {{ t7 | nombre }} appels · {{ u.last7d.costUsd | nombre(3) }} $</p>
+      <div class="barre barre--30" role="img" aria-label="Sur 7 jours : {{ u.last7d.local }} appels locaux, {{ u.last7d.cloud }} en ligne, {{ u.last7d.web }} recherches web"><span class="c-local b-7j-local"></span><span class="c-cloud b-7j-cloud"></span><span class="c-web b-7j-web"></span></div>
+      <p class="barre-legende" aria-hidden="true"><span class="t-local">{{ u.last7d.local | nombre }} locaux</span><span class="t-cloud">{{ u.last7d.cloud | nombre }} en ligne</span><span class="t-web">{{ u.last7d.web | nombre }} recherches web</span></p>
+    </div>
+    <p class="etat-bloc__titre">Fournisseurs possibles : {{ e.kora.providers | join(", ") }}</p>
+  </div>
+</section>
+
+<!-- 03 · Apprentissage -->
+<section class="etat-section" id="apprentissage">
+  <div class="etat-section__tete">
+    <p class="eyebrow">03 · Apprentissage</p>
+    <h2>Ce qu'elle apprend d'une seule personne</h2>
+    <p>Les échanges non jugés ne sont jamais exportés vers l'entraînement.</p>
+  </div>
+  <div class="etat-pile">
+    <div class="etat-bloc">
+      <p class="etat-bloc__titre">{{ k.exchanges | nombre }} échanges conservés · {{ k.koraThreads }} fils</p>
+      <div class="barre barre--30" role="img" aria-label="{{ k.accepted }} acceptés, {{ k.corrected }} corrigés, {{ k.rejected }} rejetés, {{ k.unjudged }} non jugés"><span class="k-accepte b-corpus-accepte"></span><span class="k-corrige b-corpus-corrige"></span><span class="k-rejete b-corpus-rejete"></span><span class="k-nonjuge b-corpus-nonjuge"></span></div>
+      <p class="barre-legende" aria-hidden="true"><span class="t-local">{{ k.accepted }} acceptés</span><span class="t-cloud">{{ k.corrected }} corrigés</span><span class="t-red">{{ k.rejected }} rejetés</span><span>{{ k.unjudged }} non jugés</span></p>
+    </div>
+    <div class="filets chiffres">
+      <div><span class="chiffres__n">{{ k.toolTurns | nombre }}</span><span class="chiffres__l">tours d'outils enregistrés</span></div>
+      <div><span class="chiffres__n">{{ e.wakeword.recordings | nombre }}</span><span class="chiffres__l">« Kora » enregistrés pour le mot d'éveil</span></div>
+      <div><span class="chiffres__n">{{ e.voicePrototypes | nombre }}</span><span class="chiffres__l">phrases de commande apprises</span></div>
+      <div><span class="chiffres__n">{{ e.memory.dynamicEntries | nombre }}</span><span class="chiffres__l">entrées dans sa mémoire</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Recherche -->
+<section class="etat-section" id="recherche">
+  <div class="etat-section__tete">
+    <p class="eyebrow">04 · Recherche</p>
+    <h2>Chercher jusqu'à ne rien trouver</h2>
+  </div>
+  <div class="filets chiffres">
+    <div><span class="chiffres__n">{{ e.research.topics }}</span><span class="chiffres__l">sujets</span></div>
+    <div><span class="chiffres__n">{{ e.research.readings }}</span><span class="chiffres__l">lectures</span></div>
+    <div><span class="chiffres__n">{{ e.research.notes }}</span><span class="chiffres__l">notes</span></div>
+    <div><span class="chiffres__n chiffres__n--accent">{{ e.research.nothingEmerged }}</span><span class="chiffres__l">fois « rien n'émerge »</span></div>
+  </div>
+</section>
+
+<!-- 05 · Paliers — générés depuis spec/tools.json -->
+{%- set auto = koraTools.tools | palier("auto") %}
+{%- set confirm = koraTools.tools | palier("confirm") %}
+{%- set irrev = koraTools.tools | palier("irreversible") %}
+<section class="etat-section" id="paliers">
+  <div class="etat-section__tete">
+    <p class="eyebrow">05 · Paliers</p>
+    <h2>{{ koraTools.tools | length }} outils définis, trois paliers</h2>
+    <p>Le palier d'un outil est une table dans le code, pas un jugement du modèle. Ses arguments peuvent le relever, jamais l'abaisser.</p>
+  </div>
+  <div class="filets paliers">
+    <div>
+      <p class="paliers__tete paliers__tete--auto">{{ auto | length }} · s'exécutent seuls</p>
+      <ul>{% for t in auto %}<li>{{ t.name }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <p class="paliers__tete paliers__tete--confirm">{{ confirm | length }} · demandent</p>
+      <ul>{% for t in confirm %}<li>{{ t.name }}</li>{% endfor %}</ul>
+    </div>
+    <div class="paliers__irreversible">
+      <p class="paliers__tete paliers__tete--irreversible">{{ irrev | length }} · bulle rouge</p>
+      <ul>{% for t in irrev %}<li>{{ t.name }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · Invariants — traduits du README de kora (« The seven invariants of a Kora ») -->
+{#- TRADUCTION À FAIRE RELIRE PAR FLORENT (passation, § 5.5) : la phrase en gras de chaque
+    invariant du README, rendue en français. -#}
+<section class="etat-section" id="invariants">
+  <div class="etat-section__tete">
+    <p class="eyebrow">06 · Invariants</p>
+    <h2>Les sept invariants</h2>
+    <p>Ce qui fait d'une assistante une Kora. Chacun tenu par un mécanisme, pas par une phrase dans un prompt. Traduits du README du dépôt kora.</p>
+  </div>
+  <ol class="invariants">
+    <li><span class="invariants__n">01</span><span class="invariants__t">Elle ne peut pas affirmer ce qu'elle n'a pas fait.</span></li>
+    <li><span class="invariants__n">02</span><span class="invariants__t">Le modèle ne juge jamais ses propres actions.</span></li>
+    <li><span class="invariants__n">03</span><span class="invariants__t">Trois paliers de risque et deux journaux.</span></li>
+    <li><span class="invariants__n">04</span><span class="invariants__t">Rien n'arrive sans que la personne le sache.</span></li>
+    <li><span class="invariants__n">05</span><span class="invariants__t">La mémoire est un fichier texte que la personne peut corriger.</span></li>
+    <li><span class="invariants__n">06</span><span class="invariants__t">Tout ce qui apprend apprend d'une seule personne, en local.</span></li>
+    <li><span class="invariants__n">07</span><span class="invariants__t">Le cloud est un recours compté, pas un défaut.</span></li>
+  </ol>
+</section>
+
+<!-- 07 · Dernier addendum — seulement ce qui est COLLÉ dans GUIDE.md (koraGuide.json) -->
+{%- set gd = koraGuide %}
+{%- set derniereRev = gd.revisions | last %}
+<section class="etat-section etat-section--fin" id="addendum">
+  <div class="etat-section__tete">
+    <p class="eyebrow">07 · Dernier addendum</p>
+    {%- if gd.dernierAddendum %}
+    <h2>{{ gd.dernierAddendum | dateFr }}</h2>
+    <p>Proposé par la passe quotidienne sur la documentation du projet, collé par une personne.</p>
+    {%- else %}
+    <h2>{{ derniereRev.date | dateFr }}</h2>
+    <p>Aucun addendum n'est encore collé dans le guide. Les propositions de la passe quotidienne ne sont publiées qu'une fois relues et collées par une personne.</p>
+    {%- endif %}
+  </div>
+  <div class="filets addendum">
+    {%- if gd.dernierAddendum %}
+    {#- le guide est en anglais : la page dit sa traduction (koraGuideFr.json), ou l'anglais en le disant -#}
+    {%- for a in gd.addenda %}
+    {%- set fr = koraGuideFr.addenda[a.date + "#" + a.section] %}
+    <div><span class="addendum__ou">Section {{ a.section }}</span>{% if fr %}<p>{{ fr | safe }}</p>{% else %}<p><span lang="en"><b>{{ a.titreSection }}.</b> {{ a.phrase }}</span> <em>(en anglais dans le guide)</em></p>{% endif %}</div>
+    {%- endfor %}
+    {%- else %}
+    {%- set fr = koraGuideFr.revisions[derniereRev.date] %}
+    <div><span class="addendum__ou">Révision</span>{% if fr %}<p><b>{{ derniereRev.date | dateFr }}</b> — {{ fr }}</p>{% else %}<p><b>{{ derniereRev.date | dateFr }}</b> — <span lang="en">{{ derniereRev.texte }}</span> <em>(en anglais dans le guide)</em></p>{% endif %}</div>
+    {%- endif %}
+  </div>
+</section>
+
+</div>

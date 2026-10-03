@@ -8,6 +8,7 @@ ogDescription: "Derrière les chiffres spectaculaires de l'adoption mondiale de 
 ogUrl: "/ia-adoption.html"
 canonical: "/ia-adoption.html"
 datePublished: "2026-02-24"
+orbit: 2
 dateModified: "2026-02-24"
 keywords:
   - adoption IA

@@ -1,0 +1,10 @@
+{#- Une ligne de la liste « Lire » (Lire, et l'accueil sous 700 px). Attend `article`. -#}
+<a class="ligne o{{ article.data.orbit }}" href="/{{ article.data.slug }}.html" data-orbit="{{ article.data.orbit }}">
+  <span class="dot" aria-hidden="true"></span>
+  <time class="ligne__date" datetime="{{ article.data.datePublished }}">{{ article.data.datePublished | dateNum }}</time>
+  <span class="ligne__corps">
+    <span class="ligne__titre">{{ article.data.card.title }}</span>
+    <span class="ligne__desc">{{ article.data.card.desc }}</span>
+  </span>
+  <span class="ligne__meta">{{ article.data.card | cardLabel }} · {{ article.data.card.readingTime | minutes }} min</span>
+</a>

@@ -8,6 +8,7 @@ ogDescription: "Architecture, jauge Oxygène, friction, triangle radar. Comment 
 ogUrl: "/kairos-technical-overview.html"
 canonical: "/kairos-technical-overview.html"
 datePublished: "2026-08-22"
+orbit: 1
 dateModified: "2026-08-22"
 keywords:
   - KAIROS

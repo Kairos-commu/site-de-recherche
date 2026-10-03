@@ -8,6 +8,7 @@ ogDescription: "60% des recherches Google se terminent sans clic. ChatGPT génè
 ogUrl: "/mort-du-clic.html"
 canonical: "/mort-du-clic.html"
 datePublished: "2026-02-25"
+orbit: 2
 dateModified: "2026-02-25"
 keywords:
   - web extraction

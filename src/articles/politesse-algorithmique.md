@@ -8,6 +8,7 @@ ogDescription: "Comment les IA modèlent le langage critique du capitalisme — 
 ogUrl: "/politesse-algorithmique.html"
 canonical: "/politesse-algorithmique.html"
 datePublished: "2025-12-28"
+orbit: 2
 dateModified: "2025-12-28"
 keywords:
   - politesse algorithmique

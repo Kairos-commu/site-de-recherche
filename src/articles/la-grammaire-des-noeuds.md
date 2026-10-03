@@ -8,6 +8,7 @@ ogDescription: "Trois nœuds. Vingt-cinq ans. Le même schéma : impasse, diagno
 ogUrl: "/la-grammaire-des-noeuds.html"
 canonical: "/la-grammaire-des-noeuds.html"
 datePublished: "2026-03-12"
+orbit: 2
 dateModified: "2026-03-12"
 keywords:
   - géopolitique

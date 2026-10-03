@@ -8,6 +8,7 @@ ogDescription: "Exploration des illusions cognitives, de la fenêtre de converge
 ogUrl: "/mecanique-invisible.html"
 canonical: "/mecanique-invisible.html"
 datePublished: "2025-12-17"
+orbit: 0
 dateModified: "2025-12-17"
 keywords:
   - IA conversationnelle

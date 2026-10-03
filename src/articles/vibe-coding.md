@@ -8,6 +8,7 @@ ogDescription: "Deux audits de 1 000 interactions vibe coding sur un projet de 2
 ogUrl: "/vibe-coding.html"
 canonical: "/vibe-coding.html"
 datePublished: "2026-02-18"
+orbit: 2
 dateModified: "2026-02-18"
 keywords:
   - vibe coding

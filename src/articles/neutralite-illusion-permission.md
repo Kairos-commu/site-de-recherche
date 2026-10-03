@@ -8,6 +8,7 @@ ogDescription: "Analyse croisée de cinq modèles de langage sur les mécanismes
 ogUrl: "/neutralite-illusion-permission.html"
 canonical: "/neutralite-illusion-permission.html"
 datePublished: "2025-12-20"
+orbit: 2
 dateModified: "2025-12-20"
 keywords:
   - neutralité

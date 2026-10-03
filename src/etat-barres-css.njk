@@ -1,0 +1,29 @@
+---
+permalink: /css/etat-barres.css
+eleventyExcludeFromCollections: true
+---
+{#- Largeurs des barres de l'accueil (relevé) et de l'État de Kora, lues dans koraEtat.json. -#}
+{%- set c = koraEtat.capabilities -%}
+{%- set u = koraEtat.usage -%}
+{%- set tot = u.calls.local + u.calls.cloud + u.calls.web -%}
+{%- set t7 = u.last7d.local + u.last7d.cloud + u.last7d.web -%}
+{%- set k = koraEtat.corpus -%}
+{%- set maxV = [c.byVertex.recherche, c.byVertex.quotidien, c.byVertex.jeu] | sort | last -%}
+/* GÉNÉRÉ au build par src/etat-barres-css.njk depuis koraEtat.json ({{ koraEtat.generatedAtFr }}) — ne pas éditer. */
+.b-total-local { width: {{ (u.calls.local / tot * 100) | round(2) }}%; }
+.b-total-cloud { width: {{ (u.calls.cloud / tot * 100) | round(2) }}%; }
+.b-total-web { width: {{ (u.calls.web / tot * 100) | round(2) }}%; }
+.b-7j-local { width: {{ (u.last7d.local / t7 * 100) | round(2) }}%; }
+.b-7j-cloud { width: {{ (u.last7d.cloud / t7 * 100) | round(2) }}%; }
+.b-7j-web { width: {{ (u.last7d.web / t7 * 100) | round(2) }}%; }
+{%- for v in ["recherche", "quotidien", "jeu"] %}
+{%- set n = c.byVertex[v] %}
+.b-cap-{{ v }} { width: {{ (n / maxV * 100) | round(2) }}%; }
+{%- for s in ["marche", "repris", "aucun", "echoue"] %}
+.b-cap-{{ v }}-{{ s }} { width: {{ ((c.byVertexStatus[v][s] or 0) / n * 100) | round(2) }}%; }
+{%- endfor %}
+{%- endfor %}
+.b-corpus-accepte { width: {{ (k.accepted / k.exchanges * 100) | round(2) }}%; }
+.b-corpus-corrige { width: {{ (k.corrected / k.exchanges * 100) | round(2) }}%; }
+.b-corpus-rejete { width: {{ (k.rejected / k.exchanges * 100) | round(2) }}%; }
+.b-corpus-nonjuge { width: {{ (k.unjudged / k.exchanges * 100) | round(2) }}%; }

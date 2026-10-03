@@ -1,0 +1,11 @@
+{
+  "commit": "24281f4",
+  "revisions": [
+    {
+      "date": "2026-09-15",
+      "texte": "first version, written the day the article of intent was published. State banner wired to the app's exported state."
+    }
+  ],
+  "dernierAddendum": null,
+  "addenda": []
+}

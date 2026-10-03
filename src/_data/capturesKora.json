@@ -1,0 +1,74 @@
+[
+  {
+    "src": "/images/choragos-2026-10-03-mode-recherche.webp",
+    "alt": "Kora en mode recherche : l'orbe devenue violette, parcourue d'un réseau rose ; la capsule de commande en bas affiche « Recherche »",
+    "legende": "Mode recherche",
+    "date": "2026-10-03",
+    "ou": "accueil"
+  },
+  {
+    "src": "/images/choragos-2026-10-03-tenue-anneaux.webp",
+    "alt": "Kora en tenue « anneaux » : l'orbe orangée, un anneau incliné et deux couronnes de particules autour d'elle",
+    "legende": "Tenue « anneaux »",
+    "date": "2026-10-03",
+    "ou": "accueil"
+  },
+  {
+    "src": "/images/choragos-2026-10-03-tenue-electrique.webp",
+    "alt": "Kora en tenue « électrique » : l'orbe bleue entourée d'arcs lumineux roses",
+    "legende": "Tenue « électrique »",
+    "date": "2026-10-03",
+    "ou": "accueil"
+  },
+  {
+    "src": "/images/choragos-2026-10-03-kora-seule.webp",
+    "alt": "Kora seule au lancement de Choragos, l'orbe bleue au centre de la scène",
+    "legende": "Kora seule, au lancement",
+    "date": "2026-10-03",
+    "ou": "accueil",
+    "large": true
+  },
+  {
+    "src": "/images/choragos-2026-10-03-entretien.webp",
+    "alt": "« Kora, entretien » : l'ordinateur de bureau en hologramme éclaté, ses relevés réels autour (réseau, processeur, mémoire, disque, carte graphique, ce qui consomme), et le panneau des cinq points à traiter",
+    "legende": "« Kora, entretien » · la machine en hologramme",
+    "date": "2026-10-03",
+    "ou": "accueil",
+    "large": true
+  },
+  {
+    "src": "/images/choragos-tente-rien-n-emerge.webp",
+    "alt": "La scène de Choragos pendant une recherche approfondie : les sources se desserrent autour de Kora et le mot « Rien n'émerge » s'écrit au-dessus d'elle",
+    "legende": "« Rien n'émerge »",
+    "date": "2026-09-15",
+    "ou": "accueil"
+  },
+  {
+    "src": "/images/choragos-tente-cristaux.webp",
+    "alt": "Le cœur de Kora en gros plan : des cristaux roses à facettes dans sa matière bleue",
+    "legende": "Cristaux · une note de sa mémoire, un cristal",
+    "date": "2026-09-15",
+    "ou": "accueil"
+  },
+  {
+    "src": "/images/choragos-2026-10-03-cles-vides.webp",
+    "alt": "Le panneau de réglages de Choragos sur une installation neuve : les huit champs de clés API vides, et le plafond de dépense quotidien (1 $ de LLM cloud, 60 crédits Tavily)",
+    "legende": "Réglages d'une installation neuve · clés et plafond",
+    "date": "2026-10-03",
+    "ou": "etat"
+  },
+  {
+    "src": "/images/choragos-tente-tableau-de-bord.webp",
+    "alt": "Le tableau de bord de consommation de Choragos : appels locaux et cloud, coût, état du corpus de fine-tune",
+    "legende": "Tableau de bord",
+    "date": "2026-09-15",
+    "ou": "etat"
+  },
+  {
+    "src": "/images/choragos-tente-pense-bete.webp",
+    "alt": "Le pense-bête des capacités de Kora : 21 outils, 25 déclencheurs directs, 10 enchaînements, 9 interventions spontanées, comptés par sommet R 9 · Q 52 · J 16",
+    "legende": "Pense-bête des capacités",
+    "date": "2026-09-15",
+    "ou": "etat"
+  }
+]

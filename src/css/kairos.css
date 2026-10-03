@@ -2286,10 +2286,10 @@ body.kairos #cocreation {
 }
 
 /* le seuil de Kora et la première section passent sous les DEUX barres */
-body.kairos .kora-seuil--compact { margin-top: calc(var(--header-h) + var(--subnav-h) + 2.5rem); }
+body.kairos .kora-seuil--compact { margin-top: calc(var(--subnav-h) + 2.5rem); }   /* 03/10 : le header est sticky, il occupe déjà sa place */
 /* Sur petit écran, douze ancres en barre FIXE mangeaient 130px d'écran en plus du
    header : la sous-navigation défile avec la page, sous le seuil de Kora. */
 @media (max-width: 900px) {
   body.kairos .kairos-nav { position: static; min-height: 0; }
-  body.kairos .kora-seuil--compact { margin-top: calc(var(--header-h) + 1.5rem); }
+  body.kairos .kora-seuil--compact { margin-top: 1.5rem; }
 }

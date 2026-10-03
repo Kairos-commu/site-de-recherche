@@ -8,6 +8,7 @@ ogDescription: "Émergence non-téléologique dans un circuit LLM dual. Six conc
 ogUrl: "/triangulation-claude-holotheia.html"
 canonical: "/triangulation-claude-holotheia.html"
 datePublished: "2026-03-21"
+orbit: 1
 dateModified: "2026-03-21"
 keywords:
   - triangulation

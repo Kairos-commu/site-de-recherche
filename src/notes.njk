@@ -10,6 +10,7 @@ canonical: "/notes.html"
 twitterCard: summary
 siteNavPrefix: "/index.html"
 activeNav: notes
+seuilEnPage: true
 permalink: /notes.html
 koraSeuil: "These are Florent's notes on building me — what broke, what held, and the numbers behind each fix. He wrote them; I keep them here."
 jsonLdRaw: |
@@ -26,37 +27,32 @@ jsonLdRaw: |
   </script>
 ---
 
-<section class="hero hero--short">
-  <div class="container">
-    <p class="hero__label">Engineering notes · in English</p>
-    <h1 class="hero__title">Running a <span>local model</span> as an agent, honestly</h1>
-    <p class="hero__subtitle">
-      What breaks when a 12B model has twenty-one tools and a real machine to act on, what the
-      traces showed, and which guards actually held. Every number below was measured before
-      it was written down.
-    </p>
-    <div class="hero__line"></div>
-  </div>
-</section>
+{#- NOTES · Observatoire (03/10). Textes repris mot pour mot ; les trois chiffres de banc
+    sont ceux de github.com/Kairos-commu/kora, spec/bench.md (« Reference figures »). -#}
+<div class="obs obs-page notes-index">
+  <p class="eyebrow eyebrow--jeu">Engineering notes · in English</p>
+  <h1>Running a <em>local model</em> as an agent, honestly</h1>
+  <p class="notes-index__sous">What breaks when a 12B model has twenty-one tools and a real machine to act on, what the
+    traces showed, and which guards actually held. Every number below was measured before
+    it was written down.</p>
+  <aside class="kora-seuil" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p>{{ koraSeuil }}</p></div></aside>
 
-<section class="section section--alt" id="notes">
-  <div class="container">
-    <p class="archive-count">{{ collections.notes | length }} notes · the rest of this site is in French</p>
-
-    <div class="card-grid" data-reveal="stagger">
-      {%- for note in collections.notes | reverse %}
-      <article class="card">
-        <div class="card__body">
-          <p class="card__label">{{ note.data.label | default("Engineering note") }}</p>
-          <h3 class="card__title">{{ note.data.title }}</h3>
-          <p class="card__desc">{{ note.data.description }}</p>
-          <p class="card__date">
-            <time datetime="{{ note.data.published }}">{{ note.data.published | dateEn }}</time>{% if note.data.readingTime %} · {{ note.data.readingTime }}{% endif %}
-          </p>
-          <a href="{{ note.url }}" class="card__link">Read the note →</a>
-        </div>
-      </article>
-      {%- endfor %}
-    </div>
+  <p class="notes-index__compte">{{ collections.notes | length }} notes · the rest of this site is in French</p>
+  <div class="filets notes-index__cartes">
+    {%- for note in collections.notes | reverse %}
+    <a class="porte" href="{{ note.url }}">
+      <span class="porte__type">{{ note.data.label | default("Engineering note") }}</span>
+      <strong>{{ note.data.title }}</strong>
+      <span class="porte__desc">{{ note.data.description }}</span>
+      <span class="notes-index__date"><time datetime="{{ note.data.published }}">{{ note.data.published | dateEn }}</time>{% if note.data.readingTime %} · {{ note.data.readingTime }}{% endif %}{% if note.data.dateModified and note.data.dateModified != note.data.published %} · updated {{ note.data.dateModified | dateEn }}{% endif %}</span>
+    </a>
+    {%- endfor %}
   </div>
-</section>
+
+  <div class="notes-index__banc">
+    <div><span class="notes-index__n">92–93 %</span><span>tool-choice rate, gemma4:12b with persona — the first fine-tune: 80 %</span></div>
+    <div><span class="notes-index__n">80 %</span><span>multi-round scenarios, never inventing a capability, never re-asking after a refusal</span></div>
+    <div><span class="notes-index__n">~15 min</span><span>one learning cycle: prepare → QLoRA → GGUF → ollama create → rate bench</span></div>
+  </div>
+  <p class="notes-index__source">Reference figures from spec/bench.md, <a href="https://github.com/Kairos-commu/kora" target="_blank" rel="noopener">github.com/Kairos-commu/kora</a></p>
+</div>

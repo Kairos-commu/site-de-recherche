@@ -8,6 +8,7 @@ ogDescription: "72 000 lignes en 33 jours : le vibe coding n'a pas de problème 
 ogUrl: "/variable-manquante.html"
 canonical: "/variable-manquante.html"
 datePublished: "2026-03-06"
+orbit: 2
 dateModified: "2026-03-06"
 keywords:
   - vibe coding

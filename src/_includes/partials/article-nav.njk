@@ -1,3 +1,5 @@
+{#- Précédent / suivant (03/10) : à gauche le texte plus récent, à droite le plus ancien.
+    La collection est triée du plus ancien au plus récent. -#}
 {%- set articleList = collections.articles %}
 {%- set currentIndex = -1 %}
 {%- for article in articleList %}
@@ -6,26 +8,26 @@
   {%- endif %}
 {%- endfor %}
 
-{%- if currentIndex > 0 %}
-  {%- set prevArticle = articleList[currentIndex - 1] %}
-{%- endif %}
 {%- if currentIndex < articleList.length - 1 %}
-  {%- set nextArticle = articleList[currentIndex + 1] %}
+  {%- set plusRecent = articleList[currentIndex + 1] %}
+{%- endif %}
+{%- if currentIndex > 0 %}
+  {%- set plusAncien = articleList[currentIndex - 1] %}
 {%- endif %}
 
 <nav class="article-nav" aria-label="Navigation articles">
-  {%- if prevArticle %}
-  <a href="/{{ prevArticle.data.slug }}.html" class="article-nav__link article-nav__link--prev">
-    <span class="article-nav__label">← Article précédent</span>
-    <span class="article-nav__title">{{ prevArticle.data.headline }}</span>
+  {%- if plusRecent %}
+  <a href="/{{ plusRecent.data.slug }}.html" class="article-nav__link article-nav__link--prev">
+    <span class="article-nav__label">← Plus récent</span>
+    <span class="article-nav__title">{{ plusRecent.data.card.title }}</span>
   </a>
   {%- else %}
   <div class="article-nav__empty"></div>
   {%- endif %}
-  {%- if nextArticle %}
-  <a href="/{{ nextArticle.data.slug }}.html" class="article-nav__link article-nav__link--next">
-    <span class="article-nav__label">Article suivant →</span>
-    <span class="article-nav__title">{{ nextArticle.data.headline }}</span>
+  {%- if plusAncien %}
+  <a href="/{{ plusAncien.data.slug }}.html" class="article-nav__link article-nav__link--next">
+    <span class="article-nav__label">Plus ancien →</span>
+    <span class="article-nav__title">{{ plusAncien.data.card.title }}</span>
   </a>
   {%- else %}
   <div class="article-nav__empty"></div>

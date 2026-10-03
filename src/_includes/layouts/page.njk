@@ -5,7 +5,8 @@ layout: layouts/base.njk
 
 <main>
   {%- set seuilCompact = true %}
-  {%- if koraSeuil %}
+  {#- une page Observatoire place son seuil elle-même (seuilEnPage: true) -#}
+  {%- if koraSeuil and not seuilEnPage %}
   <div class="container">
     {% include "partials/kora-seuil.njk" %}
   </div>

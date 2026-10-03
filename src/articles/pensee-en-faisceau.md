@@ -8,6 +8,7 @@ ogDescription: "Convergence entre cognition humaine et intelligence artificielle
 ogUrl: "/pensee-en-faisceau.html"
 canonical: "/pensee-en-faisceau.html"
 datePublished: "2026-01-15"
+orbit: 2
 dateModified: "2026-01-15"
 keywords:
   - pensée en faisceau
