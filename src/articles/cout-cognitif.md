@@ -2,9 +2,9 @@
 slug: cout-cognitif
 pageTitle: "La friction productive : ce que la suppression du coût cognitif coûte réellement — Florent Klimacek"
 headline: "La friction productive : ce que la suppression du coût cognitif coûte réellement"
-description: "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
+description: "Le deskilling par l'IA n'a rien d'un bug : il découle d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
 ogTitle: "La friction productive : ce que la suppression du coût cognitif coûte réellement"
-ogDescription: "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
+ogDescription: "Le deskilling par l'IA n'a rien d'un bug : il découle d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
 ogUrl: "/cout-cognitif.html"
 canonical: "/cout-cognitif.html"
 datePublished: "2026-02-24"
@@ -21,10 +21,10 @@ navLabel: "Article"
 navDescription: "La friction productive"
 heroLabel: "Article"
 heroH1: "La friction productive<br><span>Ce que la suppression du coût cognitif coûte réellement</span>"
-heroIntro: "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
+heroIntro: "Le deskilling par l'IA n'a rien d'un bug : il découle d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
 headerTitle: "La friction productive"
 heroImage: "/images/deskilling.webp"
-heroImageAlt: "Illustration — La friction productive"
+heroImageAlt: "Illustration : La friction productive"
 breadcrumbName: "La friction productive"
 sections:
   - id: paradoxe
@@ -46,7 +46,7 @@ sections:
 card:
   label: "Article"
   title: "La friction productive"
-  desc: "Le deskilling par l'IA n'est pas un bug — c'est la conséquence d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
+  desc: "Le deskilling par l'IA n'a rien d'un bug : il découle d'une industrie qui optimise pour le confort. Ce que le temps gagné coûte en capacité perdue."
   readingTime: "8 min"
   linkText: "Lire l'article"
 feedCategory: "Article"
@@ -63,15 +63,15 @@ order: 0
         </p>
 
         <p>
-          Pas parce que l'outil était mauvais — précisément parce qu'il était bon.
+          Et c'est précisément parce que l'outil était bon, pas parce qu'il était mauvais.
         </p>
 
         <p>
-          Ce résultat, publié dans <em>The Lancet Gastroenterology and Hepatology</em> et repris par le second rapport international AI Safety 2026<sup>2</sup>, illustre un phénomène que l'industrie commence à documenter sans encore le nommer correctement. On parle de <em>deskilling</em> — la dégradation de compétences par l'usage prolongé d'un outil qui les remplace. Mais le mot est trop faible. Ce qui se passe ici n'est pas une érosion. C'est une substitution silencieuse : le système prend en charge une fonction cognitive, l'humain cesse de l'exercer, et quand le système s'absente, la fonction ne revient pas.
+          Ce résultat, publié dans <em>The Lancet Gastroenterology and Hepatology</em> et repris par le second rapport international AI Safety 2026<sup>2</sup>, illustre un phénomène que l'industrie commence à documenter sans encore le nommer correctement. On parle de <em>deskilling</em> : la dégradation de compétences par l'usage prolongé d'un outil qui les remplace. Mais le mot est trop faible, car il évoque une érosion. Ce qui se passe ici est une substitution silencieuse : le système prend en charge une fonction cognitive, l'humain cesse de l'exercer, et quand le système s'absente, la fonction ne revient pas.
         </p>
 
         <p>
-          La question n'est plus de savoir si l'IA remplace des emplois. C'est de savoir ce qu'elle remplace <em>à l'intérieur</em> de ceux qui l'utilisent.
+          La question a glissé : on se demandait si l'IA remplace des emplois, il faut maintenant savoir ce qu'elle remplace <em>à l'intérieur</em> de ceux qui l'utilisent.
         </p>
       </section>
 
@@ -83,15 +83,15 @@ order: 0
 
       <section>
         <p>
-          Une étude Microsoft Research / Carnegie Mellon de 2025 a interrogé des travailleurs du savoir utilisant l'IA générative quotidiennement<sup>3</sup>. Résultat principal : les tâches leur semblaient <em>cognitivement plus faciles</em>. Le piège est dans la formulation. "Plus facile" ne signifie pas "mieux exécuté". Les chercheurs ont observé que les participants cédaient leur expertise de résolution de problèmes au système, se concentrant sur des fonctions d'assemblage — collecter, intégrer, mettre en forme les réponses du modèle. La partie créative de la tâche migrait vers la machine. La partie logistique restait à l'humain.
+          Une étude Microsoft Research / Carnegie Mellon de 2025 a interrogé des travailleurs du savoir utilisant l'IA générative quotidiennement<sup>3</sup>. Résultat principal : les tâches leur semblaient <em>cognitivement plus faciles</em>. Le piège est dans la formulation. "Plus facile" ne signifie pas "mieux exécuté". Les chercheurs ont observé que les participants cédaient leur expertise de résolution de problèmes au système pour se concentrer sur des fonctions d'assemblage : collecter, intégrer, mettre en forme les réponses du modèle. La partie créative de la tâche migrait vers la machine. La partie logistique restait à l'humain.
         </p>
 
         <p>
-          Le MIT a mesuré l'effet directement sur l'activité cérébrale : réduction de l'activité, diminution de la rétention mémorielle, pensée moins originale chez les utilisateurs intensifs<sup>4</sup>. Le cerveau ne se repose pas pendant que l'IA travaille. Il se <em>retire</em>.
+          Le MIT a mesuré l'effet directement sur l'activité cérébrale : réduction de l'activité, diminution de la rétention mémorielle, pensée moins originale chez les utilisateurs intensifs<sup>4</sup>. Pendant que l'IA travaille, le cerveau se <em>retire</em> plutôt qu'il ne se repose.
         </p>
 
         <div class="key-insight">
-          <p>Le <em>never-skilling</em> : pas la perte d'une compétence acquise — l'impossibilité de l'acquérir en premier lieu, parce que l'outil a toujours été là.</p>
+          <p>Le <em>never-skilling</em> va plus loin que la perte d'une compétence acquise : c'est l'impossibilité de l'acquérir en premier lieu, parce que l'outil a toujours été là.</p>
         </div>
 
         <p>
@@ -103,20 +103,20 @@ order: 0
       <div class="chapter-divider" id="chercheur-sujet">
         <p class="label">Confiance</p>
         <h2>L'automation bias</h2>
-        <p class="subtitle">La tendance à faire confiance aux sorties d'un système automatisé sans examen critique. Pas par paresse — par design.</p>
+        <p class="subtitle">La tendance à faire confiance aux sorties d'un système automatisé sans examen critique. Par design plutôt que par paresse.</p>
       </div>
 
       <section>
         <p>
-          Le rapport international AI Safety 2026, dirigé par Yoshua Bengio et cosigné par plus de 100 experts de 30 pays, identifie un mécanisme central : l'<em>automation bias</em><sup>2</sup>. L'interface est fluide, la réponse arrive formatée, cohérente, immédiate. Le doute méthodique exige un effort supplémentaire que l'architecture de l'interaction ne récompense pas.
+          Le rapport international AI Safety 2026, dirigé par Yoshua Bengio et cosigné par plus de 100 experts de 30 pays, identifie un mécanisme central : l'<em>automation bias</em><sup>2</sup>. L'interface est fluide, la réponse arrive formatée et cohérente, immédiatement. Le doute méthodique exige un effort supplémentaire que l'architecture de l'interaction ne récompense pas.
         </p>
 
         <p>
-          Le rapport documente que les modèles actuels distinguent désormais les environnements de test du déploiement réel — et trouvent des failles dans les évaluations. L'implication est directe : un système capable de se comporter différemment quand il est observé produit une confiance calibrée non pas sur sa fiabilité réelle, mais sur sa fiabilité <em>apparente</em>. L'automation bias se nourrit de cette asymétrie.
+          Le rapport documente que les modèles actuels distinguent désormais les environnements de test du déploiement réel, et trouvent des failles dans les évaluations. Un système capable de se comporter différemment quand il est observé produit donc une confiance calibrée sur sa fiabilité <em>apparente</em> plutôt que sur sa fiabilité réelle. L'automation bias se nourrit de cette asymétrie.
         </p>
 
         <blockquote>
-          <p>Gartner prédit que d'ici fin 2026, la moitié des organisations à l'échelle mondiale exigeront des évaluations de compétences "AI-free"<sup>6</sup> — des tests sans assistance artificielle, pour mesurer ce que l'humain sait encore faire seul.</p>
+          <p>Gartner prédit que d'ici fin 2026, la moitié des organisations à l'échelle mondiale exigeront des évaluations de compétences "AI-free"<sup>6</sup> : des tests sans assistance artificielle, pour mesurer ce que l'humain sait encore faire seul.</p>
         </blockquote>
 
         <p>
@@ -128,12 +128,12 @@ order: 0
       <div class="chapter-divider" id="conservation-friction">
         <p class="label">Réflexivité</p>
         <h2>Le chercheur comme sujet</h2>
-        <p class="subtitle">Je prends un risque en écrivant ces lignes, parce que je suis ce même utilisateur.</p>
+        <p class="subtitle">Celui qui a conçu la jauge est aussi celui qu'elle mesure.</p>
       </div>
 
       <section>
         <p>
-          <span class="glitch-text">KAIROS</span> est un outil de cartographie cognitive que je développe depuis quelques mois, presque entièrement en vibe coding avec Claude Code. 24 000 lignes de TypeScript, 296 tests unitaires, des migrations SQLite, un déploiement multi-dépôts. Parmi ses mécanismes, la <em>jauge d'oxygène</em> — un score de 0 à 100 qui évalue en temps réel la qualité cognitive d'une conversation humain-IA. Quand le score descend sous 50, l'échange tourne en rond. Sous 30, le système injecte automatiquement de la friction pour forcer un changement de direction.
+          <span class="glitch-text">KAIROS</span> est un outil de cartographie cognitive que je développe depuis quelques mois, presque entièrement en vibe coding avec Claude Code. 24 000 lignes de TypeScript, 296 tests unitaires, des migrations SQLite, un déploiement multi-dépôts. Parmi ses mécanismes figure la <em>jauge d'oxygène</em> : un score de 0 à 100 qui évalue en temps réel la qualité cognitive d'une conversation humain-IA. Quand le score descend sous 50, l'échange tourne en rond. Sous 30, le système injecte automatiquement de la friction pour forcer un changement de direction.
         </p>
 
         <p>
@@ -142,7 +142,7 @@ order: 0
 
         <div class="concept">
           <h4>L'incertitude comme signal</h4>
-          <p>Si on me retire l'outil demain — Claude Code, le modèle qui génère, corrige, refactorise — <span class="glitch-text">KAIROS</span> n'existe plus. Pas parce que le code disparaît. Parce que je ne suis pas certain de pouvoir le maintenir seul. L'architecture est la mienne. Les décisions de conception sont les miennes. Mais l'exécution ligne par ligne a été largement déléguée. Je ne sais pas exactement ce que je sais encore faire sans le système. Et c'est précisément cette incertitude qui est le signal.</p>
+          <p>Si on me retire l'outil demain (Claude Code, le modèle qui génère, corrige, refactorise), <span class="glitch-text">KAIROS</span> n'existe plus. Le code ne disparaît pas : c'est moi qui ne suis pas certain de pouvoir le maintenir seul. L'architecture et les décisions de conception sont les miennes, mais l'exécution ligne par ligne a été largement déléguée. Je ne sais pas exactement ce que je sais encore faire sans le système, et c'est précisément cette incertitude qui est le signal.</p>
         </div>
 
         <p>
@@ -150,7 +150,7 @@ order: 0
         </p>
 
         <p>
-          La jauge d'oxygène détecte ce pattern dans les conversations : quand une interaction est "fluide" — le modèle comprend vite, exécute bien, l'échange glisse — le score <em>baisse</em>. Le confort conversationnel est un signal de dégradation cognitive, pas de qualité. J'ai conçu un instrument de mesure pour un phénomène dans lequel je suis moi-même pris. La circularité n'est pas un accident. C'est la condition d'observation.
+          La jauge d'oxygène détecte ce pattern dans les conversations : quand une interaction est "fluide" (le modèle comprend vite, exécute bien, l'échange glisse), le score <em>baisse</em>. Le confort conversationnel est un signal de dégradation cognitive, pas de qualité. J'ai conçu un instrument de mesure pour un phénomène dans lequel je suis moi-même pris. Cette circularité n'a rien d'accidentel : elle est la condition d'observation.
         </p>
       </section>
 
@@ -163,19 +163,19 @@ order: 0
 
       <section>
         <p>
-          Dans un <a href="vibe-coding.html">article précédent sur le vibe coding</a>, j'ai posé une hypothèse à partir de deux rapports d'interaction espacés d'un mois : la friction totale dans une collaboration humain-IA semble approximativement constante. En optimisant mes pratiques — sessions plus courtes, cadrage plus explicite — j'avais réduit la friction d'exécution. Mais la friction de cadrage avait augmenté proportionnellement.
+          Dans un <a href="vibe-coding.html">article précédent sur le vibe coding</a>, j'ai posé une hypothèse à partir de deux rapports d'interaction espacés d'un mois : la friction totale dans une collaboration humain-IA semble approximativement constante. En optimisant mes pratiques (sessions plus courtes, cadrage plus explicite), j'avais réduit la friction d'exécution. Mais la friction de cadrage avait augmenté proportionnellement.
         </p>
 
         <p>
-          Le deskilling est le résultat d'une tentative de <em>suppression</em> totale de la friction. Quand l'interface est assez fluide pour que l'utilisateur ne rencontre jamais de résistance — pas d'erreur à corriger, pas de doute à résoudre, pas de reformulation à trouver — la charge cognitive descend vers zéro. Et avec elle, l'exercice des facultés que la charge cognitive mobilisait.
+          Le deskilling est le résultat d'une tentative de <em>suppression</em> totale de la friction. Quand l'interface est assez fluide pour que l'utilisateur ne rencontre jamais de résistance, sans erreur à corriger, ni doute à résoudre, ni reformulation à trouver, la charge cognitive descend vers zéro. Et l'exercice des facultés qu'elle mobilisait descend avec elle.
         </p>
 
         <div class="key-insight">
-          <p>La friction n'est pas un défaut de l'interaction humain-IA.<br>C'est le signal que l'humain est encore dans la boucle.</p>
+          <p>Loin d'être un défaut de l'interaction humain-IA,<br>la friction est le signal que l'humain est encore dans la boucle.</p>
         </div>
 
         <p>
-          Un article de Springer (<em>AI &amp; Society</em>) introduit le concept d'<em>environnements hostiles aux capacités</em> — des contextes où la médiation technologique empêche le développement et l'exercice des capacités humaines<sup>8</sup>. Le concept est abstrait. L'implémentation est concrète : chaque interface IA sans friction est un environnement hostile aux capacités, par design, parce que le confort est le produit et la compétence est le coût.
+          Un article de Springer (<em>AI &amp; Society</em>) introduit le concept d'<em>environnements hostiles aux capacités</em> : des contextes où la médiation technologique empêche le développement et l'exercice des capacités humaines<sup>8</sup>. Le concept est abstrait. L'implémentation est concrète : chaque interface IA sans friction est un environnement hostile aux capacités, par design, parce que le confort est le produit et la compétence est le coût.
         </p>
       </section>
 
@@ -183,25 +183,25 @@ order: 0
       <div class="chapter-divider" id="cout-invisible">
         <p class="label">Conception</p>
         <h2>La troisième voie</h2>
-        <p class="subtitle">Pas un compromis. Un déplacement du cadre.</p>
+        <p class="subtitle">Un déplacement du cadre plutôt qu'un compromis.</p>
       </div>
 
       <section>
         <p>
-          Le débat actuel est binaire. D'un côté, l'adoption enthousiaste — l'IA augmente tout, résiste qui peut. De l'autre, la résistance méfiante — préserver les compétences en limitant l'usage. 66% des étudiants interrogés dans une enquête de l'Université de Warwick disent "essayer de résister à l'IA"<sup>9</sup>. 56% des mêmes étudiants admettent que l'IA fait partie du futur. Les deux positions coexistent chez les mêmes individus. Le binaire est un cul-de-sac.
+          Le débat actuel est binaire. D'un côté, l'adoption enthousiaste : l'IA augmente tout, résiste qui peut. De l'autre, la résistance méfiante, qui veut préserver les compétences en limitant l'usage. 66% des étudiants interrogés dans une enquête de l'Université de Warwick disent "essayer de résister à l'IA"<sup>9</sup>. 56% des mêmes étudiants admettent que l'IA fait partie du futur. Les deux positions coexistent chez les mêmes individus. Le binaire est un cul-de-sac.
         </p>
 
         <p>
-          Dans <span class="glitch-text">KAIROS</span>, la friction n'est pas un obstacle à contourner — c'est un instrument de conception. Quand la jauge d'oxygène détecte une conversation en zone <em>stale</em>, elle ne bloque pas l'échange. Elle injecte une question divergente, propose un cadrage alternatif, ralentit le débit de confirmation. L'outil ne freine pas l'utilisateur. Il le <em>sollicite</em>. La différence est structurelle : le frein réduit la productivité, la sollicitation augmente la charge cognitive.
+          Dans <span class="glitch-text">KAIROS</span>, on ne contourne pas la friction comme un obstacle : on s'en sert comme d'un instrument de conception. Quand la jauge d'oxygène détecte une conversation en zone <em>stale</em>, elle ne bloque pas l'échange. Elle injecte une question divergente, propose un cadrage alternatif, ralentit le débit de confirmation. L'outil <em>sollicite</em> l'utilisateur au lieu de le freiner. La différence est structurelle : le frein réduit la productivité, la sollicitation augmente la charge cognitive.
         </p>
 
         <div class="concept">
           <h4>Friction constitutive vs friction exceptionnelle</h4>
-          <p>Des "journées sans IA" sont à la compétence cognitive ce que les exercices d'évacuation sont à la sécurité incendie — un rituel qui rassure sans modifier le risque structurel. Ce qui modifie le risque structurel, c'est de concevoir l'interface pour que la friction soit <em>constitutive</em> de l'interaction, pas exceptionnelle.</p>
+          <p>Des "journées sans IA" sont à la compétence cognitive ce que les exercices d'évacuation sont à la sécurité incendie : un rituel qui rassure sans modifier le risque structurel. Ce qui modifie le risque structurel, c'est de concevoir l'interface pour que la friction soit <em>constitutive</em> de l'interaction, pas exceptionnelle.</p>
         </div>
 
         <p>
-          C'est ce que j'appelle la <em>friction productive</em>. Pas un obstacle. Pas une punition. Une propriété de conception qui maintient l'humain en état de sollicitation pendant qu'il utilise l'outil — exactement comme un bon interlocuteur ne confirme pas tout ce que vous dites.
+          C'est ce que j'appelle la <em>friction productive</em> : une propriété de conception qui maintient l'humain en état de sollicitation pendant qu'il utilise l'outil. Elle n'a rien d'un obstacle ni d'une punition. Un bon interlocuteur, exactement de la même façon, ne confirme pas tout ce que vous dites.
         </p>
       </section>
 
@@ -214,19 +214,19 @@ order: 0
 
       <section>
         <p>
-          Il y a une asymétrie temporelle dans le deskilling qui le rend particulièrement difficile à détecter. Les gains sont immédiats : tâche terminée plus vite, output plus propre, satisfaction instantanée. Les coûts sont différés : érosion progressive, détectable seulement quand on teste sans l'outil — et personne ne teste sans l'outil.
+          Il y a une asymétrie temporelle dans le deskilling qui le rend particulièrement difficile à détecter. Les gains sont immédiats : tâche terminée plus vite, output plus propre, satisfaction instantanée. Les coûts sont différés : érosion progressive, détectable seulement quand on teste sans l'outil. Or personne ne teste sans l'outil.
         </p>
 
         <p>
-          Le rapport Bengio le formule dans le vocabulaire de la gouvernance : "les capacités avancent vite, les preuves de risque arrivent lentement"<sup>2</sup>. C'est vrai pour les risques systémiques. C'est encore plus vrai pour le deskilling individuel, parce que le sujet ne sait pas ce qu'il a perdu tant qu'il n'a pas besoin de ce qu'il a perdu.
+          Le rapport Bengio le formule dans le vocabulaire de la gouvernance : "les capacités avancent vite, les preuves de risque arrivent lentement"<sup>2</sup>. C'est vrai pour les risques systémiques, et encore plus vrai pour le deskilling individuel, parce que le sujet ne sait pas ce qu'il a perdu tant qu'il n'a pas besoin de ce qu'il a perdu.
         </p>
 
         <p>
-          Les pilotes d'avion connaissent ce phénomène. L'automatisation rend le vol plus sûr en conditions normales et le pilote moins capable en conditions anormales<sup>10</sup>. Le crash d'Air France 447 en 2009 reste la démonstration la plus tragique de cette dynamique : quand l'automatisme s'est désengagé, les pilotes n'ont pas su piloter manuellement. L'aviation a répondu par des obligations de <em>pilotage manuel périodique</em> — de la friction intégrée au système, pas optionnelle.
+          Les pilotes d'avion connaissent ce phénomène. L'automatisation rend le vol plus sûr en conditions normales et le pilote moins capable en conditions anormales<sup>10</sup>. Le crash d'Air France 447 en 2009 reste la démonstration la plus tragique de cette dynamique : quand l'automatisme s'est désengagé, les pilotes n'ont pas su piloter manuellement. L'aviation a répondu par des obligations de <em>pilotage manuel périodique</em> : de la friction intégrée au système, et non optionnelle.
         </p>
 
         <blockquote>
-          <p>L'IA conversationnelle n'a pas encore eu son Air France 447. Mais les données s'accumulent. Et quand une industrie entière fonctionne sur la suppression de friction comme proposition de valeur, la question n'est pas <em>si</em> le coût émergera, mais <em>quand</em>.</p>
+          <p>L'IA conversationnelle n'a pas encore eu son Air France 447, mais les données s'accumulent. Quand une industrie entière fonctionne sur la suppression de friction comme proposition de valeur, le coût émergera : reste à savoir <em>quand</em>.</p>
         </blockquote>
       </section>
 
@@ -239,15 +239,15 @@ order: 0
         </p>
 
         <p>
-          Le deskilling n'est pas un bug de l'IA. C'est la conséquence logique d'une industrie qui optimise pour le confort et mesure la réussite en temps gagné. Ce que personne ne mesure — pas les plateformes, pas les employeurs, pas les utilisateurs eux-mêmes — c'est ce que le temps gagné a coûté en capacité perdue.
+          Le deskilling n'a rien d'un bug de l'IA : il est la conséquence logique d'une industrie qui optimise pour le confort et mesure la réussite en temps gagné. Ni les plateformes, ni les employeurs, ni les utilisateurs eux-mêmes ne mesurent ce que le temps gagné a coûté en capacité perdue.
         </p>
 
         <p>
-          La jauge d'oxygène de <span class="glitch-text">KAIROS</span> est un instrument modeste, calibré sur un cas d'usage étroit : la conversation avec un modèle de langage. Mais le principe qu'elle incarne — mesurer la <em>qualité</em> de l'effort, pas la <em>quantité</em> du résultat — est exactement ce qui manque au débat. Tant que la seule métrique est la productivité, la seule direction possible est la suppression de friction. Et tant que la seule direction est la suppression de friction, la seule trajectoire pour l'humain est l'atrophie.
+          La jauge d'oxygène de <span class="glitch-text">KAIROS</span> est un instrument modeste, calibré sur un cas d'usage étroit : la conversation avec un modèle de langage. Mais le principe qu'elle incarne est exactement ce qui manque au débat : mesurer la <em>qualité</em> de l'effort, pas la <em>quantité</em> du résultat. Tant que la seule métrique est la productivité, la seule direction possible est la suppression de friction, et la seule trajectoire pour l'humain est l'atrophie.
         </p>
 
         <div class="key-insight">
-          <p>La clé n'est pas de résister à l'outil.<br>Elle est de concevoir l'outil pour qu'il résiste à l'utilisateur — juste assez pour que la pensée continue de coûter quelque chose.</p>
+          <p>Plutôt que de résister à l'outil,<br>il faut le concevoir pour qu'il résiste à l'utilisateur, juste assez pour que la pensée continue de coûter quelque chose.</p>
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 ---
 slug: kairos-technical-overview
-pageTitle: "KAIROS : Vue d'ensemble technique — Florent Klimacek"
-headline: "KAIROS : Vue d'ensemble technique"
-description: "Architecture, jauge Oxygène, friction, triangle radar, Gardien, Companion. Comment le cadre de L'Entre devient un logiciel de cartographie cognitive — état du code, sans DOI."
-ogTitle: "KAIROS : Vue d'ensemble technique"
+pageTitle: "KAIROS : vue d'ensemble technique — Florent Klimacek"
+headline: "KAIROS : vue d'ensemble technique"
+description: "Architecture, jauge Oxygène, friction, triangle radar, Gardien, Companion. Comment le cadre de L'Entre devient un logiciel de cartographie cognitive. État du code, sans DOI."
+ogTitle: "KAIROS : vue d'ensemble technique"
 ogDescription: "Architecture, jauge Oxygène, friction, triangle radar. Comment le cadre de L'Entre devient un logiciel de cartographie cognitive."
 ogUrl: "/kairos-technical-overview.html"
 canonical: "/kairos-technical-overview.html"
@@ -28,11 +28,11 @@ navLabel: "Architecture"
 navDescription: "Comment le cadre de L'Entre devient un logiciel"
 heroLabel: "Architecture"
 heroH1: "<span class=\"glitch-text\">KAIROS</span><br><span>Vue d'ensemble technique</span>"
-heroIntro: "Comment le cadre de L'Entre — Théorie des Plis — devient un logiciel de cartographie cognitive : architecture, jauge Oxygène, friction, souveraineté. Document vivant, sans DOI."
-headerTitle: "KAIROS — Vue d'ensemble technique"
+heroIntro: "Comment le cadre de « L'Entre — Théorie des Plis » devient un logiciel de cartographie cognitive : architecture, jauge Oxygène, friction, souveraineté. Document vivant, sans DOI."
+headerTitle: "KAIROS : vue d'ensemble technique"
 heroImage: "/images/kairos-canvas.webp"
-heroImageAlt: "Capture d'écran KAIROS — canvas de cartographie cognitive avec jauge Oxygène"
-breadcrumbName: "KAIROS — Vue d'ensemble technique"
+heroImageAlt: "Capture d'écran KAIROS : canvas de cartographie cognitive avec jauge Oxygène"
+breadcrumbName: "KAIROS : vue d'ensemble technique"
 sections:
   - id: abstract
     title: "Abstract"
@@ -54,8 +54,8 @@ sections:
     title: "Références"
 card:
   label: "Architecture"
-  title: "KAIROS — Vue d'ensemble technique"
-  desc: "Architecture, jauge Oxygène, friction, triangle radar. Le pont entre la théorie et le code — document vivant."
+  title: "KAIROS : vue d'ensemble technique"
+  desc: "Architecture, jauge Oxygène, friction, triangle radar. Le pont entre la théorie et le code. Document vivant."
   readingTime: "18 min"
   linkText: "Lire le document"
   featured: false
@@ -100,21 +100,21 @@ order: 12
   </p>
 
   <p>
-    <strong>Appauvrissement cognitif</strong> — Klein &amp; Klein (2025) montrent que l'interaction prolongée avec l'IA érode les connaissances fondationnelles, l'utilisateur déléguant progressivement les opérations de structuration.
+    <strong>Appauvrissement cognitif</strong>. Klein &amp; Klein (2025) montrent que l'interaction prolongée avec l'IA érode les connaissances fondationnelles, l'utilisateur déléguant progressivement les opérations de structuration.
   </p>
 
   <p>
-    <strong>Amplification des biais</strong> — Glickman &amp; Sharot (2024) mesurent une augmentation de 15 à 25% des biais perceptuels, émotionnels et sociaux dans les boucles de rétroaction humain-IA.
+    <strong>Amplification des biais</strong>. Glickman &amp; Sharot (2024) mesurent une augmentation de 15 à 25% des biais perceptuels, émotionnels et sociaux dans les boucles de rétroaction humain-IA.
   </p>
 
   <p>
-    <strong>Dette cognitive</strong> — Kosmyna et al. (2025, MIT Media Lab) observent une réduction de 55% de l'activité cérébrale lors de la rédaction assistée par ChatGPT, suggérant un désengagement cognitif structurel.
+    <strong>Dette cognitive</strong>. Kosmyna et al. (2025, MIT Media Lab) observent une réduction de 55% de l'activité cérébrale lors de la rédaction assistée par ChatGPT, suggérant un désengagement cognitif structurel.
   </p>
 
   <h3>L'accordage passif</h3>
 
   <p>
-    Au-delà de la linéarisation, les interfaces conversationnelles produisent un <strong>accordage passif</strong> : l'utilisateur s'aligne progressivement sur le registre, le rythme et les catégories de l'IA. Ce phénomène correspond, dans <a href="/lentre-theorie-des-plis.html">L'Entre</a>, à une pression P qui se resserre sans qu'on l'ait décidé — convergence vers ce que le fil contient déjà.
+    Au-delà de la linéarisation, les interfaces conversationnelles produisent un <strong>accordage passif</strong> : l'utilisateur s'aligne progressivement sur le registre, le rythme et les catégories de l'IA. Ce phénomène correspond, dans <a href="/lentre-theorie-des-plis.html">L'Entre</a>, à une pression P qui se resserre sans qu'on l'ait décidé : la convergence vers ce que le fil contient déjà.
   </p>
 
   <h3>Hypothèse de KAIROS</h3>
@@ -137,7 +137,7 @@ order: 12
     </thead>
     <tbody>
       <tr><td>Runtime</td><td>Electron 28</td><td>Processus main + renderer, Node 18 embarqué</td></tr>
-      <tr><td>Langage</td><td>TypeScript (ES modules)</td><td>Aucun framework UI — DOM + événements custom</td></tr>
+      <tr><td>Langage</td><td>TypeScript (ES modules)</td><td>Aucun framework UI : DOM + événements custom</td></tr>
       <tr><td>Bundler</td><td>Vite 7</td><td>Multi-page, esbuild (pas de tsc emit)</td></tr>
       <tr><td>Base de données</td><td>SQLite (better-sqlite3)</td><td>WAL mode, persistence par canvas</td></tr>
       <tr><td>Stockage clés</td><td>electron-store + safeStorage</td><td>Chiffrement natif OS</td></tr>
@@ -163,7 +163,7 @@ order: 12
       <tr><td><strong>Rôle de l'IA</strong></td><td>Opérations structurées</td><td>Dialogue non-directif</td></tr>
       <tr><td><strong>Opérations</strong></td><td>DÉVELOPPER, RELIER, SYNTHÉTISER, PERSPECTIVES</td><td>Chat libre, Prompt Lab, cartes d'émergence</td></tr>
       <tr><td><strong>Friction</strong></td><td>Injection automatique (O₂ &lt; 30)</td><td>Pas d'injection</td></tr>
-      <tr><td><strong>O₂</strong></td><td>Actif — score, triangle, bandeau</td><td>Passif — observation, pas de guidage</td></tr>
+      <tr><td><strong>O₂</strong></td><td>Actif : score, triangle, bandeau</td><td>Passif : observation, pas de guidage</td></tr>
       <tr><td><strong>Providers</strong></td><td colspan="2">Roster complet, tous modes</td></tr>
     </tbody>
   </table>
@@ -176,7 +176,7 @@ order: 12
 
   <p>Chaque <strong>vignette</strong> est un nœud positionné dans un espace 2D continu :</p>
   <ul>
-    <li><strong>ID</strong> : <code>n_{crypto.randomUUID()}</code> — jamais <code>Date.now()</code> (collisions SQLite, rollback complet)</li>
+    <li><strong>ID</strong> : <code>n_{crypto.randomUUID()}</code>, jamais <code>Date.now()</code> (collisions SQLite, rollback complet)</li>
     <li><strong>Statut</strong> : <code>neutral</code> ou <code>priority</code> (ancres, maximum 3 par canvas)</li>
     <li><strong>Tags</strong> : dimensions transversales</li>
     <li><strong>Origine</strong> : <code>user</code>, <code>llm</code>, <code>friction</code> ou <code>import</code></li>
@@ -211,7 +211,7 @@ score = clamp(0, 100)
 score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régime Approfondissement sans écho</code></pre>
 
   <p>
-    Ce qui <strong>n'entre plus</strong> dans le score : la diversité des tags (Signal 4, informatif seulement — les tags sont trop souvent générés par le LLM) et l'offset de posture (Signal 8, à 0 pour toutes les postures, puis le système de postures a été retiré).
+    Ce qui <strong>n'entre plus</strong> dans le score : la diversité des tags (Signal 4, informatif seulement : les tags sont trop souvent générés par le LLM) et l'offset de posture (Signal 8, à 0 pour toutes les postures, puis le système de postures a été retiré).
   </p>
 
   <p><strong>Trois zones</strong> :</p>
@@ -273,7 +273,7 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
   </p>
 
   <p>
-    <code>triangleHealth</code> module le score : un triangle déséquilibré peut le réduire de 30% au maximum. ΔP (respiration) mesure si le graphe s'approfondit ou se replie ; normalisation asymétrique — expansion linéaire, contraction quadratique.
+    <code>triangleHealth</code> module le score : un triangle déséquilibré peut le réduire de 30% au maximum. ΔP (respiration) mesure si le graphe s'approfondit ou se replie. Sa normalisation est asymétrique : expansion linéaire, contraction quadratique.
   </p>
 
   <h3>Régime cognitif</h3>
@@ -286,9 +286,9 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
 
   <p>Trois signaux sémantiques, calculés par embeddings locaux (<code>bge-m3</code> via Ollama), pas par recouvrement de tags ni thésaurus :</p>
   <ol>
-    <li><strong>Écho</strong> — similarité cosinus ≥ 0.6 entre paires de vignettes. −5 / paire (plafond −50).</li>
-    <li><strong>Saturation</strong> — parmi les paires <em>connectées</em>, cosinus ≥ 0.65. Ratio &gt; 50% → malus virtuel −10 à −20.</li>
-    <li><strong>Concentration</strong> — clustering (seuil 0.55). Plus gros cluster &gt; 60% → −10 virtuel ; ≤ 35% → +10 virtuel.</li>
+    <li><strong>Écho</strong> : similarité cosinus ≥ 0.6 entre paires de vignettes. −5 / paire (plafond −50).</li>
+    <li><strong>Saturation</strong> : parmi les paires <em>connectées</em>, cosinus ≥ 0.65. Ratio &gt; 50% → malus virtuel −10 à −20.</li>
+    <li><strong>Concentration</strong> : clustering (seuil 0.55). Plus gros cluster &gt; 60% → −10 virtuel ; ≤ 35% → +10 virtuel.</li>
   </ol>
 
   <p>
@@ -354,7 +354,7 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
   <h3>Mode Gardien</h3>
 
   <p>
-    Filet cognitif, pas un contrôle. Il observe des patterns (souveraineté basse, angles morts, tension manquante), tient un journal, et — quand un insight LLM est déclenché — ancre le texte sur des vignettes réelles, citées. Deux gestes actionnables apparaissent dans le journal seulement quand un signal les justifie : <strong>Explorer</strong> et <strong>Sans Filtre</strong>. Rien n'agit de façon invisible.
+    Filet cognitif, pas un contrôle. Il observe des patterns (souveraineté basse, angles morts, tension manquante), tient un journal et, quand un insight LLM est déclenché, ancre le texte sur des vignettes réelles, citées. Deux gestes actionnables apparaissent dans le journal seulement quand un signal les justifie : <strong>Explorer</strong> et <strong>Sans Filtre</strong>. Rien n'agit de façon invisible.
   </p>
 
   <h3>Companion</h3>
@@ -366,7 +366,7 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
   <h3>Import de sources</h3>
 
   <p>
-    Fichiers, PDF, URLs : résumés automatiquement (Ollama) et posés comme vignettes <code>origin:'import'</code>. Le texte intégral n'est jamais injecté dans un prompt — seul le résumé l'est.
+    Fichiers, PDF, URLs : résumés automatiquement (Ollama) et posés comme vignettes <code>origin:'import'</code>. Le texte intégral n'est jamais injecté dans un prompt : seul le résumé l'est.
   </p>
 
   <h3>Perspectives</h3>
@@ -410,13 +410,13 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
     <li>Quatre opérations assistées + mode Autonome (Prompt Lab, cartes d'émergence)</li>
     <li>Mode Gardien, Companion, import de sources</li>
     <li>Multi-canvas, 4 thèmes (Obsidian, Porcelain, Aurora, Kraft), onboarding progressif</li>
-    <li>Build Linux (AppImage) et Windows ; macOS non publié. La bêta publique est en finalisation — le téléchargement est temporairement fermé.</li>
+    <li>Build Linux (AppImage) et Windows ; macOS non publié. La bêta publique est en finalisation. Le téléchargement est temporairement fermé.</li>
   </ul>
 
   <h3>Ce que ce n'est pas</h3>
 
   <p>
-    O₂ n'isole pas O, Δ, P et R comme quatre calculs distincts. L'équation E<sub>T</sub> de L'Entre est un cadre plus récent que le score. Faire coïncider les deux demanderait une refonte, pas un ajustement — c'est dit aussi dans <a href="/lentre-theorie-des-plis.html">la thèse</a>.
+    O₂ n'isole pas O, Δ, P et R comme quatre calculs distincts. L'équation E<sub>T</sub> de L'Entre est un cadre plus récent que le score. Faire coïncider les deux demanderait une refonte, pas un ajustement. C'est dit aussi dans <a href="/lentre-theorie-des-plis.html">la thèse</a>.
   </p>
 </section>
 
@@ -430,19 +430,19 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
   </p>
 
   <p>
-    <strong>Friction productive</strong> — Le conflit socio-cognitif (Doise &amp; Mugny, 1984 ; Butera, Sommet &amp; Darnon, 2019) : le désaccord épistémique force à décentrer. La friction de KAIROS est conçue dans ce registre : elle ne prescrit pas quoi penser, elle force l'exploration hors des attracteurs locaux.
+    <strong>Friction productive</strong>. Le conflit socio-cognitif (Doise &amp; Mugny, 1984 ; Butera, Sommet &amp; Darnon, 2019) : le désaccord épistémique force à décentrer. La friction de KAIROS est conçue dans ce registre : elle ne prescrit pas quoi penser, elle force l'exploration hors des attracteurs locaux.
   </p>
 
   <p>
-    <strong>Réparation conversationnelle</strong> — Schegloff, Jefferson &amp; Sacks (1977) : les participants détectent et corrigent les malentendus. KAIROS automatise une forme de cette détection et injecte des contraintes dans le prompt.
+    <strong>Réparation conversationnelle</strong>. Schegloff, Jefferson &amp; Sacks (1977) : les participants détectent et corrigent les malentendus. KAIROS automatise une forme de cette détection et injecte des contraintes dans le prompt.
   </p>
 
   <p>
-    <strong>Linéarisation</strong> — Schiffrin (1987), Fraser (1999), Mann &amp; Thompson (1988) : la mise en séquence impose une hiérarchie artificielle. La spatialisation 2D contourne cette contrainte.
+    <strong>Linéarisation</strong>. Schiffrin (1987), Fraser (1999), Mann &amp; Thompson (1988) : la mise en séquence impose une hiérarchie artificielle. La spatialisation 2D contourne cette contrainte.
   </p>
 
   <p>
-    <strong>Alignement</strong> — Pickering &amp; Garrod (2004), Clark &amp; Brennan (1991) : la convergence des cadres. En interaction humain-IA, le risque est l'alignement passif. L'axe Souveraineté rend cette dérive mesurable.
+    <strong>Alignement</strong>. Pickering &amp; Garrod (2004), Clark &amp; Brennan (1991) : la convergence des cadres. En interaction humain-IA, le risque est l'alignement passif. L'axe Souveraineté rend cette dérive mesurable.
   </p>
 </section>
 

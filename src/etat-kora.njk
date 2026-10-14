@@ -69,7 +69,7 @@ jsonLdRaw: |
     {%- set g = c.gapsByVertex[v[0]] %}
     <div class="cap-ligne">
       <span class="cap-ligne__nom cap-ligne__nom--{{ v[0] }}">{{ v[1] }}</span>
-      <div class="barre barre--22 b-cap-{{ v[0] }}" role="img" aria-label="{{ v[1] }} : {{ c.byVertex[v[0]] }} capacités — {{ vs.marche }} « marche », {{ vs.repris }} « repris », {{ vs.aucun }} « aucun »{% if vs.echoue %}, {{ vs.echoue }} « échoue »{% endif %}">
+      <div class="barre barre--22 b-cap-{{ v[0] }}" role="img" aria-label="{{ v[1] }} : {{ c.byVertex[v[0]] }} capacités ({{ vs.marche }} « marche », {{ vs.repris }} « repris », {{ vs.aucun }} « aucun »{% if vs.echoue %}, {{ vs.echoue }} « échoue »{% endif %})">
         <span class="s-marche b-cap-{{ v[0] }}-marche"></span><span class="s-repris b-cap-{{ v[0] }}-repris"></span><span class="s-aucun b-cap-{{ v[0] }}-aucun"></span>{% if vs.echoue %}<span class="s-echoue b-cap-{{ v[0] }}-echoue"></span>{% endif %}
       </div>
       <span class="cap-ligne__compte">{{ c.byVertex[v[0]] }} · {{ g }} manque{% if g > 1 %}s{% endif %}</span>
@@ -208,7 +208,7 @@ jsonLdRaw: |
     {%- endfor %}
     {%- else %}
     {%- set fr = koraGuideFr.revisions[derniereRev.date] %}
-    <div><span class="addendum__ou">Révision</span>{% if fr %}<p><b>{{ derniereRev.date | dateFr }}</b> — {{ fr }}</p>{% else %}<p><b>{{ derniereRev.date | dateFr }}</b> — <span lang="en">{{ derniereRev.texte }}</span> <em>(en anglais dans le guide)</em></p>{% endif %}</div>
+    <div><span class="addendum__ou">Révision</span>{% if fr %}<p><b>{{ derniereRev.date | dateFr }}</b> : {{ fr }}</p>{% else %}<p><b>{{ derniereRev.date | dateFr }}</b> : <span lang="en">{{ derniereRev.texte }}</span> <em>(en anglais dans le guide)</em></p>{% endif %}</div>
     {%- endif %}
   </div>
 </section>

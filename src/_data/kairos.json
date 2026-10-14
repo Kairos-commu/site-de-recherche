@@ -59,7 +59,7 @@
   "highlights": [
     {
       "title": "Mode Gardien",
-      "desc": "Filet cognitif : observe les patterns à risque dans les échanges, tient un journal, cite les vignettes concernées. Un filet, pas un contrôle."
+      "desc": "Filet cognitif : observe les patterns à risque dans les échanges, tient un journal, cite les vignettes concernées. Il ne contrôle rien."
     },
     {
       "title": "Companion",
@@ -102,9 +102,9 @@
       { "label": "Réseau", "value": "Connexion internet" }
     ],
     "notes": [
-      "Pas besoin de droits administrateur — Linux : AppImage portable ; Windows : installé dans %LOCALAPPDATA%",
-      "Base de données SQLite embarquée — rien à installer",
-      "Clé API LLM (détection automatique du fournisseur) ou Ollama en local — pas de compte KAIROS",
+      "Pas besoin de droits administrateur (Linux : AppImage portable ; Windows : installé dans %LOCALAPPDATA%)",
+      "Base de données SQLite embarquée, rien à installer",
+      "Clé API LLM (détection automatique du fournisseur) ou Ollama en local, sans compte KAIROS",
       "macOS à venir"
     ],
     "ollama": {
@@ -120,10 +120,10 @@
         { "label": "Sans GPU dédié", "value": "16 Go de RAM système au minimum" }
       ],
       "disk": [
-        "~9 Go — qwen3:14b (prioritaire)",
-        "~5 Go — qwen3:8b",
-        "~3 Go — gemma3:4b",
-        "En plus des ~500 Mo de l'application — les modèles se téléchargent séparément via Ollama"
+        "qwen3:14b (prioritaire) : ~9 Go",
+        "qwen3:8b : ~5 Go",
+        "gemma3:4b : ~3 Go",
+        "En plus des ~500 Mo de l'application : les modèles se téléchargent séparément via Ollama"
       ]
     }
   }

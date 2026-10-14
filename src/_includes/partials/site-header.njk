@@ -13,7 +13,7 @@
   <div class="site-header__inner">
     <div class="site-header__left">
       <a href="/index.html" class="site-header__logo">florent<span>.</span>klimacek</a>
-      <a href="/etat-kora.html" class="kora-chip" aria-label="État de Kora — {{ koraHumeur | default('au repos') }}">
+      <a href="/etat-kora.html" class="kora-chip" aria-label="État de Kora : {{ koraHumeur | default('au repos') }}">
         <canvas data-orb="1" data-r=".3" data-bg="false" data-stars="false" data-orbits="false" data-count="320" aria-hidden="true"></canvas>
         <span>Kora · {{ koraHumeur | default("au repos") }}</span>
       </a>

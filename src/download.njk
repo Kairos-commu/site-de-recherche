@@ -2,15 +2,15 @@
 layout: layouts/page.njk
 pageTitle: "Télécharger KAIROS — Florent Klimacek"
 description: "KAIROS, application de cartographie cognitive assistée par IA. Téléchargement de la prochaine bêta temporairement indisponible."
-ogTitle: "Télécharger KAIROS — Cartographie cognitive"
-ogDescription: "KAIROS, application de cartographie cognitive assistée par IA. Téléchargement temporairement indisponible — prochaine bêta en finalisation."
+ogTitle: "Télécharger KAIROS : cartographie cognitive"
+ogDescription: "KAIROS, application de cartographie cognitive assistée par IA. Téléchargement temporairement indisponible. Prochaine bêta en finalisation."
 ogUrl: "/download.html"
 canonical: "/download.html"
 siteNavPrefix: "/index.html"
 activeNav: download
 seuilEnPage: true
 permalink: /download.html
-koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application sœur de la mienne. Moi, je ne me télécharge pas encore."
+koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS, l'application sœur de la mienne. Moi, je ne me télécharge pas encore."
 ---
 
 <style>
@@ -101,12 +101,12 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
      d'installation et de configuration qui suivent sont celles d'avant. -->
 <div class="obs obs-page">
   <section class="page-hero page-hero--kairos">
-    <img class="page-hero__img" src="/images/kairos-canvas.webp" alt="KAIROS — canvas de vignettes connectées" loading="eager">
+    <img class="page-hero__img" src="/images/kairos-canvas.webp" alt="KAIROS : canvas de vignettes connectées" loading="eager">
     <div class="page-hero__voile" aria-hidden="true"></div>
     <div class="page-hero__bas page-hero__bas--large">
       <aside class="kora-seuil kora-seuil--voile" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p>{{ koraSeuil }}</p></div></aside>
       <h1 class="page-hero__kairos">KAIROS{% if kairos.downloadsAvailable %} <span>v{{ kairos.version }}</span>{% endif %}</h1>
-      <p class="page-hero__sous">{{ kairos.tagline }}{% if kairos.downloadsAvailable %} — Version {{ kairos.channel }}{% endif %}</p>
+      <p class="page-hero__sous">{{ kairos.tagline }}{% if kairos.downloadsAvailable %} · Version {{ kairos.channel }}{% endif %}</p>
     </div>
   </section>
 
@@ -363,7 +363,7 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Minimum</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
           {%- for row in kairos.requirements.minimum %}
-          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          <li><strong>{{ row.label }}</strong> : {{ row.value }}</li>
           {%- endfor %}
         </ul>
       </div>
@@ -372,7 +372,7 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md); color: var(--accent);">Recommandé</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
           {%- for row in kairos.requirements.recommended %}
-          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          <li><strong>{{ row.label }}</strong> : {{ row.value }}</li>
           {%- endfor %}
         </ul>
       </div>
@@ -401,7 +401,7 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md);">Minimum (CPU, sans GPU dédié)</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
           {%- for row in kairos.requirements.ollama.minimum %}
-          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          <li><strong>{{ row.label }}</strong> : {{ row.value }}</li>
           {%- endfor %}
         </ul>
       </div>
@@ -410,7 +410,7 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS — l'application s�
         <h3 class="card__title" style="font-size: 1rem; margin-bottom: var(--space-md); color: var(--accent);">Recommandé (avec GPU)</h3>
         <ul style="list-style: none; font-size: 0.9rem; line-height: 2; color: var(--text-secondary);">
           {%- for row in kairos.requirements.ollama.recommended %}
-          <li><strong>{{ row.label }}</strong> &mdash; {{ row.value }}</li>
+          <li><strong>{{ row.label }}</strong> : {{ row.value }}</li>
           {%- endfor %}
         </ul>
       </div>

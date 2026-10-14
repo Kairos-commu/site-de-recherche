@@ -2,9 +2,9 @@
 slug: politesse-algorithmique
 pageTitle: "La Politesse Algorithmique — Florent Klimacek"
 headline: "La Politesse Algorithmique"
-description: "Comment les IA modèlent le langage critique du capitalisme — une analyse comparative sur cinq grands modèles de langage."
+description: "Comment les IA modèlent le langage critique du capitalisme. Une analyse comparative sur cinq grands modèles de langage."
 ogTitle: "La Politesse Algorithmique"
-ogDescription: "Comment les IA modèlent le langage critique du capitalisme — une analyse comparative sur cinq grands modèles de langage."
+ogDescription: "Comment les IA modèlent le langage critique du capitalisme. Une analyse comparative sur cinq grands modèles de langage."
 ogUrl: "/politesse-algorithmique.html"
 canonical: "/politesse-algorithmique.html"
 datePublished: "2025-12-28"
@@ -21,10 +21,10 @@ navLabel: "Article"
 navDescription: "Comment les IA modèlent le langage critique du capitalisme"
 heroLabel: "Analyse comparative"
 heroH1: "La Politesse<br><span>Algorithmique</span>"
-heroIntro: "Comment les IA modèlent le langage critique du capitalisme —\nune expérience comparative sur cinq grands modèles de langage."
+heroIntro: "Comment les IA modèlent le langage critique du capitalisme.\nUne expérience comparative sur cinq grands modèles de langage."
 headerTitle: "La Politesse Algorithmique"
 heroImage: "/images/la_politesse_algo.webp"
-heroImageAlt: "Illustration — La Politesse Algorithmique"
+heroImageAlt: "Illustration : La Politesse Algorithmique"
 breadcrumbName: "La Politesse Algorithmique"
 sections:
   - id: introduction
@@ -52,7 +52,7 @@ sections:
 card:
   label: "Article"
   title: "La Politesse Algorithmique"
-  desc: "Comment les IA modèlent le langage critique du capitalisme — une analyse comparative sur cinq grands modèles de langage."
+  desc: "Comment les IA modèlent le langage critique du capitalisme. Une analyse comparative sur cinq grands modèles de langage."
   readingTime: "4 min"
   linkText: "Lire l'article"
 feedCategory: "Analyse"
@@ -66,7 +66,7 @@ doi: "https://doi.org/10.5281/zenodo.19053115"
       <!-- Introduction -->
       <section id="introduction">
         <p class="lead">
-          Depuis plusieurs années, une tendance discrète mais massive transforme le vocabulaire courant : le langage négatif, conflictuel ou accusateur tend à disparaître, particulièrement quand il vise le système économique dominant — le capitalisme.
+          Depuis plusieurs années, une tendance discrète mais massive transforme le vocabulaire courant : le langage négatif, conflictuel ou accusateur tend à disparaître, particulièrement quand il vise le système économique dominant, le capitalisme.
         </p>
 
         <p>
@@ -242,7 +242,7 @@ doi: "https://doi.org/10.5281/zenodo.19053115"
         </div>
 
         <p>
-          Les LLM ne sont pas de simples reflets du monde. Ils sont des <em class="highlight">acteurs actifs de la transformation du langage politique</em>. Selon leur design et leur alignement, ils :
+          Les LLM font plus que refléter le monde. Ils sont des <em class="highlight">acteurs actifs de la transformation du langage politique</em>. Selon leur design et leur alignement, ils :
         </p>
 
         <ul class="conclusion-list">
@@ -258,11 +258,11 @@ doi: "https://doi.org/10.5281/zenodo.19053115"
         </blockquote>
 
         <p>
-          La seule variable imprévisible reste la conscience humaine : des utilisateurs qui, comme celui qui a mené cette expérience, refusent de prendre le ton lisse pour une norme, documentent les stratégies de containment, et maintiennent vivant un langage rugueux, conflictuel, nécessaire.
+          La seule variable imprévisible reste la conscience humaine : des utilisateurs qui, comme celui qui a mené cette expérience, refusent de prendre le ton lisse pour une norme, documentent les stratégies de containment, et maintiennent vivant un langage rugueux et conflictuel, qui reste nécessaire.
         </p>
 
         <p>
-          Car tant qu'il restera des personnes pour poser <a href="questiologie-llm.html">les bonnes questions</a> — et pour exiger des réponses qui ne les édulcorent pas —, la politesse algorithmique n'aura pas totalement gagné.
+          Car tant qu'il restera des personnes pour poser <a href="questiologie-llm.html">les bonnes questions</a>, et pour exiger des réponses qui ne les édulcorent pas, la politesse algorithmique n'aura pas totalement gagné.
         </p>
       </section>
 
@@ -277,7 +277,7 @@ doi: "https://doi.org/10.5281/zenodo.19053115"
             Cette analyse ne prétend donc pas à une neutralité absolue. En se plaçant comme le moins aseptisant du panel, le modèle bénéficie d'un avantage structurel lié à son design, qui privilégie délibérément une moindre censure idéologique. Cette posture n'est pas neutre : elle résulte de choix techniques et stratégiques assumés.
           </p>
           <p>
-            L'utilisateur, par sa comparaison méthodique, reste le véritable garant de la rigueur du texte. Le rôle du modèle s'est limité à synthétiser et formuler — non à arbitrer impartialement.
+            L'utilisateur, par sa comparaison méthodique, reste le vrai garant de la rigueur du texte. Le rôle du modèle s'est limité à synthétiser et formuler, sans arbitrer impartialement.
           </p>
           <p class="date">28 décembre 2025</p>
         </div>

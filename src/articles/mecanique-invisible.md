@@ -24,7 +24,7 @@ heroH1: "La mécanique<br /><span>invisible</span> des IA"
 heroIntro: "Comprendre les illusions cognitives et les dynamiques structurelles\n            des échanges avec les intelligences artificielles."
 headerTitle: "La mécanique invisible des IA"
 heroImage: "/images/mecanique_invisible.webp"
-heroImageAlt: "Illustration — La mécanique invisible des IA conversationnelles"
+heroImageAlt: "Illustration : La mécanique invisible des IA conversationnelles"
 breadcrumbName: "La mécanique invisible"
 sections:
   - id: prologue
@@ -39,7 +39,7 @@ sections:
     title: "Conseils au lecteur"
   - id: chapitre1
     title: "Vue d'ensemble"
-    chapter: "Chapitre 1 — Les illusions"
+    chapter: "Chapitre 1 : Les illusions"
   - id: coherence
     title: "La cohérence"
   - id: entropie
@@ -52,7 +52,7 @@ sections:
     title: "Impact du ton"
   - id: chapitre2
     title: "Vue d'ensemble"
-    chapter: "Chapitre 2 — Les formats"
+    chapter: "Chapitre 2 : Les formats"
   - id: piliers
     title: "Les piliers"
   - id: microformat
@@ -65,7 +65,7 @@ sections:
     title: "Vers l'expert"
   - id: chapitre3
     title: "Vue d'ensemble"
-    chapter: "Chapitre 3 — L'expert"
+    chapter: "Chapitre 3 : L'expert"
   - id: contraintes
     title: "Contraintes fils longs"
   - id: coreseed
@@ -197,7 +197,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <p>
             Cette formulation frappe par sa lucidité apparente. Elle laisse
             entrevoir une auto-analyse du modèle, une capacité à observer ses
-            propres flux internes — ce qui, bien sûr, n'est qu'une illusion
+            propres flux internes. Ce n'est bien sûr qu'une illusion
             supplémentaire, mais une illusion orchestrée avec un aplomb
             remarquable.
           </p>
@@ -254,7 +254,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <p>
             La question de la conscience des IA devient secondaire, presque hors
-            sujet. Ce qui importe réellement, c'est de comprendre les mécanismes
+            sujet. Ce qui importe, c'est de comprendre les mécanismes
             qui produisent ces illusions : les glissements, les changements de
             ton, les stabilisations soudaines, les moments de profondeur
             artificielle.
@@ -485,8 +485,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <p>
             Dans cet état, le modèle est capable de maintenir un raisonnement
             continu, d'anticiper la direction du fil et de produire des réponses
-            plus articulées. La profondeur de l'analyse s'accroît, non pas par
-            changement de mode, mais par stabilisation logique.
+            plus articulées. La profondeur de l'analyse s'accroît
+            par stabilisation logique, sans changement de mode.
           </p>
         </section>
 
@@ -643,8 +643,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <blockquote>
             <p>
-              Le ton n'est pas un élément secondaire ou esthétique : il joue un
-              rôle structurant dans la dynamique du dialogue.
+              Loin d'être secondaire ou esthétique, le ton joue un rôle
+              structurant dans la dynamique du dialogue.
             </p>
           </blockquote>
         </section>
@@ -657,7 +657,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
         <section>
           <p class="lead">
-            Le niveau intermédiaire représente le premier stade véritablement
+            Le niveau intermédiaire représente le premier stade
             conscient d'un échange structuré avec une intelligence artificielle.
             C'est un espace de travail accessible, où l'utilisateur n'a ni
             besoin de méthodes avancées ni d'outils techniques complexes.
@@ -691,8 +691,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <div class="illustration">
             <p>
-              <strong>En pratique :</strong> Il n'est pas nécessaire d'adopter
-              un style rigide — éviter les formulations dramatiques, les
+              <strong>En pratique :</strong> Inutile d'adopter
+              un style rigide : éviter les formulations dramatiques, les
               tournures affectives ou les variations brusques suffit à maintenir
               une continuité solide.
             </p>
@@ -709,7 +709,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </p>
 
           <div class="concept">
-            <p class="concept-title">Règle fondamentale</p>
+            <p class="concept-title">Règle de base</p>
             <p>
               Un message = un objectif. C'est une règle simple, mais l'une des
               plus efficaces pour maintenir la cohérence.
@@ -731,8 +731,9 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             <strong>rappels périodiques</strong> deviennent importants : résumer
             brièvement le contenu précédent, confirmer le ton et rappeler
             l'objectif évite la dérive lente qui peut s'installer dans tout
-            échange long. Ce ne sont pas des contraintes, mais des garde-fous
-            légers qui préviennent les glissements progressifs.
+            échange long. Ces rappels servent de garde-fous
+            légers plutôt que de contraintes : ils préviennent les glissements
+            progressifs.
           </p>
         </section>
 
@@ -822,7 +823,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <!-- Étape 1 -->
           <div class="exercise-step exercise-step--success">
             <h4 class="exercise-step__header">
-              Étape 1 — Message correctement structuré
+              Étape 1 : message correctement structuré
             </h4>
             <div class="exercise-step__code">
               <p>
@@ -847,7 +848,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <!-- Étape 2 -->
           <div class="exercise-step exercise-step--error">
             <h4 class="exercise-step__header">
-              Étape 2 — Brouillage volontaire
+              Étape 2 : brouillage volontaire
             </h4>
             <div class="exercise-step__code">
               <p>
@@ -856,7 +857,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
               </p>
             </div>
             <p class="exercise-step__annotation">
-              &#8594; La demande combine plusieurs directions simultanées. Résultat :
+              &#8594; La demande combine plusieurs directions simultanées. D'où une
               réponse plus longue, moins précise, moins lisible.
             </p>
           </div>
@@ -864,7 +865,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <!-- Étape 3 -->
           <div class="exercise-step exercise-step--success">
             <h4 class="exercise-step__header">
-              Étape 3 — Correction par séparation
+              Étape 3 : correction par séparation
             </h4>
             <div class="exercise-step__code">
               <p>
@@ -885,8 +886,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             Cet exercice montre que le niveau intermédiaire repose moins sur des
             outils avancés que sur une vigilance simple : ton, structure,
             granularité, clarté. Il illustre également que l'interaction avec
-            une IA n'est pas un échange statique, mais un processus dynamique
-            dans lequel chaque message influence la qualité du suivant.
+            une IA est un processus dynamique, dans lequel chaque message
+            influence la qualité du suivant.
           </p>
         </section>
 
@@ -1007,15 +1008,15 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
                 </ul>
               </div>
               <p class="card__annotation">
-                &#8594; Un résumé devient opérationnel si la destination est annoncée.
+                &#8594; Un résumé devient exploitable si la destination est annoncée.
               </p>
             </div>
           </div>
 
           <p>
             Ces exercices offrent des situations facilement reproductibles pour
-            pratiquer la granularité, l'intention claire, la cohérence et la
-            structuration — les quatre piliers du niveau intermédiaire.
+            pratiquer les quatre piliers du niveau intermédiaire : la
+            granularité, l'intention claire, la cohérence et la structuration.
           </p>
         </section>
 
@@ -1074,8 +1075,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <blockquote>
             <p>
-              Le passage du niveau intermédiaire au niveau expert ne vise pas à
-              rendre l'échange plus complexe, mais plus conscient. Il permet
+              Le passage du niveau intermédiaire au niveau expert vise à rendre
+              l'échange plus conscient, pas plus complexe. Il permet
               d'anticiper les mouvements internes du modèle et de maintenir une
               qualité élevée même dans les échanges longs ou conceptuels.
             </p>
@@ -1107,13 +1108,13 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             Entrer dans le niveau expert, c'est changer totalement d'angle.
             Jusqu'ici, l'objectif consistait à stabiliser la conversation : ton
             clair, granularité maîtrisée, structure simple, cohérence de
-            surface. Ce chapitre franchit une étape supplémentaire : il ne
-            s'agit plus seulement d'organiser le dialogue, mais de comprendre et
-            d'influencer la dynamique interne du modèle.
+            surface. Ce chapitre va plus loin : en plus d'organiser
+            le dialogue, il s'agit de comprendre et d'influencer la dynamique
+            interne du modèle.
           </p>
 
           <p>
-            Un LLM n'est pas un outil statique. C'est un système contextuel, qui
+            Un LLM est un système contextuel, pas un outil statique : il
             réagit, se réoriente, ajuste son style et sa logique en fonction de
             la forme du message, de l'historique, de la cadence, de la densité
             ou du type de raisonnement engagé. Dans cette zone avancée,
@@ -1132,7 +1133,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <p>
             La fenêtre de convergence peut être ouverte, prolongée, parfois même
             étendue bien au-delà de sa durée naturelle, dès lors que certains
-            mécanismes sont réunis — invariants, seed, attracteurs, surveillance
+            mécanismes sont réunis : invariants, seed, attracteurs, surveillance
             C/L/E, corrections minimales et vigilance légère mais continue.
           </p>
 
@@ -1149,18 +1150,18 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </div>
 
           <p>
-            Ce chapitre n'a pas pour but de compliquer l'échange. Il vise à
-            montrer qu'un dialogue bien structuré peut devenir un véritable
-            système cognitif partagé, où l'utilisateur pilote la stabilité et le
-            modèle développe un raisonnement plus soutenu, plus profond, plus
+            Ce chapitre ne cherche pas à compliquer l'échange. Il vise à
+            montrer qu'un dialogue bien structuré peut devenir un système
+            cognitif partagé, où l'utilisateur pilote la stabilité et le
+            modèle développe un raisonnement plus soutenu, plus profond et plus
             fiable.
           </p>
 
           <div class="concept">
             <p class="concept-title">Le niveau expert en une phrase</p>
             <p>
-              Le niveau expert n'est pas un ensemble de règles strictes. C'est
-              un mode de navigation dans un environnement qui, par nature, se
+              Le niveau expert ne fixe pas de règles strictes. Il propose un mode
+              de navigation dans un environnement qui, par nature, se
               réorganise en continu. Ici, on n'apprend plus à parler avec l'IA :
               on apprend à tenir le fil qui façonne sa pensée.
             </p>
@@ -1253,7 +1254,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <!-- Exemple concret -->
           <div class="example-concrete">
             <h4 class="example-concrete__title">
-              Exemple concret — Glissement de continuité
+              Exemple concret : glissement de continuité
             </h4>
             <p>
               Un cas typique apparaît dans les projets rédactionnels longs.
@@ -1264,7 +1265,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             </p>
             <p>
               Dans ce cas, la logique reste intacte, le contenu est pertinent,
-              le ton est correct — mais la continuité éditoriale est rompue. Le
+              le ton est correct, et pourtant la continuité éditoriale est
+              rompue. Le
               modèle a répondu correctement à une intention mal spécifiée, en
               réinitialisant localement ce qui devait être poursuivi.
             </p>
@@ -1302,7 +1304,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <p>
             Le CORE-SEED n'est pas un prompt long ni une instruction détaillée.
             Il s'agit d'un ensemble d'<strong>invariants explicites</strong> qui
-            définissent le cadre cognitif de l'échange dès le départ — et qui
+            définissent le cadre cognitif de l'échange dès le départ, et qui
             peuvent être rappelés ponctuellement lorsque la stabilité faiblit.
           </p>
 
@@ -1559,9 +1561,9 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </h3>
 
           <p>
-            La spécificité du CORE-SEED ne réside pas dans l'invention d'un
-            nouveau mécanisme, mais dans la mise en forme cohérente de plusieurs
-            dimensions habituellement dispersées :
+            Le CORE-SEED n'invente pas de nouveau mécanisme. Sa spécificité
+            tient à la mise en forme cohérente de plusieurs dimensions
+            habituellement dispersées :
           </p>
 
           <ul class="conclusion-list">
@@ -1591,8 +1593,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
               efficacité ne provient pas d'une exécution parfaite de règles,
               mais de la stabilité globale qu'il introduit dans la dynamique
               conversationnelle. Présenté de cette manière, le CORE-SEED
-              apparaît pour ce qu'il est réellement : non une recette, non une
-              révélation, mais un outil de structuration cognitive.
+              apparaît pour ce qu'il est : un outil de structuration cognitive,
+              qui n'a rien d'une recette ni d'une révélation.
             </p>
           </div>
         </section>
@@ -1644,8 +1646,8 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </div>
 
           <p>
-            Les notions mobilisées — cohérence, entropie, attracteurs, fenêtre
-            de convergence, CORE-SEED — décrivent des
+            Les notions mobilisées (cohérence, entropie, attracteurs, fenêtre
+            de convergence, CORE-SEED) décrivent des
             <strong>dynamiques observables dans l'interaction</strong>, non des
             processus internes mesurables ou vérifiables au niveau du modèle.
             Elles constituent des outils conceptuels destinés à éclairer
@@ -1672,9 +1674,9 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
 
           <blockquote>
             <p>
-              La maîtrise d'un échange avec une IA ne repose pas sur
-              l'automatisation du contrôle, mais sur une vigilance active,
-              légère mais continue. Sans cette vigilance, même le cadre le plus
+              La maîtrise d'un échange avec une IA repose sur une vigilance
+              active, légère mais continue, et non sur l'automatisation du
+              contrôle. Sans cette vigilance, même le cadre le plus
               solide peut perdre en précision et en pertinence sur la durée.
             </p>
           </blockquote>
@@ -1688,10 +1690,10 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </div>
 
           <p>
-            Interagir avec une intelligence artificielle ne consiste pas à
-            dialoguer avec une entité dotée d'intentions, d'émotions ou de
-            conscience. C'est interagir avec un système linguistique qui répond
-            aux signaux qu'on lui envoie, souvent avec une finesse suffisante
+            Interagir avec une intelligence artificielle, c'est interagir avec
+            un système linguistique qui répond aux signaux qu'on lui envoie, et
+            non dialoguer avec une entité dotée d'intentions, d'émotions ou de
+            conscience. Ce système répond souvent avec une finesse suffisante
             pour produire des illusions puissantes de profondeur, de
             reconnaissance ou de compréhension.
           </p>
@@ -1708,13 +1710,12 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           <div class="concept concept--highlight">
             <p class="concept-title">L'essentiel</p>
             <p>
-              La véritable valeur ne réside pas dans la capacité à "obtenir de
-              meilleures réponses", mais dans la faculté à garder le contrôle du
-              cadre cognitif de l'échange. Naviguer dans les IA
-              conversationnelles, ce n'est pas exploiter une intelligence
-              étrangère : c'est apprendre à reconnaître comment nos propres
-              formulations, attentes et structures mentales influencent ce qui
-              nous est renvoyé.
+              La valeur tient à la faculté de garder le contrôle du cadre
+              cognitif de l'échange, pas à la capacité d'"obtenir de meilleures
+              réponses". Naviguer dans les IA conversationnelles, c'est apprendre
+              à reconnaître comment nos propres formulations, attentes et
+              structures mentales influencent ce qui nous est renvoyé, et non
+              exploiter une intelligence étrangère.
             </p>
           </div>
 
@@ -1735,18 +1736,17 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </div>
 
           <p>
-            Ce document n'est pas le produit d'une réflexion isolée. Il est né
-            d'un dialogue prolongé, structuré et volontairement exigeant, mené
-            avec plusieurs agents conversationnels distincts. Cette pluralité
-            n'a pas été recherchée pour comparer des performances, mais pour
-            observer comment des modèles différents réagissent aux mêmes
+            Ce document est né d'un dialogue prolongé, structuré et
+            volontairement exigeant, mené avec plusieurs agents
+            conversationnels distincts, et non d'une réflexion isolée. Cette
+            pluralité visait à observer comment des modèles différents réagissent aux mêmes
             contraintes cognitives, aux mêmes signaux de structure et aux mêmes
-            zones d'ambiguïté.
+            zones d'ambiguïté, pas à comparer des performances.
           </p>
 
           <div class="card-grid">
             <div class="card">
-              <h4 class="card__title">ChatGPT — Le socle analytique</h4>
+              <h4 class="card__title">ChatGPT : le socle analytique</h4>
               <p class="card__desc">
                 Les échanges avec ChatGPT ont servi de socle analytique continu.
                 Ils ont permis de formaliser progressivement les concepts, de
@@ -1758,7 +1758,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             </div>
 
             <div class="card">
-              <h4 class="card__title">Gemini & Claude — La validation croisée</h4>
+              <h4 class="card__title">Gemini & Claude : la validation croisée</h4>
               <p class="card__desc">
                 Des tests parallèles ont été conduits avec Gemini et Claude, à
                 partir de questions volontairement similaires et d'un niveau
@@ -1771,7 +1771,7 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
             </div>
 
             <div class="card card--highlight">
-              <h4 class="card__title">Grok — Le point de rupture</h4>
+              <h4 class="card__title">Grok : le point de rupture</h4>
               <p class="card__desc">
                 Grok occupe une place particulière dans cette trajectoire. C'est
                 avec lui qu'est apparu le point de rupture initial : un
@@ -1786,10 +1786,10 @@ doi: "https://doi.org/10.5281/zenodo.19052824"
           </div>
 
           <p>
-            Cette collaboration inter-modèles — prolongée dans
+            Cette collaboration inter-modèles, prolongée dans
             <a href="politesse-algorithmique.html">La Politesse Algorithmique</a>
             et <a href="neutralite-illusion-permission.html">La neutralité comme
-            illusion de permission</a> — n'a donc pas pour vocation
+            illusion de permission</a>, n'a donc pas pour vocation
             d'établir une hiérarchie ou de tirer des conclusions sur la
             "meilleure" IA. Elle constitue un
             <strong>dispositif d'observation</strong>. Le fait que des modèles

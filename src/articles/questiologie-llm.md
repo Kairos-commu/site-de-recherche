@@ -2,9 +2,9 @@
 slug: questiologie-llm
 pageTitle: "Questiologie et LLM — Florent Klimacek"
 headline: "Questiologie et LLM"
-description: "Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT — six types de questions analysés."
+description: "Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT, sur six types de questions."
 ogTitle: "Questiologie et LLM"
-ogDescription: "Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT — six types de questions analysés."
+ogDescription: "Étude comparative de l'influence des postures questiologiques sur les réponses de Claude et ChatGPT, sur six types de questions."
 ogUrl: "/questiologie-llm.html"
 canonical: "/questiologie-llm.html"
 datePublished: "2026-01-20"
@@ -22,10 +22,10 @@ navLabel: "Étude"
 navDescription: "Influence des postures questiologiques sur les réponses des LLM"
 heroLabel: "Analyse comparative empirique"
 heroH1: "Influence des postures <span>questiologiques</span> sur les LLM"
-heroIntro: "Comment la formulation d'une question oriente la génération —\nune étude comparative entre Claude et ChatGPT."
+heroIntro: "Comment la formulation d'une question oriente la génération :\nune étude comparative entre Claude et ChatGPT."
 headerTitle: "Questiologie et LLM"
 heroImage: "/images/Questiologie.webp"
-heroImageAlt: "Illustration — Questiologie et LLM"
+heroImageAlt: "Illustration : Questiologie et LLM"
 breadcrumbName: "Questiologie et LLM"
 sections:
   - id: introduction
@@ -43,7 +43,7 @@ sections:
 card:
   label: "Étude comparative"
   title: "Questiologie et LLM"
-  desc: "Influence des postures questiologiques sur les réponses des modèles — comparaison Claude vs ChatGPT sur six types de questions."
+  desc: "Influence des postures questiologiques sur les réponses des modèles : comparaison Claude vs ChatGPT sur six types de questions."
   readingTime: "3 min"
   linkText: "Lire l'article"
 feedCategory: "Analyse"
@@ -57,11 +57,11 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
       <!-- Introduction -->
       <section id="introduction">
         <p class="lead">
-          Les grands modèles de langage sont souvent interrogés comme des moteurs de recherche améliorés : on leur pose une question, ils fournissent une réponse. Cette approche ignore un phénomène que les praticiens expérimentés observent intuitivement : la manière de formuler une question influence profondément la nature de la réponse générée.
+          Les grands modèles de langage sont souvent interrogés comme des moteurs de recherche améliorés : on leur pose une question, ils fournissent une réponse. Cette approche ignore un phénomène que les praticiens expérimentés observent intuitivement : la manière de formuler une question influence beaucoup la nature de la réponse générée.
         </p>
 
         <p>
-          Non seulement son ton ou sa longueur, mais les contenus qu'elle mobilise, les angles qu'elle explore, les dimensions qu'elle ignore.
+          Cela ne touche pas seulement son ton ou sa longueur. Cela touche aussi les contenus qu'elle mobilise, les angles qu'elle explore et les dimensions qu'elle ignore.
         </p>
 
         <p>
@@ -71,7 +71,7 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         <div class="concept">
           <p class="concept-title">Hypothèse centrale</p>
           <p>
-            Les postures questiologiques s'appliquent également aux LLM. Si tel est le cas, la formulation d'une question ne serait pas un détail stylistique mais un <strong>levier d'orientation de la génération</strong> — un outil permettant d'activer différents « <a href="pensee-en-faisceau.html">faisceaux</a> » de contextes dans le modèle.
+            Les postures questiologiques s'appliquent également aux LLM. Si tel est le cas, la formulation d'une question serait un <strong>levier d'orientation de la génération</strong>, et pas un simple détail de style. Elle servirait à activer différents « <a href="pensee-en-faisceau.html">faisceaux</a> » de contextes dans le modèle.
           </p>
         </div>
       </section>
@@ -136,7 +136,7 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         </ul>
 
         <div class="key-insight">
-          <p>Cette différenciation n'est pas cosmétique — elle touche le <em>registre lexical</em>, la <em>structure argumentative</em> et le <em>type de contenus mobilisés</em>.</p>
+          <p>Cette différenciation dépasse le cosmétique. Elle touche le <em>registre lexical</em>, la <em>structure argumentative</em> et le <em>type de contenus mobilisés</em>.</p>
         </div>
       </section>
 
@@ -168,11 +168,11 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         </div>
 
         <p>
-          Sur le fond, Claude est plus phénoménologique, ChatGPT plus mécaniste — deux épistémologies différentes face aux mêmes questions. Cette divergence ne relève pas de la qualité mais du <em class="highlight">style cognitif</em>.
+          Sur le fond, Claude est plus phénoménologique, ChatGPT plus mécaniste. Ce sont deux épistémologies différentes face aux mêmes questions. Cette divergence relève du <em class="highlight">style cognitif</em>, pas de la qualité.
         </p>
 
         <p>
-          Elle suggère que le choix du modèle — une dimension explorée dans <a href="politesse-algorithmique.html">La Politesse Algorithmique</a> — combiné au choix de la posture, constitue un <strong>double levier d'orientation</strong>.
+          Elle suggère que le choix du modèle (une dimension explorée dans <a href="politesse-algorithmique.html">La Politesse Algorithmique</a>), combiné au choix de la posture, constitue un <strong>double levier d'orientation</strong>.
         </p>
       </section>
 
@@ -195,7 +195,7 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         </div>
 
         <p>
-          L'efficacité particulière des postures hybrides ouvre une piste pratique. La Questiologie, conçue pour l'humain, révèle ainsi une pertinence inattendue dans l'interaction avec les agents conversationnels.
+          L'efficacité particulière des postures hybrides ouvre une piste pratique. La Questiologie, conçue pour l'humain, se montre ainsi pertinente là où on ne l'attendait pas : l'interaction avec les agents conversationnels.
         </p>
       </section>
 
@@ -207,7 +207,7 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         </div>
 
         <p>
-          Cette étude démontre empiriquement que la formulation d'une question n'est pas neutre face aux LLM. Les postures questiologiques de Falisse — Action, Introspective, Réflexive, Recul — produisent des réponses structurellement différentes, tant dans leur forme que dans leur contenu.
+          Cette étude démontre empiriquement que la formulation d'une question n'est pas neutre face aux LLM. Les postures questiologiques de Falisse (Action, Introspective, Réflexive, Recul) produisent des réponses structurellement différentes, tant dans leur forme que dans leur contenu.
         </p>
 
         <p>
@@ -226,6 +226,6 @@ doi: "https://doi.org/10.5281/zenodo.19053370"
         </ul>
 
         <div class="key-insight">
-          <p>La question n'est plus seulement <em>quoi</em> demander,<br>mais <em>comment</em> le demander.</p>
+          <p>On choisit <em>quoi</em> demander,<br>mais aussi <em>comment</em> le demander.</p>
         </div>
       </section>

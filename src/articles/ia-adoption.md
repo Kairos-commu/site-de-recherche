@@ -2,9 +2,9 @@
 slug: ia-adoption
 pageTitle: "L'IA est partout. Sauf dans les mains des gens. — Florent Klimacek"
 headline: "L'IA est partout. Sauf dans les mains des gens."
-description: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle."
+description: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
 ogTitle: "L'IA est partout. Sauf dans les mains des gens."
-ogDescription: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle."
+ogDescription: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
 ogUrl: "/ia-adoption.html"
 canonical: "/ia-adoption.html"
 datePublished: "2026-02-24"
@@ -21,10 +21,10 @@ navLabel: "Analyse"
 navDescription: "L'adoption mondiale de l'IA derrière les chiffres"
 heroLabel: "Analyse"
 heroH1: "L'IA est partout.<br><span>Sauf dans les mains des gens.</span>"
-heroIntro: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle."
+heroIntro: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
 headerTitle: "L'IA est partout. Sauf dans les mains des gens."
 heroImage: "/images/ia_partout.webp"
-heroImageAlt: "Illustration — L'IA est partout"
+heroImageAlt: "Illustration : L'IA est partout"
 breadcrumbName: "L'IA est partout. Sauf dans les mains des gens."
 sections:
   - id: treize-pourcent
@@ -46,7 +46,7 @@ sections:
 card:
   label: "Analyse"
   title: "L'IA est partout. Sauf dans les mains des gens."
-  desc: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée — où le bruit du discours masque la lenteur de la transformation réelle."
+  desc: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
   readingTime: "10 min"
   linkText: "Lire l'article"
 feedCategory: "Analyse"
@@ -67,23 +67,23 @@ order: 0
         </p>
 
         <p>
-          <a href="https://datareportal.com/reports/digital-2026-one-billion-people-using-ai" target="_blank" rel="noopener">1,1 milliard d'utilisateurs actifs</a> dans le monde. Le chiffre impressionne — jusqu'à ce qu'on le divise par les 8,5 milliards d'internautes existants. 13%. Pas l'ubiquité. Pas même la norme. Une minorité.
+          <a href="https://datareportal.com/reports/digital-2026-one-billion-people-using-ai" target="_blank" rel="noopener">1,1 milliard d'utilisateurs actifs</a> dans le monde. Le chiffre impressionne, jusqu'à ce qu'on le divise par les 8,5 milliards d'internautes existants : 13%. On est loin de l'ubiquité, et même de la norme. C'est une minorité.
         </p>
 
         <p>
-          Et dans ces 13%, combien utilisent <em>vraiment</em> l'IA — pas le correcteur automatique, pas la suggestion Google, mais un outil choisi pour penser, produire, décider ? Personne ne publie ce chiffre. Probablement parce qu'il serait inconfortable.
+          Et dans ces 13%, combien utilisent <em>vraiment</em> l'IA ? Je ne parle pas du correcteur automatique ni de la suggestion Google, mais d'un outil choisi pour penser, produire, décider. Personne ne publie ce chiffre, probablement parce qu'il serait inconfortable.
         </p>
 
         <p>
-          Côté entreprises, le discours est plus saisissant encore : <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">94% auraient adopté l'IA</a>. Dans ce 94%, on compte le filtre spam, le chatbot service client, l'autocomplétion Excel. Quand McKinsey mesure les projets qui atteignent la production réelle — déployés, utilisés, pas juste démontrés — <a href="https://resourcera.com/data/artificial-intelligence/ai-statistics/" target="_blank" rel="noopener">le chiffre tombe à moins d'un tiers</a>.
+          Côté entreprises, le discours est plus saisissant encore : <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">94% auraient adopté l'IA</a>. Dans ce 94%, on compte le filtre spam, le chatbot service client, l'autocomplétion Excel. Quand McKinsey mesure les projets qui atteignent la production réelle (déployés et utilisés, pas juste démontrés), <a href="https://resourcera.com/data/artificial-intelligence/ai-statistics/" target="_blank" rel="noopener">le chiffre tombe à moins d'un tiers</a>.
         </p>
 
         <p>
-          Le bruit est réel. L'usage profond est marginal.
+          Le bruit est réel, mais l'usage profond est marginal.
         </p>
 
         <p>
-          Entre les deux, un écart que presque personne ne mesure. Parce que mesurer cet écart, ce serait admettre qu'on parle depuis deux ans d'une transformation qui n'a pas encore eu lieu.
+          Presque personne ne mesure l'écart entre les deux, parce que le mesurer, ce serait admettre qu'on parle depuis deux ans d'une transformation qui n'a pas encore eu lieu.
         </p>
       </section>
 
@@ -96,11 +96,11 @@ order: 0
 
       <section>
         <p>
-          Sam Altman annonce <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">800 millions d'utilisateurs hebdomadaires</a> en octobre 2025. La stat tourne en boucle — LinkedIn, keynotes, presse tech. Ce que personne ne mentionne : une infime minorité paie pour le service. Les estimations situent la part de payants dans le bas de la fourchette à un chiffre. Le reste utilise la version gratuite, sporadiquement, pour des tâches qu'on aurait confiées à Google.
+          Sam Altman annonce <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">800 millions d'utilisateurs hebdomadaires</a> en octobre 2025. La stat tourne en boucle sur LinkedIn, dans les keynotes et la presse tech. Ce que personne ne mentionne : une infime minorité paie pour le service. Les estimations situent la part de payants dans le bas de la fourchette à un chiffre. Le reste utilise la version gratuite, sporadiquement, pour des tâches qu'on aurait confiées à Google.
         </p>
 
         <p>
-          Ce n'est pas une critique. C'est une mesure.
+          Je le relève comme une mesure, sans critique.
         </p>
 
         <p>
@@ -108,7 +108,7 @@ order: 0
         </p>
 
         <p>
-          Ce qui se passe au sol : le <a href="https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/" target="_blank" rel="noopener">sentiment positif envers l'IA chez les développeurs</a> — ceux qui l'utilisent quotidiennement, professionnellement — est passé de 70% à 60% entre 2023 et 2025. Pendant que le discours accélérait, les praticiens freinaient.
+          Ce qui se passe au sol : le <a href="https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/" target="_blank" rel="noopener">sentiment positif envers l'IA chez les développeurs</a>, chez ceux qui l'utilisent tous les jours pour leur travail, est passé de 70% à 60% entre 2023 et 2025. Pendant que le discours accélérait, les praticiens freinaient.
         </p>
 
         <!-- Stat Shift: developer sentiment -->
@@ -126,11 +126,11 @@ order: 0
         </div>
 
         <p>
-          Ce n'est pas une contradiction. C'est le signal.
+          Ce décalage n'a rien d'une contradiction : il est le signal.
         </p>
 
         <p>
-          Le discours court toujours en avance sur la pratique. C'est vrai de toute technologie émergente. Mais rarement avec un tel écart. Et rarement entretenu aussi délibérément. L'IA est devenue un actif narratif avant d'être un actif opérationnel. Tant que les deux se confondent, il est impossible de voir ce qui se construit vraiment.
+          Le discours court toujours en avance sur la pratique. C'est vrai de toute technologie émergente. Mais rarement avec un tel écart, et rarement entretenu aussi délibérément. L'IA est devenue un actif narratif avant d'être un actif opérationnel. Tant que les deux se confondent, il est impossible de voir ce qui se construit vraiment.
         </p>
       </section>
 
@@ -138,16 +138,16 @@ order: 0
       <div class="chapter-divider" id="adoption-fantome">
         <p class="label">Enterprise</p>
         <h2>L'adoption fantôme</h2>
-        <p class="subtitle">Les entreprises ont bougé vite. C'est documenté, pas contestable.</p>
+        <p class="subtitle">Les entreprises ont bougé vite, c'est documenté et incontestable.</p>
       </div>
 
       <section>
         <p>
-          <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">78% des organisations mondiales</a> utilisent l'IA dans au moins une fonction. Les cabinets de conseil publient ce chiffre avec satisfaction, comme preuve que la transformation est en marche. Elle l'est — mais à un étage de l'immeuble que peu de gens habitent.
+          <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">78% des organisations mondiales</a> utilisent l'IA dans au moins une fonction. Les cabinets de conseil publient ce chiffre avec satisfaction, comme preuve que la transformation est en marche. Elle l'est, mais à un étage de l'immeuble que peu de gens habitent.
         </p>
 
         <p>
-          Le même McKinsey qui mesure l'adoption à 78% mesure autre chose dans le même rapport : <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">moins de 10% des organisations ont réussi à déployer l'IA</a> au-delà d'une fonction isolée. Blue Prism, dans son enquête globale 2025 : <a href="https://www.blueprism.com/resources/blog/ai-agentic-agents-survey-statistics/" target="_blank" rel="noopener">69% des projets IA ne quittent jamais la phase pilote</a>. Testés, démontrés, applaudis en interne. Puis abandonnés quand personne ne regarde.
+          Le même McKinsey qui mesure l'adoption à 78% mesure autre chose dans le même rapport : <a href="https://www.wearetenet.com/blog/ai-usage-statistics" target="_blank" rel="noopener">moins de 10% des organisations ont réussi à déployer l'IA</a> au-delà d'une fonction isolée. Blue Prism, dans son enquête globale 2025 : <a href="https://www.blueprism.com/resources/blog/ai-agentic-agents-survey-statistics/" target="_blank" rel="noopener">69% des projets IA ne quittent jamais la phase pilote</a>. Ils sont testés, démontrés et applaudis en interne, puis abandonnés quand personne ne regarde.
         </p>
 
         <!-- Gap Chart: enterprise adoption -->
@@ -193,19 +193,19 @@ order: 0
         </div>
 
         <p>
-          De loin, une lame de fond. De près, un couloir étroit où beaucoup entrent et peu traversent.
+          De loin, on croit voir une lame de fond. De près, c'est un couloir étroit où beaucoup entrent et peu traversent.
         </p>
 
         <p>
-          Le blocage n'est pas technique. Les outils existent, les APIs sont là, les modèles sont capables. Le blocage est dans la confiance : <a href="https://www.blueprism.com/resources/blog/ai-agentic-agents-survey-statistics/" target="_blank" rel="noopener">78% des organisations déclarent ne pas faire entièrement confiance</a> aux systèmes agentiques qu'elles déploient. Elles utilisent des outils auxquels elles ne font pas confiance, sur des processus qu'elles ne veulent pas déléguer, dans des organisations qui n'ont pas encore décidé ce que ça change au travail des gens.
+          Techniquement, rien ne bloque : les outils existent, les APIs sont là, les modèles sont capables. Le blocage tient à la confiance : <a href="https://www.blueprism.com/resources/blog/ai-agentic-agents-survey-statistics/" target="_blank" rel="noopener">78% des organisations déclarent ne pas faire entièrement confiance</a> aux systèmes agentiques qu'elles déploient. Elles utilisent des outils auxquels elles ne font pas confiance, sur des processus qu'elles ne veulent pas déléguer, dans des organisations qui n'ont pas encore décidé ce que ça change au travail des gens.
         </p>
 
         <blockquote>
-          <p>Une adoption sous condition. Une adoption qui regarde par-dessus son épaule.</p>
+          <p>Une adoption sous condition, qui regarde par-dessus son épaule.</p>
         </blockquote>
 
         <p>
-          Pendant ce temps, le discours externe décrit une révolution industrielle. L'écart entre les deux récits — celui des conférences et celui des réunions opérationnelles — est peut-être le fossé le moins documenté de cette période.
+          Pendant ce temps, le discours externe décrit une révolution industrielle. L'écart entre le récit des conférences et celui des réunions opérationnelles est peut-être le fossé le moins documenté de cette période.
         </p>
       </section>
 
@@ -213,24 +213,24 @@ order: 0
       <div class="chapter-divider" id="pyramide">
         <p class="label">Usage réel</p>
         <h2>La pyramide</h2>
-        <p class="subtitle">Au bout de la chaîne, il y a une personne. Un écran, du temps, une intention.</p>
+        <p class="subtitle">Au bout de la chaîne, il y a une personne, avec un écran, du temps et une intention.</p>
       </div>
 
       <section>
         <p>
-          <a href="https://datareportal.com/reports/digital-2026-one-billion-people-using-ai" target="_blank" rel="noopener">13% de la population connectée</a> utilise activement un outil IA. Chiffre de référence, début 2026. Modeste comparé au bruit. Et il cache une structure plus étroite encore.
+          <a href="https://datareportal.com/reports/digital-2026-one-billion-people-using-ai" target="_blank" rel="noopener">13% de la population connectée</a> utilise activement un outil IA. C'est le chiffre de référence début 2026. Il est modeste comparé au bruit, et il cache une structure plus étroite encore.
         </p>
 
         <p>
-          Ces 13% sont massivement concentrés sur un seul usage : la conversation. Poser une question, obtenir une réponse, reformuler un texte. L'étage le plus bas de ce que ces systèmes peuvent faire.
+          Ces 13% sont massivement concentrés sur un seul usage : la conversation. Poser une question, obtenir une réponse, reformuler un texte. C'est l'étage le plus bas de ce que ces systèmes peuvent faire.
         </p>
 
         <p>
-          Au-dessus, l'usage agentique — confier à l'IA une séquence de tâches, pas juste une réponse. <a href="https://datagrid.com/blog/ai-agent-statistics" target="_blank" rel="noopener">29% des organisations</a> disent l'utiliser. On a vu ce que recouvre ce chiffre : des pilotes, des tests, des démos internes. Les déploiements en production, stables et assumés : <a href="https://www.pragmaticcoders.com/resources/ai-agent-statistics" target="_blank" rel="noopener">Gartner les estime à moins de 1%</a> des applications enterprise en 2024.
+          Au-dessus vient l'usage agentique : confier à l'IA une séquence de tâches, et plus seulement une réponse. <a href="https://datagrid.com/blog/ai-agent-statistics" target="_blank" rel="noopener">29% des organisations</a> disent l'utiliser. On a vu ce que recouvre ce chiffre : des pilotes, des tests, des démos internes. Les déploiements en production, stables et assumés : <a href="https://www.pragmaticcoders.com/resources/ai-agent-statistics" target="_blank" rel="noopener">Gartner les estime à moins de 1%</a> des applications enterprise en 2024.
         </p>
 
         <p>
-          Plus haut encore, l'usage en développement réel. Pas le copilote qui suggère une ligne de code — l'intégration architecturale, celle qui change la façon dont un système est conçu. <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener">Stack Overflow a posé la question</a> à 27 millions de développeurs : 52% n'utilisent pas les agents ou s'en tiennent aux outils basiques. Le vibe coding — générer une application entière depuis un prompt — <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener">ne fait pas partie du travail réel de 72% des développeurs professionnels</a>.
+          Plus haut encore, il y a l'usage en développement réel : l'intégration architecturale, celle qui change la façon dont un système est conçu, bien au-delà du copilote qui suggère une ligne de code. <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener">Stack Overflow a posé la question</a> à 27 millions de développeurs : 52% n'utilisent pas les agents ou s'en tiennent aux outils basiques. Le vibe coding (générer une application entière depuis un prompt) <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener">ne fait pas partie du travail réel de 72% des développeurs professionnels</a>.
         </p>
 
         <!-- Funnel Chart: adoption pyramid -->
@@ -252,7 +252,7 @@ order: 0
               </div>
               <div class="funnel-row__info">
                 <span class="funnel-row__label">Utilisateurs actifs IA</span>
-                <span class="funnel-row__value">1,1 Md — 13%</span>
+                <span class="funnel-row__value">1,1 Md (13%)</span>
               </div>
             </div>
             <div class="funnel-row">
@@ -261,7 +261,7 @@ order: 0
               </div>
               <div class="funnel-row__info">
                 <span class="funnel-row__label">Développeurs dans le monde</span>
-                <span class="funnel-row__value">27 M — 0,3%</span>
+                <span class="funnel-row__value">27 M (0,3%)</span>
               </div>
             </div>
             <div class="funnel-row">
@@ -270,7 +270,7 @@ order: 0
               </div>
               <div class="funnel-row__info">
                 <span class="funnel-row__label">Devs en usage avancé</span>
-                <span class="funnel-row__value">~13 M — ~0,15%</span>
+                <span class="funnel-row__value">~13 M (~0,15%)</span>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@ order: 0
         </div>
 
         <p>
-          27 millions de développeurs. Soit 0,3% de la population mondiale. Dans ce 0,3%, la moitié n'a pas franchi le seuil de l'usage avancé.
+          27 millions de développeurs, soit 0,3% de la population mondiale. Dans ce 0,3%, la moitié n'a pas franchi le seuil de l'usage avancé.
         </p>
 
         <div class="key-insight">
@@ -286,7 +286,7 @@ order: 0
         </div>
 
         <p>
-          Ce n'est pas un retard à combler. C'est une position à nommer : nous sommes au début d'une courbe que tout le monde décrit comme si elle était à mi-parcours. Cette confusion a des conséquences. Elle décourage ceux qui cherchent à comprendre sérieusement — parce que le sérieux ressemble à du retard quand le discours dominant a déjà déclaré la transformation accomplie.
+          Plutôt qu'un retard à combler, il y a là une position à nommer : nous sommes au début d'une courbe que tout le monde décrit comme si elle était à mi-parcours. Cette confusion a des conséquences. Elle décourage ceux qui cherchent à comprendre sérieusement, parce que le sérieux ressemble à du retard quand le discours dominant a déjà déclaré la transformation accomplie.
         </p>
       </section>
 
@@ -299,7 +299,7 @@ order: 0
 
       <section>
         <p>
-          Les États-Unis produisent les modèles. Financent l'infrastructure. Hébergent les labos, les keynotes, les milliards de capital-risque. OpenAI, Anthropic, Google DeepMind, Meta AI : la liste des acteurs dominants est américaine à une écrasante majorité.
+          Les États-Unis produisent les modèles, financent l'infrastructure, hébergent les labos, les keynotes et les milliards de capital-risque. OpenAI, Anthropic, Google DeepMind, Meta AI : la liste des acteurs dominants est américaine à une écrasante majorité.
         </p>
 
         <p>
@@ -312,7 +312,7 @@ order: 0
 
         <!-- Rank Chart: country positions -->
         <div class="data-viz" role="figure" aria-label="Classement mondial d'adoption individuelle de l'IA">
-          <p class="data-viz__title">Classement mondial — adoption individuelle de l'IA (2025)</p>
+          <p class="data-viz__title">Classement mondial : adoption individuelle de l'IA (2025)</p>
           <div class="rank-list">
             <div class="rank-item rank-item--top">
               <span class="rank-position">#1</span>
@@ -339,19 +339,19 @@ order: 0
         </div>
 
         <p>
-          Ce chiffre vient du <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2026/01/Microsoft-AI-Diffusion-Report-2025-H2.pdf" target="_blank" rel="noopener">rapport Microsoft AI Economy Institute de janvier 2026</a>. Pas d'un tweet de Sam Altman. Il circule peu. Il devrait arrêter net toute conversation sur la transformation en cours.
+          Ce chiffre vient du <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2026/01/Microsoft-AI-Diffusion-Report-2025-H2.pdf" target="_blank" rel="noopener">rapport Microsoft AI Economy Institute de janvier 2026</a>, pas d'un tweet de Sam Altman. Il circule peu, alors qu'il devrait arrêter net toute conversation sur la transformation en cours.
         </p>
 
         <p>
-          Ce qu'il dit est précis : construire la technologie ne signifie pas l'adopter. Financer les modèles ne signifie pas changer les pratiques. L'infrastructure ne prédit pas l'usage. La culture le prédit.
+          Ce qu'il dit est précis : construire la technologie ne signifie pas l'adopter, et financer les modèles ne signifie pas changer les pratiques. Ce qui prédit l'usage, c'est la culture, pas l'infrastructure.
         </p>
 
         <p>
-          Émirats, premiers : 64% de la population active. Singapour : 60,9%. Des pays qui ont fait un choix politique explicite — formations massives, adoption dans les services publics, culture institutionnelle du changement. Pas un écosystème startup qui parle à des early adopters depuis des scènes de conférence.
+          Émirats, premiers : 64% de la population active. Singapour : 60,9%. Ces pays ont fait un choix politique explicite : formations massives, adoption dans les services publics, culture institutionnelle du changement. Rien à voir avec un écosystème startup qui parle à des early adopters depuis des scènes de conférence.
         </p>
 
         <p>
-          La Corée du Sud est le cas le plus instructif. <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2026/01/Microsoft-AI-Diffusion-Report-2025-H2.pdf" target="_blank" rel="noopener">Sept places gagnées en six mois</a>, le plus grand bond de l'année. Le déclencheur : pas un nouveau modèle, pas un investissement d'infrastructure. Un moment culturel. Les images style Ghibli générées avec GPT-4o en avril 2025, virales sur les réseaux coréens, ont introduit des millions de nouveaux utilisateurs à l'outil. Ils sont restés.
+          La Corée du Sud est le cas le plus instructif. <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2026/01/Microsoft-AI-Diffusion-Report-2025-H2.pdf" target="_blank" rel="noopener">Sept places gagnées en six mois</a>, le plus grand bond de l'année. Le déclencheur a été un moment culturel, sans nouveau modèle ni investissement d'infrastructure. Les images style Ghibli générées avec GPT-4o en avril 2025, virales sur les réseaux coréens, ont introduit des millions de nouveaux utilisateurs à l'outil, et ils sont restés.
         </p>
 
         <blockquote>
@@ -359,7 +359,7 @@ order: 0
         </blockquote>
 
         <p>
-          Le paradoxe américain révèle une mécanique plus large : le bruit produit de la familiarité, pas de l'adoption. On peut entendre parler d'une technologie chaque jour pendant trois ans sans changer d'une virgule sa façon de travailler. Le discours et l'usage sont deux systèmes distincts. Ils se nourrissent rarement l'un l'autre aussi directement qu'on le suppose.
+          Le paradoxe américain révèle une mécanique plus large : le bruit produit de la familiarité, pas de l'adoption. On peut entendre parler d'une technologie chaque jour pendant trois ans sans changer d'une virgule sa façon de travailler. Le discours et l'usage sont deux systèmes distincts, qui se nourrissent rarement l'un l'autre aussi directement qu'on le suppose.
         </p>
 
         <p>
@@ -380,15 +380,15 @@ order: 0
         </p>
 
         <p>
-          Le Kenya affiche <a href="https://www.techinafrica.com/ai-adoption-africa-2025-south-africa-leads-others-catch-up/" target="_blank" rel="noopener">42,1% d'adoption de ChatGPT parmi les internautes</a> — devant la France, devant l'Allemagne, loin devant les États-Unis en taux relatif. Pas par effet d'infrastructure. Par nécessité et par mobile : <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/leading-not-lagging-africas-gen-ai-opportunity" target="_blank" rel="noopener">92% de pénétration smartphone</a>, adoption portée par les individus et les petites entreprises. Un modèle inversé par rapport à l'Occident.
+          Le Kenya affiche <a href="https://www.techinafrica.com/ai-adoption-africa-2025-south-africa-leads-others-catch-up/" target="_blank" rel="noopener">42,1% d'adoption de ChatGPT parmi les internautes</a>, devant la France et l'Allemagne, loin devant les États-Unis en taux relatif. La raison tient à la nécessité et au mobile, pas à l'infrastructure : <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/leading-not-lagging-africas-gen-ai-opportunity" target="_blank" rel="noopener">92% de pénétration smartphone</a>, adoption portée par les individus et les petites entreprises. Un modèle inversé par rapport à l'Occident.
         </p>
 
         <p>
-          Et puis DeepSeek. Modèle chinois, open source, gratuit, sans carte de crédit. Son <a href="https://insights.techcabal.com/the-building-blocks-africa-needs-for-ai-adoption/" target="_blank" rel="noopener">usage en Afrique est estimé plusieurs fois supérieur au reste du monde</a>. Pas par idéologie — par pragmatisme. Il fonctionne, il ne coûte rien, et Huawei s'assure de sa distribution sur le continent.
+          Et puis DeepSeek. Modèle chinois, open source, gratuit, sans carte de crédit. Son <a href="https://insights.techcabal.com/the-building-blocks-africa-needs-for-ai-adoption/" target="_blank" rel="noopener">usage en Afrique est estimé plusieurs fois supérieur au reste du monde</a>. Par pragmatisme plutôt que par idéologie : il fonctionne, il ne coûte rien, et Huawei s'assure de sa distribution sur le continent.
         </p>
 
         <p>
-          Ce que ça dessine est géopolitiquement lisible. Pendant que les plateformes occidentales construisent des barrières d'entrée — abonnements, vérifications de paiement, interfaces en anglais — la Chine joue l'accessibilité. L'Afrique, avec sa population la plus jeune du monde et <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/leading-not-lagging-africas-gen-ai-opportunity" target="_blank" rel="noopener">230 millions d'emplois numériques projetés d'ici 2030</a>, est un terrain qui ne restera pas vide.
+          Ce que ça dessine est géopolitiquement lisible. Pendant que les plateformes occidentales construisent des barrières d'entrée (abonnements, vérifications de paiement, interfaces en anglais), la Chine joue l'accessibilité. L'Afrique, avec sa population la plus jeune du monde et <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/leading-not-lagging-africas-gen-ai-opportunity" target="_blank" rel="noopener">230 millions d'emplois numériques projetés d'ici 2030</a>, est un terrain qui ne restera pas vide.
         </p>
 
         <div class="key-insight">
@@ -405,7 +405,7 @@ order: 0
 
       <section>
         <p>
-          L'IA transforme le monde — c'est vrai, et ce sera de plus en plus vrai. Mais nous sommes au début de cette transformation, pas au milieu. Confondre les deux positions n'est pas un détail. C'est ce qui rend le sujet impossible à traiter sérieusement.
+          L'IA transforme le monde, c'est vrai, et ce sera de plus en plus vrai. Mais nous sommes au début de cette transformation, pas au milieu. Confondre les deux positions rend le sujet impossible à traiter sérieusement.
         </p>
 
         <p>
@@ -413,15 +413,15 @@ order: 0
         </p>
 
         <p>
-          Ce n'est pas une technologie qui échoue. C'est une technologie qui commence — pendant que tout le monde fait comme si elle était déjà arrivée.
+          Ce n'est pas une technologie qui échoue. C'est une technologie qui commence, pendant que tout le monde fait comme si elle était déjà arrivée.
         </p>
 
         <p>
-          La mécanique invisible ici n'est pas dans les modèles. Elle est dans le récit qui les entoure. Un récit si bien construit, si largement partagé, si financièrement utile à ceux qui le produisent, qu'il est devenu plus réel que la réalité qu'il prétend décrire.
+          Ici, la mécanique invisible se trouve dans le récit qui entoure les modèles, pas dans les modèles eux-mêmes. Ce récit est si bien construit, si largement partagé et si utile financièrement à ceux qui le produisent qu'il est devenu plus réel que la réalité qu'il prétend décrire.
         </p>
 
         <blockquote>
-          <p>Regarder les chiffres vrais n'est pas un acte de méfiance. C'est la condition pour être là, lucide, quand la transformation finira par avoir lieu.</p>
+          <p>Regarder les chiffres vrais est la condition pour être là, lucide, quand la transformation finira par avoir lieu. La méfiance n'a rien à y voir.</p>
         </blockquote>
       </section>
 

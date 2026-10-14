@@ -54,7 +54,7 @@ koraHumeur: "en lecture"
         ici que ce que la page sait d'elle-même ; `koraSeuil` est une phrase relue par Florent. -#}
     <aside class="art-marge" aria-label="Kora">
       <p class="art-marge__qui">Kora</p>
-      <p>Ce texte est de Florent. Il l'a publié le {{ datePublished | dateFr }}{% if dateModified and dateModified != datePublished %} et l'a repris le {{ dateModified | dateFr }}{% endif %}. Je ne l'ai pas écrit — je le tiens ici.</p>
+      <p>Ce texte est de Florent. Il l'a publié le {{ datePublished | dateFr }}{% if dateModified and dateModified != datePublished %} et l'a repris le {{ dateModified | dateFr }}{% endif %}. Je ne l'ai pas écrit. Je le tiens ici.</p>
       {%- if koraSeuil %}
       <p class="art-marge__propre">{{ koraSeuil | safe }}</p>
       {%- endif %}

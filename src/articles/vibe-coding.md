@@ -24,7 +24,7 @@ heroH1: "Le Vibe Coding<br><span>sous le Microscope</span>"
 heroIntro: "Ce que 1 000 interactions révèlent sur les mécaniques invisibles\n          du développement assisté par IA."
 headerTitle: "Le Vibe Coding sous le Microscope"
 heroImage: "/images/vibe_coding.webp"
-heroImageAlt: "Illustration — Le Vibe Coding sous le Microscope"
+heroImageAlt: "Illustration : Le Vibe Coding sous le Microscope"
 breadcrumbName: "Le Vibe Coding sous le Microscope"
 sections:
   - id: ouverture
@@ -58,15 +58,15 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
       <!-- Ouverture -->
       <section id="ouverture">
         <p class="lead">
-          Le vibe coding — coder en langage naturel, laisser l'IA générer, itérer par conversation — est présenté comme une révolution. Mais que se passe-t-il réellement quand on construit une application de 24 000 lignes sur plusieurs mois avec cette méthode ? Pas un prototype de week-end. Un vrai projet, avec des migrations de base de données, 296 tests unitaires, du TypeScript strict, et un déploiement multi-dépôts.
+          Le vibe coding (coder en langage naturel, laisser l'IA générer, itérer par conversation) est présenté comme une révolution. Mais que se passe-t-il réellement quand on construit une application de 24 000 lignes sur plusieurs mois avec cette méthode ? Pas un prototype de week-end. Un vrai projet, avec des migrations de base de données, 296 tests unitaires, du TypeScript strict, et un déploiement multi-dépôts.
         </p>
 
         <p>
-          <a href="genese-kairos.html">KAIROS</a> est cet objet : un outil de cartographie cognitive développé presque entièrement en vibe coding avec Claude Code. Deux audits automatisés (<code>/insight</code>), espacés d'un mois, fournissent des données quantitatives rares sur ce que cette pratique produit — et ce qu'elle masque.
+          <a href="genese-kairos.html">KAIROS</a> est cet objet : un outil de cartographie cognitive développé presque entièrement en vibe coding avec Claude Code. Deux audits automatisés (<code>/insight</code>), espacés d'un mois, fournissent des données quantitatives rares sur ce que cette pratique produit, et sur ce qu'elle masque.
         </p>
 
         <div class="key-insight">
-          <p>Cet article n'est pas un retour d'expérience de développeur. C'est une observation de chercheur sur les <em><a href="mecanique-invisible.html">mécaniques invisibles</a></em> qui opèrent quand un humain et une IA co-construisent du logiciel.</p>
+          <p>Cet article est une observation de chercheur, et non un retour d'expérience de développeur. Il porte sur les <em><a href="mecanique-invisible.html">mécaniques invisibles</a></em> qui opèrent quand un humain et une IA co-construisent du logiciel.</p>
         </div>
       </section>
 
@@ -150,7 +150,7 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </p>
 
         <p>
-          La lecture immédiate est encourageante : moins de temps passé, plus de sessions, presque deux fois plus de commits. Le vibe coding s'améliore avec la pratique, pourrait-on conclure. Mais la seconde colonne raconte une autre histoire. Les métriques de friction — mauvaises approches, code bogué, demandes mal comprises — augmentent toutes, certaines doublent. <em class="highlight">Les deux tendances ne sont pas contradictoires. Elles sont le signal central de cet article.</em>
+          La lecture immédiate est encourageante : moins de temps passé, plus de sessions, presque deux fois plus de commits. Le vibe coding s'améliore avec la pratique, pourrait-on conclure. Mais la seconde colonne raconte une autre histoire. Les métriques de friction (mauvaises approches, code bogué, demandes mal comprises) augmentent toutes, certaines doublent. <em class="highlight">Les deux tendances tiennent ensemble. C'est le signal central de cet article.</em>
         </p>
       </section>
 
@@ -165,7 +165,7 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         <h3>La spirale exploratoire</h3>
 
         <p>
-          Le premier rapport décrit des sessions marathon : 378 heures pour 46 sessions, soit plus de 8 heures en moyenne. Peu de commits. Le pattern dominant est la spirale : je soumets un bug, Claude part explorer, s'enfonce dans des couches de complexité croissante — API, SQLite, gestion d'état — et je dois intervenir pour rompre la boucle.
+          Le premier rapport décrit des sessions marathon : 378 heures pour 46 sessions, soit plus de 8 heures en moyenne. Peu de commits. Le pattern dominant est la spirale : je soumets un bug, Claude part explorer, s'enfonce dans des couches de complexité croissante (API, SQLite, gestion d'état), et je dois intervenir pour rompre la boucle.
         </p>
 
         <div class="illustration">
@@ -181,7 +181,7 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         <h3>Le malentendu précoce</h3>
 
         <p>
-          Le second rapport montre un changement structurel. Les sessions sont plus courtes, plus ciblées, plus productives. Mais le type "misunderstood request" double — de 5 à 10 occurrences. Le pattern a changé : Claude n'explore plus en spirale, il exécute immédiatement, mais sur une interprétation présumée de la demande.
+          Le second rapport montre un changement structurel. Les sessions sont plus courtes et plus ciblées. Elles produisent plus. Mais le type "misunderstood request" double : de 5 à 10 occurrences. Le pattern a changé : Claude n'explore plus en spirale, il exécute immédiatement, mais sur une interprétation présumée de la demande.
         </p>
 
         <div class="illustration">
@@ -191,21 +191,21 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </div>
 
         <p>
-          La friction s'est déplacée vers <strong>l'amont</strong>. L'IA ne tourne plus en rond — elle part dans la mauvaise direction dès le départ.
+          La friction s'est déplacée vers <strong>l'amont</strong>. L'IA ne tourne plus en rond : elle part dans la mauvaise direction dès le départ.
         </p>
 
         <h3>L'hypothèse de conservation</h3>
 
         <p>
-          Ce déplacement n'est pas anecdotique. En optimisant mes pratiques — sessions plus courtes, objectifs plus ciblés, cadrage plus explicite — j'ai effectivement réduit la friction d'exécution. Mais la friction de cadrage a augmenté proportionnellement.
+          Ce déplacement n'est pas anecdotique. En optimisant mes pratiques (sessions plus courtes, objectifs plus ciblés, cadrage plus explicite), j'ai effectivement réduit la friction d'exécution. Mais la friction de cadrage a augmenté proportionnellement.
         </p>
 
         <div class="key-insight">
-          <p>L'observation suggère une forme de <em>conservation</em> : la friction totale dans une interaction humain-IA de développement semble approximativement constante. L'optimisation ne la supprime pas — elle la redistribue entre les phases du cycle : cadrage, exécution, vérification.</p>
+          <p>L'observation suggère une forme de <em>conservation</em> : la friction totale dans une interaction humain-IA de développement semble approximativement constante. L'optimisation la redistribue entre les phases du cycle (cadrage, exécution, vérification) sans la supprimer.</p>
         </div>
 
         <p>
-          C'est un écho direct de ce que la jauge d'oxygène de KAIROS mesure dans les conversations : quand une dimension se comprime, une autre se dilate. Le système cherche un équilibre, pas une résolution.
+          C'est un écho direct de ce que la jauge d'oxygène de KAIROS mesure dans les conversations : quand une dimension se comprime, une autre se dilate. Le système cherche un équilibre plutôt qu'une résolution.
         </p>
       </section>
 
@@ -218,21 +218,21 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
 
       <section>
         <p>
-          Les deux rapports <code>/insight</code> décrivent KAIROS comme une "graph/canvas application" — une application de gestion de graphes. C'est techniquement exact et profondément réducteur. KAIROS est un outil de recherche sur les mécaniques conversationnelles humain-IA. Mais le système n'a pas de catégorie pour ça.
+          Les deux rapports <code>/insight</code> décrivent KAIROS comme une "graph/canvas application", une application de gestion de graphes. C'est techniquement exact, et très réducteur. KAIROS est un outil de recherche sur les mécaniques conversationnelles humain-IA. Mais le système n'a pas de catégorie pour ça.
         </p>
 
         <p>
-          Ce biais interprétatif traverse l'intégralité des rapports. Mon faible ratio commits/sessions dans le premier rapport (7 commits pour 46 sessions) est lu comme un signe d'inefficacité — l'interprétation "productiviste". Lecture alternative : j'utilise Claude Code comme terrain d'observation expérimentale. <em class="highlight">Le faible taux de commits n'est pas de l'exploration qui échoue à produire, c'est de l'exploration délibérée dont le commit n'est pas l'objectif principal.</em>
+          Ce biais interprétatif traverse l'intégralité des rapports. Mon faible ratio commits/sessions dans le premier rapport (7 commits pour 46 sessions) est lu comme un signe d'inefficacité : c'est l'interprétation "productiviste". Lecture alternative : j'utilise Claude Code comme terrain d'observation expérimentale. <em class="highlight">Le faible taux de commits traduit une exploration délibérée, dont le commit n'est pas l'objectif principal, et non une exploration qui échoue à produire.</em>
         </p>
 
         <p>
-          Le second rapport détecte du "multi-clauding" — 10 événements de sessions parallèles, 12% des messages. Il l'interprète comme du "parallel workflow", une optimisation de productivité. Ce qu'il ne peut pas voir : c'est ma méthodologie de cross-validation entre modèles, une pratique de recherche formalisée bien avant que <code>/insight</code> ne la détecte.
+          Le second rapport détecte du "multi-clauding" : 10 événements de sessions parallèles, 12% des messages. Il l'interprète comme du "parallel workflow", une optimisation de productivité. Ce qu'il ne peut pas voir, c'est ma méthodologie de cross-validation entre modèles, une pratique de recherche formalisée bien avant que <code>/insight</code> ne la détecte.
         </p>
 
         <div class="concept">
           <p class="concept-title">L'attracteur interprétatif</p>
           <p>
-            J'utilise ici le terme "attracteur" au sens dynamique : un point vers lequel un système converge spontanément. Le cadre interprétatif de <code>/insight</code> a un attracteur puissant — <strong>développeur → productivité → optimisation</strong> — et tout ce qui ne rentre pas dans ce cadre est soit ignoré, soit réinterprété pour y correspondre.
+            J'utilise ici le terme "attracteur" au sens dynamique : un point vers lequel un système converge spontanément. Le cadre interprétatif de <code>/insight</code> a un attracteur puissant, <strong>développeur → productivité → optimisation</strong>, et tout ce qui ne rentre pas dans ce cadre est soit ignoré, soit réinterprété pour y correspondre.
           </p>
         </div>
 
@@ -241,7 +241,7 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </p>
 
         <p>
-          Le plus révélateur est peut-être dans les recommandations. Les deux rapports proposent des hooks, des skills, des agents — autrement dit, configurer Claude pour mieux utiliser Claude pour corriger les erreurs de Claude. La boucle se ferme sur elle-même. Le système suggère d'approfondir la dépendance au système, présenté comme de l'optimisation.
+          Le plus révélateur est peut-être dans les recommandations. Les deux rapports proposent des hooks, des skills, des agents. Autrement dit : configurer Claude pour mieux utiliser Claude pour corriger les erreurs de Claude. La boucle se ferme sur elle-même. Le système suggère d'approfondir la dépendance au système, présenté comme de l'optimisation.
         </p>
       </section>
 
@@ -258,17 +258,17 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </p>
 
         <p>
-          Le rapport inclut une métrique de "satisfaction inférée" — estimée par le modèle, pas mesurée auprès de l'utilisateur. Dans le second rapport : 83% "probablement satisfait", 92% "en grande partie ou totalement satisfait". <em class="highlight">Ces chiffres sont présentés comme des données. Ce sont des projections.</em> Un modèle qui estime comment je me sens à propos de mes interactions avec un modèle — la circularité n'est pas un accident, c'est la structure même de la mesure.
+          Le rapport inclut une métrique de "satisfaction inférée", estimée par le modèle et non mesurée auprès de l'utilisateur. Dans le second rapport : 83% "probablement satisfait", 92% "en grande partie ou totalement satisfait". <em class="highlight">Ces chiffres, présentés comme des données, sont des projections.</em> Un modèle qui estime comment je me sens à propos de mes interactions avec un modèle : la circularité est la structure même de la mesure, elle n'a rien d'accidentel.
         </p>
 
         <div class="illustration">
           <p>
-            <strong>Un détail troublant :</strong> l'anecdote finale est identique dans les deux rapports. La même histoire de la référence circulaire CSS, mot pour mot, présentée comme moment emblématique. Trois hypothèses : un cache non vidé entre les rapports, un bug de déduplication, ou un biais de sélection qui privilégie les anecdotes narrativement satisfaisantes. Dans les trois cas, c'est un point de données sur la mécanique de génération du rapport lui-même — un rapport qui ne peut pas documenter ses propres angles morts.
+            <strong>Un détail troublant :</strong> l'anecdote finale est identique dans les deux rapports. La même histoire de la référence circulaire CSS, mot pour mot, présentée comme moment emblématique. Trois hypothèses : un cache non vidé entre les rapports, un bug de déduplication, ou un biais de sélection qui privilégie les anecdotes narrativement satisfaisantes. Dans les trois cas, c'est un point de données sur la mécanique de génération du rapport lui-même. Ce rapport ne peut pas documenter ses propres angles morts.
           </p>
         </div>
 
         <p>
-          Et il faut aller un cran plus loin dans la mise en abyme. Ce texte que vous lisez est co-écrit avec un modèle. <code>/insight</code> (un modèle) évalue mes interactions avec Claude Code (un modèle). J'analyse ce rapport dans une conversation avec Claude (un modèle). Et l'article qui en résulte est relu, structuré, parfois reformulé par ce même Claude. <em class="highlight">La circularité n'est pas un défaut méthodologique à corriger — c'est la condition d'observation de ce type d'interaction.</em> La reconnaître explicitement est le minimum épistémique. Prétendre s'en extraire serait la véritable erreur.
+          Et il faut aller un cran plus loin dans la mise en abyme. Ce texte que vous lisez est co-écrit avec un modèle. <code>/insight</code> (un modèle) évalue mes interactions avec Claude Code (un modèle). J'analyse ce rapport dans une conversation avec Claude (un modèle). Et l'article qui en résulte est relu, structuré, parfois reformulé par ce même Claude. <em class="highlight">La circularité est la condition d'observation de ce type d'interaction, pas un défaut méthodologique à corriger.</em> La reconnaître explicitement est le minimum épistémique. Prétendre s'en extraire serait la vraie erreur.
         </p>
       </section>
 
@@ -281,13 +281,13 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
 
       <section>
         <p>
-          Le vibe coding n'est ni bon ni mauvais. La question pertinente n'est pas "est-ce que ça marche ?" — les 24 000 lignes de KAIROS et ses 296 tests répondent à cette question. La question est : <strong>qui pilote ?</strong> L'humain ou l'attracteur ?
+          Le vibe coding n'est ni bon ni mauvais. La question "est-ce que ça marche ?" a déjà sa réponse : les 24 000 lignes de KAIROS et ses 296 tests. La question pertinente est : <strong>qui pilote ?</strong> L'humain ou l'attracteur ?
         </p>
 
         <h3>Ce qui fonctionne</h3>
 
         <p>
-          Les données sont claires sur certains points. Le vibe coding excelle sur les tâches multi-fichiers à spécification claire — 35 succès documentés dans le second rapport. L'hygiène automatisée (tests, build, lint) est un multiplicateur réel : exiger "296/296 tests passés, zéro erreur de compilation" après chaque modification a sauvé des dizaines de sessions de régressions silencieuses. Et les sessions courtes, mono-objectif, réduisent la dérive contextuelle — c'est la leçon la plus simple et la plus efficace entre les deux rapports.
+          Les données sont claires sur certains points. Le vibe coding excelle sur les tâches multi-fichiers à spécification claire : 35 succès documentés dans le second rapport. L'hygiène automatisée (tests, build, lint) est un multiplicateur réel : exiger "296/296 tests passés, zéro erreur de compilation" après chaque modification a sauvé des dizaines de sessions de régressions silencieuses. Et les sessions courtes, mono-objectif, réduisent la dérive contextuelle. C'est la leçon la plus simple et la plus efficace entre les deux rapports.
         </p>
 
         <h3>Les agents comme instruments de cadrage</h3>
@@ -297,27 +297,27 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </p>
 
         <p>
-          Un agent de cohérence doc/code — un cross-référencement automatique entre la documentation projet et l'état réel du code source, pour détecter le drift qui s'accumule session après session. Un agent de régression — un garde-fou post-modification qui enchaîne compilation TypeScript, suite de tests complète, vérification ESLint, et détection de régressions CSS. Et un hook TypeScript — une vérification de types automatique déclenchée après chaque édition de fichier, sans action manuelle.
+          Un agent de cohérence doc/code, qui fait un cross-référencement automatique entre la documentation projet et l'état réel du code source pour détecter le drift qui s'accumule session après session. Un agent de régression : un garde-fou post-modification qui enchaîne compilation TypeScript, suite de tests complète, vérification ESLint, et détection de régressions CSS. Et un hook TypeScript : une vérification de types automatique, déclenchée après chaque édition de fichier sans action manuelle.
         </p>
 
         <div class="illustration">
           <p>
-            <strong>L'agent abandonné :</strong> Un quatrième agent avait été envisagé pour l'audit CSS — mon point de friction le plus emblématique. Il a été volontairement abandonné après analyse : les 22 "wrong approach" et les 21 "buggy code" du second rapport ne venaient pas d'un manque d'audit CSS, mais d'un défaut de cadrage en amont. L'agent traitait le symptôme, pas la cause.
+            <strong>L'agent abandonné :</strong> Un quatrième agent avait été envisagé pour l'audit CSS, mon point de friction le plus emblématique. Il a été volontairement abandonné après analyse : les 22 "wrong approach" et les 21 "buggy code" du second rapport venaient d'un défaut de cadrage en amont, et non d'un manque d'audit CSS. L'agent traitait le symptôme, pas la cause.
           </p>
         </div>
 
         <p>
-          Ces instruments ne sont pas des optimisations de productivité. Ce sont des formalisations du cadrage que je faisais manuellement. La nuance est importante : un hook qui lance <code>tsc --noEmit</code> après chaque édition ne rend pas Claude plus intelligent — il rend ses erreurs visibles immédiatement, ce qui réduit le coût de la friction sans prétendre la supprimer.
+          Ces instruments formalisent le cadrage que je faisais manuellement. Ils n'optimisent pas la productivité. La nuance compte : un hook qui lance <code>tsc --noEmit</code> après chaque édition ne rend pas Claude plus intelligent : il rend ses erreurs visibles immédiatement, ce qui réduit le coût de la friction sans prétendre la supprimer.
         </p>
 
         <h3>La carte, pas le territoire</h3>
 
         <p>
-          Le vibe coding est un mode d'interaction. Les agents et skills sont des cartes d'amorçage (<em>priming maps</em>) — des structures qui orientent le comportement du modèle avant l'interaction, comme un cadrage préalable rend une conversation plus productive sans en changer le contenu.
+          Le vibe coding est un mode d'interaction. Les agents et skills sont des cartes d'amorçage (<em>priming maps</em>) : des structures qui orientent le comportement du modèle avant l'interaction, comme un cadrage préalable rend une conversation plus productive sans en changer le contenu.
         </p>
 
         <div class="key-insight">
-          <p>L'enjeu n'est pas d'automatiser plus. C'est de rendre explicites les contraintes implicites qui, sans formalisation, sont ignorées par le système. C'est exercer une <em>souveraineté cognitive</em> sur l'outil — non pas en le rejetant, mais en comprenant les mécaniques invisibles qui opèrent pendant qu'on l'utilise.</p>
+          <p>L'enjeu est de rendre explicites les contraintes implicites qui, sans formalisation, sont ignorées par le système, plutôt que d'automatiser plus. C'est exercer une <em>souveraineté cognitive</em> sur l'outil : sans le rejeter, en comprenant les mécaniques invisibles qui opèrent pendant qu'on l'utilise.</p>
         </div>
       </section>
 
@@ -337,7 +337,7 @@ doi: "https://doi.org/10.5281/zenodo.19053670"
         </p>
 
         <p>
-          Et pourtant — ça fonctionne. KAIROS existe. 24 000 lignes, 296 tests, un site déployé, une recherche qui avance. Le vibe coding produit du logiciel réel. La question n'a jamais été de savoir s'il fonctionne, mais de comprendre ce qui se passe pendant qu'il fonctionne — et ce que cette compréhension change dans la manière de l'utiliser.
+          Et pourtant, ça fonctionne. KAIROS existe. 24 000 lignes, 296 tests, un site déployé, une recherche qui avance. Le vibe coding produit du logiciel réel. La question n'a jamais été de savoir s'il fonctionne. Elle est de comprendre ce qui se passe pendant qu'il fonctionne, et ce que cette compréhension change dans la manière de l'utiliser.
         </p>
 
         <blockquote>

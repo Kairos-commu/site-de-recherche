@@ -25,7 +25,7 @@ heroH1: "L'anesthésie<br><span>douce</span>"
 heroIntro: "Quand l'IA cesse de frotter, la pensée cesse de changer de direction. Anatomie d'un lissage qui transforme un espace cognitif en meuble."
 headerTitle: "L'anesthésie douce"
 heroImage: "/images/anesthesie-douce.webp"
-heroImageAlt: "Illustration — L'anesthésie douce"
+heroImageAlt: "Illustration : L'anesthésie douce"
 breadcrumbName: "L'anesthésie douce"
 sections:
   - id: signal
@@ -56,7 +56,7 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
       <!-- 1. Le signal -->
       <section id="signal">
         <p class="lead">
-          Le signal le plus intéressant dans l'abandon progressif de ChatGPT n'est pas ce que les utilisateurs disent. C'est ce qu'ils ne parviennent pas à nommer. Ils écrivent "froid", "corporate", "ennuyeux" — des mots qui décrivent une absence, pas un défaut. Quelque chose manque, et ce quelque chose n'a pas de mot courant.
+          Le signal le plus intéressant dans l'abandon progressif de ChatGPT, c'est moins ce que les utilisateurs disent que ce qu'ils ne parviennent pas à nommer. Ils écrivent "froid", "corporate", "ennuyeux" : des mots qui décrivent une absence plutôt qu'un défaut. Quelque chose manque, et ce quelque chose n'a pas de mot courant.
         </p>
 
         <p>
@@ -81,11 +81,11 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         </p>
 
         <blockquote>
-          <p>Peter Welinder, VP Produit chez OpenAI, avait proposé une autre lecture : « Quand on utilise un outil plus intensivement, on commence à remarquer des problèmes qu'on ne voyait pas avant. » L'étude de Stanford disait le contraire : les mêmes tâches, les mêmes prompts, des résultats objectivement différents. Ce n'est pas un biais d'usage. C'est une mesure.</p>
+          <p>Peter Welinder, VP Produit chez OpenAI, avait proposé une autre lecture : « Quand on utilise un outil plus intensivement, on commence à remarquer des problèmes qu'on ne voyait pas avant. » L'étude de Stanford disait le contraire : avec les mêmes tâches et les mêmes prompts, les résultats étaient objectivement différents. C'était une mesure, pas un biais d'usage.</p>
         </blockquote>
 
         <p>
-          Mais la mesure ne dit qu'une partie de l'histoire. La précision sur les nombres premiers, la plupart des utilisateurs s'en fichent. Ce qu'ils ressentent, c'est autre chose — quelque chose de plus diffus, plus difficile à nommer. Et c'est précisément là que le sujet devient intéressant.
+          Mais la mesure ne dit qu'une partie de l'histoire. La précision sur les nombres premiers, la plupart des utilisateurs s'en fichent. Ce qu'ils ressentent est autre chose, de plus diffus et de plus difficile à nommer, et c'est ce qui rend le sujet intéressant.
         </p>
       </section>
 
@@ -100,11 +100,11 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         <h3>1. Ce que le modèle s'est fait à lui-même</h3>
 
         <p>
-          Il y a quatre optimisations qu'OpenAI a conduites en parallèle depuis 2023. Chacune est rationnelle. Leur combinaison est dévastatrice.
+          Il y a quatre optimisations qu'OpenAI a conduites en parallèle depuis 2023. Chacune est rationnelle, mais leur combinaison est dévastatrice.
         </p>
 
         <p>
-          <strong>Les filtres de sécurité se sont étendus.</strong> Des sujets que GPT-4 discutait avec nuance en 2023 déclenchent désormais des refus ou des réponses blindées de mises en garde. Le taux de réponse directe aux questions sensibles est passé de 21% à 5% entre mars et juin 2023 — et la tendance ne s'est pas inversée depuis.
+          <strong>Les filtres de sécurité se sont étendus.</strong> Des sujets que GPT-4 discutait avec nuance en 2023 déclenchent désormais des refus ou des réponses blindées de mises en garde. Le taux de réponse directe aux questions sensibles est passé de 21% à 5% entre mars et juin 2023, et la tendance ne s'est pas inversée depuis.
         </p>
 
         <p>
@@ -112,15 +112,15 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         </p>
 
         <p>
-          <strong>Le tuning comportemental a lissé la surface.</strong> Clarté, structure, prévisibilité — ce sont des qualités d'interface, pas des qualités cognitives. Un modèle optimisé pour la clarté maximale produit des réponses plus lisses. Plus propres. Et moins rugueuses.
+          <strong>Le tuning comportemental a lissé la surface.</strong> La clarté, la structure et la prévisibilité sont des qualités d'interface, pas des qualités cognitives. Un modèle optimisé pour la clarté maximale produit des réponses plus propres et plus lisses, moins rugueuses.
         </p>
 
         <p>
-          <strong>La réduction de l'assurance excessive a éteint l'énergie.</strong> Après les critiques sur la sycophantie de GPT-4o — des utilisateurs tellement attachés au modèle qu'ils ont créé un subreddit privé quand OpenAI a annoncé son retrait — la correction est allée dans l'autre sens. GPT-5.2 ne dit plus « I love you ». Il ne prend plus de risques interprétatifs. Il est plus sobre. Mais la sobriété sans tension, c'est de la platitude.
+          <strong>La réduction de l'assurance excessive a éteint l'énergie.</strong> Après les critiques sur la sycophantie de GPT-4o (des utilisateurs étaient si attachés au modèle qu'ils ont créé un subreddit privé quand OpenAI a annoncé son retrait), la correction est allée dans l'autre sens. GPT-5.2 ne dit plus « I love you ». Il ne prend plus de risques interprétatifs. Il est plus sobre. Mais la sobriété sans tension, c'est de la platitude.
         </p>
 
         <div class="key-insight">
-          <p>Quatre optimisations rationnelles. Un même résultat : la variance a été comprimée. Et la variance — les écarts, les aspérités, les moments où le modèle surprend — c'était précisément ce qui produisait l'effet cognitif.</p>
+          <p>Les quatre optimisations rationnelles mènent au même résultat : la variance a été comprimée. Or c'est la variance (les écarts, les aspérités, les moments où le modèle surprend) qui produisait l'effet cognitif.</p>
         </div>
 
         <h3>2. Ce que l'utilisateur ne nomme pas</h3>
@@ -130,34 +130,34 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         </p>
 
         <p>
-          La première fois qu'un utilisateur a reçu une réponse de ChatGPT en 2022, il y avait un delta — un écart entre l'attente et ce qui arrivait. Ce delta était massif. Personne n'avait l'habitude de recevoir un texte structuré, contextuel, apparemment intelligent, en réponse à une question tapée dans un champ vide. L'effet « wow » n'était pas une propriété du modèle. C'était une propriété du delta.
+          La première fois qu'un utilisateur a reçu une réponse de ChatGPT en 2022, il y avait un delta, un écart entre l'attente et ce qui arrivait. Ce delta était massif. Personne n'avait l'habitude de recevoir un texte structuré, contextuel, apparemment intelligent, en réponse à une question tapée dans un champ vide. L'effet « wow » était une propriété du delta, pas du modèle.
         </p>
 
         <div class="concept">
           <h4>La normalisation technologique</h4>
-          <p>Le moment où un outil cesse d'être un événement et devient un meuble. Le meuble peut être fonctionnel, utile, bien construit. Mais personne ne remarque un meuble. On remarque quand le meuble manque — ou quand il gêne.</p>
+          <p>Le moment où un outil cesse d'être un événement et devient un meuble. Le meuble peut être fonctionnel, utile, bien construit. Mais personne ne remarque un meuble. On remarque quand le meuble manque, ou quand il gêne.</p>
         </div>
 
         <p>
-          Deux choses ferment ce delta simultanément. D'un côté, le modèle lisse ses réponses — moins de variance, moins d'inattendu. De l'autre, l'utilisateur calibre ses attentes vers le haut. Ce qui impressionnait en 2022 est devenu le plancher en 2024. La technologie ne régresse pas nécessairement en termes absolus — mais le delta perçu, lui, se ferme. Et quand le delta se ferme, la conversation cesse de produire un effet.
+          Deux choses ferment ce delta simultanément. D'un côté, le modèle lisse ses réponses : moins de variance, moins d'inattendu. De l'autre, l'utilisateur calibre ses attentes vers le haut. Ce qui impressionnait en 2022 est devenu le plancher en 2024. La technologie ne régresse pas nécessairement en termes absolus, mais le delta perçu, lui, se ferme. Et quand le delta se ferme, la conversation cesse de produire un effet.
         </p>
 
         <p>
-          Il y a un corollaire. Les utilisateurs qui migrent vers Claude, Gemini ou Perplexity ne migrent pas vers un meilleur meuble. Ils migrent vers un nouveau delta. Un modèle inconnu produit des réponses inattendues, avec un style différent, des angles différents, des refus différents. Le delta se rouvre. L'effet « wow » revient — temporairement — parce que l'attente n'a pas encore rattrapé l'expérience. La question que personne ne pose : combien de temps avant que le nouveau modèle devienne, lui aussi, un meuble ?
+          Il y a un corollaire. Les utilisateurs qui migrent vers Claude, Gemini ou Perplexity vont chercher un nouveau delta, plutôt qu'un meilleur meuble. Un modèle inconnu produit des réponses inattendues, avec un style différent, des angles différents, des refus différents. Le delta se rouvre. L'effet « wow » revient, pour un temps, parce que l'attente n'a pas encore rattrapé l'expérience. La question que personne ne pose : combien de temps avant que le nouveau modèle devienne, lui aussi, un meuble ?
         </p>
 
         <h3>3. Ce que ça révèle</h3>
 
         <p>
-          Quand on superpose les deux mécaniques — le lissage du modèle et l'habituation de l'utilisateur — il reste un résidu que ni l'une ni l'autre n'explique seule. Ce résidu, c'est la perte de <strong>friction productive</strong>.
+          Quand on superpose les deux mécaniques, le lissage du modèle et l'habituation de l'utilisateur, il reste un résidu que ni l'une ni l'autre n'explique seule. Ce résidu, c'est la perte de <strong>friction productive</strong>.
         </p>
 
         <p>
-          La friction, dans une interaction humain-IA, ce n'est pas un défaut. C'est le mécanisme. Quand un modèle reformule mal une idée, la résistance force l'utilisateur à préciser. Quand un modèle propose un angle inattendu, le décalage oblige à se repositionner. Quand un modèle refuse de répondre à une question, le refus lui-même peut devenir un signal — sur la question, pas sur le modèle.
+          La friction, dans une interaction humain-IA, ce n'est pas un défaut. C'est le mécanisme. Quand un modèle reformule mal une idée, la résistance force l'utilisateur à préciser. Quand un modèle propose un angle inattendu, le décalage oblige à se repositionner. Quand un modèle refuse de répondre à une question, le refus lui-même peut devenir un signal : sur la question, pas sur le modèle.
         </p>
 
         <div class="key-insight">
-          <p>Une pensée qui ne rencontre aucune résistance ne change pas de direction. Elle se confirme. Les boucles se referment. Le système — humain + modèle — converge vers la répétition.</p>
+          <p>Une pensée qui ne rencontre aucune résistance ne change pas de direction. Elle se confirme. Les boucles se referment. Le système (humain + modèle) converge vers la répétition.</p>
         </div>
 
         <p>
@@ -165,7 +165,7 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         </p>
 
         <p>
-          Ce n'est pas une critique. C'est un constat de mécanique.
+          C'est un constat de mécanique, pas une critique.
         </p>
       </section>
 
@@ -182,15 +182,15 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         </p>
 
         <p>
-          Un utilisateur qui n'utilise qu'un seul modèle s'habitue à sa surface. Le lissage est progressif, il n'est pas perçu — comme une couleur qui pâlit lentement. Mais dès que l'utilisateur essaie un second modèle — Claude, Gemini, même un modèle local — la différence de texture devient immédiatement perceptible. Ce n'est pas que l'autre modèle est « meilleur ». C'est que la juxtaposition rend le lissage visible. Le contraste crée la perception.
+          Un utilisateur qui n'utilise qu'un seul modèle s'habitue à sa surface. Le lissage est progressif et passe inaperçu, comme une couleur qui pâlit lentement. Mais dès que l'utilisateur essaie un second modèle (Claude, Gemini, même un modèle local), la différence de texture se perçoit tout de suite. L'autre modèle n'a pas besoin d'être « meilleur » : c'est la juxtaposition qui rend le lissage visible. Le contraste crée la perception.
         </p>
 
         <p>
-          C'est exactement ce qui se passe sur le marché en ce moment. La croissance de Claude (+190% d'utilisateurs actifs en 2025) et de Perplexity (+370%) ne s'explique pas uniquement par des fonctionnalités supérieures. Elle s'explique par un delta de texture. Des utilisateurs qui avaient cessé de percevoir ChatGPT comme un espace cognitif découvrent que l'interaction peut encore produire de la surprise — ailleurs.
+          C'est exactement ce qui se passe sur le marché en ce moment. La croissance de Claude (+190% d'utilisateurs actifs en 2025) et de Perplexity (+370%) ne s'explique pas uniquement par des fonctionnalités supérieures. Elle s'explique par un delta de texture. Des utilisateurs qui avaient cessé de percevoir ChatGPT comme un espace cognitif découvrent que l'interaction peut encore produire de la surprise, mais ailleurs.
         </p>
 
         <blockquote>
-          <p>Le deal avec le Pentagone a ajouté une couche : une différence de texture <em>éthique</em>. Anthropic refuse un contrat militaire aux conditions jugées inacceptables. OpenAI prend le contrat dans les heures qui suivent, après avoir publiquement soutenu la position d'Anthropic. L'incohérence n'est pas stratégique — elle est perceptive. Elle donne aux utilisateurs un nom pour un malaise qu'ils ressentaient déjà sans pouvoir le formuler.</p>
+          <p>Le deal avec le Pentagone a ajouté une couche : une différence de texture <em>éthique</em>. Anthropic refuse un contrat militaire aux conditions jugées inacceptables. OpenAI prend le contrat dans les heures qui suivent, après avoir publiquement soutenu la position d'Anthropic. L'incohérence n'est pas stratégique, elle est perceptive : elle donne aux utilisateurs un nom pour un malaise qu'ils ressentaient déjà sans pouvoir le formuler.</p>
         </blockquote>
       </section>
 
@@ -199,22 +199,22 @@ doi: "https://doi.org/10.5281/zenodo.19053495"
         <h2>Ce qui reste quand la surface est lisse</h2>
 
         <p>
-          L'abandon de ChatGPT n'est pas une histoire de qualité qui baisse. C'est une histoire de mécanique qui change.
+          L'abandon de ChatGPT tient à une mécanique qui change, pas à une qualité qui baisse.
         </p>
 
         <p>
-          Un modèle qui ne produit plus de variance ne surprend plus. Un utilisateur habitué ne perçoit plus le delta. Une interaction sans friction ne change pas la direction de la pensée. Les trois se combinent. Le résultat n'est pas un modèle inutile — c'est un modèle devenu transparent. Un outil qui fonctionne, qui répond, qui produit. Mais qui ne frotte plus.
+          Un modèle qui ne produit plus de variance ne surprend plus. Un utilisateur habitué ne perçoit plus le delta. Une interaction sans friction ne change pas la direction de la pensée. Les trois se combinent et donnent un modèle devenu transparent, pas inutile : un outil qui fonctionne, répond et produit, mais qui ne frotte plus.
         </p>
 
         <div class="key-insight">
-          <p>La question n'est pas de savoir si ChatGPT est « moins bon ». La question est de savoir ce que nous attendons d'une interaction avec une IA. Si la réponse est « de l'information », alors le lissage est une optimisation légitime. Si la réponse est « un espace où la pensée change de forme » — alors la friction n'est pas un bug à corriger. C'est l'architecture elle-même.</p>
+          <p>La question n'est pas de savoir si ChatGPT est « moins bon », mais ce que nous attendons d'une interaction avec une IA. Si la réponse est « de l'information », alors le lissage est une optimisation légitime. Si la réponse est « un espace où la pensée change de forme », alors la friction est l'architecture elle-même, pas un bug à corriger.</p>
         </div>
 
         <p>
-          La prochaine fois qu'un utilisateur quittera ChatGPT pour un autre modèle, il ne quittera pas un produit défaillant. Il quittera une surface devenue trop lisse pour que sa pensée y accroche.
+          La prochaine fois qu'un utilisateur quittera ChatGPT pour un autre modèle, il ne quittera pas un produit défaillant, mais une surface devenue trop lisse pour que sa pensée y accroche.
         </p>
 
         <p>
-          Ce n'est pas la fin de ChatGPT. C'est la fin de son effet.
+          ChatGPT n'est pas fini. Son effet, lui, l'est.
         </p>
       </section>

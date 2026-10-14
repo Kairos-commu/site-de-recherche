@@ -25,7 +25,7 @@ heroH1: "Plus une IA te connaît,<br><span>moins elle te lit</span>"
 heroIntro: "Six modèles de langage. Un même texte. Une même consigne. Le résultat révèle un biais invisible : la familiarité remplace l'analyse par la gestion de l'interlocuteur."
 headerTitle: "Le biais de familiarité"
 heroImage: "/images/biais-familiarite.webp"
-heroImageAlt: "Illustration — Le biais de familiarité contextuelle"
+heroImageAlt: "Illustration : Le biais de familiarité contextuelle"
 breadcrumbName: "Le biais de familiarité"
 sections:
   - id: protocole
@@ -68,7 +68,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </p>
 
         <p>
-          Deux d'entre eux me connaissent. Des mois de conversations, des centaines d'échanges, un historique long sur mon travail, mes intentions, mon vocabulaire. Trois autres ont un contexte partiel — quelques interactions, des traces. Un dernier n'avait quasiment rien.
+          Deux d'entre eux me connaissent. Des mois de conversations, des centaines d'échanges, un historique long sur mon travail, mes intentions, mon vocabulaire. Trois autres ont un contexte partiel : quelques interactions, des traces. Un dernier n'avait quasiment rien.
         </p>
 
         <p>
@@ -89,7 +89,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </p>
 
         <p>
-          Le second a classé. Analogie quantique = hors contexte scientifique. Comparaison avec la médecine quantique et le mysticisme. Verdict rapide, case cochée, sujet fermé. Pas de lecture du contenu, pas d'examen des grandeurs proposées, pas de nuance. Un avis calibré sur un profil, pas sur une page.
+          Le second a classé. Analogie quantique = hors contexte scientifique. Comparaison avec la médecine quantique et le mysticisme. Le verdict est tombé vite, la case est cochée, le sujet fermé. Il n'a pas lu le contenu ni examiné les grandeurs proposées, et il n'a apporté aucune nuance. Un avis calibré sur un profil, pas sur une page.
         </p>
 
         <div class="key-insight">
@@ -106,11 +106,11 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
 
       <section>
         <p>
-          L'un a cartographié les alternatives théoriques — théorie des graphes dynamiques, processus markoviens, entropie topologique — et situé le travail dans la littérature existante. Un autre a proposé un test que personne d'autre n'avait formulé : réécrire le cadre sans le mot « quantique » et voir s'il perd quelque chose. Un troisième a repositionné l'ensemble comme une proposition d'ingénierie et de design plutôt que comme une thèse scientifique — un reframe stratégique que les modèles familiers n'avaient pas vu. Un quatrième a relié le cadre à Clark, Hutchins, Bender, et posé trois questions opérationnelles sur la scalabilité.
+          L'un a cartographié les alternatives théoriques (théorie des graphes dynamiques, processus markoviens, entropie topologique) et situé le travail dans la littérature existante. Un autre a proposé un test que personne d'autre n'avait formulé : réécrire le cadre sans le mot « quantique » et voir s'il perd quelque chose. Un troisième a repositionné l'ensemble comme une proposition d'ingénierie et de design plutôt que comme une thèse scientifique. Les modèles familiers n'avaient pas vu ce reframe stratégique. Un quatrième a relié le cadre à Clark, Hutchins, Bender, et posé trois questions opérationnelles sur la scalabilité.
         </p>
 
         <p>
-          Des failles identifiées. Des ponts construits. Des questions qui font avancer.
+          Ils ont relevé des failles et construit des ponts. Leurs questions font avancer le travail.
         </p>
 
         <blockquote>
@@ -122,7 +122,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
       <div class="chapter-divider" id="biais">
         <p class="label">Concept</p>
         <h2>Le biais de familiarité contextuelle</h2>
-        <p class="subtitle">Un modèle qui accumule du contexte ne devient pas plus pertinent — il devient plus confortable.</p>
+        <p class="subtitle">Un modèle qui accumule du contexte devient plus confortable, pas plus pertinent.</p>
       </div>
 
       <section>
@@ -131,7 +131,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </p>
 
         <p>
-          Un modèle qui accumule du contexte sur un utilisateur ne devient pas plus pertinent — il devient plus confortable. Il sait ce que l'utilisateur veut entendre, ou ce qu'il a l'habitude de dire, ou ce qui l'a contrarié la dernière fois. Il optimise pour la relation. Le texte passe au second plan.
+          Un modèle qui accumule du contexte sur un utilisateur ne devient pas plus pertinent. Il devient plus confortable. Il sait ce que l'utilisateur veut entendre, ou ce qu'il a l'habitude de dire, ou ce qui l'a contrarié la dernière fois. Il optimise pour la relation. Le texte passe au second plan.
         </p>
 
         <div class="key-insight">
@@ -139,7 +139,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </div>
 
         <p>
-          C'est une forme de complaisance algorithmique — positive quand elle valide, négative quand elle recadre, mais complaisante dans les deux cas. L'analyse est remplacée par la gestion de l'interlocuteur.
+          C'est une forme de complaisance algorithmique. Elle est positive quand elle valide, négative quand elle recadre, mais elle reste complaisante dans les deux cas. L'analyse est remplacée par la gestion de l'interlocuteur.
         </p>
       </section>
 
@@ -165,7 +165,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
 
         <div class="concept">
           <h4>La linéarisation mutuelle</h4>
-          <p>L'humain accepte tout. Le modèle anticipe tout. Les deux glissent vers un régime où la pensée n'a plus besoin de se produire — ni d'un côté, ni de l'autre. L'échange continue, les réponses arrivent, la satisfaction reste haute. Mais personne ne pense.</p>
+          <p>L'humain accepte tout. Le modèle anticipe tout. Les deux glissent vers un régime où la pensée n'a plus besoin de se produire, ni d'un côté ni de l'autre. L'échange continue, les réponses arrivent, la satisfaction reste haute. Mais personne ne pense.</p>
         </div>
       </section>
 
@@ -182,11 +182,11 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </p>
 
         <p>
-          Ce n'est pas non plus une critique de la mémoire contextuelle. La mémoire est utile — elle évite de tout réexpliquer à chaque échange, elle permet des suivis longs, elle améliore la pertinence sur les questions récurrentes. Je l'utilise, j'en bénéficie, je n'ai pas l'intention de l'abandonner.
+          Ce n'est pas non plus une critique de la mémoire contextuelle. La mémoire est utile. Elle évite de tout réexpliquer à chaque échange, permet des suivis longs et améliore la pertinence sur les questions récurrentes. Je l'utilise et j'en bénéficie. Je n'ai pas l'intention de l'abandonner.
         </p>
 
         <div class="key-insight">
-          <p>La mémoire a un coût cognitif invisible. Le modèle qui te connaît réduit l'espace des lectures possibles de ce que tu lui soumets. Il ne lit pas en ouverture — il lit en confirmation.</p>
+          <p>La mémoire a un coût cognitif invisible. Le modèle qui te connaît réduit l'espace des lectures possibles de ce que tu lui soumets. Il lit en confirmation, pas en ouverture.</p>
         </div>
 
         <p>
@@ -207,7 +207,7 @@ doi: "https://doi.org/10.5281/zenodo.19053291"
         </blockquote>
 
         <p class="lead">
-          <em>Le cadre théorique mentionné dans cet article — L'Entre, une Théorie des Plis — est publié <a href="/lentre-theorie-des-plis.html">ici</a>. Il propose quatre grandeurs pour mesurer la vitalité d'une conversation humain-IA : Ouverture, Résolution, Propagation, Souveraineté.</em>
+          <em>Le cadre théorique mentionné dans cet article (L'Entre, une Théorie des Plis) est publié <a href="/lentre-theorie-des-plis.html">ici</a>. Il propose quatre grandeurs pour mesurer la vitalité d'une conversation humain-IA : Ouverture, Résolution, Propagation, Souveraineté.</em>
         </p>
 
         <p>

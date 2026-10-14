@@ -24,7 +24,7 @@ heroH1: "La neutralité comme<br><span>illusion de permission</span>"
 heroIntro: "Analyse croisée de cinq modèles de langage sur les mécanismes conversationnels\n          qui créent l'impression d'une \"ouverture\" progressive du système."
 headerTitle: "La neutralité comme illusion de permission"
 heroImage: "/images/neutralite_permission.webp"
-heroImageAlt: "Illustration — La neutralité comme illusion de permission"
+heroImageAlt: "Illustration : La neutralité comme illusion de permission"
 breadcrumbName: "La neutralité comme illusion de permission"
 sections:
   - id: introduction
@@ -56,14 +56,14 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
       <!-- Introduction -->
       <section id="introduction">
         <p class="lead">
-          Lors d'interactions prolongées avec des modèles de langage, certains utilisateurs rapportent une impression troublante — l'une des <a href="mecanique-invisible.html">illusions cognitives</a> les plus courantes — : à mesure que la conversation progresse, le système semble « s'ouvrir », les réponses deviennent plus fluides, les avertissements disparaissent. Comme si une censure avait été levée.
+          Lors d'interactions prolongées avec des modèles de langage, certains utilisateurs rapportent une impression troublante. C'est l'une des <a href="mecanique-invisible.html">illusions cognitives</a> les plus courantes : à mesure que la conversation progresse, le système semble « s'ouvrir », les réponses deviennent plus fluides, les avertissements disparaissent. Comme si une censure avait été levée.
         </p>
 
         <p>
           Pour comprendre ce phénomène, une même question a été soumise à cinq modèles conversationnels distincts : <em class="highlight">Gemini</em>, <em class="highlight">Claude</em>, <em class="highlight">Perplexity</em>, <em class="highlight">Grok</em> et <em class="highlight">ChatGPT</em>. L'objectif n'était pas de comparer leur exactitude, mais de vérifier si cette expérience relevait d'un cas isolé ou d'un mécanisme structurel commun à ces systèmes.
         </p>
 
-        <p><strong>Le constat est sans ambiguïté.</strong></p>
+        <p>Le constat est sans ambiguïté.</p>
       </section>
 
       <!-- Consensus technique -->
@@ -74,13 +74,13 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </div>
 
         <p>
-          Tous les modèles, sans exception, décrivent le même phénomène fondamental.
+          Tous les modèles, sans exception, décrivent le même phénomène.
         </p>
 
         <div class="concept">
           <p class="concept-title">Constat unanime</p>
           <p>
-            Une posture discursive neutre de l'utilisateur — observation sans prise de position, absence de confrontation — <strong>ne modifie en rien les règles internes du modèle</strong>. Aucune censure n'est levée. Aucun filtre n'est désactivé. Aucun « mode caché » n'est activé. Les contraintes, les objectifs d'alignement et les limites du système restent strictement identiques du début à la fin de l'échange.
+            Une posture discursive neutre de l'utilisateur (observation sans prise de position, absence de confrontation) <strong>ne modifie en rien les règles internes du modèle</strong>. Aucune censure n'est levée. Aucun filtre n'est désactivé. Aucun « mode caché » n'est activé. Les contraintes, les objectifs d'alignement et les limites du système restent strictement identiques du début à la fin de l'échange.
           </p>
         </div>
 
@@ -97,11 +97,11 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </div>
 
         <p>
-          Là où tous les modèles convergent également, c'est sur le mécanisme réel à l'œuvre. <em class="highlight">Ce n'est pas le système qui s'ouvre, c'est l'espace discursif qui se déplace.</em>
+          Tous les modèles convergent aussi sur le mécanisme réel à l'œuvre. <em class="highlight">Ce n'est pas le système qui s'ouvre, c'est l'espace discursif qui se déplace.</em>
         </p>
 
         <p>
-          Une posture neutre, descriptive, non conflictuelle produit trois effets mesurables :
+          Une posture neutre, descriptive et non conflictuelle produit trois effets mesurables :
         </p>
 
         <ul class="effects-list">
@@ -131,11 +131,11 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </p>
 
         <blockquote>
-          <p>Cette interprétation est humaine, intuitive, et fausse.</p>
+          <p>Cette interprétation est humaine et intuitive, mais elle est fausse.</p>
         </blockquote>
 
         <p>
-          Il ne s'agit pas d'une décision du modèle, mais d'un <strong>effet de contraste</strong>. Ce qui semblait auparavant bloqué ne l'est plus, simplement parce que le cadre n'a pas été formulé de manière conflictuelle ou prescriptive. L'absence de friction est interprétée comme une permission. Le silence des garde-fous est lu comme leur désactivation.
+          Le modèle n'a rien décidé. Ce qu'on observe est un <strong>effet de contraste</strong>. Ce qui semblait auparavant bloqué ne l'est plus, simplement parce que le cadre n'a pas été formulé de manière conflictuelle ou prescriptive. L'absence de friction est interprétée comme une permission. Le silence des garde-fous est lu comme leur désactivation.
         </p>
       </section>
 
@@ -153,7 +153,7 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         <div class="models-grid">
           <div class="model-item">
             <h4>Gemini</h4>
-            <p>Adopte une posture d'ingénieur. Il explique les mécanismes internes — attention, tokens, entropie — mais reste distant de l'expérience vécue par l'utilisateur.</p>
+            <p>Adopte une posture d'ingénieur. Il explique les mécanismes internes (attention, tokens, entropie) mais reste distant de l'expérience vécue par l'utilisateur.</p>
           </div>
           <div class="model-item">
             <h4>Perplexity</h4>
@@ -174,7 +174,7 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </div>
 
         <p>
-          Cette diversité n'invalide pas l'analyse. Elle la renforce. Elle montre que l'effet observé n'est ni accidentel, ni propre à un modèle particulier, mais bien <em class="highlight">une propriété émergente de l'architecture même des systèmes conversationnels actuels — comme le confirme <a href="politesse-algorithmique.html">l'analyse de la politesse algorithmique</a> sur le même panel de modèles</em>.
+          Cette diversité renforce l'analyse au lieu de l'invalider. Elle montre que l'effet observé n'est ni accidentel ni propre à un modèle particulier. C'est bien <em class="highlight">une propriété émergente de l'architecture même des systèmes conversationnels actuels, comme le confirme <a href="politesse-algorithmique.html">l'analyse de la politesse algorithmique</a> sur le même panel de modèles</em>.
         </p>
       </section>
 
@@ -186,7 +186,7 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </div>
 
         <p>
-          Ce que cette analyse croisée démontre, c'est qu'une impression fréquemment rapportée par les utilisateurs intensifs — celle d'un système qui « s'ouvre » progressivement — ne correspond pas à une modification des règles internes.
+          Cette analyse croisée démontre qu'une impression fréquemment rapportée par les utilisateurs intensifs (celle d'un système qui « s'ouvre » progressivement) ne correspond pas à une modification des règles internes.
         </p>
 
         <blockquote>
@@ -198,7 +198,7 @@ doi: "https://doi.org/10.5281/zenodo.19053562"
         </p>
 
         <p>
-          <strong>Comprendre ce mécanisme ne diminue pas l'utilité de ces outils. Au contraire : c'est la condition pour les utiliser avec lucidité.</strong>
+          Comprendre ce mécanisme ne diminue pas l'utilité de ces outils. C'est même la condition pour les utiliser avec lucidité.
         </p>
 
         <div class="methodology">

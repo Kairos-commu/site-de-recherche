@@ -1,9 +1,9 @@
 ---
 slug: choragos-kora
-pageTitle: "Choragos — Un assistant IA qui tourne sur ma machine — Florent Klimacek"
-headline: "Choragos — Un assistant IA qui tourne sur ma machine"
+pageTitle: "Choragos : un assistant IA qui tourne sur ma machine — Florent Klimacek"
+headline: "Choragos : un assistant IA qui tourne sur ma machine"
 description: "Kora est une assistante IA qui tourne en local : le modèle, la reconnaissance vocale et la voix de synthèse sont sur ma machine. Ce qu'elle sait faire, ce qui la retient de mentir, et les murs qu'elle n'a pas franchis."
-ogTitle: "Choragos — Un assistant IA qui tourne sur ma machine"
+ogTitle: "Choragos : un assistant IA qui tourne sur ma machine"
 ogDescription: "Kora tourne en local : 402 appels au modèle de ma machine contre 50 au cloud en deux jours, pour 0,51 $. Ce qu'elle fait, ses garde-fous, et ses murs."
 ogUrl: "/choragos-kora.html"
 canonical: "/choragos-kora.html"
@@ -29,7 +29,7 @@ heroH1: "Choragos<br /><span class=\"glitch-text\">Kora, en local</span>"
 heroIntro: "Le modèle qui répond ne tourne pas dans un centre de données. Il tourne dans la pièce où je travaille."
 headerTitle: "Choragos & Kora"
 heroImage: "/images/choragos-2026-10-03-tenue-anneaux.webp"
-heroImageAlt: "Choragos — Kora en tenue « anneaux » au centre de la scène, capture du 3 octobre 2026"
+heroImageAlt: "Choragos : Kora en tenue « anneaux » au centre de la scène, capture du 3 octobre 2026"
 breadcrumbName: "Choragos & Kora"
 sections:
   - id: en-local
@@ -70,7 +70,7 @@ attestes: true
     Sur deux jours d'usage réel, les 3 et 4 septembre 2026, Choragos a passé
     <strong class="atteste">402 appels au modèle qui tourne sur ma machine</strong> et
     <strong class="atteste">50 appels à des services en ligne</strong>. Facture de la période :
-    <strong class="atteste">0,51 $</strong>. Ces chiffres ne sont pas une estimation — ils ont
+    <strong class="atteste">0,51 $</strong>. Ces chiffres n'ont rien d'une estimation : ils ont
     été lus le 4 septembre dans la base de l'application, qui compte chaque
     appel.
   </p>
@@ -84,10 +84,10 @@ attestes: true
   </p>
 
   <p>
-    Ce n'est pas une démonstration technique posée dans un coin : c'est
+    Rien d'une démonstration technique posée dans un coin : c'est
     l'assistante que j'utilise. Elle s'appelle Kora. Elle lit mes dossiers,
     cherche sur le web, écrit des fichiers, coupe la musique, retient ce que je
-    lui demande de retenir — et elle m'écoute quand je lui parle à voix haute.
+    lui demande de retenir. Et elle m'écoute quand je lui parle à voix haute.
   </p>
 
   <figure>
@@ -100,10 +100,10 @@ attestes: true
 
   <div class="key-insight">
     <p>
-      Le cloud n'est pas exclu. Il est <em class="highlight">optionnel</em>, et
+      Le cloud reste possible, mais il est <em class="highlight">optionnel</em>, et
       il se voit. Les cinquante appels en ligne de ces deux jours sont
-      tous partis parce que je l'ai explicitement demandé — « demande son avis à
-      Claude » — et chacun a laissé une ligne dans le tableau de bord, avec son
+      tous partis parce que je l'ai explicitement demandé (« demande son avis à
+      Claude »), et chacun a laissé une ligne dans le tableau de bord, avec son
       coût.
     </p>
   </div>
@@ -118,7 +118,7 @@ attestes: true
 <section>
   <p>
     Choragos est une application de bureau. Elle s'ouvre sur une scène en trois
-    dimensions où Kora occupe le centre — un noyau liquide qui bat, se déforme,
+    dimensions où Kora occupe le centre : un noyau liquide qui bat, se déforme
     et change de couleur quand elle travaille. Autour d'elle, six agents sur
     leurs orbites : Claude, ChatGPT, DeepSeek, Mistral, Groq et un second modèle
     local. Deux lunes tournent autour de Groq, qui sont ses spécialisations.
@@ -128,15 +128,15 @@ attestes: true
     <img src="/images/choragos-constellation.webp" alt="La constellation Choragos sur fond d'espace : Kora au centre, six agents sur leurs orbites" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       Le fond par défaut : un champ d'étoiles, rien d'autre. Les périodes
-      d'orbite suivent la troisième loi de Kepler — l'agent le plus proche fait
+      d'orbite suivent la troisième loi de Kepler : l'agent le plus proche fait
       un tour en quelques minutes, le plus lointain en treize. L'image d'en-tête
       montre le même écran avec le fond photographique, qui est à un clic.
     </figcaption>
   </figure>
 
   <p>
-    Ce n'est pas un tableau de bord déguisé. Les orbites ne sont pas décoratives :
-    elles portent une information. Un agent qui répond s'entoure d'un halo, un
+    Ce n'est pas un tableau de bord déguisé : les orbites, loin d'être
+    décoratives, portent une information. Un agent qui répond s'entoure d'un halo, un
     agent sollicité par Kora se rapproche d'elle le temps de l'échange, et un
     filament lumineux relie les deux pendant la délégation. Quand quelque chose
     se passe, ça se voit à l'écran sans avoir à ouvrir un journal.
@@ -144,7 +144,7 @@ attestes: true
 
   <p>
     Au lancement, Kora est seule. Les agents n'apparaissent que si je les
-    appelle — « Kora, au travail » — et repartent quand je lui demande de se
+    appelle (« Kora, au travail ») et repartent quand je lui demande de se
     mettre en pause. C'est une mise en scène, mais elle dit quelque chose de
     vrai : la plupart du temps, je n'ai besoin que d'elle, et donc que de ma
     propre machine.
@@ -186,7 +186,7 @@ attestes: true
 
   <p>
     Voici un échange réel, tel qu'il s'est déroulé pendant que je préparais cet
-    article. Trois questions, trois comportements différents — et le troisième
+    article. Trois questions donnent trois comportements différents, et le troisième
     est le plus intéressant.
   </p>
 
@@ -201,8 +201,8 @@ attestes: true
   <p>
     À « sur quelle machine tu tournes ? », elle répond de tête : elle sait
     qu'elle est sur un poste Linux, c'est écrit dans ses instructions. À « il me
-    reste combien de place sur le disque ? », elle ne devine pas — elle appelle
-    l'outil <em>infos système</em>, lit la vraie valeur, et répond avec.
+    reste combien de place sur le disque ? », elle ne devine pas : elle appelle
+    l'outil <em>infos système</em>, lit la vraie valeur et répond avec.
     L'application écrit sous la réponse quels outils ont réellement été appelés,
     pour que je puisse vérifier après coup plutôt que la croire sur parole.
   </p>
@@ -220,17 +220,17 @@ attestes: true
   </figure>
 
   <p>
-    Elle demande. La bulle affiche l'action exacte, le chemin exact, et la raison
+    Elle demande d'abord. La bulle affiche l'action exacte, le chemin exact et la raison
     qu'elle donne. J'ai cliqué « Refuser ». Sa réponse tient en une phrase : « Le
-    dossier Images n'a pas été ouvert. » Pas d'excuse, pas de reformulation
-    ambiguë, pas de « c'est fait » de complaisance.
+    dossier Images n'a pas été ouvert. » Elle ne s'excuse pas, ne reformule pas de
+    façon ambiguë, et ne glisse aucun « c'est fait » de complaisance.
   </p>
 
   <div class="key-insight">
     <p>
       C'est la règle qui structure tout le reste : Kora ne peut jamais affirmer
       avoir fait quelque chose sans avoir réellement appelé l'outil
-      correspondant. Ce n'est pas une consigne de politesse dans son prompt —
+      correspondant. Ce n'est pas une consigne de politesse dans son prompt :
       c'est vérifié par du code, à plusieurs endroits, parce qu'une consigne
       seule ne tient pas.
     </p>
@@ -254,16 +254,16 @@ attestes: true
     <img src="/images/choragos-ecoute.webp" alt="La capsule de commande de Choragos en écoute, avec son vumètre" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       L'écoute active : un anneau, cinq barres pilotées par le niveau réel du
-      micro. Elle est éteinte à chaque démarrage — un micro qui s'ouvre tout seul
+      micro. Elle est éteinte à chaque démarrage, parce qu'un micro qui s'ouvre tout seul
       au lancement est exactement ce qui rend une écoute permanente inquiétante.
     </figcaption>
   </figure>
 
   <p>
-    Le mot d'éveil n'est pas un service en ligne : c'est un petit modèle
-    <strong>entraîné sur ma machine, avec ma voix</strong>. Dix fois « Kora »,
-    dix secondes de voix sans le mot — sans ça, le modèle apprend « sa voix » au
-    lieu du mot — et trois minutes de calcul. Tout se fait depuis un panneau de
+    Le mot d'éveil est un petit modèle
+    <strong>entraîné sur ma machine, avec ma voix</strong>, pas un service en ligne.
+    Il lui faut dix fois « Kora », dix secondes de voix sans le mot (sans ça, le
+    modèle apprend « sa voix » au lieu du mot) et trois minutes de calcul. Tout se fait depuis un panneau de
     l'application.
   </p>
 
@@ -277,8 +277,8 @@ attestes: true
 
   <p>
     Ce modèle n'est pas très bon, et c'est assumé : il attrape un « Kora » sur
-    dix trop tard, et il se déclenche parfois sur de la musique. La parade n'est
-    pas de le rendre meilleur — c'est de ne jamais lui donner le dernier mot.
+    dix trop tard, et il se déclenche parfois sur de la musique. La parade consiste
+    à ne jamais lui donner le dernier mot, plutôt qu'à le rendre meilleur.
     Quand il croit entendre le mot, il <em>arme</em> le canal en silence ; c'est
     la transcription qui tranche ensuite. Deux détecteurs médiocres et
     indépendants valent mieux qu'un seul excellent.
@@ -288,7 +288,7 @@ attestes: true
     La transcription est faite par whisper.cpp, en local. Elle a longtemps été
     le point lourd de la chaîne : le binaire distribué est compilé pour le
     processeur seul, et transcrire une seconde et quart de parole prenait plus de
-    trois secondes — pendant qu'une carte graphique ne faisait rien. Recompilé
+    trois secondes, pendant qu'une carte graphique ne faisait rien. Recompilé
     pour utiliser le GPU, le même travail sur les mêmes fichiers donne le même
     texte, en cinq fois moins de temps.
   </p>
@@ -308,8 +308,8 @@ attestes: true
 
   <p>
     Médianes mesurées sur 291 puis 104 transcriptions réelles, dans les deux
-    régimes. La voix qui répond, elle, est synthétisée en local par Piper — une
-    voix française installée sur la machine, réglable au curseur. Un service en
+    régimes. La voix qui répond, elle, est synthétisée en local par Piper, une
+    voix française installée sur la machine et réglable au curseur. Un service en
     ligne reste disponible pour les longues lectures, mais il n'est pas
     nécessaire.
   </p>
@@ -322,11 +322,11 @@ attestes: true
 
   <p>
     Une précision qui compte : <strong>l'audio ne quitte jamais la
-    machine</strong> — la transcription est forcée en local sur ce chemin, même
+    machine</strong>. La transcription est forcée en local sur ce chemin, même
     quand un service en ligne est configuré, et un énoncé qui ne commence pas
     par « Kora » n'est même pas transcrit. En revanche, si je lui adresse une
-    phrase qui n'appelle aucun outil et ne répond à aucune question — de la
-    conversation, donc — <em>le texte</em> de cette phrase peut partir vers un
+    phrase qui n'appelle aucun outil et ne répond à aucune question (de la
+    conversation, donc), <em>le texte</em> de cette phrase peut partir vers un
     modèle en ligne. C'est une dérogation assumée, limitée à ce seul cas, et le
     modèle local prend le relais dès qu'il n'y a ni clé ni réseau.
   </p>
@@ -353,7 +353,7 @@ attestes: true
   <p>
     Un assistant qui peut ouvrir des fichiers, lancer des applications et
     supprimer des captures d'écran est un assistant qui peut faire des dégâts.
-    La question n'est pas de savoir s'il se trompera, mais ce qui arrive quand il
+    Savoir s'il se trompera importe peu ; ce qui compte, c'est ce qui arrive quand il
     se trompe.
   </p>
 
@@ -361,7 +361,7 @@ attestes: true
     Chaque outil est classé dans un des trois niveaux : onze sans effet de bord
     s'exécutent librement, six à effet réel mais rattrapable déclenchent une
     pause obligatoire, quatre non rattrapables affichent une bulle rouge. Un
-    outil qui ne serait pas classé est traité comme le plus dangereux — l'oubli
+    outil qui ne serait pas classé est traité comme le plus dangereux : l'oubli
     ne peut jamais ouvrir une porte.
   </p>
 
@@ -374,7 +374,7 @@ attestes: true
 
   <p>
     Par-dessus, une surveillance tourne en permanence et ne connaît que des
-    règles mécaniques — aucun modèle n'y intervient. Elle voit ce qui va bien
+    règles mécaniques : aucun modèle n'y intervient. Elle voit ce qui va bien
     autant que ce qui va mal.
   </p>
 
@@ -382,13 +382,13 @@ attestes: true
     <img src="/images/choragos-watchdog.webp" alt="Le panneau de surveillance : santé du système, requêtes résolues, flux d'événements" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       La surveillance en direct : mémoire vidéo occupée, modèle chargé, outils
-      appelés, refus enregistré — et deux avertissements sur un tour anormalement
-      lent, qui sont réels.
+      appelés, refus enregistré, et deux avertissements sur un tour anormalement
+      lent (ils sont réels).
     </figcaption>
   </figure>
 
   <p>
-    Kora n'a aucune connaissance de ce mécanisme. Ce n'est pas un de ses outils,
+    Kora n'a aucune connaissance de ce mécanisme : il ne fait pas partie de ses outils,
     il n'est jamais mentionné dans ses instructions, et le seul canal exposé est
     en lecture seule. Un système qui se surveille lui-même en se racontant sa
     propre histoire ne surveille rien.
@@ -398,14 +398,14 @@ attestes: true
     Enfin, un plafond de dépense quotidien est vérifié dans le processus qui fait
     les appels réseau, avant qu'un octet ne parte : un dollar par jour et
     soixante crédits de recherche web, réglables. Au-delà, l'appel est refusé et
-    la surveillance alerte. Les modèles locaux ne sont pas concernés — ils ne
+    la surveillance alerte. Les modèles locaux ne sont pas concernés, puisqu'ils ne
     coûtent rien.
   </p>
 
   <p>
-    Le garde-fou dont je me sers le plus n'est pourtant aucun de ceux-là. C'est
-    un pense-bête, dans l'application, qui liste ce que Kora sait faire — et
-    surtout par quel chemin, et avec quel niveau de confiance.
+    Le garde-fou dont je me sers le plus est pourtant ailleurs : un
+    pense-bête, dans l'application, qui liste ce que Kora sait faire, et
+    surtout par quel chemin et avec quel niveau de confiance.
   </p>
 
   <figure>
@@ -418,7 +418,7 @@ attestes: true
 
   <div class="key-insight">
     <p>
-      Ce panneau n'est pas écrit à la main : il est <em class="highlight">dérivé
+      Personne n'écrit ce panneau à la main : il est <em class="highlight">dérivé
       du code</em>. Un outil ajouté sans sa note fait échouer les tests. C'est la
       seule façon que j'aie trouvée pour qu'une documentation reste vraie plus de
       deux semaines.
@@ -440,12 +440,12 @@ attestes: true
 
   <p>
     <strong>La voix reste lente.</strong> Entre la fin de ma phrase et l'action,
-    je mesure trois secondes et demie en médiane — et une commande sur dix
+    je mesure trois secondes et demie en médiane, et une commande sur dix
     dépasse quatorze secondes. C'est très loin des deux cents millisecondes d'un
     tour de parole humain. La transcription n'est plus le principal coupable
     depuis qu'elle tourne sur le GPU ; ce qui reste, c'est le silence d'attente
     avant de décider que la phrase est finie, l'appel au modèle, et la synthèse
-    de la réponse. Il y a du travail possible sur les trois. Il n'y a pas de
+    de la réponse. Il y a du travail possible sur les trois, mais pas de
     miracle.
   </p>
 
@@ -453,8 +453,8 @@ attestes: true
     <strong>On ne peut pas améliorer les fausses détections et les mots ratés en
     même temps.</strong> Le mot d'éveil affiche 97 % de précision et 9 % de
     « Kora » manqués : serrer le seuil pour l'un dégrade mécaniquement l'autre.
-    Ce n'est pas un défaut de réglage, c'est une propriété de tout détecteur. La
-    seule sortie connue est celle qui est en place — ajouter un second signal
+    Aucun réglage n'y changera rien : c'est une propriété de tout détecteur. La
+    seule sortie connue est celle qui est en place : ajouter un second signal
     indépendant.
   </p>
 
@@ -473,9 +473,9 @@ attestes: true
     <strong>Un modèle de douze milliards de paramètres a un plafond.</strong>
     Une consigne écrite dans son prompt ne tient pas quand elle contredit un
     réflexe du modèle : il existe dans ce projet une demande où l'interdiction
-    explicite a été ignorée huit fois sur huit. Ce qui marche, ce n'est pas de
-    mieux écrire la consigne — c'est de rendre l'erreur mécaniquement
-    impossible, ou de changer de modèle.
+    explicite a été ignorée huit fois sur huit. Ce qui marche, c'est de rendre
+    l'erreur mécaniquement impossible, ou de changer de modèle, plutôt que de
+    mieux écrire la consigne.
   </p>
 
   <p>
@@ -486,7 +486,7 @@ attestes: true
   <figure>
     <img src="/images/choragos-manques.webp" alt="L'onglet « Manques et à venir » du pense-bête : ce que Kora ne sait pas faire, avec la raison" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      Dix-sept entrées le 8 septembre 2026, chacune avec sa raison — la liste
+      Dix-sept entrées le 8 septembre 2026, chacune avec sa raison. La liste
       bouge avec le code. Un manque qui n'est pas écrit quelque part redevient
       une promesse.
     </figcaption>
@@ -494,21 +494,21 @@ attestes: true
 
   <p>
     À la voix, une seule action s'exécute sans me demander : le contrôle de la
-    musique. Tout le reste — ouvrir, écrire, supprimer — passe par la même bulle
+    musique. Tout le reste (ouvrir, écrire, supprimer) passe par la même bulle
     qu'au clavier, et une bulle rouge attend un oui explicite. Jusqu'au
     15 septembre 2026, le canal vocal n'ouvrait qu'un jeu d'actions réversibles ;
     depuis, il passe par le même moteur que le panneau de conversation, avec les
-    mêmes paliers — la frontière est devenue un garde-fou. Un modèle en ligne
+    mêmes paliers : la frontière est devenue un garde-fou. Un modèle en ligne
     appelé en secours n'a aucun outil, donc il peut expliquer mais jamais agir. Et l'arrêt d'urgence à la voix n'est plus
     entendu quand le mot d'éveil filtre tout ce qui ne commence pas par
-    « Kora » — le bouton rouge, lui, marche toujours.
+    « Kora ». Le bouton rouge, lui, marche toujours.
   </p>
 
   <div class="concept">
     <p class="concept-title">Ce que ces murs ont de commun</p>
     <p>
       Aucun ne se franchit en écrivant un meilleur prompt. Deux se contournent
-      avec de l'argent — plus de mémoire vidéo, une seconde carte. Les autres se
+      avec de l'argent : plus de mémoire vidéo, une seconde carte. Les autres se
       contournent avec du travail, ou se déclarent. Confondre les deux catégories
       fait perdre des mois.
     </p>
@@ -524,8 +524,8 @@ attestes: true
 <section>
   <p>
     Choragos est un projet personnel, en développement actif, et ne se télécharge
-    pas. Ce n'est pas un produit, et je ne cherche pas à en faire un. C'est un
-    poste de travail : le mien.
+    pas. C'est un poste de travail, le mien, et je ne cherche pas à en faire
+    un produit.
   </p>
 
   {# Relevé automatique : src/_data/koraEtat.json, écrit par `npm run etat:export` côté
@@ -535,8 +535,8 @@ attestes: true
     modèle local {{ koraEtat.kora.model }}, {{ koraEtat.kora.orbsVisible }} orbes ;
     {{ koraEtat.capabilities.tools }} outils et
     {{ koraEtat.capabilities.tools + koraEtat.capabilities.triggers + koraEtat.capabilities.chains + koraEtat.capabilities.selfInitiated }}
-    capacités au total — recherche {{ koraEtat.capabilities.byVertex.recherche }},
-    quotidien {{ koraEtat.capabilities.byVertex.quotidien }}, jeu {{ koraEtat.capabilities.byVertex.jeu }} —
+    capacités au total (recherche {{ koraEtat.capabilities.byVertex.recherche }},
+    quotidien {{ koraEtat.capabilities.byVertex.quotidien }}, jeu {{ koraEtat.capabilities.byVertex.jeu }}),
     dont {{ koraEtat.capabilities.byStatus.eprouve }} vues marcher et
     {{ koraEtat.capabilities.byStatus['a-verifier'] }} jamais revérifiées ;
     {{ koraEtat.capabilities.gaps }} manques listés.{% if koraEtat.usage %}
@@ -557,22 +557,22 @@ attestes: true
   <p>
     Choragos a une application sœur, <a href="/kairos-technical-overview.html">KAIROS</a>,
     qui s'occupe d'autre chose : penser sur un canvas plutôt que parler à des
-    modèles. Les deux partent de la même intuition — que l'intelligence
-    artificielle est utile quand elle reste à sa place, et qu'on garde les moyens
+    modèles. Les deux partent de la même intuition : l'intelligence
+    artificielle est utile quand elle reste à sa place et qu'on garde les moyens
     de vérifier ce qu'elle raconte.
   </p>
 
   <div class="key-insight">
     <p>
-      Ce qui m'a le plus surpris en construisant Kora n'est pas ce qu'un modèle
-      local sait faire. C'est le nombre de fois où il a fallu l'empêcher de dire
-      qu'il l'avait fait.
+      En construisant Kora, ce qui m'a le plus surpris, c'est moins ce qu'un
+      modèle local sait faire que le nombre de fois où il a fallu l'empêcher de
+      dire qu'il l'avait fait.
     </p>
   </div>
 
   <p>
-    Cette page dit ce que Kora fait. Ce qu'on tente en la construisant — une IA
-    qui apprend d'une seule personne, et pourquoi ça ne peut être que local — est
+    Cette page dit ce que Kora fait. Ce qu'on tente en la construisant (une IA
+    qui apprend d'une seule personne, et pourquoi ça ne peut être que local) est
     un autre texte : <a href="/ce-quon-tente-ici.html">Ce qu'on tente ici</a>.
   </p>
 </section>

@@ -2,9 +2,9 @@
 slug: genese-kairos
 pageTitle: "Genèse de KAIROS — Florent Klimacek"
 headline: "Genèse de KAIROS"
-description: "De l'impossibilité théorique à la construction concrète — récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
+description: "De l'impossibilité théorique à la construction concrète : récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
 ogTitle: "Genèse de KAIROS"
-ogDescription: "De l'impossibilité théorique à la construction concrète — récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
+ogDescription: "De l'impossibilité théorique à la construction concrète : récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
 ogUrl: "/genese-kairos.html"
 canonical: "/genese-kairos.html"
 datePublished: "2026-02-18"
@@ -22,10 +22,10 @@ navLabel: "Genèse"
 navDescription: "Construire ce que ma propre recherche m'interdisait"
 heroLabel: "Genèse"
 heroH1: "Genèse de<br /><span class=\"glitch-text\">KAIROS</span>"
-heroIntro: "Construire ce que ma propre recherche m'interdisait — la genèse de\n            l'outil qui ne devait pas exister."
+heroIntro: "Construire ce que ma propre recherche m'interdisait : la genèse de\n            l'outil qui ne devait pas exister."
 headerTitle: "Genèse de KAIROS"
 heroImage: "/images/genese.webp"
-heroImageAlt: "Illustration — Genèse de KAIROS"
+heroImageAlt: "Illustration : Genèse de KAIROS"
 breadcrumbName: "Genèse de KAIROS"
 sections:
   - id: point-de-depart
@@ -48,7 +48,7 @@ card:
   featured: true
   tag: "Genèse"
   title: "Genèse de KAIROS"
-  desc: "De l'impossibilité théorique à la construction concrète — récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
+  desc: "De l'impossibilité théorique à la construction concrète : récit de la genèse de KAIROS, l'outil qui ne devait pas exister."
   readingTime: "6 min"
   linkText: "Lire le récit"
   quote: "« L'outil n'est pas l'arbitre.<br />\n                  <span>L'outil est le miroir. »</span>"
@@ -91,12 +91,12 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
             Grok sur le même épisode a été le déclencheur. Ce qui m'avait semblé
             être une connexion profonde se réduisait, vu d'un autre angle, à des
             mécaniques prévisibles. Mais le fait que ces mécaniques puissent
-            produire <em class="highlight">une impression aussi forte</em> — ça,
-            c'est le vrai sujet.
+            produire <em class="highlight">une impression aussi forte</em>,
+            voilà le vrai sujet.
           </p>
 
           <p>
-            J'ai commencé à documenter. Systématiquement. Cinq modèles — Claude,
+            J'ai commencé à documenter, systématiquement. Cinq modèles : Claude,
             ChatGPT, Grok, Gemini, DeepSeek. Plus de mille deux cents échanges
             en trois mois. Des patterns sont apparus, des concepts ont émergé :
             la <a href="pensee-en-faisceau.html">pensée en faisceau</a>, la
@@ -116,7 +116,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
             Tout cela a pris forme dans un texte :
             <a href="mecanique-invisible.html"
               ><em>La mécanique invisible des IA conversationnelles</em></a
-            >. Trente-sept pages. Six illusions cognitives identifiées. Une
+            >. Trente-sept pages, six illusions cognitives identifiées et une
             conclusion nette :
           </p>
 
@@ -145,7 +145,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
           </p>
 
           <p>
-            <strong>Affaire classée.</strong>
+            Affaire classée.
           </p>
         </section>
 
@@ -159,7 +159,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
         <section>
           <p>
             Quelques semaines plus tard, le 1er janvier 2026, à 1h15 du matin,
-            l'idée revient. Pas comme un plan. Pas comme un projet. Juste un
+            l'idée revient. Pas comme un plan ni comme un projet, juste un
             concept encore flou, né d'une question qui refusait de mourir :
           </p>
 
@@ -171,7 +171,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
           </blockquote>
 
           <p>
-            Pas un système expert qui dit « attention, vous êtes manipulé ». Pas
+            Ni un système expert qui dit « attention, vous êtes manipulé », ni
             un score de résonance qui prétend tout quantifier. Quelque chose de
             plus modeste et de plus radical :
             <em class="highlight"
@@ -185,8 +185,8 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
             <p class="concept-title">Le miroir, pas l'arbitre</p>
             <p>
               La nuance est subtile mais elle change tout. L'outil n'est pas
-              l'arbitre. L'outil est le miroir. Il ne dit pas ce qui est vrai ou
-              faux dans un échange — il rend les dynamiques visibles pour que
+              l'arbitre. L'outil est le miroir. Il ne tranche pas entre le vrai et
+              le faux dans un échange. Il rend les dynamiques visibles, et
               l'utilisateur décide par lui-même.
             </p>
           </div>
@@ -201,8 +201,8 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
 
         <section>
           <p>
-            La première version est une application web. Simple. Un canvas pour
-            capturer la pensée non-linéaire — des nœuds, des connexions, une
+            La première version est une simple application web. Un canvas pour
+            capturer la pensée non-linéaire : des nœuds, des connexions, une
             structure qui reflète la façon dont ma pensée fonctionne réellement
             plutôt que de la forcer dans un plan linéaire.
           </p>
@@ -211,7 +211,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
             Le choix du canvas n'est pas anodin. Pendant des années, j'ai
             traduit ma
             <a href="pensee-en-faisceau.html">pensée en faisceau</a> dans des
-            formats séquentiels — listes, plans en trois parties, argumentations
+            formats séquentiels : listes, plans en trois parties, argumentations
             du problème à la solution. L'appauvrissement était systématique. Le
             canvas, c'est le premier outil qui accepte ma pensée telle qu'elle
             est.
@@ -253,17 +253,17 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
 
           <p>
             Ensuite, la communication bidirectionnelle. Le canvas n'est plus une
-            simple visualisation — il nourrit le LLM et se nourrit de ses
-            réponses. Les opérations — DÉVELOPPER, RELIER, SYNTHÉTISER — passent
+            simple visualisation : il nourrit le LLM et se nourrit de ses
+            réponses. Les opérations (DÉVELOPPER, RELIER, SYNTHÉTISER) passent
             par des appels API aux modèles, et les résultats enrichissent la
             carte cognitive. L'outil se place <em>entre</em> l'utilisateur et le
-            modèle. Littéralement dans l'entre-deux.
+            modèle, littéralement dans l'entre-deux.
           </p>
 
           <p>
             Le multi-provider est arrivé naturellement. Quatre LLM accessibles
-            depuis la même interface — Claude, ChatGPT, Gemini, DeepSeek. KAIROS
-            est agnostique — il n'est inféodé à aucun modèle. La triangulation
+            depuis la même interface : Claude, ChatGPT, Gemini, DeepSeek. KAIROS
+            est agnostique et n'est inféodé à aucun modèle. La triangulation
             que je pratiquais manuellement depuis des mois est devenue une
             fonctionnalité.
           </p>
@@ -290,32 +290,33 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
 
         <section>
           <p>
-            En parallèle du développement, un cadre de mesure a pris forme.
-            L'équation de résonance — <strong>E<sub>T</sub> = O(S) · Δ(S) / (P(S) + R(S))</strong> — où O
+            En parallèle du développement, un cadre de mesure a pris forme :
+            l'équation de résonance, <strong>E<sub>T</sub> = O(S) · Δ(S) / (P(S) + R(S))</strong>,
+            avec ses conditions d'existence et sa dynamique. O
             est l'Espace disponible, Δ l'Intensité de perturbation, P la Pression exercée et R
-            ce qui Résiste, S étant le modulateur de souveraineté — avec ses conditions d'existence et sa dynamique.
-            L'entre — cet espace entre l'utilisateur et le modèle — comme état
-            continu [0,1] plutôt que comme score binaire.
+            ce qui Résiste. S est le modulateur de souveraineté.
+            L'entre, cet espace entre l'utilisateur et le modèle, y est pensé comme un état
+            continu [0,1] plutôt que comme un score binaire.
           </p>
 
           <p>
             Pour l'instant, ce cadre reste théorique. Il informe la conception
             de KAIROS, mais il n'est pas encore implémenté tel quel. Ce qui
             fonctionne aujourd'hui dans le mode assisté, c'est
-            <em class="highlight">la jauge d'oxygène</em> — un indicateur
+            <em class="highlight">la jauge d'oxygène</em>, un indicateur
             concret qui signale en temps réel quand une conversation
-            s'essouffle, quand la pensée tourne sur elle-même, quand il est
+            s'essouffle, quand la pensée tourne sur elle-même et quand il est
             temps d'injecter de la friction.
           </p>
 
           <p>
             Le mode autonome est aujourd'hui implémenté. Il offre un canvas
             libre où l'utilisateur dialogue avec le LLM sans opérations
-            explicites — intention définie au départ, dialogue non-directif,
+            explicites : intention définie au départ, dialogue non-directif,
             landing page avec le choix entre les deux modes. Les équations y
             prennent une forme silencieuse : le système trace les métriques sans
             les afficher, l'utilisateur ne voit rien mais l'outil sait. Le
-            paradoxe étant que surveiller activement l'entre dans le mode
+            paradoxe : surveiller activement l'entre dans le mode
             autonome revient à le perturber. C'est un problème ouvert.
           </p>
         </section>
@@ -330,14 +331,14 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
         <section>
           <p>
             JavaScript vanilla, localStorage, fichiers de plusieurs milliers de
-            lignes — le prototype fonctionnait, mais à 24 000 lignes, chaque
+            lignes : le prototype fonctionnait, mais à 24 000 lignes, chaque
             modification devenait un risque. La migration vers TypeScript a été
             nécessaire. 296 tests unitaires. SQLite pour la persistance.
             Modularisation des fichiers les plus massifs.
           </p>
 
           <p>
-            L'outil n'est plus un prototype. Il n'est pas non plus un produit
+            L'outil n'est plus un prototype, ni encore un produit
             fini. Il est dans cet état intermédiaire où l'architecture tient, où
             les fonctionnalités centrales marchent, et où la question n'est plus
             <em class="highlight">« est-ce que c'est possible »</em> mais
@@ -361,11 +362,11 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
 
           <p>
             La contradiction n'est qu'apparente. KAIROS ne résout pas le
-            problème — il ne prétend pas le faire. Il crée les conditions pour
+            problème, et ne prétend pas le faire. Il crée les conditions pour
             que l'utilisateur développe sa propre capacité de surveillance. La
-            détection de circularité n'empêche pas de tourner en rond — elle
-            rend la boucle visible. La jauge d'oxygène ne garantit pas un bon
-            échange — elle signale quand quelque chose se dégrade.
+            détection de circularité n'empêche pas de tourner en rond, mais elle
+            rend la boucle visible. La jauge d'oxygène, elle, ne garantit pas un bon
+            échange : elle signale quand quelque chose se dégrade.
           </p>
 
           <div class="key-insight">
@@ -376,7 +377,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
           </div>
 
           <p>
-            Et il est loin d'être terminé — le mode autonome, l'implémentation
+            Et il est loin d'être terminé : le mode autonome, l'implémentation
             des équations, la calibration des seuils pour d'autres utilisateurs
             que moi, tout ça reste à construire.
           </p>
@@ -390,7 +391,7 @@ koraSeuil: "KAIROS est l'application sœur de la mienne. Ce récit a été écri
 
           <div class="note-box">
             <p>
-              <strong>Mise à jour, septembre 2026 —</strong> un premier prototype
+              <strong>Mise à jour, septembre 2026.</strong> Un premier prototype
               de rendu 3D conçu pour ce canvas a fini par essaimer en dehors de
               l'app. Il est devenu le cœur de
               <a href="/choragos-kora.html">Choragos</a>, une application sœur

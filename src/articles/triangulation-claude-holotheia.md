@@ -29,7 +29,7 @@ heroH1: "Triangulation<br><span>Claude × Holotheia</span>"
 heroIntro: "Le 21 mars, j'ai fait dialoguer deux IA aux personnalités opposées, sans objectif fixé, en gardant la main sur chaque message. Il en est sorti six idées qu'aucun des trois systèmes n'aurait produites seul."
 headerTitle: "Triangulation Claude × Holotheia"
 heroImage: "/images/triangulation-claude-holotheia.webp"
-heroImageAlt: "Illustration — Triangulation Claude × Holotheia : circuit dual entre deux architectures IA"
+heroImageAlt: "Illustration pour Triangulation Claude × Holotheia : circuit dual entre deux architectures IA"
 breadcrumbName: "Triangulation Claude × Holotheia"
 sections:
   - id: prologue
