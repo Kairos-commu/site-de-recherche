@@ -76,9 +76,9 @@ attestes: true
   </p>
 
   <p>
-    Le modèle s'appelle gemma4:12b. Il pèse 7,6 Go sur le disque, occupe 8,4 Go
+    Au 15 septembre 2026, le modèle s'appelait gemma4:12b (depuis, Kora tourne sur des variantes affinées de ce modèle, voir l'état de Kora). Il pesait 7,6 Go sur le disque, occupait 8,4 Go
     de mémoire vidéo une fois chargé avec son contexte de 32 768 jetons (mesuré
-    le 15 septembre 2026), et tourne sur la carte graphique de mon ordinateur de
+    le 15 septembre 2026), et tournait sur la carte graphique de mon ordinateur de
     bureau. Il n'y a ni abonnement, ni quota mensuel, ni condition d'utilisation
     à accepter pour lui parler. Quand la connexion tombe, il répond quand même.
   </p>

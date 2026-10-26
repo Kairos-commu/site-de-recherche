@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-14T15:28:29.186Z",
-  "generatedAtFr": "14 octobre 2026",
+  "generatedAt": "2026-10-25T22:00:01.667Z",
+  "generatedAtFr": "25 octobre 2026",
   "app": {
-    "commit": "2883156a",
-    "commitDate": "2026-10-14T17:21:20+02:00",
-    "commits": 960,
+    "commit": "c2cd1403",
+    "commitDate": "2026-10-25T20:55:30+01:00",
+    "commits": 1230,
     "firstCommitDate": "2026-08-31T12:03:21+02:00",
-    "daysSinceStart": 44
+    "daysSinceStart": 55
   },
   "kora": {
     "model": "kora-ft-12b-v3b-s075",
@@ -23,43 +23,43 @@
     ]
   },
   "capabilities": {
-    "tools": 31,
-    "triggers": 46,
-    "chains": 17,
-    "selfInitiated": 28,
+    "tools": 33,
+    "triggers": 54,
+    "chains": 19,
+    "selfInitiated": 27,
     "gaps": 9,
     "planned": 1,
     "byVertex": {
-      "recherche": 23,
-      "quotidien": 100,
-      "jeu": 33
+      "recherche": 27,
+      "quotidien": 110,
+      "jeu": 34
     },
     "byStatus": {
-      "marche": 88,
+      "marche": 109,
       "echoue": 0,
-      "repris": 5,
-      "aucun": 29,
-      "eprouve": 88,
-      "a-verifier": 34
+      "repris": 4,
+      "aucun": 20,
+      "eprouve": 109,
+      "a-verifier": 24
     },
     "byVertexStatus": {
       "recherche": {
-        "marche": 14,
+        "marche": 21,
         "echoue": 0,
         "repris": 0,
-        "aucun": 9
+        "aucun": 6
       },
       "quotidien": {
-        "marche": 74,
+        "marche": 89,
         "echoue": 0,
-        "repris": 4,
-        "aucun": 22
+        "repris": 3,
+        "aucun": 18
       },
       "jeu": {
-        "marche": 26,
+        "marche": 30,
         "echoue": 0,
         "repris": 1,
-        "aucun": 6
+        "aucun": 3
       }
     },
     "gapsByVertex": {
@@ -70,21 +70,21 @@
   },
   "usage": {
     "since": "2026-09-06T13:17:16.649Z",
-    "until": "2026-10-14T14:54:50.683Z",
-    "days": 39,
+    "until": "2026-10-25T07:51:33.991Z",
+    "days": 50,
     "calls": {
-      "total": 4863,
-      "local": 4313,
-      "cloud": 151,
-      "web": 399,
-      "errors": 22
+      "total": 6862,
+      "local": 6167,
+      "cloud": 187,
+      "web": 508,
+      "errors": 24
     },
-    "costUsd": 1.528,
+    "costUsd": 1.964,
     "last7d": {
-      "local": 837,
-      "cloud": 2,
-      "web": 9,
-      "costUsd": 0.026
+      "local": 1274,
+      "cloud": 35,
+      "web": 44,
+      "costUsd": 0.396
     },
     "localModels": [
       "gemma4:12b",
@@ -95,19 +95,19 @@
     ]
   },
   "corpus": {
-    "exchanges": 431,
-    "accepted": 98,
+    "exchanges": 506,
+    "accepted": 102,
     "corrected": 82,
-    "rejected": 16,
-    "unjudged": 235,
-    "toolTurns": 1088,
-    "koraThreads": 56
+    "rejected": 17,
+    "unjudged": 305,
+    "toolTurns": 1324,
+    "koraThreads": 86
   },
   "memory": {
-    "dynamicEntries": 24
+    "dynamicEntries": 31
   },
   "wakeword": {
-    "recordings": 1282
+    "recordings": 1401
   },
   "voicePrototypes": 158,
   "research": {

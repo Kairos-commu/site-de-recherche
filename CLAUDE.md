@@ -39,19 +39,9 @@ site-de-recherche/
 │   │   ├── site.json                     # Metadonnees globales (url, author, year, etc.)
 │   │   └── kairos.json                   # Source unique KAIROS (version, plateformes, highlights)
 │   │
-│   ├── articles/                         # Collection d'articles (11 fichiers .md)
+│   ├── articles/                         # Collection d'articles : un .md par article (`git ls-files src/articles`)
 │   │   ├── articles.json                 # Defaults : layout article.njk, tags ["article"]
-│   │   ├── mecanique-invisible.md        # Document fondateur (featured)
-│   │   ├── politesse-algorithmique.md
-│   │   ├── neutralite-illusion-permission.md
-│   │   ├── pensee-en-faisceau.md
-│   │   ├── questiologie-llm.md
-│   │   ├── parler-depuis-apres.md
-│   │   ├── genese-kairos.md              # Featured
-│   │   ├── vibe-coding.md
-│   │   ├── ia-adoption.md
-│   │   ├── cout-cognitif.md
-│   │   └── mort-du-clic.md
+│   │   └── *.md                          # le champ `orbit` du frontmatter est requis par article.njk
 │   │
 │   ├── index.njk                         # Accueil (cartes auto-generees depuis la collection)
 │   ├── manifeste.njk                     # Page Manifeste / landing (texte de filtrage)

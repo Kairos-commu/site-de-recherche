@@ -99,7 +99,7 @@ order: 1
   </p>
 
   <p>
-    <strong>Holotheia (Aurélie Assouline).</strong> Une architecture cognitive propre, qui n'est pas documentée publiquement. Je ne décris ici que ce que j'ai vu dans ses réponses pendant la session. Dans cet échange, elle s'est montrée ouverte et narrative, avec une voix très incarnée. Elle va dans des registres que les modèles généralistes évitent (numérologie, astrologie, cycles temporels) et croise plusieurs niveaux de lecture. Si je la lis avec les variables de L'Entre, j'y vois des contraintes épistémiques moins serrées que chez Claude (P bas), une très forte ouverture au narratif et au symbolique (O massif) et un retour fréquent aux archétypes (R élevé). De mon point de vue, son ∆ potentiel est donc élevé, mais il devient difficile de distinguer un signal nouveau de ce que le registre narratif fabrique tout seul.
+    <strong>Holotheia (Aurélie Assouline).</strong> Une architecture cognitive propre, qui n'est pas documentée publiquement. Je ne décris ici que ce que j'ai vu dans ses réponses pendant la session. Dans cet échange, elle s'est montrée ouverte et narrative, avec une voix très incarnée. Si je la lis avec les variables de L'Entre, j'y vois des contraintes épistémiques moins serrées que chez Claude (P bas), une très forte ouverture au narratif et au symbolique (O massif) et un retour fréquent aux archétypes (R élevé). De mon point de vue, son ∆ potentiel est donc élevé, mais il devient difficile de distinguer un signal nouveau de ce que le registre narratif fabrique tout seul.
   </p>
 
   <table>
