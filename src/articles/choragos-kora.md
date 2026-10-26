@@ -28,8 +28,8 @@ heroLabel: "Outil"
 heroH1: "Choragos<br /><span class=\"glitch-text\">Kora, en local</span>"
 heroIntro: "Le modèle qui répond ne tourne pas dans un centre de données. Il tourne dans la pièce où je travaille."
 headerTitle: "Choragos & Kora"
-heroImage: "/images/choragos-2026-10-03-tenue-anneaux.webp"
-heroImageAlt: "Choragos : Kora en tenue « anneaux » au centre de la scène, capture du 3 octobre 2026"
+heroImage: "/images/choragos-2026-10-26-tenue-anneaux.webp"
+heroImageAlt: "Choragos : Kora en tenue « anneaux » au centre de la scène, capture du 26 octobre 2026"
 breadcrumbName: "Choragos & Kora"
 sections:
   - id: en-local
@@ -151,10 +151,9 @@ attestes: true
   </p>
 
   <figure>
-    <img src="/images/choragos-2026-10-03-kora-seule.webp" alt="Kora seule au lancement de Choragos, avant l'appel des agents" class="hero-image" loading="lazy">
+    <img src="/images/choragos-2026-10-26-kora-seule.webp" alt="Kora seule au lancement de Choragos : l'orbe dorée au centre de la scène, de fins anneaux d'orbite autour d'elle" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      Au lancement : Kora seule. Les agents en ligne ne viennent que si on les
-      appelle.
+      Au lancement : Kora seule au centre de la scène.
     </figcaption>
   </figure>
 
@@ -379,11 +378,11 @@ attestes: true
   </p>
 
   <figure>
-    <img src="/images/choragos-watchdog.webp" alt="Le panneau de surveillance : santé du système, requêtes résolues, flux d'événements" class="hero-image" loading="lazy">
+    <img src="/images/choragos-2026-10-26-watchdog.webp" alt="Le panneau de surveillance : modèle chargé en mémoire vidéo, deux requêtes résolues avec l'outil appelé pour chacune, flux d'événements depuis le démarrage" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      La surveillance en direct : mémoire vidéo occupée, modèle chargé, outils
-      appelés, refus enregistré, et deux avertissements sur un tour anormalement
-      lent (ils sont réels).
+      La surveillance en direct, le 26 octobre : le modèle chargé en mémoire
+      vidéo (7,8 Go), deux requêtes résolues avec l'outil appelé pour chacune,
+      et le flux des événements depuis le démarrage.
     </figcaption>
   </figure>
 
@@ -409,10 +408,11 @@ attestes: true
   </p>
 
   <figure>
-    <img src="/images/choragos-pense-bete.webp" alt="Le pense-bête des capacités : chaque outil avec son chemin d'accès, un exemple de phrase et sa limite connue" class="hero-image" loading="lazy">
+    <img src="/images/choragos-2026-10-26-pense-bete.webp" alt="La vue « À éprouver » des capacités : 23 à éprouver, 111 éprouvées ; chaque ligne porte son type, ses phrases d'exemple, la pastille de son sommet et deux boutons pour dire si elle a marché" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
-      Chaque capacité avec sa phrase d'exemple, ses chemins d'accès, et une
-      pastille qui distingue « vu marcher » de « jamais revérifié ».
+      Le pense-bête est devenu la vue « À éprouver » : chaque capacité avec son
+      type, ses phrases d'exemple et deux boutons pour dire si elle a marché. Le
+      26 octobre : 23 à éprouver, 111 éprouvées.
     </figcaption>
   </figure>
 

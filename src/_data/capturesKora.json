@@ -1,53 +1,53 @@
 [
   {
-    "src": "/images/choragos-2026-10-03-mode-recherche.webp",
-    "alt": "Kora en mode recherche : l'orbe devenue violette, parcourue d'un réseau rose ; la capsule de commande en bas affiche « Recherche »",
+    "src": "/images/choragos-2026-10-26-mode-recherche.webp",
+    "alt": "Kora en mode recherche : l'orbe devenue violette, parcourue d'arcs blancs et roses, la lueur violette qui gagne les bords de la scène",
     "legende": "Mode recherche",
-    "date": "2026-10-03",
+    "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-03-tenue-anneaux.webp",
-    "alt": "Kora en tenue « anneaux » : l'orbe orangée, un anneau incliné et deux couronnes de particules autour d'elle",
+    "src": "/images/choragos-2026-10-26-tenue-anneaux.webp",
+    "alt": "Kora en tenue « anneaux » : l'orbe dorée, un grand anneau ambré incliné et deux traînées de grain en orbite autour d'elle",
     "legende": "Tenue « anneaux »",
-    "date": "2026-10-03",
+    "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-03-tenue-electrique.webp",
-    "alt": "Kora en tenue « électrique » : l'orbe bleue entourée d'arcs lumineux roses",
+    "src": "/images/choragos-2026-10-26-tenue-electrique.webp",
+    "alt": "Kora en tenue « électrique » : l'orbe bleue entourée d'éclairs roses et blancs",
     "legende": "Tenue « électrique »",
-    "date": "2026-10-03",
+    "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-03-kora-seule.webp",
-    "alt": "Kora seule au lancement de Choragos, l'orbe bleue au centre de la scène",
+    "src": "/images/choragos-2026-10-26-kora-seule.webp",
+    "alt": "Kora seule au lancement de Choragos : l'orbe dorée au centre de la scène, de fins anneaux d'orbite et des filaments roses qui partent vers les bords",
     "legende": "Kora seule, au lancement",
-    "date": "2026-10-03",
+    "date": "2026-10-26",
     "ou": "accueil",
     "large": true
   },
   {
-    "src": "/images/choragos-2026-10-03-entretien.webp",
-    "alt": "« Kora, entretien » : l'ordinateur de bureau en hologramme éclaté, ses relevés réels autour (réseau, processeur, mémoire, disque, carte graphique, ce qui consomme), et le panneau des cinq points à traiter",
+    "src": "/images/choragos-2026-10-26-entretien.webp",
+    "alt": "« Kora, entretien » : l'ordinateur de bureau en hologramme éclaté, ses relevés réels autour (réseau, processeur, mémoire, disque, carte graphique, ce qui consomme, le modèle de Kora à 8,4 Go), et le panneau des quatre points à traiter",
     "legende": "« Kora, entretien » · la machine en hologramme",
-    "date": "2026-10-03",
+    "date": "2026-10-26",
     "ou": "accueil",
     "large": true
   },
   {
-    "src": "/images/choragos-tente-rien-n-emerge.webp",
-    "alt": "La scène de Choragos pendant une recherche approfondie : les sources se desserrent autour de Kora et le mot « Rien n'émerge » s'écrit au-dessus d'elle",
-    "legende": "« Rien n'émerge »",
-    "date": "2026-09-15",
+    "src": "/images/choragos-2026-10-26-rien-n-emerge.webp",
+    "alt": "La scène de Choragos après une recherche approfondie : deux sources à l'écart de Kora, theconversation.com et clair-obscur.fandom.com, et le mot « Rien n'émerge » au-dessus d'elle",
+    "legende": "« Rien n'émerge » · la recherche du 19/09, rejouée",
+    "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-tente-cristaux.webp",
-    "alt": "Le cœur de Kora en gros plan : des cristaux roses à facettes dans sa matière bleue",
-    "legende": "Cristaux · une note de sa mémoire, un cristal",
-    "date": "2026-09-15",
+    "src": "/images/choragos-2026-10-26-cristaux.webp",
+    "alt": "Le cœur de Kora en gros plan : une matière dorée parcourue de points lumineux et de fils, sous des anneaux d'orbite",
+    "legende": "Le cœur de Kora, en gros plan",
+    "date": "2026-10-26",
     "ou": "accueil"
   },
   {
@@ -58,17 +58,17 @@
     "ou": "etat"
   },
   {
-    "src": "/images/choragos-tente-tableau-de-bord.webp",
-    "alt": "Le tableau de bord de consommation de Choragos : appels locaux et cloud, coût, état du corpus de fine-tune",
-    "legende": "Tableau de bord",
-    "date": "2026-09-15",
+    "src": "/images/choragos-2026-10-26-tableau-de-bord-30j.webp",
+    "alt": "Le tableau de bord de consommation de Choragos sur trente jours : 4390 requêtes dont 4141 locales et 249 cloud, 0,5479 $ au total, le détail par modèle, et l'état du jeu de données de fine-tune (102 acceptées, 82 corrigées, 17 rejetées, 308 sans retour)",
+    "legende": "Tableau de bord · trente jours",
+    "date": "2026-10-26",
     "ou": "etat"
   },
   {
-    "src": "/images/choragos-tente-pense-bete.webp",
-    "alt": "Le pense-bête des capacités de Kora : 21 outils, 25 déclencheurs directs, 10 enchaînements, 9 interventions spontanées, comptés par sommet R 9 · Q 52 · J 16",
-    "legende": "Pense-bête des capacités",
-    "date": "2026-09-15",
+    "src": "/images/choragos-2026-10-26-pense-bete.webp",
+    "alt": "La vue « À éprouver » des capacités de Kora : 23 à éprouver, 111 éprouvées ; chaque ligne porte son type, ses phrases d'exemple, la pastille de son sommet et deux boutons pour dire si elle a marché",
+    "legende": "À éprouver · ce qui n'a pas encore été vu marcher",
+    "date": "2026-10-26",
     "ou": "etat"
   }
 ]
