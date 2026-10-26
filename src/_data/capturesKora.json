@@ -1,35 +1,27 @@
 [
   {
-    "src": "/images/choragos-2026-10-26-mode-recherche.webp",
-    "alt": "Kora en mode recherche : l'orbe devenue violette, parcourue d'arcs blancs et roses, la lueur violette qui gagne les bords de la scène",
-    "legende": "Mode recherche",
-    "date": "2026-10-26",
-    "ou": "accueil"
-  },
-  {
-    "src": "/images/choragos-2026-10-26-tenue-anneaux.webp",
+    "src": "/images/choragos-2026-10-26-tenue-anneaux-cadre.webp",
     "alt": "Kora en tenue « anneaux » : l'orbe dorée, un grand anneau ambré incliné et deux traînées de grain en orbite autour d'elle",
     "legende": "Tenue « anneaux »",
     "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-26-tenue-electrique.webp",
+    "src": "/images/choragos-2026-10-26-tenue-electrique-cadre.webp",
     "alt": "Kora en tenue « électrique » : l'orbe bleue entourée d'éclairs roses et blancs",
     "legende": "Tenue « électrique »",
     "date": "2026-10-26",
     "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-26-kora-seule.webp",
-    "alt": "Kora seule au lancement de Choragos : l'orbe dorée au centre de la scène, de fins anneaux d'orbite et des filaments roses qui partent vers les bords",
-    "legende": "Kora seule, au lancement",
+    "src": "/images/choragos-2026-10-26-rien-n-emerge-cadre.webp",
+    "alt": "La scène de Choragos après une recherche approfondie : Kora seule au centre et le mot « Rien n'émerge » au-dessus d'elle",
+    "legende": "« Rien n'émerge » · la recherche du 19/09, rejouée",
     "date": "2026-10-26",
-    "ou": "accueil",
-    "large": true
+    "ou": "accueil"
   },
   {
-    "src": "/images/choragos-2026-10-26-entretien.webp",
+    "src": "/images/choragos-2026-10-26-entretien-cadre.webp",
     "alt": "« Kora, entretien » : l'ordinateur de bureau en hologramme éclaté, ses relevés réels autour (réseau, processeur, mémoire, disque, carte graphique, ce qui consomme, le modèle de Kora à 8,4 Go), et le panneau des quatre points à traiter",
     "legende": "« Kora, entretien » · la machine en hologramme",
     "date": "2026-10-26",
@@ -37,18 +29,20 @@
     "large": true
   },
   {
-    "src": "/images/choragos-2026-10-26-rien-n-emerge.webp",
-    "alt": "La scène de Choragos après une recherche approfondie : deux sources à l'écart de Kora, theconversation.com et clair-obscur.fandom.com, et le mot « Rien n'émerge » au-dessus d'elle",
-    "legende": "« Rien n'émerge » · la recherche du 19/09, rejouée",
+    "src": "/images/choragos-2026-10-26-kora-seule-cadre.webp",
+    "alt": "Kora seule au lancement de Choragos : l'orbe dorée au centre de la scène, de fins anneaux d'orbite et des filaments roses qui partent vers les bords",
+    "legende": "Kora seule, au lancement",
     "date": "2026-10-26",
-    "ou": "accueil"
+    "ou": "accueil",
+    "large": true
   },
   {
-    "src": "/images/choragos-2026-10-26-cristaux.webp",
-    "alt": "Le cœur de Kora en gros plan : une matière dorée parcourue de points lumineux et de fils, sous des anneaux d'orbite",
-    "legende": "Le cœur de Kora, en gros plan",
+    "src": "/images/choragos-2026-10-26-mode-recherche-cadre.webp",
+    "alt": "Kora en mode recherche : l'orbe devenue violette, parcourue d'arcs blancs et roses, la lueur violette qui gagne les bords de la scène",
+    "legende": "Mode recherche",
     "date": "2026-10-26",
-    "ou": "accueil"
+    "ou": "accueil",
+    "large": true
   },
   {
     "src": "/images/choragos-2026-10-03-cles-vides.webp",
