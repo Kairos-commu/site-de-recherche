@@ -1,332 +1,106 @@
 # CLAUDE.md — site-de-recherche
 
-Site statique GitHub Pages construit avec **Eleventy (11ty)** : articles de recherche sur les interactions humain-IA + présentation du projet KAIROS.
+Site statique **Eleventy v3 (Nunjucks)** : articles de recherche sur les interactions humain-IA,
+présentation de KAIROS, état de Kora. Public sur https://mecanique-invisible.com (`src/CNAME` ;
+l'alias kairos-commu.github.io/site-de-recherche redirige).
 
-## URL
-
-- **Production** : https://mecanique-invisible.com (domaine custom, CNAME -> GitHub Pages)
-- **Alias GitHub** : https://kairos-commu.github.io/site-de-recherche/ (redirige vers le domaine custom)
-- **CNAME** : fichier `src/CNAME` contenant `mecanique-invisible.com`
-
-## Build & Commandes
+## Build, déploiement
 
 ```bash
-npm run build    # Construit le site dans _site/
-npm run serve    # Serveur local avec hot reload (http://localhost:8080)
+npm run build    # _site/ (gitignored)
+npm run serve    # http://localhost:8080 — jamais celui de Florent : instance isolée, autre port
+npm test         # build + verifier-pages-produit.mjs (aucun mode non public mentionné)
 ```
 
-- **SSG** : Eleventy v3.x avec templates Nunjucks
-- **Deploiement** : GitHub Actions (`.github/workflows/deploy.yml`) — build + deploy sur push `main`
-- **Source** : `src/` — **Output** : `_site/` (gitignored)
+- **Chaque push sur `main` déploie en production** (`.github/workflows/deploy.yml`).
+- Source `src/`, config `eleventy.config.js` (passthrough, ignores, filtres, collection).
+- Règles chargées à la demande : `.claude/rules/articles.md` (articles), `.claude/rules/kairos-produit.md`
+  (faits KAIROS, téléchargement, présentation, `deploy-kairos.sh`).
 
-## Architecture
+## Comment 11ty fonctionne ici
 
-```
-site-de-recherche/
-├── src/                                  # Source 11ty
-│   ├── _includes/
-│   │   ├── layouts/
-│   │   │   ├── base.njk                  # Shell HTML : head, meta, fonts, CSS, JSON-LD, site.js
-│   │   │   ├── page.njk                  # Extends base : site-header + main + site-footer
-│   │   │   └── article.njk               # Extends base : article header, sidebar, hero, prev/next
-│   │   └── partials/
-│   │       ├── head-meta.njk             # OG + Twitter meta tags
-│   │       ├── site-header.njk           # Logo + nav + theme toggle
-│   │       ├── site-footer.njk           # Copyright + liens + formule
-│   │       └── article-nav.njk           # Prev/next auto-calcule depuis la collection
-│   │
-│   ├── _data/
-│   │   ├── site.json                     # Metadonnees globales (url, author, year, etc.)
-│   │   └── kairos.json                   # Source unique KAIROS (version, plateformes, highlights)
-│   │
-│   ├── articles/                         # Collection d'articles : un .md par article (`git ls-files src/articles`)
-│   │   ├── articles.json                 # Defaults : layout article.njk, tags ["article"]
-│   │   └── *.md                          # le champ `orbit` du frontmatter est requis par article.njk
-│   │
-│   ├── index.njk                         # Accueil (cartes auto-generees depuis la collection)
-│   ├── manifeste.njk                     # Page Manifeste / landing (texte de filtrage)
-│   ├── about.njk                         # Page A propos
-│   ├── contact.njk                       # Page Contact
-│   ├── 404.njk                           # Page 404
-│   ├── feed.njk                          # Genere feed.xml depuis la collection
-│   ├── sitemap.njk                       # Genere sitemap.xml depuis la collection
-│   │
-│   ├── css/                              # Passthrough copy
-│   │   ├── base.css                      # Variables, reset, header, footer, dark mode, responsive
-│   │   ├── article.css                   # Sidebar, progress bar, breadcrumb, contenu article
-│   │   └── kairos.css                    # Styles presentation_kairos (monde isole)
-│   ├── js/
-│   │   └── site.js                       # Theme toggle, mobile nav, smooth scroll, progress bar
-│   │
-│   ├── images/                           # Images articles (WebP) + vue complete
-│   ├── presentation_kairos.html          # Passthrough brut (jamais traite par 11ty)
-│   ├── demo/                             # App demo KAIROS (passthrough)
-│   ├── docs/                             # MD synchronises depuis Kairos (passthrough)
-│   ├── favicon.svg, og-image.jpg         # Passthrough
-│   ├── CNAME, robots.txt                 # Passthrough
-│
-├── _site/                                # Output build (gitignored)
-├── eleventy.config.js                    # Config 11ty
-├── package.json                          # @11ty/eleventy devDependency
-├── .github/workflows/deploy.yml          # CI/CD GitHub Pages
-├── .gitignore
-├── CLAUDE.md
-└── README.md
-```
+- Chaînage par `layout:` en front matter (`article.md → article.njk → base.njk`), tout passe par
+  `{{ content | safe }}` : les `{% block %}` Nunjucks ne marchent PAS avec ce système.
+- `page.njk` = header + main + footer ; `article.njk` = en-tête, sommaire, marge de Kora, prev/next.
+- Collection `articles` : triée par `datePublished` puis `order` ; `src/articles/articles.json`
+  pose le layout et le tag. Accueil, « Lire », feed, sitemap et prev/next en dérivent.
+- Méta (OG, Twitter, JSON-LD) générées par les layouts depuis le front matter
+  (`partials/head-meta.njk`, `base.njk`).
 
 ## Carnet (refonte du 26/10, par-dessus l'Observatoire)
 
 - `body.carnet` sur toutes les pages (base.njk) ; `css/carnet.css` après `observatoire.css` : grille
   de relevé, en-têtes `.kr-entete`, observations `.cn-obs`, grands chiffres, zones aveugles.
-- `js/kora-scene.js` (chargé par base.njk) : la grande Kora (`figure[data-kr-kora]`, peau puis
-  structure faite de son code — `pre.kr-matiere` = lignes RÉELLES de Choragos, commit cité) ; la
-  peau passe par `js/kora-orbe-gpu.js` (WebGPU, chargé à la demande) sinon canvas 2D ; l'étincelle
-  (`figure[data-compagne]` dans base.njk) écrit les `.kr-note`, seulement là où Kora parle déjà
-  (seuils, marge d'article, notes de l'accueil/État) — jamais de note de Kora inventée.
+- `js/kora-scene.js` (chargé par base.njk) : Kora en `figure[data-kr-kora]`, peau puis structure
+  faite de son code (`pre.kr-matiere` = lignes RÉELLES de Choragos, commit cité). Variantes :
+  `--grande` (accueil), `--moyenne` (État), `--marge` (« Lire » : reste à l'écran, l'étincelle en part).
+  La peau passe par `js/kora-orbe-gpu.js` (WebGPU, chargé à la demande), sinon canvas 2D.
+- L'étincelle (`figure[data-compagne]` dans base.njk) écrit les `.kr-note`, seulement là où Kora
+  parle déjà (seuils, marge d'article, notes de l'accueil/État) — jamais de note de Kora inventée.
 - Sans JS ou en mouvement réduit : notes affichées, Kora fixe. Humeur d'une section : `data-humeur`.
 
 ## Observatoire (refonte du 03/10)
 
-- **CSS** : `css/observatoire.css` sur toutes les pages, après `base.css` (header sticky, footer,
-  seuil, accueil, Lire, État de Kora, pages annexes) ; `article.css` porte l'article (bloc
-  OBSERVATOIRE en fin). Plus de décor plein écran : Kora est dessinée sur chaque
-  `canvas[data-orb]` par `js/repere.js` (options en `data-*`, `KoraOrb.setMood`).
-- **Aucun style inline calculé** : positions des astres et graduations de la frise →
-  `/css/constellation.css` (généré par `src/constellation-css.njk`) ; largeurs des barres →
-  `/css/etat-barres.css` (`src/etat-barres-css.njk`, depuis `koraEtat.json`).
+- `css/observatoire.css` sur toutes les pages après `base.css` ; `article.css` porte l'article.
+  La petite Kora du header et des articles : `canvas[data-orb]` dessiné par `js/repere.js`
+  (options en `data-*`, `KoraOrb.setMood`).
+- **Aucun style inline calculé** : largeurs des barres → `/css/etat-barres.css`
+  (`src/etat-barres-css.njk`, depuis `koraEtat.json`).
 - **Front matter `orbit`** sur chaque article : `0` thèse, `1` outils et terrain, `2` analyses
-  (`_data/orbites.json`). Un nouvel article sans `orbit` n'apparaît ni en orbite ni dans les filtres.
-- **Kora** : `npm run kora:sync` copie depuis `~/kairos/kora` COMMITÉ (`git show HEAD:`)
-  `state.json` → `koraEtat.json`, `spec/tools.json` → `koraTools.json`, et ce qui est collé
-  dans `GUIDE.md` → `koraGuide.json` (jamais `addenda/*.md`). Page `etat-kora.njk` : aucun
-  nombre tapé. Captures de Choragos : `_data/capturesKora.json` (`ou` : accueil | etat).
-- **Comptes attestés** : `.atteste` (pointillé cyan) seulement sur un nombre lu dans les
-  journaux ou `koraEtat` ; `attestes: true` en front matter fait dire la règle par la marge.
+  (`_data/orbites.json`). Sans `orbit`, un article n'apparaît pas dans les filtres de « Lire ».
 - Une page refondue place son seuil elle-même : `seuilEnPage: true` (sinon `page.njk` le rend).
 
-## Comment 11ty fonctionne ici
+## Données de Kora — aucun nombre tapé
 
-### Layout chain (cascade de contenu)
-11ty utilise `layout:` dans le frontmatter YAML (PAS `{% extends %}`). Le contenu du fichier enfant devient `{{ content }}` dans le layout parent.
-
-```
-article.md -> article.njk -> base.njk
-  contenu       {{ content | safe }}    {{ content | safe }}
-```
-
-**Important** : les `{% block %}` Nunjucks ne fonctionnent PAS avec le systeme de layout 11ty. Tout passe par `{{ content | safe }}`.
-
-### Collection articles
-- Definie dans `eleventy.config.js` : triee par `datePublished` puis `order` (tiebreaker pour articles meme date)
-- `src/articles/articles.json` applique automatiquement `layout: "layouts/article.njk"` et `tags: ["article"]`
-- `index.njk`, `feed.njk`, `sitemap.njk` bouclent sur `collections.articles`
-
-### Filtres custom
-- `dateFr` : "2026-02-25" -> "25 fevrier 2026"
-- `dateMonthFr` : "2026-02-25" -> "Fevrier 2026"
-- `dateRfc822` : pour feed.xml
-- `pad` : "1" -> "01" (numeros de section sidebar)
-
-### Passthrough copy
-Les fichiers suivants sont copies tels quels dans `_site/` sans traitement :
-- `src/css/`, `src/fonts/`, `src/js/`, `src/images/`, `src/demo/`, `src/docs/`
-- `src/favicon.svg`, `src/og-image.jpg`, `src/CNAME`, `src/robots.txt`
-- `src/presentation_kairos.html`
-- `src/_data/kairos.json` → `_site/kairos.json` (lu par les pages présentation HTML)
-
-### Fichiers ignores par 11ty
-`src/docs/**`, `src/demo/**`, `src/presentation_kairos.html` sont dans `eleventyConfig.ignores` pour ne pas etre traites comme templates.
-
-## Pages et CSS
-
-| Page | CSS charges |
-|------|------------|
-| `index.njk`, `manifeste.njk`, `about.njk`, `contact.njk`, `404.njk` | `css/base.css` |
-| 11 articles | `css/base.css` + `css/article.css` (via `extraCss` dans article.njk) |
-| `presentation_kairos.html` | `css/kairos.css` uniquement (monde isole, passthrough) |
-
-Toutes les pages chargent `js/site.js` en fin de `<body>` (via base.njk).
-
-## Pour ajouter un nouvel article
-
-1. Creer `src/articles/mon-article.md` avec le frontmatter YAML (copier depuis un article existant)
-2. `npm run build` — l'article apparait automatiquement dans index.html, feed.xml, sitemap.xml, et la nav prev/next se met a jour
-
-Frontmatter minimal requis :
-```yaml
----
-slug: mon-article
-pageTitle: "Titre — Florent Klimacek"
-headline: "Titre"
-description: "Description 120-160 chars"
-ogTitle: "Titre"
-ogDescription: "Description"
-ogUrl: "https://mecanique-invisible.com/mon-article.html"
-canonical: "/mon-article.html"
-datePublished: "2026-03-01"
-keywords: ["mot-cle"]
-permalink: "/mon-article.html"
-order: 12
-navLabel: "Sommaire"
-navDescription: "Sous-titre"
-heroLabel: "Article"
-heroH1: "Titre <em>en italique</em>"
-heroIntro: "Introduction"
-headerTitle: "Titre court"
-heroImage: "/images/mon-article.webp"
-heroImageAlt: "Illustration — Titre"
-breadcrumbName: "Titre"
-sections:
-  - { id: "section1", title: "Section 1" }
-card:
-  label: "Article"
-  title: "Titre carte"
-  desc: "Description carte"
-  readTime: "5 min"
-  featured: false
----
-<section id="section1">
-  <h2>Section 1</h2>
-  <p>Contenu HTML avec les classes CSS du site...</p>
-</section>
-```
-
-## CSS Variables
-
-Variables centralisees dans `src/css/base.css` `:root` :
-
-```css
---bg-page, --bg-card, --bg-card-hover
---text-primary, --text-secondary, --text-muted
---accent (amber #d97706), --accent-hover, --accent-light
---border-color, --border-light
-/* Sombre via [data-theme="dark"] */
-```
-
-`src/css/kairos.css` a son propre jeu de variables (purple/violet) — independant de base.css.
-
-## Responsive / Breakpoints
-
-Approche mobile-first progressive :
-
-| Breakpoint | Cible | Fichiers |
-|---|---|---|
-| `900px` | Tablettes — grids 1 col, sidebar masquee | `base.css`, `article.css`, `kairos.css` |
-| `768px` | Petites tablettes — header mobile | `base.css`, `article.css`, `kairos.css` |
-| `600px` | Phablets | `kairos.css` |
-| `500px` | Petits ecrans — grids 1 col | `kairos.css` |
-| `480px` | Smartphones — paddings reduits, touch | `base.css`, `article.css`, `kairos.css` |
-
-## Dark Mode
-
-- Toggle dans le header (toutes les pages)
-- Persistance : `localStorage.theme` (`light` ou `dark`)
-- Detection automatique : `prefers-color-scheme: dark`
-- Attribut : `[data-theme="dark"]` sur `<html>`
-- Anti-FOUC : script inline dans base.njk `<head>` (applique avant le premier paint)
-- `js/site.js` gere le toggle cote runtime
-
-## Pages KAIROS — source unique
-
-Tous les faits produit (version, date, URLs de download, tailles, providers, highlights, prérequis) vivent dans `src/_data/kairos.json`.
-
-| Consommateur | Comment |
-|---|---|
-| `download.njk` | 11ty injecte `kairos.*` au build |
-| `index.njk` | CTA « Télécharger v{{ kairos.version }} » |
-| `base.njk` | JSON-LD SoftwareApplication (page download) |
-| `presentation_kairos.html` / `_en.html` | passthrough HTML ; `fetch('kairos.json')` met à jour `[data-kairos-version]` |
-
-**Ne plus hardcoder la version** dans `download.njk` ni l'accueil. La présentation HTML garde un fallback no-JS, synchronisé par le fetch.
-
-**Pause téléchargement** : `downloadsAvailable: false` dans `kairos.json` masque tous les boutons/liens binaires (accueil, download, présentation, JSON-LD). Remettre à `true` (le fait automatiquement `deploy-kairos.sh`) pour rouvrir.
-
-**Ne pas** recopier `doc projet/*.md` (ROADMAP, ARCHITECTURE, PROMPTS-LLM) vers le site public. Ces fichiers sont internes. Les textes publics sont les articles 11ty (`kairos-technical-overview.md`, `genese-kairos.md`, etc.).
-
-## Déployer une nouvelle version KAIROS
-
-Les binaires sont hébergés via **GitHub Releases** (pas dans le repo — trop lourds pour Git, et LFS ne fonctionne pas avec GitHub Pages).
-
-**Script** : `deploy-kairos.sh` — **à lancer à la main**, pas par un agent (effet public : release + site prod).
-
-```bash
-# depuis site-de-recherche/, binaires déjà dans ../kairos-app/release/
-./deploy-kairos.sh 1.1.0
-```
-
-Le script :
-1. Cherche `KAIROS-X.Y.Z.AppImage` et éventuellement `KAIROS Setup X.Y.Z.exe` dans `../kairos-app/release/`
-2. Crée (ou complète) la GitHub Release `vX.Y.Z` et uploade les binaires
-3. Met à jour `src/_data/kairos.json` (version, URLs, tailles, date) — **pas** de sed sur le HTML
-4. Build le site
-5. Commit et push
-
-**Prérequis** : `gh` CLI installé et connecté (`gh auth login`).
-
-**Après un changement de faits sans nouveau binaire** (highlights, providers, texte O₂) : éditer `kairos.json` et/ou la présentation HTML, `npm run build`, commit, push. Pas besoin du script.
-
-## Ce fil / routine de mise à jour
-
-1. Feature visible dans l'UI de l'app → se demander si elle mérite une carte dans `kairos.highlights` et/ou la section features de `presentation_kairos.html`
-2. Nouveau binaire → `./deploy-kairos.sh X.Y.Z`
-3. Nouvel article de recherche → `src/articles/*.md` (déjà auto-indexé)
-4. Ne pas synchroniser la ROADMAP brute
+- `npm run kora:sync` copie depuis `~/kairos/kora` COMMITÉ (`git show HEAD:`) `state.json` →
+  `koraEtat.json`, `spec/tools.json` → `koraTools.json`, ce qui est collé dans `GUIDE.md` →
+  `koraGuide.json` (jamais `addenda/*.md`).
+- Relevé d'état : `npm run etat:export` dans `../choragos` écrit `src/_data/koraEtat.json` (des
+  COMPTES lus dans l'appli) ; commiter le JSON ; `npm run etat:fraicheur` dit son âge.
+  `research.nothingEmerged` compte des **lectures**, pas des sujets.
+- Guide « Building a local agent you can trust » (Notes) : source `~/kairos/kora/GUIDE.md` ;
+  `npm run guide:sync` réécrit la note — ne jamais l'éditer à la main.
+- Captures de Choragos : `_data/capturesKora.json` (`ou` : accueil | etat) ;
+  `npm run captures:fraicheur`.
+- **Comptes attestés** : `.atteste` (pointillé cyan) seulement sur un nombre lu dans les journaux
+  ou `koraEtat` ; `attestes: true` en front matter fait dire la règle par la marge.
 
 ## Conventions
 
-- **Pas de CSS inline** — tout dans src/css/base.css ou src/css/article.css
-- **Pas de JS inline** — tout dans src/js/site.js (sauf anti-FOUC dans base.njk et presentation_kairos)
-- **Meta tags** — geres automatiquement par les layouts (head-meta.njk) depuis le frontmatter
-- **JSON-LD** — BlogPosting auto-genere pour les articles (via base.njk), WebSite/Person via `jsonLdRaw` dans frontmatter des pages
-- **Contenu article en HTML** — les fichiers .md contiennent du HTML brut (classes CSS specifiques : `.lead`, `.key-insight`, `.chapter-divider`, `.concept`, `.sources-section`)
+- **Pas de CSS inline, pas de JS inline** (sauf l'anti-FOUC du thème dans `base.njk`).
+- Thème : `[data-theme]` sur `<html>`, `localStorage.theme`, `prefers-color-scheme` par défaut.
+- Contenu des articles en HTML brut dans les `.md`.
+- Coquilles et faits : un titre se change dans le front matter, un domaine dans
+  `_data/site.json` + `src/CNAME`.
 
 ## Vigilance — site en production
 
-Ce site est public sur `mecanique-invisible.com`. Chaque push declenche un build + deploy automatique.
+### Sécurité
 
-### Securite
-
-- **Jamais de secrets dans le code**
-- **Pas de `http://`** — liens externes en `https://`
-- **CSP** — `presentation_kairos.html` a sa propre CSP `<meta>`
-- **SRI** — CDN avec `integrity` + `crossorigin="anonymous"`
-- **`target="_blank"`** -> toujours avec `rel="noopener"`
-- **Pas de `eval()`, `innerHTML` avec donnees utilisateur, `document.write()`**
-- **postMessage** — toujours valider `event.origin`
+- Jamais de secrets ni de chemins locaux dans le code.
+- Liens externes en `https://` ; `target="_blank"` toujours avec `rel="noopener"`.
+- CDN avec `integrity` + `crossorigin="anonymous"`.
+- Pas de `eval()`, de `innerHTML` avec des données utilisateur, de `document.write()` ;
+  `postMessage` : valider `event.origin`.
 
 ### Confidentialité et IA (26/09)
 
-- **Aucun cookie, aucune mesure d'audience, aucun script tiers** : GTM/GA retirés, polices
-  auto-hébergées (`src/fonts/` + `css/fonts.css`). Seuls tiers au chargement : badge Zenodo,
-  vidéo GitHub de `download.njk`. Tout tiers ajouté change DANS LE MÊME COMMIT la CSP de
-  `base.njk` et `mentions-legales.njk` (qui les énumère).
+- **Aucun cookie, aucune mesure d'audience, aucun script tiers** : polices auto-hébergées
+  (`src/fonts/` + `css/fonts.css`). Seuls tiers au chargement : badge Zenodo, vidéo GitHub de
+  `download.njk`. Tout tiers ajouté change DANS LE MÊME COMMIT la CSP de `base.njk` et
+  `mentions-legales.njk` (qui les énumère).
 - **Illustration générée par IA** : `heroImageAlt` commence par « Illustration générée par IA »
-  et `heroImageCredit` nomme l'outil (légende sous l'image). Pour vérifier une image :
+  et `heroImageCredit` nomme l'outil. Vérifier une image :
   `strings img | grep -i "trainedAlgorithmicMedia\|c2pa"`.
 
-### SEO et meta tags
+### SEO
 
-Geres automatiquement par les layouts depuis le frontmatter. Verifier :
-- `og:title` = `<title>` = JSON-LD `headline` (coherence stricte)
-- `og:description` — 120-160 caracteres
-- `og:url` — URL canonique complete
-- `og:image` — auto depuis `heroImage` si present, sinon fallback `site.ogImage`
-
-### Coherence inter-fichiers (simplifie par 11ty)
-
-| Donnee modifiee | Action |
-|---|---|
-| Titre d'un article | Modifier le frontmatter du .md — tout se propage automatiquement |
-| Nouvel article | Creer un .md dans src/articles/ — index, feed, sitemap, nav auto |
-| Suppression d'article | Supprimer le .md — tout se met a jour au build |
-| Changement de domaine | `src/_data/site.json` + `src/CNAME` |
-| Version / binaire KAIROS | `src/_data/kairos.json` (ou `./deploy-kairos.sh X.Y.Z`) |
-| Guide « Building a local agent you can trust » (Notes) | SOURCE = `~/kairos/kora/GUIDE.md` (github.com/Kairos-commu/kora) ; `npm run guide:sync` réécrit la note (bandeau d'état njk, liens relatifs, dateModified = dernière révision) — ne jamais éditer la note à la main |
-| État de Kora (page Choragos & Kora, bloc « Relevé du … ») | `npm run etat:export` dans `../choragos` écrit `src/_data/koraEtat.json` — des COMPTES lus dans l'appli, jamais un chiffre tapé ; commiter le JSON ; `npm run etat:fraicheur` dit son âge |
+- `og:title` = `<title>` = JSON-LD `headline` ; `og:description` 120-160 caractères ;
+  `og:url` = URL canonique complète ; `og:image` depuis `heroImage`, sinon `site.ogImage`.
 
 ### Avant chaque push
 
-1. `npm run build` — verifier que le build passe sans erreur
-2. Pas de secrets, cles API, chemins locaux
-3. Meta tags coherents (verifier le frontmatter)
-4. CNAME present dans `src/`
+1. `npm test` passe.
+2. Pas de secrets, de clés API, de chemins locaux.
+3. Méta cohérentes (front matter).
+4. `src/CNAME` présent.

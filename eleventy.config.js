@@ -151,43 +151,6 @@ module.exports = function (eleventyConfig) {
     return articles.filter(function (a) { return a.data.orbit === o; });
   });
 
-  // La constellation de l'accueil, dans le repère fixe 1280×960 de la scène :
-  // trois orbites aux rayons de repere.js (R × 1.58 / 2.06 / 2.62), centre
-  // (68 %, 50 %), R = 0,15 × 960, inclinaison 0,55 — 03/10 (retour de Florent) : la
-  // passation disait 1280×860, centre 64 %, R = 0,18 × 860 ; l'orbite extérieure passait
-  // sous le texte et la fiche recouvrait la légende. L'orbite extérieure commence
-  // maintenant à x ≈ 493, après la colonne de texte (24 + 420) ; répartition régulière sur
-  // chaque orbite, phases de départ .5 / .9 / .2 rad ; diamètre = 6 + √min × 1,6.
-  // La frise place chaque article par sa date entre le 1/12/2025 et le 30/9/2026.
-  // Ordre : du plus récent au plus ancien (celui du prototype de passation).
-  eleventyConfig.addFilter("constellation", function (articles) {
-    var H = 960, R = H * 0.15, st = Math.sin(0.55), cx = 1280 * 0.68, cy = H * 0.5;
-    var ORB = [{ k: 1.58, ph: 0.5 }, { k: 2.06, ph: 0.9 }, { k: 2.62, ph: 0.2 }];
-    var t0 = Date.parse("2025-12-01"), t1 = Date.parse("2026-09-30");
-    var list = articles.slice().reverse();
-    var counts = [0, 0, 0], idx = [0, 0, 0];
-    list.forEach(function (a) { counts[a.data.orbit]++; });
-    return list.map(function (a) {
-      var o = a.data.orbit, n = idx[o]++;
-      var ang = ORB[o].ph + n * 2 * Math.PI / counts[o];
-      var rx = R * ORB[o].k, ry = rx * st;
-      var min = minutesDe(a.data.card.readingTime);
-      var size = 6 + Math.sqrt(min) * 1.6;
-      var p = (Date.parse(a.data.datePublished) - t0) / (t1 - t0);
-      return {
-        article: a,
-        slug: a.data.slug,
-        orbit: o,
-        min: min,
-        size: size.toFixed(2),
-        left: (cx + Math.cos(ang) * rx - size / 2).toFixed(1),
-        top: (cy + Math.sin(ang) * ry - size / 2).toFixed(1),
-        tick: (Math.max(0, Math.min(1, p)) * 100).toFixed(2),
-        tickH: 12 + min / 2
-      };
-    });
-  });
-
   // 2191 -> "2 191", 1.43 -> "1,43" (espace insécable, virgule décimale)
   // (écrit à la main : U+202F, que rend toLocaleString, s'affichait sans largeur — « 2191 » collé
   // en capture (03/10) ; on groupe avec une espace insécable U+00A0)

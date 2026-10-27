@@ -6,9 +6,8 @@
    (.obs-etat), pages annexes (.obs-page).
    Rayon 0 partout (sauf pastilles), pas d'ombre (sauf la barre
    d'instrument de l'article). Mono jamais sous 12 px.
-   Les largeurs et positions calculées (astres, frise, barres) ne
-   sont jamais inline : constellation.css et etat-barres.css sont
-   GÉNÉRÉES au build depuis la collection et koraEtat.json.
+   Les largeurs calculées (barres) ne sont jamais inline :
+   etat-barres.css est GÉNÉRÉE au build depuis koraEtat.json.
    ============================================================ */
 
 :root {
