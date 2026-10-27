@@ -1,0 +1,78 @@
+{#- PARTAGER (27/10, demande d'Holotheia) : copier le lien, préparer une story Instagram,
+    intégrer une carte sur un autre site. Le dialogue est rendu caché ; js/partage.js
+    l'ouvre (les boutons [data-partage-ouvrir] restent `hidden` sans JS).
+    La carte à intégrer est la SEULE exception à « pas de style inline » : elle part
+    sur un site étranger et ne doit dépendre de rien. Une seule source (`carte`) sert
+    au code copié (textarea) et à l'aperçu (template). -#}
+{%- set pUrl = site.url + "/" + slug + ".html" %}
+{%- set pTitre = headline | default(card.title) %}
+{%- set pImage = heroImage | default("/og-image.jpg") %}
+{%- set pAlt = heroImageAlt | default(pTitre) %}
+{%- set pDomaine = site.url | replace("https://", "") %}
+{%- set carte %}<!-- Carte d'article : {{ pDomaine }} -->
+<a href="{{ pUrl }}" target="_blank" rel="noopener" style="display:block;box-sizing:border-box;max-width:560px;margin:24px auto;background:#05070B;color:#EEF2F8;text-decoration:none;border:1px solid rgba(150,170,200,.28);border-radius:6px;overflow:hidden;">
+  <img src="{{ site.url }}{{ pImage }}" alt="{{ pAlt }}" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;margin:0;border:0;">
+  <span style="display:block;padding:20px 22px 22px;">
+    <span style="display:block;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:#E9A544;">{{ pDomaine }}</span>
+    <span style="display:block;margin-top:10px;font:400 clamp(22px,5vw,28px)/1.15 Georgia,'Times New Roman',serif;color:#EEF2F8;">{{ pTitre }}</span>
+    <span style="display:block;margin-top:10px;font:15px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;color:#C2CCDA;">{{ description }}</span>
+    <span style="display:block;margin-top:16px;font:14px/1.4 system-ui,-apple-system,'Segoe UI',sans-serif;color:#6FC9E4;">{{ site.author.name }} · Lire l’article →</span>
+  </span>
+</a>{% endset %}
+
+<dialog class="partage" id="partage" aria-labelledby="partageTitre"
+  data-url="{{ pUrl }}" data-titre="{{ pTitre }}" data-image="{{ pImage }}"
+  data-site="{{ pDomaine }}" data-auteur="{{ site.author.name }}" data-slug="{{ slug }}">
+  <div class="partage__tete">
+    <p class="partage__titre" id="partageTitre">Partager « {{ pTitre }} »</p>
+    <button type="button" class="partage__fermer" data-partage-fermer aria-label="Fermer">×</button>
+  </div>
+
+  <div class="partage__onglets" role="tablist" aria-label="Façons de partager">
+    <button type="button" role="tab" id="pOngletLien" aria-controls="pLien" aria-selected="true">Lien</button>
+    <button type="button" role="tab" id="pOngletStory" aria-controls="pStory" aria-selected="false" tabindex="-1">Story Instagram</button>
+    <button type="button" role="tab" id="pOngletCarte" aria-controls="pCarte" aria-selected="false" tabindex="-1">Intégrer sur un site</button>
+  </div>
+
+  <section class="partage__panneau" role="tabpanel" id="pLien" aria-labelledby="pOngletLien">
+    <p>L’adresse de l’article. Titre, image et résumé l’accompagnent sur les réseaux qui lisent les métadonnées de partage.</p>
+    <div class="partage__ligne">
+      <input type="text" class="partage__champ" id="pLienChamp" value="{{ pUrl }}" readonly aria-label="Adresse de l’article">
+      <button type="button" class="partage__bouton" data-partage-copier="pLienChamp">Copier le lien</button>
+    </div>
+  </section>
+
+  <section class="partage__panneau" role="tabpanel" id="pStory" aria-labelledby="pOngletStory" hidden>
+    <div class="partage__story">
+      <canvas class="partage__visuel" id="pStoryCanvas" width="1080" height="1920" role="img" aria-label="Visuel de story : {{ pTitre }}"></canvas>
+      <div>
+        <p>Un visuel au format story (1080 × 1920) : l’image de l’article, son titre, le nom du site.</p>
+        <ol class="partage__etapes">
+          <li>Télécharger l’image.</li>
+          <li>Dans Instagram, créer une story avec cette image.</li>
+          <li>Ajouter le sticker « Lien » et y coller l’adresse de l’article.</li>
+        </ol>
+        <div class="partage__actions">
+          <button type="button" class="partage__bouton" id="pStoryTelecharger" disabled>Télécharger l’image</button>
+          <button type="button" class="partage__bouton partage__bouton--second" id="pStoryEnvoyer" hidden>Envoyer vers une app…</button>
+          <button type="button" class="partage__bouton partage__bouton--second" data-partage-copier="pLienChamp">Copier le lien</button>
+        </div>
+        <p class="partage__note">Rien n’est publié d’ici : c’est vous qui postez la story.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="partage__panneau" role="tabpanel" id="pCarte" aria-labelledby="pOngletCarte" hidden>
+    <p>Un code HTML à coller sur votre site (bloc « HTML personnalisé » ou « Intégrer ») : une carte cliquable qui ouvre l’article ici. Il ne reprend que le titre, l’image et le résumé, pas le texte.</p>
+    <p class="partage__sous">Aperçu</p>
+    <div class="partage__apercu" id="pCarteApercu"></div>
+    <template id="pCarteModele">{{ carte | safe }}</template>
+    <p class="partage__sous"><label for="pCarteCode">Code à copier</label></p>
+    <textarea class="partage__code" id="pCarteCode" rows="6" readonly spellcheck="false">{{ carte | forceescape }}</textarea>
+    <div class="partage__actions">
+      <button type="button" class="partage__bouton" data-partage-copier="pCarteCode">Copier le code</button>
+    </div>
+  </section>
+
+  <p class="partage__statut" role="status" aria-live="polite"></p>
+</dialog>

@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 extraCss: article.css
+extraJs: partage.js
 ogType: article
 bodyClass: article
 activeNav: articles
@@ -56,6 +57,10 @@ koraHumeur: "en lecture"
         <p><a href="/holotheia.html">Tous mes textes sur Holotheia</a></p>
       </aside>
       {%- endif %}
+      <div class="art-partage" hidden>
+        <button type="button" class="art-partage__bouton" data-partage-ouvrir>Partager ce texte</button>
+        <span class="art-partage__aide">lien, story Instagram, carte à intégrer</span>
+      </div>
     </div>
 
     {#- La marge de Kora : le seuil. Auteur et dates viennent du front matter — elle ne dit
@@ -84,8 +89,10 @@ koraHumeur: "en lecture"
         <span id="fsValeur">19 px</span>
         <button type="button" id="fsPlus" aria-label="Agrandir le texte">A+</button>
       </div>
+      <button type="button" class="instrument__partager" data-partage-ouvrir hidden>Partager</button>
     </div>
   </div>
 </main>
 
+{% include "partials/partage.njk" %}
 {% include "partials/site-footer.njk" %}

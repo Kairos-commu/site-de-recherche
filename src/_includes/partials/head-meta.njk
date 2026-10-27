@@ -15,6 +15,9 @@
 <meta property="og:locale" content="{{ site.locale }}">
 {%- if heroImage %}
 <meta property="og:image" content="{{ site.url }}{{ heroImage }}">
+{%- if heroImageAlt %}
+<meta property="og:image:alt" content="{{ heroImageAlt }}">
+{%- endif %}
 {%- else %}
 <meta property="og:image" content="{{ site.ogImage }}">
 {%- endif %}
@@ -33,6 +36,9 @@
 <meta name="twitter:card" content="{{ twitterCard | default('summary_large_image') }}">
 {%- if heroImage %}
 <meta name="twitter:image" content="{{ site.url }}{{ heroImage }}">
+{%- if heroImageAlt %}
+<meta name="twitter:image:alt" content="{{ heroImageAlt }}">
+{%- endif %}
 {%- else %}
 <meta name="twitter:image" content="{{ site.ogImage }}">
 {%- endif %}

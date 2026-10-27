@@ -2281,3 +2281,81 @@ code {
   .instrument__section { display: none; }
   .instrument__barre { gap: 12px; }
 }
+
+/* ============================================================
+   PARTAGER (27/10) — bouton dans la barre d'instrument et en fin de
+   texte, dialogue à trois onglets (partials/partage.njk, js/partage.js).
+   ============================================================ */
+.instrument__partager,
+.art-partage__bouton,
+.partage__bouton {
+  height: 30px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid var(--rule-btn);
+  border-radius: 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.instrument__partager:hover,
+.art-partage__bouton:hover,
+.partage__bouton:hover { border-color: var(--accent); color: var(--accent); }
+.partage__bouton:disabled { opacity: .4; cursor: default; border-color: var(--rule-btn); color: var(--text-primary); }
+.partage__bouton:not(.partage__bouton--second) { border-color: var(--accent); color: var(--accent); }
+
+.art-partage { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 56px 0 0; padding-top: 24px; border-top: 1px solid var(--rule); }
+.art-partage[hidden] { display: none; }
+.art-partage__bouton { height: 38px; padding: 0 18px; font-size: 13px; }
+.art-partage__aide { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+
+.partage {
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow: auto;
+  background: var(--panel);
+  color: var(--text-secondary);
+  border: 1px solid rgba(150, 170, 200, .24);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .9);
+}
+.partage::backdrop { background: rgba(3, 5, 10, .78); }
+.partage p { margin: 0; font-size: 15px; line-height: 1.55; }
+.partage__tete { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 20px 0 24px; }
+.partage__titre { font-family: var(--font-serif); font-size: 24px !important; line-height: 1.2 !important; color: var(--text-primary); }
+.partage__fermer { flex: none; width: 34px; height: 34px; background: none; border: 1px solid var(--rule-btn); color: var(--text-primary); font-size: 20px; line-height: 1; cursor: pointer; }
+.partage__fermer:hover { border-color: var(--accent); color: var(--accent); }
+
+.partage__onglets { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 24px 0; border-bottom: 1px solid var(--rule); }
+.partage__onglets [role="tab"] { flex: none; padding: 10px 14px; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--text-muted); font-family: var(--font-mono); font-size: 12.5px; cursor: pointer; }
+.partage__onglets [role="tab"]:hover { color: var(--text-primary); }
+.partage__onglets [role="tab"][aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+.partage__panneau { display: grid; gap: 14px; padding: 20px 24px 8px; }
+.partage__panneau[hidden] { display: none; }
+.partage__ligne { display: flex; gap: 8px; }
+.partage__champ { flex: 1; min-width: 0; height: 30px; padding: 0 10px; background: var(--bg-page); border: 1px solid var(--rule); border-radius: 0; color: var(--text-primary); font-family: var(--font-mono); font-size: 12.5px; }
+.partage__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.partage__sous { font-family: var(--font-mono); font-size: 12px !important; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px !important; }
+.partage__note { font-size: 13px !important; color: var(--text-muted); }
+
+.partage__story { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+.partage__story > div { display: grid; gap: 14px; }
+.partage__visuel { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--bg-page); border: 1px solid var(--rule); }
+.partage__etapes { margin: 0; padding-left: 1.3em; font-size: 15px; line-height: 1.6; }
+
+.partage__apercu { padding: 8px 12px; background: #F4F1EA; border: 1px solid var(--rule); }
+.partage__code { width: 100%; resize: vertical; padding: 10px; background: var(--bg-page); border: 1px solid var(--rule); border-radius: 0; color: var(--text-secondary); font-family: var(--font-mono); font-size: 12px; line-height: 1.5; }
+
+.partage__statut { min-height: 1.5em; padding: 4px 24px 20px; font-family: var(--font-mono); font-size: 12.5px !important; color: var(--kora); }
+
+@media (max-width: 700px) {
+  .instrument__partager { padding: 0 10px; }
+  .partage__story { grid-template-columns: 1fr; }
+  .partage__visuel { width: 160px; }
+  .partage__tete, .partage__panneau { padding-left: 16px; padding-right: 16px; }
+  .partage__onglets { margin-left: 16px; margin-right: 16px; }
+  .partage__statut { padding-left: 16px; padding-right: 16px; }
+}
