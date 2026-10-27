@@ -555,13 +555,21 @@ fn srgb(c: vec3f) -> vec3f { return select(1.055 * pow(c, vec3f(1.0 / 2.4)) - 0.
 `;
 
   // ---------- disponibilité ----------
+  // Un adaptateur logiciel (SwiftShader : Brave sous Linux sans Vulkan, 27/10) rend sur le CPU,
+  // dans le processus GPU qui compose aussi la page : tout l'affichage saccade. Le canvas 2D,
+  // lui, reste accéléré ; on le garde.
+  function logiciel(a) {
+    var i = a.info || {};
+    return !!(a.isFallbackAdapter || i.isFallbackAdapter || /swiftshader/i.test(i.architecture || ''));
+  }
   var adapterPromesse = null;
   function obtenirAdapter() {
     if (!adapterPromesse) {
       adapterPromesse = (async function () {
         try {
           if (typeof navigator === 'undefined' || !navigator.gpu) return null;
-          return (await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' })) || null;
+          var a = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+          return a && !logiciel(a) ? a : null;
         } catch (e) { return null; }
       })();
     }
@@ -577,7 +585,7 @@ fn srgb(c: vec3f) -> vec3f { return select(1.055 * pow(c, vec3f(1.0 / 2.4)) - 0.
     // un adaptateur ne crée qu'un device : chaque orbe (grande Kora, actrice…) demande le sien
     var adapter = null;
     try { adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' }); } catch (e) { adapter = null; }
-    if (!adapter) throw new Error('WebGPU indisponible');
+    if (!adapter || logiciel(adapter)) throw new Error('WebGPU indisponible');
     var avecChrono = adapter.features.has('timestamp-query');
     var device = await adapter.requestDevice({ requiredFeatures: avecChrono ? ['timestamp-query'] : [] });
     var perdu = false;
