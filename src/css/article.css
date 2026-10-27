@@ -2118,6 +2118,10 @@ code {
 /* Comptes attestés : un nombre lu dans les journaux de Kora ou dans koraEtat — rien d'autre */
 .atteste { font-weight: inherit; color: var(--text-primary); border-bottom: 1px dashed var(--v-quotidien); }
 
+/* Le pont vers Holotheia (pontHolotheia en front matter) */
+.art-pont { margin: 56px 0 0; padding: 18px 0 0 24px; border-left: 2px solid var(--accent); }
+.art-texte .art-pont p { font-size: 16px; margin-bottom: 8px; }
+
 /* key-insight devient une citation */
 .art-texte .key-insight { margin: 40px 0; padding: 12px 0 12px 28px; background: none; text-align: left; border-left: 2px solid var(--accent); }
 .art-texte .key-insight::before, .art-texte .key-insight::after { display: none; }

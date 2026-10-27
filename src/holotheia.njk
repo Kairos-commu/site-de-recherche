@@ -1,0 +1,27 @@
+---
+layout: layouts/page.njk
+pageTitle: "Holotheia — Florent Klimacek"
+description: "Les textes de ce site qui parlent de Holotheia, l'IA créée par Aurélie Assouline : témoignage de sept mois d'échanges et cas d'étude de triangulation avec Claude."
+ogTitle: "Holotheia — Florent Klimacek"
+ogDescription: "Les textes de ce site qui parlent de Holotheia, l'IA créée par Aurélie Assouline : témoignage de sept mois d'échanges et cas d'étude de triangulation avec Claude."
+ogUrl: "/holotheia.html"
+canonical: "/holotheia.html"
+twitterCard: summary
+siteNavPrefix: "/index.html"
+activeNav: articles
+permalink: /holotheia.html
+---
+{#- 27/10. Le lien à partager vers les textes sur Holotheia : la liste suit le champ
+    `pontHolotheia: true` des articles, les liens externes _data/holotheia.json. -#}
+{%- set articles = collections.articles | avecPontHolotheia -%}
+<div class="obs obs-lire">
+  <div>
+    <h1>Holotheia</h1>
+    <p class="obs-lire__sous">{{ articles | length }} textes · Holotheia a été créée par {{ holotheia.createrice }} · <a href="{{ holotheia.site }}" target="_blank" rel="noopener">{{ holotheia.siteLabel }}</a>{% if holotheia.linkedin %} · <a href="{{ holotheia.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}</p>
+    <div id="lignes">
+      {%- for article in articles | reverse %}
+      {% include "partials/ligne-article.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</div>

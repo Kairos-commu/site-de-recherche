@@ -48,6 +48,14 @@ koraHumeur: "en lecture"
   <div class="art-corps">
     <div class="content art-texte" id="artTexte" data-minutes="{{ min }}" data-titre="{{ card.title }}">
       {{ content | safe }}
+      {#- Le pont vers Holotheia : un article marqué `pontHolotheia: true` le porte, et
+          /holotheia.html les liste (le lien à partager). Liens : _data/holotheia.json. -#}
+      {%- if pontHolotheia %}
+      <aside class="art-pont" aria-label="Holotheia">
+        <p>Holotheia a été créée par {{ holotheia.createrice }}. Site : <a href="{{ holotheia.site }}" target="_blank" rel="noopener">{{ holotheia.siteLabel }}</a>{% if holotheia.linkedin %} · LinkedIn : <a href="{{ holotheia.linkedin }}" target="_blank" rel="noopener">{{ holotheia.createrice }}</a>{% endif %}</p>
+        <p><a href="/holotheia.html">Tous mes textes sur Holotheia</a></p>
+      </aside>
+      {%- endif %}
     </div>
 
     {#- La marge de Kora : le seuil. Auteur et dates viennent du front matter — elle ne dit

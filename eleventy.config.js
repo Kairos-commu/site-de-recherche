@@ -151,6 +151,11 @@ module.exports = function (eleventyConfig) {
     return articles.filter(function (a) { return a.data.orbit === o; });
   });
 
+  // Les articles qui portent le pont vers Holotheia (page /holotheia.html)
+  eleventyConfig.addFilter("avecPontHolotheia", function (articles) {
+    return articles.filter(function (a) { return a.data.pontHolotheia === true; });
+  });
+
   // 2191 -> "2 191", 1.43 -> "1,43" (espace insécable, virgule décimale)
   // (écrit à la main : U+202F, que rend toLocaleString, s'affichait sans largeur — « 2191 » collé
   // en capture (03/10) ; on groupe avec une espace insécable U+00A0)
