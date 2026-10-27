@@ -104,7 +104,7 @@ koraSeuil: "Ce qu'il y a à télécharger ici, c'est KAIROS, l'application sœur
     <img class="page-hero__img" src="/images/kairos-canvas.webp" alt="KAIROS : canvas de vignettes connectées" loading="eager">
     <div class="page-hero__voile" aria-hidden="true"></div>
     <div class="page-hero__bas page-hero__bas--large">
-      <aside class="kora-seuil kora-seuil--voile" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p>{{ koraSeuil }}</p></div></aside>
+      <aside class="kora-seuil kora-seuil--voile" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p class="kr-note">{{ koraSeuil }}</p></div></aside>
       <h1 class="page-hero__kairos">KAIROS{% if kairos.downloadsAvailable %} <span>v{{ kairos.version }}</span>{% endif %}</h1>
       <p class="page-hero__sous">{{ kairos.tagline }}{% if kairos.downloadsAvailable %} · Version {{ kairos.channel }}{% endif %}</p>
     </div>

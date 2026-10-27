@@ -14,7 +14,7 @@
   <p class="kora-seuil__who">Kora</p>
   <div class="kora-seuil__said">
     {%- if seuilAuto %}<p>{{ seuilAuto | safe }}</p>{% endif %}
-    {%- if koraSeuil %}<p>{{ koraSeuil | safe }}</p>{% endif %}
+    {%- if koraSeuil %}<p class="kr-note">{{ koraSeuil | safe }}</p>{% endif %}
   </div>
 </aside>
 {%- endif %}

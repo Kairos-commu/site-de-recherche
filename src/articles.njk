@@ -48,10 +48,28 @@ jsonLdRaw: |
   </div>
 
   <aside class="obs-marge" aria-label="Kora"><div class="obs-marge__colle">
-    <canvas data-orb="1" data-r=".2" data-mood="search" data-dim=".85" data-count="900" aria-hidden="true"></canvas>
+    <figure class="kr-kora kr-kora--marge" data-kr-kora>
+      <div class="kr-kora__scene">
+        <div class="kr-kora__repli" aria-hidden="true"></div>
+        <canvas class="kr-kora__canvas" aria-hidden="true"></canvas>
+        <div class="kr-kora__reticule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </div>
+      <pre class="kr-matiere" hidden>            "final" =&gt; &#123;
+                let escalated = js::truthy(g("escalated"));
+                // (24/10) `answered: false` (engine.ts) : fini sans rien répondre. Avant, tout final
+                // non escaladé valait « Requête résolue », réponse ou pas (audit du 11/10, lot B).
+                let unanswered = matches!(g("answered"), Some(Value::Bool(false)));
+                let status = if escalated &#123;
+                    "escalated"
+                &#125; else if unanswered &#123;
+                    "empty"
+                &#125; else &#123;
+                    "ok"
+                &#125;;</pre>
+    </figure>
     <p class="obs-marge__qui">Kora · en marge</p>
     {#- Le seuil : Kora présente la liste — le compte vient de la collection, jamais d'un chiffre écrit -#}
-    <p class="obs-marge__said">{{ articles | length | nombreFr | capitalize }} textes, tous de Florent. Aucun n'est de moi. Je les tiens, c'est tout.</p>
-    <a href="/index.html">← Les voir en orbite</a>
+    <p class="obs-marge__said kr-note">{{ articles | length | nombreFr | capitalize }} textes, tous de Florent. Aucun n'est de moi. Je les tiens, c'est tout.</p>
+    <a href="/etat-kora.html">L'état de Kora →</a>
   </div></aside>
 </div>

@@ -74,6 +74,17 @@ site-de-recherche/
 └── README.md
 ```
 
+## Carnet (refonte du 26/10, par-dessus l'Observatoire)
+
+- `body.carnet` sur toutes les pages (base.njk) ; `css/carnet.css` après `observatoire.css` : grille
+  de relevé, en-têtes `.kr-entete`, observations `.cn-obs`, grands chiffres, zones aveugles.
+- `js/kora-scene.js` (chargé par base.njk) : la grande Kora (`figure[data-kr-kora]`, peau puis
+  structure faite de son code — `pre.kr-matiere` = lignes RÉELLES de Choragos, commit cité) ; la
+  peau passe par `js/kora-orbe-gpu.js` (WebGPU, chargé à la demande) sinon canvas 2D ; l'étincelle
+  (`figure[data-compagne]` dans base.njk) écrit les `.kr-note`, seulement là où Kora parle déjà
+  (seuils, marge d'article, notes de l'accueil/État) — jamais de note de Kora inventée.
+- Sans JS ou en mouvement réduit : notes affichées, Kora fixe. Humeur d'une section : `data-humeur`.
+
 ## Observatoire (refonte du 03/10)
 
 - **CSS** : `css/observatoire.css` sur toutes les pages, après `base.css` (header sticky, footer,

@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/observatoire.css">
+  <link rel="stylesheet" href="/css/carnet.css">
   {%- if extraCss %}
   <link rel="stylesheet" href="/css/{{ extraCss }}">
   {%- endif %}
@@ -108,13 +109,21 @@
   </script>
   {%- endif %}
 </head>
-<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+<body class="carnet{% if bodyClass %} {{ bodyClass }}{% endif %}">
   {#- 03/10 : plus de décor plein écran. Kora est dessinée là où la page la pose
       (canvas[data-orb], js/repere.js) — la puce du header, une scène, une marge. -#}
   {{ content | safe }}
 
+  {#- L'étincelle de Kora (js/kora-scene.js) : elle n'entre en scène que sur les pages
+      où Kora a des notes (.kr-note) ou une grande orbe ; sinon rien n'est dessiné. -#}
+  <figure class="kr-compagne" data-kr-kora data-compagne aria-hidden="true">
+    <div class="kr-compagne__scene"><canvas class="kr-kora__canvas"></canvas></div>
+    <figcaption class="kr-compagne__dit"><span class="kr-compagne__nom">Kora</span><span class="kr-compagne__lieu"></span></figcaption>
+  </figure>
+
   <script src="/js/repere.js"></script>
   <script src="/js/site.js"></script>
+  <script src="/js/kora-scene.js"></script>
   {%- if extraJs %}
   <script src="/js/{{ extraJs }}" defer></script>
   {%- endif %}

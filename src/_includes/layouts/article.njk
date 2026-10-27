@@ -54,12 +54,12 @@ koraHumeur: "en lecture"
         ici que ce que la page sait d'elle-même ; `koraSeuil` est une phrase relue par Florent. -#}
     <aside class="art-marge" aria-label="Kora">
       <p class="art-marge__qui">Kora</p>
-      <p>Ce texte est de Florent. Il l'a publié le {{ datePublished | dateFr }}{% if dateModified and dateModified != datePublished %} et l'a repris le {{ dateModified | dateFr }}{% endif %}. Je ne l'ai pas écrit. Je le tiens ici.</p>
+      <p class="kr-note">Ce texte est de Florent. Il l'a publié le {{ datePublished | dateFr }}{% if dateModified and dateModified != datePublished %} et l'a repris le {{ dateModified | dateFr }}{% endif %}. Je ne l'ai pas écrit. Je le tiens ici.</p>
       {%- if koraSeuil %}
-      <p class="art-marge__propre">{{ koraSeuil | safe }}</p>
+      <p class="art-marge__propre kr-note">{{ koraSeuil | safe }}</p>
       {%- endif %}
       {%- if attestes %}
-      <p class="art-marge__note">Les passages soulignés en pointillé sont des comptes lus dans mes journaux.</p>
+      <p class="art-marge__note kr-note">Les passages soulignés en pointillé sont des comptes lus dans mes journaux.</p>
       {%- endif %}
     </aside>
   </div>

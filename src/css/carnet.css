@@ -1,0 +1,763 @@
+/* ============================================================
+   CARNET — l'habillage du site (refonte d'octobre 2026, maquette V4)
+   L'Observatoire pris au pied de la lettre : chaque section est
+   une observation numérotée, avec sa fiche d'instrument, un
+   chiffre-événement et une grille de relevé. Kora est la source
+   de lumière ; les blocs font leur mise au point en entrant dans
+   le champ (js/kora-scene.js).
+   ============================================================ */
+
+.carnet {
+  --cn-fond: #03050A;
+  --cn-grille: rgba(111, 201, 228, .055);
+  --cn-grille-forte: rgba(111, 201, 228, .12);
+  --cn-trait: rgba(150, 170, 200, .22);
+  --cn-cyan: var(--v-quotidien);
+  --cn-ambre: var(--accent);
+  --cn-marge: clamp(16px, 5vw, 72px);
+  background-color: var(--cn-fond);
+  /* grille de relevé : pas de 24 px, renfort tous les 120 px */
+  background-image:
+    radial-gradient(ellipse 60vw 50vh at 78% 0%, rgba(111, 201, 228, .10), transparent 70%),
+    linear-gradient(var(--cn-grille-forte) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cn-grille-forte) 1px, transparent 1px),
+    linear-gradient(var(--cn-grille) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cn-grille) 1px, transparent 1px);
+  background-size: 100% 100%, 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-attachment: fixed, scroll, scroll, scroll, scroll;
+}
+
+.cn { position: relative; max-width: 1320px; margin: 0 auto; padding: 0 var(--cn-marge) 120px; overflow-x: clip; }
+
+/* graticule : lettres de colonnes en haut de page */
+.cn-graticule {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding: 18px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  color: rgba(111, 201, 228, .45);
+  border-bottom: 1px solid var(--cn-trait);
+}
+.cn-graticule span { padding: 0 0 8px 6px; border-left: 1px solid var(--cn-trait); }
+
+/* ── Une observation ───────────────────────────────────────── */
+.cn-obs {
+  position: relative;
+  padding: clamp(56px, 11vh, 120px) 0 0;
+}
+/* réticules aux coins de chaque observation */
+.cn-obs::before,
+.cn-obs::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid var(--cn-cyan);
+  opacity: .6;
+}
+.cn-obs::before { top: calc(clamp(56px, 11vh, 120px) - 10px); left: -10px; border-top-width: 1px; border-left-width: 1px; }
+.cn-obs::after { top: calc(clamp(56px, 11vh, 120px) - 10px); right: -10px; border-top-width: 1px; border-right-width: 1px; }
+
+/* fiche d'instrument : la bande de métadonnées */
+.cn-fiche {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-top: 1px solid var(--cn-trait);
+  border-bottom: 1px solid var(--cn-trait);
+  padding: 10px 0;
+  font-variant-numeric: tabular-nums;
+}
+.cn-fiche span { padding: 0 14px; border-left: 1px solid var(--cn-trait); }
+.cn-fiche span:first-child { padding-left: 0; border-left: 0; }
+.cn-fiche__n { color: var(--cn-cyan); letter-spacing: .18em; }
+
+.cn-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cn-cyan);
+}
+
+/* ── OBS. 001 : le seuil ───────────────────────────────────── */
+.cn-seuil {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  min-height: min(72vh, 700px);
+  padding: 36px 0 24px;
+}
+.cn-seuil__texte { display: grid; gap: 26px; }
+.cn-seuil h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  line-height: .92;
+  letter-spacing: -.02em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.cn-seuil h1 em { font-style: italic; color: var(--cn-cyan); text-shadow: 0 0 40px rgba(111, 201, 228, .35); }
+.cn-seuil__said { max-width: 52ch; font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+
+/* la source de lumière */
+.cn-source { position: relative; aspect-ratio: 1; width: 100%; max-width: 480px; justify-self: center; }
+.cn-source__astre {
+  position: absolute;
+  inset: 26%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 34%, rgba(255, 255, 255, .95) 0, rgba(190, 236, 248, .9) 6%, rgba(111, 201, 228, .75) 22%, rgba(40, 110, 140, .35) 52%, transparent 72%);
+  box-shadow: 0 0 120px 40px rgba(111, 201, 228, .18), 0 0 260px 90px rgba(111, 201, 228, .07);
+  animation: cn-respire 7s var(--ease-in-out-sine) infinite;
+}
+.cn-source__reticule {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(111, 201, 228, .35);
+  background:
+    linear-gradient(rgba(111, 201, 228, .45), rgba(111, 201, 228, .45)) center / 1px 100% no-repeat,
+    linear-gradient(90deg, rgba(111, 201, 228, .45), rgba(111, 201, 228, .45)) center / 100% 1px no-repeat;
+  -webkit-mask: radial-gradient(circle, transparent 0 30%, #000 30.5%);
+  mask: radial-gradient(circle, transparent 0 30%, #000 30.5%);
+}
+.cn-source__reticule::before,
+.cn-source__reticule::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(111, 201, 228, .28);
+}
+.cn-source__reticule::before { inset: 12%; }
+.cn-source__reticule::after { inset: 32%; border-style: solid; border-color: rgba(111, 201, 228, .18); }
+.cn-source__lab {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(111, 201, 228, .75);
+  white-space: nowrap;
+}
+.cn-source__lab--n { top: 2%; left: calc(50% + 10px); }
+.cn-source__lab--s { bottom: 2%; right: calc(50% + 10px); }
+@keyframes cn-respire { 50% { transform: scale(1.04); filter: brightness(1.12); } }
+
+/* ── Relevé : chiffre-événement + corps ────────────────────── */
+.cn-releve {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+  padding-top: 48px;
+}
+.cn-releve--inverse .cn-evenement { order: 2; }
+
+.cn-evenement {
+  position: relative;
+  padding: 28px 0 0 28px;
+  border-left: 1px solid var(--cn-cyan);
+}
+.cn-evenement::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cn-cyan);
+  box-shadow: 0 0 18px var(--cn-cyan);
+}
+.cn-evenement__n {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(5.5rem, 15vw, 13.5rem);
+  line-height: .82;
+  letter-spacing: -.03em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums lining-nums;
+  text-shadow: 0 0 60px rgba(111, 201, 228, .22);
+  white-space: nowrap;
+}
+.cn-evenement__sur,
+.cn-evenement__cmp {
+  margin-left: .18em;
+  font-size: .32em;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+.cn-evenement__l {
+  margin-top: 18px;
+  max-width: 30ch;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--cn-cyan);
+}
+.cn-evenement--ambre { border-left-color: var(--cn-ambre); }
+.cn-evenement--ambre::before { background: var(--cn-ambre); box-shadow: 0 0 18px var(--cn-ambre); }
+.cn-evenement--ambre .cn-evenement__n { text-shadow: 0 0 60px rgba(233, 165, 68, .22); }
+.cn-evenement--ambre .cn-evenement__l { color: var(--cn-ambre); }
+
+.cn-releve__corps { display: grid; gap: 26px; padding-top: 18px; }
+.cn-h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4vw, 3.9rem);
+  line-height: 1;
+  letter-spacing: -.015em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.cn-h2 em { font-style: italic; color: var(--cn-cyan); }
+.cn-h2--large { padding-top: 48px; font-size: clamp(2.6rem, 6vw, 5.6rem); }
+.cn-obs--article .cn-h2 em { color: var(--cn-ambre); }
+.cn-texte { font-size: 17px; line-height: 1.7; color: var(--text-secondary); max-width: 56ch; }
+
+/* table de mesures, comme une feuille de relevé */
+.cn-mesures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--cn-trait);
+  border-bottom: 1px solid var(--cn-trait);
+}
+.cn-mesures > div { padding: 14px 12px 14px 0; display: grid; gap: 4px; }
+.cn-mesures > div + div { padding-left: 12px; border-left: 1px solid var(--cn-trait); }
+.cn-mesures dt { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-light); }
+.cn-mesures dd { font-family: var(--font-mono); font-size: 22px; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
+/* spectre : la répartition des appels */
+.cn-spectre svg { display: block; width: 100%; height: 14px; }
+.cn-sp-local { fill: var(--cn-cyan); }
+.cn-sp-cloud { fill: var(--cn-ambre); }
+.cn-sp-web { fill: var(--v-jeu); }
+.cn-spectre__leg { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 10px; font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.cn-spectre__leg .t-l { color: var(--cn-cyan); }
+.cn-spectre__leg .t-c { color: var(--cn-ambre); }
+.cn-spectre__leg .t-w { color: var(--v-jeu); }
+
+/* ce qui n'est pas mesuré : un trou dans le relevé */
+.cn-nonmesure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 14px 16px;
+  border: 1px dashed rgba(233, 165, 68, .5);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+.cn-nonmesure span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cn-ambre);
+}
+
+/* ── OBS. 004 : zones aveugles ─────────────────────────────── */
+.cn-aveugles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 40px;
+  background: var(--cn-trait);
+  border: 1px solid var(--cn-trait);
+}
+.cn-aveugle {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 28px 26px 32px;
+  /* zone non observée : hachures */
+  background:
+    repeating-linear-gradient(135deg, rgba(150, 170, 200, .045) 0 1px, transparent 1px 9px),
+    var(--cn-fond);
+}
+.cn-aveugle__code { font-family: var(--font-mono); font-size: 34px; color: var(--cn-ambre); letter-spacing: .04em; }
+.cn-aveugle h3 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; line-height: 1.1; color: var(--text-primary); }
+.cn-aveugle p:last-child { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+
+/* ── OBS. 005 : catalogue ──────────────────────────────────── */
+.cn-catalogue { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--cn-trait); }
+.cn-catalogue a {
+  display: grid;
+  grid-template-columns: 70px 110px minmax(0, 1fr) 70px;
+  gap: 18px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--cn-trait);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), padding var(--transition-normal);
+}
+.cn-catalogue a:hover { background: rgba(111, 201, 228, .05); padding-left: 10px; }
+.cn-cat__n, .cn-cat__date, .cn-cat__min { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.cn-cat__n { color: var(--cn-cyan); }
+.cn-cat__titre { font-family: var(--font-serif); font-size: 26px; line-height: 1.15; color: var(--text-primary); }
+.cn-cat__min { text-align: right; }
+
+/* ── OBS. 006 : l'extrait d'article ────────────────────────── */
+.cn-article { max-width: 720px; margin: 56px 0 0 auto; display: grid; gap: 22px; }
+.cn-article > p { font-size: 18px; line-height: 1.75; color: var(--text-body); }
+.cn-article strong { color: var(--text-primary); font-weight: 600; }
+
+.cn-lecture {
+  margin: 18px 0;
+  border: 1px solid var(--cn-trait);
+  background: rgba(3, 5, 10, .85);
+}
+.cn-lecture__tete {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--cn-trait);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cn-cyan);
+}
+.cn-lecture__corps { display: grid; gap: 16px; padding: 22px 16px 8px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.cn-l { display: grid; grid-template-columns: minmax(0, 1fr) 3ch; grid-template-areas: "lab lab" "piste val"; gap: 6px 12px; align-items: center; }
+.cn-l__lab { grid-area: lab; font-size: 12.5px; color: var(--text-secondary); }
+.cn-l__note { color: var(--text-light); }
+.cn-l__piste { grid-area: piste; display: block; width: 100%; height: 16px; overflow: visible; }
+.cn-l__fond { fill: rgba(150, 170, 200, .07); }
+.cn-l__barre { fill: var(--cn-cyan); }
+.cn-l--rien .cn-l__barre { fill: rgba(150, 170, 200, .45); }
+.cn-l--liste .cn-l__barre { fill: var(--cn-ambre); }
+.cn-l--phrases .cn-l__barre { fill: rgba(111, 201, 228, .55); }
+.cn-l__ref { stroke: var(--text-primary); stroke-width: 1.5; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; opacity: .8; }
+.cn-l__val { grid-area: val; font-size: 15px; text-align: right; color: var(--text-primary); }
+.cn-l--liste .cn-l__val { color: var(--cn-ambre); }
+.cn-lecture__axe { padding-left: 40%; margin-left: -.5ch; font-size: 11px; color: var(--text-light); white-space: nowrap; }
+.cn-lecture__note { padding: 12px 16px 16px; border-top: 1px solid var(--cn-trait); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); }
+.cn-lecture__note strong { color: var(--cn-ambre); font-weight: 500; }
+
+.cn-fin { margin-top: 96px; padding-top: 16px; border-top: 1px solid var(--cn-trait); font-family: var(--font-mono); font-size: 12px; color: var(--text-light); }
+.cn-fin a { color: var(--cn-cyan); }
+
+/* ── Mise au point (activée par le JS seulement) ───────────── */
+.cn-mise-au-point .cn-focus {
+  filter: blur(7px);
+  opacity: .35;
+  transform: translateY(12px);
+  transition: filter 1.1s var(--ease-out-expo), opacity 1.1s var(--ease-out-expo), transform 1.1s var(--ease-out-expo);
+}
+.cn-mise-au-point .cn-focus.is-net { filter: none; opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-source__astre { animation: none; }
+  .cn-mise-au-point .cn-focus { filter: none; opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cn-seuil, .cn-releve { grid-template-columns: 1fr; }
+  .cn-seuil { min-height: 0; }
+  .cn-source { max-width: 240px; }
+  .cn-releve--inverse .cn-evenement { order: 0; }
+  .cn-aveugles { grid-template-columns: 1fr; }
+  .cn-mesures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cn-mesures > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .cn-mesures > div:nth-child(n+3) { border-top: 1px solid var(--cn-trait); }
+  .cn-article { margin-left: 0; }
+}
+@media (max-width: 600px) {
+  .cn-graticule { grid-template-columns: repeat(4, 1fr); }
+  .cn-graticule span:nth-child(n+5) { display: none; }
+  .cn-fiche { font-size: 10.5px; }
+  .cn-fiche span { padding: 0 9px; }
+  .cn-obs::before { left: -6px; }
+  .cn-obs::after { right: -6px; }
+  .cn-catalogue a { grid-template-columns: 52px minmax(0, 1fr) 48px; grid-template-areas: "n date min" "titre titre titre"; gap: 6px 12px; }
+  .cn-cat__n { grid-area: n; }
+  .cn-cat__date { grid-area: date; }
+  .cn-cat__min { grid-area: min; }
+  .cn-cat__titre { grid-area: titre; font-size: 22px; }
+  .cn-article > p { font-size: 17px; }
+  .cn-lecture__tete span:last-child { display: none; }
+}
+
+/* ============================================================
+   V4 — repris de la V3 (premier écran, portes, en-têtes, page État)
+   ============================================================ */
+.carnet { --kr-encre: #DCEBFF; }
+.cn-obs { scroll-margin-top: calc(var(--header-h) + 16px); }
+.cp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* ── Premier écran (accueil) ───────────────────────────────── */
+.kr-seuil {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  min-height: calc(100vh - var(--header-h));
+  padding: 40px 0;
+}
+.kr-seuil__texte { display: grid; gap: 26px; }
+.kr-seuil h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: .94;
+  letter-spacing: -.02em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.kr-seuil h1 em { font-style: italic; color: var(--cn-cyan); text-shadow: 0 0 40px rgba(111, 201, 228, .35); }
+.kr-seuil__said { max-width: 54ch; font-size: 18px; line-height: 1.7; color: var(--text-secondary); }
+.kr-portes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 8px; max-width: 640px; }
+.kr-porte {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid var(--cn-trait);
+  background: rgba(3, 5, 10, .7);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform .3s var(--ease-out-expo);
+}
+.kr-porte:hover { border-color: var(--cn-ambre); transform: translateY(-2px); }
+.kr-porte:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+.kr-porte__t { font-family: var(--font-serif); font-size: 26px; line-height: 1.1; }
+.kr-porte__t::after { content: " →"; color: var(--cn-ambre); }
+.kr-porte__d { font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+.kr-porte--kora { border-color: rgba(111, 201, 228, .45); }
+.kr-porte--kora .kr-porte__t::after { color: var(--cn-cyan); }
+.kr-porte--kora:hover { border-color: var(--cn-cyan); }
+
+/* ── En-tête d'observation en français courant ─────────────── */
+.kr-entete {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  padding: 10px 0;
+  border-top: 1px solid var(--cn-trait);
+  border-bottom: 1px solid var(--cn-trait);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+}
+.kr-entete__n { color: var(--cn-cyan); text-transform: uppercase; letter-spacing: .14em; }
+.kr-suite { margin-top: 18px; font-family: var(--font-mono); font-size: 13px; }
+.kr-suite a { color: var(--cn-cyan); }
+
+/* ── Page État : registre démonté ──────────────────────────── */
+.kr-tete { display: grid; gap: 20px; padding: clamp(56px, 10vh, 110px) 0 24px; }
+.kr-tete h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.8rem, 6vw, 5.6rem); line-height: .95; letter-spacing: -.02em; color: var(--text-primary); }
+.kr-tete h1 em { font-style: italic; color: var(--cn-cyan); }
+.kr-tete__said { max-width: 60ch; font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+.kr-etat-grille { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); padding-top: 40px; }
+.kr-etat-tete { display: grid; gap: 16px; align-content: start; }
+.kr-etat-tete .cn-h2 { font-size: clamp(2rem, 3vw, 2.9rem); }
+.kr-etat-corps { display: grid; gap: 14px; align-content: start; }
+.kr-chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--cn-trait); border: 1px solid var(--cn-trait); }
+.kr-chiffres > div { display: grid; gap: 4px; align-content: start; padding: 16px; background: var(--cn-fond); }
+.kr-chiffres .chiffres__n { font-family: var(--font-serif); font-size: 40px; line-height: 1; color: var(--text-primary); font-variant-numeric: tabular-nums lining-nums; }
+.kr-chiffres .chiffres__n--accent { color: var(--cn-ambre); }
+.kr-chiffres .chiffres__l { font-size: 13.5px; line-height: 1.45; color: var(--text-secondary); }
+.kr-barre { display: block; width: 100%; height: 22px; }
+.kr-barre__titre { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.c-local, .s-marche, .k-accepte { fill: var(--cn-cyan); }
+.c-cloud, .k-corrige { fill: var(--cn-ambre); }
+.c-web, .s-repris { fill: var(--v-jeu); }
+.s-aucun, .k-nonjuge { fill: rgba(150, 170, 200, .28); }
+.s-echoue, .k-rejete { fill: #F87171; }
+.cn-spectre__leg .t-r { color: #F87171; }
+.kr-cap { display: grid; grid-template-columns: 110px minmax(0, 1fr) 120px; gap: 16px; align-items: center; }
+.kr-cap__nom { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.kr-cap__nom--recherche { color: var(--v-recherche); }
+.kr-cap__nom--quotidien { color: var(--v-quotidien); }
+.kr-cap__nom--jeu { color: var(--v-jeu); }
+.kr-cap__compte { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+.kr-paliers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--cn-trait); border: 1px solid var(--cn-trait); align-self: start; }
+.kr-paliers > div { padding: 16px; background: var(--cn-fond); }
+.kr-paliers .paliers__tete { font-family: var(--font-mono); font-size: 12px; margin-bottom: 10px; }
+.kr-paliers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); }
+.kr-invariants { list-style: none; margin: 0; padding: 0; align-self: start; }
+.kr-invariants li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--cn-trait); }
+.kr-invariants .invariants__n { font-family: var(--font-mono); font-size: 12px; color: var(--cn-ambre); }
+.kr-invariants .invariants__t { font-family: var(--font-serif); font-size: 22px; line-height: 1.25; color: var(--text-primary); }
+
+
+/* ============================================================
+   V4 — la page calme : notes de Kora en marge
+   ≥ 1100 px : une colonne de marge à droite, chaque note alignée sur
+   son bloc. En dessous : la note suit le bloc. HTML/CSS seuls.
+   ============================================================ */
+.kr-paire { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.kr-marge { display: grid; gap: 16px; align-content: start; max-width: 52ch; }
+@media (min-width: 1100px) {
+  .kr-paire { grid-template-columns: minmax(0, 1fr) 210px; gap: 52px; }
+  .kr-marge { padding-top: 56px; }
+}
+.kr-note {
+  position: relative;
+  padding: 0 0 0 22px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: .01em;
+  color: #9ADDF0;
+}
+/* la marque de Kora : une mini-orbe */
+.kr-note::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .3em;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 32%, #FFF6E4 0, #FFD9A0 22%, #E8963E 52%, rgba(120, 58, 18, .5) 76%, transparent 80%);
+  box-shadow: 0 0 10px rgba(255, 170, 80, .55);
+}
+.kr-note::after { content: ""; position: absolute; left: 5px; top: calc(.3em + 15px); bottom: 2px; border-left: 1px dotted rgba(233, 165, 68, .4); }
+.kr-suite { margin-top: 18px; font-family: var(--font-mono); font-size: 13px; }
+.kr-suite a { color: var(--cn-cyan); }
+
+/* ── Premier écran et en-tête de l'État : texte + Kora ─────── */
+.kr-seuil { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.kr-tete {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(40px, 7vh, 80px) 0 12px;
+}
+.kr-tete__texte { display: grid; gap: 20px; }
+.kr-tete__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); }
+.kr-tete__meta a { color: var(--cn-ambre); }
+
+/* ============================================================
+   KORA — la pièce maîtresse : peau, puis structure (son code)
+   Le canvas est dessiné par js/kora-scene.js. Sans JS : le repli,
+   une orbe CSS sous réticule. Mouvement réduit : une image fixe,
+   mi-peau mi-structure, dessinée une fois.
+   ============================================================ */
+.kr-kora { margin: 0; display: grid; gap: 14px; justify-items: center; }
+.kr-kora__scene { position: relative; width: min(100%, 540px); aspect-ratio: 1; }
+.kr-kora--moyenne .kr-kora__scene { width: min(100%, 400px); }
+.kr-kora__canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+/* repli sans JS */
+.kr-kora__repli {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  /* la Kora « seule » de l'application : verre ambré éclairé de l'intérieur, reflet en haut à gauche */
+  background:
+    radial-gradient(ellipse 18% 10% at 30% 24%, rgba(236, 226, 255, .7), transparent 100%),
+    radial-gradient(circle at 46% 44%, #FFE9C4 0, #E8963E 32%, #9C4E18 70%, #54260A 92%, #B05C22 100%);
+  box-shadow: 0 0 110px 34px rgba(255, 160, 70, .16);
+  transition: opacity .8s;
+}
+.kr-kora.is-vivante .kr-kora__repli { opacity: 0; }
+
+/* réticules et repères d'alignement */
+.kr-kora__reticule { position: absolute; inset: 3%; pointer-events: none; border-radius: 50%; border: 1px solid rgba(111, 201, 228, .18); }
+.kr-kora__reticule::before, .kr-kora__reticule::after { content: ""; position: absolute; background: rgba(111, 201, 228, .32); }
+.kr-kora__reticule::before { left: 50%; top: -4%; width: 1px; height: 7%; }
+.kr-kora__reticule::after { top: 50%; right: -4%; height: 1px; width: 7%; }
+.kr-kora__reticule span { position: absolute; width: 18px; height: 18px; border: 0 solid rgba(159, 228, 247, .6); }
+.kr-kora__reticule span:nth-child(1) { left: 0; top: 0; border-top-width: 1px; border-left-width: 1px; }
+.kr-kora__reticule span:nth-child(2) { right: 0; top: 0; border-top-width: 1px; border-right-width: 1px; }
+.kr-kora__reticule span:nth-child(3) { left: 0; bottom: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.kr-kora__reticule span:nth-child(4) { right: 0; bottom: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+/* le HUD : trois libellés vrais et l'état du rendu */
+.kr-kora__hud { list-style: none; margin: 0; padding: 0; }
+.kr-hud {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(159, 228, 247, .82);
+  white-space: nowrap;
+}
+.kr-hud::before { content: ""; display: inline-block; width: 22px; margin-right: 8px; vertical-align: middle; border-top: 1px solid rgba(159, 228, 247, .45); }
+.kr-hud--a { left: 0; top: 6%; }
+.kr-hud--b { right: 0; top: 6%; }
+.kr-hud--b::before { display: none; }
+.kr-hud--b::after { content: ""; display: inline-block; width: 22px; margin-left: 8px; vertical-align: middle; border-top: 1px solid rgba(159, 228, 247, .45); }
+.kr-hud--c { left: 0; bottom: 6%; }
+.kr-hud--d { right: 0; bottom: 6%; color: var(--cn-ambre); }
+.kr-hud__structure { display: none; }
+.kr-kora[data-mode="structure"] .kr-hud__peau { display: none; }
+.kr-kora[data-mode="structure"] .kr-hud__structure { display: inline; }
+.kr-kora[data-mode="fixe"] .kr-hud__structure { display: inline; }
+.kr-kora[data-mode="fixe"] .kr-hud__structure::before { content: " / "; }
+
+.kr-kora__legende { max-width: 46ch; text-align: center; font-size: 13px; line-height: 1.55; color: var(--text-muted); }
+.kr-kora__matiere { display: block; margin-top: 4px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-light); overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kr-kora__repli { transition: none; }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .kr-seuil, .kr-tete { grid-template-columns: 1fr; min-height: 0; }
+  .kr-kora__scene { width: min(100%, 340px); }
+  .kr-kora--moyenne .kr-kora__scene { width: min(100%, 300px); }
+  .kr-etat-grille { grid-template-columns: 1fr; }
+  .kr-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kr-paliers { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .kr-portes { grid-template-columns: 1fr; }
+  .kr-porte__t { font-size: 23px; }
+  .kr-seuil__said { font-size: 16.5px; }
+  .kr-seuil { padding-top: 28px; }
+  .kr-cap { grid-template-columns: 1fr; gap: 6px; }
+  .kr-chiffres .chiffres__n { font-size: 32px; }
+  .kr-hud { font-size: 9px; letter-spacing: .08em; }
+  .kr-hud::before, .kr-hud--b::after { width: 12px; }
+}
+
+/* le relevé à côté de la colonne de marge : le grand chiffre respire */
+@media (min-width: 1100px) {
+  .kr-paire .cn-releve { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(48px, 6vw, 96px); }
+  .kr-paire .cn-evenement__n { font-size: clamp(5rem, 9.5vw, 9.6rem); }
+}
+.cn-mesures dd { white-space: nowrap; }
+
+/* ============================================================
+   LA COMPAGNE — Kora accompagne la visite (js/kora-scene.js, 1 bis)
+   Apparaît quand la grande Kora quitte l'écran ; son humeur suit la
+   section au centre (data-humeur) ; les notes qu'elle « dit » s'allument.
+   ============================================================ */
+.kr-compagne {
+  position: fixed;
+  right: clamp(14px, 2.4vw, 36px);
+  bottom: clamp(14px, 3vh, 32px);
+  z-index: 40;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(24px) scale(.6);
+  transform-origin: 50% 100%;
+  transition: opacity .6s var(--ease-out-expo), transform .8s var(--ease-out-expo);
+}
+.kr-compagne.is-en-scene { opacity: 1; transform: none; }
+.kr-compagne__scene { position: relative; width: 150px; aspect-ratio: 1; }
+.kr-compagne__scene .kr-kora__canvas { position: absolute; inset: 0; width: 100%; height: 100%; transition: filter 1.2s ease; }
+.kr-compagne .kr-kora__repli { position: absolute; inset: 25%; }
+.kr-compagne.is-vivante .kr-kora__repli { opacity: 0; }
+.kr-compagne__dit {
+  display: grid;
+  justify-items: center;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.kr-compagne__nom { color: #FFD9A0; }
+.kr-compagne__lieu { color: var(--text-light); max-width: 18ch; text-align: center; transition: color .6s; }
+
+/* les humeurs : les couleurs réelles des modes de l'application */
+.kr-compagne[data-humeur="recherche"] .kr-kora__canvas { filter: hue-rotate(232deg) saturate(1.15) brightness(1.08); } /* violet du mode recherche */
+.kr-compagne[data-humeur="recherche"] .kr-compagne__lieu { color: #C8B4F0; }
+.kr-compagne[data-humeur="eteinte"] .kr-kora__canvas { filter: brightness(.42) saturate(.35); }
+.kr-compagne[data-humeur="eteinte"] .kr-compagne__nom { color: var(--text-light); }
+.kr-compagne[data-humeur="structure"] .kr-compagne__lieu { color: #FFD9A0; }
+
+/* elle « dit » une note : un battement de lumière */
+.kr-compagne.is-parle .kr-compagne__scene { animation: kr-parle 1.4s var(--ease-out-expo); }
+@keyframes kr-parle {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255, 190, 110, 0)); }
+  22% { transform: scale(1.08); filter: drop-shadow(0 0 22px rgba(255, 190, 110, .55)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255, 190, 110, 0)); }
+}
+.kr-note { transition: color .8s ease, opacity .8s ease; }
+.kr-notes-dites .kr-note:not(.is-dite) { opacity: .55; } /* posée par le JS, jamais en mouvement réduit */
+.kr-note.is-dite { color: #C4EEFA; }
+.kr-note.is-dite::before { box-shadow: 0 0 16px rgba(255, 180, 90, .9); }
+
+@media (max-width: 900px) {
+  .kr-compagne { right: 8px; bottom: 8px; gap: 0; }
+  .kr-compagne__scene { width: 68px; }
+  .kr-compagne__dit { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kr-compagne, .kr-compagne__scene .kr-kora__canvas, .kr-note { transition: none; }
+}
+
+/* ============================================================
+   KORA ACTRICE (js/kora-scene.js, 1 bis) — body.kr-acteur, posé par le JS
+   Elle vole (transform calculé par le JS) jusqu'à la note qu'elle écrit.
+   ============================================================ */
+.kr-acteur .kr-compagne { left: 0; top: 0; right: auto; bottom: auto; transform: none; transition: opacity .6s var(--ease-out-expo); will-change: transform; }
+.kr-acteur .kr-compagne__scene { width: 96px; transition: transform .8s var(--ease-out-expo); }
+.kr-acteur .kr-compagne:not(.is-en-scene) .kr-compagne__scene { transform: scale(.35); }
+.kr-acteur .kr-compagne__dit { position: absolute; top: 100%; left: 50%; translate: -50% -6px; white-space: nowrap; }
+.kr-acteur .kr-compagne__lieu { max-width: none; }
+.kr-acteur .kr-compagne.is-ecrit .kr-compagne__dit { opacity: 0; transition: opacity .3s; }
+
+/* la note : un fantôme invisible tient la place, l'écriture se pose dessus */
+.kr-note__corps { display: grid; }
+.kr-note__fantome, .kr-note__ecrit { grid-area: 1 / 1; }
+.kr-note__fantome { visibility: hidden; }
+.kr-note__curseur { display: none; width: .55em; height: 1.05em; margin-left: 1px; vertical-align: -.18em; background: #FFD9A0; box-shadow: 0 0 8px rgba(255, 190, 110, .8); }
+.kr-note.is-en-cours .kr-note__curseur { display: inline-block; animation: kr-curseur .7s steps(2) infinite; }
+@keyframes kr-curseur { 50% { opacity: 0; } }
+.kr-acteur .kr-note::before { opacity: .35; box-shadow: none; transition: opacity .6s, box-shadow .6s; }
+.kr-acteur .kr-note.is-en-cours::before, .kr-acteur .kr-note.is-ecrite::before { opacity: 1; box-shadow: 0 0 12px rgba(255, 180, 90, .8); }
+.kr-acteur .kr-note::after { opacity: .3; }
+.kr-acteur .kr-note.is-ecrite::after { opacity: 1; }
+
+/* le filament : de son flanc au curseur */
+.kr-filament { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 39; pointer-events: none; overflow: visible; opacity: 0; transition: opacity .35s ease; }
+.kr-filament.is-tendu { opacity: 1; }
+.kr-filament path { fill: none; stroke: rgba(255, 206, 140, .8); stroke-width: 1.2; stroke-dasharray: 2 5; animation: kr-flux .6s linear infinite; filter: drop-shadow(0 0 4px rgba(255, 170, 80, .9)); }
+@keyframes kr-flux { to { stroke-dashoffset: -7; } }
+
+@media (max-width: 900px) {
+  .kr-acteur .kr-compagne__scene { width: 64px; }
+  .kr-acteur .kr-compagne__dit { display: none; }
+  .kr-acteur .kr-note { padding-right: 72px; }
+}
+
+/* la peau WebGPU : sous le canvas 2D ; avec elle, la compagne n'a plus besoin des filtres CSS d'humeur */
+.kr-kora__gpu { pointer-events: none; }
+.kr-compagne.a-gpu .kr-kora__gpu { filter: none; }
+
+/* L'ÉTINCELLE — l'actrice n'est plus une petite orbe : elle est dessinée sur
+   .kr-sillage (toute la fenêtre) ; la figure ne porte plus que l'étiquette. */
+.kr-sillage { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 41; pointer-events: none; }
+.kr-acteur .kr-compagne { width: 0; height: 0; overflow: visible; }
+.kr-acteur .kr-compagne__scene { display: none; }
+.kr-acteur .kr-compagne__dit { top: 22px; left: 0; translate: -50% 0; transition: opacity .4s; }
+
+/* ============================================================
+   REFONTE — corrections d'intégration (26/10)
+   ============================================================ */
+.kr-chiffres .chiffres__n { white-space: nowrap; font-size: clamp(30px, 2.6vw, 44px); }
+
+/* Kora en marge de « Lire » : la même figure, en petit (l'ancienne orbe repere.js est retirée) */
+.obs-marge .kr-kora--marge .kr-kora__scene { width: min(100%, 240px); }
+.obs-marge .kr-kora--marge .kr-kora__canvas { width: 100%; height: 100%; }
+@media (max-width: 900px) { .obs-marge .kr-kora--marge { display: none; } }

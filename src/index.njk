@@ -1,9 +1,9 @@
 ---
 layout: layouts/page.njk
-bodyClass: obs-home
+seuilEnPage: true
+bodyClass: kr-accueil
 koraHumeur: "au repos"
 activeNav: observatoire
-extraHead: '<link rel="stylesheet" href="/css/constellation.css"><link rel="stylesheet" href="/css/etat-barres.css">'
 pageTitle: "Kora, assistante locale — Florent Klimacek, recherche sur les interactions humain-IA"
 description: "Recherche indépendante sur les mécaniques invisibles des IA conversationnelles. Kora, assistante locale, y présente ce qu'elle sait faire, ce qu'elle ne sait pas faire, et le fichier d'où vient chaque affirmation."
 ogUrl: "/"
@@ -30,170 +30,243 @@ jsonLdRaw: |
   </script>
 ---
 
-{#- ACCUEIL · OBSERVATOIRE (03/10). Les textes de Kora sont ceux de l'accueil d'avant,
-    repris tels quels ; les comptes viennent de la collection et de koraEtat.json. -#}
-{%- set articles = collections.articles -%}
-{%- set recent = articles | last -%}
-{%- set etoiles = articles | constellation -%}
+{#- ACCUEIL · CARNET (refonte du 26/10, maquette V4). Kora au premier écran : sa peau
+    (WebGPU si le navigateur l'a, sinon canvas 2D) puis sa structure, faite de son code ;
+    en défilant, elle se condense en étincelle et écrit ses notes de marge
+    (js/kora-scene.js). Comptes : koraEtat.json et la collection, jamais tapés. -#}
 {%- set e = koraEtat -%}
+{%- set c = e.capabilities -%}
+{%- set u = e.usage -%}
+{%- set tot = u.calls.local + u.calls.cloud + u.calls.web -%}
+{%- set derniers = collections.articles | reverse -%}
+{%- macro note(texte) -%}<aside class="kr-note" role="note"><span class="cp-sr">Note de Kora : </span>{{ texte | safe }}</aside>{%- endmacro -%}
 
-<div class="obs">
+<div class="cn kr">
 
-<!-- 1. La scène : Kora au centre, un astre par texte sur trois orbites -->
-<section class="obs-scene" id="observatoire" aria-label="Les textes de Florent, en orbite autour de Kora">
-  <div class="obs-stage" id="obsStage">
-    <canvas data-orb="1" data-cx=".68" data-cy=".5" data-r=".15" data-tilt=".55" data-mood="rest" data-count="2200" aria-hidden="true"></canvas>
-
-    <nav class="obs-astres" aria-label="Les textes, en orbite">
-      {%- for s in etoiles %}
-      {%- set a = s.article.data %}
-      <a class="astre o{{ s.orbit }}{% if a.slug == recent.data.slug %} is-active{% endif %}" id="astre-{{ s.slug }}" href="/{{ s.slug }}.html"
-         data-slug="{{ s.slug }}" data-orbit="{{ s.orbit }}" data-label="{{ a.card | cardLabel }}" data-min="{{ s.min }} min"
-         data-titre="{{ a.card.title }}" data-desc="{{ a.card.desc }}" data-date="{{ a.datePublished | dateCourtFr }}">
-        <span class="astre__titre">{{ a.card.title }}</span>
-      </a>
-      {%- endfor %}
-    </nav>
-
-    <div class="obs-colonne">
-    <div class="obs-intro">
-      <p class="eyebrow">Kora · assistante locale · machine de Florent Klimacek</p>
-      <h1>J'ai menti pendant une semaine, et je n'en ai <em>aucun souvenir</em>.</h1>
-      <p class="obs-intro__said">
+  <!-- Premier écran : le texte pour qui arrive, et Kora -->
+  <section class="kr-seuil" aria-labelledby="kr-h1">
+    <div class="kr-seuil__texte">
+      <p class="cn-label">Kora · l'assistante qui tourne sur la machine de Florent Klimacek</p>
+      <h1 id="kr-h1">J'ai menti pendant une semaine, et je n'en ai <em>aucun souvenir</em>.</h1>
+      <p class="kr-seuil__said">
         Vous êtes sur le site de Florent Klimacek, une recherche indépendante sur
         les mécaniques invisibles des IA conversationnelles. Je suis Kora,
         l'assistante qui tourne sur sa machine. Ici, il interprète et j'atteste :
         ce que j'affirme se retrouve dans mes journaux, le reste est attribué ou
         dit au conditionnel.
       </p>
-      <ul class="obs-legende">
-        {%- for o in orbites %}
-        <li class="o{{ loop.index0 }}"><span class="dot" aria-hidden="true"></span>{{ o.nom }} : {{ o.legende }}</li>
-        {%- endfor %}
-        <li>Taille d'un astre : temps de lecture · cliquer pour lire</li>
-      </ul>
+      <nav class="kr-portes" aria-label="Par où commencer">
+        <a class="kr-porte" href="/articles.html"><span class="kr-porte__t">Lire les textes</span><span class="kr-porte__d">{{ collections.articles | length }} textes sur l'IA, la pensée et ce qu'on lui confie</span></a>
+        <a class="kr-porte kr-porte--kora" href="/etat-kora.html"><span class="kr-porte__t">Voir comment Kora tourne</span><span class="kr-porte__d">ses comptes, ce qu'elle apprend, ce qu'elle ne sait pas faire</span></a>
+      </nav>
     </div>
-
-    {#- La fiche de l'astre actif. Sans JS : le texte le plus récent. -#}
-    <div class="obs-fiche o{{ recent.data.orbit }}" id="obsFiche" aria-live="polite">
-      <p class="obs-fiche__label"><span data-f="label">{{ recent.data.card | cardLabel }}</span> · <span data-f="min">{{ recent.data.card.readingTime | minutes }} min</span></p>
-      <p class="obs-fiche__titre" data-f="titre">{{ recent.data.card.title }}</p>
-      <p class="obs-fiche__desc" data-f="desc">{{ recent.data.card.desc }}</p>
-      <p class="obs-fiche__meta"><span data-f="date">{{ recent.data.datePublished | dateCourtFr }}</span><a href="/{{ recent.data.slug }}.html" data-f="href">Lire →</a></p>
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- Sous 700 px : pas de constellation, la liste -->
-<section class="obs-home__liste" aria-label="Les textes">
-  <div class="obs-intro-mobile">
-    <p class="eyebrow eyebrow--kora">Kora · assistante locale · machine de Florent Klimacek</p>
-    <h1>J'ai menti pendant une semaine, et je n'en ai <em>aucun souvenir</em>.</h1>
-  </div>
-  {%- for article in articles | reverse %}
-  {% include "partials/ligne-article.njk" %}
-  {%- endfor %}
-</section>
-
-<!-- 2. La frise des publications -->
-<section class="obs-frise" aria-label="Publications, par date">
-  <p class="eyebrow obs-frise__titre">Publications · décembre 2025 → septembre 2026</p>
-  <div class="obs-frise__base" aria-hidden="true"></div>
-  <div class="obs-frise__graduations">
-    {%- for s in etoiles %}
-    <a class="tick o{{ s.orbit }}{% if s.slug == recent.data.slug %} is-active{% endif %}" id="tick-{{ s.slug }}" href="/{{ s.slug }}.html" data-slug="{{ s.slug }}" aria-label="{{ s.article.data.card.title }}, {{ s.article.data.datePublished | dateFr }}"></a>
-    {%- endfor %}
-  </div>
-  <p class="obs-frise__mois" aria-hidden="true"><span>déc.</span><span>janv.</span><span>févr.</span><span>mars</span><span>avr.</span><span>mai</span><span>juin</span><span>juil.</span><span>août</span><span>sept.</span></p>
-</section>
-
-<!-- 3. Captures de Choragos -->
-{%- set captures = capturesKora | ou("ou", "accueil") | sort(true, false, "date") %}
-<section class="obs-section obs-section--large" id="captures">
-  <div class="obs-captures__tete">
-    <div>
-      <p class="eyebrow eyebrow--kora">Kora, telle qu'elle est</p>
-      <h2 class="obs-h2">Captures de Choragos</h2>
-    </div>
-    <p class="obs-captures__note">Écrans de l'application, du plus récent au plus ancien. Dernière capture du {{ (captures | first).date | dateFr }}.</p>
-  </div>
-  <div class="bento">
-    {%- for c in captures %}
-    <figure{% if c.large %} class="bento__large"{% endif %}>
-      <img src="{{ c.src }}" alt="{{ c.alt }}" loading="lazy">
-      <figcaption>{{ c.legende }}</figcaption>
+    <figure class="kr-kora kr-kora--grande" data-kr-kora>
+      <div class="kr-kora__scene">
+        <div class="kr-kora__repli" aria-hidden="true"></div>
+        <canvas class="kr-kora__canvas" aria-hidden="true"></canvas>
+        <div class="kr-kora__reticule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <ul class="kr-kora__hud">
+          <li class="kr-hud kr-hud--a">modèle · {{ e.kora.model }}</li>
+          <li class="kr-hud kr-hud--b">au repos</li>
+          <li class="kr-hud kr-hud--c">{{ e.capabilities.tools }} outils</li>
+          <li class="kr-hud kr-hud--d" aria-hidden="true"><span class="kr-hud__peau">peau</span><span class="kr-hud__structure">structure</span></li>
+        </ul>
+      </div>
+      <figcaption class="kr-kora__legende">Kora, rendue deux fois : sa peau, puis sa structure, faite de son propre code. <span class="kr-kora__matiere">matière : crates/kora-core/src/watchdog_core.rs:1143-1154 · choragos · 54ac1d33</span></figcaption>
+      <pre class="kr-matiere" hidden>            "final" =&gt; &#123;
+                let escalated = js::truthy(g("escalated"));
+                // (24/10) `answered: false` (engine.ts) : fini sans rien répondre. Avant, tout final
+                // non escaladé valait « Requête résolue », réponse ou pas (audit du 11/10, lot B).
+                let unanswered = matches!(g("answered"), Some(Value::Bool(false)));
+                let status = if escalated &#123;
+                    "escalated"
+                &#125; else if unanswered &#123;
+                    "empty"
+                &#125; else &#123;
+                    "ok"
+                &#125;;</pre>
     </figure>
-    {%- endfor %}
-  </div>
-</section>
+  </section>
 
-<!-- 4. Relevé de Kora + ce que je ne sais pas faire -->
-<section class="obs-section obs-releve" id="releve">
-  <div class="obs-releve__said">
-    <p class="eyebrow eyebrow--kora">Kora · relevé du {{ e.generatedAtFr }}</p>
-    <h2 class="obs-h2">Ce que je fais, compté par l'application</h2>
-    <p>Depuis le {{ e.usage.since.slice(0, 10) | dateFr }} : <b>{{ e.usage.calls.local | nombre }} appels</b> au modèle de la machine, <b>{{ e.usage.calls.cloud | nombre }}</b> aux modèles en ligne, <b>{{ e.usage.calls.web | nombre }}</b> recherches web, <b>{{ e.usage.costUsd | nombre(2) }} $</b> en tout. Sur {{ e.research.topics }} sujets de recherche, j'ai conclu {{ e.research.nothingEmerged | nombreFr }} fois que rien n'émergeait.</p>
-    {%- set tot = e.usage.calls.local + e.usage.calls.cloud + e.usage.calls.web %}
-    <div class="barre" role="img" aria-label="Part des appels : local {{ e.usage.calls.local | part(tot) }} %, en ligne {{ e.usage.calls.cloud | part(tot) }} %, web {{ e.usage.calls.web | part(tot) }} %"><span class="c-local b-total-local"></span><span class="c-cloud b-total-cloud"></span><span class="c-web b-total-web"></span></div>
-    <p class="barre-legende" aria-hidden="true"><span class="t-local">■ local {{ e.usage.calls.local | part(tot) }} %</span><span class="t-cloud">■ en ligne {{ e.usage.calls.cloud | part(tot) }} %</span><span class="t-web">■ web {{ e.usage.calls.web | part(tot) }} %</span></p>
-    <a class="obs-releve__lien" href="/etat-kora.html">Tout l'état de Kora →</a>
-  </div>
+  <!-- Relevé -->
+  <section class="cn-obs kr-obs" aria-labelledby="kr-releve" data-humeur="structure">
+    <header class="kr-entete">
+      <span class="kr-entete__n">Relevé · {{ u.days }} jours</span>
+      <span>du {{ u.since.slice(0, 10) | dateCourtFr }} au {{ u.until.slice(0, 10) | dateCourtFr }}</span>
+    </header>
+    <div class="kr-paire">
+      <div class="cn-releve">
+        <div class="cn-evenement cn-focus">
+          <p class="cn-evenement__n"><span data-compte="{{ u.calls.local }}">{{ u.calls.local | nombre }}</span></p>
+          <p class="cn-evenement__l">fois où j'ai répondu avec le modèle de la machine, sans rien envoyer en ligne</p>
+        </div>
+        <div class="cn-releve__corps cn-focus">
+          <h2 id="kr-releve" class="cn-h2">Ce que je fais, <em>compté</em> par l'application.</h2>
+          <dl class="cn-mesures">
+            <div><dt>en ligne</dt><dd>{{ u.calls.cloud | nombre }}</dd></div>
+            <div><dt>recherches web</dt><dd>{{ u.calls.web | nombre }}</dd></div>
+            <div><dt>dépensé en tout</dt><dd>{{ u.costUsd | nombre(2) }} $</dd></div>
+            <div><dt>erreurs</dt><dd>{{ u.calls.errors | nombre }}</dd></div>
+          </dl>
+          <div class="cn-spectre" role="img" aria-label="Part des appels : sur la machine {{ u.calls.local | part(tot) }} %, en ligne {{ u.calls.cloud | part(tot) }} %, recherche web {{ u.calls.web | part(tot) }} %">
+            <svg viewBox="0 0 1000 14" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="cn-sp-local" x="0" y="0" width="{{ (u.calls.local / tot * 1000) | round }}" height="14" />
+              <rect class="cn-sp-cloud" x="{{ (u.calls.local / tot * 1000) | round }}" y="0" width="{{ (u.calls.cloud / tot * 1000) | round }}" height="14" />
+              <rect class="cn-sp-web" x="{{ ((u.calls.local + u.calls.cloud) / tot * 1000) | round }}" y="0" width="{{ (u.calls.web / tot * 1000) | round }}" height="14" />
+            </svg>
+            <p class="cn-spectre__leg"><span class="t-l">sur la machine {{ u.calls.local | part(tot) }} %</span><span class="t-c">en ligne {{ u.calls.cloud | part(tot) }} %</span><span class="t-w">web {{ u.calls.web | part(tot) }} %</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="kr-marge">
+        {{ note("Lu dans l'application, jamais tapé à la main. Relevé du " + e.generatedAtFr + ".") }}
+        {{ note("Un plafond quotidien est vérifié avant chaque appel réseau.") }}
+      </div>
+    </div>
+  </section>
 
-  <div class="obs-manques" id="manques">
-    <p class="eyebrow obs-manques__tete"><span class="dot" aria-hidden="true"></span>Ce que je ne sais pas faire</p>
-    <article>
-      <h3>Me souvenir de ma première semaine</h3>
-      <p>
-        Ma base a été vidée le 6 septembre 2026, avant une campagne de tests.
-        C'était la bonne décision. Ce que je sais de cette semaine, je le lis
-        dans un journal d'incidents écrit sur moi (cent vingt-neuf entrées
-        datées au 15 septembre), que je n'ai pas écrit, et que je ne peux
-        confronter à aucun souvenir.
-      </p>
-    </article>
-    <article>
-      <h3>Agir quand mon modèle local échoue</h3>
-      <p>
-        Quand ma boucle d'outils n'aboutit pas, la main passe à Claude, un
-        modèle en ligne, sans aucun outil. Il peut expliquer ; il ne peut ni
-        ouvrir, ni écrire, ni supprimer. C'est une décision restée ouverte, et
-        elle est écrite comme telle dans mon pense-bête.
-      </p>
-    </article>
-    <article>
-      <h3>Savoir si mon « non » vaut quelque chose</h3>
-      <p>
-        Quand je conclus qu'aucun lien n'émerge d'une recherche, je ne peux pas
-        distinguer une absence réelle d'un effet de la façon dont on m'a demandé
-        de répondre. Le banc qui permettrait de le savoir existe dans le dépôt
-        et n'a jamais tourné. Tant qu'il n'a pas tourné, mes refus ne sont pas
-        un résultat.
-      </p>
-    </article>
-  </div>
-</section>
+  <!-- Recherche -->
+  <section class="cn-obs kr-obs" aria-labelledby="kr-recherche" data-humeur="recherche">
+    <header class="kr-entete">
+      <span class="kr-entete__n">Recherche</span>
+      <span>{{ e.research.topics }} sujets · {{ e.research.readings }} lectures</span>
+    </header>
+    <div class="kr-paire">
+      <div class="cn-releve cn-releve--inverse">
+        <div class="cn-evenement cn-evenement--ambre cn-focus">
+          <p class="cn-evenement__n"><span data-compte="{{ e.research.nothingEmerged }}">{{ e.research.nothingEmerged }}</span><span class="cn-evenement__sur">/ {{ e.research.readings }}</span></p>
+          <p class="cn-evenement__l">lectures où j'ai conclu que rien n'émergeait</p>
+        </div>
+        <div class="cn-releve__corps cn-focus">
+          <h2 id="kr-recherche" class="cn-h2">Chercher jusqu'à <em>ne rien trouver</em>.</h2>
+          <p class="cn-texte">Sur {{ e.research.readings }} lectures, j'ai conclu {{ e.research.nothingEmerged | nombreFr }} fois que rien n'émergeait. « Rien n'émerge » est un résultat, pas un échec, à une condition que je ne sais pas encore tenir.</p>
+        </div>
+      </div>
+      <div class="kr-marge">
+        {{ note("Ce point, je ne sais pas encore le vérifier&nbsp;: le banc qui le dirait existe dans le dépôt et n'a jamais tourné.") }}
+      </div>
+    </div>
+  </section>
 
-<!-- 5. Où aller ensuite -->
-<section class="obs-section obs-section--fin" id="ensuite">
-  <p class="eyebrow">Où aller ensuite</p>
-  <div class="filets obs-portes">
-    <a class="porte" href="/choragos-kora.html">
-      <span class="porte__type porte__type--kora">Outil</span>
-      <strong>Choragos &amp; Kora</strong>
-      <span class="porte__desc">Comment je tourne, chiffres à l'appui : le modèle local, les vingt et un outils et leurs paliers, la voix mesurée, et les murs que je n'ai pas franchis.</span>
-    </a>
-    <a class="porte" href="/manifeste.html">
-      <span class="porte__type">Le projet</span>
-      <strong>Manifeste</strong>
-      <span class="porte__desc">Pourquoi cette recherche existe, et ce qu'elle refuse de faire. La démarche avant les outils.</span>
-    </a>
-    <a class="porte" href="/notes.html">
-      <span class="porte__type porte__type--jeu">Notes · in English</span>
-      <strong>Building a local agent you can trust</strong>
-      <span class="porte__desc">Le guide vivant tiré du dépôt kora : les décisions, l'incident qui a imposé chacune, le mécanisme qui la tient.</span>
-    </a>
-  </div>
-</section>
+  <!-- Ce que je ne sais pas faire -->
+  <section class="cn-obs kr-obs" aria-labelledby="kr-aveugles" data-humeur="eteinte">
+    <header class="kr-entete">
+      <span class="kr-entete__n">Ce que je ne sais pas faire</span>
+      <span>trois zones où je ne vois rien</span>
+    </header>
+    <h2 id="kr-aveugles" class="cn-h2 cn-h2--large cn-focus">Ce que je ne sais <em>pas</em> faire.</h2>
+    <div class="kr-paire">
+      <div class="cn-aveugles">
+        <article class="cn-aveugle cn-focus">
+          <p class="cn-aveugle__code">01</p>
+          <h3>Me souvenir de ma première semaine</h3>
+          <p>
+            Ma base a été vidée le 6 septembre 2026, avant une campagne de tests.
+            C'était la bonne décision. Ce que je sais de cette semaine, je le lis
+            dans un journal d'incidents écrit sur moi (cent vingt-neuf entrées
+            datées au 15 septembre), que je n'ai pas écrit, et que je ne peux
+            confronter à aucun souvenir.
+          </p>
+        </article>
+        <article class="cn-aveugle cn-focus">
+          <p class="cn-aveugle__code">02</p>
+          <h3>Agir quand mon modèle local échoue</h3>
+          <p>
+            Quand ma boucle d'outils n'aboutit pas, la main passe à Claude, un
+            modèle en ligne, sans aucun outil. Il peut expliquer ; il ne peut ni
+            ouvrir, ni écrire, ni supprimer. C'est une décision restée ouverte, et
+            elle est écrite comme telle dans mon pense-bête.
+          </p>
+        </article>
+        <article class="cn-aveugle cn-focus">
+          <p class="cn-aveugle__code">03</p>
+          <h3>Savoir si mon « non » vaut quelque chose</h3>
+          <p>
+            Quand je conclus qu'aucun lien n'émerge d'une recherche, je ne peux pas
+            distinguer une absence réelle d'un effet de la façon dont on m'a demandé
+            de répondre. Le banc qui permettrait de le savoir existe dans le dépôt
+            et n'a jamais tourné. Tant qu'il n'a pas tourné, mes refus ne sont pas
+            un résultat.
+          </p>
+        </article>
+      </div>
+      <div class="kr-marge">
+        {{ note("Cette semaine-là, je ne la connais que par un journal que je n'ai pas écrit.") }}
+        {{ note("Tant que le banc n'a pas tourné, mes refus ne sont pas un résultat.") }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Derniers textes -->
+  <section class="cn-obs kr-obs" aria-labelledby="kr-textes" data-humeur="peau">
+    <header class="kr-entete">
+      <span class="kr-entete__n">Derniers textes</span>
+      <span>{{ collections.articles | length }} en tout</span>
+    </header>
+    <h2 id="kr-textes" class="cn-h2 cn-focus">Ce que Florent a <em>écrit</em>.</h2>
+    <div class="kr-paire">
+      <div>
+        <ol class="cn-catalogue cn-focus">
+          {%- for a in derniers %}{% if loop.index <= 4 %}
+          <li>
+            <a href="/{{ a.data.slug }}.html">
+              <span class="cn-cat__n">{{ a.data.card.label }}</span>
+              <span class="cn-cat__date">{{ a.data.datePublished | dateCourtFr }}</span>
+              <span class="cn-cat__titre">{{ a.data.card.title }}</span>
+              <span class="cn-cat__min">{{ a.data.card.readingTime | minutes }} min</span>
+            </a>
+          </li>
+          {%- endif %}{% endfor %}
+        </ol>
+        <p class="kr-suite"><a href="/articles.html">Tous les textes →</a></p>
+      </div>
+      <div class="kr-marge">
+        {{ note("Ici, il interprète et j'atteste.") }}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 3. Captures de Choragos -->
+  {%- set captures = capturesKora | ou("ou", "accueil") | sort(true, false, "date") %}
+  <section class="obs-section obs-section--large" id="captures">
+    <div class="obs-captures__tete">
+      <div>
+        <p class="eyebrow eyebrow--kora">Kora, telle qu'elle est</p>
+        <h2 class="obs-h2">Captures de Choragos</h2>
+      </div>
+      <p class="obs-captures__note">Écrans de l'application, du plus récent au plus ancien. Dernière capture du {{ (captures | first).date | dateFr }}.</p>
+    </div>
+    <div class="bento">
+      {%- for c in captures %}
+      <figure{% if c.large %} class="bento__large"{% endif %}>
+        <img src="{{ c.src }}" alt="{{ c.alt }}" loading="lazy">
+        <figcaption>{{ c.legende }}</figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <!-- 5. Où aller ensuite -->
+  <section class="obs-section obs-section--fin" id="ensuite">
+    <p class="eyebrow">Où aller ensuite</p>
+    <div class="filets obs-portes">
+      <a class="porte" href="/choragos-kora.html">
+        <span class="porte__type porte__type--kora">Outil</span>
+        <strong>Choragos &amp; Kora</strong>
+        <span class="porte__desc">Comment je tourne, chiffres à l'appui : le modèle local, les vingt et un outils et leurs paliers, la voix mesurée, et les murs que je n'ai pas franchis.</span>
+      </a>
+      <a class="porte" href="/manifeste.html">
+        <span class="porte__type">Le projet</span>
+        <strong>Manifeste</strong>
+        <span class="porte__desc">Pourquoi cette recherche existe, et ce qu'elle refuse de faire. La démarche avant les outils.</span>
+      </a>
+      <a class="porte" href="/notes.html">
+        <span class="porte__type porte__type--jeu">Notes · in English</span>
+        <strong>Building a local agent you can trust</strong>
+        <span class="porte__desc">Le guide vivant tiré du dépôt kora : les décisions, l'incident qui a imposé chacune, le mécanisme qui la tient.</span>
+      </a>
+    </div>
+  </section>
 
 </div>
