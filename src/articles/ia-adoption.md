@@ -4,7 +4,7 @@ pageTitle: "L'IA est partout. Sauf dans les mains des gens. — Florent Klimacek
 headline: "L'IA est partout. Sauf dans les mains des gens."
 description: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
 ogTitle: "L'IA est partout. Sauf dans les mains des gens."
-ogDescription: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, il y a une réalité plus nuancée : le bruit du discours y masque la lenteur de la transformation réelle."
+ogDescription: "Derrière les chiffres spectaculaires de l'adoption mondiale de l'IA, une réalité plus nuancée : le bruit du discours masque la lenteur de la transformation."
 ogUrl: "/ia-adoption.html"
 canonical: "/ia-adoption.html"
 datePublished: "2026-02-24"

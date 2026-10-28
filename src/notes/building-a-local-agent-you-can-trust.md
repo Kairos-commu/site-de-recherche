@@ -2,6 +2,7 @@
 title: "Building a local agent you can trust — what we learned, in order"
 label: "Guide · living document · source on GitHub"
 description: "The decisions behind Kora, a desktop agent on a 12B local model with real access to one person's files, mail and voice — each with the incident that forced it and the mechanism that holds it. Rendered from github.com/Kairos-commu/kora."
+ogDescription: "How a desktop agent on a 12B local model earned trust with real access to files, mail and voice: each decision, its incident and its guard."
 published: "2026-09-15"
 dateModified: "2026-09-15"
 readingTime: "21 min"
@@ -398,7 +399,7 @@ pre-commit hook — is published separately as [socle](https://github.com/Kairos
 - **Start with the tool loop.** The JSON classifier lasted one day in real use and produced the
   founding lie. Nothing from it survived.
 
-## Revisions
+<h2 id="revisions">Revisions</h2>
 
 - **15 September 2026** — first version, written the day the article of intent was
   published. State banner wired to the app's exported state.

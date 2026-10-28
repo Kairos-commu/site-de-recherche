@@ -1,0 +1,58 @@
+/* IMPRESSION (28/10) — un article imprimé, ou rendu en PDF pour Zenodo
+   (scripts/zenodo.mjs), devient une page claire : texte noir sur blanc, sans le décor
+   de l'Observatoire (Kora, barre de lecture, navigation, partage). Chargée en
+   media="print" par base.njk : l'écran ne la lit jamais. */
+
+@page { size: A4; margin: 20mm 18mm 22mm; }
+
+:root {
+  --bg-page: #fff;
+  --bg-dark: #fff;
+  --bg-alt: #fff;
+  --bg-raised: #fff;
+  --bg-card: #fff;
+  --bg-concept: #f6f1e8;
+  --text-primary: #111;
+  --text-secondary: #333;
+  --text-muted: #555;
+  --text-light: #555;
+  --text-body: #1a1a1a;
+  --accent: #8a5a12;
+  --border: #ccc;
+  --rule: #ccc;
+}
+
+html, body { background: #fff !important; color: #1a1a1a !important; }
+body::before, body::after { display: none !important; }
+
+/* Décor et outils de lecture */
+.site-header, .site-footer, .progress-bar, .article-nav, .instrument, .art-marge,
+.art-partage, dialog.partage, .kr-compagne, .art-hero__haut, .art-hero__voile,
+.art-hero > canvas, .chapter-divider > canvas, .image-lightbox, .kr-kora { display: none !important; }
+
+/* En-tête : plus de plein écran, l'image en bandeau */
+.art-hero { height: auto !important; overflow: visible !important; margin-bottom: 8mm; }
+.art-hero__img { position: static !important; opacity: 1 !important; width: 100% !important; height: 70mm !important; object-fit: cover; }
+.art-hero__bas { position: static !important; padding: 0 !important; max-width: none !important; margin-top: 6mm !important; }
+.art-hero h1 { font-size: 26pt !important; line-height: 1.1 !important; color: #111 !important; max-width: none !important; }
+.art-hero__meta { color: #555 !important; }
+.art-hero__intro { font-size: 13pt !important; color: #333 !important; }
+.art-hero__credit { position: static !important; color: #555 !important; }
+
+/* Corps sur toute la largeur de la page */
+.art-corps { display: block !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+.art-texte { max-width: none !important; font-size: 11pt !important; }
+.art-texte p, .art-texte li { color: #1a1a1a !important; line-height: 1.55 !important; }
+.art-texte .chapter-divider {
+  width: auto !important; min-height: 0 !important; margin: 10mm 0 5mm !important;
+  padding: 4mm 0 !important; background: none !important; break-inside: avoid; break-after: avoid;
+}
+.art-texte .chapter-divider h2 { font-size: 18pt !important; color: #111 !important; }
+.art-texte .key-insight p { font-size: 14pt !important; color: #111 !important; }
+h2, h3, h4, .section-number { break-after: avoid; color: #111 !important; }
+figure, table, pre, blockquote, .key-insight { break-inside: avoid; }
+img { max-width: 100% !important; }
+.table-container { overflow: visible !important; }
+table, th, td { color: #1a1a1a !important; background: #fff !important; border-color: #bbb !important; }
+pre, code { background: #f4f4f4 !important; color: #111 !important; white-space: pre-wrap !important; }
+a { color: #1a1a1a !important; text-decoration: underline; }

@@ -13,9 +13,12 @@ paths:
 - Champs à ne pas oublier : `orbit` (0 thèse, 1 outils et terrain, 2 analyses), `datePublished`
   + `order` (départage les articles du même jour), `permalink`/`canonical`/`ogUrl` cohérents,
   `sections` (ids = ceux des `<section>` du corps), `card.readingTime`.
-- Titre : `pageTitle`, `ogTitle` et `headline` doivent dire la même chose ; `description` et
+- Titre : `ogTitle` et `headline` identiques, `pageTitle` = le même + « — Florent Klimacek » ;
   `ogDescription` 120-160 caractères.
-- Corps en HTML brut, classes du site : `.lead`, `.key-insight`, `.chapter-divider`, `.concept`,
+- `dateModified` : à changer pour un changement de fond (fait, passage, capture), pas pour une
+  passe de forme. La marge de Kora l'affiche (« l'a repris le … »).
+- Corps en HTML brut, rendu SANS Markdown (`templateEngineOverride: njk` dans `articles.json`) :
+  pas de syntaxe Markdown. Classes du site : `.lead`, `.key-insight`, `.chapter-divider`, `.concept`,
   `.sources-section`.
 - Image générée par IA : `heroImageAlt` commence par « Illustration générée par IA »,
   `heroImageCredit` nomme l'outil. WebP dans `src/images/`.

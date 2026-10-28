@@ -61,7 +61,7 @@ jsonLdRaw: |
         <ul class="kr-kora__hud">
           <li class="kr-hud kr-hud--a">modèle · {{ e.kora.model }}</li>
           <li class="kr-hud kr-hud--b">au repos</li>
-          <li class="kr-hud kr-hud--c">{{ e.capabilities.tools }} outils</li>
+          <li class="kr-hud kr-hud--c">{{ e.capabilities.tools }} outils enregistrés</li>
           <li class="kr-hud kr-hud--d" aria-hidden="true"><span class="kr-hud__peau">peau</span><span class="kr-hud__structure">structure</span></li>
         </ul>
       </div>
@@ -107,7 +107,7 @@ pub fn evaluate(spent: f64, cap: f64, cost: f64) -&gt; Verdict &#123;
       <div class="kr-etat-grille">
         <div class="kr-etat-tete">
           <h2 id="kre-cap" class="cn-h2">Ce qu'elle sait faire, et ce qui est <em>vérifié</em>.</h2>
-          <p class="cn-texte">{{ c.tools }} outils, {{ c.triggers }} déclencheurs, {{ c.chains }} enchaînements, {{ c.selfInitiated }} initiatives.</p>
+          <p class="cn-texte">{{ c.tools }} outils enregistrés dans l'application, {{ c.triggers }} déclencheurs, {{ c.chains }} enchaînements, {{ c.selfInitiated }} initiatives.</p>
         </div>
         <div class="kr-etat-corps">
           <div class="kr-chiffres">
@@ -229,13 +229,13 @@ pub fn evaluate(spent: f64, cap: f64, cost: f64) -&gt; Verdict &#123;
   <section class="cn-obs kr-obs" id="paliers" aria-labelledby="kre-pal" data-humeur="structure">
     <header class="kr-entete">
       <span class="kr-entete__n">Paliers d'outils</span>
-      <span>{{ koraTools.tools | length }} outils définis</span>
+      <span>{{ koraTools.tools | length }} outils au contrat public</span>
     </header>
     <div class="kr-paire">
       <div class="kr-etat-grille">
         <div class="kr-etat-tete">
-          <h2 id="kre-pal" class="cn-h2">{{ koraTools.tools | length }} outils, <em>trois paliers</em>.</h2>
-          <p class="cn-texte">Le palier d'un outil est une table dans le code, pas un jugement du modèle. Ses arguments peuvent le relever, jamais l'abaisser.</p>
+          <h2 id="kre-pal" class="cn-h2">{{ koraTools.tools | length }} outils au contrat, <em>trois paliers</em>.</h2>
+          <p class="cn-texte">Le contrat public de Kora décrit les {{ koraTools.tools | length }} outils que l'instance de référence envoie au modèle ; l'application en enregistre {{ e.capabilities.tools }}. Le palier d'un outil est une table dans le code, pas un jugement du modèle. Ses arguments peuvent le relever, jamais l'abaisser.</p>
         </div>
         <div class="kr-paliers">
           <div><p class="paliers__tete paliers__tete--auto">{{ auto | length }} · s'exécutent seuls</p><ul>{% for t in auto %}<li>{{ t.name }}</li>{% endfor %}</ul></div>

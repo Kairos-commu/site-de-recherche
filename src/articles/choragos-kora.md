@@ -9,7 +9,7 @@ ogUrl: "/choragos-kora.html"
 canonical: "/choragos-kora.html"
 datePublished: "2026-09-04"
 orbit: 1
-dateModified: "2026-09-15"
+dateModified: "2026-10-26"
 keywords:
   - Choragos
   - Kora
@@ -176,7 +176,7 @@ attestes: true
 
 <section>
   <p>
-    Kora dispose de vingt et un outils réels. Elle cherche sur le web et lit des
+    Dans l'instance de référence, Kora dispose de {{ koraTools.tools | length }} outils réels. Elle cherche sur le web et lit des
     pages, liste des dossiers et lit des fichiers, écrit dans un dossier qui lui
     est réservé, ouvre une application ou une URL, contrôle la musique, prépare
     un ménage de fichiers, retient un fait dans sa mémoire, ou passe la main à
@@ -533,7 +533,7 @@ attestes: true
   <p class="etat-releve">
     <strong>Relevé du {{ koraEtat.generatedAtFr }}</strong>, lu dans l'application :
     modèle local {{ koraEtat.kora.model }}, {{ koraEtat.kora.orbsVisible }} orbes ;
-    {{ koraEtat.capabilities.tools }} outils et
+    {{ koraEtat.capabilities.tools }} outils enregistrés et
     {{ koraEtat.capabilities.tools + koraEtat.capabilities.triggers + koraEtat.capabilities.chains + koraEtat.capabilities.selfInitiated }}
     capacités au total (recherche {{ koraEtat.capabilities.byVertex.recherche }},
     quotidien {{ koraEtat.capabilities.byVertex.quotidien }}, jeu {{ koraEtat.capabilities.byVertex.jeu }}),

@@ -9,7 +9,7 @@ ogUrl: "/mecanique-invisible.html"
 canonical: "/mecanique-invisible.html"
 datePublished: "2025-12-17"
 orbit: 0
-dateModified: "2025-12-17"
+dateModified: "2026-09-15"
 keywords:
   - IA conversationnelle
   - illusions cognitives
@@ -98,7 +98,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.9"
 sitemapChangefreq: "monthly"
 order: 0
-doi: "https://doi.org/10.5281/zenodo.19052824"
+doi: "https://doi.org/10.5281/zenodo.19052823"
 ---
 
         <!-- Prologue -->

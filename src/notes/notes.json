@@ -1,5 +1,9 @@
 {
   "layout": "layouts/note.njk",
   "tags": ["note"],
-  "permalink": "/notes/{{ page.fileSlug }}.html"
+  "permalink": "/notes/{{ page.fileSlug }}.html",
+  "eleventyComputed": {
+    "canonical": "/notes/{{ page.fileSlug }}.html",
+    "ogUrl": "/notes/{{ page.fileSlug }}.html"
+  }
 }

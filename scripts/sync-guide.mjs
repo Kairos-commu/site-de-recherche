@@ -35,11 +35,14 @@ body = body.replace(/\]\(https:\/\/mecanique-invisible\.com\//g, '](/');
 const rev = body.match(/## Revisions[\s\S]*?- \*\*(\d{1,2}) (\w+) (\d{4})/);
 const months = { January: '01', February: '02', March: '03', April: '04', May: '05', June: '06', July: '07', August: '08', September: '09', October: '10', November: '11', December: '12' };
 const modified = rev ? `${rev[3]}-${months[rev[2]] || '01'}-${rev[1].padStart(2, '0')}` : '2026-09-15';
+// Pas de plugin d'ancres : le sommaire du guide pointe vers #revisions, l'id est posé ici.
+body = body.replace(/^## Revisions$/m, '<h2 id="revisions">Revisions</h2>');
 const words = body.replace(/<[^>]+>|\{\{[^}]*\}\}|\{%[^%]*%\}/g, '').split(/\s+/).length;
 const fm = `---
 title: "Building a local agent you can trust — what we learned, in order"
 label: "Guide · living document · source on GitHub"
 description: "The decisions behind Kora, a desktop agent on a 12B local model with real access to one person's files, mail and voice — each with the incident that forced it and the mechanism that holds it. Rendered from github.com/Kairos-commu/kora."
+ogDescription: "How a desktop agent on a 12B local model earned trust with real access to files, mail and voice: each decision, its incident and its guard."
 published: "2026-09-15"
 dateModified: "${modified}"
 readingTime: "${Math.max(5, Math.round(words / 200))} min"

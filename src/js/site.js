@@ -437,6 +437,9 @@
     var reste = document.getElementById('instReste');
     var orbe = document.getElementById('instOrbe');
     if (!texte || !section || !reste) return;
+    // 28/10 : la barre recouvrait le premier paragraphe et la note de Kora. Elle n'entre
+    // qu'une fois la lecture commencée (haut du texte passé) ; sans JS elle reste visible.
+    var instrument = section.closest('.instrument');
     var minutes = parseInt(texte.getAttribute('data-minutes'), 10) || 0;
     var titre = texte.getAttribute('data-titre') || '';
     var reperes = [];
@@ -454,6 +457,7 @@
       var lu = Math.min(1, Math.max(0, (window.innerHeight * 0.4 - r.top) / Math.max(1, r.height)));
       var n = Math.ceil(minutes * (1 - lu));
       reste.textContent = n > 0 ? n + ' min' : 'fin';
+      if (instrument) instrument.toggleAttribute('data-attente', r.top > 0);
       var nom = titre;
       reperes.forEach(function (p) { if (p.nom && p.el.getBoundingClientRect().top <= 120) nom = p.nom; });
       if (section.textContent !== nom) section.textContent = nom;

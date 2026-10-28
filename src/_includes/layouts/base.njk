@@ -26,6 +26,7 @@
   {%- if extraCss %}
   <link rel="stylesheet" href="/css/{{ extraCss }}">
   {%- endif %}
+  <link rel="stylesheet" href="/css/impression.css" media="print">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="Florent Klimacek — Articles" href="/feed.xml">
@@ -42,8 +43,8 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "{{ headline }}",
-    "description": "{{ description }}",
+    "headline": {{ headline | dump | safe }},
+    "description": {{ description | dump | safe }},
     "datePublished": "{{ datePublished }}",
     "dateModified": "{{ dateModified | default(datePublished) }}",
     "inLanguage": "fr",
@@ -73,7 +74,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "{{ site.url }}/" },
       { "@type": "ListItem", "position": 2, "name": "Articles", "item": "{{ site.url }}/articles.html" },
-      { "@type": "ListItem", "position": 3, "name": "{{ breadcrumbName | default(headline) }}", "item": "{{ site.url }}/{{ slug }}.html" }
+      { "@type": "ListItem", "position": 3, "name": {{ breadcrumbName | default(headline) | dump | safe }}, "item": "{{ site.url }}/{{ slug }}.html" }
     ]
   }
   </script>

@@ -455,7 +455,7 @@ score = min(score, plafond contenu)   ← si pathologie sémantique, sauf régim
 
     <h3>Travaux de l'auteur</h3>
 
-    <p>Klimacek, F. (2026). <em>L'Entre — Théorie des Plis</em>. <a href="https://doi.org/10.5281/zenodo.19023026" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19023026</a></p>
+    <p>Klimacek, F. (2026). <em>L'Entre — Théorie des Plis</em>. <a href="https://doi.org/10.5281/zenodo.19023025" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19023025</a></p>
 
     <h3>Études empiriques récentes</h3>
 

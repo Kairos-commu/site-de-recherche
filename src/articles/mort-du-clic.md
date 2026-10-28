@@ -4,7 +4,7 @@ pageTitle: "La mort du clic : quand le contenu devient matière première — Fl
 headline: "La mort du clic : quand le contenu devient matière première"
 description: "60% des recherches Google se terminent sans clic. ChatGPT génère 190 fois moins de trafic que Google. Le web devient un gisement : analyse de la cannibalisation du contenu par l'IA."
 ogTitle: "La mort du clic : quand le contenu devient matière première"
-ogDescription: "60% des recherches Google se terminent sans clic. ChatGPT génère 190 fois moins de trafic que Google. Le web devient un gisement : analyse de la cannibalisation du contenu par l'IA."
+ogDescription: "60 % des recherches Google se terminent sans clic, ChatGPT génère 190 fois moins de trafic : le web devient un gisement que l'IA cannibalise."
 ogUrl: "/mort-du-clic.html"
 canonical: "/mort-du-clic.html"
 datePublished: "2026-02-25"

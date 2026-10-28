@@ -4,7 +4,7 @@ pageTitle: "La Politesse Algorithmique — Florent Klimacek"
 headline: "La Politesse Algorithmique"
 description: "Comment les IA modèlent le langage critique du capitalisme. Une analyse comparative sur cinq grands modèles de langage."
 ogTitle: "La Politesse Algorithmique"
-ogDescription: "Comment les IA modèlent le langage critique du capitalisme. Une analyse comparative sur cinq grands modèles de langage."
+ogDescription: "Comment les IA modèlent le langage critique du capitalisme : une analyse comparative des réponses de cinq grands modèles de langage."
 ogUrl: "/politesse-algorithmique.html"
 canonical: "/politesse-algorithmique.html"
 datePublished: "2025-12-28"
@@ -60,7 +60,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 0
-doi: "https://doi.org/10.5281/zenodo.19053115"
+doi: "https://doi.org/10.5281/zenodo.19053114"
 ---
 
       <!-- Introduction -->

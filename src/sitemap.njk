@@ -2,71 +2,25 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{#- 28/10 : construit depuis les pages elles-mêmes, plus tenu à la main. Une page y entre si
+    son `canonical` est sa propre URL (la redirection physique-quantique-conversationnelle
+    pointe ailleurs, la 404 n'en a pas). `lastmod` seulement là où une date de modification
+    est tenue (articles, notes) : une date inventée est pire qu'aucune. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+{%- for p in collections.all | sort(false, false, "url") %}
+{%- if p.data.canonical and p.data.canonical == p.url and not p.data.noindex %}
   <url>
-    <loc>{{ site.url }}/</loc>
-    {%- set newest = collections.articles | last %}
-    <lastmod>{{ newest.data.datePublished }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>{{ site.url }}{{ p.data.canonical }}</loc>
+    {%- set modifie = p.data.dateModified or p.data.datePublished or p.data.published %}
+    {%- if p.url == "/" %}
+    {%- set modifie = (collections.articles | last).data.datePublished %}
+    {%- endif %}
+    {%- if modifie %}
+    <lastmod>{{ modifie }}</lastmod>
+    {%- endif %}
+    <priority>{{ p.data.sitemapPriority | default("1.0" if p.url == "/" else ("0.8" if p.data.slug else "0.6")) }}</priority>
   </url>
-{% for article in collections.articles %}
-  <url>
-    <loc>{{ site.url }}/{{ article.data.slug }}.html</loc>
-    <lastmod>{{ article.data.dateModified | default(article.data.datePublished) }}</lastmod>
-    <changefreq>{{ article.data.sitemapChangefreq | default("monthly") }}</changefreq>
-    <priority>{{ article.data.sitemapPriority | default("0.8") }}</priority>
-  </url>
-{% endfor %}
-  <url>
-    <loc>{{ site.url }}/presentation_kairos.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/presentation_kairos_en.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/manifeste.html</loc>
-    <lastmod>2026-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/about.html</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/holotheia.html</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/contact.html</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>{{ site.url }}/mentions-legales.html</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
+{%- endif %}
+{%- endfor %}
 </urlset>

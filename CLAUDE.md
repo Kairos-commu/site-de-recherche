@@ -65,6 +65,15 @@ npm test         # build + verifier-pages-produit.mjs (aucun mode non public men
 - **Comptes attestés** : `.atteste` (pointillé cyan) seulement sur un nombre lu dans les journaux
   ou `koraEtat` ; `attestes: true` en front matter fait dire la règle par la marge.
 
+## Zenodo
+
+- `npm run zenodo` : état de chaque article face à Zenodo (absent, à jour, modifié, références).
+  `publier` / `maj` / `references <slug>` simulent sans `--envoyer` ; `--sandbox` d'abord.
+  Token dans l'environnement (`ZENODO_TOKEN`, `ZENODO_SANDBOX_TOKEN`), jamais dans un fichier.
+- Correspondances : `src/_data/zenodo.json` ; le site affiche le DOI de CONCEPT (stable).
+  Mécanique invisible et Pensée en faisceau : Zenodo garde l'édition longue (`edition: "longue"`).
+- Publier est irréversible : c'est Florent qui lance `--envoyer`, jamais un agent.
+
 ## Conventions
 
 - **Pas de CSS inline, pas de JS inline** (sauf l'anti-FOUC du thème dans `base.njk`).
@@ -95,7 +104,7 @@ npm test         # build + verifier-pages-produit.mjs (aucun mode non public men
 
 ### SEO
 
-- `og:title` = `<title>` = JSON-LD `headline` ; `og:description` 120-160 caractères ;
+- `og:title` = JSON-LD `headline` ; `<title>` = le même + « — Florent Klimacek » ; `og:description` 120-160 caractères ;
   `og:url` = URL canonique complète ; `og:image` depuis `heroImage`, sinon `site.ogImage`.
 
 ### Avant chaque push

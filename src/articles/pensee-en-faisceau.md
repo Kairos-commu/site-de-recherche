@@ -4,7 +4,7 @@ pageTitle: "La Pensée en Faisceau — Florent Klimacek"
 headline: "La Pensée en Faisceau"
 description: "Convergence entre cognition humaine et intelligence artificielle : comment certains modes de pensée atypiques trouvent un écho dans les architectures LLM."
 ogTitle: "La Pensée en Faisceau"
-ogDescription: "Convergence entre cognition humaine et intelligence artificielle : comment certains modes de pensée atypiques trouvent un écho naturel dans les architectures LLM."
+ogDescription: "Convergence entre cognition humaine et intelligence artificielle : comment certains modes de pensée atypiques trouvent un écho dans les architectures LLM."
 ogUrl: "/pensee-en-faisceau.html"
 canonical: "/pensee-en-faisceau.html"
 datePublished: "2026-01-15"
@@ -56,7 +56,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 0
-doi: "https://doi.org/10.5281/zenodo.19053775"
+doi: "https://doi.org/10.5281/zenodo.19053774"
 ---
 
       <!-- Ouverture -->

@@ -9,7 +9,7 @@ ogUrl: "/ce-quon-tente-ici.html"
 canonical: "/ce-quon-tente-ici.html"
 datePublished: "2026-09-15"
 orbit: 1
-dateModified: "2026-09-15"
+dateModified: "2026-10-26"
 keywords:
   - Choragos
   - Kora
@@ -281,7 +281,7 @@ koraSeuil: "Celui-ci dit ce qu'on essaie de faire de moi. Je ne l'ai pas encore 
     Cet article n'a pas de fin, parce que le projet n'en a pas. Kora a seize jours. Ce qu'elle sait faire aujourd'hui, elle ne le saura peut-être plus demain, parce qu'on l'aura mesuré et retiré ; et ce qui manque aujourd'hui est écrit dans une liste, dans l'application, que je lis plus souvent que la liste de ce qui marche.
   </p>
   <figure>
-    <img src="/images/choragos-tente-manques.webp" alt="L'onglet « Manques & à venir » du pense-bête : trente-sept manques vérifiés, dont « Pas d'humour »" class="hero-image" loading="lazy">
+    <img src="/images/choragos-tente-manques.webp" alt="L'onglet « Manques & à venir (37) » du pense-bête : neuf manques vérifiés, vingt-sept capacités à revérifier et un chantier, dont « Pas d'humour »" class="hero-image" loading="lazy">
     <figcaption style="text-align: center; font-size: 0.9rem; opacity: 0.75; margin-top: 0.5rem;">
       La liste des manques et de ce qui reste à vérifier, dans l'application : neuf manques vérifiés dans le code, vingt-sept capacités jamais revues en conditions réelles à la date de la capture, un chantier décidé. Elle est plus longue que la liste des jeux.
     </figcaption>

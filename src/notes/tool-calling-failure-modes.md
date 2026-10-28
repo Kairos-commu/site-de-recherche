@@ -2,6 +2,7 @@
 title: "Tool-calling failure modes on local models — a field catalogue"
 label: "Catalogue · living document"
 description: "Every way a local model has broken tool calling in one real agent, September 2026, with the mechanical guard that stopped each one. Observed on gpt-oss:20b, qwen3.5:9b and gemma4:12b through Ollama."
+ogDescription: "Every way a local model broke tool calling in one real agent, with the mechanical guard that stopped each one: gpt-oss:20b, qwen3.5:9b, gemma4:12b."
 published: "2026-09-06"
 readingTime: "12 min"
 keywords:

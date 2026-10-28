@@ -1665,6 +1665,7 @@ code {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
+  overflow-wrap: anywhere; /* URL de DOI d'un seul tenant sur mobile */
 }
 
 .sources-section h3 {
@@ -2241,6 +2242,9 @@ code {
   border: 1px solid rgba(150, 170, 200, .24);
   box-shadow: 0 18px 50px -12px rgba(0, 0, 0, .9);
 }
+.instrument__barre { transition: opacity .3s ease, transform .3s ease, visibility .3s; }
+.instrument[data-attente] .instrument__barre { opacity: 0; visibility: hidden; transform: translateY(12px); }
+@media (prefers-reduced-motion: reduce) { .instrument__barre { transition: none; } }
 .instrument canvas { display: block; width: 30px; height: 30px; }
 .instrument p { margin: 0; font-family: var(--font-mono); font-size: 12.5px; white-space: nowrap; }
 .instrument__section { color: var(--text-primary); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
@@ -2271,11 +2275,11 @@ code {
 @media (max-width: 700px) {
   .obs-article { --gutter: 20px; }
   .art-hero { height: 520px; }
-  .art-hero h1 { font-size: 52px; }
+  .art-hero h1 { font-size: clamp(34px, 11vw, 52px); hyphens: auto; overflow-wrap: break-word; }
   .art-hero__intro { font-size: 21px; }
   .art-texte .key-insight p { font-size: 27px; }
   .art-texte .chapter-divider { min-height: 300px; margin-top: 56px; margin-bottom: 40px; }
-  .art-texte .chapter-divider h2 { font-size: 56px; max-width: none; }
+  .art-texte .chapter-divider h2 { font-size: clamp(36px, 12vw, 56px); max-width: none; hyphens: auto; overflow-wrap: break-word; }
   .art-texte .stat-shift { grid-template-columns: 1fr; gap: 6px; }
   .obs-article .article-nav { grid-template-columns: 1fr; padding-bottom: 120px; }
   .instrument__section { display: none; }

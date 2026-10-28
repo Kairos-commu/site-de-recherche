@@ -4,7 +4,7 @@ lang: en
 pageTitle: "Engineering notes — Florent Klimacek"
 description: "Field notes on running a local LLM as an agent orchestrator: tool-calling failure modes, the mechanical guards that fixed them, and the measurements behind each decision."
 ogTitle: "Engineering notes — Florent Klimacek"
-ogDescription: "Field notes on local LLM agents: tool-calling failure modes and the guards that fixed them."
+ogDescription: "Field notes on running a local LLM as an agent: tool-calling failure modes, the mechanical guards that fixed them, and the measurements behind each one."
 ogUrl: "/notes.html"
 canonical: "/notes.html"
 twitterCard: summary
@@ -32,7 +32,7 @@ jsonLdRaw: |
 <div class="obs obs-page notes-index">
   <p class="eyebrow eyebrow--jeu">Engineering notes · in English</p>
   <h1>Running a <em>local model</em> as an agent, honestly</h1>
-  <p class="notes-index__sous">What breaks when a 12B model has twenty-one tools and a real machine to act on, what the
+  <p class="notes-index__sous">What breaks when a 12B model has {{ koraTools.tools | length }} tools and a real machine to act on, what the
     traces showed, and which guards actually held. Every number below was measured before
     it was written down.</p>
   <aside class="kora-seuil" aria-label="Kora"><p class="kora-seuil__who">Kora</p><div class="kora-seuil__said"><p class="kr-note">{{ koraSeuil }}</p></div></aside>

@@ -9,7 +9,7 @@ ogUrl: "/triangulation-claude-holotheia.html"
 canonical: "/triangulation-claude-holotheia.html"
 datePublished: "2026-03-21"
 orbit: 1
-dateModified: "2026-03-21"
+dateModified: "2026-10-26"
 pontHolotheia: true
 keywords:
   - triangulation
@@ -469,7 +469,7 @@ order: 1
 
   <div class="sources-section">
 
-    <p>[1] Klimacek, F. (2026). <em>L'Entre — Théorie des Plis : cadre théorique pour l'analyse des dynamiques d'émergence dans les interactions humain-IA</em>. Preprint Zenodo. <a href="https://doi.org/10.5281/zenodo.19023026" target="_blank" rel="noopener">DOI : 10.5281/zenodo.19023026</a></p>
+    <p>[1] Klimacek, F. (2026). <em>L'Entre — Théorie des Plis : cadre théorique pour l'analyse des dynamiques d'émergence dans les interactions humain-IA</em>. Preprint Zenodo. <a href="https://doi.org/10.5281/zenodo.19023025" target="_blank" rel="noopener">DOI : 10.5281/zenodo.19023025</a></p>
 
     <p>[2] Klimacek, F. (2025). <em>La Pensée en Faisceau : convergences structurelles entre cognition atypique et architectures de modèles de langage</em>. Preprint Zenodo.</p>
 

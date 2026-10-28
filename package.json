@@ -11,7 +11,8 @@
     "captures:fraicheur": "node scripts/fraicheur-captures.mjs",
     "etat:fraicheur": "node scripts/fraicheur-etat.mjs",
     "guide:sync": "node scripts/sync-guide.mjs",
-    "kora:sync": "node scripts/kora-sync.mjs"
+    "kora:sync": "node scripts/kora-sync.mjs",
+    "zenodo": "node scripts/zenodo.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
