@@ -57,6 +57,7 @@ feedTime: "10:00:00"
 sitemapPriority: "0.8"
 sitemapChangefreq: "monthly"
 order: 1
+doi: "https://doi.org/10.5281/zenodo.23744179"
 ---
 
 <!-- ==================== I ==================== -->

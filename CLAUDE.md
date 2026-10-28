@@ -68,11 +68,16 @@ npm test         # build + verifier-pages-produit.mjs (aucun mode non public men
 ## Zenodo
 
 - `npm run zenodo` : état de chaque article face à Zenodo (absent, à jour, modifié, références).
+  `npm test` en donne le résumé (sans réseau) ; `maj --modifies` publie tous les articles modifiés.
   `publier` / `maj` / `references <slug>` simulent sans `--envoyer` ; `--sandbox` d'abord.
-  Token dans l'environnement (`ZENODO_TOKEN`, `ZENODO_SANDBOX_TOKEN`), jamais dans un fichier.
+  Token : variable d'environnement (`ZENODO_TOKEN`, `ZENODO_SANDBOX_TOKEN`), sinon le script le
+  demande (saisie masquée, en mémoire seulement) ; jamais dans un fichier.
 - Correspondances : `src/_data/zenodo.json` ; le site affiche le DOI de CONCEPT (stable).
   Mécanique invisible et Pensée en faisceau : Zenodo garde l'édition longue (`edition: "longue"`).
-- Publier est irréversible : c'est Florent qui lance `--envoyer`, jamais un agent.
+- **Publication automatique** : `.github/workflows/zenodo.yml`, à chaque push sur `main` qui touche
+  `src/articles/` (`sync` : absents, modifiés, liens ; plafond 10 par passe), puis commit des DOI
+  et redéploiement. Secret GitHub `ZENODO_TOKEN`. Exclure un article : `zenodo: false` en front matter.
+- Publier est irréversible : un agent ne lance jamais `--envoyer` lui-même.
 
 ## Conventions
 

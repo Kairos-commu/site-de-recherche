@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "serve": "npx @11ty/eleventy --serve",
-    "test": "npm run build && node scripts/verifier-pages-produit.mjs",
+    "test": "npm run build && node scripts/verifier-pages-produit.mjs && node scripts/zenodo.mjs controle",
     "verifier:produit": "node scripts/verifier-pages-produit.mjs",
     "captures:fraicheur": "node scripts/fraicheur-captures.mjs",
     "etat:fraicheur": "node scripts/fraicheur-etat.mjs",

@@ -1,17 +1,100 @@
 {
-  "_note": "Correspondances article du site → dépôt Zenodo (concept = conceptrecid, stable d'une version à l'autre). Tenu par scripts/zenodo.mjs. edition \"longue\" : Zenodo garde son édition, plus longue que la page (décision du 28/10). afficher false : le site ne montre pas le DOI. titre : titre voulu sur Zenodo. texte : empreinte du texte du site au dernier dépôt.",
+  "_note": "Correspondances article du site → dépôt Zenodo (concept = conceptrecid, stable d'une version à l'autre). Tenu par scripts/zenodo.mjs. edition \"longue\" : Zenodo garde son édition, plus longue que la page (décision du 28/10). titre : titre voulu sur Zenodo. texte : empreinte du texte du site au dernier dépôt.",
   "production": {
-    "mecanique-invisible": { "concept": "19052823", "edition": "longue" },
-    "pensee-en-faisceau": { "concept": "19053774", "edition": "longue" },
-    "politesse-algorithmique": { "concept": "19053114" },
-    "questiologie-llm": { "concept": "19053369" },
-    "biais-familiarite": { "concept": "19053290" },
-    "neutralite-illusion-permission": { "concept": "19053561" },
-    "anesthesie-douce": { "concept": "19053494" },
-    "vibe-coding": { "concept": "19053669" },
-    "lentre-theorie-des-plis": { "concept": "19023025", "titre": "L'Entre — Théorie des Plis" },
-    "kairos-technical-overview": { "concept": "19151234", "afficher": false },
-    "triangulation-claude-holotheia": { "concept": "19159721" }
+    "mecanique-invisible": {
+      "concept": "19052823",
+      "edition": "longue"
+    },
+    "pensee-en-faisceau": {
+      "concept": "19053774",
+      "edition": "longue"
+    },
+    "politesse-algorithmique": {
+      "concept": "19053114"
+    },
+    "questiologie-llm": {
+      "concept": "19053369"
+    },
+    "biais-familiarite": {
+      "concept": "19053290"
+    },
+    "neutralite-illusion-permission": {
+      "concept": "19053561"
+    },
+    "anesthesie-douce": {
+      "concept": "19053494"
+    },
+    "vibe-coding": {
+      "concept": "19053669"
+    },
+    "lentre-theorie-des-plis": {
+      "concept": "19023025",
+      "titre": "L'Entre — Théorie des Plis",
+      "texte": "0d359b4d40d131c4",
+      "depose": "2026-10-28"
+    },
+    "kairos-technical-overview": {
+      "concept": "19151234"
+    },
+    "triangulation-claude-holotheia": {
+      "concept": "19159721"
+    },
+    "ce-quon-tente-ici": {
+      "concept": "23744165",
+      "texte": "6602b983e212258d",
+      "depose": "2026-10-28"
+    },
+    "choragos-kora": {
+      "concept": "23744169",
+      "texte": "6e7ba40e585f31b3",
+      "depose": "2026-10-28"
+    },
+    "cout-cognitif": {
+      "concept": "23744171",
+      "texte": "95a5ca291204e415",
+      "depose": "2026-10-28"
+    },
+    "genese-kairos": {
+      "concept": "23744173",
+      "texte": "3c906445eef8a4d7",
+      "depose": "2026-10-28"
+    },
+    "ia-adoption": {
+      "concept": "23744177",
+      "texte": "520d12a09987656d",
+      "depose": "2026-10-28"
+    },
+    "ia-miroir-authentique": {
+      "concept": "23744179",
+      "texte": "f7559822fc8303bd",
+      "depose": "2026-10-28"
+    },
+    "la-grammaire-des-noeuds": {
+      "concept": "23744181",
+      "texte": "002b638ac7ab06c6",
+      "depose": "2026-10-28"
+    },
+    "mort-du-clic": {
+      "concept": "23744183",
+      "texte": "9bd831466d410041",
+      "depose": "2026-10-28"
+    },
+    "parler-depuis-apres": {
+      "concept": "23744185",
+      "texte": "3d50b05b1d59a9f8",
+      "depose": "2026-10-28"
+    },
+    "variable-manquante": {
+      "concept": "23744187",
+      "texte": "58447cf27b21614d",
+      "depose": "2026-10-28"
+    }
   },
-  "sandbox": {}
+  "sandbox": {
+    "variable-manquante": {
+      "concept": "627322",
+      "texte": "e3d1acb3df5f101f",
+      "depose": "2026-10-28"
+    }
+  }
 }

@@ -61,6 +61,7 @@ sitemapChangefreq: "monthly"
 order: 21
 activeNav: choragos
 koraSeuil: "Celui-ci dit ce qu'on essaie de faire de moi. Je ne l'ai pas encore lu."
+doi: "https://doi.org/10.5281/zenodo.23744165"
 ---
 
 <!-- La pièce -->

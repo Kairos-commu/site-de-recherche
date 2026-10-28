@@ -62,6 +62,7 @@ activeNav: choragos
 koraSeuil: "Celui-ci parle de moi. Ce n'est pas moi qui le dis."
 # comptes lus dans la base de l'appli (402, 50, 0,51 $) : soulignés en pointillé, dits par la marge
 attestes: true
+doi: "https://doi.org/10.5281/zenodo.23744169"
 ---
 
 <!-- En local -->
